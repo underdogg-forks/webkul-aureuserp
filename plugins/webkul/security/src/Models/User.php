@@ -2,6 +2,7 @@
 
 namespace Webkul\Security\Models;
 
+use App\Models\User as BaseUser;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -14,7 +15,6 @@ use Spatie\Permission\Traits\HasRoles;
 use Webkul\Employee\Models\Department;
 use Webkul\Employee\Models\Employee;
 use Webkul\Partner\Models\Partner;
-use App\Models\User as BaseUser;
 use Webkul\Support\Models\Company;
 
 class User extends BaseUser implements FilamentUser

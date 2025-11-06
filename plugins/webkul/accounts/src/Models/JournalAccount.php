@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class JournalAccount extends Model
 {
-    protected $table = 'accounts_journal_accounts';
+    public $timestamps = false;
 
-    protected $timestamps = false;
+    protected $table = 'accounts_journal_accounts';
 
     protected $fillable = [
         'account_id',

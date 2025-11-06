@@ -649,12 +649,22 @@ class ProjectResource extends Resource
 
     public static function getTaskSettings(): TaskSettings
     {
-        return once(fn () => app(TaskSettings::class));
+        static $settings;
+        if ( ! $settings) {
+            $settings = app(TaskSettings::class);
+        }
+
+        return $settings;
     }
 
     public static function getTimeSettings(): TimeSettings
     {
-        return once(fn () => app(TimeSettings::class));
+        static $settings;
+        if ( ! $settings) {
+            $settings = app(TimeSettings::class);
+        }
+
+        return $settings;
     }
 
     public static function getRecordSubNavigation(Page $page): array

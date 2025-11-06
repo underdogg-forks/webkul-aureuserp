@@ -7,6 +7,7 @@ use Filament\Actions\EditAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
 use Webkul\Security\Filament\Resources\CompanyResource;
+use Webkul\Security\Models\User;
 
 class ViewCompany extends ViewRecord
 {
@@ -17,7 +18,7 @@ class ViewCompany extends ViewRecord
         return [
             EditAction::make(),
             DeleteAction::make()
-                ->hidden(fn () => \Webkul\Sale\Models\User::where('default_company_id', $this->record->id)->exists())
+                ->hidden(fn () => User::where('default_company_id', $this->record->id)->exists())
                 ->successNotification(
                     Notification::make()
                         ->success()

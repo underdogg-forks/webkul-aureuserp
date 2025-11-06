@@ -890,6 +890,11 @@ class TaskResource extends Resource
 
     private static function getTaskSettings(): TaskSettings
     {
-        return once(fn () => app(TaskSettings::class));
+        static $settings;
+        if ( ! $settings) {
+            $settings = app(TaskSettings::class);
+        }
+
+        return $settings;
     }
 }

@@ -4,7 +4,7 @@ namespace Webkul\Account\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Webkul\Sale\Models\User;
+use Webkul\Security\Models\User;
 
 class PaymentMethodSeeder extends Seeder
 {

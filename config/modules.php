@@ -4,7 +4,6 @@ use Nwidart\Modules\Activators\FileActivator;
 use Nwidart\Modules\Providers\ConsoleServiceProvider;
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Module Namespace
@@ -25,21 +24,21 @@ return [
     */
     'stubs' => [
         'enabled' => false,
-        'path' => base_path('vendor/nwidart/laravel-modules/src/Commands/stubs'),
-        'files' => [
-            'routes/web' => 'routes/web.php',
-            'routes/api' => 'routes/api.php',
-            'views/index' => 'resources/views/index.blade.php',
-            'views/master' => 'resources/views/components/layouts/master.blade.php',
+        'path'    => base_path('vendor/nwidart/laravel-modules/src/Commands/stubs'),
+        'files'   => [
+            'routes/web'      => 'routes/web.php',
+            'routes/api'      => 'routes/api.php',
+            'views/index'     => 'resources/views/index.blade.php',
+            'views/master'    => 'resources/views/components/layouts/master.blade.php',
             'scaffold/config' => 'config/config.php',
-            'composer' => 'composer.json',
-            'assets/js/app' => 'resources/assets/js/app.js',
+            'composer'        => 'composer.json',
+            'assets/js/app'   => 'resources/assets/js/app.js',
             'assets/sass/app' => 'resources/assets/sass/app.scss',
-            'vite' => 'vite.config.js',
-            'package' => 'package.json',
+            'vite'            => 'vite.config.js',
+            'package'         => 'package.json',
         ],
         'replacements' => [
-            /**
+            /*
              * Define custom replacements for each section.
              * You can specify a closure for dynamic values.
              *
@@ -55,14 +54,14 @@ return [
              *
              * Note: Keys should be in UPPERCASE.
              */
-            'routes/web' => ['LOWER_NAME', 'STUDLY_NAME', 'PLURAL_LOWER_NAME', 'KEBAB_NAME', 'MODULE_NAMESPACE', 'CONTROLLER_NAMESPACE'],
-            'routes/api' => ['LOWER_NAME', 'STUDLY_NAME', 'PLURAL_LOWER_NAME', 'KEBAB_NAME', 'MODULE_NAMESPACE', 'CONTROLLER_NAMESPACE'],
-            'vite' => ['LOWER_NAME', 'STUDLY_NAME', 'KEBAB_NAME'],
-            'json' => ['LOWER_NAME', 'STUDLY_NAME', 'KEBAB_NAME', 'MODULE_NAMESPACE', 'PROVIDER_NAMESPACE'],
-            'views/index' => ['LOWER_NAME'],
-            'views/master' => ['LOWER_NAME', 'STUDLY_NAME', 'KEBAB_NAME'],
+            'routes/web'      => ['LOWER_NAME', 'STUDLY_NAME', 'PLURAL_LOWER_NAME', 'KEBAB_NAME', 'MODULE_NAMESPACE', 'CONTROLLER_NAMESPACE'],
+            'routes/api'      => ['LOWER_NAME', 'STUDLY_NAME', 'PLURAL_LOWER_NAME', 'KEBAB_NAME', 'MODULE_NAMESPACE', 'CONTROLLER_NAMESPACE'],
+            'vite'            => ['LOWER_NAME', 'STUDLY_NAME', 'KEBAB_NAME'],
+            'json'            => ['LOWER_NAME', 'STUDLY_NAME', 'KEBAB_NAME', 'MODULE_NAMESPACE', 'PROVIDER_NAMESPACE'],
+            'views/index'     => ['LOWER_NAME'],
+            'views/master'    => ['LOWER_NAME', 'STUDLY_NAME', 'KEBAB_NAME'],
             'scaffold/config' => ['STUDLY_NAME'],
-            'composer' => [
+            'composer'        => [
                 'LOWER_NAME',
                 'STUDLY_NAME',
                 'VENDOR',
@@ -116,7 +115,7 @@ return [
         | app folder name
         | for example can change it to 'src' or 'App'
         */
-        'app_folder' => 'app/',
+        'app_folder' => 'src/',
 
         /*
         |--------------------------------------------------------------------------
@@ -127,60 +126,60 @@ return [
         */
         'generator' => [
             // app/
-            'actions' => ['path' => 'app/Actions', 'generate' => false],
-            'casts' => ['path' => 'app/Casts', 'generate' => false],
-            'channels' => ['path' => 'app/Broadcasting', 'generate' => false],
-            'class' => ['path' => 'app/Classes', 'generate' => false],
-            'command' => ['path' => 'app/Console', 'generate' => false],
-            'component-class' => ['path' => 'app/View/Components', 'generate' => false],
-            'emails' => ['path' => 'app/Emails', 'generate' => false],
-            'event' => ['path' => 'app/Events', 'generate' => false],
-            'enums' => ['path' => 'app/Enums', 'generate' => false],
-            'exceptions' => ['path' => 'app/Exceptions', 'generate' => false],
-            'jobs' => ['path' => 'app/Jobs', 'generate' => false],
-            'helpers' => ['path' => 'app/Helpers', 'generate' => false],
-            'interfaces' => ['path' => 'app/Interfaces', 'generate' => false],
-            'listener' => ['path' => 'app/Listeners', 'generate' => false],
-            'model' => ['path' => 'app/Models', 'generate' => false],
-            'notifications' => ['path' => 'app/Notifications', 'generate' => false],
-            'observer' => ['path' => 'app/Observers', 'generate' => false],
-            'policies' => ['path' => 'app/Policies', 'generate' => false],
-            'provider' => ['path' => 'app/Providers', 'generate' => true],
-            'repository' => ['path' => 'app/Repositories', 'generate' => false],
-            'resource' => ['path' => 'app/Transformers', 'generate' => false],
-            'route-provider' => ['path' => 'app/Providers', 'generate' => true],
-            'rules' => ['path' => 'app/Rules', 'generate' => false],
-            'services' => ['path' => 'app/Services', 'generate' => false],
-            'scopes' => ['path' => 'app/Models/Scopes', 'generate' => false],
-            'traits' => ['path' => 'app/Traits', 'generate' => false],
+            'actions'         => ['path' => 'src/Actions', 'generate' => false],
+            'casts'           => ['path' => 'src/Casts', 'generate' => false],
+            'channels'        => ['path' => 'src/Broadcasting', 'generate' => false],
+            'class'           => ['path' => 'src/Classes', 'generate' => false],
+            'command'         => ['path' => 'src/Console', 'generate' => false],
+            'component-class' => ['path' => 'src/View/Components', 'generate' => false],
+            'emails'          => ['path' => 'src/Emails', 'generate' => false],
+            'event'           => ['path' => 'src/Events', 'generate' => false],
+            'enums'           => ['path' => 'src/Enums', 'generate' => true],
+            'exceptions'      => ['path' => 'src/Exceptions', 'generate' => false],
+            'jobs'            => ['path' => 'src/Jobs', 'generate' => true],
+            'helpers'         => ['path' => 'src/Helpers', 'generate' => true],
+            'interfaces'      => ['path' => 'src/Contracts', 'generate' => true],
+            'listener'        => ['path' => 'src/Listeners', 'generate' => false],
+            'model'           => ['path' => 'src/Models', 'generate' => false],
+            'notifications'   => ['path' => 'src/Notifications', 'generate' => false],
+            'observer'        => ['path' => 'src/Observers', 'generate' => true],
+            'policies'        => ['path' => 'src/Policies', 'generate' => true],
+            'provider'        => ['path' => 'src/Providers', 'generate' => true],
+            'repository'      => ['path' => 'src/Repositories', 'generate' => false],
+            'resource'        => ['path' => 'src/Transformers', 'generate' => false],
+            'route-provider'  => ['path' => 'src/Providers', 'generate' => true],
+            'rules'           => ['path' => 'src/Rules', 'generate' => false],
+            'services'        => ['path' => 'src/Services', 'generate' => true],
+            'scopes'          => ['path' => 'src/Models/Scopes', 'generate' => false],
+            'traits'          => ['path' => 'src/Concerns', 'generate' => true],
 
-            // app/Http/
-            'controller' => ['path' => 'app/Http/Controllers', 'generate' => true],
-            'filter' => ['path' => 'app/Http/Middleware', 'generate' => false],
-            'request' => ['path' => 'app/Http/Requests', 'generate' => false],
+            // src/Http/
+            'controller' => ['path' => 'src/Http/Controllers', 'generate' => false],
+            'filter'     => ['path' => 'src/Http/Middleware', 'generate' => false],
+            'request'    => ['path' => 'src/Http/Requests', 'generate' => false],
 
             // config/
-            'config' => ['path' => 'config', 'generate' => true],
+            'config' => ['path' => 'config', 'generate' => false],
 
             // database/
-            'factory' => ['path' => 'database/factories', 'generate' => true],
+            'factory'   => ['path' => 'database/factories', 'generate' => true],
             'migration' => ['path' => 'database/migrations', 'generate' => true],
-            'seeder' => ['path' => 'database/seeders', 'generate' => true],
+            'seeder'    => ['path' => 'database/seeders', 'generate' => true],
 
             // lang/
-            'lang' => ['path' => 'lang', 'generate' => false],
+            'lang' => ['path' => 'resources/lang', 'generate' => true],
 
             // resource/
-            'assets' => ['path' => 'resources/assets', 'generate' => true],
+            'assets'         => ['path' => 'resources/assets', 'generate' => false],
             'component-view' => ['path' => 'resources/views/components', 'generate' => false],
-            'views' => ['path' => 'resources/views', 'generate' => true],
+            'views'          => ['path' => 'resources/views', 'generate' => true],
 
             // routes/
             'routes' => ['path' => 'routes', 'generate' => true],
 
             // tests/
             'test-feature' => ['path' => 'tests/Feature', 'generate' => true],
-            'test-unit' => ['path' => 'tests/Unit', 'generate' => true],
+            'test-unit'    => ['path' => 'tests/Unit', 'generate' => true],
         ],
     ],
 
@@ -213,7 +212,6 @@ return [
         |
         */
         'translations' => false,
-
     ],
 
     /*
@@ -241,7 +239,7 @@ return [
     */
     'scan' => [
         'enabled' => false,
-        'paths' => [
+        'paths'   => [
             base_path('vendor/*/*'),
         ],
     ],
@@ -257,7 +255,7 @@ return [
     'composer' => [
         'vendor' => env('MODULE_VENDOR', 'nwidart'),
         'author' => [
-            'name' => env('MODULE_AUTHOR_NAME', 'Nicolas Widart'),
+            'name'  => env('MODULE_AUTHOR_NAME', 'Nicolas Widart'),
             'email' => env('MODULE_AUTHOR_EMAIL', 'n.widart@gmail.com'),
         ],
         'composer-output' => false,
@@ -272,7 +270,7 @@ return [
     */
     'register' => [
         'translations' => true,
-        /**
+        /*
          * load files on boot or register method
          */
         'files' => 'register',
@@ -289,7 +287,7 @@ return [
     */
     'activators' => [
         'file' => [
-            'class' => FileActivator::class,
+            'class'         => FileActivator::class,
             'statuses-file' => base_path('modules_statuses.json'),
         ],
     ],

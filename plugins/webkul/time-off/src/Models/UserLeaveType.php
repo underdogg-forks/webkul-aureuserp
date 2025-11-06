@@ -7,9 +7,9 @@ use Webkul\Security\Models\User;
 
 class UserLeaveType extends Model
 {
-    protected $table = 'time_off_user_leave_types';
+    public $timestamps = false;
 
-    protected $timestamps = false;
+    protected $table = 'time_off_user_leave_types';
 
     protected $fillable = [
         'user_id',

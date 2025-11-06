@@ -120,9 +120,11 @@ class InstallCommand extends Command
         if ($this->askToRunMigrations) {
             if ($this->confirm('Would you like to run the migrations now?')) {
                 $this->runMigrations();
+                $this->runSeeders();
             }
         } elseif ($this->runsMigrations) {
             $this->runMigrations();
+            $this->runSeeders();
         }
 
         if ($this->askToRunSeeders) {
@@ -141,22 +143,6 @@ class InstallCommand extends Command
             $this->copyServiceProviderInApp();
         }
 
-        if ($this->starRepo) {
-            if ($this->confirm('Would you like to star our repo on GitHub?')) {
-                $repoUrl = "https://github.com/{$this->starRepo}";
-
-                if (PHP_OS_FAMILY == 'Darwin') {
-                    exec("open {$repoUrl}");
-                }
-                if (PHP_OS_FAMILY == 'Windows') {
-                    exec("start {$repoUrl}");
-                }
-                if (PHP_OS_FAMILY == 'Linux') {
-                    exec("xdg-open {$repoUrl}");
-                }
-            }
-        }
-
         $package = $this->package->updateOrCreate();
 
         foreach ($this->package->dependencies as $dependencyName) {
@@ -171,7 +157,7 @@ class InstallCommand extends Command
 
         $this->regenerateAdminPanelPermissions();
 
-        $this->info("🎉 Package <comment>{$this->package->shortName()}</comment> has been installed!");
+        $this->info("Package <comment>{$this->package->shortName()}</comment> has been installed!");
     }
 
     public function publish(string ...$tag): self
@@ -268,7 +254,7 @@ class InstallCommand extends Command
                 ]);
             }
 
-            $this->info("✅ Migrations <comment>{$this->package->shortName()}</comment> completed successfully.");
+            $this->info("Migrations <comment>{$this->package->shortName()}</comment> completed successfully.");
 
             $this->newLine();
         }
@@ -276,10 +262,6 @@ class InstallCommand extends Command
         $settingsToRun = collect([]);
 
         foreach ($this->package->settingFileNames as $setting) {
-            if ($this->hasMigrationAlreadyRun($migration)) {
-                continue;
-            }
-
             $fullPath = $this->package->basePath("../database/settings/{$setting}.php");
 
             $path = Str::after($fullPath, base_path() . DIRECTORY_SEPARATOR);
@@ -288,15 +270,15 @@ class InstallCommand extends Command
         }
 
         if ( ! $settingsToRun->isEmpty()) {
-            $this->info("⚙️ Running <comment>{$this->package->shortName()}</comment> settings database migrations...");
+            $this->info("Running <comment>{$this->package->shortName()}</comment> settings database migrations...");
 
-            foreach ($settingsToRun as $migration) {
+            foreach ($settingsToRun as $settingsPath) {
                 $this->call('migrate', [
-                    '--path' => $migration,
+                    '--path' => $settingsPath,
                 ]);
             }
 
-            $this->info("✅ Settings migrations <comment>{$this->package->shortName()}</comment> completed successfully.");
+            $this->info("Settings migrations <comment>{$this->package->shortName()}</comment> completed successfully.");
 
             $this->newLine();
         }
@@ -330,7 +312,7 @@ class InstallCommand extends Command
             }
         }
 
-        $this->info("⚙️ Running <comment>{$this->package->shortName()}</comment> database seeders...");
+        $this->info("Running <comment>{$this->package->shortName()}</comment> database seeders...");
 
         $this->newLine();
 
@@ -342,7 +324,7 @@ class InstallCommand extends Command
             $this->newLine();
         }
 
-        $this->info("✅ Seeders <comment>{$this->package->shortName()}</comment> completed successfully.");
+        $this->info("Seeders <comment>{$this->package->shortName()}</comment> completed successfully.");
 
         $this->newLine();
 

@@ -8,6 +8,7 @@ use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Facades\Auth;
 use Webkul\Security\Filament\Resources\CompanyResource;
+use Webkul\Security\Models\User;
 
 class EditCompany extends EditRecord
 {
@@ -31,7 +32,7 @@ class EditCompany extends EditRecord
         return [
             ViewAction::make(),
             DeleteAction::make()
-                ->hidden(fn () => \Webkul\Sale\Models\User::where('default_company_id', $this->record->id)->exists())
+                ->hidden(fn () => User::where('default_company_id', $this->record->id)->exists())
                 ->successNotification(
                     Notification::make()
                         ->success()
