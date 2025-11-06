@@ -2,6 +2,7 @@
 
 namespace Webkul\TimeOff\Filament\Clusters\Configurations\Resources;
 
+use BackedEnum;
 use Carbon\Carbon;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
@@ -43,7 +44,7 @@ class AccrualPlanResource extends Resource
 {
     protected static ?string $model = LeaveAccrualPlan::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-paper-airplane';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-paper-airplane';
 
     protected static ?string $cluster = Configurations::class;
 
@@ -104,7 +105,7 @@ class AccrualPlanResource extends Resource
                                                 $monthEnum = CarryoverMonth::from($monthValue);
 
                                                 $monthNumber = $monthEnum->toNumber();
-                                                $year = now()->year;
+                                                $year        = now()->year;
 
                                                 $daysInMonth = Carbon::createFromDate($year, $monthNumber, 1)->daysInMonth;
 

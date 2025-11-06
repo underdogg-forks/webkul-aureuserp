@@ -2,6 +2,7 @@
 
 namespace Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource\Pages;
 
+use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
@@ -35,23 +36,24 @@ use Webkul\TableViews\Filament\Concerns\HasTableViews;
 
 class ManageQuantities extends ManageRelatedRecords
 {
-    use HasRecordNavigationTabs, HasTableViews;
+    use HasRecordNavigationTabs;
+    use HasTableViews;
 
     protected static string $resource = ProductResource::class;
 
     protected static string $relationship = 'quantities';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-scale';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-scale';
 
     public static function canAccess(array $parameters = []): bool
     {
         $canAccess = parent::canAccess($parameters);
 
-        if (! $canAccess) {
+        if ( ! $canAccess) {
             return false;
         }
 
-        if (! $parameters['record']->is_storable) {
+        if ( ! $parameters['record']->is_storable) {
             return false;
         }
 
@@ -248,7 +250,7 @@ class ManageQuantities extends ManageRelatedRecords
                     ->rules([
                         'numeric',
                         'min:1',
-                        'max:'.($this->getOwnerRecord()->tracking == ProductTracking::SERIAL ? '1' : '999999999'),
+                        'max:' . ($this->getOwnerRecord()->tracking == ProductTracking::SERIAL ? '1' : '999999999'),
                     ])
                     ->beforeStateUpdated(function ($record, $state) {
                         $previousQuantity = $record->quantity;
@@ -287,7 +289,8 @@ class ManageQuantities extends ManageRelatedRecords
                                 'location_id' => $adjustmentLocation->id,
                                 'product_id'  => $record->product_id,
                                 'lot_id'      => $record->lot_id,
-                            ], [
+                            ],
+                            [
                                 'quantity'               => -$record->product->on_hand_quantity,
                                 'company_id'             => $record->company_id,
                                 'creator_id'             => Auth::id(),
@@ -316,7 +319,7 @@ class ManageQuantities extends ManageRelatedRecords
                     ->mutateDataUsing(function (array $data): array {
                         $data['product_id'] ??= $this->getOwnerRecord()->id;
 
-                        $data['location_id'] = $data['location_id'] ?? Warehouse::first()->lot_stock_location_id;
+                        $data['location_id'] ??= Warehouse::first()->lot_stock_location_id;
 
                         $data['creator_id'] = Auth::id();
 
@@ -367,7 +370,8 @@ class ManageQuantities extends ManageRelatedRecords
                                 'location_id' => $adjustmentLocation->id,
                                 'product_id'  => $record->product_id,
                                 'lot_id'      => $record->lot_id,
-                            ], [
+                            ],
+                            [
                                 'quantity'    => -$record->product->on_hand_quantity,
                                 'company_id'  => $record->company_id,
                                 'creator_id'  => Auth::id(),

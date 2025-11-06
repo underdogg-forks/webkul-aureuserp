@@ -45,7 +45,7 @@ class SaleManager
     {
         $result = $this->sendByEmail($record, $data);
 
-        if (! empty($result['sent'])) {
+        if ( ! empty($result['sent'])) {
             $record = $this->computeSaleOrder($record);
         }
 
@@ -95,7 +95,7 @@ class SaleManager
             'invoice_status' => InvoiceStatus::NO,
         ]);
 
-        if (! empty($data)) {
+        if ( ! empty($data)) {
             $this->cancelAndSendEmail($record, $data);
         }
 
@@ -134,14 +134,14 @@ class SaleManager
     public function computeSaleOrder(Order $record): Order
     {
         $record->amount_untaxed = 0;
-        $record->amount_tax = 0;
-        $record->amount_total = 0;
+        $record->amount_tax     = 0;
+        $record->amount_total   = 0;
 
         foreach ($record->lines as $line) {
-            $line->state = $record->state;
-            $line->salesman_id = $record->user_id;
+            $line->state            = $record->state;
+            $line->salesman_id      = $record->user_id;
             $line->order_partner_id = $record->partner_id;
-            $line->invoice_status = $record->invoice_status;
+            $line->invoice_status   = $record->invoice_status;
 
             $line = $this->computeSaleOrderLine($line);
 
@@ -194,7 +194,7 @@ class SaleManager
 
         $line->price_total = $subTotal + $taxAmount;
 
-        $line->sort = $line->sort ?? OrderLine::max('sort') + 1;
+        $line->sort ??= OrderLine::max('sort') + 1;
 
         $line->technical_price_unit = $line->price_unit;
 
@@ -246,7 +246,7 @@ class SaleManager
     public function computeQtyDelivered(OrderLine $line): OrderLine
     {
         if ($line->qty_delivered_method == QtyDeliveredMethod::MANUAL) {
-            $line->qty_delivered = $line->qty_delivered ?? 0.0;
+            $line->qty_delivered ??= 0.0;
         }
 
         if ($line->qty_delivered_method == QtyDeliveredMethod::STOCK_MOVE) {
@@ -278,7 +278,7 @@ class SaleManager
 
     public function computeWarehouseId(Order $order): Order
     {
-        if (! Package::isPluginInstalled('inventories')) {
+        if ( ! Package::isPluginInstalled('inventories')) {
             return $order;
         }
 
@@ -294,7 +294,7 @@ class SaleManager
 
     public function computeDeliveryStatus(Order $order): Order
     {
-        if (! Package::isPluginInstalled('inventories')) {
+        if ( ! Package::isPluginInstalled('inventories')) {
             $order->delivery_status = OrderDeliveryStatus::NO;
 
             return $order;
@@ -391,6 +391,7 @@ class SaleManager
         } else {
             $line->invoice_status = InvoiceStatus::NO;
         }
+
         return $line;
     }
 
@@ -410,8 +411,8 @@ class SaleManager
             $uomQtyToConsider = $line->product_uom_qty;
         }
 
-        $discount = $line->discount ?? 0.0;
-        $priceReduce = $line->price_unit * (1 - ($discount / 100.0));
+        $discount      = $line->discount ?? 0.0;
+        $priceReduce   = $line->price_unit * (1 - ($discount / 100.0));
         $priceSubtotal = $priceReduce * $uomQtyToConsider;
 
         $line->untaxed_amount_to_invoice = $priceSubtotal - $line->untaxed_amount_invoiced;
@@ -445,7 +446,7 @@ class SaleManager
     {
         $partners = Partner::whereIn('id', $data['partners'])->get();
 
-        $sent = [];
+        $sent   = [];
         $failed = [];
 
         foreach ($partners as $partner) {
@@ -457,11 +458,11 @@ class SaleManager
 
             try {
                 $payload = [
-                    'record_name'    => $record->name,
-                    'model_name'     => $record->state->getLabel(),
-                    'subject'        => $data['subject'],
-                    'description'    => $data['description'],
-                    'to'             => [
+                    'record_name' => $record->name,
+                    'model_name'  => $record->state->getLabel(),
+                    'subject'     => $data['subject'],
+                    'description' => $data['description'],
+                    'to'          => [
                         'address' => $partner->email,
                         'name'    => $partner->name,
                     ],
@@ -488,13 +489,12 @@ class SaleManager
                 ]);
 
                 $sent[] = $partner->name;
-
-            } catch (\Exception $e) {
-                $failed[$partner->name] = 'Email service error: '.$e->getMessage();
+            } catch (Exception $e) {
+                $failed[$partner->name] = 'Email service error: ' . $e->getMessage();
             }
         }
 
-        if (! empty($sent) && $record->state === OrderState::DRAFT) {
+        if ( ! empty($sent) && $record->state === OrderState::DRAFT) {
             $record->state = OrderState::SENT;
             $record->save();
         }
@@ -511,11 +511,11 @@ class SaleManager
 
         foreach ($partners as $partner) {
             $payload = [
-                'record_name'    => $record->name,
-                'model_name'     => 'Quotation',
-                'subject'        => $data['subject'],
-                'description'    => $data['description'],
-                'to'             => [
+                'record_name' => $record->name,
+                'model_name'  => 'Quotation',
+                'subject'     => $data['subject'],
+                'description' => $data['description'],
+                'to'          => [
                     'address' => $partner?->email,
                     'name'    => $partner?->name,
                 ],
@@ -557,7 +557,7 @@ class SaleManager
             $seenWarehouseIds = [];
 
             foreach ($sortedMoves as $move) {
-                if (! in_array($move->warehouse->id, $seenWarehouseIds)) {
+                if ( ! in_array($move->warehouse->id, $seenWarehouseIds)) {
                     $triggeringRuleIds[] = $move->rule_id;
 
                     $seenWarehouseIds[] = $move->warehouse_id;
@@ -593,63 +593,12 @@ class SaleManager
         ];
     }
 
-    private function createAccountMove(Order $record): AccountMove
-    {
-        $accountMove = AccountMove::create([
-            'move_type'               => AccountEnums\MoveType::OUT_INVOICE,
-            'invoice_origin'          => $record->name,
-            'date'                    => now(),
-            'company_id'              => $record->company_id,
-            'currency_id'             => $record->currency_id,
-            'invoice_payment_term_id' => $record->payment_term_id,
-            'partner_id'              => $record->partner_id,
-            'fiscal_position_id'      => $record->fiscal_position_id,
-        ]);
-
-        $record->accountMoves()->attach($accountMove->id);
-
-        foreach ($record->lines as $line) {
-            $this->createAccountMoveLine($accountMove, $line);
-        }
-
-        $accountMove = AccountFacade::computeAccountMove($accountMove);
-
-        return $accountMove;
-    }
-
-    private function createAccountMoveLine(AccountMove $accountMove, OrderLine $orderLine): void
-    {
-        $productInvoicePolicy = $orderLine->product?->invoice_policy;
-        $invoiceSetting = $this->invoiceSettings->invoice_policy->value;
-
-        $quantity = ($productInvoicePolicy ?? $invoiceSetting) === InvoiceEnums\InvoicePolicy::ORDER->value
-            ? $orderLine->product_uom_qty
-            : $orderLine->qty_to_invoice;
-
-        $accountMoveLine = $accountMove->lines()->create([
-            'name'         => $orderLine->name,
-            'date'         => $accountMove->date,
-            'creator_id'   => $accountMove?->creator_id,
-            'parent_state' => $accountMove->state,
-            'quantity'     => $quantity,
-            'price_unit'   => $orderLine->price_unit,
-            'discount'     => $orderLine->discount,
-            'currency_id'  => $accountMove->currency_id,
-            'product_id'   => $orderLine->product_id,
-            'uom_id'       => $orderLine->product_uom_id,
-        ]);
-
-        $orderLine->accountMoveLines()->sync($accountMoveLine->id);
-
-        $accountMoveLine->taxes()->sync($orderLine->taxes->pluck('id'));
-    }
-
     /**
      * Apply push rules for the operation.
      */
     public function applyPullRules(Order $record): void
     {
-        if (! Package::isPluginInstalled('inventories')) {
+        if ( ! Package::isPluginInstalled('inventories')) {
             return;
         }
 
@@ -658,7 +607,7 @@ class SaleManager
         foreach ($record->lines as $line) {
             $rule = $this->getPullRule($line);
 
-            if (! $rule) {
+            if ( ! $rule) {
                 throw new Exception("No pull rule has been found to replenish \"{$line->name}\".\nVerify the routes configuration on the product.");
             }
 
@@ -672,7 +621,7 @@ class SaleManager
 
             $pulledMove = $this->runPullRule($rule, $line);
 
-            if (! isset($rules[$rule->id])) {
+            if ( ! isset($rules[$rule->id])) {
                 $rules[$rule->id] = [
                     'rule'  => $rule,
                     'moves' => [$pulledMove],
@@ -685,59 +634,6 @@ class SaleManager
         foreach ($rules as $ruleData) {
             $this->createPullOperation($record, $ruleData['rule'], $ruleData['moves']);
         }
-    }
-
-    protected function cancelInventoryOperation(Order $record): void
-    {
-        if (! Package::isPluginInstalled('inventories')) {
-            return;
-        }
-
-        if (! $record->operation) {
-            return;
-        }
-
-        foreach ($record->operation->moves as $move) {
-            $move->update([
-                'state'    => InventoryEnums\MoveState::CANCELED,
-                'quantity' => 0,
-            ]);
-
-            $move->lines()->delete();
-        }
-
-        InventoryFacade::computeTransferState($record->operation);
-    }
-
-    /**
-     * Create a new operation based on a push rule and assign moves to it.
-     */
-    private function createPullOperation(Order $record, Rule $rule, array $moves): void
-    {
-        $newOperation = InventoryOperation::create([
-            'state'                   => InventoryEnums\OperationState::DRAFT,
-            'origin'                  => $record->name,
-            'operation_type_id'       => $rule->operation_type_id,
-            'source_location_id'      => $rule->source_location_id,
-            'destination_location_id' => $rule->destination_location_id,
-            'scheduled_at'            => now()->addDays($rule->delay),
-            'company_id'              => $rule->company_id,
-            'sale_order_id'           => $record->id,
-            'user_id'                 => Auth::id(),
-            'creator_id'              => Auth::id(),
-        ]);
-
-        foreach ($moves as $move) {
-            $move->update([
-                'operation_id' => $newOperation->id,
-                'reference'    => $newOperation->name,
-                'scheduled_at' => $newOperation->scheduled_at,
-            ]);
-        }
-
-        $newOperation->refresh();
-
-        InventoryFacade::computeTransfer($newOperation);
     }
 
     /**
@@ -795,7 +691,7 @@ class SaleManager
 
         $filters['action'] = [InventoryEnums\RuleAction::PULL, InventoryEnums\RuleAction::PULL_PUSH];
 
-        while (! $foundRule && $location) {
+        while ( ! $foundRule && $location) {
             $filters['destination_location_id'] = $location->id;
 
             $foundRule = $this->searchPullRule(
@@ -828,7 +724,7 @@ class SaleManager
         ];
 
         foreach ($routeSources as [$source, $relationName]) {
-            if (! $source || ! $source->{$relationName}) {
+            if ( ! $source || ! $source->{$relationName}) {
                 continue;
             }
 
@@ -848,7 +744,109 @@ class SaleManager
                 return $foundRule;
             }
         }
+    }
 
-        return null;
+    protected function cancelInventoryOperation(Order $record): void
+    {
+        if ( ! Package::isPluginInstalled('inventories')) {
+            return;
+        }
+
+        if ( ! $record->operation) {
+            return;
+        }
+
+        foreach ($record->operation->moves as $move) {
+            $move->update([
+                'state'    => InventoryEnums\MoveState::CANCELED,
+                'quantity' => 0,
+            ]);
+
+            $move->lines()->delete();
+        }
+
+        InventoryFacade::computeTransferState($record->operation);
+    }
+
+    private function createAccountMove(Order $record): AccountMove
+    {
+        $accountMove = AccountMove::create([
+            'move_type'               => AccountEnums\MoveType::OUT_INVOICE,
+            'invoice_origin'          => $record->name,
+            'date'                    => now(),
+            'company_id'              => $record->company_id,
+            'currency_id'             => $record->currency_id,
+            'invoice_payment_term_id' => $record->payment_term_id,
+            'partner_id'              => $record->partner_id,
+            'fiscal_position_id'      => $record->fiscal_position_id,
+        ]);
+
+        $record->accountMoves()->attach($accountMove->id);
+
+        foreach ($record->lines as $line) {
+            $this->createAccountMoveLine($accountMove, $line);
+        }
+
+        $accountMove = AccountFacade::computeAccountMove($accountMove);
+
+        return $accountMove;
+    }
+
+    private function createAccountMoveLine(AccountMove $accountMove, OrderLine $orderLine): void
+    {
+        $productInvoicePolicy = $orderLine->product?->invoice_policy;
+        $invoiceSetting       = $this->invoiceSettings->invoice_policy->value;
+
+        $quantity = ($productInvoicePolicy ?? $invoiceSetting) === InvoiceEnums\InvoicePolicy::ORDER->value
+            ? $orderLine->product_uom_qty
+            : $orderLine->qty_to_invoice;
+
+        $accountMoveLine = $accountMove->lines()->create([
+            'name'         => $orderLine->name,
+            'date'         => $accountMove->date,
+            'creator_id'   => $accountMove?->creator_id,
+            'parent_state' => $accountMove->state,
+            'quantity'     => $quantity,
+            'price_unit'   => $orderLine->price_unit,
+            'discount'     => $orderLine->discount,
+            'currency_id'  => $accountMove->currency_id,
+            'product_id'   => $orderLine->product_id,
+            'uom_id'       => $orderLine->product_uom_id,
+        ]);
+
+        $orderLine->accountMoveLines()->sync($accountMoveLine->id);
+
+        $accountMoveLine->taxes()->sync($orderLine->taxes->pluck('id'));
+    }
+
+    /**
+     * Create a new operation based on a push rule and assign moves to it.
+     */
+    private function createPullOperation(Order $record, Rule $rule, array $moves): void
+    {
+        $newOperation = InventoryOperation::create([
+            'state'                   => InventoryEnums\OperationState::DRAFT,
+            'origin'                  => $record->name,
+            'operation_type_id'       => $rule->operation_type_id,
+            'source_location_id'      => $rule->source_location_id,
+            'destination_location_id' => $rule->destination_location_id,
+            'scheduled_at'            => now()->addDays($rule->delay),
+            'company_id'              => $rule->company_id,
+            'sale_order_id'           => $record->id,
+            'user_id'                 => Auth::id(),
+            'creator_id'              => Auth::id(),
+        ]);
+
+        foreach ($moves as $move) {
+            $move->update([
+                'operation_id' => $newOperation->id,
+                'reference'    => $newOperation->name,
+                'scheduled_at' => $newOperation->scheduled_at,
+            ]);
+        }
+
+        $newOperation->refresh();
+
+        InventoryFacade::computeTransfer($newOperation);
     }
 }

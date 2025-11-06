@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class AccountTax extends Model
 {
+    public $timestamps = false;
+
     protected $table = 'accounts_account_taxes';
 
     protected $fillable = [
         'account_id',
         'tax_id',
     ];
-
-    public $timestamps = false;
 
     public function account()
     {

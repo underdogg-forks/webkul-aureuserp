@@ -25,6 +25,22 @@ class Attachment extends Model
 
     protected $appends = ['url'];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleted(function ($attachment) {
+            $filePath = $attachment->file_path;
+
+            if (
+                $filePath
+                && Storage::disk('public')->exists($filePath)
+            ) {
+                Storage::disk('public')->delete($filePath);
+            }
+        });
+    }
+
     public function messageable()
     {
         return $this->morphTo();
@@ -48,21 +64,5 @@ class Attachment extends Model
     public function message()
     {
         return $this->belongsTo(Message::class, 'message_id');
-    }
-
-    public static function boot()
-    {
-        parent::boot();
-
-        static::deleted(function ($attachment) {
-            $filePath = $attachment->file_path;
-
-            if (
-                $filePath
-                && Storage::disk('public')->exists($filePath)
-            ) {
-                Storage::disk('public')->delete($filePath);
-            }
-        });
     }
 }

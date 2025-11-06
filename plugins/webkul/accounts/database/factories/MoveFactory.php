@@ -5,7 +5,7 @@ namespace Webkul\Account\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<\App\Models\Move>
+ * @extends Factory<\Webkul\Sale\Models\Move>
  */
 class MoveFactory extends Factory
 {
@@ -17,7 +17,6 @@ class MoveFactory extends Factory
     public function definition(): array
     {
         return [
-            //
         ];
     }
 }

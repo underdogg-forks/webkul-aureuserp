@@ -16,11 +16,6 @@ use Webkul\Sale\Models\Order;
 
 class CreateInvoiceAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'orders.sales.create-invoice';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -64,7 +59,6 @@ class CreateInvoiceAction extends Action
             ])
             ->hidden(fn ($record) => $record->invoice_status != InvoiceStatus::TO_INVOICE)
             ->action(function (Order $record, $data) {
-
                 SalesFacade::createInvoice($record, $data);
 
                 Notification::make()
@@ -73,5 +67,10 @@ class CreateInvoiceAction extends Action
                     ->success()
                     ->send();
             });
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'orders.sales.create-invoice';
     }
 }

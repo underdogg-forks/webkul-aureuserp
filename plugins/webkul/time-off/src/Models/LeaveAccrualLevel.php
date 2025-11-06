@@ -10,7 +10,13 @@ use Webkul\Security\Models\User;
 
 class LeaveAccrualLevel extends Model implements Sortable
 {
-    use HasFactory, SortableTrait;
+    use HasFactory;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     protected $table = 'time_off_leave_accrual_levels';
 
@@ -41,11 +47,6 @@ class LeaveAccrualLevel extends Model implements Sortable
         'cap_accrued_time',
         'cap_accrued_time_yearly',
         'accrual_validity',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function accrualPlan()

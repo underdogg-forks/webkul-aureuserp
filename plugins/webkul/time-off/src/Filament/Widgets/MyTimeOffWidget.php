@@ -15,7 +15,8 @@ use Webkul\TimeOff\Models\LeaveType;
 
 class MyTimeOffWidget extends BaseWidget
 {
-     use HasWidgetShield;
+    use HasWidgetShield;
+
     protected function getHeading(): ?string
     {
         return __('time-off::filament/widgets/my-time-off-widget.heading.title');
@@ -24,7 +25,7 @@ class MyTimeOffWidget extends BaseWidget
     protected function getStats(): array
     {
         $employeeId = Auth::user()?->employee?->id;
-        $endOfYear = Carbon::now()->endOfYear();
+        $endOfYear  = Carbon::now()->endOfYear();
 
         $leaveTypes = LeaveType::where('show_on_dashboard', '!=', 0)->get();
 

@@ -5,7 +5,7 @@ namespace Webkul\Support\Enums;
 enum ActivityDelayFrom: string
 {
     case PREVIOUS_ACTIVITY = 'previous_activity';
-    case CURRENT_DATE = 'current_date';
+    case CURRENT_DATE      = 'current_date';
 
     /**
      * Returns an array of options for dropdowns or selects.

@@ -2,6 +2,7 @@
 
 namespace Webkul\Sale\Filament\Clusters\Configuration\Resources;
 
+use BackedEnum;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
@@ -44,7 +45,7 @@ class ActivityPlanResource extends Resource
 {
     protected static ?string $model = ActivityPlan::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-briefcase';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-briefcase';
 
     protected static ?string $cluster = Configuration::class;
 
@@ -311,9 +312,9 @@ class ActivityPlanResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => ListActivityPlans::route('/'),
-            'view'   => ViewActivityPlan::route('/{record}'),
-            'edit'   => EditActivityPlan::route('/{record}/edit'),
+            'index' => ListActivityPlans::route('/'),
+            'view'  => ViewActivityPlan::route('/{record}'),
+            'edit'  => EditActivityPlan::route('/{record}/edit'),
         ];
     }
 }

@@ -18,9 +18,15 @@ use Webkul\Support\Traits\HasRecordNavigationTabs;
 
 class EditOrder extends EditRecord
 {
-    use HasRecordNavigationTabs, HasRepeaterColumnManager;
+    use HasRecordNavigationTabs;
+    use HasRepeaterColumnManager;
 
     protected static string $resource = OrderResource::class;
+
+    public function updateForm(): void
+    {
+        $this->fillForm();
+    }
 
     protected function getRedirectUrl(): string
     {
@@ -94,7 +100,7 @@ class EditOrder extends EditRecord
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
-        if (! empty($data['ordered_at'])) {
+        if ( ! empty($data['ordered_at'])) {
             $data['calendar_start_at'] = $data['ordered_at'];
         }
 
@@ -104,10 +110,5 @@ class EditOrder extends EditRecord
     protected function afterSave(): void
     {
         PurchaseOrder::computePurchaseOrder($this->getRecord());
-    }
-
-    public function updateForm(): void
-    {
-        $this->fillForm();
     }
 }

@@ -9,7 +9,13 @@ use Spatie\EloquentSortable\SortableTrait;
 
 class Field extends Model implements Sortable
 {
-    use SoftDeletes, SortableTrait;
+    use SoftDeletes;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     /**
      * Table name.
@@ -50,10 +56,5 @@ class Field extends Model implements Sortable
         'infolist_settings',
         'sort',
         'customizable_type',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 }

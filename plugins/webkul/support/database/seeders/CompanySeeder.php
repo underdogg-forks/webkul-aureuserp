@@ -51,7 +51,7 @@ class CompanySeeder extends Seeder
 
             $currency = Currency::find(1);
 
-            if (! $currency) {
+            if ( ! $currency) {
                 throw new Exception('Currency with ID 1 not found.');
             }
 

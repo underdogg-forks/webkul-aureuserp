@@ -13,6 +13,8 @@ use Webkul\Inventory\Models\OperationType;
 
 class CreateDropship extends CreateRecord
 {
+    protected static string $resource = DropshipResource::class;
+
     public function getSubNavigation(): array
     {
         if (filled($cluster = static::getCluster())) {
@@ -22,24 +24,9 @@ class CreateDropship extends CreateRecord
         return [];
     }
 
-    protected static string $resource = DropshipResource::class;
-
     public function getTitle(): string|Htmlable
     {
         return __('inventories::filament/clusters/operations/resources/dropship/pages/create-dropship.title');
-    }
-
-    protected function getRedirectUrl(): string
-    {
-        return $this->getResource()::getUrl('edit', ['record' => $this->getRecord()]);
-    }
-
-    protected function getCreatedNotification(): Notification
-    {
-        return Notification::make()
-            ->success()
-            ->title(__('inventories::filament/clusters/operations/resources/dropship/pages/create-dropship.notification.title'))
-            ->body(__('inventories::filament/clusters/operations/resources/dropship/pages/create-dropship.notification.body'));
     }
 
     public function mount(): void
@@ -55,6 +42,19 @@ class CreateDropship extends CreateRecord
         $this->data['destination_location_id'] = $operationType?->destination_location_id;
 
         $this->form->fill($this->data);
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('edit', ['record' => $this->getRecord()]);
+    }
+
+    protected function getCreatedNotification(): Notification
+    {
+        return Notification::make()
+            ->success()
+            ->title(__('inventories::filament/clusters/operations/resources/dropship/pages/create-dropship.notification.title'))
+            ->body(__('inventories::filament/clusters/operations/resources/dropship/pages/create-dropship.notification.body'));
     }
 
     protected function mutateFormDataBeforeCreate(array $data): array

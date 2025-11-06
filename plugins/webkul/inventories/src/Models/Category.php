@@ -21,7 +21,6 @@ class Category extends BaseCategory
         ]);
 
         $this->mergeCasts([
-
         ]);
     }
 

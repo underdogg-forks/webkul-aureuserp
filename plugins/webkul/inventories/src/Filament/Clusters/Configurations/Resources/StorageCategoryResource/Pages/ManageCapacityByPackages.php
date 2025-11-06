@@ -2,6 +2,7 @@
 
 namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages;
 
+use BackedEnum;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
@@ -26,16 +27,16 @@ class ManageCapacityByPackages extends ManageRelatedRecords
 
     protected static string $relationship = 'storageCategoryCapacitiesByPackageType';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-cube';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-cube';
 
     /**
-     * @param  array<string, mixed>  $parameters
+     * @param array<string, mixed> $parameters
      */
     public static function canAccess(array $parameters = []): bool
     {
         $canAccess = parent::canAccess($parameters);
 
-        if (! $canAccess) {
+        if ( ! $canAccess) {
             return false;
         }
 

@@ -13,7 +13,8 @@ use Webkul\Security\Models\User;
 
 class Category extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
+    use SoftDeletes;
 
     /**
      * Table name.
@@ -45,8 +46,8 @@ class Category extends Model
      */
     public function getImageUrlAttribute()
     {
-        if (! $this->image) {
-            return null;
+        if ( ! $this->image) {
+            return;
         }
 
         return Storage::url($this->image);

@@ -13,6 +13,8 @@ use Webkul\Inventory\Models\Warehouse;
 
 class CreateScrap extends CreateRecord
 {
+    protected static string $resource = ScrapResource::class;
+
     public function getSubNavigation(): array
     {
         if (filled($cluster = static::getCluster())) {
@@ -21,8 +23,6 @@ class CreateScrap extends CreateRecord
 
         return [];
     }
-
-    protected static string $resource = ScrapResource::class;
 
     public function getTitle(): string|Htmlable
     {

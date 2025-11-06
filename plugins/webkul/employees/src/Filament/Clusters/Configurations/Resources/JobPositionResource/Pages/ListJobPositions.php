@@ -15,18 +15,6 @@ class ListJobPositions extends ListRecords
 
     protected static string $resource = JobPositionResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            CreateAction::make()
-                ->label(__('employees::filament/clusters/configurations/resources/job-position/pages/list-job-position.header-actions.create.label'))
-                ->icon('heroicon-o-plus-circle')
-                ->mutateDataUsing(function ($data) {
-                    return $data;
-                }),
-        ];
-    }
-
     public function getPresetTableViews(): array
     {
         return [
@@ -43,6 +31,18 @@ class ListJobPositions extends ListRecords
                 ->favorite()
                 ->modifyQueryUsing(function ($query) {
                     return $query->onlyTrashed();
+                }),
+        ];
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            CreateAction::make()
+                ->label(__('employees::filament/clusters/configurations/resources/job-position/pages/list-job-position.header-actions.create.label'))
+                ->icon('heroicon-o-plus-circle')
+                ->mutateDataUsing(function ($data) {
+                    return $data;
                 }),
         ];
     }

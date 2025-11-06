@@ -44,7 +44,7 @@ class UserPermissionScope implements Scope
         if ($user->resource_permission === PermissionType::GROUP->value) {
             $teamIds = $user->teams()->pluck('id');
 
-            $builder->whereHas("$this->ownerRelation.teams", function ($q) use ($teamIds) {
+            $builder->whereHas("{$this->ownerRelation}.teams", function ($q) use ($teamIds) {
                 $q->whereIn('teams.id', $teamIds);
             });
         }

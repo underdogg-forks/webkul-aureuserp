@@ -2,6 +2,7 @@
 
 namespace Webkul\Recruitment\Filament\Clusters\Configurations\Resources;
 
+use BackedEnum;
 use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Panel;
 use Filament\Resources\Pages\Page;
@@ -21,7 +22,7 @@ class DepartmentResource extends BaseDepartmentResource
 
     protected static ?string $cluster = Configurations::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-building-office-2';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-building-office-2';
 
     protected static ?SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Start;
 
@@ -56,11 +57,11 @@ class DepartmentResource extends BaseDepartmentResource
     public static function getPages(): array
     {
         return [
-            'index'      => ListDepartments::route('/'),
-            'create'     => CreateDepartment::route('/create'),
-            'edit'       => EditDepartment::route('/{record}/edit'),
-            'view'       => ViewDepartment::route('/{record}'),
-            'employees'  => ManageEmployee::route('/{record}/employees'),
+            'index'     => ListDepartments::route('/'),
+            'create'    => CreateDepartment::route('/create'),
+            'edit'      => EditDepartment::route('/{record}/edit'),
+            'view'      => ViewDepartment::route('/{record}'),
+            'employees' => ManageEmployee::route('/{record}/employees'),
         ];
     }
 }

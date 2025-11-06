@@ -11,11 +11,6 @@ use Webkul\Purchase\Models\Order;
 
 class CreateBillAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'purchases.orders.create-bill';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -54,5 +49,10 @@ class CreateBillAction extends Action
                 OrderState::PURCHASE,
                 OrderState::DONE,
             ]));
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'purchases.orders.create-bill';
     }
 }

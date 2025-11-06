@@ -47,7 +47,7 @@ class EditScrap extends EditRecord
                         ->where('lot_id', $record->lot_id ?? null)
                         ->first();
 
-                    if (! $locationQuantity || $locationQuantity->quantity < $record->qty) {
+                    if ( ! $locationQuantity || $locationQuantity->quantity < $record->qty) {
                         Notification::make()
                             ->success()
                             ->title(__('inventories::filament/clusters/operations/resources/scrap/pages/edit-scrap.header-actions.validate.notification.warning.title'))

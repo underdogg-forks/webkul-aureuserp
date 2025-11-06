@@ -33,6 +33,13 @@ class ChatterAction extends Action
 
     protected bool|Closure|null $hasModalCloseButton = false;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->configureModal();
+    }
+
     public static function getDefaultName(): ?string
     {
         return 'chatter.action';
@@ -257,11 +264,15 @@ class ChatterAction extends Action
         return $this->getMessageMailViewPath();
     }
 
-    protected function setUp(): void
+    public function renderModal(): View
     {
-        parent::setUp();
-
-        $this->configureModal();
+        return view('chatter::filament.actions.chatter-action-modal', [
+            'record'              => $this->getRecord(),
+            'resourceClass'       => $this->getResourceClass(),
+            'messageMailViewPath' => $this->getMessageMailViewPath(),
+            'activityPlans'       => $this->getActivityPlans(),
+            'chatterAction'       => $this,
+        ]);
     }
 
     protected function configureModal(): void
@@ -296,24 +307,13 @@ class ChatterAction extends Action
         );
     }
 
-    public function renderModal(): View
-    {
-        return view('chatter::filament.actions.chatter-action-modal', [
-            'record'              => $this->getRecord(),
-            'resourceClass'       => $this->getResourceClass(),
-            'messageMailViewPath' => $this->getMessageMailViewPath(),
-            'activityPlans'       => $this->getActivityPlans(),
-            'chatterAction'       => $this,
-        ]);
-    }
-
     protected function validateResource(string $resourceClass): void
     {
         if (empty($resourceClass)) {
             throw new InvalidArgumentException('The resource parameter must be provided and cannot be empty.');
         }
 
-        if (! class_exists($resourceClass)) {
+        if ( ! class_exists($resourceClass)) {
             throw new InvalidArgumentException("The resource class [{$resourceClass}] does not exist.");
         }
     }

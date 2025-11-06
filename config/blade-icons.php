@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Icons Sets
@@ -14,9 +13,7 @@ return [
     */
 
     'sets' => [
-
         'default' => [
-        
             /*
             |-----------------------------------------------------------------
             | Icons Path
@@ -29,9 +26,9 @@ return [
             | Relative to the disk root when the disk option is set.
             |
             */
-        
+
             'path' => 'resources/svg',
-        
+
             /*
             |-----------------------------------------------------------------
             | Filesystem Disk
@@ -42,9 +39,9 @@ return [
             | starts relatively from the disk root.
             |
             */
-        
+
             'disk' => '',
-        
+
             /*
             |-----------------------------------------------------------------
             | Default Prefix
@@ -55,9 +52,9 @@ return [
             | to every icon name. It's required and needs to be unique.
             |
             */
-        
+
             'prefix' => 'icon',
-        
+
             /*
             |-----------------------------------------------------------------
             | Fallback Icon
@@ -67,9 +64,9 @@ return [
             | icon when an icon in this set cannot be found.
             |
             */
-        
+
             'fallback' => '',
-        
+
             /*
             |-----------------------------------------------------------------
             | Default Set Classes
@@ -79,9 +76,9 @@ return [
             | will be applied by default to all icons within this set.
             |
             */
-        
+
             'class' => '',
-        
+
             /*
             |-----------------------------------------------------------------
             | Default Set Attributes
@@ -91,14 +88,12 @@ return [
             | will be applied by default to all icons within this set.
             |
             */
-        
+
             'attributes' => [
                 // 'width' => 50,
                 // 'height' => 50,
             ],
-        
         ],
-
     ],
 
     /*
@@ -152,7 +147,6 @@ return [
     */
 
     'components' => [
-
         /*
         |----------------------------------------------------------------------
         | Disable Components
@@ -177,7 +171,5 @@ return [
         */
 
         'default' => 'icon',
-
     ],
-
 ];

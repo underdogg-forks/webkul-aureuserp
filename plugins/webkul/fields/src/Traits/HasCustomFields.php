@@ -12,18 +12,6 @@ trait HasCustomFields
     protected static mixed $customCasts;
 
     /**
-     * Boot the trait
-     */
-    protected static function bootHasCustomFields()
-    {
-        static::retrieved(fn ($model) => $model->loadCustomFields());
-
-        static::creating(fn ($model) => $model->loadCustomFields());
-
-        static::updating(fn ($model) => $model->loadCustomFields());
-    }
-
-    /**
      * Fill the model with an array of attributes.
      */
     public function fill(array $attributes): static
@@ -34,31 +22,7 @@ trait HasCustomFields
     }
 
     /**
-     * Load and merge custom fields into the model.
-     */
-    protected function loadCustomFields()
-    {
-        try {
-            $customFields = $this->getCustomFields();
-
-            $this->mergeFillable(self::$customFillable ??= $customFields->pluck('code')->toArray());
-
-            $this->mergeCasts(self::$customCasts ??= $customFields->select('code', 'type', 'is_multiselect')->get());
-        } catch (Exception $e) {
-            // do nothing
-        }
-    }
-
-    /**
-     * Get all custom field codes for this model
-     */
-    protected function getCustomFields()
-    {
-        return Field::where('customizable_type', get_class($this));
-    }
-
-    /**
-     * Add custom fields to fillable
+     * Add custom fields to fillable.
      */
     public function mergeFillable(array $attributes): void
     {
@@ -66,9 +30,10 @@ trait HasCustomFields
     }
 
     /**
-     * Add custom fields to fillable
+     * Add custom fields to fillable.
      *
-     * @param  array  $casts
+     * @param array $casts
+     *
      * @return $this
      */
     public function mergeCasts($attributes)
@@ -90,5 +55,41 @@ trait HasCustomFields
         }
 
         return $this;
+    }
+
+    /**
+     * Boot the trait.
+     */
+    protected static function bootHasCustomFields()
+    {
+        static::retrieved(fn ($model) => $model->loadCustomFields());
+
+        static::creating(fn ($model) => $model->loadCustomFields());
+
+        static::updating(fn ($model) => $model->loadCustomFields());
+    }
+
+    /**
+     * Load and merge custom fields into the model.
+     */
+    protected function loadCustomFields()
+    {
+        try {
+            $customFields = $this->getCustomFields();
+
+            $this->mergeFillable(self::$customFillable ??= $customFields->pluck('code')->toArray());
+
+            $this->mergeCasts(self::$customCasts ??= $customFields->select('code', 'type', 'is_multiselect')->get());
+        } catch (Exception $e) {
+            // do nothing
+        }
+    }
+
+    /**
+     * Get all custom field codes for this model.
+     */
+    protected function getCustomFields()
+    {
+        return Field::where('customizable_type', get_class($this));
     }
 }

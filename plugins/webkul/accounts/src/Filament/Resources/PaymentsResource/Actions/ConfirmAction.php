@@ -9,11 +9,6 @@ use Webkul\Account\Models\Payment;
 
 class ConfirmAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'customers.payment.confirm';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -30,5 +25,10 @@ class ConfirmAction extends Action
             ->hidden(function (Payment $record) {
                 return $record->state != PaymentStatus::DRAFT->value;
             });
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'customers.payment.confirm';
     }
 }

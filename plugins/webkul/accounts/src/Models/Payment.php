@@ -16,7 +16,9 @@ use Webkul\Support\Models\Currency;
 
 class Payment extends Model
 {
-    use HasChatter, HasFactory, HasLogActivity;
+    use HasChatter;
+    use HasFactory;
+    use HasLogActivity;
 
     protected $table = 'accounts_account_payments';
 

@@ -17,6 +17,19 @@ class ManageTimesheets extends ManageRecords
 
     protected static string $resource = TimesheetResource::class;
 
+    public function getPresetTableViews(): array
+    {
+        return [
+            'my_timesheets' => PresetView::make(__('timesheets::filament/resources/timesheet/manage-timesheets.tabs.my-timesheets'))
+                ->badge(fn (): int => Timesheet::where('user_id', Auth::id())->count())
+                ->icon('heroicon-o-clock')
+                ->modifyQueryUsing(function ($query) {
+                    return $query->where('user_id', Auth::id());
+                })
+                ->favorite(),
+        ];
+    }
+
     protected function getHeaderActions(): array
     {
         return [
@@ -34,19 +47,6 @@ class ManageTimesheets extends ManageRecords
                         ->title(__('timesheets::filament/resources/timesheet/manage-timesheets.header-actions.create.notification.title'))
                         ->body(__('timesheets::filament/resources/timesheet/manage-timesheets.header-actions.create.notification.body')),
                 ),
-        ];
-    }
-
-    public function getPresetTableViews(): array
-    {
-        return [
-            'my_timesheets' => PresetView::make(__('timesheets::filament/resources/timesheet/manage-timesheets.tabs.my-timesheets'))
-                ->badge(fn (): int => Timesheet::where('user_id', Auth::id())->count())
-                ->icon('heroicon-o-clock')
-                ->modifyQueryUsing(function ($query) {
-                    return $query->where('user_id', Auth::id());
-                })
-                ->favorite(),
         ];
     }
 }

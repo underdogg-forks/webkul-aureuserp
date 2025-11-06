@@ -17,6 +17,15 @@ class CreateVendorPrice extends CreateRecord
         return __('purchases::filament/admin/clusters/configurations/resources/vendor-price/pages/create-vendor-price.navigation.title');
     }
 
+    public function getSubNavigation(): array
+    {
+        if (filled($cluster = static::getCluster())) {
+            return $this->generateNavigationItems($cluster::getClusteredComponents());
+        }
+
+        return [];
+    }
+
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('view', ['record' => $this->getRecord()]);
@@ -37,14 +46,5 @@ class CreateVendorPrice extends CreateRecord
         $data['company_id'] = Auth::user()->default_company_id;
 
         return $data;
-    }
-
-    public function getSubNavigation(): array
-    {
-        if (filled($cluster = static::getCluster())) {
-            return $this->generateNavigationItems($cluster::getClusteredComponents());
-        }
-
-        return [];
     }
 }

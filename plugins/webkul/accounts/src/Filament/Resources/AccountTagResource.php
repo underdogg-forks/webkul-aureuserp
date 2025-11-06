@@ -2,6 +2,7 @@
 
 namespace Webkul\Account\Filament\Resources;
 
+use BackedEnum;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
@@ -32,7 +33,7 @@ class AccountTagResource extends Resource
 {
     protected static ?string $model = Tag::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-tag';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-tag';
 
     protected static bool $shouldRegisterNavigation = false;
 
@@ -158,7 +159,7 @@ class AccountTagResource extends Resource
                             ->placeholder('—'),
                         TextEntry::make('color')
                             ->label(__('accounts::filament/resources/account-tag.infolist.entries.color'))
-                            ->formatStateUsing(fn ($state) => "<span style='display:inline-block;width:15px;height:15px;background-color:{$state};border-radius:50%;'></span> ".$state)
+                            ->formatStateUsing(fn ($state) => "<span style='display:inline-block;width:15px;height:15px;background-color:{$state};border-radius:50%;'></span> " . $state)
                             ->html()
                             ->placeholder('—'),
                         TextEntry::make('applicability')

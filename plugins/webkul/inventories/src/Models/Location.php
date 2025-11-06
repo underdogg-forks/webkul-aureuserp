@@ -15,7 +15,8 @@ use Webkul\Support\Models\Company;
 
 class Location extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
+    use SoftDeletes;
 
     /**
      * Table name.
@@ -101,7 +102,7 @@ class Location extends Model
 
     public function getIsStockLocationAttribute(): bool
     {
-        if (! $this->warehouse_id) {
+        if ( ! $this->warehouse_id) {
             return false;
         }
 
@@ -120,29 +121,7 @@ class Location extends Model
     }
 
     /**
-     * Bootstrap any application services.
-     */
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::saving(function ($category) {
-            $category->updateParentPath();
-
-            $category->updateFullName();
-        });
-
-        static::updated(function ($category) {
-            $category->updateChildrenParentPaths();
-
-            if ($category->wasChanged('full_name')) {
-                $category->updateChildrenFullNames();
-            }
-        });
-    }
-
-    /**
-     * Update the full name without triggering additional events
+     * Update the full name without triggering additional events.
      */
     public function updateFullName()
     {
@@ -150,22 +129,22 @@ class Location extends Model
             $this->full_name = $this->name;
         } else {
             $this->full_name = $this->parent
-                ? $this->parent->full_name.'/'.$this->name
+                ? $this->parent->full_name . '/' . $this->name
                 : $this->name;
         }
     }
 
     /**
-     * Update the full name without triggering additional events
+     * Update the full name without triggering additional events.
      */
     public function updateParentPath()
     {
         if ($this->type === LocationType::VIEW) {
-            $this->parent_path = $this->id.'/';
+            $this->parent_path = $this->id . '/';
         } else {
             $this->parent_path = $this->parent
-                ? $this->parent->parent_path.$this->id.'/'
-                : $this->id.'/';
+                ? $this->parent->parent_path . $this->id . '/'
+                : $this->id . '/';
         }
     }
 
@@ -196,6 +175,28 @@ class Location extends Model
             $child->saveQuietly();
 
             $child->updateChildrenParentPaths();
+        });
+    }
+
+    /**
+     * Bootstrap any application services.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($category) {
+            $category->updateParentPath();
+
+            $category->updateFullName();
+        });
+
+        static::updated(function ($category) {
+            $category->updateChildrenParentPaths();
+
+            if ($category->wasChanged('full_name')) {
+                $category->updateChildrenFullNames();
+            }
         });
     }
 

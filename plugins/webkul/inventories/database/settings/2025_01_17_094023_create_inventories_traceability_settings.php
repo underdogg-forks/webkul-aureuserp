@@ -2,8 +2,7 @@
 
 use Spatie\LaravelSettings\Migrations\SettingsMigration;
 
-return new class extends SettingsMigration
-{
+return new class () extends SettingsMigration {
     public function up(): void
     {
         $this->migrator->add('inventories_traceability.enable_lots_serial_numbers', false);

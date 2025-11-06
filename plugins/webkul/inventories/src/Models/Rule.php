@@ -19,7 +19,14 @@ use Webkul\Support\Models\Company;
 
 class Rule extends Model implements Sortable
 {
-    use HasFactory, SoftDeletes, SortableTrait;
+    use HasFactory;
+    use SoftDeletes;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     /**
      * Table name.
@@ -71,11 +78,6 @@ class Rule extends Model implements Sortable
         'location_dest_from_rule'  => 'boolean',
         'propagate_cancel'         => 'boolean',
         'propagate_carrier'        => 'boolean',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function sourceLocation(): BelongsTo

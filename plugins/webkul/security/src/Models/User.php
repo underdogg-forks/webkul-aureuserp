@@ -2,7 +2,6 @@
 
 namespace Webkul\Security\Models;
 
-use App\Models\User as BaseUser;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,11 +14,17 @@ use Spatie\Permission\Traits\HasRoles;
 use Webkul\Employee\Models\Department;
 use Webkul\Employee\Models\Employee;
 use Webkul\Partner\Models\Partner;
+use App\Models\User as BaseUser;
 use Webkul\Support\Models\Company;
 
 class User extends BaseUser implements FilamentUser
 {
-    use HasRoles, SoftDeletes;
+    use HasRoles;
+    use SoftDeletes;
+
+    protected $casts = [
+        'default_company_id' => 'integer',
+    ];
 
     public function __construct(array $attributes = [])
     {
@@ -34,10 +39,6 @@ class User extends BaseUser implements FilamentUser
             'is_default',
         ]);
     }
-
-    protected $casts = [
-        'default_company_id' => 'integer',
-    ];
 
     public function canAccessPanel(Panel $panel): bool
     {
@@ -89,7 +90,7 @@ class User extends BaseUser implements FilamentUser
         parent::boot();
 
         static::saved(function ($user) {
-            if (! $user->partner_id) {
+            if ( ! $user->partner_id) {
                 $user->handlePartnerCreation($user);
             } else {
                 $user->handlePartnerUpdation($user);

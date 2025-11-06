@@ -33,8 +33,6 @@ class ResetPassword extends Page
     use InteractsWithFormActions;
     use WithRateLimiting;
 
-    protected string $view = 'website::filament.customer.pages.auth.password-reset.reset-password';
-
     #[Locked]
     public ?string $email = null;
 
@@ -44,6 +42,8 @@ class ResetPassword extends Page
 
     #[Locked]
     public ?string $token = null;
+
+    protected string $view = 'website::filament.customer.pages.auth.password-reset.reset-password';
 
     public function mount(?string $email = null, ?string $token = null): void
     {
@@ -102,6 +102,33 @@ class ResetPassword extends Page
         return null;
     }
 
+    public function form(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                $this->getEmailFormComponent(),
+                $this->getPasswordFormComponent(),
+                $this->getPasswordConfirmationFormComponent(),
+            ]);
+    }
+
+    public function getTitle(): string|Htmlable
+    {
+        return __('website::filament/customer/pages/auth/password-reset/reset-password.title');
+    }
+
+    public function getHeading(): string|Htmlable
+    {
+        return '';
+    }
+
+    public function getResetPasswordFormAction(): Action
+    {
+        return Action::make('resetPassword')
+            ->label(__('website::filament/customer/pages/auth/password-reset/reset-password.form.actions.reset.label'))
+            ->submit('resetPassword');
+    }
+
     protected function getRateLimitedNotification(TooManyRequestsException $exception): ?Notification
     {
         return Notification::make()
@@ -114,16 +141,6 @@ class ResetPassword extends Page
                 'minutes' => $exception->minutesUntilAvailable,
             ]) : null)
             ->danger();
-    }
-
-    public function form(Schema $schema): Schema
-    {
-        return $schema
-            ->components([
-                $this->getEmailFormComponent(),
-                $this->getPasswordFormComponent(),
-                $this->getPasswordConfirmationFormComponent(),
-            ]);
     }
 
     protected function getEmailFormComponent(): Component
@@ -156,16 +173,6 @@ class ResetPassword extends Page
             ->dehydrated(false);
     }
 
-    public function getTitle(): string|Htmlable
-    {
-        return __('website::filament/customer/pages/auth/password-reset/reset-password.title');
-    }
-
-    public function getHeading(): string|Htmlable
-    {
-        return '';
-    }
-
     /**
      * @return array<Action | ActionGroup>
      */
@@ -174,13 +181,6 @@ class ResetPassword extends Page
         return [
             $this->getResetPasswordFormAction(),
         ];
-    }
-
-    public function getResetPasswordFormAction(): Action
-    {
-        return Action::make('resetPassword')
-            ->label(__('website::filament/customer/pages/auth/password-reset/reset-password.form.actions.reset.label'))
-            ->submit('resetPassword');
     }
 
     protected function hasFullWidthFormActions(): bool

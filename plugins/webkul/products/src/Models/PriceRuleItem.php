@@ -54,7 +54,7 @@ class PriceRuleItem extends Model
     ];
 
     /**
-     * Casts
+     * Casts.
      *
      * @var string
      */

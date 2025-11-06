@@ -18,7 +18,16 @@ use Webkul\Support\Database\Factories\CompanyFactory;
 
 class Company extends Model implements Sortable
 {
-    use HasChatter, HasCustomFields, HasFactory, SoftDeletes, SortableTrait;
+    use HasChatter;
+    use HasCustomFields;
+    use HasFactory;
+    use SoftDeletes;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -51,11 +60,6 @@ class Company extends Model implements Sortable
         'website',
     ];
 
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
-    ];
-
     public function country(): BelongsTo
     {
         return $this->belongsTo(Country::class);
@@ -67,7 +71,7 @@ class Company extends Model implements Sortable
     }
 
     /**
-     * Get the creator of the company
+     * Get the creator of the company.
      */
     public function createdBy(): BelongsTo
     {
@@ -75,23 +79,23 @@ class Company extends Model implements Sortable
     }
 
     /**
-     * Get the parent company
+     * Get the parent company.
      */
     public function parent(): BelongsTo
     {
-        return $this->belongsTo(Company::class, 'parent_id');
+        return $this->belongsTo(self::class, 'parent_id');
     }
 
     /**
-     * Get the branches (child companies)
+     * Get the branches (child companies).
      */
     public function branches(): HasMany
     {
-        return $this->hasMany(Company::class, 'parent_id');
+        return $this->hasMany(self::class, 'parent_id');
     }
 
     /**
-     * Scope a query to only include parent companies
+     * Scope a query to only include parent companies.
      */
     public function scopeParents($query)
     {
@@ -99,19 +103,19 @@ class Company extends Model implements Sortable
     }
 
     /**
-     * Check if company is a branch
+     * Check if company is a branch.
      */
     public function isBranch(): bool
     {
-        return ! is_null($this->parent_id);
+        return null !== $this->parent_id;
     }
 
     /**
-     * Check if company is a parent
+     * Check if company is a parent.
      */
     public function isParent(): bool
     {
-        return is_null($this->parent_id);
+        return null === $this->parent_id;
     }
 
     /**
@@ -148,7 +152,7 @@ class Company extends Model implements Sortable
         parent::boot();
 
         static::creating(function ($company) {
-            if (! $company->partner_id) {
+            if ( ! $company->partner_id) {
                 $partner = Partner::create([
                     'creator_id'       => $company->creator_id ?? Auth::id(),
                     'sub_type'         => 'company',
@@ -178,7 +182,8 @@ class Company extends Model implements Sortable
             Partner::updateOrCreate(
                 [
                     'id' => $company->partner_id,
-                ], [
+                ],
+                [
                     'creator_id'       => $company->creator_id ?? Auth::id(),
                     'sub_type'         => 'company',
                     'company_registry' => $company->registration_number,

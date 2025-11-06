@@ -12,7 +12,13 @@ use Webkul\Support\Models\Currency;
 
 class PriceList extends Model implements Sortable
 {
-    use HasFactory, SortableTrait;
+    use HasFactory;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     protected $table = 'products_product_price_lists';
 
@@ -23,11 +29,6 @@ class PriceList extends Model implements Sortable
         'creator_id',
         'name',
         'is_active',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function currency()

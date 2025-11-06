@@ -2,6 +2,7 @@
 
 namespace Webkul\TimeOff\Filament\Clusters\MyTime\Resources;
 
+use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkActionGroup;
@@ -40,7 +41,7 @@ class MyAllocationResource extends Resource
 {
     protected static ?string $model = LeaveAllocation::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-calendar';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-calendar';
 
     protected static ?string $cluster = MyTime::class;
 
@@ -208,9 +209,9 @@ class MyAllocationResource extends Resource
                         ->label(function ($record) {
                             if ($record->state === State::VALIDATE_ONE->value) {
                                 return __('time-off::filament/clusters/my-time/resources/my-allocation.table.actions.approve.title.validate');
-                            } else {
-                                return __('time-off::filament/clusters/my-time/resources/my-allocation.table.actions.approve.title.approve');
                             }
+
+                            return __('time-off::filament/clusters/my-time/resources/my-allocation.table.actions.approve.title.approve');
                         }),
                     Action::make('refuse')
                         ->icon('heroicon-o-x-circle')

@@ -14,6 +14,11 @@ class Stage extends Model implements Sortable
     use HasFactory;
     use SortableTrait;
 
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
+
     protected $table = 'recruitments_stages';
 
     protected $fillable = [
@@ -33,11 +38,6 @@ class Stage extends Model implements Sortable
         'is_default'  => 'boolean',
         'hired_stage' => 'boolean',
         'fold'        => 'boolean',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function createdBy()

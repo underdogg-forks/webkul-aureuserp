@@ -5,7 +5,7 @@ namespace Webkul\Account\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<\App\Models\FullReconcile>
+ * @extends Factory<\Webkul\Sale\Models\FullReconcile>
  */
 class FullReconcileFactory extends Factory
 {
@@ -17,7 +17,6 @@ class FullReconcileFactory extends Factory
     public function definition(): array
     {
         return [
-            //
         ];
     }
 }

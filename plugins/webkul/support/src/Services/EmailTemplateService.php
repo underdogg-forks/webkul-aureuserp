@@ -21,7 +21,7 @@ class EmailTemplateService
     public function replaceVariables(string $content, array $variables): string
     {
         return preg_replace_callback('/\{\{(.*?)\}\}/', function ($matches) use ($variables) {
-            $key = trim($matches[1]);
+            $key = mb_trim($matches[1]);
 
             return $variables[$key] ?? $matches[0];
         }, $content);

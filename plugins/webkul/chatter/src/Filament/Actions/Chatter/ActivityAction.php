@@ -24,23 +24,6 @@ class ActivityAction extends Action
 {
     protected mixed $activityPlans;
 
-    public static function getDefaultName(): ?string
-    {
-        return 'activity.action';
-    }
-
-    public function setActivityPlans(mixed $activityPlans)
-    {
-        $this->activityPlans = $activityPlans;
-
-        return $this;
-    }
-
-    public function getActivityPlans(): mixed
-    {
-        return $this->activityPlans;
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -74,8 +57,8 @@ class ActivityAction extends Action
                                     TextEntry::make('plan_summary')
                                         ->label(__('chatter::filament/resources/actions/chatter/activity-action.setup.form.fields.plan-summary'))
                                         ->state(function (Get $get) {
-                                            if (! $get('activity_plan_id')) {
-                                                return null;
+                                            if ( ! $get('activity_plan_id')) {
+                                                return;
                                             }
 
                                             $activityPlanTemplates = ActivityPlan::find($get('activity_plan_id'))
@@ -86,7 +69,7 @@ class ActivityAction extends Action
                                                 $planDate = $get('date_deadline') ? Carbon::parse($get('date_deadline'))->format('m/d/Y') : '';
                                                 $html .= '<div class="flex items-center space-x-2" style="margin-left: 20px;">
                                                             <span>•</span>
-                                                            <span style="margin-left:2px;">'.$activityPlanTemplate->summary.($planDate ? ' ('.$planDate.')' : '').'</span>
+                                                            <span style="margin-left:2px;">' . $activityPlanTemplate->summary . ($planDate ? ' (' . $planDate . ')' : '') . '</span>
                                                           </div>';
                                             }
                                             $html .= '</div>';
@@ -133,7 +116,7 @@ class ActivityAction extends Action
                 try {
                     $user = filament()->auth()->user();
 
-                    $data['assigned_to'] = $data['assigned_to'] ?? $user->id;
+                    $data['assigned_to'] ??= $user->id;
 
                     if (isset($data['activity_plan_id'])) {
                         $activityPlan = ActivityPlan::find($data['activity_plan_id']);
@@ -152,10 +135,10 @@ class ActivityAction extends Action
                             $body .= '<div class="space-y-2" style="margin-left: 20px;">
                                 <div class="flex items-center space-x-2">
                                     <span>•</span>
-                                    <span style="margin-left:2px;">'.
-                                $activityPlanTemplate->summary.
-                                ' ('.(isset($data['date_deadline']) ? $data['date_deadline'] : now()->format('m/d/Y')).')'.
-                                '</span>
+                                    <span style="margin-left:2px;">'
+                                . $activityPlanTemplate->summary
+                                . ' (' . ($data['date_deadline'] ?? now()->format('m/d/Y')) . ')'
+                                . '</span>
                                 </div>
                             </div>';
 
@@ -167,9 +150,9 @@ class ActivityAction extends Action
 
                         $record->addMessage($data, $user->id);
                     } else {
-                        $data['content'] = $activityPlanTemplate['note'] ?? null;
+                        $data['content']     = $activityPlanTemplate['note'] ?? null;
                         $data['causer_type'] = $user?->getMorphClass();
-                        $data['causer_id'] = $user->id;
+                        $data['causer_id']   = $user->id;
 
                         $record->addMessage($data, $user->id);
                     }
@@ -202,5 +185,22 @@ class ActivityAction extends Action
                 $action->icon('heroicon-m-paper-airplane');
             })
             ->slideOver(false);
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'activity.action';
+    }
+
+    public function setActivityPlans(mixed $activityPlans)
+    {
+        $this->activityPlans = $activityPlans;
+
+        return $this;
+    }
+
+    public function getActivityPlans(): mixed
+    {
+        return $this->activityPlans;
     }
 }

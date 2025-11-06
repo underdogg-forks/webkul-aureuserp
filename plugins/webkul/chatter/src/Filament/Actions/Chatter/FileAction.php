@@ -13,11 +13,6 @@ use Illuminate\Support\Facades\Storage;
 
 class FileAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'file.action';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -42,7 +37,7 @@ class FileAction extends Action
                     ->deletable()
                     ->imagePreviewHeight('100')
                     ->deleteUploadedFileUsing(function ($file, ?Model $record) {
-                        if (! $record) {
+                        if ( ! $record) {
                             return;
                         }
 
@@ -84,7 +79,7 @@ class FileAction extends Action
                     ->columnSpanFull()
                     ->required()
                     ->default(function (?Model $record) {
-                        if (! $record) {
+                        if ( ! $record) {
                             return [];
                         }
 
@@ -107,7 +102,7 @@ class FileAction extends Action
                         return ! in_array($file, $existingFiles);
                     });
 
-                    if (! empty($newFiles)) {
+                    if ( ! empty($newFiles)) {
                         $record->addAttachments($newFiles);
 
                         Notification::make()
@@ -150,5 +145,10 @@ class FileAction extends Action
             )
             ->modalWidth(Width::TwoExtraLarge)
             ->slideOver(false);
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'file.action';
     }
 }

@@ -31,7 +31,6 @@ class StageSeeder extends Seeder
                 'updated_at'     => now(),
             ],
             [
-
                 'sort'           => 1,
                 'is_default'     => 0,
                 'creator_id'     => $user?->id,
@@ -45,7 +44,6 @@ class StageSeeder extends Seeder
                 'updated_at'     => now(),
             ],
             [
-
                 'sort'           => 2,
                 'is_default'     => 0,
                 'creator_id'     => $user?->id,
@@ -59,7 +57,6 @@ class StageSeeder extends Seeder
                 'updated_at'     => now(),
             ],
             [
-
                 'sort'           => 3,
                 'is_default'     => 0,
                 'creator_id'     => $user?->id,
@@ -73,7 +70,6 @@ class StageSeeder extends Seeder
                 'updated_at'     => now(),
             ],
             [
-
                 'sort'           => 4,
                 'is_default'     => 0,
                 'creator_id'     => $user?->id,
@@ -87,7 +83,6 @@ class StageSeeder extends Seeder
                 'updated_at'     => now(),
             ],
             [
-
                 'sort'           => 5,
                 'is_default'     => 0,
                 'creator_id'     => $user?->id,
@@ -104,7 +99,7 @@ class StageSeeder extends Seeder
 
         DB::table('recruitments_stages')->insert($recruitmentStages);
 
-        $jobs = EmployeeJobPosition::all();
+        $jobs  = EmployeeJobPosition::all();
         $stage = Stage::first();
 
         $recruitmentStagesJobs = [];

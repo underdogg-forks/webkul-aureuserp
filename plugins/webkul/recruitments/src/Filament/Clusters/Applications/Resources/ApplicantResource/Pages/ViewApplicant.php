@@ -36,9 +36,11 @@ class ViewApplicant extends ViewRecord
                 ->icon(function ($record) {
                     if ($record->state == RecruitmentState::DONE->value) {
                         return RecruitmentState::DONE->getIcon();
-                    } elseif ($record->state == RecruitmentState::BLOCKED->value) {
+                    }
+                    if ($record->state == RecruitmentState::BLOCKED->value) {
                         return RecruitmentState::BLOCKED->getIcon();
-                    } elseif ($record->state == RecruitmentState::NORMAL->value) {
+                    }
+                    if ($record->state == RecruitmentState::NORMAL->value) {
                         return RecruitmentState::NORMAL->getIcon();
                     }
                 })
@@ -46,9 +48,11 @@ class ViewApplicant extends ViewRecord
                 ->color(function ($record) {
                     if ($record->state == RecruitmentState::DONE->value) {
                         return RecruitmentState::DONE->getColor();
-                    } elseif ($record->state == RecruitmentState::BLOCKED->value) {
+                    }
+                    if ($record->state == RecruitmentState::BLOCKED->value) {
                         return RecruitmentState::BLOCKED->getColor();
-                    } elseif ($record->state == RecruitmentState::NORMAL->value) {
+                    }
+                    if ($record->state == RecruitmentState::NORMAL->value) {
                         return RecruitmentState::NORMAL->getColor();
                     }
                 })
@@ -63,9 +67,11 @@ class ViewApplicant extends ViewRecord
                 ->tooltip(function ($record) {
                     if ($record->state == RecruitmentState::DONE->value) {
                         return RecruitmentState::DONE->getLabel();
-                    } elseif ($record->state == RecruitmentState::BLOCKED->value) {
+                    }
+                    if ($record->state == RecruitmentState::BLOCKED->value) {
                         return RecruitmentState::BLOCKED->getLabel();
-                    } elseif ($record->state == RecruitmentState::NORMAL->value) {
+                    }
+                    if ($record->state == RecruitmentState::NORMAL->value) {
                         return RecruitmentState::NORMAL->getLabel();
                     }
                 })
@@ -137,8 +143,8 @@ class ViewApplicant extends ViewRecord
                 ->action(function (array $data, Applicant $record) {
                     $refuseReason = RefuseReason::find($data['refuse_reason_id']);
 
-                    if (! $refuseReason) {
-                        return null;
+                    if ( ! $refuseReason) {
+                        return;
                     }
 
                     $record->setAsRefused($refuseReason?->id);
@@ -173,7 +179,6 @@ class ViewApplicant extends ViewRecord
                         ->body(__('recruitments::filament/clusters/applications/resources/applicant/pages/view-applicant.header-actions.reopen.notification.body'))
                         ->send();
                 }),
-
         ];
     }
 

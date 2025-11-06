@@ -9,11 +9,6 @@ use Webkul\Sale\Settings\QuotationAndOrderSettings;
 
 class LockAndUnlockAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'purchases.orders.lock';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -26,5 +21,10 @@ class LockAndUnlockAction extends Action
                 SaleOrder::lockAndUnlock($record);
             })
             ->visible(fn (QuotationAndOrderSettings $quotationAndOrderSettings) => $quotationAndOrderSettings?->enable_lock_confirm_sales);
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'purchases.orders.lock';
     }
 }

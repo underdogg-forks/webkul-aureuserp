@@ -2,6 +2,7 @@
 
 namespace Webkul\Recruitment\Filament\Clusters\Configurations\Resources;
 
+use BackedEnum;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
@@ -43,7 +44,7 @@ class StageResource extends Resource
 {
     protected static ?string $model = Stage::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-cube';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-cube';
 
     protected static ?int $navigationSort = 1;
 
@@ -359,7 +360,6 @@ class StageResource extends Resource
                                         ->iconColor('success')
                                         ->placeholder('—'),
                                 ]),
-
                         ])->columnSpan(1),
                     ])->columnSpanFull(),
             ]);

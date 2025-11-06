@@ -6,26 +6,11 @@ use Filament\Support\Contracts;
 
 enum TaskState: string implements Contracts\HasColor, Contracts\HasIcon, Contracts\HasLabel
 {
-    case IN_PROGRESS = 'in_progress';
+    case IN_PROGRESS      = 'in_progress';
     case CHANGE_REQUESTED = 'change_requested';
-    case APPROVED = 'approved';
-    case CANCELLED = 'cancelled';
-    case DONE = 'done';
-
-    public function getLabel(): string
-    {
-        return self::options()[$this->value];
-    }
-
-    public function getIcon(): ?string
-    {
-        return self::icons()[$this->value] ?? null;
-    }
-
-    public function getColor(): ?string
-    {
-        return self::colors()[$this->value] ?? null;
-    }
+    case APPROVED         = 'approved';
+    case CANCELLED        = 'cancelled';
+    case DONE             = 'done';
 
     public static function options(): array
     {
@@ -58,5 +43,20 @@ enum TaskState: string implements Contracts\HasColor, Contracts\HasIcon, Contrac
             self::CANCELLED->value        => 'danger',
             self::DONE->value             => 'success',
         ];
+    }
+
+    public function getLabel(): string
+    {
+        return self::options()[$this->value];
+    }
+
+    public function getIcon(): ?string
+    {
+        return self::icons()[$this->value] ?? null;
+    }
+
+    public function getColor(): ?string
+    {
+        return self::colors()[$this->value] ?? null;
     }
 }

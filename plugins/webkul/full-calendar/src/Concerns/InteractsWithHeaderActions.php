@@ -13,6 +13,15 @@ trait InteractsWithHeaderActions
         $this->cacheHeaderActions();
     }
 
+    public function getCachedHeaderActions(): array
+    {
+        if ( ! $this->getModel()) {
+            return [];
+        }
+
+        return $this->cachedHeaderActions;
+    }
+
     protected function cacheHeaderActions(): void
     {
         $actions = $this->headerActions();
@@ -21,7 +30,7 @@ trait InteractsWithHeaderActions
             if ($action instanceof ActionGroup) {
                 $action->livewire($this);
 
-                if (! $action->getDropdownPlacement()) {
+                if ( ! $action->getDropdownPlacement()) {
                     $action->dropdownPlacement('bottom-end');
                 }
 
@@ -38,15 +47,6 @@ trait InteractsWithHeaderActions
 
             $this->cachedHeaderActions[] = $action;
         }
-    }
-
-    public function getCachedHeaderActions(): array
-    {
-        if (! $this->getModel()) {
-            return [];
-        }
-
-        return $this->cachedHeaderActions;
     }
 
     protected function headerActions(): array

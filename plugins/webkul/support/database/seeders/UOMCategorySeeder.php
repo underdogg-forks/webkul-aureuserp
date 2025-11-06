@@ -17,13 +17,13 @@ class UOMCategorySeeder extends Seeder
     public function run(): void
     {
         try {
-            if (! Schema::hasTable('unit_of_measure_categories')) {
+            if ( ! Schema::hasTable('unit_of_measure_categories')) {
                 $this->command?->warn('Skipping UOMCategorySeeder: Table unit_of_measure_categories does not exist.');
 
                 return;
             }
 
-            if (! Schema::hasTable('users')) {
+            if ( ! Schema::hasTable('users')) {
                 $this->command?->warn('Skipping UOMCategorySeeder: Table users does not exist.');
 
                 return;

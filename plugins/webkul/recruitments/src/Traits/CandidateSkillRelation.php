@@ -79,13 +79,15 @@ trait CandidateSkillRelation
                     ->color(function ($record) {
                         if ($record->skillLevel?->level === 100) {
                             return 'success';
-                        } elseif ($record->skillLevel?->level >= 50 && $record->skillLevel?->level < 80) {
-                            return 'warning';
-                        } elseif ($record->skillLevel?->level < 20) {
-                            return 'danger';
-                        } else {
-                            return 'info';
                         }
+                        if ($record->skillLevel?->level >= 50 && $record->skillLevel?->level < 80) {
+                            return 'warning';
+                        }
+                        if ($record->skillLevel?->level < 20) {
+                            return 'danger';
+                        }
+
+                        return 'info';
                     })
                     ->label(__('recruitments::filament/clusters/applications/resources/candidate/relation-manager/skill.table.columns.level-percent')),
                 TextColumn::make('creator.name')
@@ -185,13 +187,15 @@ trait CandidateSkillRelation
                                     ->color(function ($record) {
                                         if ($record->skillLevel->level === 100) {
                                             return 'success';
-                                        } elseif ($record->skillLevel->level >= 50 && $record->skillLevel->level < 80) {
-                                            return 'warning';
-                                        } elseif ($record->skillLevel->level < 20) {
-                                            return 'danger';
-                                        } else {
-                                            return 'info';
                                         }
+                                        if ($record->skillLevel->level >= 50 && $record->skillLevel->level < 80) {
+                                            return 'warning';
+                                        }
+                                        if ($record->skillLevel->level < 20) {
+                                            return 'danger';
+                                        }
+
+                                        return 'info';
                                     })
                                     ->label(__('recruitments::filament/clusters/applications/resources/candidate/relation-manager/skill.infolist.entries.level-percent')),
                             ])

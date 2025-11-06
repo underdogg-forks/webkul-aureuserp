@@ -11,11 +11,6 @@ use Webkul\Inventory\Models\Operation;
 
 class ReturnAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'inventories.operations.return';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -32,5 +27,10 @@ class ReturnAction extends Action
                 return redirect()->to(OperationResource::getUrl('edit', ['record' => $newRecord]));
             })
             ->visible(fn () => $this->getRecord()->state == OperationState::DONE);
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'inventories.operations.return';
     }
 }

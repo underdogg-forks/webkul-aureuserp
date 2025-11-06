@@ -2,6 +2,7 @@
 
 namespace Webkul\PluginManager\Filament\Resources;
 
+use Exception;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Actions\ViewAction;
@@ -25,6 +26,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema as DBSchema;
+use Throwable;
 use Webkul\PluginManager\Filament\Resources\PluginResource\Pages;
 use Webkul\Support\Models\Plugin;
 use Webkul\Support\Package;
@@ -124,165 +126,6 @@ class PluginResource extends Resource
             ->paginated([16, 24, 32]);
     }
 
-    protected static function installAction(): Action
-    {
-        return Action::make('install')
-            ->label(__('plugin-manager::filament/resources/plugin.actions.install.title'))
-            ->icon('heroicon-o-arrow-down-tray')
-            ->color('success')
-            ->visible(fn ($record) => ! $record->is_installed)
-            ->requiresConfirmation()
-            ->modalHeading(fn ($record) => __('plugin-manager::filament/resources/plugin.actions.install.heading', ['name' => $record->name]))
-            ->modalDescription(fn ($record) => __('plugin-manager::filament/resources/plugin.actions.install.description', ['name' => $record->name]))
-            ->modalSubmitActionLabel(__('plugin-manager::filament/resources/plugin.actions.install.submit'))
-            ->action(function ($record) {
-                try {
-                    $cmd = sprintf(
-                        '%s %s %s:install',
-                        escapeshellarg(PHP_BINARY),
-                        escapeshellarg(base_path('artisan')),
-                        $record->name
-                    );
-
-                    exec($cmd);
-
-                    $record->update(['is_installed' => true, 'is_active' => true]);
-
-                    Notification::make()
-                        ->title(__('plugin-manager::filament/resources/plugin.notifications.installed.title'))
-                        ->body(__('plugin-manager::filament/resources/plugin.notifications.installed.body', ['name' => $record->name]))
-                        ->success()
-                        ->send();
-                } catch (\Throwable $e) {
-                    Notification::make()
-                        ->title(__('plugin-manager::filament/resources/plugin.notifications.installed-failed.title'))
-                        ->body($e->getMessage())
-                        ->danger()
-                        ->persistent()
-                        ->send();
-                }
-            })
-            ->after(fn () => redirect(self::getUrl('index')));
-    }
-
-    protected static function uninstallAction(): Action
-    {
-        return Action::make('uninstall')
-            ->label(__('plugin-manager::filament/resources/plugin.actions.uninstall.title'))
-            ->icon('heroicon-o-trash')
-            ->color('danger')
-            ->modalWidth(Width::ExtraLarge)
-            ->visible(fn ($record) => $record->is_installed)
-            ->modalHeading(__('plugin-manager::filament/resources/plugin.actions.uninstall.heading'))
-            ->modalSubmitActionLabel(__('plugin-manager::filament/resources/plugin.actions.uninstall.submit'))
-            ->modalContent(fn ($record) => self::buildUninstallModal($record))
-            ->action(fn ($record) => self::handleUninstall($record))
-            ->after(fn () => redirect(self::getUrl('index')));
-    }
-
-    protected static function buildUninstallModal($record)
-    {
-        $tables = collect();
-        $dependents = $record->getDependentsFromConfig();
-        $packages = collect([$record->name => $record->getPackage()])
-            ->merge($dependents ? collect($dependents)->mapWithKeys(fn ($dep) => [$dep => Plugin::where('name', $dep)->first()?->getPackage()]) : []);
-
-        $packages->each(function ($package) use (&$tables) {
-
-            if (
-                ! $package
-                || empty($package->migrationFileNames)
-            ) {
-                return;
-            }
-
-            collect($package->migrationFileNames)->each(function ($migrationFile) use (&$tables) {
-
-                if (preg_match('/create_(.*?)_table/', $migrationFile, $matches)) {
-                    $table = $matches[1];
-                    $count = DBSchema::hasTable($table) ? DB::table($table)->count() : 0;
-
-                    if (
-                        $count > 0 &&
-                        $tables->where('table', $table)->isEmpty()
-                    ) {
-                        $tables->push(['table' => $table, 'count' => $count]);
-                    }
-                }
-            });
-        });
-
-        return view('plugin-manager::uninstall-modal', compact('record', 'dependents', 'tables'));
-    }
-
-    protected static function handleUninstall($record)
-    {
-        $errors = [];
-        $dependents = $record->getDependentsFromConfig();
-
-        collect($dependents)
-            ->push($record->name)
-            ->each(function ($pluginName) use (&$errors) {
-                $plugin = Plugin::where('name', $pluginName)->first();
-
-                if (! $plugin?->is_installed) {
-                    return;
-                }
-
-                try {
-                    $package = $plugin->getPackage();
-
-                    if (! $package) {
-                        throw new \Exception("Package for '{$pluginName}' not found.");
-                    }
-
-                    // Run migration and settings downs
-                    self::runDownMigrations($pluginName, $package->migrationFileNames, 'migrations');
-                    self::runDownMigrations($pluginName, $package->settingFileNames, 'settings');
-
-                    $plugin->update(['is_installed' => false, 'is_active' => false]);
-                } catch (\Throwable $e) {
-                    $errors[] = "Failed to uninstall '{$pluginName}': ".$e->getMessage();
-                }
-            });
-
-        if (empty($errors)) {
-            Notification::make()
-                ->title(__('plugin-manager::filament/resources/plugin.notifications.uninstalled.title'))
-                ->body(__('plugin-manager::filament/resources/plugin.notifications.uninstalled.body', ['name' => $record->name]))
-                ->success()
-                ->send();
-        } else {
-            Notification::make()
-                ->title(__('plugin-manager::filament/resources/plugin.notifications.uninstalled-failed.title'))
-                ->body(implode(' ', $errors))
-                ->danger()
-                ->persistent()
-                ->send();
-        }
-    }
-
-    protected static function runDownMigrations(string $pluginName, array $fileNames, string $type): void
-    {
-        collect($fileNames)
-            ->reverse()
-            ->each(function ($file) use ($pluginName, $type) {
-                $path = base_path("plugins/webkul/{$pluginName}/database/{$type}/{$file}.php");
-
-                if (! file_exists($path)) {
-                    return;
-                }
-
-                $instance = require $path;
-
-                if (is_object($instance) && method_exists($instance, 'down')) {
-                    $instance->down();
-                }
-
-                DB::table('migrations')->where('migration', $file)->delete();
-            });
-    }
-
     public static function infolist(Schema $schema): Schema
     {
         return $schema->components([
@@ -338,35 +181,6 @@ class PluginResource extends Resource
         ]);
     }
 
-    protected static function repeatableEntry(string $type, string $color, string $key): RepeatableEntry
-    {
-        return RepeatableEntry::make($type)
-            ->label(__('plugin-manager::filament/resources/plugin.infolist.'.$key.'.title'))
-            ->state(function ($record) use ($type) {
-                return collect($record->{'get'.ucfirst($type).'FromConfig'}())->map(fn ($dep) => [
-                    'name'         => $dep,
-                    'is_installed' => Package::isPluginInstalled($dep),
-                ]);
-            })
-            ->schema([
-                TextEntry::make('name')
-                    ->label(__('plugin-manager::filament/resources/plugin.infolist.'.$key.'.name'))
-                    ->formatStateUsing(fn ($state) => ucfirst($state))
-                    ->badge()
-                    ->color($color),
-
-                IconEntry::make('is_installed')
-                    ->label(__('plugin-manager::filament/resources/plugin.infolist.'.$key.'.is_installed'))
-                    ->boolean()
-                    ->trueIcon('heroicon-s-check-circle')
-                    ->falseIcon('heroicon-o-x-circle')
-                    ->trueColor('success')
-                    ->falseColor('gray'),
-            ])
-            ->columns(2)
-            ->placeholder(__('plugin-manager::filament/resources/plugin.infolist.'.$key.'.placeholder'));
-    }
-
     public static function getEloquentQuery(): Builder
     {
         $excluded = ['accounts', 'products', 'payments', 'full-calendar'];
@@ -384,5 +198,191 @@ class PluginResource extends Resource
         return [
             'index' => Pages\ListPlugins::route('/'),
         ];
+    }
+
+    protected static function installAction(): Action
+    {
+        return Action::make('install')
+            ->label(__('plugin-manager::filament/resources/plugin.actions.install.title'))
+            ->icon('heroicon-o-arrow-down-tray')
+            ->color('success')
+            ->visible(fn ($record) => ! $record->is_installed)
+            ->requiresConfirmation()
+            ->modalHeading(fn ($record) => __('plugin-manager::filament/resources/plugin.actions.install.heading', ['name' => $record->name]))
+            ->modalDescription(fn ($record) => __('plugin-manager::filament/resources/plugin.actions.install.description', ['name' => $record->name]))
+            ->modalSubmitActionLabel(__('plugin-manager::filament/resources/plugin.actions.install.submit'))
+            ->action(function ($record) {
+                try {
+                    $cmd = sprintf(
+                        '%s %s %s:install',
+                        escapeshellarg(PHP_BINARY),
+                        escapeshellarg(base_path('artisan')),
+                        $record->name
+                    );
+
+                    exec($cmd);
+
+                    $record->update(['is_installed' => true, 'is_active' => true]);
+
+                    Notification::make()
+                        ->title(__('plugin-manager::filament/resources/plugin.notifications.installed.title'))
+                        ->body(__('plugin-manager::filament/resources/plugin.notifications.installed.body', ['name' => $record->name]))
+                        ->success()
+                        ->send();
+                } catch (Throwable $e) {
+                    Notification::make()
+                        ->title(__('plugin-manager::filament/resources/plugin.notifications.installed-failed.title'))
+                        ->body($e->getMessage())
+                        ->danger()
+                        ->persistent()
+                        ->send();
+                }
+            })
+            ->after(fn () => redirect(self::getUrl('index')));
+    }
+
+    protected static function uninstallAction(): Action
+    {
+        return Action::make('uninstall')
+            ->label(__('plugin-manager::filament/resources/plugin.actions.uninstall.title'))
+            ->icon('heroicon-o-trash')
+            ->color('danger')
+            ->modalWidth(Width::ExtraLarge)
+            ->visible(fn ($record) => $record->is_installed)
+            ->modalHeading(__('plugin-manager::filament/resources/plugin.actions.uninstall.heading'))
+            ->modalSubmitActionLabel(__('plugin-manager::filament/resources/plugin.actions.uninstall.submit'))
+            ->modalContent(fn ($record) => self::buildUninstallModal($record))
+            ->action(fn ($record) => self::handleUninstall($record))
+            ->after(fn () => redirect(self::getUrl('index')));
+    }
+
+    protected static function buildUninstallModal($record)
+    {
+        $tables     = collect();
+        $dependents = $record->getDependentsFromConfig();
+        $packages   = collect([$record->name => $record->getPackage()])
+            ->merge($dependents ? collect($dependents)->mapWithKeys(fn ($dep) => [$dep => Plugin::where('name', $dep)->first()?->getPackage()]) : []);
+
+        $packages->each(function ($package) use (&$tables) {
+            if (
+                ! $package
+                || empty($package->migrationFileNames)
+            ) {
+                return;
+            }
+
+            collect($package->migrationFileNames)->each(function ($migrationFile) use (&$tables) {
+                if (preg_match('/create_(.*?)_table/', $migrationFile, $matches)) {
+                    $table = $matches[1];
+                    $count = DBSchema::hasTable($table) ? DB::table($table)->count() : 0;
+
+                    if (
+                        $count > 0
+                        && $tables->where('table', $table)->isEmpty()
+                    ) {
+                        $tables->push(['table' => $table, 'count' => $count]);
+                    }
+                }
+            });
+        });
+
+        return view('plugin-manager::uninstall-modal', compact('record', 'dependents', 'tables'));
+    }
+
+    protected static function handleUninstall($record)
+    {
+        $errors     = [];
+        $dependents = $record->getDependentsFromConfig();
+
+        collect($dependents)
+            ->push($record->name)
+            ->each(function ($pluginName) use (&$errors) {
+                $plugin = Plugin::where('name', $pluginName)->first();
+
+                if ( ! $plugin?->is_installed) {
+                    return;
+                }
+
+                try {
+                    $package = $plugin->getPackage();
+
+                    if ( ! $package) {
+                        throw new Exception("Package for '{$pluginName}' not found.");
+                    }
+
+                    // Run migration and settings downs
+                    self::runDownMigrations($pluginName, $package->migrationFileNames, 'migrations');
+                    self::runDownMigrations($pluginName, $package->settingFileNames, 'settings');
+
+                    $plugin->update(['is_installed' => false, 'is_active' => false]);
+                } catch (Throwable $e) {
+                    $errors[] = "Failed to uninstall '{$pluginName}': " . $e->getMessage();
+                }
+            });
+
+        if (empty($errors)) {
+            Notification::make()
+                ->title(__('plugin-manager::filament/resources/plugin.notifications.uninstalled.title'))
+                ->body(__('plugin-manager::filament/resources/plugin.notifications.uninstalled.body', ['name' => $record->name]))
+                ->success()
+                ->send();
+        } else {
+            Notification::make()
+                ->title(__('plugin-manager::filament/resources/plugin.notifications.uninstalled-failed.title'))
+                ->body(implode(' ', $errors))
+                ->danger()
+                ->persistent()
+                ->send();
+        }
+    }
+
+    protected static function runDownMigrations(string $pluginName, array $fileNames, string $type): void
+    {
+        collect($fileNames)
+            ->reverse()
+            ->each(function ($file) use ($pluginName, $type) {
+                $path = base_path("plugins/webkul/{$pluginName}/database/{$type}/{$file}.php");
+
+                if ( ! file_exists($path)) {
+                    return;
+                }
+
+                $instance = require $path;
+
+                if (is_object($instance) && method_exists($instance, 'down')) {
+                    $instance->down();
+                }
+
+                DB::table('migrations')->where('migration', $file)->delete();
+            });
+    }
+
+    protected static function repeatableEntry(string $type, string $color, string $key): RepeatableEntry
+    {
+        return RepeatableEntry::make($type)
+            ->label(__('plugin-manager::filament/resources/plugin.infolist.' . $key . '.title'))
+            ->state(function ($record) use ($type) {
+                return collect($record->{'get' . ucfirst($type) . 'FromConfig'}())->map(fn ($dep) => [
+                    'name'         => $dep,
+                    'is_installed' => Package::isPluginInstalled($dep),
+                ]);
+            })
+            ->schema([
+                TextEntry::make('name')
+                    ->label(__('plugin-manager::filament/resources/plugin.infolist.' . $key . '.name'))
+                    ->formatStateUsing(fn ($state) => ucfirst($state))
+                    ->badge()
+                    ->color($color),
+
+                IconEntry::make('is_installed')
+                    ->label(__('plugin-manager::filament/resources/plugin.infolist.' . $key . '.is_installed'))
+                    ->boolean()
+                    ->trueIcon('heroicon-s-check-circle')
+                    ->falseIcon('heroicon-o-x-circle')
+                    ->trueColor('success')
+                    ->falseColor('gray'),
+            ])
+            ->columns(2)
+            ->placeholder(__('plugin-manager::filament/resources/plugin.infolist.' . $key . '.placeholder'));
     }
 }

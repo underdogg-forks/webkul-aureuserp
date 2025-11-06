@@ -12,10 +12,11 @@ use Illuminate\Queue\SerializesModels;
 
 class ApplicantRefuseMail extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
     /**
-     * Array to store attachments
+     * Array to store attachments.
      */
     protected array $attachmentData = [];
 
@@ -34,7 +35,7 @@ class ApplicantRefuseMail extends Mailable
     {
         return new Envelope(
             subject: $this->payload['subject'],
-            from: new Address($this->payload['from']['address'], '"'.addslashes($this->payload['from']['name']).'"'),
+            from: new Address($this->payload['from']['address'], '"' . addslashes($this->payload['from']['name']) . '"'),
         );
     }
 
@@ -72,7 +73,7 @@ class ApplicantRefuseMail extends Mailable
     }
 
     /**
-     * Add attachments to the email
+     * Add attachments to the email.
      */
     public function withAttachments(array $attachments): static
     {

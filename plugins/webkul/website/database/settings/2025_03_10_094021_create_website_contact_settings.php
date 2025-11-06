@@ -2,8 +2,7 @@
 
 use Spatie\LaravelSettings\Migrations\SettingsMigration;
 
-return new class extends SettingsMigration
-{
+return new class () extends SettingsMigration {
     public function up(): void
     {
         $this->migrator->add('website_contact.email', 'support@example.com');

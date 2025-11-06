@@ -12,8 +12,9 @@ trait PDFHandler
     /**
      * Generate a PDF from HTML content.
      *
-     * @param  string  $html  HTML content to convert to PDF.
-     * @return PDF Returns the generated PDF instance.
+     * @param string $html HTML content to convert to PDF
+     *
+     * @return PDF returns the generated PDF instance
      */
     protected function generatePDF(string $html)
     {
@@ -29,13 +30,14 @@ trait PDFHandler
     /**
      * Save the generated PDF to storage and return its path.
      *
-     * @param  string  $html  HTML content to convert to PDF.
-     * @param  string|null  $fileName  Optional filename (without extension).
-     * @return string Returns the file path relative to the storage disk.
+     * @param string      $html     HTML content to convert to PDF
+     * @param string|null $fileName optional filename (without extension)
+     *
+     * @return string returns the file path relative to the storage disk
      */
     protected function savePDF(string $html, ?string $fileName = null): string
     {
-        $fileName = $fileName ? Str::slug($fileName).'.pdf' : Str::uuid().'.pdf';
+        $fileName = $fileName ? Str::slug($fileName) . '.pdf' : Str::uuid() . '.pdf';
         $filePath = "pdfs/{$fileName}";
 
         $pdf = $this->generatePDF($html);
@@ -47,13 +49,14 @@ trait PDFHandler
     /**
      * Generate and return a downloadable PDF response.
      *
-     * @param  string  $html  HTML content to convert to PDF.
-     * @param  string|null  $fileName  Optional filename (without extension).
-     * @return BinaryFileResponse Returns a response for downloading the PDF.
+     * @param string      $html     HTML content to convert to PDF
+     * @param string|null $fileName optional filename (without extension)
+     *
+     * @return BinaryFileResponse returns a response for downloading the PDF
      */
     protected function downloadPDF(string $html, ?string $fileName = null): Response
     {
-        $fileName = $fileName ? Str::slug($fileName).'.pdf' : 'document-'.date('Y-m-d').'.pdf';
+        $fileName = $fileName ? Str::slug($fileName) . '.pdf' : 'document-' . date('Y-m-d') . '.pdf';
 
         return $this->generatePDF($html)->download($fileName);
     }
@@ -61,13 +64,14 @@ trait PDFHandler
     /**
      * Generate a PDF, save it, and return both the file path and download response.
      *
-     * @param  string  $html  HTML content to convert to PDF.
-     * @param  string|null  $fileName  Optional filename (without extension).
-     * @return array Returns an array with the file path and download response.
+     * @param string      $html     HTML content to convert to PDF
+     * @param string|null $fileName optional filename (without extension)
+     *
+     * @return array returns an array with the file path and download response
      */
     protected function saveAndDownloadPDF(string $html, ?string $fileName = null): array
     {
-        $filePath = $this->savePDF($html, $fileName);
+        $filePath         = $this->savePDF($html, $fileName);
         $downloadResponse = $this->downloadPDF($html, $fileName);
 
         return ['path' => $filePath, 'download' => $downloadResponse];

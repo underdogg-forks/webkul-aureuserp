@@ -9,7 +9,8 @@ use Webkul\Security\Traits\HasScopedPermissions;
 
 class RequisitionPolicy
 {
-    use HandlesAuthorization, HasScopedPermissions;
+    use HandlesAuthorization;
+    use HasScopedPermissions;
 
     /**
      * Determine whether the user can view any models.
@@ -40,7 +41,7 @@ class RequisitionPolicy
      */
     public function update(User $user, Requisition $requisition): bool
     {
-        if (! $user->can('update_purchase::agreement')) {
+        if ( ! $user->can('update_purchase::agreement')) {
             return false;
         }
 
@@ -52,7 +53,7 @@ class RequisitionPolicy
      */
     public function delete(User $user, Requisition $requisition): bool
     {
-        if (! $user->can('delete_purchase::agreement')) {
+        if ( ! $user->can('delete_purchase::agreement')) {
             return false;
         }
 
@@ -72,7 +73,7 @@ class RequisitionPolicy
      */
     public function forceDelete(User $user, Requisition $requisition): bool
     {
-        if (! $user->can('force_delete_purchase::agreement')) {
+        if ( ! $user->can('force_delete_purchase::agreement')) {
             return false;
         }
 
@@ -92,7 +93,7 @@ class RequisitionPolicy
      */
     public function restore(User $user, Requisition $requisition): bool
     {
-        if (! $user->can('restore_purchase::agreement')) {
+        if ( ! $user->can('restore_purchase::agreement')) {
             return false;
         }
 

@@ -7,14 +7,14 @@ use Webkul\Product\Models\Product;
 
 class ProductTaxes extends Model
 {
+    public $timestamps = false;
+
     protected $table = 'accounts_product_taxes';
 
     protected $fillable = [
         'product_id',
         'tax_id',
     ];
-
-    public $timestamps = false;
 
     public function product()
     {

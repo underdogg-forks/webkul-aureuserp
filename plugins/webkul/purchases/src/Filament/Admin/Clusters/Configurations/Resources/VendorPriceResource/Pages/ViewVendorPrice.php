@@ -16,13 +16,6 @@ class ViewVendorPrice extends ViewRecord
         return __('purchases::filament/admin/clusters/configurations/resources/vendor-price/pages/view-vendor-price.navigation.title');
     }
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            EditAction::make(),
-        ];
-    }
-
     public function getSubNavigation(): array
     {
         if (filled($cluster = static::getCluster())) {
@@ -30,5 +23,12 @@ class ViewVendorPrice extends ViewRecord
         }
 
         return [];
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            EditAction::make(),
+        ];
     }
 }

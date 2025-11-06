@@ -9,6 +9,8 @@ use Webkul\Partner\Filament\Resources\PartnerResource;
 
 class CreatePartner extends CreateRecord
 {
+    protected static string $resource = PartnerResource::class;
+
     public function getSubNavigation(): array
     {
         if (filled($cluster = static::getCluster())) {
@@ -18,16 +20,14 @@ class CreatePartner extends CreateRecord
         return [];
     }
 
-    protected static string $resource = PartnerResource::class;
+    public function getTitle(): string|Htmlable
+    {
+        return __('partners::filament/resources/partner/pages/create-partner.title');
+    }
 
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('view', ['record' => $this->getRecord()]);
-    }
-
-    public function getTitle(): string|Htmlable
-    {
-        return __('partners::filament/resources/partner/pages/create-partner.title');
     }
 
     protected function getCreatedNotification(): Notification

@@ -15,11 +15,6 @@ class CreateViewAction extends Action
 {
     use CanCustomizeProcess;
 
-    public static function getDefaultName(): ?string
-    {
-        return 'table_views.save.action';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -46,7 +41,7 @@ class CreateViewAction extends Action
                 $model = $this->getModel();
 
                 $record = $this->process(function (array $data) use ($model): TableView {
-                    $record = new $model;
+                    $record = new $model();
                     $record->fill($data);
 
                     $record->save();
@@ -71,5 +66,10 @@ class CreateViewAction extends Action
             ->successNotificationTitle(__('table-views::filament/actions/create-view.form.notification.created'))
             ->modalHeading(__('table-views::filament/actions/create-view.form.modal.title'))
             ->modalWidth(Width::Medium);
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'table_views.save.action';
     }
 }

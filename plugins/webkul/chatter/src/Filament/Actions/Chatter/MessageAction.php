@@ -23,41 +23,6 @@ class MessageAction extends Action
 
     protected string $resource = '';
 
-    public static function getDefaultName(): ?string
-    {
-        return 'message.action';
-    }
-
-    public function setResource(string $resource): self
-    {
-        $this->resource = $resource;
-
-        return $this;
-    }
-
-    public function setMessageMailView(?string $mailView): self
-    {
-        $mailView = $this->evaluate($mailView);
-
-        if (empty($mailView)) {
-            return $this;
-        }
-
-        $this->mailView = $mailView;
-
-        return $this;
-    }
-
-    public function getMessageMailView(): string
-    {
-        return $this->mailView;
-    }
-
-    public function getResource(): string
-    {
-        return $this->resource;
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -129,7 +94,7 @@ class MessageAction extends Action
 
                     $message = $record->addMessage($data, filament()->auth()->id());
 
-                    if (! empty($data['attachments'])) {
+                    if ( ! empty($data['attachments'])) {
                         $record->addAttachments(
                             $data['attachments'],
                             ['message_id' => $message->id],
@@ -167,6 +132,41 @@ class MessageAction extends Action
             ->slideOver(false);
     }
 
+    public static function getDefaultName(): ?string
+    {
+        return 'message.action';
+    }
+
+    public function setResource(string $resource): self
+    {
+        $this->resource = $resource;
+
+        return $this;
+    }
+
+    public function setMessageMailView(?string $mailView): self
+    {
+        $mailView = $this->evaluate($mailView);
+
+        if (empty($mailView)) {
+            return $this;
+        }
+
+        $this->mailView = $mailView;
+
+        return $this;
+    }
+
+    public function getMessageMailView(): string
+    {
+        return $this->mailView;
+    }
+
+    public function getResource(): string
+    {
+        return $this->resource;
+    }
+
     private function notifyFollower(mixed $record, mixed $message): void
     {
         foreach ($record->followers as $follower) {
@@ -189,14 +189,14 @@ class MessageAction extends Action
     private function preparePayload(Model $record, mixed $partner, mixed $message): array
     {
         return [
-            'record_url'     => $this->prepareResourceUrl($record) ?? '',
-            'record_name'    => $recordName = $record->{$record->recordTitleAttribute} ?? $record->name,
-            'model_name'     => class_basename($record),
-            'subject'        => __('chatter::filament/resources/actions/chatter/message-action.setup.actions.mail.subject', [
+            'record_url'  => $this->prepareResourceUrl($record) ?? '',
+            'record_name' => $recordName = $record->{$record->recordTitleAttribute} ?? $record->name,
+            'model_name'  => class_basename($record),
+            'subject'     => __('chatter::filament/resources/actions/chatter/message-action.setup.actions.mail.subject', [
                 'record_name' => $recordName,
             ]),
-            'content'        => $message->body ?? '',
-            'to'             => [
+            'content' => $message->body ?? '',
+            'to'      => [
                 'address' => $partner->email,
                 'name'    => $partner->name,
             ],

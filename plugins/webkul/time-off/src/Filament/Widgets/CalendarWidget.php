@@ -25,9 +25,10 @@ use Webkul\TimeOff\Traits\TimeOffHelper;
 
 class CalendarWidget extends FullCalendarWidget
 {
+    use HasWidgetShield;
+
     use TimeOffHelper;
 
-     use HasWidgetShield;
     public Model|string|null $model = Leave::class;
 
     public function getHeading(): string|Htmlable|null
@@ -38,8 +39,8 @@ class CalendarWidget extends FullCalendarWidget
     public function config(): array
     {
         return [
-            'initialView'      => 'dayGridMonth',
-            'headerToolbar'    => [
+            'initialView'   => 'dayGridMonth',
+            'headerToolbar' => [
                 'left'   => 'prev,next today',
                 'center' => 'title',
                 'right'  => 'dayGridMonth,timeGridWeek,listWeek',
@@ -57,7 +58,7 @@ class CalendarWidget extends FullCalendarWidget
             'dayHeaderFormat'  => [
                 'weekday' => 'short',
             ],
-            'businessHours'    => [
+            'businessHours' => [
                 'daysOfWeek' => [1, 2, 3, 4, 5],
                 'startTime'  => '09:00',
                 'endTime'    => '17:00',
@@ -79,7 +80,7 @@ class CalendarWidget extends FullCalendarWidget
 
                 return classes;
             }',
-            'eventClassNames'   => 'function(info) {
+            'eventClassNames' => 'function(info) {
                 var classes = ["leave-event", "enhanced-event"];
 
                 if (info.event.extendedProps.state) {
@@ -138,44 +139,6 @@ class CalendarWidget extends FullCalendarWidget
         ];
     }
 
-    protected function viewAction(): Action
-    {
-        return ViewAction::make()
-            ->modalIcon('heroicon-o-eye')
-            ->icon('heroicon-o-eye')
-            ->color('info')
-            ->label(__('time-off::filament/widgets/calendar-widget.view-action.title'))
-            ->modalDescription(__('time-off::filament/widgets/calendar-widget.view-action.description'))
-            ->schema($this->infolist());
-    }
-
-    protected function headerActions(): array
-    {
-        return [
-            HolidayAction::make(),
-            CreateAction::make()
-                ->icon('heroicon-o-plus-circle')
-                ->modalIcon('heroicon-o-calendar-days')
-                ->label(__('time-off::filament/widgets/calendar-widget.header-actions.create.title'))
-                ->modalDescription(__('time-off::filament/widgets/calendar-widget.header-actions.create.description'))
-                ->color('success')
-                ->action(function ($data, CreateAction $action) {
-                    $data = $this->mutateTimeOffData($data, $this->record?->id, $action);
-
-                    Leave::create($data);
-
-                    Notification::make()
-                        ->success()
-                        ->title(__('time-off::filament/widgets/calendar-widget.header-actions.create.notification.title'))
-                        ->body(__('time-off::filament/widgets/calendar-widget.header-actions.create.notification.body'))
-                        ->send();
-
-                    $action->cancel();
-                })
-                ->mountUsing(fn (Schema $schema, array $arguments) => $schema->fill($arguments)),
-        ];
-    }
-
     public function infolist(): array
     {
         return [
@@ -227,16 +190,16 @@ class CalendarWidget extends FullCalendarWidget
                             }
 
                             $startDate = Carbon::parse($record->request_date_from);
-                            $endDate = $record->request_date_to ? Carbon::parse($record->request_date_to) : $startDate;
+                            $endDate   = $record->request_date_to ? Carbon::parse($record->request_date_to) : $startDate;
 
                             $businessDays = $this->calculateBusinessDays($startDate, $endDate);
-                            $totalDays = $this->calculateTotalDays($startDate, $endDate);
-                            $weekendDays = $totalDays - $businessDays;
+                            $totalDays    = $this->calculateTotalDays($startDate, $endDate);
+                            $weekendDays  = $totalDays - $businessDays;
 
-                            $duration = $businessDays.' working day'.($businessDays !== 1 ? 's' : '');
+                            $duration = $businessDays . ' working day' . ($businessDays !== 1 ? 's' : '');
 
                             if ($weekendDays > 0) {
-                                $duration .= ' (+ '.$weekendDays.' weekend day'.($weekendDays !== 1 ? 's' : '').')';
+                                $duration .= ' (+ ' . $weekendDays . ' weekend day' . ($weekendDays !== 1 ? 's' : '') . ')';
                             }
 
                             return $duration;
@@ -270,20 +233,20 @@ class CalendarWidget extends FullCalendarWidget
             ->get()
             ->map(function (Leave $leave) {
                 $startDate = Carbon::parse($leave->request_date_from);
-                $endDate = $leave->request_date_to ? Carbon::parse($leave->request_date_to) : $startDate;
+                $endDate   = $leave->request_date_to ? Carbon::parse($leave->request_date_to) : $startDate;
 
                 $businessDays = $this->calculateBusinessDays($startDate, $endDate);
-                $totalDays = $this->calculateTotalDays($startDate, $endDate);
-                $weekendDays = $totalDays - $businessDays;
+                $totalDays    = $this->calculateTotalDays($startDate, $endDate);
+                $weekendDays  = $totalDays - $businessDays;
 
                 $title = "{$leave->holidayStatus->name} {$leave->user->name}";
 
                 if ($leave->request_unit_half) {
                     $title .= ' (0.5 day)';
                 } else {
-                    $title .= ' ('.$businessDays.'d)';
+                    $title .= ' (' . $businessDays . 'd)';
                     if ($weekendDays > 0) {
-                        $title .= ' +'.$weekendDays;
+                        $title .= ' +' . $weekendDays;
                     }
                 }
 
@@ -311,14 +274,63 @@ class CalendarWidget extends FullCalendarWidget
             ->all();
     }
 
+    public function onDateSelect(string $start, ?string $end, bool $allDay, ?array $view, ?array $resource): void
+    {
+        $startDate = Carbon::parse($start);
+        $endDate   = $end ? Carbon::parse($end)->subDay() : $startDate;
+
+        $this->mountAction('create', [
+            'request_date_from' => $startDate->toDateString(),
+            'request_date_to'   => $endDate->toDateString(),
+        ]);
+    }
+
+    protected function viewAction(): Action
+    {
+        return ViewAction::make()
+            ->modalIcon('heroicon-o-eye')
+            ->icon('heroicon-o-eye')
+            ->color('info')
+            ->label(__('time-off::filament/widgets/calendar-widget.view-action.title'))
+            ->modalDescription(__('time-off::filament/widgets/calendar-widget.view-action.description'))
+            ->schema($this->infolist());
+    }
+
+    protected function headerActions(): array
+    {
+        return [
+            HolidayAction::make(),
+            CreateAction::make()
+                ->icon('heroicon-o-plus-circle')
+                ->modalIcon('heroicon-o-calendar-days')
+                ->label(__('time-off::filament/widgets/calendar-widget.header-actions.create.title'))
+                ->modalDescription(__('time-off::filament/widgets/calendar-widget.header-actions.create.description'))
+                ->color('success')
+                ->action(function ($data, CreateAction $action) {
+                    $data = $this->mutateTimeOffData($data, $this->record?->id, $action);
+
+                    Leave::create($data);
+
+                    Notification::make()
+                        ->success()
+                        ->title(__('time-off::filament/widgets/calendar-widget.header-actions.create.notification.title'))
+                        ->body(__('time-off::filament/widgets/calendar-widget.header-actions.create.notification.body'))
+                        ->send();
+
+                    $action->cancel();
+                })
+                ->mountUsing(fn (Schema $schema, array $arguments) => $schema->fill($arguments)),
+        ];
+    }
+
     private function getEventPriority(State $state): string
     {
         return match ($state) {
-            State::REFUSE              => 'low',
-            State::VALIDATE_ONE        => 'medium',
-            State::CONFIRM             => 'high',
-            State::VALIDATE_TWO        => 'highest',
-            default                    => 'normal'
+            State::REFUSE       => 'low',
+            State::VALIDATE_ONE => 'medium',
+            State::CONFIRM      => 'high',
+            State::VALIDATE_TWO => 'highest',
+            default             => 'normal'
         };
     }
 
@@ -335,11 +347,11 @@ class CalendarWidget extends FullCalendarWidget
     private function getStateIcon(State $state): string
     {
         return match ($state) {
-            State::VALIDATE_ONE        => 'heroicon-o-magnifying-glass',
-            State::VALIDATE_TWO        => 'heroicon-o-check-circle',
-            State::CONFIRM             => 'heroicon-o-clock',
-            State::REFUSE              => 'heroicon-o-x-circle',
-            default                    => 'heroicon-o-document',
+            State::VALIDATE_ONE => 'heroicon-o-magnifying-glass',
+            State::VALIDATE_TWO => 'heroicon-o-check-circle',
+            State::CONFIRM      => 'heroicon-o-clock',
+            State::REFUSE       => 'heroicon-o-x-circle',
+            default             => 'heroicon-o-document',
         };
     }
 
@@ -362,16 +374,5 @@ class CalendarWidget extends FullCalendarWidget
             State::REFUSE->value       => '#EF4444',
             default                    => '#6B7280',
         };
-    }
-
-    public function onDateSelect(string $start, ?string $end, bool $allDay, ?array $view, ?array $resource): void
-    {
-        $startDate = Carbon::parse($start);
-        $endDate = $end ? Carbon::parse($end)->subDay() : $startDate;
-
-        $this->mountAction('create', [
-            'request_date_from' => $startDate->toDateString(),
-            'request_date_to'   => $endDate->toDateString(),
-        ]);
     }
 }

@@ -14,16 +14,6 @@ enum InstallmentMode: string implements HasLabel
 
     case FULL = 'full';
 
-    public function getLabel(): ?string
-    {
-        return match ($this) {
-            self::NEXT        => __('accounts::enums/installment-mode.next'),
-            self::OVERDUE     => __('accounts::enums/installment-mode.overdue'),
-            self::BEFORE_DATE => __('accounts::enums/installment-mode.before-date'),
-            self::FULL        => __('accounts::enums/installment-mode.full'),
-        };
-    }
-
     public static function options(): array
     {
         return [
@@ -32,5 +22,15 @@ enum InstallmentMode: string implements HasLabel
             self::BEFORE_DATE->value => __('accounts::enums/installment-mode.before-date'),
             self::FULL->value        => __('accounts::enums/installment-mode.full'),
         ];
+    }
+
+    public function getLabel(): ?string
+    {
+        return match ($this) {
+            self::NEXT        => __('accounts::enums/installment-mode.next'),
+            self::OVERDUE     => __('accounts::enums/installment-mode.overdue'),
+            self::BEFORE_DATE => __('accounts::enums/installment-mode.before-date'),
+            self::FULL        => __('accounts::enums/installment-mode.full'),
+        };
     }
 }

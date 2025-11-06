@@ -9,7 +9,8 @@ use Webkul\Security\Traits\HasScopedPermissions;
 
 class DeliveryPolicy
 {
-    use HandlesAuthorization, HasScopedPermissions;
+    use HandlesAuthorization;
+    use HasScopedPermissions;
 
     /**
      * Determine whether the user can view any models.
@@ -40,7 +41,7 @@ class DeliveryPolicy
      */
     public function update(User $user, Delivery $delivery): bool
     {
-        if (! $user->can('update_delivery')) {
+        if ( ! $user->can('update_delivery')) {
             return false;
         }
 
@@ -52,7 +53,7 @@ class DeliveryPolicy
      */
     public function delete(User $user, Delivery $delivery): bool
     {
-        if (! $user->can('delete_delivery')) {
+        if ( ! $user->can('delete_delivery')) {
             return false;
         }
         // dd($this->hasAccess($user, $delivery));

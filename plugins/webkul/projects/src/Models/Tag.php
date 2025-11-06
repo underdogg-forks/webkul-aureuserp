@@ -11,7 +11,8 @@ use Webkul\Security\Models\User;
 
 class Tag extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
+    use SoftDeletes;
 
     /**
      * Table name.

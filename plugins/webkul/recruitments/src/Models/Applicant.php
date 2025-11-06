@@ -19,7 +19,10 @@ use Webkul\Support\Models\UTMSource;
 
 class Applicant extends Model
 {
-    use HasApplicationStatus, HasChatter, HasLogActivity, SoftDeletes;
+    use HasApplicationStatus;
+    use HasChatter;
+    use HasLogActivity;
+    use SoftDeletes;
 
     protected $table = 'recruitments_applicants';
 
@@ -71,6 +74,11 @@ class Applicant extends Model
     protected $appends = [
         'application_status',
     ];
+
+    public static function getStatusOptions(): array
+    {
+        return ApplicationStatus::options();
+    }
 
     public function source(): BelongsTo
     {
@@ -149,11 +157,6 @@ class Applicant extends Model
         return $this->belongsTo(User::class, 'creator_id');
     }
 
-    public static function getStatusOptions(): array
-    {
-        return ApplicationStatus::options();
-    }
-
     public function setAsHired(): bool
     {
         return $this->updateStatus(ApplicationStatus::HIRED->value);
@@ -185,18 +188,20 @@ class Applicant extends Model
     {
         if ($this->refuse_reason_id) {
             return ApplicationStatus::REFUSED;
-        } elseif (! $this->is_active || $this->deleted_at) {
-            return ApplicationStatus::ARCHIVED;
-        } elseif ($this->date_closed) {
-            return ApplicationStatus::HIRED;
-        } else {
-            return ApplicationStatus::ONGOING;
         }
+        if ( ! $this->is_active || $this->deleted_at) {
+            return ApplicationStatus::ARCHIVED;
+        }
+        if ($this->date_closed) {
+            return ApplicationStatus::HIRED;
+        }
+
+        return ApplicationStatus::ONGOING;
     }
 
     public function createEmployee(): ?Employee
     {
-        if (! $this->candidate?->partner_id) {
+        if ( ! $this->candidate?->partner_id) {
             return null;
         }
 

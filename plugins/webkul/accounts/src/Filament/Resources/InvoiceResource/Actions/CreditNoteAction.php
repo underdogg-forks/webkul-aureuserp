@@ -24,11 +24,6 @@ class CreditNoteAction extends Action
 {
     use PDFHandler;
 
-    public static function getDefaultName(): ?string
-    {
-        return 'customers.invoice.credit-note';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -78,10 +73,15 @@ class CreditNoteAction extends Action
         });
     }
 
+    public static function getDefaultName(): ?string
+    {
+        return 'customers.invoice.credit-note';
+    }
+
     private function createMove(MoveReversal $creditNote, Move $record): Move
     {
         $newMove = $record->replicate()->fill([
-            'reference'         => Str::limit(
+            'reference' => Str::limit(
                 "Reversal of: {$record->name}, {$creditNote->reason}",
                 250
             ),

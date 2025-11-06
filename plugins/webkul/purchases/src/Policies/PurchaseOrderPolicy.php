@@ -9,7 +9,8 @@ use Webkul\Security\Traits\HasScopedPermissions;
 
 class PurchaseOrderPolicy
 {
-    use HandlesAuthorization, HasScopedPermissions;
+    use HandlesAuthorization;
+    use HasScopedPermissions;
 
     /**
      * Determine whether the user can view any models.
@@ -40,7 +41,7 @@ class PurchaseOrderPolicy
      */
     public function update(User $user, PurchaseOrder $purchaseOrder): bool
     {
-        if (! $user->can('update_purchase::order')) {
+        if ( ! $user->can('update_purchase::order')) {
             return false;
         }
 
@@ -52,7 +53,7 @@ class PurchaseOrderPolicy
      */
     public function delete(User $user, PurchaseOrder $purchaseOrder): bool
     {
-        if (! $user->can('delete_purchase::order')) {
+        if ( ! $user->can('delete_purchase::order')) {
             return false;
         }
 

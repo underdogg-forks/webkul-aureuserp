@@ -9,7 +9,8 @@ use Webkul\Security\Traits\HasScopedPermissions;
 
 class CandidatePolicy
 {
-    use HandlesAuthorization, HasScopedPermissions;
+    use HandlesAuthorization;
+    use HasScopedPermissions;
 
     /**
      * Determine whether the user can view any models.
@@ -40,7 +41,7 @@ class CandidatePolicy
      */
     public function update(User $user, Candidate $candidate): bool
     {
-        if (! $user->can('update_candidate')) {
+        if ( ! $user->can('update_candidate')) {
             return false;
         }
 
@@ -52,7 +53,7 @@ class CandidatePolicy
      */
     public function delete(User $user, Candidate $candidate): bool
     {
-        if (! $user->can('delete_candidate')) {
+        if ( ! $user->can('delete_candidate')) {
             return false;
         }
 

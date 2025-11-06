@@ -16,7 +16,6 @@ class EditProductCategory extends EditCategory
     protected function getHeaderActions(): array
     {
         return [
-
             ChatterActions\ChatterAction::make()
                 ->setResource(static::$resource),
             ...parent::getHeaderActions(),

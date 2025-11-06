@@ -20,6 +20,11 @@ class EditDelivery extends EditRecord
 
     protected static string $resource = DeliveryResource::class;
 
+    public function updateForm(): void
+    {
+        $this->fillForm();
+    }
+
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('edit', ['record' => $this->getRecord()]);
@@ -77,10 +82,5 @@ class EditDelivery extends EditRecord
                         ->body(__('inventories::filament/clusters/operations/resources/delivery/pages/edit-delivery.header-actions.delete.notification.success.body')),
                 ),
         ];
-    }
-
-    public function updateForm(): void
-    {
-        $this->fillForm();
     }
 }

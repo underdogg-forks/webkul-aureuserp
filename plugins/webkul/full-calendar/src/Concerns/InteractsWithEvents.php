@@ -87,7 +87,7 @@ trait InteractsWithEvents
         }
 
         if (
-            ! is_null($end)
+            null !== $end
             && $allDay
         ) {
             $end->subDay()->endOfDay();

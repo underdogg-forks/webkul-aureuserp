@@ -30,8 +30,8 @@ class CreateJournal extends CreateRecord
     {
         $data['creator_id'] = Auth::user()->id;
 
-        $data['invoice_reference_type'] = $data['invoice_reference_type'] ?? CommunicationType::INVOICE->value;
-        $data['invoice_reference_model'] = $data['invoice_reference_model'] ?? CommunicationStandard::AUREUS->value;
+        $data['invoice_reference_type'] ??= CommunicationType::INVOICE->value;
+        $data['invoice_reference_model'] ??= CommunicationStandard::AUREUS->value;
 
         return $data;
     }

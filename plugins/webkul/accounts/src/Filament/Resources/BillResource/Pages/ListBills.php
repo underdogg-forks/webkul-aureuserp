@@ -17,14 +17,6 @@ class ListBills extends BaseListBills
 
     protected static string $resource = BillResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            CreateAction::make()
-                ->icon('heroicon-o-plus-circle'),
-        ];
-    }
-
     public function getPresetTableViews(): array
     {
         return [
@@ -34,6 +26,14 @@ class ListBills extends BaseListBills
                 ->icon('heroicon-s-receipt-percent')
                 ->modifyQueryUsing(fn (Builder $query) => $query->where('move_type', MoveType::IN_INVOICE)),
             ...Arr::except(parent::getPresetTableViews(), 'invoice'),
+        ];
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            CreateAction::make()
+                ->icon('heroicon-o-plus-circle'),
         ];
     }
 }

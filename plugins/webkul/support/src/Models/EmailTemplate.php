@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class EmailTemplate extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'code',
@@ -18,7 +19,6 @@ class EmailTemplate extends Model
         'description',
         'is_active',
         'sender_name',
-
     ];
 
     protected $casts = [

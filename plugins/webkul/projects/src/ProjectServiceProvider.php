@@ -45,8 +45,5 @@ class ProjectServiceProvider extends PackageServiceProvider
             ->icon('projects');
     }
 
-    public function packageBooted(): void
-    {
-        //
-    }
+    public function packageBooted(): void {}
 }

@@ -20,6 +20,15 @@ class EditVendorPrice extends EditRecord
         return __('purchases::filament/admin/clusters/configurations/resources/vendor-price/pages/edit-vendor-price.navigation.title');
     }
 
+    public function getSubNavigation(): array
+    {
+        if (filled($cluster = static::getCluster())) {
+            return $this->generateNavigationItems($cluster::getClusteredComponents());
+        }
+
+        return [];
+    }
+
     protected function getSavedNotification(): Notification
     {
         return Notification::make()
@@ -55,14 +64,5 @@ class EditVendorPrice extends EditRecord
                         ->body(__('purchases::filament/admin/clusters/configurations/resources/vendor-price/pages/edit-vendor-price.header-actions.delete.notification.success.body')),
                 ),
         ];
-    }
-
-    public function getSubNavigation(): array
-    {
-        if (filled($cluster = static::getCluster())) {
-            return $this->generateNavigationItems($cluster::getClusteredComponents());
-        }
-
-        return [];
     }
 }

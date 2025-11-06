@@ -12,7 +12,9 @@ use Webkul\Support\Models\Company;
 
 class Calendar extends Model
 {
-    use HasCustomFields, HasFactory, SoftDeletes;
+    use HasCustomFields;
+    use HasFactory;
+    use SoftDeletes;
 
     protected $table = 'employees_calendars';
 

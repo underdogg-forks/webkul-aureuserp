@@ -14,7 +14,9 @@ use Webkul\Security\Models\User;
 
 class Category extends Model
 {
-    use HasChatter, HasFactory, HasLogActivity;
+    use HasChatter;
+    use HasFactory;
+    use HasLogActivity;
 
     /**
      * Table name.
@@ -74,7 +76,7 @@ class Category extends Model
         parent::boot();
 
         static::creating(function ($productCategory) {
-            if (! static::validateNoRecursion($productCategory)) {
+            if ( ! static::validateNoRecursion($productCategory)) {
                 throw new InvalidArgumentException('Circular reference detected in product category hierarchy');
             }
 
@@ -82,7 +84,7 @@ class Category extends Model
         });
 
         static::updating(function ($productCategory) {
-            if (! static::validateNoRecursion($productCategory)) {
+            if ( ! static::validateNoRecursion($productCategory)) {
                 throw new InvalidArgumentException('Circular reference detected in product category hierarchy');
             }
 
@@ -92,7 +94,7 @@ class Category extends Model
 
     protected static function validateNoRecursion($productCategory)
     {
-        if (! $productCategory->parent_id) {
+        if ( ! $productCategory->parent_id) {
             return true;
         }
 
@@ -103,7 +105,7 @@ class Category extends Model
             return false;
         }
 
-        $visitedIds = [$productCategory->exists ? $productCategory->id : -1];
+        $visitedIds      = [$productCategory->exists ? $productCategory->id : -1];
         $currentParentId = $productCategory->parent_id;
 
         while ($currentParentId) {
@@ -112,9 +114,9 @@ class Category extends Model
             }
 
             $visitedIds[] = $currentParentId;
-            $parent = static::find($currentParentId);
+            $parent       = static::find($currentParentId);
 
-            if (! $parent) {
+            if ( ! $parent) {
                 break;
             }
 
@@ -130,10 +132,10 @@ class Category extends Model
             $parent = static::find($productCategory->parent_id);
 
             if ($parent) {
-                $productCategory->parent_path = $parent->parent_path.$parent->id.'/';
+                $productCategory->parent_path = $parent->parent_path . $parent->id . '/';
             } else {
                 $productCategory->parent_path = '/';
-                $productCategory->parent_id = null;
+                $productCategory->parent_id   = null;
             }
         } else {
             $productCategory->parent_path = '/';
@@ -144,7 +146,7 @@ class Category extends Model
 
     protected static function getCompleteName($productCategory)
     {
-        $names = [];
+        $names   = [];
         $names[] = $productCategory->name;
 
         $currentProductCategory = $productCategory;

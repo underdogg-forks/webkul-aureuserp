@@ -10,11 +10,6 @@ use Webkul\Account\Models\Move;
 
 class ResetToDraftAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'customers.invoice.reset-to-draft';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -35,5 +30,10 @@ class ResetToDraftAction extends Action
                     $record->state == MoveState::CANCEL
                     || $record->state == MoveState::POSTED;
             });
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'customers.invoice.reset-to-draft';
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Webkul\Purchase\Filament\Admin\Clusters\Products\Resources\ProductResource\Pages;
 
+use BackedEnum;
 use Filament\Actions\CreateAction;
 use Filament\Forms\Components\Select;
 use Filament\Notifications\Notification;
@@ -23,7 +24,7 @@ class ManageVendors extends ManageRelatedRecords
 
     protected static string $relationship = 'supplierInformation';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-users';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-users';
 
     public static function getNavigationLabel(): string
     {
@@ -41,16 +42,18 @@ class ManageVendors extends ManageRelatedRecords
 
             $secondGroupFirstSectionChildComponents = $secondGroupChildComponents[0]->getChildComponents();
 
-            array_unshift($secondGroupFirstSectionChildComponents, Select::make('product_id')
-                ->label(__('purchases::filament/admin/clusters/configurations/resources/vendor-price.form.sections.prices.fields.product'))
-                ->relationship(
-                    'product',
-                    'name',
-                    fn (Builder $query) => $query->where('parent_id', $this->getRecord()->id),
-                )
-                ->required()
-                ->searchable()
-                ->preload(),
+            array_unshift(
+                $secondGroupFirstSectionChildComponents,
+                Select::make('product_id')
+                    ->label(__('purchases::filament/admin/clusters/configurations/resources/vendor-price.form.sections.prices.fields.product'))
+                    ->relationship(
+                        'product',
+                        'name',
+                        fn (Builder $query) => $query->where('parent_id', $this->getRecord()->id),
+                    )
+                    ->required()
+                    ->searchable()
+                    ->preload(),
             );
 
             $secondGroupChildComponents[0]->childComponents($secondGroupFirstSectionChildComponents);

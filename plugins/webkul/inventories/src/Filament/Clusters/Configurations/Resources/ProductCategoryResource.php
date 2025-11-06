@@ -2,6 +2,7 @@
 
 namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources;
 
+use BackedEnum;
 use Filament\Forms\Components\Select;
 use Filament\Infolists\Components\RepeatableEntry;
 use Filament\Infolists\Components\TextEntry;
@@ -24,7 +25,7 @@ class ProductCategoryResource extends CategoryResource
 {
     protected static ?string $model = Category::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-folder';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-folder';
 
     protected static bool $shouldRegisterNavigation = true;
 
@@ -119,7 +120,7 @@ class ProductCategoryResource extends CategoryResource
             $route = session('current_route');
         }
 
-        if ($route === self::getRouteBaseName().'.index') {
+        if ($route === self::getRouteBaseName() . '.index') {
             return SubNavigationPosition::Start;
         }
 

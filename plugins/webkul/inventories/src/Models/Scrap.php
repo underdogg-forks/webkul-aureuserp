@@ -19,7 +19,9 @@ use Webkul\Support\Models\UOM;
 
 class Scrap extends Model
 {
-    use HasChatter, HasFactory, HasLogActivity;
+    use HasChatter;
+    use HasFactory;
+    use HasLogActivity;
 
     /**
      * Table name.
@@ -148,6 +150,14 @@ class Scrap extends Model
     }
 
     /**
+     * Update the full name without triggering additional events.
+     */
+    public function updateName()
+    {
+        $this->name = 'SP/' . $this->id;
+    }
+
+    /**
      * Bootstrap any application services.
      */
     protected static function boot()
@@ -157,14 +167,6 @@ class Scrap extends Model
         static::saving(function ($scrap) {
             $scrap->updateName();
         });
-    }
-
-    /**
-     * Update the full name without triggering additional events
-     */
-    public function updateName()
-    {
-        $this->name = 'SP/'.$this->id;
     }
 
     protected static function newFactory(): ScrapFactory

@@ -13,7 +13,13 @@ use Webkul\Support\Models\Company;
 
 class Packaging extends Model implements Sortable
 {
-    use HasFactory, SortableTrait;
+    use HasFactory;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     /**
      * Table name.
@@ -35,11 +41,6 @@ class Packaging extends Model implements Sortable
         'product_id',
         'company_id',
         'creator_id',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function product(): BelongsTo

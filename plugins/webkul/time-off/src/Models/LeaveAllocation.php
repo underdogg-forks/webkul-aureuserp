@@ -14,7 +14,9 @@ use Webkul\TimeOff\Enums\AllocationType;
 
 class LeaveAllocation extends Model
 {
-    use HasChatter, HasFactory, HasLogActivity;
+    use HasChatter;
+    use HasFactory;
+    use HasLogActivity;
 
     protected $table = 'time_off_leave_allocations';
 

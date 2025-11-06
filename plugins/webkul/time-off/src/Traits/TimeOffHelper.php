@@ -3,6 +3,7 @@
 namespace Webkul\TimeOff\Traits;
 
 use Carbon\Carbon;
+use Exception;
 use Filament\Actions\Action;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
@@ -34,9 +35,9 @@ trait TimeOffHelper
         $this->handleLeaveAllocation($data, $action);
 
         $data['creator_id'] = Auth::user()->id;
-        $data['state'] = State::CONFIRM->value;
-        $data['date_from'] = $data['request_date_from'] ?? null;
-        $data['date_to'] = $data['request_date_to'] ?? null;
+        $data['state']      = State::CONFIRM->value;
+        $data['date_from']  = $data['request_date_from'] ?? null;
+        $data['date_to']    = $data['request_date_to'] ?? null;
 
         return $data;
     }
@@ -148,23 +149,23 @@ trait TimeOffHelper
                             }
 
                             $startDate = $get('request_date_from');
-                            $endDate = $get('request_date_to');
+                            $endDate   = $get('request_date_to');
 
-                            if (! $startDate) {
+                            if ( ! $startDate) {
                                 return __('time-off::filament/widgets/calendar-widget.form.fields.please-select-dates');
                             }
 
                             $start = Carbon::parse($startDate);
-                            $end = $endDate ? Carbon::parse($endDate) : $start;
+                            $end   = $endDate ? Carbon::parse($endDate) : $start;
 
                             $businessDays = $this->calculateBusinessDays($start, $end);
-                            $totalDays = $this->calculateTotalDays($start, $end);
-                            $weekendDays = $totalDays - $businessDays;
+                            $totalDays    = $this->calculateTotalDays($start, $end);
+                            $weekendDays  = $totalDays - $businessDays;
 
-                            $duration = $businessDays.' working day'.($businessDays !== 1 ? 's' : '');
+                            $duration = $businessDays . ' working day' . ($businessDays !== 1 ? 's' : '');
 
                             if ($weekendDays > 0) {
-                                $duration .= ' (+ '.$weekendDays.' weekend day'.($weekendDays !== 1 ? 's' : '').')';
+                                $duration .= ' (+ ' . $weekendDays . ' weekend day' . ($weekendDays !== 1 ? 's' : '') . ')';
                             }
 
                             return $duration;
@@ -183,7 +184,7 @@ trait TimeOffHelper
 
     public function getDurationInfo(array $data): array
     {
-        if (! empty($data['request_unit_half'])) {
+        if ( ! empty($data['request_unit_half'])) {
             return [
                 'duration_display' => '0.5 day',
                 'number_of_days'   => 0.5,
@@ -194,18 +195,18 @@ trait TimeOffHelper
         }
 
         $startDate = Carbon::parse($data['request_date_from']);
-        $endDate = ! empty($data['request_date_to'])
+        $endDate   = ! empty($data['request_date_to'])
             ? Carbon::parse($data['request_date_to'])
             : $startDate;
 
         $businessDays = $this->calculateBusinessDays($startDate, $endDate);
-        $totalDays = $this->calculateTotalDays($startDate, $endDate);
-        $weekendDays = $totalDays - $businessDays;
+        $totalDays    = $this->calculateTotalDays($startDate, $endDate);
+        $weekendDays  = $totalDays - $businessDays;
 
-        $durationDisplay = $businessDays.' working day'.($businessDays !== 1 ? 's' : '');
+        $durationDisplay = $businessDays . ' working day' . ($businessDays !== 1 ? 's' : '');
 
         if ($weekendDays > 0) {
-            $durationDisplay .= ' (+ '.$weekendDays.' weekend day'.($weekendDays !== 1 ? 's' : '').')';
+            $durationDisplay .= ' (+ ' . $weekendDays . ' weekend day' . ($weekendDays !== 1 ? 's' : '') . ')';
         }
 
         return [
@@ -218,14 +219,14 @@ trait TimeOffHelper
     }
 
     /**
-     * Overlap check
+     * Overlap check.
      *
-     * @throws \Exception
+     * @throws Exception
      */
     private function handleLeaveOverlap(array &$data, ?int $excludeRecordId = null, ?Action $action = null): void
     {
         $employee = Employee::find($data['employee_id']);
-        if (! $employee) {
+        if ( ! $employee) {
             Notification::make()
                 ->danger()
                 ->title(__('time-off::filament/widgets/overview-calendar-widget.header-actions.create.employee-not-found.notification.title'))
@@ -264,29 +265,29 @@ trait TimeOffHelper
     }
 
     /**
-     * Leave allocation check
+     * Leave allocation check.
      *
-     * @throws \Exception
+     * @throws Exception
      */
     private function handleLeaveAllocation(array &$data, ?Action $action = null): void
     {
         $employee = Employee::find($data['employee_id']);
-        if (! $employee) {
+        if ( ! $employee) {
             return;
         }
 
         $leaveTypeId = $data['holiday_status_id'] ?? null;
-        if (! $leaveTypeId) {
+        if ( ! $leaveTypeId) {
             return;
         }
 
         $leaveType = LeaveType::find($leaveTypeId);
-        if (! $leaveType || ! $leaveType->requires_allocation) {
+        if ( ! $leaveType || ! $leaveType->requires_allocation) {
             return;
         }
 
         $requestedDays = $data['number_of_days'];
-        $endOfYear = Carbon::now()->endOfYear();
+        $endOfYear     = Carbon::now()->endOfYear();
 
         $totalAllocated = LeaveAllocation::where('employee_id', $employee->id)
             ->where('holiday_status_id', $leaveTypeId)
@@ -300,7 +301,7 @@ trait TimeOffHelper
         $totalTaken = Leave::where('employee_id', $employee->id)
             ->where('holiday_status_id', $leaveTypeId)
             ->where('state', '!=', State::REFUSE->value)
-            ->where(fn ($q) => true)  
+            ->where(fn ($q) => true)
             ->sum('number_of_days');
 
         $availableBalance = round($totalAllocated - $totalTaken, 1);
@@ -338,14 +339,14 @@ trait TimeOffHelper
     }
 
     /**
-     * Compute business days between two Carbon dates
+     * Compute business days between two Carbon dates.
      */
     private function calculateBusinessDays(Carbon $start, Carbon $end): int
     {
-        $days = 0;
+        $days    = 0;
         $current = $start->copy();
         while ($current->lte($end)) {
-            if (! $current->isWeekend()) {
+            if ( ! $current->isWeekend()) {
                 $days++;
             }
             $current->addDay();
@@ -355,7 +356,7 @@ trait TimeOffHelper
     }
 
     /**
-     * Compute total days inclusive
+     * Compute total days inclusive.
      */
     private function calculateTotalDays(Carbon $start, Carbon $end): int
     {
@@ -363,12 +364,12 @@ trait TimeOffHelper
     }
 
     /**
-     * Check overlapping leave
+     * Check overlapping leave.
      */
     private function checkForOverlappingLeave(int $employeeId, string $startDate, ?string $endDate, ?int $excludeRecordId = null): bool
     {
         $start = Carbon::parse($startDate);
-        $end = $endDate ? Carbon::parse($endDate) : $start;
+        $end   = $endDate ? Carbon::parse($endDate) : $start;
 
         $query = Leave::where('employee_id', $employeeId)
             ->where(function ($q) use ($start, $end) {
@@ -390,25 +391,25 @@ trait TimeOffHelper
     private function updateDurationCalculation(Set $set, Get $get): void
     {
         $startDate = $get('request_date_from');
-        $endDate = $get('request_date_to');
+        $endDate   = $get('request_date_to');
 
-        if (! $startDate) {
+        if ( ! $startDate) {
             $set('duration_info', 'Please select dates');
 
             return;
         }
 
         $start = Carbon::parse($startDate);
-        $end = $endDate ? Carbon::parse($endDate) : $start;
+        $end   = $endDate ? Carbon::parse($endDate) : $start;
 
         $businessDays = $this->calculateBusinessDays($start, $end);
-        $totalDays = $this->calculateTotalDays($start, $end);
-        $weekendDays = $totalDays - $businessDays;
+        $totalDays    = $this->calculateTotalDays($start, $end);
+        $weekendDays  = $totalDays - $businessDays;
 
-        $duration = $businessDays.' working day'.($businessDays !== 1 ? 's' : '');
+        $duration = $businessDays . ' working day' . ($businessDays !== 1 ? 's' : '');
 
         if ($weekendDays > 0) {
-            $duration .= ' (+ '.$weekendDays.' weekend day'.($weekendDays !== 1 ? 's' : '').')';
+            $duration .= ' (+ ' . $weekendDays . ' weekend day' . ($weekendDays !== 1 ? 's' : '') . ')';
         }
 
         $set('duration_info', $duration);
@@ -422,27 +423,26 @@ trait TimeOffHelper
         $info = $this->getDurationInfo($data);
 
         $data['duration_display'] = $info['duration_display'];
-        $data['number_of_days'] = $info['number_of_days'];
-        $data['business_days'] = $info['business_days'];
-        $data['total_days'] = $info['total_days'];
-        $data['weekend_days'] = $info['weekend_days'];
+        $data['number_of_days']   = $info['number_of_days'];
+        $data['business_days']    = $info['business_days'];
+        $data['total_days']       = $info['total_days'];
+        $data['weekend_days']     = $info['weekend_days'];
     }
 
     private function updateEmployeeAndCompanyData(array &$data): void
     {
-
-        if (! empty($data['employee_id'])) {
+        if ( ! empty($data['employee_id'])) {
             $employee = Employee::find($data['employee_id']);
-            $user = $employee->user;
+            $user     = $employee->user;
         } else {
-            $user = Auth::user();
+            $user     = Auth::user();
             $employee = $user->employee;
         }
 
         if ($employee) {
             $data['employee_id'] = $employee->id;
 
-            if (! empty($data['department_id'])) {
+            if ( ! empty($data['department_id'])) {
                 $data['department_id'] = $data['department_id'];
             } elseif ($employee->department) {
                 $data['department_id'] = $employee->department->id;
@@ -451,14 +451,14 @@ trait TimeOffHelper
             }
 
             if ($employee->calendar) {
-                $data['calendar_id'] = $employee->calendar->id;
+                $data['calendar_id']     = $employee->calendar->id;
                 $data['number_of_hours'] = $employee->calendar->hours_per_day;
             }
         }
 
         if ($user) {
-            $data['user_id'] = $user->id;
-            $data['company_id'] = $user->default_company_id;
+            $data['user_id']             = $user->id;
+            $data['company_id']          = $user->default_company_id;
             $data['employee_company_id'] = $user->default_company_id;
         }
     }

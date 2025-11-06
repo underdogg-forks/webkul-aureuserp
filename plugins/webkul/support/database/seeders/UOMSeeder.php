@@ -18,13 +18,13 @@ class UOMSeeder extends Seeder
     public function run(): void
     {
         try {
-            if (! Schema::hasTable('unit_of_measures')) {
+            if ( ! Schema::hasTable('unit_of_measures')) {
                 $this->command?->warn('Skipping UOMSeeder: Table unit_of_measures does not exist.');
 
                 return;
             }
 
-            if (! Schema::hasTable('users')) {
+            if ( ! Schema::hasTable('users')) {
                 $this->command?->warn('Skipping UOMSeeder: Table users does not exist.');
 
                 return;

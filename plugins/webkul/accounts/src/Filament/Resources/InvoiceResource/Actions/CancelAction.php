@@ -11,11 +11,6 @@ use Webkul\Account\Models\Move;
 
 class CancelAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'customers.invoice.cancel';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -33,5 +28,10 @@ class CancelAction extends Action
                     $record->state != MoveState::DRAFT
                     || $record->move_type == MoveType::ENTRY;
             });
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'customers.invoice.cancel';
     }
 }

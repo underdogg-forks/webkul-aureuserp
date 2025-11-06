@@ -12,15 +12,6 @@ class ListLeaveTypes extends ListRecords
 {
     protected static string $resource = LeaveTypeResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            CreateAction::make()
-                ->label(__('time-off::filament/clusters/configurations/resources/leave-type/pages/list-leave-type.header-actions.new-leave-type'))
-                ->icon('heroicon-o-plus-circle'),
-        ];
-    }
-
     public function getTabs(): array
     {
         return [
@@ -31,6 +22,15 @@ class ListLeaveTypes extends ListRecords
                 ->modifyQueryUsing(function ($query) {
                     return $query->onlyTrashed();
                 }),
+        ];
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            CreateAction::make()
+                ->label(__('time-off::filament/clusters/configurations/resources/leave-type/pages/list-leave-type.header-actions.new-leave-type'))
+                ->icon('heroicon-o-plus-circle'),
         ];
     }
 }

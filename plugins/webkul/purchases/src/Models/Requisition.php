@@ -20,7 +20,11 @@ use Webkul\Support\Models\Currency;
 
 class Requisition extends Model
 {
-    use HasChatter, HasCustomFields, HasFactory, HasLogActivity, SoftDeletes;
+    use HasChatter;
+    use HasCustomFields;
+    use HasFactory;
+    use HasLogActivity;
+    use SoftDeletes;
 
     /**
      * Table name.
@@ -105,6 +109,18 @@ class Requisition extends Model
     }
 
     /**
+     * Update the full name without triggering additional events.
+     */
+    public function updateName()
+    {
+        if ($this->type == RequisitionType::BLANKET_ORDER) {
+            $this->name = 'BO/' . $this->id;
+        } else {
+            $this->name = 'PT/' . $this->id;
+        }
+    }
+
+    /**
      * Bootstrap any application services.
      */
     protected static function boot()
@@ -118,18 +134,6 @@ class Requisition extends Model
         static::created(function ($order) {
             $order->update(['name' => $order->name]);
         });
-    }
-
-    /**
-     * Update the full name without triggering additional events
-     */
-    public function updateName()
-    {
-        if ($this->type == RequisitionType::BLANKET_ORDER) {
-            $this->name = 'BO/'.$this->id;
-        } else {
-            $this->name = 'PT/'.$this->id;
-        }
     }
 
     protected static function newFactory(): RequisitionFactory

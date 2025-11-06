@@ -10,6 +10,8 @@ use Webkul\Account\Filament\Resources\PaymentsResource;
 
 class CreatePayments extends CreateRecord
 {
+    protected static string $resource = PaymentsResource::class;
+
     public function getSubNavigation(): array
     {
         if (filled($cluster = static::getCluster())) {
@@ -18,8 +20,6 @@ class CreatePayments extends CreateRecord
 
         return [];
     }
-
-    protected static string $resource = PaymentsResource::class;
 
     protected function getRedirectUrl(): string
     {
@@ -36,7 +36,7 @@ class CreatePayments extends CreateRecord
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        $data['state'] = PaymentStatus::DRAFT->value;
+        $data['state']      = PaymentStatus::DRAFT->value;
         $data['creator_id'] = Auth::user()->id;
 
         return $data;

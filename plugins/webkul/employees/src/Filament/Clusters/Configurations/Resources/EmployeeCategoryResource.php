@@ -2,6 +2,7 @@
 
 namespace Webkul\Employee\Filament\Clusters\Configurations\Resources;
 
+use BackedEnum;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
@@ -34,7 +35,7 @@ class EmployeeCategoryResource extends Resource
 {
     protected static ?string $model = EmployeeCategory::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-tag';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-tag';
 
     protected static ?string $cluster = Configurations::class;
 
@@ -150,7 +151,7 @@ class EmployeeCategoryResource extends Resource
                 ViewAction::make(),
                 EditAction::make()
                     ->mutateDataUsing(function (array $data): array {
-                        $data['color'] = $data['color'] ?? fake()->hexColor();
+                        $data['color'] ??= fake()->hexColor();
 
                         return $data;
                     })

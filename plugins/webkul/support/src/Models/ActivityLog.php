@@ -44,8 +44,8 @@ class ActivityLog extends Model
 
     public function changes(): Collection
     {
-        if (! $this->properties instanceof Collection) {
-            return new Collection;
+        if ( ! $this->properties instanceof Collection) {
+            return new Collection();
         }
 
         return $this->properties->only(['attributes', 'old']);

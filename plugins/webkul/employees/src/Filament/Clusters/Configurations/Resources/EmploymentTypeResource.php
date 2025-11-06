@@ -2,6 +2,7 @@
 
 namespace Webkul\Employee\Filament\Clusters\Configurations\Resources;
 
+use BackedEnum;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
@@ -32,7 +33,9 @@ class EmploymentTypeResource extends Resource
 {
     protected static ?string $model = EmploymentType::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-cube-transparent';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-cube-transparent';
+
+    protected static ?string $cluster = Configurations::class;
 
     public static function getModelLabel(): string
     {
@@ -48,8 +51,6 @@ class EmploymentTypeResource extends Resource
     {
         return __('employees::filament/clusters/configurations/resources/employment-type.navigation.title');
     }
-
-    protected static ?string $cluster = Configurations::class;
 
     public static function form(Schema $schema): Schema
     {
@@ -169,7 +170,7 @@ class EmploymentTypeResource extends Resource
                 ViewAction::make(),
                 EditAction::make()
                     ->mutateDataUsing(function (array $data): array {
-                        $data['code'] = $data['code'] ?? $data['name'];
+                        $data['code'] ??= $data['name'];
 
                         return $data;
                     })

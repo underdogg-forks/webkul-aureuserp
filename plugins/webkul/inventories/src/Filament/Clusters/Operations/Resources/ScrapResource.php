@@ -2,6 +2,7 @@
 
 namespace Webkul\Inventory\Filament\Clusters\Operations\Resources;
 
+use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkActionGroup;
@@ -63,7 +64,7 @@ class ScrapResource extends Resource
 {
     protected static ?string $model = Scrap::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-trash';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-trash';
 
     protected static ?int $navigationSort = 5;
 
@@ -104,7 +105,7 @@ class ScrapResource extends Resource
                                                 fn ($query) => $query->where('type', ProductType::GOODS)->whereNull('is_configurable'),
                                             )
                                             ->getOptionLabelFromRecordUsing(function ($record): string {
-                                                return $record->name.($record->trashed() ? ' (Deleted)' : '');
+                                                return $record->name . ($record->trashed() ? ' (Deleted)' : '');
                                             })
                                             ->disableOptionWhen(function ($label) {
                                                 return str_contains($label, ' (Deleted)');
@@ -154,13 +155,13 @@ class ScrapResource extends Resource
                                             )
                                             ->disabled(fn ($record): bool => $record?->state == ScrapState::DONE)
                                             ->visible(function (Get $get): bool {
-                                                if (! static::getTraceabilitySettings()->enable_lots_serial_numbers) {
+                                                if ( ! static::getTraceabilitySettings()->enable_lots_serial_numbers) {
                                                     return false;
                                                 }
 
                                                 $product = Product::find($get('product_id'));
 
-                                                if (! $product) {
+                                                if ( ! $product) {
                                                     return false;
                                                 }
 
@@ -533,7 +534,7 @@ class ScrapResource extends Resource
                                                 TextEntry::make('qty')
                                                     ->label(__('inventories::filament/clusters/operations/resources/scrap.infolist.sections.general.entries.quantity'))
                                                     ->icon('heroicon-o-calculator')
-                                                    ->suffix(fn (Scrap $record) => ' '.$record->uom?->name),
+                                                    ->suffix(fn (Scrap $record) => ' ' . $record->uom?->name),
 
                                                 TextEntry::make('lot.name')
                                                     ->label(__('inventories::filament/clusters/operations/resources/scrap.infolist.sections.general.entries.lot'))

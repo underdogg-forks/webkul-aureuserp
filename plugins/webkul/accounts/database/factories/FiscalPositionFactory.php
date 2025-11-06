@@ -9,7 +9,6 @@ class FiscalPositionFactory extends Factory
     public function definition(): array
     {
         return [
-            //
         ];
     }
 }

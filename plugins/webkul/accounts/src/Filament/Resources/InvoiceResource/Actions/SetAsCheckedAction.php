@@ -9,11 +9,6 @@ use Webkul\Account\Models\Move;
 
 class SetAsCheckedAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'customers.invoice.set-as-checked';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -32,5 +27,10 @@ class SetAsCheckedAction extends Action
                     $record->checked
                     || $record->state == MoveState::DRAFT;
             });
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'customers.invoice.set-as-checked';
     }
 }

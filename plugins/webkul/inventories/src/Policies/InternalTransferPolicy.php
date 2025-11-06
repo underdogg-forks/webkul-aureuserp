@@ -9,7 +9,8 @@ use Webkul\Security\Traits\HasScopedPermissions;
 
 class InternalTransferPolicy
 {
-    use HandlesAuthorization, HasScopedPermissions;
+    use HandlesAuthorization;
+    use HasScopedPermissions;
 
     /**
      * Determine whether the user can view any models.
@@ -40,7 +41,7 @@ class InternalTransferPolicy
      */
     public function update(User $user, InternalTransfer $internalTransfer): bool
     {
-        if (! $user->can('update_internal')) {
+        if ( ! $user->can('update_internal')) {
             return false;
         }
 
@@ -52,7 +53,7 @@ class InternalTransferPolicy
      */
     public function delete(User $user, InternalTransfer $internalTransfer): bool
     {
-        if (! $user->can('delete_internal')) {
+        if ( ! $user->can('delete_internal')) {
             return false;
         }
 

@@ -2,6 +2,7 @@
 
 namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources;
 
+use BackedEnum;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
@@ -61,7 +62,7 @@ class OperationTypeResource extends Resource
 {
     protected static ?string $model = OperationType::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-queue-list';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-queue-list';
 
     protected static ?int $navigationSort = 3;
 
@@ -118,7 +119,7 @@ class OperationTypeResource extends Resource
                                                         $set('print_label', null);
 
                                                         // Get the new default values based on current type
-                                                        $type = $get('type');
+                                                        $type        = $get('type');
                                                         $warehouseId = $get('warehouse_id');
 
                                                         // Set new source location
@@ -165,7 +166,7 @@ class OperationTypeResource extends Resource
                                                         modifyQueryUsing: fn (Builder $query) => $query->withTrashed(),
                                                     )
                                                     ->getOptionLabelFromRecordUsing(function ($record): string {
-                                                        return $record->name.($record->trashed() ? ' (Deleted)' : '');
+                                                        return $record->name . ($record->trashed() ? ' (Deleted)' : '');
                                                     })
                                                     ->disableOptionWhen(function ($label) {
                                                         return str_contains($label, ' (Deleted)');
@@ -238,7 +239,7 @@ class OperationTypeResource extends Resource
                                                 modifyQueryUsing: fn (Builder $query) => $query->withTrashed(),
                                             )
                                             ->getOptionLabelFromRecordUsing(function ($record): string {
-                                                return $record->full_name.($record->trashed() ? ' (Deleted)' : '');
+                                                return $record->full_name . ($record->trashed() ? ' (Deleted)' : '');
                                             })
                                             ->disableOptionWhen(function ($label) {
                                                 return str_contains($label, ' (Deleted)');
@@ -273,7 +274,7 @@ class OperationTypeResource extends Resource
                                                 modifyQueryUsing: fn (Builder $query) => $query->withTrashed(),
                                             )
                                             ->getOptionLabelFromRecordUsing(function ($record): string {
-                                                return $record->full_name.($record->trashed() ? ' (Deleted)' : '');
+                                                return $record->full_name . ($record->trashed() ? ' (Deleted)' : '');
                                             })
                                             ->disableOptionWhen(function ($label) {
                                                 return str_contains($label, ' (Deleted)');
@@ -282,7 +283,7 @@ class OperationTypeResource extends Resource
                                             ->preload()
                                             ->required()
                                             ->default(function (Get $get) {
-                                                $type = $get('type');
+                                                $type        = $get('type');
                                                 $warehouseId = $get('warehouse_id');
 
                                                 return match ($type) {

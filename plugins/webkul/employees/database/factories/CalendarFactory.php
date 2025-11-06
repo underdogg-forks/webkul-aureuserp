@@ -24,15 +24,15 @@ class CalendarFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'                      => $this->faker->name,
-            'tz'                        => $this->faker->timezone,
-            'hours_per_day'             => $this->faker->randomFloat(2, 0, 24),
-            'status'                    => 1,
-            'two_weeks_calendar'        => 0,
-            'flexible_hours'            => 0,
-            'full_time_required_hours'  => 0,
-            'user_id'                   => User::factory(),
-            'company_id'                => Company::factory(),
+            'name'                     => $this->faker->name,
+            'tz'                       => $this->faker->timezone,
+            'hours_per_day'            => $this->faker->randomFloat(2, 0, 24),
+            'status'                   => 1,
+            'two_weeks_calendar'       => 0,
+            'flexible_hours'           => 0,
+            'full_time_required_hours' => 0,
+            'user_id'                  => User::factory(),
+            'company_id'               => Company::factory(),
         ];
     }
 }

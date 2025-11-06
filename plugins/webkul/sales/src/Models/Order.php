@@ -29,7 +29,11 @@ use Webkul\Support\Models\UTMSource;
 
 class Order extends Model
 {
-    use HasChatter, HasCustomFields, HasFactory, HasLogActivity, SoftDeletes;
+    use HasChatter;
+    use HasCustomFields;
+    use HasFactory;
+    use HasLogActivity;
+    use SoftDeletes;
 
     protected $table = 'sales_orders';
 
@@ -223,6 +227,14 @@ class Order extends Model
         return $this->hasMany(Operation::class, 'sale_order_id');
     }
 
+    /**
+     * Update the name based on the state without trigger any additional events.
+     */
+    public function updateName()
+    {
+        $this->name = 'SO/' . $this->id;
+    }
+
     protected static function boot()
     {
         parent::boot();
@@ -234,13 +246,5 @@ class Order extends Model
         static::created(function ($order) {
             $order->update(['name' => $order->name]);
         });
-    }
-
-    /**
-     * Update the name based on the state without trigger any additional events.
-     */
-    public function updateName()
-    {
-        $this->name = 'SO/'.$this->id;
     }
 }

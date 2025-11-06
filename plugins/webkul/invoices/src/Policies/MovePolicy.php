@@ -9,7 +9,8 @@ use Webkul\Security\Traits\HasScopedPermissions;
 
 class MovePolicy
 {
-    use HandlesAuthorization, HasScopedPermissions;
+    use HandlesAuthorization;
+    use HasScopedPermissions;
 
     /**
      * Determine whether the user can view any models.
@@ -40,7 +41,7 @@ class MovePolicy
      */
     public function update(User $user, Move $move): bool
     {
-        if (! $user->can('update_refund')) {
+        if ( ! $user->can('update_refund')) {
             return false;
         }
 
@@ -52,7 +53,7 @@ class MovePolicy
      */
     public function delete(User $user, Move $move): bool
     {
-        if (! $user->can('delete_refund')) {
+        if ( ! $user->can('delete_refund')) {
             return false;
         }
 
@@ -72,7 +73,7 @@ class MovePolicy
      */
     public function forceDelete(User $user, Move $move): bool
     {
-        if (! $user->can('force_delete_refund')) {
+        if ( ! $user->can('force_delete_refund')) {
             return false;
         }
 
@@ -92,7 +93,7 @@ class MovePolicy
      */
     public function restore(User $user, Move $move): bool
     {
-        if (! $user->can('restore_refund')) {
+        if ( ! $user->can('restore_refund')) {
             return false;
         }
 
@@ -112,7 +113,7 @@ class MovePolicy
      */
     public function replicate(User $user, Move $move): bool
     {
-        if (! $user->can('replicate_refund')) {
+        if ( ! $user->can('replicate_refund')) {
             return false;
         }
 

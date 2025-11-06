@@ -2,6 +2,7 @@
 
 namespace Webkul\Invoice\Filament\Clusters\Customer\Resources;
 
+use BackedEnum;
 use Filament\Resources\Pages\Page;
 use Filament\Tables\Table;
 use Webkul\Invoice\Filament\Clusters\Customer;
@@ -24,7 +25,7 @@ class PartnerResource extends BasePartnerResource
 
     protected static ?int $navigationSort = 6;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-users';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-users';
 
     protected static ?string $cluster = Customer::class;
 

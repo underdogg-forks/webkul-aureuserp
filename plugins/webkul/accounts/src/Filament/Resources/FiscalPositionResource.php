@@ -2,6 +2,7 @@
 
 namespace Webkul\Account\Filament\Resources;
 
+use BackedEnum;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
@@ -36,7 +37,7 @@ class FiscalPositionResource extends Resource
 {
     protected static ?string $model = FiscalPosition::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-arrow-uturn-left';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-arrow-uturn-left';
 
     protected static bool $shouldRegisterNavigation = false;
 

@@ -2,6 +2,7 @@
 
 namespace Webkul\Sale\Filament\Clusters\Products\Resources;
 
+use BackedEnum;
 use Filament\Resources\Pages\Page;
 use Filament\Tables\Filters\QueryBuilder;
 use Filament\Tables\Table;
@@ -19,7 +20,7 @@ class ProductResource extends BaseProductResource
 {
     protected static ?string $model = Product::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-shopping-bag';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-shopping-bag';
 
     protected static bool $shouldRegisterNavigation = true;
 

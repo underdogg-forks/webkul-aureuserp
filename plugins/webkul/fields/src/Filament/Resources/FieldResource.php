@@ -210,7 +210,7 @@ class FieldResource extends Resource
                     ->sortable(),
                 TextColumn::make('customizable_type')
                     ->label(__('fields::filament/resources/field.table.columns.resource'))
-                    ->description(fn (Field $record): string => str($record->customizable_type)->afterLast('\\')->toString().'Resource')
+                    ->description(fn (Field $record): string => str($record->customizable_type)->afterLast('\\')->toString() . 'Resource')
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->label(__('fields::filament/resources/field.table.columns.created-at'))
@@ -505,7 +505,7 @@ class FieldResource extends Resource
 
     public static function getTypeFormValidations(?string $type): array
     {
-        if (is_null($type)) {
+        if (null === $type) {
             return [];
         }
 
@@ -619,7 +619,7 @@ class FieldResource extends Resource
 
     public static function getTypeFormSettings(?string $type): array
     {
-        if (is_null($type)) {
+        if (null === $type) {
             return [];
         }
 
@@ -735,26 +735,26 @@ class FieldResource extends Resource
             ],
 
             'datetime' => [
-                'closeOnDateSelection'   => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.close-on-date-selection'),
-                'default'                => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.default'),
-                'disabled'               => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.disabled'),
-                'disabledDates'          => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.disabled-dates'),
-                'displayFormat'          => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.display-format'),
-                'firstDayOfWeek'         => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.first-day-of-week'),
-                'format'                 => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.format'),
-                'helperText'             => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.helper-text'),
-                'hint'                   => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.hint'),
-                'hintColor'              => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.hint-color'),
-                'hintIcon'               => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.hint-icon'),
-                'hoursStep'              => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.hours-step'),
-                'id'                     => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.id'),
-                'locale'                 => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.locale'),
-                'minutesStep'            => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.minutes-step'),
-                'seconds'                => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.seconds'),
-                'secondsStep'            => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.seconds-step'),
-                'timezone'               => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.timezone'),
-                'weekStartsOnMonday'     => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.week-starts-on-monday'),
-                'weekStartsOnSunday'     => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.week-starts-on-sunday'),
+                'closeOnDateSelection' => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.close-on-date-selection'),
+                'default'              => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.default'),
+                'disabled'             => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.disabled'),
+                'disabledDates'        => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.disabled-dates'),
+                'displayFormat'        => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.display-format'),
+                'firstDayOfWeek'       => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.first-day-of-week'),
+                'format'               => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.format'),
+                'helperText'           => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.helper-text'),
+                'hint'                 => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.hint'),
+                'hintColor'            => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.hint-color'),
+                'hintIcon'             => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.hint-icon'),
+                'hoursStep'            => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.hours-step'),
+                'id'                   => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.id'),
+                'locale'               => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.locale'),
+                'minutesStep'          => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.minutes-step'),
+                'seconds'              => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.seconds'),
+                'secondsStep'          => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.seconds-step'),
+                'timezone'             => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.timezone'),
+                'weekStartsOnMonday'   => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.week-starts-on-monday'),
+                'weekStartsOnSunday'   => __('fields::filament/resources/field.form.sections.form-settings.settings.datetime.week-starts-on-sunday'),
             ],
 
             'editor' => [
@@ -936,10 +936,10 @@ class FieldResource extends Resource
                             'size',
                         ]))
                         ->options([
-                            TextSize::ExtraSmall->name  => __('fields::filament/resources/field.form.sections.table-settings.fields.size-options.extra-small'),
-                            TextSize::Small->name       => __('fields::filament/resources/field.form.sections.table-settings.fields.size-options.small'),
-                            TextSize::Medium->name      => __('fields::filament/resources/field.form.sections.table-settings.fields.size-options.medium'),
-                            TextSize::Large->name       => __('fields::filament/resources/field.form.sections.table-settings.fields.size-options.large'),
+                            TextSize::ExtraSmall->name => __('fields::filament/resources/field.form.sections.table-settings.fields.size-options.extra-small'),
+                            TextSize::Small->name      => __('fields::filament/resources/field.form.sections.table-settings.fields.size-options.small'),
+                            TextSize::Medium->name     => __('fields::filament/resources/field.form.sections.table-settings.fields.size-options.medium'),
+                            TextSize::Large->name      => __('fields::filament/resources/field.form.sections.table-settings.fields.size-options.large'),
                         ]),
 
                     TextInput::make('value')
@@ -968,7 +968,7 @@ class FieldResource extends Resource
 
     public static function getTypeTableSettings(?string $type): array
     {
-        if (is_null($type)) {
+        if (null === $type) {
             return [];
         }
 
@@ -1145,7 +1145,7 @@ class FieldResource extends Resource
 
     public static function getTypeInfolistSettings(?string $type): array
     {
-        if (is_null($type)) {
+        if (null === $type) {
             return [];
         }
 

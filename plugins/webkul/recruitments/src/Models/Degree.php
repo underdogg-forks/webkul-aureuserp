@@ -11,14 +11,14 @@ class Degree extends Model implements Sortable
 {
     use SortableTrait;
 
-    protected $table = 'recruitments_degrees';
-
-    protected $fillable = ['name', 'sort', 'creator_id'];
-
     public $sortable = [
         'order_column_name'  => 'sort',
         'sort_when_creating' => true,
     ];
+
+    protected $table = 'recruitments_degrees';
+
+    protected $fillable = ['name', 'sort', 'creator_id'];
 
     public function createdBy()
     {

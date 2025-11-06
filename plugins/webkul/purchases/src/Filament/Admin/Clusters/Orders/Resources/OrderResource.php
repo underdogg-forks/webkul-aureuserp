@@ -116,7 +116,7 @@ class OrderResource extends Resource
                                             ->orderBy('id')
                                     )
                                     ->getOptionLabelFromRecordUsing(function ($record): string {
-                                        return $record->name.($record->trashed() ? ' (Deleted)' : '');
+                                        return $record->name . ($record->trashed() ? ' (Deleted)' : '');
                                     })
                                     ->disableOptionWhen(function ($label) {
                                         return str_contains($label, ' (Deleted)');
@@ -149,9 +149,9 @@ class OrderResource extends Resource
                                                                 $vendorPrice = $productModel->cost ?? $productModel->price;
                                                             }
 
-                                                            $set("products.$key.price_unit", round($vendorPrice, 2));
+                                                            $set("products.{$key}.price_unit", round($vendorPrice, 2));
 
-                                                            self::calculateLineTotals($set, $get, "products.$key.");
+                                                            self::calculateLineTotals($set, $get, "products.{$key}.");
                                                         }
                                                     }
                                                 }
@@ -171,14 +171,14 @@ class OrderResource extends Resource
                                     ->preload()
                                     ->visible(static::getOrderSettings()->enable_purchase_agreements)
                                     ->afterStateUpdated(function ($state, $set, $get) {
-                                        if (! $state) {
+                                        if ( ! $state) {
                                             $set('products', []);
 
                                             return;
                                         }
 
                                         $requisition = Requisition::find($state);
-                                        if (! $requisition) {
+                                        if ( ! $requisition) {
                                             $set('products', []);
 
                                             return;
@@ -187,7 +187,7 @@ class OrderResource extends Resource
                                         $products = [];
                                         foreach ($requisition->lines as $line) {
                                             $product = $line->product;
-                                            $uom = $line->uom;
+                                            $uom     = $line->uom;
 
                                             $products[] = [
                                                 'product_id'  => $product?->id,
@@ -199,7 +199,7 @@ class OrderResource extends Resource
                                         $set('products', $products);
 
                                         foreach (array_keys($products) as $key) {
-                                            self::calculateLineTotals($set, $get, "products.$key.");
+                                            self::calculateLineTotals($set, $get, "products.{$key}.");
                                         }
                                     })
                                     ->live(),
@@ -274,7 +274,7 @@ class OrderResource extends Resource
                                                 modifyQueryUsing: fn (Builder $query) => $query->withTrashed(),
                                             )
                                             ->getOptionLabelFromRecordUsing(function ($record): string {
-                                                return $record->name.($record->trashed() ? ' (Deleted)' : '');
+                                                return $record->name . ($record->trashed() ? ' (Deleted)' : '');
                                             })
                                             ->disableOptionWhen(fn ($label) => str_contains($label, ' (Deleted)'))
                                             ->searchable()
@@ -689,7 +689,6 @@ class OrderResource extends Resource
                                             ->label(__('purchases::filament/admin/clusters/orders/resources/order.infolist.tabs.products.repeater.products.entries.amount')),
                                     ])
                                     ->schema([
-
                                         TextEntry::make('name'),
                                         TextEntry::make('planned_at')
                                             ->date(),
@@ -869,7 +868,7 @@ class OrderResource extends Resource
                     ->preload()
                     ->live()
                     ->getOptionLabelFromRecordUsing(function ($record): string {
-                        return $record->name.($record->trashed() ? ' (Deleted)' : '');
+                        return $record->name . ($record->trashed() ? ' (Deleted)' : '');
                     })
                     ->disableOptionWhen(function ($value, $state, $component, $label) {
                         if (str_contains($label, ' (Deleted)')) {
@@ -877,7 +876,7 @@ class OrderResource extends Resource
                         }
 
                         $repeater = $component->getParentRepeater();
-                        if (! $repeater) {
+                        if ( ! $repeater) {
                             return false;
                         }
 
@@ -1059,20 +1058,37 @@ class OrderResource extends Resource
                     ->url(function (array $arguments, Get $get): ?string {
                         $productId = $get("products.{$arguments['item']}.product_id");
 
-                        if (! $productId) {
+                        if ( ! $productId) {
                             return null;
                         }
 
                         return ProductResource::getUrl('edit', ['record' => $productId]);
                     }, shouldOpenInNewTab: true)
-                    ->hidden(fn (array $arguments, Get $get): bool => empty($get("products.{$arguments['item']}.product_id"))
+                    ->hidden(
+                        fn (array $arguments, Get $get): bool => empty($get("products.{$arguments['item']}.product_id"))
                     ),
             ]);
     }
 
+    public static function getOrderSettings(): OrderSettings
+    {
+        return once(fn () => app(OrderSettings::class));
+    }
+
+    public static function getProductSettings(): ProductSettings
+    {
+        return once(fn () => app(ProductSettings::class));
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->orderByDesc('id');
+    }
+
     private static function afterProductUpdated(Set $set, Get $get): void
     {
-        if (! $get('product_id')) {
+        if ( ! $get('product_id')) {
             return;
         }
 
@@ -1101,7 +1117,7 @@ class OrderResource extends Resource
 
     private static function afterProductQtyUpdated(Set $set, Get $get): void
     {
-        if (! $get('product_id')) {
+        if ( ! $get('product_id')) {
             return;
         }
 
@@ -1120,7 +1136,7 @@ class OrderResource extends Resource
 
     private static function afterUOMUpdated(Set $set, Get $get): void
     {
-        if (! $get('product_id')) {
+        if ( ! $get('product_id')) {
             return;
         }
 
@@ -1143,14 +1159,14 @@ class OrderResource extends Resource
 
     private static function afterProductPackagingQtyUpdated(Set $set, Get $get): void
     {
-        if (! $get('product_id')) {
+        if ( ! $get('product_id')) {
             return;
         }
 
         if ($get('product_packaging_id')) {
             $packaging = Packaging::find($get('product_packaging_id'));
 
-            $packagingQty = floatval($get('product_packaging_qty') ?? 0);
+            $packagingQty = (float) ($get('product_packaging_qty') ?? 0);
 
             $productUOMQty = $packagingQty * $packaging->qty;
 
@@ -1168,7 +1184,7 @@ class OrderResource extends Resource
 
     private static function afterProductPackagingUpdated(Set $set, Get $get): void
     {
-        if (! $get('product_id')) {
+        if ( ! $get('product_id')) {
             return;
         }
 
@@ -1191,7 +1207,7 @@ class OrderResource extends Resource
 
     private static function calculateUnitQuantity($uomId, $quantity)
     {
-        if (! $uomId) {
+        if ( ! $uomId) {
             return $quantity;
         }
 
@@ -1212,13 +1228,13 @@ class OrderResource extends Resource
 
         $vendorPrices = $vendorPrices->where('min_qty', '<=', $get('product_qty') ?? 1)->where('currency_id', $get('../../currency_id'));
 
-        if (! $vendorPrices->isEmpty()) {
+        if ( ! $vendorPrices->isEmpty()) {
             $vendorPrice = $vendorPrices->first()->price;
         } else {
             $vendorPrice = $product->cost ?: $product->price;
         }
 
-        if (! $get('uom_id')) {
+        if ( ! $get('uom_id')) {
             return $vendorPrice;
         }
 
@@ -1241,33 +1257,31 @@ class OrderResource extends Resource
                 ];
             }
         }
-
-        return null;
     }
 
     private static function calculateLineTotals(Set $set, Get $get, ?string $prefix = ''): void
     {
-        if (! $get($prefix.'product_id')) {
-            $set($prefix.'price_unit', 0);
+        if ( ! $get($prefix . 'product_id')) {
+            $set($prefix . 'price_unit', 0);
 
-            $set($prefix.'discount', 0);
+            $set($prefix . 'discount', 0);
 
-            $set($prefix.'price_tax', 0);
+            $set($prefix . 'price_tax', 0);
 
-            $set($prefix.'price_subtotal', 0);
+            $set($prefix . 'price_subtotal', 0);
 
-            $set($prefix.'price_total', 0);
+            $set($prefix . 'price_total', 0);
 
             return;
         }
 
-        $priceUnit = floatval($get($prefix.'price_unit'));
+        $priceUnit = (float) ($get($prefix . 'price_unit'));
 
-        $quantity = floatval($get($prefix.'product_qty') ?? 1);
+        $quantity = (float) ($get($prefix . 'product_qty') ?? 1);
 
         $subTotal = $priceUnit * $quantity;
 
-        $discountValue = floatval($get($prefix.'discount') ?? 0);
+        $discountValue = (float) ($get($prefix . 'discount') ?? 0);
 
         if ($discountValue > 0) {
             $discountAmount = $subTotal * ($discountValue / 100);
@@ -1275,30 +1289,14 @@ class OrderResource extends Resource
             $subTotal = $subTotal - $discountAmount;
         }
 
-        $taxIds = $get($prefix.'taxes') ?? [];
+        $taxIds = $get($prefix . 'taxes') ?? [];
 
         [$subTotal, $taxAmount] = TaxFacade::collect($taxIds, $subTotal, $quantity);
 
-        $set($prefix.'price_subtotal', round($subTotal, 4));
+        $set($prefix . 'price_subtotal', round($subTotal, 4));
 
-        $set($prefix.'price_tax', $taxAmount);
+        $set($prefix . 'price_tax', $taxAmount);
 
-        $set($prefix.'price_total', $subTotal + $taxAmount);
-    }
-
-    public static function getOrderSettings(): OrderSettings
-    {
-        return once(fn () => app(OrderSettings::class));
-    }
-
-    public static function getProductSettings(): ProductSettings
-    {
-        return once(fn () => app(ProductSettings::class));
-    }
-
-    public static function getEloquentQuery(): Builder
-    {
-        return parent::getEloquentQuery()
-            ->orderByDesc('id');
+        $set($prefix . 'price_total', $subTotal + $taxAmount);
     }
 }

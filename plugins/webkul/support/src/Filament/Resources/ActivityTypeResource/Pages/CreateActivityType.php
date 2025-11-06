@@ -12,14 +12,14 @@ class CreateActivityType extends CreateRecord
 
     protected static ?string $pluginName = 'support';
 
-    protected function getRedirectUrl(): string
-    {
-        return $this->getResource()::getUrl('view', ['record' => $this->getRecord()]);
-    }
-
     protected static function getPluginName()
     {
         return static::$pluginName;
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('view', ['record' => $this->getRecord()]);
     }
 
     protected function getCreatedNotification(): Notification

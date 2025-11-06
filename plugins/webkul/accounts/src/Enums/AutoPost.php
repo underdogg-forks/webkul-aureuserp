@@ -16,17 +16,6 @@ enum AutoPost: string implements HasLabel
 
     case YEARLY = 'yearly';
 
-    public function getLabel(): ?string
-    {
-        return match ($this) {
-            self::NO        => __('accounts::enums/auto-post.no'),
-            self::AT_DATE   => __('accounts::enums/auto-post.at-date'),
-            self::MONTHLY   => __('accounts::enums/auto-post.monthly'),
-            self::QUARTERLY => __('accounts::enums/auto-post.quarterly'),
-            self::YEARLY    => __('accounts::enums/auto-post.yearly'),
-        };
-    }
-
     public static function options(): array
     {
         return [
@@ -36,5 +25,16 @@ enum AutoPost: string implements HasLabel
             self::QUARTERLY->value => __('accounts::enums/auto-post.quarterly'),
             self::YEARLY->value    => __('accounts::enums/auto-post.yearly'),
         ];
+    }
+
+    public function getLabel(): ?string
+    {
+        return match ($this) {
+            self::NO        => __('accounts::enums/auto-post.no'),
+            self::AT_DATE   => __('accounts::enums/auto-post.at-date'),
+            self::MONTHLY   => __('accounts::enums/auto-post.monthly'),
+            self::QUARTERLY => __('accounts::enums/auto-post.quarterly'),
+            self::YEARLY    => __('accounts::enums/auto-post.yearly'),
+        };
     }
 }

@@ -10,11 +10,6 @@ use Webkul\Inventory\Models\Operation;
 
 class ReturnSlipAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'inventories.operations.print.return-slip';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -22,7 +17,7 @@ class ReturnSlipAction extends Action
         $this
             ->label(__('inventories::filament/clusters/operations/actions/todo.label'))
             ->action(function (Operation $record, Component $livewire): void {
-                if (! $record->moves->count()) {
+                if ( ! $record->moves->count()) {
                     Notification::make()
                         ->success()
                         ->title(__('inventories::filament/clusters/operations/actions/todo.notification.warning.title'))
@@ -44,5 +39,10 @@ class ReturnSlipAction extends Action
                     ->success()
                     ->send();
             });
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'inventories.operations.print.return-slip';
     }
 }

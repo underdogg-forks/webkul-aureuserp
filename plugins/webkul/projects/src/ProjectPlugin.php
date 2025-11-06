@@ -11,19 +11,19 @@ use Webkul\Support\Package;
 
 class ProjectPlugin implements Plugin
 {
-    public function getId(): string
-    {
-        return 'projects';
-    }
-
     public static function make(): static
     {
         return app(static::class);
     }
 
+    public function getId(): string
+    {
+        return 'projects';
+    }
+
     public function register(Panel $panel): void
     {
-        if (! Package::isPluginInstalled($this->getId())) {
+        if ( ! Package::isPluginInstalled($this->getId())) {
             return;
         }
 
@@ -40,15 +40,12 @@ class ProjectPlugin implements Plugin
                             ->url(fn () => ManageTasks::getUrl())
                             ->group('Project')
                             ->sort(3)
-                            ->visible(fn() => ManageTasks::canAccess()),
+                            ->visible(fn () => ManageTasks::canAccess()),
                     ]);
             });
     }
 
-    public function boot(Panel $panel): void
-    {
-        //
-    }
+    public function boot(Panel $panel): void {}
 
     protected function getPluginBasePath($path = null): string
     {

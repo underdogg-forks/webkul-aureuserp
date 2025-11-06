@@ -15,11 +15,6 @@ class EditViewAction extends Action
 {
     use CanCustomizeProcess;
 
-    public static function getDefaultName(): ?string
-    {
-        return 'table_views.update.action';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -74,7 +69,8 @@ class EditViewAction extends Action
                             'view_key'        => $tableView->id,
                             'filterable_type' => $tableView->filterable_type,
                             'user_id'         => filament()->auth()->id(),
-                        ], [
+                        ],
+                        [
                             'is_favorite' => $data['is_favorite'],
                         ]
                     );
@@ -91,5 +87,10 @@ class EditViewAction extends Action
             ->icon('heroicon-s-pencil-square')
             ->modalHeading(__('table-views::filament/actions/edit-view.form.modal.title'))
             ->modalWidth(Width::Medium);
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'table_views.update.action';
     }
 }

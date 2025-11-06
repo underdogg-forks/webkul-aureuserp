@@ -38,7 +38,7 @@ class FieldServiceProvider extends PackageServiceProvider
     public function registerCustomCss()
     {
         FilamentAsset::register([
-            Css::make('fields', __DIR__.'/../resources/dist/fields.css'),
+            Css::make('fields', __DIR__ . '/../resources/dist/fields.css'),
         ], 'fields');
     }
 }

@@ -14,6 +14,19 @@ class ListOperationTypes extends ListRecords
 {
     protected static string $resource = OperationTypeResource::class;
 
+    public function getTabs(): array
+    {
+        return [
+            'all' => Tab::make(__('inventories::filament/clusters/configurations/resources/operation-type/pages/list-operation-types.tabs.all'))
+                ->badge(OperationType::count()),
+            'archived' => Tab::make(__('inventories::filament/clusters/configurations/resources/operation-type/pages/list-operation-types.tabs.archived'))
+                ->badge(OperationType::onlyTrashed()->count())
+                ->modifyQueryUsing(function ($query) {
+                    return $query->onlyTrashed();
+                }),
+        ];
+    }
+
     protected function getHeaderActions(): array
     {
         return [
@@ -35,19 +48,6 @@ class ListOperationTypes extends ListRecords
                         ->title(__('inventories::filament/clusters/configurations/resources/operation-type/pages/list-operation-types.header-actions.create.notification.title'))
                         ->body(__('inventories::filament/clusters/configurations/resources/operation-type/pages/list-operation-types.header-actions.create.notification.body')),
                 ),
-        ];
-    }
-
-    public function getTabs(): array
-    {
-        return [
-            'all' => Tab::make(__('inventories::filament/clusters/configurations/resources/operation-type/pages/list-operation-types.tabs.all'))
-                ->badge(OperationType::count()),
-            'archived' => Tab::make(__('inventories::filament/clusters/configurations/resources/operation-type/pages/list-operation-types.tabs.archived'))
-                ->badge(OperationType::onlyTrashed()->count())
-                ->modifyQueryUsing(function ($query) {
-                    return $query->onlyTrashed();
-                }),
         ];
     }
 }

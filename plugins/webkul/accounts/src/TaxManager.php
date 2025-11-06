@@ -9,9 +9,10 @@ class TaxManager
     /**
      * Calculate taxes.
      *
-     * @param  array  $taxIds
-     * @param  float  $subTotal
-     * @param  float  $quantity
+     * @param array $taxIds
+     * @param float $subTotal
+     * @param float $quantity
+     *
      * @return array
      */
     public static function collect($taxIds, $subTotal, $quantity)
@@ -31,7 +32,7 @@ class TaxManager
         $adjustedSubTotal = $subTotal;
 
         foreach ($taxes as $tax) {
-            $amount = floatval($tax->amount);
+            $amount = (float) ($tax->amount);
 
             $tax->price_include_override ??= 'tax_excluded';
 

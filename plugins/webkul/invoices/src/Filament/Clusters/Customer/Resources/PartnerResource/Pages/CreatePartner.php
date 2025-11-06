@@ -10,15 +10,15 @@ class CreatePartner extends BaseCreatePartner
 {
     protected static string $resource = PartnerResource::class;
 
+    public function getTitle(): string|Htmlable
+    {
+        return __('Customer');
+    }
+
     protected function mutateFormDataBeforeCreate(array $data): array
     {
         $data['sub_type'] = 'customer';
 
         return $data;
-    }
-
-    public function getTitle(): string|Htmlable
-    {
-        return __('Customer');
     }
 }

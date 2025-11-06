@@ -11,11 +11,6 @@ use Webkul\TimeOff\Models\LeaveMandatoryDay;
 
 class HolidayAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'time_off.holiday_action';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -102,5 +97,10 @@ class HolidayAction extends Action
             ->label(__('time-off::filament/actions/holiday-action.title'))
             ->modalSubmitAction(false)
             ->modalCancelAction(false);
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'time_off.holiday_action';
     }
 }

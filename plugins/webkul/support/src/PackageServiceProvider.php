@@ -15,6 +15,28 @@ abstract class PackageServiceProvider extends BasePackageServiceProvider
 
     abstract public function configureCustomPackage(Package $package): void;
 
+    public static function generateSettingName(string $settingFileName, Carbon $now): string
+    {
+        $settingsPath    = 'settings/' . dirname($settingFileName) . '/';
+        $settingFileName = basename($settingFileName);
+
+        $len = mb_strlen($settingFileName) + 4;
+
+        if (Str::contains($settingFileName, '/')) {
+            $settingsPath .= Str::of($settingFileName)->beforeLast('/')->finish('/');
+
+            $settingFileName = Str::of($settingFileName)->afterLast('/');
+        }
+
+        foreach (glob(database_path("{$settingsPath}*.php")) as $filename) {
+            if ((mb_substr($filename, -$len) === $settingFileName . '.php')) {
+                return $filename;
+            }
+        }
+
+        return database_path($settingsPath . $now->format('Y_m_d_His') . '_' . Str::of($settingFileName)->snake()->finish('.php'));
+    }
+
     public function register()
     {
         $this->registeringPackage();
@@ -40,7 +62,7 @@ abstract class PackageServiceProvider extends BasePackageServiceProvider
 
     public function newPackage(): Package
     {
-        return new Package;
+        return new Package();
     }
 
     public function configurePackage(BasePackage $package): void {}
@@ -50,11 +72,11 @@ abstract class PackageServiceProvider extends BasePackageServiceProvider
         $this->bootingPackage();
 
         if ($this->package->hasTranslations) {
-            $langPath = 'vendor/'.$this->package->shortName();
+            $langPath = 'vendor/' . $this->package->shortName();
 
             $langPath = (function_exists('lang_path'))
                 ? lang_path($langPath)
-                : resource_path('lang/'.$langPath);
+                : resource_path('lang/' . $langPath);
         }
 
         if ($this->app->runningInConsole()) {
@@ -81,7 +103,7 @@ abstract class PackageServiceProvider extends BasePackageServiceProvider
             $now = Carbon::now();
             foreach ($this->package->migrationFileNames as $migrationFileName) {
                 $filePath = $this->package->basePath("/../database/migrations/{$migrationFileName}.php");
-                if (! file_exists($filePath)) {
+                if ( ! file_exists($filePath)) {
                     // Support for the .stub file extension
                     $filePath .= '.stub';
                 }
@@ -104,7 +126,7 @@ abstract class PackageServiceProvider extends BasePackageServiceProvider
 
             foreach ($this->package->settingFileNames as $settingFileName) {
                 $filePath = $this->package->basePath("/../database/settings/{$settingFileName}.php");
-                if (! file_exists($filePath)) {
+                if ( ! file_exists($filePath)) {
                     // Support for the .stub file extension
                     $filePath .= '.stub';
                 }
@@ -126,11 +148,11 @@ abstract class PackageServiceProvider extends BasePackageServiceProvider
             }
         }
 
-        if (! empty($this->package->commands)) {
+        if ( ! empty($this->package->commands)) {
             $this->commands($this->package->commands);
         }
 
-        if (! empty($this->package->consoleCommands) && $this->app->runningInConsole()) {
+        if ( ! empty($this->package->consoleCommands) && $this->app->runningInConsole()) {
             $this->commands($this->package->consoleCommands);
         }
 
@@ -180,27 +202,5 @@ abstract class PackageServiceProvider extends BasePackageServiceProvider
         $this->packageBooted();
 
         return $this;
-    }
-
-    public static function generateSettingName(string $settingFileName, Carbon $now): string
-    {
-        $settingsPath = 'settings/'.dirname($settingFileName).'/';
-        $settingFileName = basename($settingFileName);
-
-        $len = strlen($settingFileName) + 4;
-
-        if (Str::contains($settingFileName, '/')) {
-            $settingsPath .= Str::of($settingFileName)->beforeLast('/')->finish('/');
-
-            $settingFileName = Str::of($settingFileName)->afterLast('/');
-        }
-
-        foreach (glob(database_path("{$settingsPath}*.php")) as $filename) {
-            if ((substr($filename, -$len) === $settingFileName.'.php')) {
-                return $filename;
-            }
-        }
-
-        return database_path($settingsPath.$now->format('Y_m_d_His').'_'.Str::of($settingFileName)->snake()->finish('.php'));
     }
 }

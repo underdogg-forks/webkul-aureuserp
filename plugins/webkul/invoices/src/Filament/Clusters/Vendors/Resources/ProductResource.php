@@ -2,6 +2,7 @@
 
 namespace Webkul\Invoice\Filament\Clusters\Vendors\Resources;
 
+use BackedEnum;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
@@ -32,7 +33,7 @@ class ProductResource extends BaseProductResource
 
     protected static ?string $model = Product::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-shopping-bag';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-shopping-bag';
 
     protected static bool $shouldRegisterNavigation = true;
 
@@ -68,10 +69,10 @@ class ProductResource extends BaseProductResource
             Placeholder::make('total_tax_inclusion')
                 ->hiddenLabel()
                 ->content(function (Get $get) {
-                    $price = floatval($get('price'));
+                    $price          = (float) ($get('price'));
                     $selectedTaxIds = $get('accounts_product_taxes');
 
-                    if (! $price || empty($selectedTaxIds)) {
+                    if ( ! $price || empty($selectedTaxIds)) {
                         return '';
                     }
 
@@ -84,7 +85,7 @@ class ProductResource extends BaseProductResource
                     ];
 
                     $totalTaxAmount = 0;
-                    $basePrice = $price;
+                    $basePrice      = $price;
 
                     foreach ($taxes as $tax) {
                         $taxAmount = $basePrice * ($tax->amount / 100);
@@ -101,7 +102,7 @@ class ProductResource extends BaseProductResource
                         ];
                     }
 
-                    $result['total_excluded'] = $price;
+                    $result['total_excluded']                                       = $price;
                     $result['total_in$this->record->is_configurable = true;cluded'] = $price + $totalTaxAmount;
 
                     $parts = [];
@@ -120,7 +121,7 @@ class ProductResource extends BaseProductResource
                         );
                     }
 
-                    return ! empty($parts) ? '(= '.implode(', ', $parts).')' : ' ';
+                    return ! empty($parts) ? '(= ' . implode(', ', $parts) . ')' : ' ';
                 }),
 
             Select::make('accounts_product_supplier_taxes')

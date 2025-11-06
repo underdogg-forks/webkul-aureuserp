@@ -16,18 +16,18 @@ enum DeliveryStep: string implements HasDescription, HasLabel
     public function getLabel(): string
     {
         return match ($this) {
-            self::ONE_STEP       => __('inventories::enums/delivery-step.one-step.name'),
-            self::TWO_STEPS      => __('inventories::enums/delivery-step.two-steps.name'),
-            self::THREE_STEPS    => __('inventories::enums/delivery-step.three-steps.name'),
+            self::ONE_STEP    => __('inventories::enums/delivery-step.one-step.name'),
+            self::TWO_STEPS   => __('inventories::enums/delivery-step.two-steps.name'),
+            self::THREE_STEPS => __('inventories::enums/delivery-step.three-steps.name'),
         };
     }
 
     public function getDescription(): string
     {
         return match ($this) {
-            self::ONE_STEP       => __('inventories::enums/delivery-step.one-step.description'),
-            self::TWO_STEPS      => __('inventories::enums/delivery-step.two-steps.description'),
-            self::THREE_STEPS    => __('inventories::enums/delivery-step.three-steps.description'),
+            self::ONE_STEP    => __('inventories::enums/delivery-step.one-step.description'),
+            self::TWO_STEPS   => __('inventories::enums/delivery-step.two-steps.description'),
+            self::THREE_STEPS => __('inventories::enums/delivery-step.three-steps.description'),
         };
     }
 }

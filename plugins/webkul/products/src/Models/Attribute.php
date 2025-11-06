@@ -15,7 +15,14 @@ use Webkul\Security\Models\User;
 
 class Attribute extends Model implements Sortable
 {
-    use HasFactory, SoftDeletes, SortableTrait;
+    use HasFactory;
+    use SoftDeletes;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     /**
      * Table name.
@@ -43,11 +50,6 @@ class Attribute extends Model implements Sortable
      */
     protected $casts = [
         'type' => AttributeType::class,
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function options(): HasMany

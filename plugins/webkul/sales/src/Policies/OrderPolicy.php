@@ -9,7 +9,8 @@ use Webkul\Security\Traits\HasScopedPermissions;
 
 class OrderPolicy
 {
-    use HandlesAuthorization, HasScopedPermissions;
+    use HandlesAuthorization;
+    use HasScopedPermissions;
 
     /**
      * Determine whether the user can view any models.
@@ -40,7 +41,7 @@ class OrderPolicy
      */
     public function update(User $user, Order $order): bool
     {
-        if (! $user->can('update_quotation')) {
+        if ( ! $user->can('update_quotation')) {
             return false;
         }
 
@@ -52,7 +53,7 @@ class OrderPolicy
      */
     public function delete(User $user, Order $order): bool
     {
-        if (! $user->can('delete_quotation')) {
+        if ( ! $user->can('delete_quotation')) {
             return false;
         }
 
@@ -72,7 +73,7 @@ class OrderPolicy
      */
     public function forceDelete(User $user, Order $order): bool
     {
-        if (! $user->can('force_delete_quotation')) {
+        if ( ! $user->can('force_delete_quotation')) {
             return false;
         }
 
@@ -92,7 +93,7 @@ class OrderPolicy
      */
     public function restore(User $user, Order $order): bool
     {
-        if (! $user->can('restore_quotation')) {
+        if ( ! $user->can('restore_quotation')) {
             return false;
         }
 

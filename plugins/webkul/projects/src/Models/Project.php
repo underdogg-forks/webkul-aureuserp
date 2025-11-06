@@ -23,7 +23,17 @@ use Webkul\Support\Models\Company;
 
 class Project extends Model implements Sortable
 {
-    use HasChatter, HasCustomFields, HasFactory, HasLogActivity, SoftDeletes, SortableTrait;
+    use HasChatter;
+    use HasCustomFields;
+    use HasFactory;
+    use HasLogActivity;
+    use SoftDeletes;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     /**
      * Table name.
@@ -98,21 +108,6 @@ class Project extends Model implements Sortable
         'creator.name' => 'Creator',
     ];
 
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
-    ];
-
-    /**
-     * Get the user's first name.
-     */
-    protected function plannedDate(): Attribute
-    {
-        return Attribute::make(
-            get: fn (mixed $value, array $attributes) => $attributes['start_date'].' - '.$attributes['end_date'],
-        );
-    }
-
     public function partner(): BelongsTo
     {
         return $this->belongsTo(Partner::class);
@@ -185,5 +180,15 @@ class Project extends Model implements Sortable
     protected static function newFactory(): ProjectFactory
     {
         return ProjectFactory::new();
+    }
+
+    /**
+     * Get the user's first name.
+     */
+    protected function plannedDate(): Attribute
+    {
+        return Attribute::make(
+            get: fn (mixed $value, array $attributes) => $attributes['start_date'] . ' - ' . $attributes['end_date'],
+        );
     }
 }

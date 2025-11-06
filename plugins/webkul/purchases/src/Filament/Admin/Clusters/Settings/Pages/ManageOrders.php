@@ -2,6 +2,7 @@
 
 namespace Webkul\Purchase\Filament\Admin\Clusters\Settings\Pages;
 
+use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -9,6 +10,7 @@ use Filament\Pages\SettingsPage;
 use Filament\Schemas\Components\Group;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
+use UnitEnum;
 use Webkul\Purchase\Settings\OrderSettings;
 use Webkul\Support\Filament\Clusters\Settings;
 
@@ -16,17 +18,22 @@ class ManageOrders extends SettingsPage
 {
     use HasPageShield;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-shopping-cart';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-shopping-cart';
 
     protected static ?string $slug = 'purchase/manage-orders';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Purchase';
+    protected static string|UnitEnum|null $navigationGroup = 'Purchase';
 
     protected static ?int $navigationSort = 1;
 
     protected static string $settings = OrderSettings::class;
 
     protected static ?string $cluster = Settings::class;
+
+    public static function getNavigationLabel(): string
+    {
+        return __('purchases::filament/admin/clusters/settings/pages/manage-orders.title');
+    }
 
     public function getBreadcrumbs(): array
     {
@@ -36,11 +43,6 @@ class ManageOrders extends SettingsPage
     }
 
     public function getTitle(): string
-    {
-        return __('purchases::filament/admin/clusters/settings/pages/manage-orders.title');
-    }
-
-    public static function getNavigationLabel(): string
     {
         return __('purchases::filament/admin/clusters/settings/pages/manage-orders.title');
     }

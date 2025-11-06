@@ -11,19 +11,19 @@ use Webkul\Support\Package;
 
 class PurchasePlugin implements Plugin
 {
-    public function getId(): string
-    {
-        return 'purchases';
-    }
-
     public static function make(): static
     {
         return app(static::class);
     }
 
+    public function getId(): string
+    {
+        return 'purchases';
+    }
+
     public function register(Panel $panel): void
     {
-        if (! Package::isPluginInstalled($this->getId())) {
+        if ( ! Package::isPluginInstalled($this->getId())) {
             return;
         }
 
@@ -47,15 +47,12 @@ class PurchasePlugin implements Plugin
                             ->url(fn () => ManageProducts::getUrl())
                             ->group('Purchase')
                             ->sort(4)
-                            ->visible(fn() => ManageProducts::canAccess()),
+                            ->visible(fn () => ManageProducts::canAccess()),
                     ]);
             });
     }
 
-    public function boot(Panel $panel): void
-    {
-        //
-    }
+    public function boot(Panel $panel): void {}
 
     protected function getPluginBasePath($path = null): string
     {

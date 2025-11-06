@@ -2,6 +2,7 @@
 
 namespace Webkul\Sale\Filament\Clusters\ToInvoice\Resources;
 
+use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
@@ -15,7 +16,7 @@ class OrderToUpsellResource extends Resource
 {
     protected static ?string $model = Order::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-arrow-up';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-document-arrow-up';
 
     protected static ?string $cluster = ToInvoice::class;
 
@@ -50,7 +51,7 @@ class OrderToUpsellResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => ListOrderToUpsells::route('/'),
+            'index' => ListOrderToUpsells::route('/'),
         ];
     }
 }

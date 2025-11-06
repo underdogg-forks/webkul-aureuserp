@@ -2,6 +2,7 @@
 
 namespace Webkul\Account\Filament\Resources;
 
+use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkActionGroup;
@@ -73,7 +74,7 @@ class InvoiceResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-receipt-percent';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-receipt-percent';
 
     protected static bool $shouldRegisterNavigation = false;
 
@@ -132,7 +133,7 @@ class InvoiceResource extends Resource
                                     ->schema([
                                         Select::make('partner_id')
                                             ->label(__('accounts::filament/resources/invoice.form.section.general.fields.customer'))
-                                            ->getOptionLabelFromRecordUsing(fn ($record): string => $record->name.($record->trashed() ? ' (Deleted)' : ''))
+                                            ->getOptionLabelFromRecordUsing(fn ($record): string => $record->name . ($record->trashed() ? ' (Deleted)' : ''))
                                             ->disableOptionWhen(fn ($label) => str_contains($label, ' (Deleted)'))
                                             ->relationship(
                                                 'partner',
@@ -170,7 +171,7 @@ class InvoiceResource extends Resource
                                         modifyQueryUsing: fn (Builder $query) => $query->withTrashed(),
                                     )
                                     ->getOptionLabelFromRecordUsing(function ($record): string {
-                                        return $record->name.($record->trashed() ? ' (Deleted)' : '');
+                                        return $record->name . ($record->trashed() ? ' (Deleted)' : '');
                                     })
                                     ->disableOptionWhen(function ($label) {
                                         return str_contains($label, ' (Deleted)');
@@ -254,7 +255,7 @@ class InvoiceResource extends Resource
                                             ->label(__('accounts::filament/resources/invoice.form.tabs.other-information.fieldset.additional-information.fields.company'))
                                             ->relationship('company', 'name', modifyQueryUsing: fn (Builder $query) => $query->withTrashed())
                                             ->getOptionLabelFromRecordUsing(function ($record): string {
-                                                return $record->name.($record->trashed() ? ' (Deleted)' : '');
+                                                return $record->name . ($record->trashed() ? ' (Deleted)' : '');
                                             })
                                             ->disableOptionWhen(function ($label) {
                                                 return str_contains($label, ' (Deleted)');
@@ -640,9 +641,9 @@ class InvoiceResource extends Resource
                                     ])->columns(5),
                                 Livewire::make(InvoiceSummary::class, function ($record) {
                                     return [
-                                        'currency'   => $record->currency,
-                                        'amountTax'  => $record->amount_tax ?? 0,
-                                        'products'   => $record->lines->map(function ($item) {
+                                        'currency'  => $record->currency,
+                                        'amountTax' => $record->amount_tax ?? 0,
+                                        'products'  => $record->lines->map(function ($item) {
                                             return [
                                                 ...$item->toArray(),
                                                 'taxes' => $item->taxes->pluck('id')->toArray() ?? [],
@@ -812,7 +813,7 @@ class InvoiceResource extends Resource
                     ->toggleable(),
             ])
             ->itemLabel(function ($state) {
-                if (! empty($state['name'])) {
+                if ( ! empty($state['name'])) {
                     return $state['name'];
                 }
 
@@ -830,7 +831,7 @@ class InvoiceResource extends Resource
                         fn (Builder $query) => $query->withTrashed()->where('is_configurable', null),
                     )
                     ->getOptionLabelFromRecordUsing(function ($record): string {
-                        return $record->name.($record->trashed() ? ' (Deleted)' : '');
+                        return $record->name . ($record->trashed() ? ' (Deleted)' : '');
                     })
                     ->disableOptionWhen(function ($value, $state, $component, $label) {
                         if (str_contains($label, ' (Deleted)')) {
@@ -838,7 +839,7 @@ class InvoiceResource extends Resource
                         }
 
                         $repeater = $component->getParentRepeater();
-                        if (! $repeater) {
+                        if ( ! $repeater) {
                             return false;
                         }
 
@@ -946,9 +947,15 @@ class InvoiceResource extends Resource
         return $data;
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->orderByDesc('id');
+    }
+
     private static function afterProductUpdated(Set $set, Get $get): void
     {
-        if (! $get('product_id')) {
+        if ( ! $get('product_id')) {
             return;
         }
 
@@ -971,7 +978,7 @@ class InvoiceResource extends Resource
 
     private static function afterProductQtyUpdated(Set $set, Get $get): void
     {
-        if (! $get('product_id')) {
+        if ( ! $get('product_id')) {
             return;
         }
 
@@ -984,7 +991,7 @@ class InvoiceResource extends Resource
 
     private static function afterUOMUpdated(Set $set, Get $get): void
     {
-        if (! $get('product_id')) {
+        if ( ! $get('product_id')) {
             return;
         }
 
@@ -1003,7 +1010,7 @@ class InvoiceResource extends Resource
 
     private static function calculateUnitQuantity($uomId, $quantity)
     {
-        if (! $uomId) {
+        if ( ! $uomId) {
             return $quantity;
         }
 
@@ -1014,7 +1021,7 @@ class InvoiceResource extends Resource
 
     private static function calculateUnitPrice($uomId, $price)
     {
-        if (! $uomId) {
+        if ( ! $uomId) {
             return $price;
         }
 
@@ -1025,7 +1032,7 @@ class InvoiceResource extends Resource
 
     private static function calculateLineTotals(Set $set, Get $get): void
     {
-        if (! $get('product_id')) {
+        if ( ! $get('product_id')) {
             $set('price_unit', 0);
 
             $set('discount', 0);
@@ -1039,13 +1046,13 @@ class InvoiceResource extends Resource
             return;
         }
 
-        $priceUnit = floatval($get('price_unit'));
+        $priceUnit = (float) ($get('price_unit'));
 
-        $quantity = floatval($get('quantity') ?? 1);
+        $quantity = (float) ($get('quantity') ?? 1);
 
         $subTotal = $priceUnit * $quantity;
 
-        $discountValue = floatval($get('discount') ?? 0);
+        $discountValue = (float) ($get('discount') ?? 0);
 
         if ($discountValue > 0) {
             $discountAmount = $subTotal * ($discountValue / 100);
@@ -1062,11 +1069,5 @@ class InvoiceResource extends Resource
         $set('price_tax', $taxAmount);
 
         $set('price_total', $subTotal + $taxAmount);
-    }
-
-    public static function getEloquentQuery(): Builder
-    {
-        return parent::getEloquentQuery()
-            ->orderByDesc('id');
     }
 }

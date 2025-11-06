@@ -146,7 +146,6 @@ class EmployeeResource extends Resource
                                             ->label(__('employees::filament/resources/employee.form.sections.fields.job-title'))
                                             ->maxLength(255)
                                             ->columnSpan(1),
-
                                     ]),
                                 Group::make()
                                     ->relationship('partner', 'avatar')
@@ -185,7 +184,7 @@ class EmployeeResource extends Resource
                                         modifyQueryUsing: fn (Builder $query) => $query->withTrashed(),
                                     )
                                     ->getOptionLabelFromRecordUsing(function ($record): string {
-                                        return $record->name.($record->trashed() ? ' (Deleted)' : '');
+                                        return $record->name . ($record->trashed() ? ' (Deleted)' : '');
                                     })
                                     ->disableOptionWhen(fn ($label) => str_contains($label, ' (Deleted)'))
                                     ->searchable()
@@ -241,7 +240,6 @@ class EmployeeResource extends Resource
                                     ->label(__('employees::filament/resources/employee.form.sections.fields.coach')),
                             ])
                             ->columns(2),
-
                     ])
                     ->columns(1)->columnSpanFull(),
                 Tabs::make()
@@ -446,7 +444,6 @@ class EmployeeResource extends Resource
                                                                                     ->label(__('employees::filament/resources/employee.form.tabs.private-information.fields.send-money'))
                                                                                     ->default(true)
                                                                                     ->inline(false),
-
                                                                             ])->columns(2),
                                                                     ])
                                                                     ->createOptionAction(
@@ -557,7 +554,6 @@ class EmployeeResource extends Resource
                                                                 TextInput::make('study_school')
                                                                     ->label(__('employees::filament/resources/employee.form.tabs.private-information.fields.school')),
                                                             ])->columns(1),
-
                                                     ]),
                                             ])
                                             ->columnSpan(['lg' => 2]),
@@ -642,7 +638,6 @@ class EmployeeResource extends Resource
                                                             ->searchable()
                                                             ->preload()
                                                             ->label(__('employees::filament/resources/employee.form.tabs.private-information.fields.country-of-birth')),
-
                                                     ])->columns(1),
                                                 Fieldset::make(__('employees::filament/resources/employee.form.tabs.private-information.fields.work-permit'))
                                                     ->schema([
@@ -711,7 +706,7 @@ class EmployeeResource extends Resource
                                                             ->disableOptionWhen(function ($value, $livewire) {
                                                                 $user = User::withTrashed()->find($value);
 
-                                                                if (! $user) {
+                                                                if ( ! $user) {
                                                                     return false;
                                                                 }
 
@@ -778,7 +773,7 @@ class EmployeeResource extends Resource
                                                                     ->icon('heroicon-o-plus-circle')
                                                                     ->color('gray')
                                                                     ->action(function (Set $set) {
-                                                                        $barcode = strtoupper(bin2hex(random_bytes(4)));
+                                                                        $barcode = mb_strtoupper(bin2hex(random_bytes(4)));
 
                                                                         $set('barcode', $barcode);
                                                                     })
@@ -1723,7 +1718,6 @@ class EmployeeResource extends Resource
                                             ->columnSpan(['lg' => 1]),
                                     ])
                                     ->columns(3),
-
                             ]),
                     ])
                     ->persistTabInQueryString()

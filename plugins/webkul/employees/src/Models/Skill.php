@@ -15,7 +15,15 @@ use Webkul\Security\Models\User;
 
 class Skill extends Model implements Sortable
 {
-    use HasCustomFields, HasFactory, SoftDeletes, SortableTrait;
+    use HasCustomFields;
+    use HasFactory;
+    use SoftDeletes;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     protected $table = 'employees_skills';
 
@@ -24,11 +32,6 @@ class Skill extends Model implements Sortable
         'name',
         'skill_type_id',
         'creator_id',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function skillType(): BelongsTo

@@ -14,6 +14,8 @@ class CreateOrder extends CreateRecord
 {
     use HasRepeaterColumnManager;
 
+    protected static string $resource = OrderResource::class;
+
     public function getSubNavigation(): array
     {
         if (filled($cluster = static::getCluster())) {
@@ -22,8 +24,6 @@ class CreateOrder extends CreateRecord
 
         return [];
     }
-
-    protected static string $resource = OrderResource::class;
 
     protected function getRedirectUrl(): string
     {

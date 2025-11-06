@@ -22,15 +22,6 @@ class ListPartners extends ListRecords
         return __('partners::filament/resources/partner/pages/list-partners.title');
     }
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            CreateAction::make()
-                ->label(__('partners::filament/resources/partner/pages/list-partners.header-actions.create.label'))
-                ->icon('heroicon-o-plus-circle'),
-        ];
-    }
-
     public function getPresetTableViews(): array
     {
         return [
@@ -48,6 +39,15 @@ class ListPartners extends ListRecords
                 ->icon('heroicon-s-archive-box')
                 ->favorite()
                 ->modifyQueryUsing(fn (Builder $query) => $query->onlyTrashed()),
+        ];
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            CreateAction::make()
+                ->label(__('partners::filament/resources/partner/pages/list-partners.header-actions.create.label'))
+                ->icon('heroicon-o-plus-circle'),
         ];
     }
 }

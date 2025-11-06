@@ -12,7 +12,8 @@ use Webkul\Project\Models\TaskStage;
 
 class TaskByStageChart extends ChartWidget
 {
-    use HasWidgetShield, InteractsWithPageFilters;
+    use HasWidgetShield;
+    use InteractsWithPageFilters;
 
     protected ?string $heading = 'Tasks By Stage';
 
@@ -34,40 +35,40 @@ class TaskByStageChart extends ChartWidget
 
         foreach (TaskStage::all() as $stage) {
             if (in_array($stage->name, $datasets['labels'])) {
-                $datasets['labels'][] = $stage->name.' '.$stage->id;
+                $datasets['labels'][] = $stage->name . ' ' . $stage->id;
             } else {
                 $datasets['labels'][] = $stage->name;
             }
 
             $query = Task::query();
 
-            if (! empty($this->pageFilters['selectedProjects'])) {
+            if ( ! empty($this->pageFilters['selectedProjects'])) {
                 $query->whereIn('project_id', $this->pageFilters['selectedProjects']);
             }
 
-            if (! empty($this->pageFilters['selectedAssignees'])) {
+            if ( ! empty($this->pageFilters['selectedAssignees'])) {
                 $query->whereHas('users', function ($q) {
                     $q->whereIn('users.id', $this->pageFilters['selectedAssignees']);
                 });
             }
 
-            if (! empty($this->pageFilters['selectedTags'])) {
+            if ( ! empty($this->pageFilters['selectedTags'])) {
                 $query->whereHas('tags', function ($q) {
                     $q->whereIn('projects_task_tag.tag_id', $this->pageFilters['selectedTags']);
                 });
             }
 
-            if (! empty($this->pageFilters['selectedPartners'])) {
+            if ( ! empty($this->pageFilters['selectedPartners'])) {
                 $query->whereIn('parent_id', $this->pageFilters['selectedPartners']);
             }
 
-            $startDate = ! is_null($this->pageFilters['startDate'] ?? null) ?
-                Carbon::parse($this->pageFilters['startDate']) :
-                null;
+            $startDate = null !== ($this->pageFilters['startDate'] ?? null)
+                ? Carbon::parse($this->pageFilters['startDate'])
+                : null;
 
-            $endDate = ! is_null($this->pageFilters['endDate'] ?? null) ?
-                Carbon::parse($this->pageFilters['endDate']) :
-                now();
+            $endDate = null !== ($this->pageFilters['endDate'] ?? null)
+                ? Carbon::parse($this->pageFilters['endDate'])
+                : now();
 
             $datasets['datasets'][] = $query
                 ->whereBetween('created_at', [$startDate, $endDate])

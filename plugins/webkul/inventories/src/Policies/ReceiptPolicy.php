@@ -9,7 +9,8 @@ use Webkul\Security\Traits\HasScopedPermissions;
 
 class ReceiptPolicy
 {
-    use HandlesAuthorization, HasScopedPermissions;
+    use HandlesAuthorization;
+    use HasScopedPermissions;
 
     /**
      * Determine whether the user can view any models.
@@ -40,7 +41,7 @@ class ReceiptPolicy
      */
     public function update(User $user, Receipt $receipt): bool
     {
-        if (! $user->can('update_receipt')) {
+        if ( ! $user->can('update_receipt')) {
             return false;
         }
 
@@ -52,7 +53,7 @@ class ReceiptPolicy
      */
     public function delete(User $user, Receipt $receipt): bool
     {
-        if (! $user->can('delete_receipt')) {
+        if ( ! $user->can('delete_receipt')) {
             return false;
         }
 

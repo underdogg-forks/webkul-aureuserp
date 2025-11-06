@@ -2,6 +2,7 @@
 
 namespace Webkul\Security\Filament\Clusters\Settings\Pages;
 
+use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
@@ -18,13 +19,18 @@ class ManageUsers extends SettingsPage
 
     protected static ?string $cluster = Settings::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-user-group';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-user-group';
 
     protected static string $settings = UserSettings::class;
 
     public static function getNavigationGroup(): string
     {
         return __('security::filament/clusters/manage-users.group');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('security::filament/clusters/manage-users.navigation.label');
     }
 
     public function getBreadcrumbs(): array
@@ -37,11 +43,6 @@ class ManageUsers extends SettingsPage
     public function getTitle(): string
     {
         return __('security::filament/clusters/manage-users.title');
-    }
-
-    public static function getNavigationLabel(): string
-    {
-        return __('security::filament/clusters/manage-users.navigation.label');
     }
 
     public function form(Schema $schema): Schema

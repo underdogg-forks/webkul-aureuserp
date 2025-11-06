@@ -20,7 +20,16 @@ use Webkul\Support\Models\UOM;
 
 class Product extends Model implements Sortable
 {
-    use HasChatter, HasFactory, HasLogActivity, SoftDeletes, SortableTrait;
+    use HasChatter;
+    use HasFactory;
+    use HasLogActivity;
+    use SoftDeletes;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     /**
      * Table name.
@@ -100,11 +109,6 @@ class Product extends Model implements Sortable
         'creator.name'  => 'Creator',
     ];
 
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
-    ];
-
     public function parent(): BelongsTo
     {
         return $this->belongsTo(self::class);
@@ -170,9 +174,9 @@ class Product extends Model implements Sortable
         if ($this->is_configurable) {
             return $this->hasMany(ProductSupplier::class)
                 ->orWhereIn('product_id', $this->variants()->pluck('id'));
-        } else {
-            return $this->hasMany(ProductSupplier::class);
         }
+
+        return $this->hasMany(ProductSupplier::class);
     }
 
     protected static function newFactory(): ProductFactory

@@ -29,19 +29,6 @@ class CreateInternal extends CreateRecord
         return __('inventories::filament/clusters/operations/resources/internal/pages/create-internal.title');
     }
 
-    protected function getRedirectUrl(): string
-    {
-        return $this->getResource()::getUrl('edit', ['record' => $this->getRecord()]);
-    }
-
-    protected function getCreatedNotification(): Notification
-    {
-        return Notification::make()
-            ->success()
-            ->title(__('inventories::filament/clusters/operations/resources/internal/pages/create-internal.notification.title'))
-            ->body(__('inventories::filament/clusters/operations/resources/internal/pages/create-internal.notification.body'));
-    }
-
     public function mount(): void
     {
         parent::mount();
@@ -55,6 +42,19 @@ class CreateInternal extends CreateRecord
         $this->data['destination_location_id'] = $operationType?->destination_location_id;
 
         $this->form->fill($this->data);
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('edit', ['record' => $this->getRecord()]);
+    }
+
+    protected function getCreatedNotification(): Notification
+    {
+        return Notification::make()
+            ->success()
+            ->title(__('inventories::filament/clusters/operations/resources/internal/pages/create-internal.notification.title'))
+            ->body(__('inventories::filament/clusters/operations/resources/internal/pages/create-internal.notification.body'));
     }
 
     protected function mutateFormDataBeforeCreate(array $data): array

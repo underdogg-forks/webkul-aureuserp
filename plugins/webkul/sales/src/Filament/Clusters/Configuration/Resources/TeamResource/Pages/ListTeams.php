@@ -12,14 +12,6 @@ class ListTeams extends ListRecords
 {
     protected static string $resource = TeamResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            CreateAction::make()
-                ->icon('heroicon-o-plus-circle'),
-        ];
-    }
-
     public function getTabs(): array
     {
         return [
@@ -28,6 +20,14 @@ class ListTeams extends ListRecords
             'archived' => Tab::make(__('Archived'))
                 ->badge(Team::onlyTrashed()->count())
                 ->modifyQueryUsing(fn ($query) => $query->onlyTrashed()),
+        ];
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            CreateAction::make()
+                ->icon('heroicon-o-plus-circle'),
         ];
     }
 }

@@ -11,7 +11,13 @@ use Webkul\Security\Models\User;
 
 class CalendarAttendance extends Model implements Sortable
 {
-    use HasFactory, SortableTrait;
+    use HasFactory;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     protected $table = 'employees_calendar_attendances';
 
@@ -29,11 +35,6 @@ class CalendarAttendance extends Model implements Sortable
         'duration_days',
         'calendar_id',
         'creator_id',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function calendar()

@@ -16,11 +16,6 @@ use Webkul\Inventory\Settings\TraceabilitySettings;
 
 class LabelsAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'inventories.operations.print.labels';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -52,7 +47,7 @@ class LabelsAction extends Action
                                 }),
                         ])
                         ->visible(function (TraceabilitySettings $settings, $record) {
-                            if (! $settings->enable_lots_serial_numbers) {
+                            if ( ! $settings->enable_lots_serial_numbers) {
                                 return false;
                             }
 
@@ -131,7 +126,12 @@ class LabelsAction extends Action
 
                 return response()->streamDownload(function () use ($pdf) {
                     echo $pdf->output();
-                }, 'Labels-'.str_replace('/', '_', $record->name).'.pdf');
+                }, 'Labels-' . str_replace('/', '_', $record->name) . '.pdf');
             });
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'inventories.operations.print.labels';
     }
 }

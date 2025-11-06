@@ -68,6 +68,21 @@ class JobPosition extends BaseJobPosition
         return $this->belongsTo(Industry::class, 'industry_id');
     }
 
+    public function applications()
+    {
+        return $this->hasMany(Applicant::class, 'job_id');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::updated(function ($jobPosition) {
+            cache()->forget("job_position_{$jobPosition->id}_employee_count");
+            cache()->forget("job_position_{$jobPosition->id}_hired_count");
+        });
+    }
+
     protected function noOfEmployee(): Attribute
     {
         return Attribute::make(
@@ -106,20 +121,5 @@ class JobPosition extends BaseJobPosition
                 return $currentEmployees + ($this->no_of_recruitment ?? 0);
             }
         );
-    }
-
-    public function applications()
-    {
-        return $this->hasMany(Applicant::class, 'job_id');
-    }
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::updated(function ($jobPosition) {
-            cache()->forget("job_position_{$jobPosition->id}_employee_count");
-            cache()->forget("job_position_{$jobPosition->id}_hired_count");
-        });
     }
 }

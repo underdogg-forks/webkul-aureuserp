@@ -4,14 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class () extends Migration {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        if (! Schema::hasTable('purchases_order_operations') && Schema::hasTable('purchases_orders')) {
+        if ( ! Schema::hasTable('purchases_order_operations') && Schema::hasTable('purchases_orders')) {
             Schema::create('purchases_order_operations', function (Blueprint $table) {
                 $table->foreignId('purchase_order_id')
                     ->constrained('purchases_orders')

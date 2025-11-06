@@ -14,7 +14,8 @@ use Webkul\Project\Models\Timesheet;
 
 class TopProjectsWidget extends BaseWidget
 {
-    use HasWidgetShield, InteractsWithPageFilters;
+    use HasWidgetShield;
+    use InteractsWithPageFilters;
 
     protected static bool $isLazy = false;
 
@@ -24,8 +25,8 @@ class TopProjectsWidget extends BaseWidget
     {
         return __('projects::filament/widgets/top-projects.heading.title');
     }
-    
-    public function getTableRecordKey(Model | array $record): string
+
+    public function getTableRecordKey(Model|array $record): string
     {
         return 'id';
     }
@@ -34,31 +35,31 @@ class TopProjectsWidget extends BaseWidget
     {
         $query = Timesheet::query();
 
-        if (! empty($this->pageFilters['selectedProjects'])) {
+        if ( ! empty($this->pageFilters['selectedProjects'])) {
             $query->whereIn('project_id', $this->pageFilters['selectedProjects']);
         }
 
-        if (! empty($this->pageFilters['selectedAssignees'])) {
+        if ( ! empty($this->pageFilters['selectedAssignees'])) {
             $query->whereIn('analytic_records.user_id', $this->pageFilters['selectedAssignees']);
         }
 
-        if (! empty($this->pageFilters['selectedTags'])) {
+        if ( ! empty($this->pageFilters['selectedTags'])) {
             $query->whereHas('project.tags', function ($q) {
                 $q->whereIn('projects_project_tag.tag_id', $this->pageFilters['selectedTags']);
             });
         }
 
-        if (! empty($this->pageFilters['selectedPartners'])) {
+        if ( ! empty($this->pageFilters['selectedPartners'])) {
             $query->whereIn('analytic_records.partner_id', $this->pageFilters['selectedPartners']);
         }
 
-        $startDate = ! is_null($this->pageFilters['startDate'] ?? null) ?
-            Carbon::parse($this->pageFilters['startDate']) :
-            null;
+        $startDate = null !== ($this->pageFilters['startDate'] ?? null)
+            ? Carbon::parse($this->pageFilters['startDate'])
+            : null;
 
-        $endDate = ! is_null($this->pageFilters['endDate'] ?? null) ?
-            Carbon::parse($this->pageFilters['endDate']) :
-            now();
+        $endDate = null !== ($this->pageFilters['endDate'] ?? null)
+            ? Carbon::parse($this->pageFilters['endDate'])
+            : now();
 
         $query = $query
             ->join('projects_projects', 'projects_projects.id', '=', 'analytic_records.project_id')

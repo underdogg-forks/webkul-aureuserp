@@ -11,11 +11,6 @@ use Webkul\Purchase\Models\Order;
 
 class ConfirmAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'purchases.orders.confirm';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -40,5 +35,10 @@ class ConfirmAction extends Action
                 OrderState::DONE,
                 OrderState::CANCELED,
             ]));
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'purchases.orders.confirm';
     }
 }

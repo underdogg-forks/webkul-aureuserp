@@ -28,6 +28,8 @@ class CreateWarehouse extends CreateRecord
 {
     protected static string $resource = WarehouseResource::class;
 
+    protected array $routeIds = [];
+
     public static function getSubNavigationPosition(): SubNavigationPosition
     {
         return SubNavigationPosition::Start;
@@ -41,8 +43,6 @@ class CreateWarehouse extends CreateRecord
 
         return [];
     }
-
-    protected array $routeIds = [];
 
     protected function getRedirectUrl(): string
     {
@@ -61,7 +61,7 @@ class CreateWarehouse extends CreateRecord
     {
         $data['creator_id'] = Auth::id();
 
-        $data['company_id'] = $data['company_id'] ?? Auth::user()->default_company_id;
+        $data['company_id'] ??= Auth::user()->default_company_id;
 
         $data['reception_steps'] ??= ReceptionStep::ONE_STEP;
 
@@ -124,7 +124,7 @@ class CreateWarehouse extends CreateRecord
         $data['lot_stock_location_id'] = Location::create([
             'type'         => LocationType::INTERNAL,
             'name'         => 'Stock',
-            'barcode'      => $data['code'].'STOCK',
+            'barcode'      => $data['code'] . 'STOCK',
             'is_scrap'     => false,
             'is_replenish' => true,
             'parent_id'    => $data['view_location_id'],
@@ -135,7 +135,7 @@ class CreateWarehouse extends CreateRecord
         $data['input_stock_location_id'] = Location::create([
             'type'         => LocationType::INTERNAL,
             'name'         => 'Input',
-            'barcode'      => $data['code'].'INPUT',
+            'barcode'      => $data['code'] . 'INPUT',
             'is_scrap'     => false,
             'is_replenish' => false,
             'parent_id'    => $data['view_location_id'],
@@ -147,7 +147,7 @@ class CreateWarehouse extends CreateRecord
         $data['qc_stock_location_id'] = Location::create([
             'type'         => LocationType::INTERNAL,
             'name'         => 'Quality Control',
-            'barcode'      => $data['code'].'QUALITY',
+            'barcode'      => $data['code'] . 'QUALITY',
             'is_scrap'     => false,
             'is_replenish' => false,
             'parent_id'    => $data['view_location_id'],
@@ -159,7 +159,7 @@ class CreateWarehouse extends CreateRecord
         $data['output_stock_location_id'] = Location::create([
             'type'         => LocationType::INTERNAL,
             'name'         => 'Output',
-            'barcode'      => $data['code'].'OUTPUT',
+            'barcode'      => $data['code'] . 'OUTPUT',
             'is_scrap'     => false,
             'is_replenish' => false,
             'parent_id'    => $data['view_location_id'],
@@ -171,7 +171,7 @@ class CreateWarehouse extends CreateRecord
         $data['pack_stock_location_id'] = Location::create([
             'type'         => LocationType::INTERNAL,
             'name'         => 'Packing Zone',
-            'barcode'      => $data['code'].'PACKING',
+            'barcode'      => $data['code'] . 'PACKING',
             'is_scrap'     => false,
             'is_replenish' => false,
             'parent_id'    => $data['view_location_id'],
@@ -198,7 +198,7 @@ class CreateWarehouse extends CreateRecord
             'product_label_format'    => '2x7xprice',
             'lot_label_format'        => '4x12_lots',
             'package_label_to_print'  => 'pdf',
-            'barcode'                 => $data['code'].'IN',
+            'barcode'                 => $data['code'] . 'IN',
             'create_backorder'        => CreateBackorder::ASK,
             'move_type'               => MoveType::DIRECT,
             'use_create_lots'         => true,
@@ -211,27 +211,27 @@ class CreateWarehouse extends CreateRecord
                 ReceptionStep::TWO_STEPS   => $data['input_stock_location_id'],
                 ReceptionStep::THREE_STEPS => $data['input_stock_location_id'],
             },
-            'company_id'              => $data['company_id'],
-            'creator_id'              => $data['creator_id'],
+            'company_id' => $data['company_id'],
+            'creator_id' => $data['creator_id'],
         ])->id;
 
         $data['out_type_id'] = OperationType::create([
-            'sort'                    => 2,
-            'name'                    => 'Delivery Orders',
-            'type'                    => Enums\OperationType::OUTGOING,
-            'sequence_code'           => 'OUT',
-            'reservation_method'      => ReservationMethod::AT_CONFIRM,
-            'product_label_format'    => '2x7xprice',
-            'lot_label_format'        => '4x12_lots',
-            'package_label_to_print'  => 'pdf',
-            'barcode'                 => $data['code'].'OUT',
-            'create_backorder'        => CreateBackorder::ASK,
-            'move_type'               => MoveType::DIRECT,
-            'use_create_lots'         => true,
-            'use_existing_lots'       => true,
-            'print_label'             => true,
-            'show_operations'         => false,
-            'source_location_id'      => match ($data['reception_steps']) {
+            'sort'                   => 2,
+            'name'                   => 'Delivery Orders',
+            'type'                   => Enums\OperationType::OUTGOING,
+            'sequence_code'          => 'OUT',
+            'reservation_method'     => ReservationMethod::AT_CONFIRM,
+            'product_label_format'   => '2x7xprice',
+            'lot_label_format'       => '4x12_lots',
+            'package_label_to_print' => 'pdf',
+            'barcode'                => $data['code'] . 'OUT',
+            'create_backorder'       => CreateBackorder::ASK,
+            'move_type'              => MoveType::DIRECT,
+            'use_create_lots'        => true,
+            'use_existing_lots'      => true,
+            'print_label'            => true,
+            'show_operations'        => false,
+            'source_location_id'     => match ($data['reception_steps']) {
                 ReceptionStep::ONE_STEP    => $data['lot_stock_location_id'],
                 ReceptionStep::TWO_STEPS   => $data['output_stock_location_id'],
                 ReceptionStep::THREE_STEPS => $data['output_stock_location_id'],
@@ -250,7 +250,7 @@ class CreateWarehouse extends CreateRecord
             'product_label_format'    => '2x7xprice',
             'lot_label_format'        => '4x12_lots',
             'package_label_to_print'  => 'pdf',
-            'barcode'                 => $data['code'].'PICK',
+            'barcode'                 => $data['code'] . 'PICK',
             'create_backorder'        => CreateBackorder::ASK,
             'move_type'               => MoveType::DIRECT,
             'use_create_lots'         => true,
@@ -263,9 +263,9 @@ class CreateWarehouse extends CreateRecord
                 DeliveryStep::TWO_STEPS   => $data['output_stock_location_id'],
                 DeliveryStep::THREE_STEPS => $data['pack_stock_location_id'],
             },
-            'company_id'              => $data['company_id'],
-            'creator_id'              => $data['creator_id'],
-            'deleted_at'              => $data['delivery_steps'] === DeliveryStep::ONE_STEP ? now() : null,
+            'company_id' => $data['company_id'],
+            'creator_id' => $data['creator_id'],
+            'deleted_at' => $data['delivery_steps'] === DeliveryStep::ONE_STEP ? now() : null,
         ])->id;
 
         $data['pack_type_id'] = OperationType::create([
@@ -277,7 +277,7 @@ class CreateWarehouse extends CreateRecord
             'product_label_format'    => '2x7xprice',
             'lot_label_format'        => '4x12_lots',
             'package_label_to_print'  => 'pdf',
-            'barcode'                 => $data['code'].'PACK',
+            'barcode'                 => $data['code'] . 'PACK',
             'create_backorder'        => CreateBackorder::ASK,
             'move_type'               => MoveType::DIRECT,
             'use_create_lots'         => false,
@@ -300,7 +300,7 @@ class CreateWarehouse extends CreateRecord
             'product_label_format'    => '2x7xprice',
             'lot_label_format'        => '4x12_lots',
             'package_label_to_print'  => 'pdf',
-            'barcode'                 => $data['code'].'QC',
+            'barcode'                 => $data['code'] . 'QC',
             'create_backorder'        => CreateBackorder::ASK,
             'move_type'               => MoveType::DIRECT,
             'use_create_lots'         => false,
@@ -315,22 +315,22 @@ class CreateWarehouse extends CreateRecord
         ])->id;
 
         $data['store_type_id'] = OperationType::create([
-            'sort'                    => 6,
-            'name'                    => 'Storage',
-            'type'                    => Enums\OperationType::INTERNAL,
-            'sequence_code'           => 'STOR',
-            'reservation_method'      => ReservationMethod::AT_CONFIRM,
-            'product_label_format'    => '2x7xprice',
-            'lot_label_format'        => '4x12_lots',
-            'package_label_to_print'  => 'pdf',
-            'barcode'                 => $data['code'].'STOR',
-            'create_backorder'        => CreateBackorder::ASK,
-            'move_type'               => MoveType::DIRECT,
-            'use_create_lots'         => false,
-            'use_existing_lots'       => true,
-            'print_label'             => false,
-            'show_operations'         => false,
-            'source_location_id'      => match ($data['reception_steps']) {
+            'sort'                   => 6,
+            'name'                   => 'Storage',
+            'type'                   => Enums\OperationType::INTERNAL,
+            'sequence_code'          => 'STOR',
+            'reservation_method'     => ReservationMethod::AT_CONFIRM,
+            'product_label_format'   => '2x7xprice',
+            'lot_label_format'       => '4x12_lots',
+            'package_label_to_print' => 'pdf',
+            'barcode'                => $data['code'] . 'STOR',
+            'create_backorder'       => CreateBackorder::ASK,
+            'move_type'              => MoveType::DIRECT,
+            'use_create_lots'        => false,
+            'use_existing_lots'      => true,
+            'print_label'            => false,
+            'show_operations'        => false,
+            'source_location_id'     => match ($data['reception_steps']) {
                 ReceptionStep::ONE_STEP    => $data['input_stock_location_id'],
                 ReceptionStep::TWO_STEPS   => $data['input_stock_location_id'],
                 ReceptionStep::THREE_STEPS => $data['qc_stock_location_id'],
@@ -350,7 +350,7 @@ class CreateWarehouse extends CreateRecord
             'product_label_format'    => '2x7xprice',
             'lot_label_format'        => '4x12_lots',
             'package_label_to_print'  => 'pdf',
-            'barcode'                 => $data['code'].'INT',
+            'barcode'                 => $data['code'] . 'INT',
             'create_backorder'        => CreateBackorder::ASK,
             'move_type'               => MoveType::DIRECT,
             'use_create_lots'         => false,
@@ -373,7 +373,7 @@ class CreateWarehouse extends CreateRecord
             'product_label_format'    => '2x7xprice',
             'lot_label_format'        => '4x12_lots',
             'package_label_to_print'  => 'pdf',
-            'barcode'                 => $data['code'].'XD',
+            'barcode'                 => $data['code'] . 'XD',
             'create_backorder'        => CreateBackorder::ASK,
             'move_type'               => MoveType::DIRECT,
             'use_create_lots'         => false,
@@ -384,8 +384,8 @@ class CreateWarehouse extends CreateRecord
             'destination_location_id' => $data['output_stock_location_id'],
             'company_id'              => $data['company_id'],
             'creator_id'              => $data['creator_id'],
-            'deleted_at'              => in_array($data['reception_steps'], [ReceptionStep::TWO_STEPS, ReceptionStep::THREE_STEPS]) &&
-                in_array($data['delivery_steps'], [DeliveryStep::TWO_STEPS, DeliveryStep::THREE_STEPS]) ? null : now(),
+            'deleted_at'              => in_array($data['reception_steps'], [ReceptionStep::TWO_STEPS, ReceptionStep::THREE_STEPS])
+                && in_array($data['delivery_steps'], [DeliveryStep::TWO_STEPS, DeliveryStep::THREE_STEPS]) ? null : now(),
         ])->id;
 
         return $data;
@@ -395,9 +395,9 @@ class CreateWarehouse extends CreateRecord
     {
         $data['reception_route_id'] = Route::create([
             'name' => match ($data['reception_steps']) {
-                ReceptionStep::ONE_STEP    => $data['name'].': Receive in 1 step (Stock)',
-                ReceptionStep::TWO_STEPS   => $data['name'].': Receive in 2 steps (Input + Stock)',
-                ReceptionStep::THREE_STEPS => $data['name'].': Receive in 3 steps (Input + Quality + Stock)',
+                ReceptionStep::ONE_STEP    => $data['name'] . ': Receive in 1 step (Stock)',
+                ReceptionStep::TWO_STEPS   => $data['name'] . ': Receive in 2 steps (Input + Stock)',
+                ReceptionStep::THREE_STEPS => $data['name'] . ': Receive in 3 steps (Input + Quality + Stock)',
             },
             'product_selectable'          => false,
             'product_category_selectable' => true,
@@ -409,9 +409,9 @@ class CreateWarehouse extends CreateRecord
 
         $data['delivery_route_id'] = Route::create([
             'name' => match ($data['delivery_steps']) {
-                DeliveryStep::ONE_STEP    => $data['name'].': Deliver in 1 step (Ship)',
-                DeliveryStep::TWO_STEPS   => $data['name'].': Deliver in 2 steps (Pick + Ship)',
-                DeliveryStep::THREE_STEPS => $data['name'].': Deliver in 3 steps (Pick + Pack + Ship)',
+                DeliveryStep::ONE_STEP    => $data['name'] . ': Deliver in 1 step (Ship)',
+                DeliveryStep::TWO_STEPS   => $data['name'] . ': Deliver in 2 steps (Pick + Ship)',
+                DeliveryStep::THREE_STEPS => $data['name'] . ': Deliver in 3 steps (Pick + Pack + Ship)',
             },
             'product_selectable'          => false,
             'product_category_selectable' => true,
@@ -422,15 +422,15 @@ class CreateWarehouse extends CreateRecord
         ])->id;
 
         $data['crossdock_route_id'] = Route::create([
-            'name'                        => $data['name'].': Cross-Dock',
+            'name'                        => $data['name'] . ': Cross-Dock',
             'product_selectable'          => true,
             'product_category_selectable' => true,
             'warehouse_selectable'        => false,
             'packaging_selectable'        => false,
             'creator_id'                  => $data['creator_id'],
             'company_id'                  => $data['company_id'],
-            'deleted_at'                  => in_array($data['reception_steps'], [ReceptionStep::TWO_STEPS, ReceptionStep::THREE_STEPS]) &&
-                in_array($data['delivery_steps'], [DeliveryStep::TWO_STEPS, DeliveryStep::THREE_STEPS]) ? null : now(),
+            'deleted_at'                  => in_array($data['reception_steps'], [ReceptionStep::TWO_STEPS, ReceptionStep::THREE_STEPS])
+                && in_array($data['delivery_steps'], [DeliveryStep::TWO_STEPS, DeliveryStep::THREE_STEPS]) ? null : now(),
         ])->id;
 
         return $data;
@@ -444,7 +444,7 @@ class CreateWarehouse extends CreateRecord
 
         $this->routeIds[] = Rule::create([
             'sort'                     => 1,
-            'name'                     => $data['code'].': Vendors → Stock',
+            'name'                     => $data['code'] . ': Vendors → Stock',
             'route_sort'               => 9,
             'group_propagation_option' => GroupPropagation::PROPAGATE,
             'action'                   => RuleAction::PULL,
@@ -462,27 +462,27 @@ class CreateWarehouse extends CreateRecord
         ])->id;
 
         $this->routeIds[] = Rule::create([
-            'sort'                      => 2,
-            'name'                      => $data['code'].': Stock → Customers',
-            'route_sort'                => 10,
-            'group_propagation_option'  => GroupPropagation::PROPAGATE,
-            'action'                    => RuleAction::PULL,
-            'procure_method'            => ProcureMethod::MAKE_TO_STOCK,
-            'auto'                      => RuleAuto::MANUAL,
-            'propagate_cancel'          => false,
-            'propagate_carrier'         => true,
-            'source_location_id'        => $data['lot_stock_location_id'],
-            'destination_location_id'   => $customerLocation->id,
-            'route_id'                  => $data['delivery_route_id'],
-            'operation_type_id'         => $data['out_type_id'],
-            'creator_id'                => $data['creator_id'],
-            'company_id'                => $data['company_id'],
-            'deleted_at'                => $data['delivery_steps'] === DeliveryStep::ONE_STEP ? null : now(),
+            'sort'                     => 2,
+            'name'                     => $data['code'] . ': Stock → Customers',
+            'route_sort'               => 10,
+            'group_propagation_option' => GroupPropagation::PROPAGATE,
+            'action'                   => RuleAction::PULL,
+            'procure_method'           => ProcureMethod::MAKE_TO_STOCK,
+            'auto'                     => RuleAuto::MANUAL,
+            'propagate_cancel'         => false,
+            'propagate_carrier'        => true,
+            'source_location_id'       => $data['lot_stock_location_id'],
+            'destination_location_id'  => $customerLocation->id,
+            'route_id'                 => $data['delivery_route_id'],
+            'operation_type_id'        => $data['out_type_id'],
+            'creator_id'               => $data['creator_id'],
+            'company_id'               => $data['company_id'],
+            'deleted_at'               => $data['delivery_steps'] === DeliveryStep::ONE_STEP ? null : now(),
         ])->id;
 
         $this->routeIds[] = Rule::create([
             'sort'                     => 3,
-            'name'                     => $data['code'].': Vendors → Customers',
+            'name'                     => $data['code'] . ': Vendors → Customers',
             'route_sort'               => 20,
             'group_propagation_option' => GroupPropagation::PROPAGATE,
             'action'                   => RuleAction::PULL,
@@ -496,13 +496,13 @@ class CreateWarehouse extends CreateRecord
             'operation_type_id'        => $data['in_type_id'],
             'creator_id'               => $data['creator_id'],
             'company_id'               => $data['company_id'],
-            'deleted_at'               => in_array($data['reception_steps'], [ReceptionStep::TWO_STEPS, ReceptionStep::THREE_STEPS]) &&
-                in_array($data['delivery_steps'], [DeliveryStep::TWO_STEPS, DeliveryStep::THREE_STEPS]) ? null : now(),
+            'deleted_at'               => in_array($data['reception_steps'], [ReceptionStep::TWO_STEPS, ReceptionStep::THREE_STEPS])
+                && in_array($data['delivery_steps'], [DeliveryStep::TWO_STEPS, DeliveryStep::THREE_STEPS]) ? null : now(),
         ])->id;
 
         $this->routeIds[] = Rule::create([
             'sort'                     => 4,
-            'name'                     => $data['code'].': Input → Output',
+            'name'                     => $data['code'] . ': Input → Output',
             'route_sort'               => 20,
             'group_propagation_option' => GroupPropagation::PROPAGATE,
             'action'                   => RuleAction::PUSH,
@@ -516,13 +516,13 @@ class CreateWarehouse extends CreateRecord
             'operation_type_id'        => $data['xdock_type_id'],
             'creator_id'               => $data['creator_id'],
             'company_id'               => $data['company_id'],
-            'deleted_at'               => in_array($data['reception_steps'], [ReceptionStep::TWO_STEPS, ReceptionStep::THREE_STEPS]) &&
-                in_array($data['delivery_steps'], [DeliveryStep::TWO_STEPS, DeliveryStep::THREE_STEPS]) ? null : now(),
+            'deleted_at'               => in_array($data['reception_steps'], [ReceptionStep::TWO_STEPS, ReceptionStep::THREE_STEPS])
+                && in_array($data['delivery_steps'], [DeliveryStep::TWO_STEPS, DeliveryStep::THREE_STEPS]) ? null : now(),
         ])->id;
 
         $this->routeIds[] = $data['mto_pull_id'] = Rule::create([
             'sort'                     => 5,
-            'name'                     => $data['code'].': Stock → Customers (MTO)',
+            'name'                     => $data['code'] . ': Stock → Customers (MTO)',
             'route_sort'               => 5,
             'group_propagation_option' => GroupPropagation::PROPAGATE,
             'action'                   => RuleAction::PULL,
@@ -540,7 +540,7 @@ class CreateWarehouse extends CreateRecord
 
         $this->routeIds[] = Rule::create([
             'sort'                     => 6,
-            'name'                     => $data['code'].': Input → Quality Control',
+            'name'                     => $data['code'] . ': Input → Quality Control',
             'route_sort'               => 6,
             'group_propagation_option' => GroupPropagation::PROPAGATE,
             'action'                   => RuleAction::PUSH,
@@ -559,7 +559,7 @@ class CreateWarehouse extends CreateRecord
 
         $this->routeIds[] = Rule::create([
             'sort'                     => 7,
-            'name'                     => $data['code'].': Quality Control → Stock',
+            'name'                     => $data['code'] . ': Quality Control → Stock',
             'route_sort'               => 7,
             'group_propagation_option' => GroupPropagation::PROPAGATE,
             'action'                   => RuleAction::PUSH,
@@ -579,7 +579,7 @@ class CreateWarehouse extends CreateRecord
 
         $this->routeIds[] = Rule::create([
             'sort'                     => 8,
-            'name'                     => $data['code'].': Stock → Customers',
+            'name'                     => $data['code'] . ': Stock → Customers',
             'route_sort'               => 8,
             'group_propagation_option' => GroupPropagation::PROPAGATE,
             'action'                   => RuleAction::PULL,
@@ -598,7 +598,7 @@ class CreateWarehouse extends CreateRecord
 
         $this->routeIds[] = Rule::create([
             'sort'                     => 9,
-            'name'                     => $data['code'].': Packing Zone → Output',
+            'name'                     => $data['code'] . ': Packing Zone → Output',
             'route_sort'               => 9,
             'group_propagation_option' => GroupPropagation::PROPAGATE,
             'action'                   => RuleAction::PUSH,
@@ -617,7 +617,7 @@ class CreateWarehouse extends CreateRecord
 
         $this->routeIds[] = Rule::create([
             'sort'                     => 10,
-            'name'                     => $data['code'].': Output → Customers',
+            'name'                     => $data['code'] . ': Output → Customers',
             'route_sort'               => 10,
             'group_propagation_option' => GroupPropagation::PROPAGATE,
             'action'                   => RuleAction::PUSH,
@@ -636,7 +636,7 @@ class CreateWarehouse extends CreateRecord
 
         $this->routeIds[] = Rule::create([
             'sort'                     => 11,
-            'name'                     => $data['code'].': Input → Stock',
+            'name'                     => $data['code'] . ': Input → Stock',
             'route_sort'               => 11,
             'group_propagation_option' => GroupPropagation::PROPAGATE,
             'action'                   => RuleAction::PUSH,
@@ -655,7 +655,7 @@ class CreateWarehouse extends CreateRecord
 
         $this->routeIds[] = Rule::create([
             'sort'                     => 12,
-            'name'                     => $data['code'].': False → Customers',
+            'name'                     => $data['code'] . ': False → Customers',
             'route_sort'               => 12,
             'group_propagation_option' => GroupPropagation::PROPAGATE,
             'action'                   => RuleAction::BUY,
@@ -669,8 +669,8 @@ class CreateWarehouse extends CreateRecord
             'operation_type_id'        => $data['in_type_id'],
             'creator_id'               => $data['creator_id'],
             'company_id'               => $data['company_id'],
-            'deleted_at'               => in_array($data['reception_steps'], [ReceptionStep::TWO_STEPS, ReceptionStep::THREE_STEPS]) &&
-                in_array($data['delivery_steps'], [DeliveryStep::TWO_STEPS, DeliveryStep::THREE_STEPS]) ? null : now(),
+            'deleted_at'               => in_array($data['reception_steps'], [ReceptionStep::TWO_STEPS, ReceptionStep::THREE_STEPS])
+                && in_array($data['delivery_steps'], [DeliveryStep::TWO_STEPS, DeliveryStep::THREE_STEPS]) ? null : now(),
         ])->id;
 
         return $data;

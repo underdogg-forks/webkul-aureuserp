@@ -15,7 +15,13 @@ use Webkul\Support\Models\Country;
 
 class Tax extends Model implements Sortable
 {
-    use HasFactory, SortableTrait;
+    use HasFactory;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     protected $table = 'accounts_taxes';
 
@@ -40,11 +46,6 @@ class Tax extends Model implements Sortable
         'include_base_amount',
         'is_base_affected',
         'analytic',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function company()

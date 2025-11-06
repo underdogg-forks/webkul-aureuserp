@@ -11,11 +11,6 @@ use Webkul\Inventory\Models\Operation;
 
 class TodoAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'inventories.operations.todo';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -23,7 +18,7 @@ class TodoAction extends Action
         $this
             ->label(__('inventories::filament/clusters/operations/actions/todo.label'))
             ->action(function (Operation $record, Component $livewire): void {
-                if (! $record->moves->count()) {
+                if ( ! $record->moves->count()) {
                     Notification::make()
                         ->title(__('inventories::filament/clusters/operations/actions/todo.notification.warning.title'))
                         ->body(__('inventories::filament/clusters/operations/actions/todo.notification.warning.body'))
@@ -45,5 +40,10 @@ class TodoAction extends Action
                     ->send();
             })
             ->hidden(fn () => $this->getRecord()->state !== OperationState::DRAFT);
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'inventories.operations.todo';
     }
 }

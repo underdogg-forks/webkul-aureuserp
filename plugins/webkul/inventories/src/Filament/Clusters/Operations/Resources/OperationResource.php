@@ -34,6 +34,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use InvalidArgumentException;
 use Webkul\Field\Filament\Forms\Components\ProgressStepper;
 use Webkul\Field\Filament\Traits\HasCustomFields;
 use Webkul\Inventory\Enums;
@@ -103,7 +104,7 @@ class OperationResource extends Resource
                                 modifyQueryUsing: fn (Builder $query) => $query->withTrashed()
                             )
                             ->getOptionLabelFromRecordUsing(function ($record): string {
-                                return $record->name.($record->trashed() ? ' (Deleted)' : '');
+                                return $record->name . ($record->trashed() ? ' (Deleted)' : '');
                             })
                             ->disableOptionWhen(fn ($label) => str_contains($label, ' (Deleted)'))
                             ->searchable()
@@ -139,11 +140,11 @@ class OperationResource extends Resource
                             ->required()
                             ->live()
                             ->getOptionLabelFromRecordUsing(function (OperationType $record) {
-                                if (! $record->warehouse) {
+                                if ( ! $record->warehouse) {
                                     return $record->name;
                                 }
 
-                                return $record->warehouse->name.': '.$record->name.($record->trashed() ? ' (Deleted)' : '');
+                                return $record->warehouse->name . ': ' . $record->name . ($record->trashed() ? ' (Deleted)' : '');
                             })
                             ->disableOptionWhen(function ($label) {
                                 return str_contains($label, ' (Deleted)');
@@ -163,7 +164,7 @@ class OperationResource extends Resource
                                 modifyQueryUsing: fn (Builder $query) => $query->withTrashed(),
                             )
                             ->getOptionLabelFromRecordUsing(function ($record): string {
-                                return $record->full_name.($record->trashed() ? ' (Deleted)' : '');
+                                return $record->full_name . ($record->trashed() ? ' (Deleted)' : '');
                             })
                             ->disableOptionWhen(function ($label) {
                                 return str_contains($label, ' (Deleted)');
@@ -181,7 +182,7 @@ class OperationResource extends Resource
                                 modifyQueryUsing: fn (Builder $query) => $query->withTrashed(),
                             )
                             ->getOptionLabelFromRecordUsing(function ($record): string {
-                                return $record->full_name.($record->trashed() ? ' (Deleted)' : '');
+                                return $record->full_name . ($record->trashed() ? ' (Deleted)' : '');
                             })
                             ->disableOptionWhen(function ($label) {
                                 return str_contains($label, ' (Deleted)');
@@ -693,7 +694,7 @@ class OperationResource extends Resource
                     ->searchable()
                     ->preload()
                     ->getOptionLabelFromRecordUsing(function ($record): string {
-                        return $record->name.($record->trashed() ? ' (Deleted)' : '');
+                        return $record->name . ($record->trashed() ? ' (Deleted)' : '');
                     })
                     ->disableOptionWhen(function ($value, $state, $component, $label) {
                         if (str_contains($label, ' (Deleted)')) {
@@ -702,7 +703,7 @@ class OperationResource extends Resource
 
                         $repeater = $component->getParentRepeater();
 
-                        if (! $repeater) {
+                        if ( ! $repeater) {
                             return false;
                         }
 
@@ -729,7 +730,7 @@ class OperationResource extends Resource
                         modifyQueryUsing: fn (Builder $query) => $query->withTrashed(),
                     )
                     ->getOptionLabelFromRecordUsing(function ($record): string {
-                        return $record->full_name.($record->trashed() ? ' (Deleted)' : '');
+                        return $record->full_name . ($record->trashed() ? ' (Deleted)' : '');
                     })
                     ->disableOptionWhen(function ($label) {
                         return str_contains($label, ' (Deleted)');
@@ -861,8 +862,8 @@ class OperationResource extends Resource
     {
         $move = $record instanceof Move ? $record : $record->move;
 
-        if (! $move instanceof Move) {
-            throw new \InvalidArgumentException('Expected Move model or model with move relationship, got '.get_class($record));
+        if ( ! $move instanceof Move) {
+            throw new InvalidArgumentException('Expected Move model or model with move relationship, got ' . get_class($record));
         }
 
         $columns = 2;
@@ -961,7 +962,7 @@ class OperationResource extends Resource
                                 $set('result_package_id', $productQuantity?->package_id);
 
                                 if ($productQuantity?->quantity) {
-                                    if (! $move->uom_id) {
+                                    if ( ! $move->uom_id) {
                                         $set('qty', $productQuantity->quantity);
                                     } else {
                                         $set('qty', (float) ($productQuantity->quantity ?? 0) * $move->uom->factor);
@@ -1012,7 +1013,7 @@ class OperationResource extends Resource
                                     })
                             )
                             ->getOptionLabelFromRecordUsing(function ($record): string {
-                                return $record->full_name.($record->trashed() ? ' (Deleted)' : '');
+                                return $record->full_name . ($record->trashed() ? ' (Deleted)' : '');
                             })
                             ->disableOptionWhen(function ($label) {
                                 return str_contains($label, ' (Deleted)');
@@ -1057,7 +1058,7 @@ class OperationResource extends Resource
                             ->maxValue(fn () => $move->product->tracking == ProductTracking::SERIAL ? 1 : 999999999)
                             ->required()
                             ->suffix(function () use ($move) {
-                                if (! static::getProductSettings()->enable_uom) {
+                                if ( ! static::getProductSettings()->enable_uom) {
                                     return false;
                                 }
 
@@ -1077,18 +1078,18 @@ class OperationResource extends Resource
                             $data['package_id'] = $productQuantity?->package_id;
                         }
 
-                        $data['reference'] = $move->reference;
-                        $data['state'] = $move->state;
-                        $data['uom_qty'] = static::calculateProductQuantity($data['uom_id'] ?? $move->uom_id, $data['qty']);
-                        $data['scheduled_at'] = $move->scheduled_at;
-                        $data['operation_id'] = $move->operation_id;
-                        $data['move_id'] = $move->id;
+                        $data['reference']          = $move->reference;
+                        $data['state']              = $move->state;
+                        $data['uom_qty']            = static::calculateProductQuantity($data['uom_id'] ?? $move->uom_id, $data['qty']);
+                        $data['scheduled_at']       = $move->scheduled_at;
+                        $data['operation_id']       = $move->operation_id;
+                        $data['move_id']            = $move->id;
                         $data['source_location_id'] = $move->source_location_id;
                         $data['uom_id'] ??= $move->uom_id;
                         $data['creator_id'] = Auth::id();
                         $data['product_id'] = $move->product_id;
                         $data['company_id'] = $move->company_id;
-                        $data['destination_location_id'] = $data['destination_location_id'] ?? $move->destination_location_id;
+                        $data['destination_location_id'] ??= $move->destination_location_id;
 
                         return $data;
                     })
@@ -1112,7 +1113,7 @@ class OperationResource extends Resource
             })
             ->modalSubmitAction(
                 fn ($action, $record) => $action
-                    ->visible(! in_array($move->state, [MoveState::DONE, MoveState::CANCELED]))
+                    ->visible( ! in_array($move->state, [MoveState::DONE, MoveState::CANCELED]))
             )
             ->action(function (Set $set, array $data, $record) use ($move): void {
                 $totalQty = $move->lines()->sum('qty');
@@ -1164,95 +1165,21 @@ class OperationResource extends Resource
         ];
     }
 
-    private static function afterProductUpdated(Set $set, Get $get): void
-    {
-        if (! $get('product_id')) {
-            return;
-        }
-
-        $product = Product::find($get('product_id'));
-
-        $set('uom_id', $product->uom_id);
-
-        $productQuantity = static::calculateProductQuantity($get('uom_id'), $get('product_uom_qty'));
-
-        $set('product_qty', round($productQuantity, 2));
-
-        $packaging = static::getBestPackaging($get('product_id'), round($productQuantity, 2));
-
-        $set('product_packaging_id', $packaging['packaging_id'] ?? null);
-    }
-
-    private static function afterProductUOMQtyUpdated(Set $set, Get $get): void
-    {
-        if (! $get('product_id')) {
-            return;
-        }
-
-        $productQuantity = static::calculateProductQuantity($get('uom_id'), $get('product_uom_qty'));
-
-        $set('product_qty', round($productQuantity, 2));
-
-        $packaging = static::getBestPackaging($get('product_id'), $productQuantity);
-
-        $set('product_packaging_id', $packaging['packaging_id'] ?? null);
-    }
-
-    private static function afterUOMUpdated(Set $set, Get $get): void
-    {
-        if (! $get('product_id')) {
-            return;
-        }
-
-        $productQuantity = static::calculateProductQuantity($get('uom_id'), $get('product_uom_qty'));
-
-        $set('product_qty', round($productQuantity, 2));
-
-        $packaging = static::getBestPackaging($get('product_id'), $productQuantity);
-
-        $set('product_packaging_id', $packaging['packaging_id'] ?? null);
-    }
-
     public static function calculateProductQuantity($uomId, $uomQuantity)
     {
-        if (! $uomId) {
+        if ( ! $uomId) {
             return self::normalizeZero((float) ($uomQuantity ?? 0));
         }
 
         $uom = Uom::find($uomId);
 
-        if (! $uom || ! is_numeric($uom->factor) || $uom->factor == 0) {
+        if ( ! $uom || ! is_numeric($uom->factor) || $uom->factor == 0) {
             return 0;
         }
 
         $quantity = (float) ($uomQuantity ?? 0) / $uom->factor;
 
         return self::normalizeZero($quantity);
-    }
-
-    protected static function normalizeZero(float $value): float
-    {
-        return $value == 0 ? 0.0 : $value; // convert -0.0 to 0.0
-    }
-
-    private static function getBestPackaging($productId, $quantity)
-    {
-        $product = Product::find($productId);
-
-        $packagings = Packaging::where('product_id', $product?->id)
-            ->orderByDesc('qty')
-            ->get();
-
-        foreach ($packagings as $packaging) {
-            if ($quantity && $quantity % $packaging->qty == 0) {
-                return [
-                    'packaging_id'  => $packaging->id,
-                    'packaging_qty' => round($quantity / $packaging->qty, 2),
-                ];
-            }
-        }
-
-        return null;
     }
 
     public static function getOperationSettings(): OperationSettings
@@ -1273,5 +1200,77 @@ class OperationResource extends Resource
     public static function getWarehouseSettings(): WarehouseSettings
     {
         return once(fn () => app(WarehouseSettings::class));
+    }
+
+    protected static function normalizeZero(float $value): float
+    {
+        return $value == 0 ? 0.0 : $value; // convert -0.0 to 0.0
+    }
+
+    private static function afterProductUpdated(Set $set, Get $get): void
+    {
+        if ( ! $get('product_id')) {
+            return;
+        }
+
+        $product = Product::find($get('product_id'));
+
+        $set('uom_id', $product->uom_id);
+
+        $productQuantity = static::calculateProductQuantity($get('uom_id'), $get('product_uom_qty'));
+
+        $set('product_qty', round($productQuantity, 2));
+
+        $packaging = static::getBestPackaging($get('product_id'), round($productQuantity, 2));
+
+        $set('product_packaging_id', $packaging['packaging_id'] ?? null);
+    }
+
+    private static function afterProductUOMQtyUpdated(Set $set, Get $get): void
+    {
+        if ( ! $get('product_id')) {
+            return;
+        }
+
+        $productQuantity = static::calculateProductQuantity($get('uom_id'), $get('product_uom_qty'));
+
+        $set('product_qty', round($productQuantity, 2));
+
+        $packaging = static::getBestPackaging($get('product_id'), $productQuantity);
+
+        $set('product_packaging_id', $packaging['packaging_id'] ?? null);
+    }
+
+    private static function afterUOMUpdated(Set $set, Get $get): void
+    {
+        if ( ! $get('product_id')) {
+            return;
+        }
+
+        $productQuantity = static::calculateProductQuantity($get('uom_id'), $get('product_uom_qty'));
+
+        $set('product_qty', round($productQuantity, 2));
+
+        $packaging = static::getBestPackaging($get('product_id'), $productQuantity);
+
+        $set('product_packaging_id', $packaging['packaging_id'] ?? null);
+    }
+
+    private static function getBestPackaging($productId, $quantity)
+    {
+        $product = Product::find($productId);
+
+        $packagings = Packaging::where('product_id', $product?->id)
+            ->orderByDesc('qty')
+            ->get();
+
+        foreach ($packagings as $packaging) {
+            if ($quantity && $quantity % $packaging->qty == 0) {
+                return [
+                    'packaging_id'  => $packaging->id,
+                    'packaging_qty' => round($quantity / $packaging->qty, 2),
+                ];
+            }
+        }
     }
 }

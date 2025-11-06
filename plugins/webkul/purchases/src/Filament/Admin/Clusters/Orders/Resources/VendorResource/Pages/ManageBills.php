@@ -2,6 +2,7 @@
 
 namespace Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\VendorResource\Pages;
 
+use BackedEnum;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Resources\Pages\ManageRelatedRecords;
@@ -18,7 +19,7 @@ class ManageBills extends ManageRelatedRecords
 
     protected static string $relationship = 'accountMoves';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-check';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-document-check';
 
     public static function getNavigationLabel(): string
     {

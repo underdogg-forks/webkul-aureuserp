@@ -9,11 +9,6 @@ use Webkul\Account\Models\Payment;
 
 class ResetToDraftAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'customers.payment.reset-to-draft';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -30,5 +25,10 @@ class ResetToDraftAction extends Action
             ->hidden(function (Payment $record) {
                 return $record->state == PaymentStatus::DRAFT->value;
             });
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'customers.payment.reset-to-draft';
     }
 }

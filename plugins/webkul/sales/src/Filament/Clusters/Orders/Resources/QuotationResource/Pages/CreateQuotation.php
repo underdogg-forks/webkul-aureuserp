@@ -17,11 +17,6 @@ class CreateQuotation extends CreateRecord
 
     protected static string $resource = QuotationResource::class;
 
-    protected function getRedirectUrl(): string
-    {
-        return $this->getResource()::getUrl('edit', ['record' => $this->getRecord()]);
-    }
-
     public function getSubNavigation(): array
     {
         if (filled($cluster = static::getCluster())) {
@@ -29,6 +24,11 @@ class CreateQuotation extends CreateRecord
         }
 
         return [];
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('edit', ['record' => $this->getRecord()]);
     }
 
     protected function getCreatedNotification(): ?Notification
@@ -43,18 +43,18 @@ class CreateQuotation extends CreateRecord
     {
         $user = Auth::user();
 
-        $data['creator_id'] = $user->id;
-        $data['user_id'] = $user->id;
-        $data['company_id'] = $user->default_company_id;
-        $data['state'] = OrderState::DRAFT;
+        $data['creator_id']  = $user->id;
+        $data['user_id']     = $user->id;
+        $data['company_id']  = $user->default_company_id;
+        $data['state']       = OrderState::DRAFT;
         $data['create_date'] = now();
 
         if ($data['partner_id']) {
-            $partner = Partner::find($data['partner_id']);
+            $partner                       = Partner::find($data['partner_id']);
             $data['commercial_partner_id'] = $partner->id;
-            $data['partner_shipping_id'] = $partner->id;
-            $data['partner_invoice_id'] = $partner->id;
-            $data['order_partner_id'] = $partner->id;
+            $data['partner_shipping_id']   = $partner->id;
+            $data['partner_invoice_id']    = $partner->id;
+            $data['order_partner_id']      = $partner->id;
         }
 
         return $data;

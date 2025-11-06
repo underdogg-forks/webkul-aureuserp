@@ -6,6 +6,7 @@ use Filament\Actions\Action;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;
+use Throwable;
 use Webkul\PluginManager\Filament\Resources\PluginResource;
 use Webkul\Support\Models\Plugin;
 
@@ -22,7 +23,7 @@ class ListPlugins extends ListRecords
             ->keys();
 
         $query = fn ($installed = null) => Plugin::whereIn('name', $packages)
-            ->when(! is_null($installed), fn ($q) => $q->where('is_installed', $installed));
+            ->when(null !== $installed, fn ($q) => $q->where('is_installed', $installed));
 
         return [
             'all' => Tab::make(__('All Plugins'))
@@ -65,7 +66,6 @@ class ListPlugins extends ListRecords
             $synced = 0;
 
             $packages->each(function ($package, $name) use (&$synced) {
-
                 $composerPath = base_path("plugins/webkul/{$name}/composer.json");
 
                 $composer = file_exists($composerPath)
@@ -99,7 +99,7 @@ class ListPlugins extends ListRecords
                 ->body(__('Found and synced :count new plugin(s).', ['count' => $synced]))
                 ->success()
                 ->send();
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             report($e);
 
             Notification::make()

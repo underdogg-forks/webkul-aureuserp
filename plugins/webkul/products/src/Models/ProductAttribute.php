@@ -14,6 +14,11 @@ class ProductAttribute extends Model implements Sortable
 {
     use SortableTrait;
 
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
+
     /**
      * Table name.
      *
@@ -31,11 +36,6 @@ class ProductAttribute extends Model implements Sortable
         'product_id',
         'attribute_id',
         'creator_id',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function product(): BelongsTo

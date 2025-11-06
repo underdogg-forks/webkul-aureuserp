@@ -16,7 +16,6 @@ class ViewProductCategory extends ViewCategory
     protected function getHeaderActions(): array
     {
         return [
-
             ChatterActions\ChatterAction::make()
                 ->setResource(static::$resource),
             ...parent::getHeaderActions(),

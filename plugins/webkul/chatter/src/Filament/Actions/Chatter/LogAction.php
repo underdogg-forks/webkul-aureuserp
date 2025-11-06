@@ -17,11 +17,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class LogAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'log.action';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -98,14 +93,14 @@ class LogAction extends Action
                 try {
                     $user = filament()->auth()->user();
 
-                    $data['name'] = $record->name;
+                    $data['name']        = $record->name;
                     $data['causer_type'] = $user->getMorphClass();
-                    $data['causer_id'] = $user->id;
+                    $data['causer_id']   = $user->id;
                     $data['is_internal'] = true;
 
                     $message = $record->addMessage($data, $user->id);
 
-                    if (! empty($data['attachments'])) {
+                    if ( ! empty($data['attachments'])) {
                         $record->addAttachments(
                             $data['attachments'],
                             ['message_id' => $message->id],
@@ -140,5 +135,10 @@ class LogAction extends Action
                 }
             })
             ->slideOver(false);
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'log.action';
     }
 }

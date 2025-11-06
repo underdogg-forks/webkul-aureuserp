@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class TaxTaxes extends Model
 {
+    public $timestamps = false;
+
     protected $table = 'accounts_tax_taxes';
 
     protected $fillable = ['parent_tax_id', 'child_tax_id'];
-
-    public $timestamps = false;
 
     public function parentTax()
     {

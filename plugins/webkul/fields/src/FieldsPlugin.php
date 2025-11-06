@@ -8,14 +8,14 @@ use ReflectionClass;
 
 class FieldsPlugin implements Plugin
 {
-    public function getId(): string
-    {
-        return 'fields';
-    }
-
     public static function make(): static
     {
         return app(static::class);
+    }
+
+    public function getId(): string
+    {
+        return 'fields';
     }
 
     public function register(Panel $panel): void
@@ -29,15 +29,12 @@ class FieldsPlugin implements Plugin
             });
     }
 
-    public function boot(Panel $panel): void
-    {
-        //
-    }
+    public function boot(Panel $panel): void {}
 
     protected function getPluginBasePath($path = null): string
     {
         $reflector = new ReflectionClass(get_class($this));
 
-        return dirname($reflector->getFileName()).($path ?? '');
+        return dirname($reflector->getFileName()) . ($path ?? '');
     }
 }

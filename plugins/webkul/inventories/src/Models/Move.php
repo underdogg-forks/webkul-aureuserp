@@ -92,7 +92,7 @@ class Move extends Model
     ];
 
     /**
-     * Determines if a stock move is a purchase return
+     * Determines if a stock move is a purchase return.
      *
      * @return bool True if the move is a purchase return, false otherwise
      */
@@ -106,7 +106,7 @@ class Move extends Model
     }
 
     /**
-     * Determines if a stock move is a purchase return
+     * Determines if a stock move is a purchase return.
      *
      * @return bool True if the move is a purchase return, false otherwise
      */
@@ -123,7 +123,7 @@ class Move extends Model
     }
 
     /**
-     * Determines if a stock move is a purchase return
+     * Determines if a stock move is a purchase return.
      *
      * @return bool True if the move is a purchase return, false otherwise
      */
@@ -221,7 +221,7 @@ class Move extends Model
 
     public function moveDestinations(): BelongsToMany
     {
-        return $this->belongsToMany(Move::class, 'inventories_move_destinations', 'origin_move_id', 'destination_move_id');
+        return $this->belongsToMany(self::class, 'inventories_move_destinations', 'origin_move_id', 'destination_move_id');
     }
 
     public function company(): BelongsTo

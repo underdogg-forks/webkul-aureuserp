@@ -12,11 +12,6 @@ use Webkul\Account\Models\Move;
 
 class ConfirmAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'customers.invoice.confirm';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -25,7 +20,7 @@ class ConfirmAction extends Action
             ->label(__('accounts::filament/resources/invoice/actions/confirm-action.title'))
             ->color('gray')
             ->action(function (Move $record, Component $livewire): void {
-                if (! $this->validateMove($record)) {
+                if ( ! $this->validateMove($record)) {
                     return;
                 }
 
@@ -35,14 +30,19 @@ class ConfirmAction extends Action
             })
             ->hidden(function (Move $record) {
                 return
-                    $record->state !== MoveState::DRAFT ||
-                    ($record->auto_post !== AutoPost::NO && $record->date > now());
+                    $record->state !== MoveState::DRAFT
+                    || ($record->auto_post !== AutoPost::NO && $record->date > now());
             });
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'customers.invoice.confirm';
     }
 
     private function validateMove(Move $record): bool
     {
-        if (! $record->partner_id) {
+        if ( ! $record->partner_id) {
             Notification::make()
                 ->warning()
                 ->title(__('accounts::filament/resources/invoice/actions/confirm-action.customer.notification.customer-validation.title'))

@@ -24,7 +24,13 @@ use Webkul\Support\Models\UOM;
 
 class OrderLine extends Model implements Sortable
 {
-    use HasFactory, SortableTrait;
+    use HasFactory;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     /**
      * Table name.
@@ -83,11 +89,6 @@ class OrderLine extends Model implements Sortable
         'planned_at'          => 'datetime',
         'is_downpayment'      => 'boolean',
         'propagate_cancel'    => 'boolean',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function order(): BelongsTo

@@ -288,7 +288,6 @@ class PageResource extends Resource
                                 IconEntry::make('is_published')
                                     ->label(__('website::filament/admin/resources/page.table.columns.is-published'))
                                     ->boolean(),
-
                             ]),
 
                         Section::make(__('website::filament/admin/resources/page.infolist.sections.settings.title'))

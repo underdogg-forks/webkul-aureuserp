@@ -2,6 +2,7 @@
 
 namespace Webkul\Inventory\Filament\Clusters\Operations\Resources;
 
+use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
@@ -19,7 +20,7 @@ class ReplenishmentResource extends Resource
 {
     protected static ?string $model = OrderPoint::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-arrows-up-down';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-arrows-up-down';
 
     protected static ?int $navigationSort = 4;
 
@@ -53,13 +54,12 @@ class ReplenishmentResource extends Resource
         return $table
             ->recordTitleAttribute('name')
             ->columns([
-
             ])
             ->groups(
                 collect([
                 ])->filter(function ($group) {
                     return match ($group->getId()) {
-                        default        => true
+                        default => true
                     };
                 })->all()
             )
@@ -78,7 +78,6 @@ class ReplenishmentResource extends Resource
                     ->label(__('inventories::filament/clusters/operations/resources/replenishment.table.header-actions.create.label'))
                     ->icon('heroicon-o-plus-circle')
                     ->mutateDataUsing(function (array $data): array {
-
                         return $data;
                     })
                     ->before(function (array $data) {})
@@ -96,7 +95,7 @@ class ReplenishmentResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => ManageReplenishment::route('/'),
+            'index' => ManageReplenishment::route('/'),
         ];
     }
 }

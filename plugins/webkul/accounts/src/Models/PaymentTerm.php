@@ -14,7 +14,14 @@ use Webkul\Support\Models\Company;
 
 class PaymentTerm extends Model implements Sortable
 {
-    use HasFactory, SoftDeletes, SortableTrait;
+    use HasFactory;
+    use SoftDeletes;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     protected $table = 'accounts_payment_terms';
 
@@ -29,11 +36,6 @@ class PaymentTerm extends Model implements Sortable
         'display_on_invoice',
         'early_discount',
         'discount_percentage',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function company()

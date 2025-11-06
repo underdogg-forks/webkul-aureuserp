@@ -12,20 +12,20 @@ enum PaymentType: string implements HasColor, HasIcon, HasLabel
 
     case RECEIVE = 'inbound';
 
-    public function getLabel(): ?string
-    {
-        return match ($this) {
-            self::SEND    => __('accounts::enums/payment-type.send'),
-            self::RECEIVE => __('accounts::enums/payment-type.receive'),
-        };
-    }
-
     public static function options(): array
     {
         return [
             self::SEND->value    => __('accounts::enums/payment-type.send'),
             self::RECEIVE->value => __('accounts::enums/payment-type.receive'),
         ];
+    }
+
+    public function getLabel(): ?string
+    {
+        return match ($this) {
+            self::SEND    => __('accounts::enums/payment-type.send'),
+            self::RECEIVE => __('accounts::enums/payment-type.receive'),
+        };
     }
 
     public function getIcon(): ?string

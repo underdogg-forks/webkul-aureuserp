@@ -14,16 +14,16 @@ enum ScrapState: string implements HasColor, HasLabel
     public static function options(): array
     {
         return [
-            self::DRAFT->value    => __('inventories::enums/scrap-state.draft'),
-            self::DONE->value     => __('inventories::enums/scrap-state.done'),
+            self::DRAFT->value => __('inventories::enums/scrap-state.draft'),
+            self::DONE->value  => __('inventories::enums/scrap-state.done'),
         ];
     }
 
     public function getLabel(): string
     {
         return match ($this) {
-            self::DRAFT    => __('inventories::enums/scrap-state.draft'),
-            self::DONE     => __('inventories::enums/scrap-state.done'),
+            self::DRAFT => __('inventories::enums/scrap-state.draft'),
+            self::DONE  => __('inventories::enums/scrap-state.done'),
         };
     }
 

@@ -58,9 +58,9 @@ class MoveLine extends Model
      * @var array
      */
     protected $casts = [
-        'state'             => MoveState::class,
-        'is_picked'         => 'boolean',
-        'scheduled_at'      => 'datetime',
+        'state'        => MoveState::class,
+        'is_picked'    => 'boolean',
+        'scheduled_at' => 'datetime',
     ];
 
     public function move(): BelongsTo

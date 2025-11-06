@@ -2,6 +2,7 @@
 
 namespace Webkul\Account\Filament\Resources;
 
+use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Hidden;
@@ -59,7 +60,7 @@ class BillResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static bool $shouldRegisterNavigation = false;
 
@@ -158,7 +159,7 @@ class BillResource extends Resource
                                         modifyQueryUsing: fn (Builder $query) => $query->withTrashed(),
                                     )
                                     ->getOptionLabelFromRecordUsing(function ($record): string {
-                                        return $record->account_number.($record->trashed() ? ' (Deleted)' : '');
+                                        return $record->account_number . ($record->trashed() ? ' (Deleted)' : '');
                                     })
                                     ->disableOptionWhen(function ($label) {
                                         return str_contains($label, ' (Deleted)');
@@ -553,7 +554,7 @@ class BillResource extends Resource
                     ->preload()
                     ->live()
                     ->getOptionLabelFromRecordUsing(function ($record): string {
-                        return $record->name.($record->trashed() ? ' (Deleted)' : '');
+                        return $record->name . ($record->trashed() ? ' (Deleted)' : '');
                     })
                     ->disableOptionWhen(function ($value, $state, $component, $label) {
                         if (str_contains($label, ' (Deleted)')) {
@@ -561,7 +562,7 @@ class BillResource extends Resource
                         }
 
                         $repeater = $component->getParentRepeater();
-                        if (! $repeater) {
+                        if ( ! $repeater) {
                             return false;
                         }
 
@@ -665,9 +666,15 @@ class BillResource extends Resource
         return $data;
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->orderByDesc('id');
+    }
+
     private static function afterProductUpdated(Set $set, Get $get): void
     {
-        if (! $get('product_id')) {
+        if ( ! $get('product_id')) {
             return;
         }
 
@@ -690,7 +697,7 @@ class BillResource extends Resource
 
     private static function afterProductQtyUpdated(Set $set, Get $get): void
     {
-        if (! $get('product_id')) {
+        if ( ! $get('product_id')) {
             return;
         }
 
@@ -703,7 +710,7 @@ class BillResource extends Resource
 
     private static function afterUOMUpdated(Set $set, Get $get): void
     {
-        if (! $get('product_id')) {
+        if ( ! $get('product_id')) {
             return;
         }
 
@@ -722,7 +729,7 @@ class BillResource extends Resource
 
     private static function calculateUnitQuantity($uomId, $quantity)
     {
-        if (! $uomId) {
+        if ( ! $uomId) {
             return $quantity;
         }
 
@@ -733,7 +740,7 @@ class BillResource extends Resource
 
     private static function calculateUnitPrice($uomId, $price)
     {
-        if (! $uomId) {
+        if ( ! $uomId) {
             return $price;
         }
 
@@ -744,7 +751,7 @@ class BillResource extends Resource
 
     private static function calculateLineTotals(Set $set, Get $get): void
     {
-        if (! $get('product_id')) {
+        if ( ! $get('product_id')) {
             $set('price_unit', 0);
 
             $set('discount', 0);
@@ -758,13 +765,13 @@ class BillResource extends Resource
             return;
         }
 
-        $priceUnit = floatval($get('price_unit'));
+        $priceUnit = (float) ($get('price_unit'));
 
-        $quantity = floatval($get('quantity') ?? 1);
+        $quantity = (float) ($get('quantity') ?? 1);
 
         $subTotal = $priceUnit * $quantity;
 
-        $discountValue = floatval($get('discount') ?? 0);
+        $discountValue = (float) ($get('discount') ?? 0);
 
         if ($discountValue > 0) {
             $discountAmount = $subTotal * ($discountValue / 100);
@@ -781,11 +788,5 @@ class BillResource extends Resource
         $set('price_tax', $taxAmount);
 
         $set('price_total', $subTotal + $taxAmount);
-    }
-
-    public static function getEloquentQuery(): Builder
-    {
-        return parent::getEloquentQuery()
-            ->orderByDesc('id');
     }
 }

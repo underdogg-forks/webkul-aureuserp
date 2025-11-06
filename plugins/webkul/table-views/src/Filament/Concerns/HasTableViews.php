@@ -44,17 +44,6 @@ trait HasTableViews
         $this->loadDefaultActiveTableView();
     }
 
-    protected function loadDefaultActiveTableView(): void
-    {
-        if (filled($this->activeTableView)) {
-            $this->applyTableViewFilters();
-
-            return;
-        }
-
-        $this->activeTableView = $this->getDefaultActiveTableView();
-    }
-
     public function loadView($tabKey): void
     {
         $this->resetTableViews();
@@ -95,16 +84,16 @@ trait HasTableViews
     {
         $tableViews = $this->getAllTableViews();
 
-        if (! array_key_exists($this->activeTableView, $tableViews)) {
+        if ( ! array_key_exists($this->activeTableView, $tableViews)) {
             return;
         }
 
-        if (! $tableViews[$this->activeTableView] instanceof SavedView) {
+        if ( ! $tableViews[$this->activeTableView] instanceof SavedView) {
             return;
         }
 
         foreach ($tableViews[$this->activeTableView]->getRecord()->filters as $key => $filter) {
-            if (! $filter) {
+            if ( ! $filter) {
                 continue;
             }
 
@@ -203,11 +192,11 @@ trait HasTableViews
     {
         $tableViews = $this->getAllTableViews();
 
-        if (! array_key_exists($this->activeTableView, $tableViews)) {
+        if ( ! array_key_exists($this->activeTableView, $tableViews)) {
             return false;
         }
 
-        if (! $tableViews[$this->activeTableView] instanceof SavedView) {
+        if ( ! $tableViews[$this->activeTableView] instanceof SavedView) {
             return false;
         }
 
@@ -219,21 +208,6 @@ trait HasTableViews
             'tableSort'           => $this->tableSort,
             'tableRecordsPerPage' => $this->tableRecordsPerPage,
         ] != $tableViews[$this->activeTableView]->getRecord()->filters;
-    }
-
-    protected function modifyQueryWithActiveTab(Builder $query): Builder
-    {
-        if (blank(filled($this->activeTableView))) {
-            return $query;
-        }
-
-        $tableViews = $this->getAllTableViews();
-
-        if (! array_key_exists($this->activeTableView, $tableViews)) {
-            return $query;
-        }
-
-        return $tableViews[$this->activeTableView]->modifyQuery($query);
     }
 
     public function setTableViewsFormMaxHeight(string|Closure|null $height): static
@@ -295,8 +269,7 @@ trait HasTableViews
                 return $data;
             })
             ->after(function (TableViewModel $saveFilter): void {
-                unset($this->cachedTableViews);
-                unset($this->cachedFavoriteTableViews);
+                unset($this->cachedTableViews, $this->cachedFavoriteTableViews);
 
                 $this->getCachedTableViews();
                 $this->getCachedFavoriteTableViews();
@@ -351,8 +324,7 @@ trait HasTableViews
                     ]
                 );
 
-                unset($this->cachedTableViews);
-                unset($this->cachedFavoriteTableViews);
+                unset($this->cachedTableViews, $this->cachedFavoriteTableViews);
             });
     }
 
@@ -374,8 +346,7 @@ trait HasTableViews
                     ]
                 );
 
-                unset($this->cachedTableViews);
-                unset($this->cachedFavoriteTableViews);
+                unset($this->cachedTableViews, $this->cachedFavoriteTableViews);
             });
     }
 
@@ -383,8 +354,7 @@ trait HasTableViews
     {
         return EditViewAction::make('editTableView')
             ->after(function (): void {
-                unset($this->cachedTableViews);
-                unset($this->cachedFavoriteTableViews);
+                unset($this->cachedTableViews, $this->cachedFavoriteTableViews);
 
                 $this->getCachedTableViews();
                 $this->getCachedFavoriteTableViews();
@@ -405,8 +375,7 @@ trait HasTableViews
                     ->where('filterable_type', (string) static::class)
                     ->delete();
 
-                unset($this->cachedTableViews);
-                unset($this->cachedFavoriteTableViews);
+                unset($this->cachedTableViews, $this->cachedFavoriteTableViews);
             });
     }
 
@@ -429,8 +398,7 @@ trait HasTableViews
                     ],
                 ]);
 
-                unset($this->cachedTableViews);
-                unset($this->cachedFavoriteTableViews);
+                unset($this->cachedTableViews, $this->cachedFavoriteTableViews);
             });
     }
 
@@ -481,5 +449,31 @@ trait HasTableViews
                     ->visible(fn () => $key == $tableView->isDeletable()),
             ])->dropdown(false),
         ])->dropdownPlacement('bottom-end');
+    }
+
+    protected function loadDefaultActiveTableView(): void
+    {
+        if (filled($this->activeTableView)) {
+            $this->applyTableViewFilters();
+
+            return;
+        }
+
+        $this->activeTableView = $this->getDefaultActiveTableView();
+    }
+
+    protected function modifyQueryWithActiveTab(Builder $query): Builder
+    {
+        if (blank(filled($this->activeTableView))) {
+            return $query;
+        }
+
+        $tableViews = $this->getAllTableViews();
+
+        if ( ! array_key_exists($this->activeTableView, $tableViews)) {
+            return $query;
+        }
+
+        return $tableViews[$this->activeTableView]->modifyQuery($query);
     }
 }

@@ -13,7 +13,14 @@ use Webkul\TimeOff\Enums\LeaveValidationType;
 
 class LeaveType extends Model implements Sortable
 {
-    use HasFactory, SoftDeletes, SortableTrait;
+    use HasFactory;
+    use SoftDeletes;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     protected $table = 'time_off_leave_types';
 
@@ -41,11 +48,6 @@ class LeaveType extends Model implements Sortable
 
     protected $casts = [
         'leave_validation_type' => LeaveValidationType::class,
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function company()

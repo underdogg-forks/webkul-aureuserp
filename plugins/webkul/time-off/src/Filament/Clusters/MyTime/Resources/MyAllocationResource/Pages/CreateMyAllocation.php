@@ -10,6 +10,8 @@ use Webkul\TimeOff\Filament\Clusters\MyTime\Resources\MyAllocationResource;
 
 class CreateMyAllocation extends CreateRecord
 {
+    protected static string $resource = MyAllocationResource::class;
+
     public function getSubNavigation(): array
     {
         if (filled($cluster = static::getCluster())) {
@@ -18,8 +20,6 @@ class CreateMyAllocation extends CreateRecord
 
         return [];
     }
-
-    protected static string $resource = MyAllocationResource::class;
 
     protected function getRedirectUrl(): string
     {
@@ -38,7 +38,7 @@ class CreateMyAllocation extends CreateRecord
     {
         $employee = Employee::where('user_id', Auth::id())->first();
 
-        if (! $employee) {
+        if ( ! $employee) {
             Notification::make()
                 ->warning()
                 ->title(__('time-off::filament/clusters/my-time/resources/my-allocation/pages/create-allocation.notification.warning.title'))

@@ -25,7 +25,6 @@ trait HasRepeatableEntryColumnManager
 
     protected function getRepeaterComponent(string $repeaterKey): ?RepeatableEntry
     {
-
         $infolist = $this->infolist->getFlatComponents();
 
         foreach ($infolist as $component) {

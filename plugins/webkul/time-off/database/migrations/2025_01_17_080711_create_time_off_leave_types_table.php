@@ -10,8 +10,7 @@ use Webkul\TimeOff\Enums\RequestUnit;
 use Webkul\TimeOff\Enums\RequiresAllocation;
 use Webkul\TimeOff\Enums\TimeType;
 
-return new class extends Migration
-{
+return new class () extends Migration {
     /**
      * Run the migrations.
      */

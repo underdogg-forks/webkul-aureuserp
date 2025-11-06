@@ -23,9 +23,9 @@ class SkillTypeResource extends BaseSkillTypeResource
     public static function getPages(): array
     {
         return [
-            'index'  => ListSkillTypes::route('/'),
-            'view'   => ViewSkillType::route('/{record}'),
-            'edit'   => EditSkillType::route('/{record}/edit'),
+            'index' => ListSkillTypes::route('/'),
+            'view'  => ViewSkillType::route('/{record}'),
+            'edit'  => EditSkillType::route('/{record}/edit'),
         ];
     }
 }

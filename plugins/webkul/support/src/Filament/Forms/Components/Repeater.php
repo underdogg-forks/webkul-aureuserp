@@ -47,14 +47,14 @@ class Repeater extends BaseRepeater
 
     public function getColumnManagerSessionKey(): string
     {
-        return $this->columnManagerSessionKey ??= 'repeater_'.$this->getStatePath().'_column_manager';
+        return $this->columnManagerSessionKey ??= 'repeater_' . $this->getStatePath() . '_column_manager';
     }
 
     public function getMappedColumns(): array
     {
         $columns = $this->evaluate($this->tableColumns);
 
-        if (! is_array($columns)) {
+        if ( ! is_array($columns)) {
             $columns = [];
         }
 
@@ -83,7 +83,7 @@ class Repeater extends BaseRepeater
     {
         $columns = $this->evaluate($this->tableColumns);
 
-        if (! is_array($columns)) {
+        if ( ! is_array($columns)) {
             $columns = [];
         }
 
@@ -163,7 +163,7 @@ class Repeater extends BaseRepeater
         }
 
         $columnState = collect($columns)
-            ->filter(fn ($column) => filled(data_get($column, 'name')) && ! is_null(data_get($column, 'isToggled')))
+            ->filter(fn ($column) => filled(data_get($column, 'name')) && null !== data_get($column, 'isToggled'))
             ->mapWithKeys(fn ($column) => [
                 data_get($column, 'name') => [
                     'isToggled'    => data_get($column, 'isToggled'),

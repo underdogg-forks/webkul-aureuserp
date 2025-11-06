@@ -15,7 +15,16 @@ use Webkul\Support\Models\Company;
 
 class Team extends Model implements Sortable
 {
-    use HasChatter, HasFactory, HasLogActivity, SoftDeletes, SortableTrait;
+    use HasChatter;
+    use HasFactory;
+    use HasLogActivity;
+    use SoftDeletes;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     protected $table = 'sales_teams';
 
@@ -28,11 +37,6 @@ class Team extends Model implements Sortable
         'name',
         'is_active',
         'invoiced_target',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     protected array $logAttributes = [

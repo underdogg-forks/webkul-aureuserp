@@ -2,6 +2,7 @@
 
 namespace Webkul\Recruitment\Filament\Clusters\Applications\Resources;
 
+use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Actions\EditAction;
@@ -21,7 +22,7 @@ class JobByPositionResource extends Resource
 {
     protected static ?string $model = JobPosition::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-briefcase';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-briefcase';
 
     protected static ?string $cluster = Applications::class;
 
@@ -45,11 +46,12 @@ class JobByPositionResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->modifyQueryUsing(fn ($query) => $query
-                ->withCount([
-                    'applications as new_applicants_count' => fn ($query) => $query->where('stage_id', 1),
-                    'applications as total_applicants_count',
-                ])
+            ->modifyQueryUsing(
+                fn ($query) => $query
+                    ->withCount([
+                        'applications as new_applicants_count' => fn ($query) => $query->where('stage_id', 1),
+                        'applications as total_applicants_count',
+                    ])
             )
             ->columns([
                 Stack::make([

@@ -13,7 +13,14 @@ use Webkul\Support\Models\Country;
 
 class EmploymentType extends Model implements Sortable
 {
-    use HasCustomFields, HasFactory, SortableTrait;
+    use HasCustomFields;
+    use HasFactory;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     protected $table = 'employees_employment_types';
 
@@ -23,11 +30,6 @@ class EmploymentType extends Model implements Sortable
         'creator_id',
         'code',
         'sort',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function country()

@@ -15,7 +15,9 @@ use Webkul\Support\Models\Company;
 
 class Candidate extends Model
 {
-    use HasChatter, HasLogActivity, SoftDeletes;
+    use HasChatter;
+    use HasLogActivity;
+    use SoftDeletes;
 
     protected $table = 'recruitments_candidates';
 
@@ -129,7 +131,7 @@ class Candidate extends Model
         parent::boot();
 
         static::saved(function (self $candidate) {
-            if (! $candidate->partner_id) {
+            if ( ! $candidate->partner_id) {
                 $candidate->handlePartnerCreation($candidate);
             } else {
                 $candidate->handlePartnerUpdation($candidate);

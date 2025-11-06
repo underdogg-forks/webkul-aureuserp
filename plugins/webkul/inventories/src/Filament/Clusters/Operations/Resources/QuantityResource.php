@@ -2,6 +2,7 @@
 
 namespace Webkul\Inventory\Filament\Clusters\Operations\Resources;
 
+use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
 use Filament\Forms\Components\DatePicker;
@@ -44,7 +45,7 @@ class QuantityResource extends Resource
 {
     protected static ?string $model = ProductQuantity::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-arrows-up-down';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-arrows-up-down';
 
     protected static ?int $navigationSort = 4;
 
@@ -108,13 +109,13 @@ class QuantityResource extends Resource
                             });
                     })
                     ->visible(function (Get $get): bool {
-                        if (! static::getTraceabilitySettings()->enable_lots_serial_numbers) {
+                        if ( ! static::getTraceabilitySettings()->enable_lots_serial_numbers) {
                             return false;
                         }
 
                         $product = Product::find($get('product_id'));
 
-                        if (! $product) {
+                        if ( ! $product) {
                             return false;
                         }
 
@@ -406,7 +407,7 @@ class QuantityResource extends Resource
                     ->mutateDataUsing(function (array $data): array {
                         $product = Product::find($data['product_id']);
 
-                        $data['location_id'] = $data['location_id'] ?? Warehouse::first()->lot_stock_location_id;
+                        $data['location_id'] ??= Warehouse::first()->lot_stock_location_id;
 
                         $data['creator_id'] = Auth::id();
 
@@ -478,7 +479,8 @@ class QuantityResource extends Resource
                                 'location_id' => $adjustmentLocation->id,
                                 'product_id'  => $record->product_id,
                                 'lot_id'      => $record->lot_id,
-                            ], [
+                            ],
+                            [
                                 'quantity'               => -$record->product->on_hand_quantity,
                                 'company_id'             => $record->company_id,
                                 'creator_id'             => Auth::id(),
@@ -552,7 +554,7 @@ class QuantityResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => ManageQuantities::route('/'),
+            'index' => ManageQuantities::route('/'),
         ];
     }
 }

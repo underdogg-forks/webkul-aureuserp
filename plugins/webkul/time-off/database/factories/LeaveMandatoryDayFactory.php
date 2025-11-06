@@ -5,7 +5,7 @@ namespace Webkul\TimeOff\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<\App\Models\LeaveMandatoryDay>
+ * @extends Factory<\Webkul\Sale\Models\LeaveMandatoryDay>
  */
 class LeaveMandatoryDayFactory extends Factory
 {
@@ -17,7 +17,6 @@ class LeaveMandatoryDayFactory extends Factory
     public function definition(): array
     {
         return [
-            //
         ];
     }
 }

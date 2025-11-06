@@ -14,6 +14,11 @@ class EditFiscalPosition extends EditRecord
 {
     protected static string $resource = FiscalPositionResource::class;
 
+    public static function getSubNavigationPosition(): SubNavigationPosition
+    {
+        return SubNavigationPosition::Top;
+    }
+
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('view', ['record' => $this->getRecord()]);
@@ -25,11 +30,6 @@ class EditFiscalPosition extends EditRecord
             ->success()
             ->title(__('accounts::filament/resources/fiscal-position/pages/edit-fiscal-position.notification.title'))
             ->body(__('accounts::filament/resources/fiscal-position/pages/edit-fiscal-position.notification.body'));
-    }
-
-    public static function getSubNavigationPosition(): SubNavigationPosition
-    {
-        return SubNavigationPosition::Top;
     }
 
     protected function getHeaderActions(): array

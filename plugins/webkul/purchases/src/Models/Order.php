@@ -27,7 +27,10 @@ use Webkul\Support\Models\Currency;
 
 class Order extends Model
 {
-    use HasChatter, HasCustomFields, HasFactory, HasLogActivity;
+    use HasChatter;
+    use HasCustomFields;
+    use HasFactory;
+    use HasLogActivity;
 
     /**
      * Table name.
@@ -116,19 +119,19 @@ class Order extends Model
         'calendar_start_at',
         'incoterm_location',
         'effective_date',
-        'requisition.name'    => 'Requisition',
-        'partner.name'        => 'Vendor',
-        'currency.name'       => 'Currency',
-        'fiscalPosition'      => 'Fiscal Position',
-        'paymentTerm.name'    => 'Payment Term',
-        'incoterm.name'       => 'Buyer',
-        'user.name'           => 'Buyer',
-        'company.name'        => 'Company',
-        'creator.name'        => 'Creator',
+        'requisition.name' => 'Requisition',
+        'partner.name'     => 'Vendor',
+        'currency.name'    => 'Currency',
+        'fiscalPosition'   => 'Fiscal Position',
+        'paymentTerm.name' => 'Payment Term',
+        'incoterm.name'    => 'Buyer',
+        'user.name'        => 'Buyer',
+        'company.name'     => 'Company',
+        'creator.name'     => 'Creator',
     ];
 
     /**
-     * Checks if new invoice is allow or not
+     * Checks if new invoice is allow or not.
      */
     public function getQtyToInvoiceAttribute()
     {
@@ -206,11 +209,11 @@ class Order extends Model
     }
 
     /**
-     * Add a new message
+     * Add a new message.
      */
     public function addMessage(array $data): Message
     {
-        $message = new Message;
+        $message = new Message();
 
         $user = filament()->auth()->user();
 
@@ -218,13 +221,21 @@ class Order extends Model
             'creator_id'       => $user?->id,
             'date_deadline'    => $data['date_deadline'] ?? now(),
             'company_id'       => $data['company_id'] ?? ($user->defaultCompany?->id ?? null),
-            'messageable_type' => Order::class,
+            'messageable_type' => self::class,
             'messageable_id'   => $this->id,
         ], $data));
 
         $message->save();
 
         return $message;
+    }
+
+    /**
+     * Update the full name without triggering additional events.
+     */
+    public function updateName()
+    {
+        $this->name = 'PO/' . $this->id;
     }
 
     /**
@@ -241,14 +252,6 @@ class Order extends Model
         static::created(function ($order) {
             $order->update(['name' => $order->name]);
         });
-    }
-
-    /**
-     * Update the full name without triggering additional events
-     */
-    public function updateName()
-    {
-        $this->name = 'PO/'.$this->id;
     }
 
     protected static function newFactory(): OrderFactory

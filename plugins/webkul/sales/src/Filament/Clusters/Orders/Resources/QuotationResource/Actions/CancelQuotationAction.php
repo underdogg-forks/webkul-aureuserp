@@ -16,11 +16,6 @@ use Webkul\Sale\Models\Order;
 
 class CancelQuotationAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'orders.sales.cancel';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -97,5 +92,10 @@ class CancelQuotationAction extends Action
                 }
             )
             ->hidden(fn ($record) => ! in_array($record->state, [OrderState::DRAFT, OrderState::SENT, OrderState::SALE]));
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'orders.sales.cancel';
     }
 }

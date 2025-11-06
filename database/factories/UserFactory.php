@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\TimeOff\Database\Factories;
+namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 use Webkul\Security\Models\User;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Webkul\Sale\Models\User>
  */
 class UserFactory extends Factory
 {

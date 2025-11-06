@@ -13,7 +13,14 @@ use Webkul\Security\Models\User;
 
 class Tag extends Model implements Sortable
 {
-    use HasFactory, SoftDeletes, SortableTrait;
+    use HasFactory;
+    use SoftDeletes;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     /**
      * Table name.
@@ -32,11 +39,6 @@ class Tag extends Model implements Sortable
         'color',
         'sort',
         'creator_id',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function creator(): BelongsTo

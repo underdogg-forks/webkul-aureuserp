@@ -28,8 +28,8 @@ class Product extends BaseProduct
         if ($this->is_configurable) {
             return $this->hasMany(ProductSupplier::class)
                 ->orWhereIn('product_id', $this->variants()->pluck('id'));
-        } else {
-            return $this->hasMany(ProductSupplier::class);
         }
+
+        return $this->hasMany(ProductSupplier::class);
     }
 }

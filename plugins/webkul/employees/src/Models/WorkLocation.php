@@ -15,7 +15,9 @@ use Webkul\Support\Models\Company;
 
 class WorkLocation extends Model
 {
-    use HasCustomFields, HasFactory, SoftDeletes;
+    use HasCustomFields;
+    use HasFactory;
+    use SoftDeletes;
 
     protected $table = 'employees_work_locations';
 
@@ -29,8 +31,8 @@ class WorkLocation extends Model
     ];
 
     protected $casts = [
-        'is_active'      => 'boolean',
-        'location_type'  => WorkLocationEnum::class,
+        'is_active'     => 'boolean',
+        'location_type' => WorkLocationEnum::class,
     ];
 
     public function company(): BelongsTo

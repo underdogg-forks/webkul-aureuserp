@@ -15,9 +15,9 @@ enum PriceRuleType: string implements HasLabel
     public function getLabel(): string
     {
         return match ($this) {
-            self::PERCENTAGE   => __('products::enums/price-rule-type.percentage'),
-            self::FORMULA      => __('products::enums/price-rule-type.formula'),
-            self::FIXED        => __('products::enums/price-rule-type.fixed'),
+            self::PERCENTAGE => __('products::enums/price-rule-type.percentage'),
+            self::FORMULA    => __('products::enums/price-rule-type.formula'),
+            self::FIXED      => __('products::enums/price-rule-type.fixed'),
         };
     }
 }

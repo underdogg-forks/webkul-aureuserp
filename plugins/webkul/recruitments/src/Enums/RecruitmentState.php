@@ -8,9 +8,18 @@ use Filament\Support\Contracts\HasLabel;
 
 enum RecruitmentState: string implements HasColor, HasIcon, HasLabel
 {
-    case NORMAL = 'normal';
-    case DONE = 'done';
+    case NORMAL  = 'normal';
+    case DONE    = 'done';
     case BLOCKED = 'blocked';
+
+    public static function options(): array
+    {
+        return [
+            self::NORMAL->value  => __('Normal'),
+            self::DONE->value    => __('Done'),
+            self::BLOCKED->value => __('Blocked'),
+        ];
+    }
 
     public function getLabel(): string
     {
@@ -37,14 +46,5 @@ enum RecruitmentState: string implements HasColor, HasIcon, HasLabel
             self::DONE    => 'heroicon-s-check-badge',
             self::BLOCKED => 'heroicon-s-shield-exclamation',
         };
-    }
-
-    public static function options(): array
-    {
-        return [
-            self::NORMAL->value  => __('Normal'),
-            self::DONE->value    => __('Done'),
-            self::BLOCKED->value => __('Blocked'),
-        ];
     }
 }

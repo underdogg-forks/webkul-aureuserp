@@ -13,7 +13,8 @@ use Webkul\Project\Models\Task;
 
 class StatsOverviewWidget extends BaseWidget
 {
-    use HasWidgetShield, InteractsWithPageFilters;
+    use HasWidgetShield;
+    use InteractsWithPageFilters;
 
     protected ?string $pollingInterval = '15s';
 
@@ -26,45 +27,45 @@ class StatsOverviewWidget extends BaseWidget
     {
         $query = Task::query();
 
-        if (! empty($this->pageFilters['selectedProjects'])) {
+        if ( ! empty($this->pageFilters['selectedProjects'])) {
             $query->whereIn('project_id', $this->pageFilters['selectedProjects']);
         }
 
-        if (! empty($this->pageFilters['selectedAssignees'])) {
+        if ( ! empty($this->pageFilters['selectedAssignees'])) {
             $query->whereHas('users', function ($q) {
                 $q->whereIn('users.id', $this->pageFilters['selectedAssignees']);
             });
         }
 
-        if (! empty($this->pageFilters['selectedTags'])) {
+        if ( ! empty($this->pageFilters['selectedTags'])) {
             $query->whereHas('tags', function ($q) {
                 $q->whereIn('projects_task_tag.tag_id', $this->pageFilters['selectedTags']);
             });
         }
 
-        if (! empty($this->pageFilters['selectedPartners'])) {
+        if ( ! empty($this->pageFilters['selectedPartners'])) {
             $query->whereIn('parent_id', $this->pageFilters['selectedPartners']);
         }
 
-        $currentPeriodStart = ! is_null($this->pageFilters['startDate'] ?? null) ?
-            Carbon::parse($this->pageFilters['startDate']) :
-            now()->subMonth();
+        $currentPeriodStart = null !== ($this->pageFilters['startDate'] ?? null)
+            ? Carbon::parse($this->pageFilters['startDate'])
+            : now()->subMonth();
 
-        $currentPeriodEnd = ! is_null($this->pageFilters['endDate'] ?? null) ?
-            Carbon::parse($this->pageFilters['endDate']) :
-            now();
+        $currentPeriodEnd = null !== ($this->pageFilters['endDate'] ?? null)
+            ? Carbon::parse($this->pageFilters['endDate'])
+            : now();
 
         $daysDifference = $currentPeriodEnd->diffInDays($currentPeriodStart);
 
         $previousPeriodStart = (clone $currentPeriodStart)->subDays($daysDifference);
-        $previousPeriodEnd = (clone $currentPeriodEnd)->subDays($daysDifference);
+        $previousPeriodEnd   = (clone $currentPeriodEnd)->subDays($daysDifference);
 
         $currentStats = $this->calculatePeriodStats($query->clone(), $currentPeriodStart, $currentPeriodEnd);
 
         $previousStats = $this->calculatePeriodStats($query->clone(), $previousPeriodStart, $previousPeriodEnd);
 
-        $tasksChart = $this->generateTrendData($query->clone(), 'COUNT', '*', $currentPeriodStart, $currentPeriodEnd);
-        $hoursSpentChart = $this->generateTrendData($query->whereNull('parent_id')->clone(), 'SUM', 'total_hours_spent', $currentPeriodStart, $currentPeriodEnd);
+        $tasksChart          = $this->generateTrendData($query->clone(), 'COUNT', '*', $currentPeriodStart, $currentPeriodEnd);
+        $hoursSpentChart     = $this->generateTrendData($query->whereNull('parent_id')->clone(), 'SUM', 'total_hours_spent', $currentPeriodStart, $currentPeriodEnd);
         $remainingHoursChart = $this->generateTrendData($query->whereNull('parent_id')->clone(), 'SUM', 'remaining_hours', $currentPeriodStart, $currentPeriodEnd);
 
         return [
@@ -135,7 +136,7 @@ class StatsOverviewWidget extends BaseWidget
     {
         $data = $this->getData();
 
-        $current = $data['current'];
+        $current  = $data['current'];
         $previous = $data['previous'];
 
         $tasksChange = $this->calculatePercentageChange(
@@ -154,27 +155,27 @@ class StatsOverviewWidget extends BaseWidget
         );
 
         $formatHours = function ($state): string {
-            $hours = floor($state);
+            $hours   = floor($state);
             $minutes = ($state - $hours) * 60;
 
-            return $hours.':'.$minutes;
+            return $hours . ':' . $minutes;
         };
 
         return [
             Stat::make(__('projects::filament/widgets/stats-overview.total-tasks'), $current['total_tasks'])
-                ->description($tasksChange['percentage'].'% '.($tasksChange['trend'] === 'success' ? 'increase' : 'decrease'))
+                ->description($tasksChange['percentage'] . '% ' . ($tasksChange['trend'] === 'success' ? 'increase' : 'decrease'))
                 ->descriptionIcon($tasksChange['trend'] === 'success' ? 'heroicon-m-arrow-trending-up' : 'heroicon-m-arrow-trending-down')
                 ->color($tasksChange['trend'])
                 ->chart($data['charts']['tasks']),
 
             Stat::make(__('projects::filament/widgets/stats-overview.total-hours-spent'), $formatHours($current['total_hours_spent']))
-                ->description($hoursSpentChange['percentage'].'% '.($hoursSpentChange['trend'] === 'success' ? 'increase' : 'decrease'))
+                ->description($hoursSpentChange['percentage'] . '% ' . ($hoursSpentChange['trend'] === 'success' ? 'increase' : 'decrease'))
                 ->descriptionIcon($hoursSpentChange['trend'] === 'success' ? 'heroicon-m-arrow-trending-up' : 'heroicon-m-arrow-trending-down')
                 ->color($hoursSpentChange['trend'])
                 ->chart($data['charts']['hoursSpent']),
 
             Stat::make(__('projects::filament/widgets/stats-overview.total-time-remaining'), $formatHours($current['total_remaining_hours']))
-                ->description($remainingHoursChange['percentage'].'% '.($remainingHoursChange['trend'] === 'success' ? 'increase' : 'decrease'))
+                ->description($remainingHoursChange['percentage'] . '% ' . ($remainingHoursChange['trend'] === 'success' ? 'increase' : 'decrease'))
                 ->descriptionIcon($remainingHoursChange['trend'] === 'success' ? 'heroicon-m-arrow-trending-up' : 'heroicon-m-arrow-trending-down')
                 ->color($remainingHoursChange['trend'])
                 ->chart($data['charts']['remainingHours']),

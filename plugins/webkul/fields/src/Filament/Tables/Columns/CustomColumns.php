@@ -63,11 +63,11 @@ class CustomColumns extends Component
             ->where('customizable_type', $this->getResourceClass()::getModel())
             ->where('use_in_table', true);
 
-        if (! empty($this->include)) {
+        if ( ! empty($this->include)) {
             $query->whereIn('code', $this->include);
         }
 
-        if (! empty($this->exclude)) {
+        if ( ! empty($this->exclude)) {
             $query->whereNotIn('code', $this->exclude);
         }
 
@@ -94,7 +94,7 @@ class CustomColumns extends Component
         $column = $columnClass::make($field->code)
             ->label($field->name);
 
-        if (! empty($field->table_settings)) {
+        if ( ! empty($field->table_settings)) {
             foreach ($field->table_settings as $setting) {
                 $this->applySetting($column, $setting);
             }
@@ -105,15 +105,15 @@ class CustomColumns extends Component
 
     protected function applySetting(Column $column, array $setting): void
     {
-        $name = $setting['setting'];
+        $name  = $setting['setting'];
         $value = $setting['value'] ?? null;
 
         if (method_exists($column, $name)) {
             if ($value !== null) {
                 if ($name == 'weight') {
-                    $column->{$name}(constant(FontWeight::class."::$value"));
+                    $column->{$name}(constant(FontWeight::class . "::{$value}"));
                 } elseif ($name == 'size') {
-                    $column->{$name}(constant(TextSize::class."::$value"));
+                    $column->{$name}(constant(TextSize::class . "::{$value}"));
                 } else {
                     $column->{$name}($value);
                 }

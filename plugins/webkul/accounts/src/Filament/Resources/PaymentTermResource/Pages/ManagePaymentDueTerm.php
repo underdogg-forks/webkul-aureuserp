@@ -2,6 +2,7 @@
 
 namespace Webkul\Account\Filament\Resources\PaymentTermResource\Pages;
 
+use BackedEnum;
 use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Resources\Pages\ManageRelatedRecords;
 use Webkul\Account\Filament\Resources\PaymentTermResource;
@@ -15,7 +16,7 @@ class ManagePaymentDueTerm extends ManageRelatedRecords
 
     protected static string $relationship = 'dueTerm';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-banknotes';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-banknotes';
 
     public static function getSubNavigationPosition(): SubNavigationPosition
     {

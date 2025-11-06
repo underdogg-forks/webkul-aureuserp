@@ -27,7 +27,7 @@ class CreateCompany extends CreateRecord
     protected function mutateFormDataBeforeCreate(array $data): array
     {
         return [
-            'creator_id'  => Auth::user()->id,
+            'creator_id' => Auth::user()->id,
             ...$data,
         ];
     }

@@ -9,7 +9,8 @@ use Webkul\Security\Traits\HasScopedPermissions;
 
 class ProjectPolicy
 {
-    use HandlesAuthorization, HasScopedPermissions;
+    use HandlesAuthorization;
+    use HasScopedPermissions;
 
     /**
      * Determine whether the user can view any models.
@@ -40,7 +41,7 @@ class ProjectPolicy
      */
     public function update(User $user, Project $project): bool
     {
-        if (! $user->can('update_project')) {
+        if ( ! $user->can('update_project')) {
             return false;
         }
 
@@ -52,7 +53,7 @@ class ProjectPolicy
      */
     public function delete(User $user, Project $project): bool
     {
-        if (! $user->can('delete_project')) {
+        if ( ! $user->can('delete_project')) {
             return false;
         }
 
@@ -72,7 +73,7 @@ class ProjectPolicy
      */
     public function forceDelete(User $user, Project $project): bool
     {
-        if (! $user->can('force_delete_project')) {
+        if ( ! $user->can('force_delete_project')) {
             return false;
         }
 
@@ -92,7 +93,7 @@ class ProjectPolicy
      */
     public function restore(User $user, Project $project): bool
     {
-        if (! $user->can('restore_project')) {
+        if ( ! $user->can('restore_project')) {
             return false;
         }
 

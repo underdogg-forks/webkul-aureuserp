@@ -20,13 +20,13 @@ class AcceptInvitation extends SimplePage
     use InteractsWithFormActions;
     use InteractsWithForms;
 
-    protected string $view = 'security::livewire.accept-invitation';
-
     public int $invitation;
 
-    private Invitation $invitationModel;
-
     public ?array $data = [];
+
+    protected string $view = 'security::livewire.accept-invitation';
+
+    private Invitation $invitationModel;
 
     public function mount(): void
     {

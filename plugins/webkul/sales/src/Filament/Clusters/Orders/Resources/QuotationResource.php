@@ -2,6 +2,7 @@
 
 namespace Webkul\Sale\Filament\Clusters\Orders\Resources;
 
+use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkActionGroup;
@@ -64,7 +65,6 @@ use Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Pages\ViewQ
 use Webkul\Sale\Filament\Clusters\Products\Resources\ProductResource;
 use Webkul\Sale\Livewire\Summary;
 use Webkul\Sale\Models\Order;
-use Webkul\Sale\Models\OrderLine;
 use Webkul\Sale\Models\Partner;
 use Webkul\Sale\Models\Product;
 use Webkul\Sale\Settings;
@@ -88,7 +88,7 @@ class QuotationResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
 
     protected static ?string $cluster = Orders::class;
 
@@ -158,7 +158,7 @@ class QuotationResource extends Resource
                                             })
                                             ->disabled(fn ($record): bool => $record?->locked || in_array($record?->state, [OrderState::CANCEL]))
                                             ->columnSpan(1)
-                                            ->getOptionLabelFromRecordUsing(fn ($record): string => $record->name.($record->trashed() ? ' (Deleted)' : ''))
+                                            ->getOptionLabelFromRecordUsing(fn ($record): string => $record->name . ($record->trashed() ? ' (Deleted)' : ''))
                                             ->disableOptionWhen(fn ($label) => str_contains($label, ' (Deleted)')),
                                     ]),
                                 DatePicker::make('validity_date')
@@ -265,7 +265,7 @@ class QuotationResource extends Resource
                                             ->label(__('sales::filament/clusters/orders/resources/quotation.form.tabs.other-information.fieldset.additional-information.fields.company'))
                                             ->relationship('company', 'name', modifyQueryUsing: fn (Builder $query) => $query->withTrashed())
                                             ->getOptionLabelFromRecordUsing(function ($record): string {
-                                                return $record->name.($record->trashed() ? ' (Deleted)' : '');
+                                                return $record->name . ($record->trashed() ? ' (Deleted)' : '');
                                             })
                                             ->disableOptionWhen(function ($label) {
                                                 return str_contains($label, ' (Deleted)');
@@ -991,7 +991,7 @@ class QuotationResource extends Resource
             ->collapsible()
             ->defaultItems(0)
             ->itemLabel(function ($state) {
-                if (! empty($state['name'])) {
+                if ( ! empty($state['name'])) {
                     return $state['name'];
                 }
 
@@ -1037,7 +1037,7 @@ class QuotationResource extends Resource
                     ->live()
                     ->dehydrated(true)
                     ->getOptionLabelFromRecordUsing(function ($record): string {
-                        return $record->name.($record->trashed() ? ' (Deleted)' : '');
+                        return $record->name . ($record->trashed() ? ' (Deleted)' : '');
                     })
                     ->disableOptionWhen(function ($value, $state, $component, $label) {
                         if (str_contains($label, ' (Deleted)')) {
@@ -1045,7 +1045,7 @@ class QuotationResource extends Resource
                         }
 
                         $repeater = $component->getParentRepeater();
-                        if (! $repeater) {
+                        if ( ! $repeater) {
                             return false;
                         }
 
@@ -1061,7 +1061,7 @@ class QuotationResource extends Resource
                             ->contains($value);
                     })
                     ->afterStateUpdated(function (Set $set, Get $get) {
-                        if (! $get('product_id')) {
+                        if ( ! $get('product_id')) {
                             return;
                         }
                         $product = Product::withTrashed()->find($get('product_id'));
@@ -1118,10 +1118,10 @@ class QuotationResource extends Resource
                     ->hiddenLabel()
                     ->icon('heroicon-o-shopping-cart')
                     ->action(function ($state, $livewire, $record, $arguments) use ($parentGet, $parentSet) {
-                        $uuid = $arguments['item'];
+                        $uuid        = $arguments['item'];
                         $productData = $state[$uuid] ?? null;
 
-                        if (! $productData || ! $productData['product_id']) {
+                        if ( ! $productData || ! $productData['product_id']) {
                             Notification::make()
                                 ->danger()
                                 ->title(__('sales::filament/clusters/orders/resources/quotation.form.tabs.order-line.repeater.product-optional.fields.actions.notifications.missing-product-data.title'))
@@ -1132,7 +1132,7 @@ class QuotationResource extends Resource
                         }
 
                         $existingProducts = $parentGet('products') ?? [];
-                        $productExists = collect($existingProducts)->contains(function ($product) use ($productData) {
+                        $productExists    = collect($existingProducts)->contains(function ($product) use ($productData) {
                             return ($product['product_id'] ?? null) == $productData['product_id'];
                         });
 
@@ -1148,7 +1148,7 @@ class QuotationResource extends Resource
 
                         $product = Product::withTrashed()->find($productData['product_id']);
 
-                        if (! $product) {
+                        if ( ! $product) {
                             Notification::make()
                                 ->danger()
                                 ->title(__('sales::filament/clusters/orders/resources/quotation.form.tabs.order-line.repeater.product-optional.fields.actions.notifications.product-not-found.title'))
@@ -1309,7 +1309,7 @@ class QuotationResource extends Resource
                             ->whereNull('is_configurable'),
                     )
                     ->getOptionLabelFromRecordUsing(function ($record): string {
-                        return $record->name.($record->trashed() ? ' (Deleted)' : '');
+                        return $record->name . ($record->trashed() ? ' (Deleted)' : '');
                     })
                     ->disableOptionWhen(function ($label, $record, $value, $state, $component) {
                         $isDeleted = str_contains($label, ' (Deleted)');
@@ -1522,240 +1522,6 @@ class QuotationResource extends Resource
         ];
     }
 
-    private static function afterProductUpdated($set, $get): void
-    {
-        if (! $get('product_id')) {
-            return;
-        }
-
-        $product = Product::withTrashed()->find($get('product_id'));
-
-        $set('product_uom_id', $product->uom_id);
-
-        $uomQuantity = static::calculateUnitQuantity($get('product_uom_id'), $get('product_qty'));
-
-        $set('product_uom_qty', round($uomQuantity, 2));
-
-        $priceUnit = static::calculateUnitPrice($get);
-
-        $set('price_unit', round($priceUnit, 2));
-
-        $set('taxes', $product->productTaxes->pluck('id')->toArray());
-
-        $packaging = static::getBestPackaging($get('product_id'), round($uomQuantity, 2));
-
-        $set('product_packaging_id', $packaging['packaging_id'] ?? null);
-
-        $set('product_packaging_qty', $packaging['packaging_qty'] ?? null);
-
-        $set('purchase_price', $product->cost ?? 0);
-
-        self::calculateLineTotals($set, $get);
-    }
-
-    private static function afterProductQtyUpdated(Set $set, Get $get): void
-    {
-        if (! $get('product_id')) {
-            return;
-        }
-
-        $uomQuantity = static::calculateUnitQuantity($get('product_uom_id'), $get('product_qty'));
-
-        $set('product_uom_qty', round($uomQuantity, 2));
-
-        $packaging = static::getBestPackaging($get('product_id'), $uomQuantity);
-
-        $set('product_packaging_id', $packaging['packaging_id'] ?? null);
-
-        $set('product_packaging_qty', $packaging['packaging_qty'] ?? null);
-
-        self::calculateLineTotals($set, $get);
-    }
-
-    private static function afterUOMUpdated(Set $set, Get $get): void
-    {
-        if (! $get('product_id')) {
-            return;
-        }
-
-        $uomQuantity = static::calculateUnitQuantity($get('product_uom_id'), $get('product_qty'));
-
-        $set('product_uom_qty', round($uomQuantity, 2));
-
-        $packaging = static::getBestPackaging($get('product_id'), $uomQuantity);
-
-        $set('product_packaging_id', $packaging['packaging_id'] ?? null);
-
-        $set('product_packaging_qty', $packaging['packaging_qty'] ?? null);
-
-        $priceUnit = static::calculateUnitPrice($get);
-
-        $set('price_unit', round($priceUnit, 2));
-
-        self::calculateLineTotals($set, $get);
-    }
-
-    private static function afterProductPackagingQtyUpdated(Set $set, Get $get): void
-    {
-        if (! $get('product_id')) {
-            return;
-        }
-
-        if ($get('product_packaging_id')) {
-            $packaging = Packaging::find($get('product_packaging_id'));
-
-            $packagingQty = floatval($get('product_packaging_qty') ?? 0);
-
-            $productUOMQty = $packagingQty * $packaging->qty;
-
-            $set('product_uom_qty', round($productUOMQty, 2));
-
-            $uom = Uom::find($get('product_uom_id'));
-
-            $productQty = $uom ? $productUOMQty * $uom->factor : $productUOMQty;
-
-            $set('product_qty', round($productQty, 2));
-        }
-
-        self::calculateLineTotals($set, $get);
-    }
-
-    private static function afterProductPackagingUpdated(Set $set, Get $get): void
-    {
-        if (! $get('product_id')) {
-            return;
-        }
-
-        if ($get('product_packaging_id')) {
-            $packaging = Packaging::find($get('product_packaging_id'));
-
-            $productUOMQty = $get('product_uom_qty') ?: 1;
-
-            if ($packaging) {
-                $packagingQty = $productUOMQty / $packaging->qty;
-
-                $set('product_packaging_qty', $packagingQty);
-            }
-        } else {
-            $set('product_packaging_qty', null);
-        }
-
-        self::calculateLineTotals($set, $get);
-    }
-
-    private static function calculateUnitQuantity($uomId, $quantity)
-    {
-        if (! $uomId) {
-            return $quantity;
-        }
-
-        $uom = Uom::find($uomId);
-
-        return (float) ($quantity ?? 0) / $uom->factor;
-    }
-
-    private static function calculateUnitPrice($get)
-    {
-        $product = Product::withTrashed()->find($get('product_id'));
-
-        $vendorPrices = $product->supplierInformation->sortByDesc('sort');
-
-        if ($get('../../partner_id')) {
-            $vendorPrices = $vendorPrices->where('partner_id', $get('../../partner_id'));
-        }
-
-        $vendorPrices = $vendorPrices->where('min_qty', '<=', $get('product_qty') ?? 1)->where('currency_id', $get('../../currency_id'));
-
-        if (! $vendorPrices->isEmpty()) {
-            $vendorPrice = $vendorPrices->first()->price;
-        } else {
-            $vendorPrice = $product->price ?? $product->cost;
-        }
-
-        if (! $get('product_uom_id')) {
-            return $vendorPrice;
-        }
-
-        $uom = Uom::find($get('product_uom_id'));
-
-        return (float) ($vendorPrice / $uom->factor);
-    }
-
-    private static function getBestPackaging($productId, $quantity)
-    {
-        $packagings = Packaging::where('product_id', $productId)
-            ->orderByDesc('qty')
-            ->get();
-
-        foreach ($packagings as $packaging) {
-            if ($quantity && $quantity % $packaging->qty == 0) {
-                return [
-                    'packaging_id'  => $packaging->id,
-                    'packaging_qty' => round($quantity / $packaging->qty, 2),
-                ];
-            }
-        }
-
-        return null;
-    }
-
-    private static function calculateLineTotals($set, $get, ?string $prefix = ''): void
-    {
-        if (! $get($prefix.'product_id')) {
-            $set($prefix.'price_unit', 0);
-
-            $set($prefix.'discount', 0);
-
-            $set($prefix.'price_tax', 0);
-
-            $set($prefix.'price_subtotal', 0);
-
-            $set($prefix.'price_total', 0);
-
-            $set($prefix.'purchase_price', 0);
-
-            $set($prefix.'margin', 0);
-
-            $set($prefix.'margin_percent', 0);
-
-            return;
-        }
-
-        $priceUnit = floatval($get($prefix.'price_unit') ?? 0);
-
-        $quantity = floatval($get($prefix.'product_qty') ?? 1);
-
-        $purchasePrice = floatval($get($prefix.'purchase_price') ?? 0);
-
-        $discountValue = floatval($get($prefix.'discount') ?? 0);
-
-        $subTotal = $priceUnit * $quantity;
-
-        if ($discountValue > 0) {
-            $discountAmount = $subTotal * ($discountValue / 100);
-
-            $subTotal -= $discountAmount;
-        }
-
-        $taxIds = $get($prefix.'taxes') ?? [];
-
-        [$subTotal, $taxAmount] = Tax::collect($taxIds, $subTotal, $quantity);
-
-        $total = $subTotal + $taxAmount;
-
-        $set($prefix.'price_subtotal', round($subTotal, 4));
-
-        $set($prefix.'price_tax', round($taxAmount, 4));
-
-        $set($prefix.'price_total', round($total, 4));
-
-        [$margin, $marginPercentage] = static::calculateMargin($priceUnit, $purchasePrice, $quantity, $discountValue);
-
-        $set($prefix.'margin', round($margin, 4));
-
-        $set($prefix.'margin_percent', round($marginPercentage, 4));
-    }
-
     public static function calculateMargin($sellingPrice, $costPrice, $quantity, $discount = 0)
     {
         $discountedPrice = $sellingPrice - ($sellingPrice * ($discount / 100));
@@ -1802,5 +1568,237 @@ class QuotationResource extends Resource
     {
         return parent::getEloquentQuery()
             ->orderByDesc('id');
+    }
+
+    private static function afterProductUpdated($set, $get): void
+    {
+        if ( ! $get('product_id')) {
+            return;
+        }
+
+        $product = Product::withTrashed()->find($get('product_id'));
+
+        $set('product_uom_id', $product->uom_id);
+
+        $uomQuantity = static::calculateUnitQuantity($get('product_uom_id'), $get('product_qty'));
+
+        $set('product_uom_qty', round($uomQuantity, 2));
+
+        $priceUnit = static::calculateUnitPrice($get);
+
+        $set('price_unit', round($priceUnit, 2));
+
+        $set('taxes', $product->productTaxes->pluck('id')->toArray());
+
+        $packaging = static::getBestPackaging($get('product_id'), round($uomQuantity, 2));
+
+        $set('product_packaging_id', $packaging['packaging_id'] ?? null);
+
+        $set('product_packaging_qty', $packaging['packaging_qty'] ?? null);
+
+        $set('purchase_price', $product->cost ?? 0);
+
+        self::calculateLineTotals($set, $get);
+    }
+
+    private static function afterProductQtyUpdated(Set $set, Get $get): void
+    {
+        if ( ! $get('product_id')) {
+            return;
+        }
+
+        $uomQuantity = static::calculateUnitQuantity($get('product_uom_id'), $get('product_qty'));
+
+        $set('product_uom_qty', round($uomQuantity, 2));
+
+        $packaging = static::getBestPackaging($get('product_id'), $uomQuantity);
+
+        $set('product_packaging_id', $packaging['packaging_id'] ?? null);
+
+        $set('product_packaging_qty', $packaging['packaging_qty'] ?? null);
+
+        self::calculateLineTotals($set, $get);
+    }
+
+    private static function afterUOMUpdated(Set $set, Get $get): void
+    {
+        if ( ! $get('product_id')) {
+            return;
+        }
+
+        $uomQuantity = static::calculateUnitQuantity($get('product_uom_id'), $get('product_qty'));
+
+        $set('product_uom_qty', round($uomQuantity, 2));
+
+        $packaging = static::getBestPackaging($get('product_id'), $uomQuantity);
+
+        $set('product_packaging_id', $packaging['packaging_id'] ?? null);
+
+        $set('product_packaging_qty', $packaging['packaging_qty'] ?? null);
+
+        $priceUnit = static::calculateUnitPrice($get);
+
+        $set('price_unit', round($priceUnit, 2));
+
+        self::calculateLineTotals($set, $get);
+    }
+
+    private static function afterProductPackagingQtyUpdated(Set $set, Get $get): void
+    {
+        if ( ! $get('product_id')) {
+            return;
+        }
+
+        if ($get('product_packaging_id')) {
+            $packaging = Packaging::find($get('product_packaging_id'));
+
+            $packagingQty = (float) ($get('product_packaging_qty') ?? 0);
+
+            $productUOMQty = $packagingQty * $packaging->qty;
+
+            $set('product_uom_qty', round($productUOMQty, 2));
+
+            $uom = Uom::find($get('product_uom_id'));
+
+            $productQty = $uom ? $productUOMQty * $uom->factor : $productUOMQty;
+
+            $set('product_qty', round($productQty, 2));
+        }
+
+        self::calculateLineTotals($set, $get);
+    }
+
+    private static function afterProductPackagingUpdated(Set $set, Get $get): void
+    {
+        if ( ! $get('product_id')) {
+            return;
+        }
+
+        if ($get('product_packaging_id')) {
+            $packaging = Packaging::find($get('product_packaging_id'));
+
+            $productUOMQty = $get('product_uom_qty') ?: 1;
+
+            if ($packaging) {
+                $packagingQty = $productUOMQty / $packaging->qty;
+
+                $set('product_packaging_qty', $packagingQty);
+            }
+        } else {
+            $set('product_packaging_qty', null);
+        }
+
+        self::calculateLineTotals($set, $get);
+    }
+
+    private static function calculateUnitQuantity($uomId, $quantity)
+    {
+        if ( ! $uomId) {
+            return $quantity;
+        }
+
+        $uom = Uom::find($uomId);
+
+        return (float) ($quantity ?? 0) / $uom->factor;
+    }
+
+    private static function calculateUnitPrice($get)
+    {
+        $product = Product::withTrashed()->find($get('product_id'));
+
+        $vendorPrices = $product->supplierInformation->sortByDesc('sort');
+
+        if ($get('../../partner_id')) {
+            $vendorPrices = $vendorPrices->where('partner_id', $get('../../partner_id'));
+        }
+
+        $vendorPrices = $vendorPrices->where('min_qty', '<=', $get('product_qty') ?? 1)->where('currency_id', $get('../../currency_id'));
+
+        if ( ! $vendorPrices->isEmpty()) {
+            $vendorPrice = $vendorPrices->first()->price;
+        } else {
+            $vendorPrice = $product->price ?? $product->cost;
+        }
+
+        if ( ! $get('product_uom_id')) {
+            return $vendorPrice;
+        }
+
+        $uom = Uom::find($get('product_uom_id'));
+
+        return (float) ($vendorPrice / $uom->factor);
+    }
+
+    private static function getBestPackaging($productId, $quantity)
+    {
+        $packagings = Packaging::where('product_id', $productId)
+            ->orderByDesc('qty')
+            ->get();
+
+        foreach ($packagings as $packaging) {
+            if ($quantity && $quantity % $packaging->qty == 0) {
+                return [
+                    'packaging_id'  => $packaging->id,
+                    'packaging_qty' => round($quantity / $packaging->qty, 2),
+                ];
+            }
+        }
+    }
+
+    private static function calculateLineTotals($set, $get, ?string $prefix = ''): void
+    {
+        if ( ! $get($prefix . 'product_id')) {
+            $set($prefix . 'price_unit', 0);
+
+            $set($prefix . 'discount', 0);
+
+            $set($prefix . 'price_tax', 0);
+
+            $set($prefix . 'price_subtotal', 0);
+
+            $set($prefix . 'price_total', 0);
+
+            $set($prefix . 'purchase_price', 0);
+
+            $set($prefix . 'margin', 0);
+
+            $set($prefix . 'margin_percent', 0);
+
+            return;
+        }
+
+        $priceUnit = (float) ($get($prefix . 'price_unit') ?? 0);
+
+        $quantity = (float) ($get($prefix . 'product_qty') ?? 1);
+
+        $purchasePrice = (float) ($get($prefix . 'purchase_price') ?? 0);
+
+        $discountValue = (float) ($get($prefix . 'discount') ?? 0);
+
+        $subTotal = $priceUnit * $quantity;
+
+        if ($discountValue > 0) {
+            $discountAmount = $subTotal * ($discountValue / 100);
+
+            $subTotal -= $discountAmount;
+        }
+
+        $taxIds = $get($prefix . 'taxes') ?? [];
+
+        [$subTotal, $taxAmount] = Tax::collect($taxIds, $subTotal, $quantity);
+
+        $total = $subTotal + $taxAmount;
+
+        $set($prefix . 'price_subtotal', round($subTotal, 4));
+
+        $set($prefix . 'price_tax', round($taxAmount, 4));
+
+        $set($prefix . 'price_total', round($total, 4));
+
+        [$margin, $marginPercentage] = static::calculateMargin($priceUnit, $purchasePrice, $quantity, $discountValue);
+
+        $set($prefix . 'margin', round($margin, 4));
+
+        $set($prefix . 'margin_percent', round($marginPercentage, 4));
     }
 }

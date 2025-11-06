@@ -7,26 +7,6 @@ use Webkul\Analytic\Models\Record;
 
 class Timesheet extends Record
 {
-    /**
-     * Bootstrap any application services.
-     */
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::created(function ($timesheet) {
-            $timesheet->updateTaskTimes();
-        });
-
-        static::updated(function ($timesheet) {
-            $timesheet->updateTaskTimes();
-        });
-
-        static::deleted(function ($timesheet) {
-            $timesheet->updateTaskTimes();
-        });
-    }
-
     public function project(): BelongsTo
     {
         return $this->belongsTo(Project::class);
@@ -39,7 +19,7 @@ class Timesheet extends Record
 
     public function updateTaskTimes()
     {
-        if (! $this->task) {
+        if ( ! $this->task) {
             return;
         }
 
@@ -81,7 +61,7 @@ class Timesheet extends Record
 
     public function updateTaskTimesOld()
     {
-        if (! $this->task) {
+        if ( ! $this->task) {
             return;
         }
 
@@ -94,5 +74,25 @@ class Timesheet extends Record
             'remaining_hours'   => $this->task->allocated_hours - $totalTime,
             'progress'          => $this->task->allocated_hours ? ($totalTime / $this->task->allocated_hours) * 100 : 0,
         ]);
+    }
+
+    /**
+     * Bootstrap any application services.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($timesheet) {
+            $timesheet->updateTaskTimes();
+        });
+
+        static::updated(function ($timesheet) {
+            $timesheet->updateTaskTimes();
+        });
+
+        static::deleted(function ($timesheet) {
+            $timesheet->updateTaskTimes();
+        });
     }
 }

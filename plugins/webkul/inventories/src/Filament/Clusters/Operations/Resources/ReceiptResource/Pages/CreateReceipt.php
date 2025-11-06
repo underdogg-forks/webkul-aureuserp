@@ -16,6 +16,8 @@ class CreateReceipt extends CreateRecord
 {
     use HasRepeaterColumnManager;
 
+    protected static string $resource = ReceiptResource::class;
+
     public function getSubNavigation(): array
     {
         if (filled($cluster = static::getCluster())) {
@@ -25,24 +27,9 @@ class CreateReceipt extends CreateRecord
         return [];
     }
 
-    protected static string $resource = ReceiptResource::class;
-
     public function getTitle(): string|Htmlable
     {
         return __('inventories::filament/clusters/operations/resources/receipt/pages/create-receipt.title');
-    }
-
-    protected function getRedirectUrl(): string
-    {
-        return $this->getResource()::getUrl('edit', ['record' => $this->getRecord()]);
-    }
-
-    protected function getCreatedNotification(): Notification
-    {
-        return Notification::make()
-            ->success()
-            ->title(__('inventories::filament/clusters/operations/resources/receipt/pages/create-receipt.notification.title'))
-            ->body(__('inventories::filament/clusters/operations/resources/receipt/pages/create-receipt.notification.body'));
     }
 
     public function mount(): void
@@ -58,6 +45,19 @@ class CreateReceipt extends CreateRecord
         $this->data['destination_location_id'] = $operationType?->destination_location_id;
 
         $this->form->fill($this->data);
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('edit', ['record' => $this->getRecord()]);
+    }
+
+    protected function getCreatedNotification(): Notification
+    {
+        return Notification::make()
+            ->success()
+            ->title(__('inventories::filament/clusters/operations/resources/receipt/pages/create-receipt.notification.title'))
+            ->body(__('inventories::filament/clusters/operations/resources/receipt/pages/create-receipt.notification.body'));
     }
 
     protected function mutateFormDataBeforeCreate(array $data): array

@@ -15,11 +15,6 @@ class ListOrderToInvoices extends ListRecords
 
     protected static string $resource = OrderToInvoiceResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [];
-    }
-
     public function getPresetTableViews(): array
     {
         return [
@@ -32,5 +27,10 @@ class ListOrderToInvoices extends ListRecords
                 ->favorite()
                 ->modifyQueryUsing(fn ($query) => $query->onlyTrashed()),
         ];
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [];
     }
 }

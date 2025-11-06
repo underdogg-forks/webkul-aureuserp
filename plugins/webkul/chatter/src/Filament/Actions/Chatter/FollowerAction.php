@@ -19,41 +19,6 @@ class FollowerAction extends Action
 
     protected string $resource = '';
 
-    public static function getDefaultName(): ?string
-    {
-        return 'add.followers.action';
-    }
-
-    public function setResource(string $resource): self
-    {
-        $this->resource = $resource;
-
-        return $this;
-    }
-
-    public function setFollowerMailView(?string $mailView): self
-    {
-        $mailView = $this->evaluate($mailView);
-
-        if (empty($mailView)) {
-            return $this;
-        }
-
-        $this->mailView = $mailView;
-
-        return $this;
-    }
-
-    public function getFollowerMailView(): string
-    {
-        return $this->mailView;
-    }
-
-    public function getResource(): string
-    {
-        return $this->resource;
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -122,7 +87,6 @@ class FollowerAction extends Action
                 ]);
             })
             ->action(function (Model $record, array $data) {
-
                 try {
                     collect($data['partners'] ?? [])->each(function ($partnerId) use ($record, $data) {
                         $partner = Partner::findOrFail($partnerId);
@@ -139,7 +103,7 @@ class FollowerAction extends Action
                         // Refresh relation to show immediately in the modal
                         try {
                             $record->unsetRelation('followers');
-                        } catch (\Throwable $e) {
+                        } catch (Throwable $e) {
                         }
 
                         Notification::make()
@@ -175,6 +139,59 @@ class FollowerAction extends Action
             );
     }
 
+    public static function getDefaultName(): ?string
+    {
+        return 'add.followers.action';
+    }
+
+    public function setResource(string $resource): self
+    {
+        $this->resource = $resource;
+
+        return $this;
+    }
+
+    public function setFollowerMailView(?string $mailView): self
+    {
+        $mailView = $this->evaluate($mailView);
+
+        if (empty($mailView)) {
+            return $this;
+        }
+
+        $this->mailView = $mailView;
+
+        return $this;
+    }
+
+    public function getFollowerMailView(): string
+    {
+        return $this->mailView;
+    }
+
+    public function getResource(): string
+    {
+        return $this->resource;
+    }
+
+    public function preparePayload(Model $record, Partner $partner, $data): array
+    {
+        return [
+            'record_url'  => $this->prepareResourceUrl($record) ?? '',
+            'record_name' => $recordName = $record->{$record->recordTitleAttribute} ?? $record->name,
+            'model_name'  => $modelName  = class_basename($record),
+            'subject'     => __('chatter::filament/resources/actions/chatter/follower-action.setup.actions.mail.subject', [
+                'model'      => $modelName,
+                'department' => $recordName,
+            ]),
+            'note' => $data['note'] ?? '',
+            'to'   => [
+                'address' => $partner->email,
+                'name'    => $partner->name,
+            ],
+        ];
+    }
+
     private function notifyFollower(Model $record, Partner $partner, array $data): void
     {
         app(EmailService::class)->send(
@@ -187,23 +204,5 @@ class FollowerAction extends Action
     private function prepareResourceUrl(mixed $record): string
     {
         return $this->getResource()::getUrl('view', ['record' => $record]);
-    }
-
-    public function preparePayload(Model $record, Partner $partner, $data): array
-    {
-        return [
-            'record_url'     => $this->prepareResourceUrl($record) ?? '',
-            'record_name'    => $recordName = $record->{$record->recordTitleAttribute} ?? $record->name,
-            'model_name'     => $modelName = class_basename($record),
-            'subject'        => __('chatter::filament/resources/actions/chatter/follower-action.setup.actions.mail.subject', [
-                'model'      => $modelName,
-                'department' => $recordName,
-            ]),
-            'note'           => $data['note'] ?? '',
-            'to'             => [
-                'address' => $partner->email,
-                'name'    => $partner->name,
-            ],
-        ];
     }
 }

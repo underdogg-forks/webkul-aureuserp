@@ -9,7 +9,8 @@ use Webkul\Security\Traits\HasScopedPermissions;
 
 class TaskPolicy
 {
-    use HandlesAuthorization, HasScopedPermissions;
+    use HandlesAuthorization;
+    use HasScopedPermissions;
 
     /**
      * Determine whether the user can view any models.
@@ -40,7 +41,7 @@ class TaskPolicy
      */
     public function update(User $user, Task $task): bool
     {
-        if (! $user->can('update_task')) {
+        if ( ! $user->can('update_task')) {
             return false;
         }
 
@@ -52,7 +53,7 @@ class TaskPolicy
      */
     public function delete(User $user, Task $task): bool
     {
-        if (! $user->can('delete_task')) {
+        if ( ! $user->can('delete_task')) {
             return false;
         }
 
@@ -72,7 +73,7 @@ class TaskPolicy
      */
     public function forceDelete(User $user, Task $task): bool
     {
-        if (! $user->can('force_delete_task')) {
+        if ( ! $user->can('force_delete_task')) {
             return false;
         }
 
@@ -92,7 +93,7 @@ class TaskPolicy
      */
     public function restore(User $user, Task $task): bool
     {
-        if (! $user->can('restore_task')) {
+        if ( ! $user->can('restore_task')) {
             return false;
         }
 

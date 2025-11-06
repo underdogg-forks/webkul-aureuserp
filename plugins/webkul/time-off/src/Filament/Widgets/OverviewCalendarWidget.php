@@ -22,9 +22,10 @@ use Webkul\TimeOff\Traits\TimeOffHelper;
 
 class OverviewCalendarWidget extends FullCalendarWidget
 {
+    use HasWidgetShield;
+
     use TimeOffHelper;
 
-     use HasWidgetShield;
     public Model|string|null $model = Leave::class;
 
     public function getHeading(): string|Htmlable|null
@@ -74,43 +75,6 @@ class OverviewCalendarWidget extends FullCalendarWidget
         ];
     }
 
-    protected function viewAction(): Action
-    {
-        return ViewAction::make()
-            ->modalIcon('heroicon-o-lifebuoy')
-            ->label(__('time-off::filament/widgets/overview-calendar-widget.view-action.title'))
-            ->modalDescription(__('time-off::filament/widgets/overview-calendar-widget.view-action.description'))
-            ->schema($this->infolist());
-    }
-
-    protected function headerActions(): array
-    {
-        return [
-            CreateAction::make()
-                ->icon('heroicon-o-plus-circle')
-                ->modalIcon('heroicon-o-lifebuoy')
-                ->label(__('time-off::filament/widgets/overview-calendar-widget.header-actions.create.title'))
-                ->modalDescription(__('time-off::filament/widgets/overview-calendar-widget.header-actions.create.description'))
-                ->action(function ($data, CreateAction $action) {
-                    $data = $this->mutateTimeOffData($data, $this->record?->id, $action);
-                    Leave::create($data);
-
-                    Notification::make()
-                        ->success()
-                        ->title(__('time-off::filament/widgets/overview-calendar-widget.header-actions.create.notification.title'))
-                        ->body(__('time-off::filament/widgets/overview-calendar-widget.header-actions.create.notification.body'))
-                        ->send();
-
-                    $action->cancel();
-                })
-                ->mountUsing(
-                    function (Schema $schema, array $arguments) {
-                        $schema->fill($arguments);
-                    }
-                ),
-        ];
-    }
-
     public function infolist(): array
     {
         return [
@@ -127,7 +91,7 @@ class OverviewCalendarWidget extends FullCalendarWidget
                 ->icon('heroicon-o-calendar-days'),
             TextEntry::make('number_of_days')
                 ->label(__('time-off::filament/widgets/overview-calendar-widget.infolist.entries.duration'))
-                ->formatStateUsing(fn ($state) => round($state, 1).' day(s)')
+                ->formatStateUsing(fn ($state) => round($state, 1) . ' day(s)')
                 ->icon('heroicon-o-clock'),
             TextEntry::make('private_name')
                 ->label(__('time-off::filament/widgets/overview-calendar-widget.infolist.entries.description'))
@@ -168,11 +132,48 @@ class OverviewCalendarWidget extends FullCalendarWidget
     public function onDateSelect(string $start, ?string $end, bool $allDay, ?array $view, ?array $resource): void
     {
         $startDate = Carbon::parse($start);
-        $endDate = $end ? Carbon::parse($end) : $startDate;
+        $endDate   = $end ? Carbon::parse($end) : $startDate;
 
         $this->mountAction('create', [
             'request_date_from' => $startDate->toDateString(),
             'request_date_to'   => $endDate->toDateString(),
         ]);
+    }
+
+    protected function viewAction(): Action
+    {
+        return ViewAction::make()
+            ->modalIcon('heroicon-o-lifebuoy')
+            ->label(__('time-off::filament/widgets/overview-calendar-widget.view-action.title'))
+            ->modalDescription(__('time-off::filament/widgets/overview-calendar-widget.view-action.description'))
+            ->schema($this->infolist());
+    }
+
+    protected function headerActions(): array
+    {
+        return [
+            CreateAction::make()
+                ->icon('heroicon-o-plus-circle')
+                ->modalIcon('heroicon-o-lifebuoy')
+                ->label(__('time-off::filament/widgets/overview-calendar-widget.header-actions.create.title'))
+                ->modalDescription(__('time-off::filament/widgets/overview-calendar-widget.header-actions.create.description'))
+                ->action(function ($data, CreateAction $action) {
+                    $data = $this->mutateTimeOffData($data, $this->record?->id, $action);
+                    Leave::create($data);
+
+                    Notification::make()
+                        ->success()
+                        ->title(__('time-off::filament/widgets/overview-calendar-widget.header-actions.create.notification.title'))
+                        ->body(__('time-off::filament/widgets/overview-calendar-widget.header-actions.create.notification.body'))
+                        ->send();
+
+                    $action->cancel();
+                })
+                ->mountUsing(
+                    function (Schema $schema, array $arguments) {
+                        $schema->fill($arguments);
+                    }
+                ),
+        ];
     }
 }

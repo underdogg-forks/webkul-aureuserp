@@ -16,7 +16,14 @@ use Webkul\Support\Models\Company;
 
 class Route extends Model implements Sortable
 {
-    use HasFactory, SoftDeletes, SortableTrait;
+    use HasFactory;
+    use SoftDeletes;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     /**
      * Table name.
@@ -56,11 +63,6 @@ class Route extends Model implements Sortable
         'packaging_selectable'        => 'boolean',
     ];
 
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
-    ];
-
     public function suppliedWarehouse(): BelongsTo
     {
         return $this->belongsTo(Warehouse::class);
@@ -88,7 +90,7 @@ class Route extends Model implements Sortable
 
     public function packagings(): BelongsToMany
     {
-        return $this->belongsToMany(Route::class, 'inventories_route_packagings', 'route_id', 'packaging_id');
+        return $this->belongsToMany(self::class, 'inventories_route_packagings', 'route_id', 'packaging_id');
     }
 
     public function rules(): HasMany

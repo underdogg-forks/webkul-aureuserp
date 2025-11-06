@@ -17,8 +17,8 @@ class UtmCampaignSeeder extends Seeder
     {
         DB::table('utm_campaigns')->delete();
 
-        $user = User::first();
-        $stage = UtmStage::first();
+        $user    = User::first();
+        $stage   = UtmStage::first();
         $company = Company::first();
 
         $now = now();

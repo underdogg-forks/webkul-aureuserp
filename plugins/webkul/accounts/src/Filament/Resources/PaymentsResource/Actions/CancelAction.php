@@ -9,11 +9,6 @@ use Webkul\Account\Models\Payment;
 
 class CancelAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'customers.payment.cancel';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -30,5 +25,10 @@ class CancelAction extends Action
             ->hidden(function (Payment $record) {
                 return $record->state == PaymentStatus::CANCELED->value;
             });
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'customers.payment.cancel';
     }
 }

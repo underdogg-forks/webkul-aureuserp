@@ -14,6 +14,19 @@ class ManageProjectStages extends ManageRecords
 {
     protected static string $resource = ProjectStageResource::class;
 
+    public function getTabs(): array
+    {
+        return [
+            'all' => Tab::make(__('projects::filament/clusters/configurations/resources/project-stage/pages/manage-project-stages.tabs.all'))
+                ->badge(ProjectStage::count()),
+            'archived' => Tab::make(__('projects::filament/clusters/configurations/resources/project-stage/pages/manage-project-stages.tabs.archived'))
+                ->badge(ProjectStage::onlyTrashed()->count())
+                ->modifyQueryUsing(function ($query) {
+                    return $query->onlyTrashed();
+                }),
+        ];
+    }
+
     protected function getHeaderActions(): array
     {
         return [
@@ -31,19 +44,6 @@ class ManageProjectStages extends ManageRecords
                         ->title(__('projects::filament/clusters/configurations/resources/project-stage/pages/manage-project-stages.header-actions.create.notification.title'))
                         ->body(__('projects::filament/clusters/configurations/resources/project-stage/pages/manage-project-stages.header-actions.create.notification.body')),
                 ),
-        ];
-    }
-
-    public function getTabs(): array
-    {
-        return [
-            'all' => Tab::make(__('projects::filament/clusters/configurations/resources/project-stage/pages/manage-project-stages.tabs.all'))
-                ->badge(ProjectStage::count()),
-            'archived' => Tab::make(__('projects::filament/clusters/configurations/resources/project-stage/pages/manage-project-stages.tabs.archived'))
-                ->badge(ProjectStage::onlyTrashed()->count())
-                ->modifyQueryUsing(function ($query) {
-                    return $query->onlyTrashed();
-                }),
         ];
     }
 }

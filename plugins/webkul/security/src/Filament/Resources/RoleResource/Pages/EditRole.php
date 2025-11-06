@@ -8,14 +8,14 @@ use Filament\Resources\Pages\EditRecord;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
-use Webkul\Security\Filament\Resources\RoleResource;
 use Spatie\Permission\PermissionRegistrar;
+use Webkul\Security\Filament\Resources\RoleResource;
 
 class EditRole extends EditRecord
 {
-    protected static string $resource = RoleResource::class;
-
     public Collection $permissions;
+
+    protected static string $resource = RoleResource::class;
 
     protected function getActions(): array
     {
@@ -62,7 +62,7 @@ class EditRole extends EditRecord
             return;
         }
 
-        $chunkSize = 500;
+        $chunkSize        = 500;
         $allPermissionIds = collect();
 
         $permissionNames->chunk($chunkSize)->each(function ($chunk) use ($permissionModel, $guard, &$allPermissionIds) {
@@ -73,8 +73,8 @@ class EditRole extends EditRecord
             $missingPermissions = $chunk->diff($existingPermissions->keys());
 
             if ($missingPermissions->isNotEmpty()) {
-                $insertData = $missingPermissions->map(fn($name) => [
-                    'name' => $name,
+                $insertData = $missingPermissions->map(fn ($name) => [
+                    'name'       => $name,
                     'guard_name' => $guard,
                     'created_at' => now(),
                     'updated_at' => now(),
@@ -109,7 +109,7 @@ class EditRole extends EditRecord
 
         DB::table($tableName)->where($roleColumn, $roleId)->delete();
 
-        if (! empty($permissionIds)) {
+        if ( ! empty($permissionIds)) {
             $chunkSize = 1000;
 
             $chunks = array_chunk($permissionIds, $chunkSize);

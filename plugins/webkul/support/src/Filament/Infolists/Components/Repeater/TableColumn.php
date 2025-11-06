@@ -40,7 +40,7 @@ class TableColumn extends Component
         $name ??= static::getDefaultName();
 
         if (blank($name)) {
-            throw new LogicException("Column of class [$columnClass] must have a unique name, passed to the [make()] method.");
+            throw new LogicException("Column of class [{$columnClass}] must have a unique name, passed to the [make()] method.");
         }
 
         $static = app($columnClass, ['name' => $name]);

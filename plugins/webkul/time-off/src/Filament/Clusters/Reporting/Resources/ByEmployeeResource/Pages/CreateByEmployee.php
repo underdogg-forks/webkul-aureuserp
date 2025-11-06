@@ -2,9 +2,8 @@
 
 namespace Webkul\TimeOff\Filament\Clusters\Reporting\Resources\ByEmployeeResource\Pages;
 
-use Filament\Resources\Pages\CreateRecord;
-use Webkul\TimeOff\Filament\Clusters\Reporting\Resources\ByEmployeeResource;
 use Webkul\TimeOff\Filament\Clusters\Management\Resources\TimeOffResource\Pages\CreateTimeOff as BaseCreateTimeOff;
+use Webkul\TimeOff\Filament\Clusters\Reporting\Resources\ByEmployeeResource;
 
 class CreateByEmployee extends BaseCreateTimeOff
 {
@@ -20,7 +19,7 @@ class CreateByEmployee extends BaseCreateTimeOff
         $data = parent::mutateFormDataBeforeCreate($data);
 
         $data['date_from'] = $data['request_date_from'] ?? null;
-        $data['date_to'] = $data['request_date_to'] ?? null;
+        $data['date_to']   = $data['request_date_to'] ?? null;
 
         return $data;
     }

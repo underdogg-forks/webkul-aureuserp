@@ -14,7 +14,14 @@ use Webkul\Security\Models\User;
 
 class ActivityType extends Model implements Sortable
 {
-    use HasFactory, SoftDeletes, SortableTrait;
+    use HasFactory;
+    use SoftDeletes;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     protected $table = 'activity_types';
 
@@ -42,11 +49,6 @@ class ActivityType extends Model implements Sortable
     protected $casts = [
         'is_active' => 'boolean',
         'keep_done' => 'boolean',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function activityPlan(): BelongsTo

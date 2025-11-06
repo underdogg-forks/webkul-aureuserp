@@ -14,6 +14,19 @@ class ListRoutes extends ListRecords
 {
     protected static string $resource = RouteResource::class;
 
+    public function getTabs(): array
+    {
+        return [
+            'all' => Tab::make(__('inventories::filament/clusters/configurations/resources/route/pages/list-routes.tabs.all'))
+                ->badge(Route::count()),
+            'archived' => Tab::make(__('inventories::filament/clusters/configurations/resources/route/pages/list-routes.tabs.archived'))
+                ->badge(Route::onlyTrashed()->count())
+                ->modifyQueryUsing(function ($query) {
+                    return $query->onlyTrashed();
+                }),
+        ];
+    }
+
     protected function getHeaderActions(): array
     {
         return [
@@ -35,19 +48,6 @@ class ListRoutes extends ListRecords
                         ->title(__('inventories::filament/clusters/configurations/resources/route/pages/list-routes.header-actions.create.notification.title'))
                         ->body(__('inventories::filament/clusters/configurations/resources/route/pages/list-routes.header-actions.create.notification.body')),
                 ),
-        ];
-    }
-
-    public function getTabs(): array
-    {
-        return [
-            'all' => Tab::make(__('inventories::filament/clusters/configurations/resources/route/pages/list-routes.tabs.all'))
-                ->badge(Route::count()),
-            'archived' => Tab::make(__('inventories::filament/clusters/configurations/resources/route/pages/list-routes.tabs.archived'))
-                ->badge(Route::onlyTrashed()->count())
-                ->modifyQueryUsing(function ($query) {
-                    return $query->onlyTrashed();
-                }),
         ];
     }
 }

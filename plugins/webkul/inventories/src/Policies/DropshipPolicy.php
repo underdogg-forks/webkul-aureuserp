@@ -9,7 +9,8 @@ use Webkul\Security\Traits\HasScopedPermissions;
 
 class DropshipPolicy
 {
-    use HandlesAuthorization, HasScopedPermissions;
+    use HandlesAuthorization;
+    use HasScopedPermissions;
 
     /**
      * Determine whether the user can view any models.
@@ -40,7 +41,7 @@ class DropshipPolicy
      */
     public function update(User $user, Dropship $dropship): bool
     {
-        if (! $user->can('update_dropship')) {
+        if ( ! $user->can('update_dropship')) {
             return false;
         }
 
@@ -52,7 +53,7 @@ class DropshipPolicy
      */
     public function delete(User $user, Dropship $dropship): bool
     {
-        if (! $user->can('delete_dropship')) {
+        if ( ! $user->can('delete_dropship')) {
             return false;
         }
 

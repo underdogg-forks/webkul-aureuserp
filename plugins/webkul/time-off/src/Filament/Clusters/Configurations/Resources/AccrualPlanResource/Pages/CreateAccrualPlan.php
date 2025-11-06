@@ -12,6 +12,11 @@ class CreateAccrualPlan extends CreateRecord
 {
     protected static string $resource = AccrualPlanResource::class;
 
+    public static function getSubNavigationPosition(): SubNavigationPosition
+    {
+        return SubNavigationPosition::Start;
+    }
+
     public function getSubNavigation(): array
     {
         if (filled($cluster = static::getCluster())) {
@@ -19,11 +24,6 @@ class CreateAccrualPlan extends CreateRecord
         }
 
         return [];
-    }
-
-    public static function getSubNavigationPosition(): SubNavigationPosition
-    {
-        return SubNavigationPosition::Start;
     }
 
     protected function getRedirectUrl(): string

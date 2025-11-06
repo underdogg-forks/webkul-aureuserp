@@ -14,6 +14,19 @@ class ManageIndustries extends ManageRecords
 {
     protected static string $resource = IndustryResource::class;
 
+    public function getTabs(): array
+    {
+        return [
+            'all' => Tab::make(__('partners::filament/resources/industry/pages/manage-industries.tabs.all'))
+                ->badge(Industry::count()),
+            'archived' => Tab::make(__('partners::filament/resources/industry/pages/manage-industries.tabs.archived'))
+                ->badge(Industry::onlyTrashed()->count())
+                ->modifyQueryUsing(function ($query) {
+                    return $query->onlyTrashed();
+                }),
+        ];
+    }
+
     protected function getHeaderActions(): array
     {
         return [
@@ -31,19 +44,6 @@ class ManageIndustries extends ManageRecords
                         ->title(__('partners::filament/resources/industry/pages/manage-industries.header-actions.create.notification.title'))
                         ->body(__('partners::filament/resources/industry/pages/manage-industries.header-actions.create.notification.body')),
                 ),
-        ];
-    }
-
-    public function getTabs(): array
-    {
-        return [
-            'all' => Tab::make(__('partners::filament/resources/industry/pages/manage-industries.tabs.all'))
-                ->badge(Industry::count()),
-            'archived' => Tab::make(__('partners::filament/resources/industry/pages/manage-industries.tabs.archived'))
-                ->badge(Industry::onlyTrashed()->count())
-                ->modifyQueryUsing(function ($query) {
-                    return $query->onlyTrashed();
-                }),
         ];
     }
 }

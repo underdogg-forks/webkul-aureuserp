@@ -12,7 +12,13 @@ use Webkul\Security\Models\User;
 
 class AttributeOption extends Model implements Sortable
 {
-    use HasFactory, SortableTrait;
+    use HasFactory;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     /**
      * Table name.
@@ -33,11 +39,6 @@ class AttributeOption extends Model implements Sortable
         'sort',
         'attribute_id',
         'creator_id',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function attribute(): BelongsTo

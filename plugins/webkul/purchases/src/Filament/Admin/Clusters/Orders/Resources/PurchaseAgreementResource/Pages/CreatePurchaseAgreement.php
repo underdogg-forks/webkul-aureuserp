@@ -14,6 +14,8 @@ class CreatePurchaseAgreement extends CreateRecord
 {
     use HasRepeaterColumnManager;
 
+    protected static string $resource = PurchaseAgreementResource::class;
+
     public function getSubNavigation(): array
     {
         if (filled($cluster = static::getCluster())) {
@@ -22,8 +24,6 @@ class CreatePurchaseAgreement extends CreateRecord
 
         return [];
     }
-
-    protected static string $resource = PurchaseAgreementResource::class;
 
     public function getTitle(): string|Htmlable
     {

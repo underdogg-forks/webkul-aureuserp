@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class ActivityTypeSuggestion extends Model
 {
-    protected $table = 'activity_type_suggestions';
-
     public $timestamps = false;
+
+    protected $table = 'activity_type_suggestions';
 
     protected $fillable = [
         'activity_type_id',

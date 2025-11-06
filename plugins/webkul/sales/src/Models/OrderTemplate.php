@@ -13,7 +13,13 @@ use Webkul\Support\Models\Company;
 
 class OrderTemplate extends Model implements Sortable
 {
-    use HasFactory, SortableTrait;
+    use HasFactory;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     protected $table = 'sales_order_templates';
 
@@ -29,11 +35,6 @@ class OrderTemplate extends Model implements Sortable
         'require_signature',
         'require_payment',
         'prepayment_percentage',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function company()

@@ -11,7 +11,13 @@ use Webkul\Security\Models\User;
 
 class ActivityPlanTemplate extends Model implements Sortable
 {
-    use HasFactory, SortableTrait;
+    use HasFactory;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     protected $table = 'activity_plan_templates';
 
@@ -29,13 +35,8 @@ class ActivityPlanTemplate extends Model implements Sortable
         'note',
     ];
 
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
-    ];
-
     /**
-     * Relationships
+     * Relationships.
      */
     public function activityPlan(): BelongsTo
     {

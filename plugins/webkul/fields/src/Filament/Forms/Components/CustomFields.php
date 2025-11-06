@@ -53,11 +53,6 @@ class CustomFields extends Component
         return $this;
     }
 
-    protected function getResourceClass(): string
-    {
-        return $this->resourceClass;
-    }
-
     public function getSchema(): array
     {
         $fields = $this->getFields();
@@ -67,16 +62,21 @@ class CustomFields extends Component
         })->toArray();
     }
 
+    protected function getResourceClass(): string
+    {
+        return $this->resourceClass;
+    }
+
     protected function getFields(): Collection
     {
         $query = Field::query()
             ->where('customizable_type', $this->getResourceClass()::getModel());
 
-        if (! empty($this->include)) {
+        if ( ! empty($this->include)) {
             $query->whereIn('code', $this->include);
         }
 
-        if (! empty($this->exclude)) {
+        if ( ! empty($this->exclude)) {
             $query->whereNotIn('code', $this->exclude);
         }
 
@@ -103,13 +103,13 @@ class CustomFields extends Component
         $component = $componentClass::make($field->code)
             ->label($field->name);
 
-        if (! empty($field->form_settings['validations'])) {
+        if ( ! empty($field->form_settings['validations'])) {
             foreach ($field->form_settings['validations'] as $validation) {
                 $this->applyValidation($component, $validation);
             }
         }
 
-        if (! empty($field->form_settings['settings'])) {
+        if ( ! empty($field->form_settings['settings'])) {
             foreach ($field->form_settings['settings'] as $setting) {
                 $this->applySetting($component, $setting);
             }
@@ -161,7 +161,7 @@ class CustomFields extends Component
 
     protected function applySetting(Component $component, array $setting): void
     {
-        $name = $setting['setting'];
+        $name  = $setting['setting'];
         $value = $setting['value'] ?? null;
 
         if (method_exists($component, $name)) {

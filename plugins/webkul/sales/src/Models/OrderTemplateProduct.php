@@ -55,10 +55,10 @@ class OrderTemplateProduct extends Model
         parent::boot();
 
         static::creating(function ($orderTemplateProduct) {
-            $orderTemplateProduct->company_id = $orderTemplateProduct->company_id ?? Company::first()?->id;
-            $orderTemplateProduct->product_id = $orderTemplateProduct->product_id ?? Product::first()?->id;
-            $orderTemplateProduct->product_uom_id = $orderTemplateProduct->product_uom_id ?? UOM::first()?->id;
-            $orderTemplateProduct->creator_id = $orderTemplateProduct->creator_id ?? User::first()?->id;
+            $orderTemplateProduct->company_id ??= Company::first()?->id;
+            $orderTemplateProduct->product_id ??= Product::first()?->id;
+            $orderTemplateProduct->product_uom_id ??= UOM::first()?->id;
+            $orderTemplateProduct->creator_id ??= User::first()?->id;
         });
     }
 }

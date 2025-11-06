@@ -66,9 +66,9 @@ class Product extends BaseProduct
         if ($this->is_configurable) {
             return $this->hasMany(ProductQuantity::class)
                 ->orWhereIn('product_id', $this->variants()->pluck('id'));
-        } else {
-            return $this->hasMany(ProductQuantity::class);
         }
+
+        return $this->hasMany(ProductQuantity::class);
     }
 
     public function moves(): HasMany
@@ -76,9 +76,9 @@ class Product extends BaseProduct
         if ($this->is_configurable) {
             return $this->hasMany(Move::class)
                 ->orWhereIn('product_id', $this->variants()->pluck('id'));
-        } else {
-            return $this->hasMany(Move::class);
         }
+
+        return $this->hasMany(Move::class);
     }
 
     public function moveLines(): HasMany
@@ -86,9 +86,9 @@ class Product extends BaseProduct
         if ($this->is_configurable) {
             return $this->hasMany(MoveLine::class)
                 ->orWhereIn('product_id', $this->variants()->pluck('id'));
-        } else {
-            return $this->hasMany(MoveLine::class);
         }
+
+        return $this->hasMany(MoveLine::class);
     }
 
     public function storageCategoryCapacities(): BelongsToMany

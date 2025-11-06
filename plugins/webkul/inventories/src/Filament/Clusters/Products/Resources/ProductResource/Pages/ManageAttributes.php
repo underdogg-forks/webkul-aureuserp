@@ -11,13 +11,13 @@ class ManageAttributes extends BaseManageAttributes
     protected static string $resource = ProductResource::class;
 
     /**
-     * @param  array<string, mixed>  $parameters
+     * @param array<string, mixed> $parameters
      */
     public static function canAccess(array $parameters = []): bool
     {
         $canAccess = parent::canAccess($parameters);
 
-        if (! $canAccess) {
+        if ( ! $canAccess) {
             return false;
         }
 

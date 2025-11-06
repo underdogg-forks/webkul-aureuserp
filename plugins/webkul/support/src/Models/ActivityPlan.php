@@ -12,7 +12,9 @@ use Webkul\Security\Models\User;
 
 class ActivityPlan extends Model
 {
-    use HasCustomFields, HasFactory, SoftDeletes;
+    use HasCustomFields;
+    use HasFactory;
+    use SoftDeletes;
 
     protected $table = 'activity_plans';
 

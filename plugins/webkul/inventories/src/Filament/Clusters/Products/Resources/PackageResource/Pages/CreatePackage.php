@@ -9,6 +9,8 @@ use Webkul\Inventory\Filament\Clusters\Products\Resources\PackageResource;
 
 class CreatePackage extends CreateRecord
 {
+    protected static string $resource = PackageResource::class;
+
     public function getSubNavigation(): array
     {
         if (filled($cluster = static::getCluster())) {
@@ -17,8 +19,6 @@ class CreatePackage extends CreateRecord
 
         return [];
     }
-
-    protected static string $resource = PackageResource::class;
 
     protected function getRedirectUrl(): string
     {

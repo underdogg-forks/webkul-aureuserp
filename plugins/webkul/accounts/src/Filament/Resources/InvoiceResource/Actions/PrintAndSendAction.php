@@ -18,11 +18,6 @@ class PrintAndSendAction extends Action
 {
     use PDFHandler;
 
-    public static function getDefaultName(): ?string
-    {
-        return 'customers.invoice.print-and-send';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -40,7 +35,7 @@ class PrintAndSendAction extends Action
             $description = "
                     <p>Dear {$record->partner->name},</p>
                     <p>Your invoice <strong>{$record->name}</strong> from <strong>{$record->company->name}</strong> for <strong>{$record->currency->symbol} {$record->amount_total}</strong> is now available. Kindly arrange payment at your earliest convenience.</p>
-                    <p>When making the payment, please reference <strong>{$record->name}</strong> for account <strong>".($record->partnerBank->bank->name ?? 'N/A').'</strong>.</p>
+                    <p>When making the payment, please reference <strong>{$record->name}</strong> for account <strong>" . ($record->partnerBank->bank->name ?? 'N/A') . '</strong>.</p>
                     <p>If you have any questions, feel free to reach out.</p>
                     <p><strong>Best regards,</strong><br>Administrator</p>
                 ';
@@ -48,7 +43,7 @@ class PrintAndSendAction extends Action
             $action->fillForm([
                 'files'       => $this->prepareInvoice($record),
                 'partners'    => [$record->partner_id],
-                'subject'     => $record->partner->name.' Invoice (Ref '.$record->name.')',
+                'subject'     => $record->partner->name . ' Invoice (Ref ' . $record->name . ')',
                 'description' => $description,
             ]);
         });
@@ -93,11 +88,16 @@ class PrintAndSendAction extends Action
         });
     }
 
+    public static function getDefaultName(): ?string
+    {
+        return 'customers.invoice.print-and-send';
+    }
+
     private function prepareInvoice(Move $record): ?string
     {
         return $this->savePDF(
             view('accounts::invoice/actions/preview.index', compact('record'))->render(),
-            'invoice-'.$record->created_at->format('d-m-Y')
+            'invoice-' . $record->created_at->format('d-m-Y')
         );
     }
 }

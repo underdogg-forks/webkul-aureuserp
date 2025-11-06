@@ -13,6 +13,8 @@ class CreateInvoice extends CreateRecord
 {
     use HasRepeaterColumnManager;
 
+    protected static string $resource = InvoiceResource::class;
+
     public function getSubNavigation(): array
     {
         if (filled($cluster = static::getCluster())) {
@@ -21,8 +23,6 @@ class CreateInvoice extends CreateRecord
 
         return [];
     }
-
-    protected static string $resource = InvoiceResource::class;
 
     protected function getRedirectUrl(): string
     {

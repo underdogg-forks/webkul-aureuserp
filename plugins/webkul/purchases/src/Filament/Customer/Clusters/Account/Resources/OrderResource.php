@@ -56,7 +56,6 @@ class OrderResource extends Resource
                     ->money(fn (Order $record) => $record->currency->code),
             ])
             ->filters([
-                //
             ])
             ->recordActions([
                 ViewAction::make(),
@@ -134,25 +133,25 @@ class OrderResource extends Resource
                                         ->action(function (Order $record) {
                                             if ($record->state == OrderState::SENT) {
                                                 $pdf = PDF::loadView('purchases::filament.admin.clusters.orders.orders.actions.print-quotation', [
-                                                    'records'  => [$record],
+                                                    'records' => [$record],
                                                 ]);
 
                                                 $pdf->setPaper('a4', 'portrait');
 
                                                 return response()->streamDownload(function () use ($pdf) {
                                                     echo $pdf->output();
-                                                }, 'Quotation-'.str_replace('/', '_', $record->name).'.pdf');
+                                                }, 'Quotation-' . str_replace('/', '_', $record->name) . '.pdf');
                                             }
 
                                             $pdf = PDF::loadView('purchases::filament.admin.clusters.orders.orders.actions.print-purchase-order', [
-                                                'records'  => [$record],
+                                                'records' => [$record],
                                             ]);
 
                                             $pdf->setPaper('a4', 'portrait');
 
                                             return response()->streamDownload(function () use ($pdf) {
                                                 echo $pdf->output();
-                                            }, 'Purchase Order-'.str_replace('/', '_', $record->name).'.pdf');
+                                            }, 'Purchase Order-' . str_replace('/', '_', $record->name) . '.pdf');
                                         }),
                                 ])
                                     ->fullWidth(),
@@ -169,7 +168,7 @@ class OrderResource extends Resource
                     ->schema([
                         Section::make()
                             ->schema([
-                                /**
+                                /*
                                  * Order details
                                  */
                                 Group::make()
@@ -198,7 +197,7 @@ class OrderResource extends Resource
                                             ->visible(fn (Order $record): bool => (bool) $record->ordered_at),
                                     ]),
 
-                                /**
+                                /*
                                  * Order items
                                  */
                                 Group::make()
@@ -218,7 +217,7 @@ class OrderResource extends Resource
                                             ];
                                         }),
 
-                                        /**
+                                        /*
                                          * Order totals
                                          */
                                         Group::make()
@@ -249,7 +248,7 @@ class OrderResource extends Resource
                                             ->visible(fn (Order $record): bool => in_array($record->state, [OrderState::PURCHASE, OrderState::DONE])),
                                     ]),
 
-                                /**
+                                /*
                                  * Communication history
                                  */
                                 Group::make()

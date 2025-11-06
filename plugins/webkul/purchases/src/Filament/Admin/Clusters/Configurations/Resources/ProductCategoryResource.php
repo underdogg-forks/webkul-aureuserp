@@ -2,6 +2,7 @@
 
 namespace Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources;
 
+use BackedEnum;
 use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Resources\Pages\Page;
 use Webkul\Product\Filament\Resources\CategoryResource;
@@ -17,7 +18,7 @@ class ProductCategoryResource extends CategoryResource
 {
     protected static ?string $model = Category::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-folder';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-folder';
 
     protected static bool $shouldRegisterNavigation = true;
 
@@ -47,7 +48,7 @@ class ProductCategoryResource extends CategoryResource
             $route = session('current_route');
         }
 
-        if ($route === self::getRouteBaseName().'.index') {
+        if ($route === self::getRouteBaseName() . '.index') {
             return SubNavigationPosition::Start;
         }
 

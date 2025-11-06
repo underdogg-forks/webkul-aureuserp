@@ -2,6 +2,7 @@
 
 namespace Webkul\Project\Filament\Resources\ProjectResource\Pages;
 
+use BackedEnum;
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ManageRelatedRecords;
@@ -17,20 +18,20 @@ class ManageMilestones extends ManageRelatedRecords
 
     protected static string $relationship = 'milestones';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-flag';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-flag';
 
     /**
-     * @param  array<string, mixed>  $parameters
+     * @param array<string, mixed> $parameters
      */
     public static function canAccess(array $parameters = []): bool
     {
         $canAccess = parent::canAccess($parameters);
 
-        if (! $canAccess) {
+        if ( ! $canAccess) {
             return false;
         }
 
-        if (! static::$resource::getTaskSettings()->enable_milestones) {
+        if ( ! static::$resource::getTaskSettings()->enable_milestones) {
             return false;
         }
 

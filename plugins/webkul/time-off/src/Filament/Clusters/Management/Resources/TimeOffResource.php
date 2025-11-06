@@ -2,6 +2,7 @@
 
 namespace Webkul\TimeOff\Filament\Clusters\Management\Resources;
 
+use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkActionGroup;
@@ -35,7 +36,7 @@ class TimeOffResource extends Resource
 
     protected static ?string $model = Leave::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $cluster = Management::class;
 
@@ -53,7 +54,7 @@ class TimeOffResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return $schema->schema((new self)->getFormSchema(true));
+        return $schema->schema((new self())->getFormSchema(true));
     }
 
     public static function table(Table $table): Table
@@ -131,9 +132,9 @@ class TimeOffResource extends Resource
                         ->label(function ($record) {
                             if ($record->state === State::VALIDATE_ONE->value) {
                                 return __('time-off::filament/clusters/management/resources/time-off.table.actions.approve.title.validate');
-                            } else {
-                                return __('time-off::filament/clusters/management/resources/time-off.table.actions.approve.title.approve');
                             }
+
+                            return __('time-off::filament/clusters/management/resources/time-off.table.actions.approve.title.approve');
                         }),
                     Action::make('refuse')
                         ->icon('heroicon-o-x-circle')
@@ -218,7 +219,7 @@ class TimeOffResource extends Resource
                                         }
 
                                         $startDate = Carbon::parse($record->request_date_from);
-                                        $endDate = $record->request_date_to ? Carbon::parse($record->request_date_to) : $startDate;
+                                        $endDate   = $record->request_date_to ? Carbon::parse($record->request_date_to) : $startDate;
 
                                         return __('time-off::filament/clusters/my-time/resources/my-time-off.infolist.entries.days', ['days' => ($startDate->diffInDays($endDate) + 1)]);
                                     })

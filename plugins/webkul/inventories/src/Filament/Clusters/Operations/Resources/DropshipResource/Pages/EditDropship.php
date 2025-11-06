@@ -20,6 +20,11 @@ class EditDropship extends EditRecord
 
     protected static string $resource = DropshipResource::class;
 
+    public function updateForm(): void
+    {
+        $this->fillForm();
+    }
+
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('edit', ['record' => $this->getRecord()]);
@@ -76,10 +81,5 @@ class EditDropship extends EditRecord
                         ->body(__('inventories::filament/clusters/operations/resources/dropship/pages/edit-dropship.header-actions.delete.notification.success.body')),
                 ),
         ];
-    }
-
-    public function updateForm(): void
-    {
-        $this->fillForm();
     }
 }

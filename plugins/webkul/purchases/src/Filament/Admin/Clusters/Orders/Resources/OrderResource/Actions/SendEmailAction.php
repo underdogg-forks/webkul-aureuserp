@@ -19,11 +19,6 @@ use Webkul\Purchase\Models\Order;
 
 class SendEmailAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'purchases.orders.send-email';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -122,5 +117,10 @@ MD;
                 OrderState::DRAFT,
                 OrderState::SENT,
             ]));
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'purchases.orders.send-email';
     }
 }

@@ -11,11 +11,6 @@ use Webkul\Inventory\Models\Operation;
 
 class CheckAvailabilityAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'inventories.operations.check_availability';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -28,11 +23,16 @@ class CheckAvailabilityAction extends Action
                 $livewire->updateForm();
             })
             ->hidden(function () {
-                if (! in_array($this->getRecord()->state, [OperationState::CONFIRMED, OperationState::ASSIGNED])) {
+                if ( ! in_array($this->getRecord()->state, [OperationState::CONFIRMED, OperationState::ASSIGNED])) {
                     return true;
                 }
 
                 return ! $this->getRecord()->moves->contains(fn ($move) => in_array($move->state, [MoveState::CONFIRMED, MoveState::PARTIALLY_ASSIGNED]));
             });
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'inventories.operations.check_availability';
     }
 }

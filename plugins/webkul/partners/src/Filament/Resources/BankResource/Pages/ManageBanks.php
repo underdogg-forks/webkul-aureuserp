@@ -14,6 +14,19 @@ class ManageBanks extends ManageRecords
 {
     protected static string $resource = BankResource::class;
 
+    public function getTabs(): array
+    {
+        return [
+            'all' => Tab::make(__('partners::filament/resources/bank/pages/manage-banks.tabs.all'))
+                ->badge(Bank::count()),
+            'archived' => Tab::make(__('partners::filament/resources/bank/pages/manage-banks.tabs.archived'))
+                ->badge(Bank::onlyTrashed()->count())
+                ->modifyQueryUsing(function ($query) {
+                    return $query->onlyTrashed();
+                }),
+        ];
+    }
+
     protected function getHeaderActions(): array
     {
         return [
@@ -31,19 +44,6 @@ class ManageBanks extends ManageRecords
                         ->title(__('partners::filament/resources/bank/pages/manage-banks.header-actions.create.notification.title'))
                         ->body(__('partners::filament/resources/bank/pages/manage-banks.header-actions.create.notification.body')),
                 ),
-        ];
-    }
-
-    public function getTabs(): array
-    {
-        return [
-            'all' => Tab::make(__('partners::filament/resources/bank/pages/manage-banks.tabs.all'))
-                ->badge(Bank::count()),
-            'archived' => Tab::make(__('partners::filament/resources/bank/pages/manage-banks.tabs.archived'))
-                ->badge(Bank::onlyTrashed()->count())
-                ->modifyQueryUsing(function ($query) {
-                    return $query->onlyTrashed();
-                }),
         ];
     }
 }

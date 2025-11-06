@@ -23,11 +23,11 @@ class DeleteAction extends BaseDeleteAction
             )
             ->successNotification(null)
             ->hidden(static function (?Model $record): bool {
-                if (! $record) {
+                if ( ! $record) {
                     return true;
                 }
 
-                if (! method_exists($record, 'trashed')) {
+                if ( ! method_exists($record, 'trashed')) {
                     return false;
                 }
 

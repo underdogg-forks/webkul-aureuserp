@@ -39,6 +39,27 @@ class Message extends Model
         'date_deadline' => 'date',
     ];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        $user = filament()->auth()->user();
+
+        if ($user) {
+            static::creating(function ($data) use ($user) {
+                DB::transaction(function () use ($data, $user) {
+                    $data->causer_type = $user->getMorphClass();
+                    $data->causer_id   = $user->id;
+                });
+            });
+
+            static::updating(function ($data) use ($user) {
+                $data->causer_type = $user->getMorphClass();
+                $data->causer_id   = $user->id;
+            });
+        }
+    }
+
     public function messageable(): MorphTo
     {
         return $this->morphTo();
@@ -67,27 +88,6 @@ class Message extends Model
     public function setPropertiesAttribute($value)
     {
         $this->attributes['properties'] = json_encode($value);
-    }
-
-    public static function boot()
-    {
-        parent::boot();
-
-        $user = filament()->auth()->user();
-
-        if ($user) {
-            static::creating(function ($data) use ($user) {
-                DB::transaction(function () use ($data, $user) {
-                    $data->causer_type = $user->getMorphClass();
-                    $data->causer_id = $user->id;
-                });
-            });
-
-            static::updating(function ($data) use ($user) {
-                $data->causer_type = $user->getMorphClass();
-                $data->causer_id = $user->id;
-            });
-        }
     }
 
     public function attachments()

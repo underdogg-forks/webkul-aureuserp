@@ -14,6 +14,19 @@ class ListAttributes extends ListRecords
 {
     protected static string $resource = AttributeResource::class;
 
+    public function getTabs(): array
+    {
+        return [
+            'all' => Tab::make(__('products::filament/resources/attribute/pages/list-attributes.tabs.all'))
+                ->badge(Attribute::count()),
+            'archived' => Tab::make(__('products::filament/resources/attribute/pages/list-attributes.tabs.archived'))
+                ->badge(Attribute::onlyTrashed()->count())
+                ->modifyQueryUsing(function ($query) {
+                    return $query->onlyTrashed();
+                }),
+        ];
+    }
+
     protected function getHeaderActions(): array
     {
         return [
@@ -35,19 +48,6 @@ class ListAttributes extends ListRecords
                         ->title(__('products::filament/resources/attribute/pages/list-attributes.header-actions.create.notification.title'))
                         ->body(__('products::filament/resources/attribute/pages/list-attributes.header-actions.create.notification.body')),
                 ),
-        ];
-    }
-
-    public function getTabs(): array
-    {
-        return [
-            'all' => Tab::make(__('products::filament/resources/attribute/pages/list-attributes.tabs.all'))
-                ->badge(Attribute::count()),
-            'archived' => Tab::make(__('products::filament/resources/attribute/pages/list-attributes.tabs.archived'))
-                ->badge(Attribute::onlyTrashed()->count())
-                ->modifyQueryUsing(function ($query) {
-                    return $query->onlyTrashed();
-                }),
         ];
     }
 }

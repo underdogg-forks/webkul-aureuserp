@@ -30,6 +30,42 @@ class Package extends BasePackage
 
     public ?string $icon = null;
 
+    public static function getPackagePlugin(string $name): ?Plugin
+    {
+        if (count(static::$plugins) == 0) {
+            if (Schema::hasTable('plugins') === false) {
+                return null;
+            }
+
+            static::$plugins = Plugin::all()->keyBy('name');
+        }
+
+        if (isset(static::$plugins[$name])) {
+            return static::$plugins[$name];
+        }
+
+        return static::$plugins[$name] ??= Plugin::where('name', $name)->first();
+    }
+
+    public static function isPluginInstalled(string $name): bool
+    {
+        try {
+            if (count(static::$plugins) == 0) {
+                DB::connection()->getPdo();
+
+                if (Schema::hasTable('plugins') === false) {
+                    return false;
+                }
+
+                static::$plugins = Plugin::all()->keyBy('name');
+            }
+
+            return (bool) (isset(static::$plugins[$name]) && static::$plugins[$name]->is_installed);
+        } catch (Exception) {
+            return false;
+        }
+    }
+
     public function hasInstallCommand($callable): static
     {
         $installCommand = new InstallCommand($this);
@@ -175,45 +211,5 @@ class Package extends BasePackage
     public function isInstalled(): bool
     {
         return static::isPluginInstalled($this->name);
-    }
-
-    public static function getPackagePlugin(string $name): ?Plugin
-    {
-        if (count(static::$plugins) == 0) {
-            if (Schema::hasTable('plugins') === false) {
-                return null;
-            }
-
-            static::$plugins = Plugin::all()->keyBy('name');
-        }
-
-        if (isset(static::$plugins[$name])) {
-            return static::$plugins[$name];
-        }
-
-        return static::$plugins[$name] ??= Plugin::where('name', $name)->first();
-    }
-
-    public static function isPluginInstalled(string $name): bool
-    {
-        try {
-            if (count(static::$plugins) == 0) {
-                DB::connection()->getPdo();
-
-                if (Schema::hasTable('plugins') === false) {
-                    return false;
-                }
-
-                static::$plugins = Plugin::all()->keyBy('name');
-            }
-
-            if (isset(static::$plugins[$name]) && static::$plugins[$name]->is_installed) {
-                return true;
-            }
-
-            return false;
-        } catch (Exception) {
-            return false;
-        }
     }
 }

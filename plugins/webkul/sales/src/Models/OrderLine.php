@@ -26,6 +26,11 @@ class OrderLine extends Model implements Sortable
 {
     use SortableTrait;
 
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
+
     protected $table = 'sales_order_lines';
 
     protected $fillable = [
@@ -78,11 +83,6 @@ class OrderLine extends Model implements Sortable
     protected $casts = [
         'cast'                 => OrderState::class,
         'qty_delivered_method' => QtyDeliveredMethod::class,
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function order()

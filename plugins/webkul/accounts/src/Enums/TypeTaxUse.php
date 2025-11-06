@@ -12,15 +12,6 @@ enum TypeTaxUse: string implements HasLabel
 
     case NONE = 'none';
 
-    public function getLabel(): ?string
-    {
-        return match ($this) {
-            self::SALE     => __('accounts::enums/type-tax-use.sale'),
-            self::PURCHASE => __('accounts::enums/type-tax-use.purchase'),
-            self::NONE     => __('accounts::enums/type-tax-use.none'),
-        };
-    }
-
     public static function options(): array
     {
         return [
@@ -28,5 +19,14 @@ enum TypeTaxUse: string implements HasLabel
             self::PURCHASE->value => __('accounts::enums/type-tax-use.purchase'),
             self::NONE->value     => __('accounts::enums/type-tax-use.none'),
         ];
+    }
+
+    public function getLabel(): ?string
+    {
+        return match ($this) {
+            self::SALE     => __('accounts::enums/type-tax-use.sale'),
+            self::PURCHASE => __('accounts::enums/type-tax-use.purchase'),
+            self::NONE     => __('accounts::enums/type-tax-use.none'),
+        };
     }
 }

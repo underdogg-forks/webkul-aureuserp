@@ -10,11 +10,6 @@ use Webkul\Inventory\Models\Operation;
 
 class CancelAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'inventories.operations.cancel';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -31,5 +26,10 @@ class CancelAction extends Action
                 OperationState::DONE,
                 OperationState::CANCELED,
             ]));
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'inventories.operations.cancel';
     }
 }

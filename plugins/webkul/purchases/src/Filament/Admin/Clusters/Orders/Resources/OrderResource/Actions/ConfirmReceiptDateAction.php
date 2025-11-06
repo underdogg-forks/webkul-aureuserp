@@ -10,11 +10,6 @@ use Webkul\Purchase\Models\Order;
 
 class ConfirmReceiptDateAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'purchases.orders.confirm-receipt-date';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -40,5 +35,10 @@ class ConfirmReceiptDateAction extends Action
                 OrderState::PURCHASE,
                 OrderState::DONE,
             ]));
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'purchases.orders.confirm-receipt-date';
     }
 }

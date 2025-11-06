@@ -9,7 +9,8 @@ use Webkul\Security\Traits\HasScopedPermissions;
 
 class EmployeePolicy
 {
-    use HandlesAuthorization, HasScopedPermissions;
+    use HandlesAuthorization;
+    use HasScopedPermissions;
 
     /**
      * Determine whether the user can view any models.
@@ -40,7 +41,7 @@ class EmployeePolicy
      */
     public function update(User $user, Employee $employee): bool
     {
-        if (! $user->can('update_employee')) {
+        if ( ! $user->can('update_employee')) {
             return false;
         }
 
@@ -52,7 +53,7 @@ class EmployeePolicy
      */
     public function delete(User $user, Employee $employee): bool
     {
-        if (! $user->can('delete_employee')) {
+        if ( ! $user->can('delete_employee')) {
             return false;
         }
 
@@ -72,7 +73,7 @@ class EmployeePolicy
      */
     public function forceDelete(User $user, Employee $employee): bool
     {
-        if (! $user->can('force_delete_employee')) {
+        if ( ! $user->can('force_delete_employee')) {
             return false;
         }
 
@@ -92,7 +93,7 @@ class EmployeePolicy
      */
     public function restore(User $user, Employee $employee): bool
     {
-        if (! $user->can('restore_employee')) {
+        if ( ! $user->can('restore_employee')) {
             return false;
         }
 

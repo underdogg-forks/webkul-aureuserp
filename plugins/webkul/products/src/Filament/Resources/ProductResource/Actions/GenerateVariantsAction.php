@@ -21,11 +21,6 @@ class GenerateVariantsAction extends Action
 
     protected Model|string|array|Closure|null $record = null;
 
-    public static function getDefaultName(): ?string
-    {
-        return 'products.generate.variants';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -42,6 +37,11 @@ class GenerateVariantsAction extends Action
                 $this->record->save();
             })
             ->hidden(fn (ManageAttributes $livewire) => $livewire->getRecord()->attributes->isEmpty());
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'products.generate.variants';
     }
 
     protected function generateVariants(): void
@@ -75,7 +75,7 @@ class GenerateVariantsAction extends Action
     {
         $attributeValues = $attribute->values;
 
-        $existingVariants = Product::where('parent_id', $this->record->id)->get();
+        $existingVariants    = Product::where('parent_id', $this->record->id)->get();
         $processedVariantIds = [];
 
         foreach ($attributeValues as $value) {
@@ -116,7 +116,7 @@ class GenerateVariantsAction extends Action
 
     protected function handleMultipleAttributeVariants(Collection $attributes): void
     {
-        $existingVariants = Product::where('parent_id', $this->record->id)->get();
+        $existingVariants    = Product::where('parent_id', $this->record->id)->get();
         $processedVariantIds = [];
 
         $combinations = $this->generateAttributeCombinations($attributes);
@@ -176,11 +176,11 @@ class GenerateVariantsAction extends Action
         }
 
         $currentAttribute = $attributes[$index];
-        $attributeValues = $currentAttribute->values;
+        $attributeValues  = $currentAttribute->values;
 
         foreach ($attributeValues as $value) {
             $newCombination = array_merge($currentCombination, [$value]);
-            $combinations = array_merge(
+            $combinations   = array_merge(
                 $combinations,
                 $this->generateAttributeCombinations($attributes, $newCombination, $index + 1)
             );
@@ -191,13 +191,13 @@ class GenerateVariantsAction extends Action
 
     protected function createVariant(Product $parent, array $attributeValues): Product
     {
-        $variantName = $parent->name.' - '.collect($attributeValues)
+        $variantName = $parent->name . ' - ' . collect($attributeValues)
             ->map(fn ($value) => $value->attributeOption->name)
             ->implode(' / ');
 
         $extraPrice = collect($attributeValues)->sum('extra_price');
 
-        $variant = new Product;
+        $variant = new Product();
 
         $variant->fill([
             'type'                 => $parent->type,
@@ -218,7 +218,7 @@ class GenerateVariantsAction extends Action
             'description_purchase' => $parent->description_purchase,
             'description_sale'     => $parent->description_sale,
             'barcode'              => null,
-            'reference'            => $parent->reference.'-'.strtolower(str_replace(' ', '-', $variantName)),
+            'reference'            => $parent->reference . '-' . mb_strtolower(str_replace(' ', '-', $variantName)),
             'images'               => $parent->images,
         ]);
 
@@ -229,7 +229,7 @@ class GenerateVariantsAction extends Action
 
     protected function updateVariant(Product $variant, array $attributeValues): void
     {
-        $variantName = $this->record->name.' - '.collect($attributeValues)
+        $variantName = $this->record->name . ' - ' . collect($attributeValues)
             ->map(fn ($value) => $value->attributeOption->name)
             ->implode(' / ');
 

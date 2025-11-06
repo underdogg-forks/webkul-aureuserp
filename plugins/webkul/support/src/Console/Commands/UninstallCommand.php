@@ -10,21 +10,21 @@ use Webkul\Support\Package;
 
 class UninstallCommand extends Command
 {
-    protected Package $package;
-
     public ?Closure $startWith = null;
 
     public ?Closure $endWith = null;
 
     public $hidden = true;
 
+    protected Package $package;
+
     protected bool $forceUninstall = false;
 
     public function __construct(Package $package)
     {
-        $this->signature = $package->shortName().':uninstall {--force : Force the operation to run without confirmation}';
+        $this->signature = $package->shortName() . ':uninstall {--force : Force the operation to run without confirmation}';
 
-        $this->description = 'Uninstall '.$package->name;
+        $this->description = 'Uninstall ' . $package->name;
 
         $this->package = $package;
 
@@ -33,14 +33,14 @@ class UninstallCommand extends Command
 
     public function handle()
     {
-        if (! $this->package->isInstalled()) {
+        if ( ! $this->package->isInstalled()) {
             $this->error("Package {$this->package->shortName()} is not installed!");
 
             return;
         }
 
-        if (! $this->package->getPlugin()->dependents->isEmpty()) {
-            $this->error("Package {$this->package->shortName()} has dependents: <comment>".$this->package->getPlugin()->dependents->pluck('name')->implode(', ').'</comment>. Please uninstall dependents first!');
+        if ( ! $this->package->getPlugin()->dependents->isEmpty()) {
+            $this->error("Package {$this->package->shortName()} has dependents: <comment>" . $this->package->getPlugin()->dependents->pluck('name')->implode(', ') . '</comment>. Please uninstall dependents first!');
 
             return;
         }
@@ -51,7 +51,7 @@ class UninstallCommand extends Command
 
         $this->forceUninstall = $this->option('force');
 
-        if (! $this->forceUninstall && ! $this->confirm('Are you sure you want to uninstall this package? This action cannot be undone!')) {
+        if ( ! $this->forceUninstall && ! $this->confirm('Are you sure you want to uninstall this package? This action cannot be undone!')) {
             $this->info('Uninstallation cancelled.');
 
             return;
@@ -68,6 +68,20 @@ class UninstallCommand extends Command
         }
     }
 
+    public function startWith($callable): self
+    {
+        $this->startWith = $callable;
+
+        return $this;
+    }
+
+    public function endWith($callable): self
+    {
+        $this->endWith = $callable;
+
+        return $this;
+    }
+
     protected function dropTables(): void
     {
         $this->info("⚙️ Dropping database tables for <comment>{$this->package->shortName()}</comment>...");
@@ -77,7 +91,7 @@ class UninstallCommand extends Command
         foreach ($migrations as $migration) {
             $fullPath = $this->package->basePath("../database/migrations/{$migration}.php");
 
-            $migrationPath = Str::after($fullPath, base_path().DIRECTORY_SEPARATOR);
+            $migrationPath = Str::after($fullPath, base_path() . DIRECTORY_SEPARATOR);
 
             if (file_exists($migrationPath)) {
                 require_once $migrationPath;
@@ -97,7 +111,7 @@ class UninstallCommand extends Command
         foreach ($this->package->settingFileNames as $setting) {
             $fullPath = $this->package->basePath("../database/settings/{$setting}.php");
 
-            $migrationPath = Str::after($fullPath, base_path().DIRECTORY_SEPARATOR);
+            $migrationPath = Str::after($fullPath, base_path() . DIRECTORY_SEPARATOR);
 
             if (file_exists($migrationPath)) {
                 require_once $migrationPath;
@@ -117,19 +131,5 @@ class UninstallCommand extends Command
         $this->info('✅ Database tables dropped successfully.');
 
         $this->newLine();
-    }
-
-    public function startWith($callable): self
-    {
-        $this->startWith = $callable;
-
-        return $this;
-    }
-
-    public function endWith($callable): self
-    {
-        $this->endWith = $callable;
-
-        return $this;
     }
 }

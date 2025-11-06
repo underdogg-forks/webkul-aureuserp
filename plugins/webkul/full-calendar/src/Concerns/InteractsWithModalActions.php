@@ -15,6 +15,20 @@ trait InteractsWithModalActions
         $this->cacheModalActions();
     }
 
+    public function getCachedModalActions(): array
+    {
+        if ( ! $this->getModel()) {
+            return [];
+        }
+
+        return $this->cachedModalActions;
+    }
+
+    public function modalActions(): array
+    {
+        return [];
+    }
+
     protected function cacheModalActions(): void
     {
         foreach ($this->modalActions() as $action) {
@@ -30,27 +44,13 @@ trait InteractsWithModalActions
                 continue;
             }
 
-            if (! $action instanceof Action) {
-                throw new InvalidArgumentException('Header actions must be an instance of '.Action::class.', or '.ActionGroup::class.'.');
+            if ( ! $action instanceof Action) {
+                throw new InvalidArgumentException('Header actions must be an instance of ' . Action::class . ', or ' . ActionGroup::class . '.');
             }
 
             $this->cacheAction($action);
 
             $this->cachedModalActions[] = $action;
         }
-    }
-
-    public function getCachedModalActions(): array
-    {
-        if (! $this->getModel()) {
-            return [];
-        }
-
-        return $this->cachedModalActions;
-    }
-
-    public function modalActions(): array
-    {
-        return [];
     }
 }

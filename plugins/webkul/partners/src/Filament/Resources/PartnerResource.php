@@ -128,7 +128,7 @@ class PartnerResource extends Resource
 
                                                 $parent = Partner::find($state);
 
-                                                if (! $parent) {
+                                                if ( ! $parent) {
                                                     $component->state(null);
                                                 }
                                             }),
@@ -534,7 +534,6 @@ class PartnerResource extends Resource
                                 ->body(__('partners::filament/resources/partner.table.actions.force-delete.notification.error.body'))
                                 ->send();
                             $action->cancel();
-
                         }
                     })
                     ->successNotification(
@@ -571,7 +570,6 @@ class PartnerResource extends Resource
                                     ->body(__('partners::filament/resources/partner.table.bulk-actions.force-delete.notification.error.body'))
                                     ->send();
                                 $action->cancel();
-
                             }
                         })
                         ->successNotification(

@@ -12,19 +12,14 @@ use Webkul\Sale\Filament\Clusters\Orders\Resources\OrderResource;
 
 class ConfirmAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'orders.sales.confirm';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
 
         $this
-            ->color(fn(): string => $this->getRecord()->state === OrderState::DRAFT ? 'gray' : 'primary')
+            ->color(fn (): string => $this->getRecord()->state === OrderState::DRAFT ? 'gray' : 'primary')
             ->label(__('sales::filament/clusters/orders/resources/quotation/actions/confirm.title'))
-            ->hidden(fn($record) => $record->state == OrderState::SALE)
+            ->hidden(fn ($record) => $record->state == OrderState::SALE)
             ->action(function ($record, $livewire) {
                 try {
                     $record = SaleOrder::confirmSaleOrder($record);
@@ -48,5 +43,10 @@ class ConfirmAction extends Action
                     ->body(__('sales::filament/clusters/orders/resources/quotation/actions/confirm.notification.confirmed.body'))
                     ->send();
             });
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'orders.sales.confirm';
     }
 }

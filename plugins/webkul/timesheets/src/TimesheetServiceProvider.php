@@ -26,8 +26,5 @@ class TimesheetServiceProvider extends PackageServiceProvider
             ->icon('timesheet');
     }
 
-    public function packageBooted(): void
-    {
-        //
-    }
+    public function packageBooted(): void {}
 }

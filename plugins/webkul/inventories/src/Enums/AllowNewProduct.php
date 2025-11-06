@@ -15,9 +15,9 @@ enum AllowNewProduct: string implements HasLabel
     public function getLabel(): string
     {
         return match ($this) {
-            self::EMPTY       => __('inventories::enums/allow-new-product.empty'),
-            self::SAME        => __('inventories::enums/allow-new-product.same'),
-            self::MIXED       => __('inventories::enums/allow-new-product.mixed'),
+            self::EMPTY => __('inventories::enums/allow-new-product.empty'),
+            self::SAME  => __('inventories::enums/allow-new-product.same'),
+            self::MIXED => __('inventories::enums/allow-new-product.mixed'),
         };
     }
 }

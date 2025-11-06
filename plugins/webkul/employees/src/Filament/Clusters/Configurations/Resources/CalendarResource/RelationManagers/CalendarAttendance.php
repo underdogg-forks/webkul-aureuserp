@@ -282,7 +282,6 @@ class CalendarAttendance extends RelationManager
                                             ->placeholder('—')
                                             ->icon('heroicon-o-clock'),
                                     ])->columns(2),
-
                             ])->columnSpan(2),
                         Group::make([
                             Section::make((__('employees::filament/clusters/configurations/resources/calendar/relation-managers/working-hours.infolist.sections.date-information.title')))

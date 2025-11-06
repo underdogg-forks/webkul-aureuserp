@@ -13,6 +13,8 @@ class CreateBill extends CreateRecord
 {
     use HasRepeaterColumnManager;
 
+    protected static string $resource = BillResource::class;
+
     public function getSubNavigation(): array
     {
         if (filled($cluster = static::getCluster())) {
@@ -21,8 +23,6 @@ class CreateBill extends CreateRecord
 
         return [];
     }
-
-    protected static string $resource = BillResource::class;
 
     protected function getRedirectUrl(): string
     {

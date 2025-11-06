@@ -10,30 +10,9 @@ use Webkul\Product\Models\Product as BaseProduct;
 
 class Product extends BaseProduct
 {
-    use HasChatter, HasCustomFields, HasLogActivity;
-
-    /**
-     * Create a new Eloquent model instance.
-     *
-     * @return void
-     */
-    public function __construct(array $attributes = [])
-    {
-        $this->mergeFillable([
-            'property_account_income_id',
-            'property_account_expense_id',
-            'image',
-            'service_type',
-            'sale_line_warn',
-            'expense_policy',
-            'invoice_policy',
-            'sale_line_warn_msg',
-            'sales_ok',
-            'purchase_ok',
-        ]);
-
-        parent::__construct($attributes);
-    }
+    use HasChatter;
+    use HasCustomFields;
+    use HasLogActivity;
 
     protected array $logAttributes = [
         'type',
@@ -57,6 +36,29 @@ class Product extends BaseProduct
         'company.name'  => 'Company',
         'creator.name'  => 'Creator',
     ];
+
+    /**
+     * Create a new Eloquent model instance.
+     *
+     * @return void
+     */
+    public function __construct(array $attributes = [])
+    {
+        $this->mergeFillable([
+            'property_account_income_id',
+            'property_account_expense_id',
+            'image',
+            'service_type',
+            'sale_line_warn',
+            'expense_policy',
+            'invoice_policy',
+            'sale_line_warn_msg',
+            'sales_ok',
+            'purchase_ok',
+        ]);
+
+        parent::__construct($attributes);
+    }
 
     public function productTaxes()
     {

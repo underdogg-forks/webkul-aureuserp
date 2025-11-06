@@ -15,7 +15,15 @@ use Webkul\Support\Models\Company;
 
 class EmployeeJobPosition extends Model implements Sortable
 {
-    use HasCustomFields, HasFactory, SoftDeletes, SortableTrait;
+    use HasCustomFields;
+    use HasFactory;
+    use SoftDeletes;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     protected $table = 'employees_job_positions';
 
@@ -42,11 +50,6 @@ class EmployeeJobPosition extends Model implements Sortable
 
     protected $casts = [
         'is_active' => 'boolean',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function createdBy(): BelongsTo

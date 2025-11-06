@@ -6,16 +6,16 @@ use Filament\Support\Contracts\HasLabel;
 
 enum CarryoverDay: string implements HasLabel
 {
-    case LAST = 'last';
-    case DAY_1 = '1';
-    case DAY_2 = '2';
-    case DAY_3 = '3';
-    case DAY_4 = '4';
-    case DAY_5 = '5';
-    case DAY_6 = '6';
-    case DAY_7 = '7';
-    case DAY_8 = '8';
-    case DAY_9 = '9';
+    case LAST   = 'last';
+    case DAY_1  = '1';
+    case DAY_2  = '2';
+    case DAY_3  = '3';
+    case DAY_4  = '4';
+    case DAY_5  = '5';
+    case DAY_6  = '6';
+    case DAY_7  = '7';
+    case DAY_8  = '8';
+    case DAY_9  = '9';
     case DAY_10 = '10';
     case DAY_11 = '11';
     case DAY_12 = '12';
@@ -39,14 +39,6 @@ enum CarryoverDay: string implements HasLabel
     case DAY_30 = '30';
     case DAY_31 = '31';
 
-    public function getLabel(): ?string
-    {
-        return match ($this) {
-            self::LAST => __('time-off::enums/carry-over-day.last-day-of-month'),
-            default    => __('time-off::enums/carry-over-day.day', ['day' => $this->value]),
-        };
-    }
-
     public static function options(): array
     {
         $options = [
@@ -62,5 +54,13 @@ enum CarryoverDay: string implements HasLabel
         }
 
         return $options;
+    }
+
+    public function getLabel(): ?string
+    {
+        return match ($this) {
+            self::LAST => __('time-off::enums/carry-over-day.last-day-of-month'),
+            default    => __('time-off::enums/carry-over-day.day', ['day' => $this->value]),
+        };
     }
 }

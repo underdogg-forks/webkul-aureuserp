@@ -12,15 +12,6 @@ enum RequestUnit: string implements HasLabel
 
     case HOUR = 'hour';
 
-    public function getLabel(): ?string
-    {
-        return match ($this) {
-            self::DAY      => __('time-off::enums/request-unit.day'),
-            self::HALF_DAY => __('time-off::enums/request-unit.half-day'),
-            self::HOUR     => __('time-off::enums/request-unit.hour'),
-        };
-    }
-
     public static function options(): array
     {
         return [
@@ -28,5 +19,14 @@ enum RequestUnit: string implements HasLabel
             self::HALF_DAY->value => __('time-off::enums/request-unit.half-day'),
             self::HOUR->value     => __('time-off::enums/request-unit.hour'),
         ];
+    }
+
+    public function getLabel(): ?string
+    {
+        return match ($this) {
+            self::DAY      => __('time-off::enums/request-unit.day'),
+            self::HALF_DAY => __('time-off::enums/request-unit.half-day'),
+            self::HOUR     => __('time-off::enums/request-unit.hour'),
+        };
     }
 }

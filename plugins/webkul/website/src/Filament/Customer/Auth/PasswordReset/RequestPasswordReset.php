@@ -6,7 +6,6 @@ use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 use DanHarrin\LivewireRateLimiting\WithRateLimiting;
 use Exception;
 use Filament\Actions\Action;
-use Filament\Actions\ActionGroup;
 use Filament\Auth\Notifications\ResetPassword;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\TextInput;
@@ -27,9 +26,9 @@ class RequestPasswordReset extends Page
     use InteractsWithForms;
     use WithRateLimiting;
 
-    protected string $view = 'website::filament.customer.pages.auth.password-reset.request-password-reset';
-
     public ?array $data = [];
+
+    protected string $view = 'website::filament.customer.pages.auth.password-reset.request-password-reset';
 
     public function mount(): void
     {
@@ -55,13 +54,13 @@ class RequestPasswordReset extends Page
         $status = Password::broker(Filament::getAuthPasswordBroker())->sendResetLink(
             $data,
             function (CanResetPassword $user, string $token): void {
-                if (! method_exists($user, 'notify')) {
+                if ( ! method_exists($user, 'notify')) {
                     $userClass = $user::class;
 
                     throw new Exception("Model [{$userClass}] does not have a [notify()] method.");
                 }
 
-                $notification = app(ResetPassword::class, ['token' => $token]);
+                $notification      = app(ResetPassword::class, ['token' => $token]);
                 $notification->url = Filament::getResetPasswordUrl($token, $user);
 
                 $user->notify($notification);
@@ -85,6 +84,33 @@ class RequestPasswordReset extends Page
         $this->form->fill();
     }
 
+    public function form(Schema $schema): Schema
+    {
+        return $schema;
+    }
+
+    public function loginAction(): Action
+    {
+        return Action::make('login')
+            ->link()
+            ->label(__('website::filament/customer/pages/auth/password-reset/request-password-reset.actions.login.label'))
+            ->icon(match (__('filament-panels::layout.direction')) {
+                'rtl'   => FilamentIcon::resolve('panels::pages.password-reset.request-password-reset.actions.login.rtl') ?? 'heroicon-m-arrow-right',
+                default => FilamentIcon::resolve('panels::pages.password-reset.request-password-reset.actions.login') ?? 'heroicon-m-arrow-left',
+            })
+            ->url(filament()->getLoginUrl());
+    }
+
+    public function getTitle(): string|Htmlable
+    {
+        return __('website::filament/customer/pages/auth/password-reset/request-password-reset.title');
+    }
+
+    public function getHeading(): string|Htmlable
+    {
+        return '';
+    }
+
     protected function getRateLimitedNotification(TooManyRequestsException $exception): ?Notification
     {
         return Notification::make()
@@ -97,11 +123,6 @@ class RequestPasswordReset extends Page
                 'minutes' => $exception->minutesUntilAvailable,
             ]) : null)
             ->danger();
-    }
-
-    public function form(Schema $schema): Schema
-    {
-        return $schema;
     }
 
     protected function getForms(): array
@@ -125,28 +146,6 @@ class RequestPasswordReset extends Page
             ->required()
             ->autocomplete()
             ->autofocus();
-    }
-
-    public function loginAction(): Action
-    {
-        return Action::make('login')
-            ->link()
-            ->label(__('website::filament/customer/pages/auth/password-reset/request-password-reset.actions.login.label'))
-            ->icon(match (__('filament-panels::layout.direction')) {
-                'rtl'   => FilamentIcon::resolve('panels::pages.password-reset.request-password-reset.actions.login.rtl') ?? 'heroicon-m-arrow-right',
-                default => FilamentIcon::resolve('panels::pages.password-reset.request-password-reset.actions.login') ?? 'heroicon-m-arrow-left',
-            })
-            ->url(filament()->getLoginUrl());
-    }
-
-    public function getTitle(): string|Htmlable
-    {
-        return __('website::filament/customer/pages/auth/password-reset/request-password-reset.title');
-    }
-
-    public function getHeading(): string|Htmlable
-    {
-        return '';
     }
 
     protected function getFormActions(): array

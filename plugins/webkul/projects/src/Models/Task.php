@@ -22,7 +22,19 @@ use Webkul\Support\Models\Company;
 
 class Task extends Model implements Sortable
 {
-    use HasChatter, HasCustomFields, HasFactory, HasLogActivity, SoftDeletes, SortableTrait;
+    use HasChatter;
+    use HasCustomFields;
+    use HasFactory;
+    use HasLogActivity;
+    use SoftDeletes;
+    use SortableTrait;
+
+    public string $recordTitleAttribute = 'title';
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     /**
      * Table name.
@@ -101,13 +113,6 @@ class Task extends Model implements Sortable
         'parent.title' => 'Parent',
         'company.name' => 'Company',
         'creator.name' => 'Creator',
-    ];
-
-    public string $recordTitleAttribute = 'title';
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function parent(): BelongsTo

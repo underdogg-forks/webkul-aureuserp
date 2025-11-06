@@ -17,15 +17,6 @@ class ListEmployees extends ListRecords
 
     protected static string $resource = EmployeeResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            CreateAction::make()
-                ->icon('heroicon-o-plus-circle')
-                ->label(__('employees::filament/resources/employee/pages/list-employee.header-actions.create.label')),
-        ];
-    }
-
     public function getPresetTableViews(): array
     {
         return [
@@ -35,7 +26,7 @@ class ListEmployees extends ListRecords
                 ->modifyQueryUsing(function (Builder $query) {
                     $user = Auth::user();
 
-                    if (! $user->employee) {
+                    if ( ! $user->employee) {
                         return $query->whereNull('id');
                     }
 
@@ -48,7 +39,7 @@ class ListEmployees extends ListRecords
                 ->modifyQueryUsing(function (Builder $query) {
                     $user = Auth::user();
 
-                    if (! $user->employee) {
+                    if ( ! $user->employee) {
                         return $query->whereNull('id');
                     }
 
@@ -65,6 +56,15 @@ class ListEmployees extends ListRecords
                 ->modifyQueryUsing(function (Builder $query) {
                     return $query->where('created_at', '>=', Carbon::now()->subMonth());
                 }),
+        ];
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            CreateAction::make()
+                ->icon('heroicon-o-plus-circle')
+                ->label(__('employees::filament/resources/employee/pages/list-employee.header-actions.create.label')),
         ];
     }
 }

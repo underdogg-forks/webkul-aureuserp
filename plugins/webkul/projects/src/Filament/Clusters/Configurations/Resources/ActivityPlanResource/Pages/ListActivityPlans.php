@@ -14,6 +14,19 @@ class ListActivityPlans extends ListRecords
 {
     protected static string $resource = ActivityPlanResource::class;
 
+    public function getTabs(): array
+    {
+        return [
+            'all' => Tab::make(__('projects::filament/clusters/configurations/resources/activity-plan/pages/list-activity-plans.tabs.all'))
+                ->badge(ActivityPlan::where('plugin', 'projects')->count()),
+            'archived' => Tab::make(__('projects::filament/clusters/configurations/resources/activity-plan/pages/list-activity-plans.tabs.archived'))
+                ->badge(ActivityPlan::where('plugin', 'projects')->onlyTrashed()->count())
+                ->modifyQueryUsing(function ($query) {
+                    return $query->onlyTrashed();
+                }),
+        ];
+    }
+
     protected function getHeaderActions(): array
     {
         return [
@@ -37,19 +50,6 @@ class ListActivityPlans extends ListRecords
                         ->title(__('projects::filament/clusters/configurations/resources/activity-plan/pages/list-activity-plans.header-actions.create.notification.title'))
                         ->body(__('projects::filament/clusters/configurations/resources/activity-plan/pages/list-activity-plans.header-actions.create.notification.body')),
                 ),
-        ];
-    }
-
-    public function getTabs(): array
-    {
-        return [
-            'all' => Tab::make(__('projects::filament/clusters/configurations/resources/activity-plan/pages/list-activity-plans.tabs.all'))
-                ->badge(ActivityPlan::where('plugin', 'projects')->count()),
-            'archived' => Tab::make(__('projects::filament/clusters/configurations/resources/activity-plan/pages/list-activity-plans.tabs.archived'))
-                ->badge(ActivityPlan::where('plugin', 'projects')->onlyTrashed()->count())
-                ->modifyQueryUsing(function ($query) {
-                    return $query->onlyTrashed();
-                }),
         ];
     }
 }

@@ -99,7 +99,7 @@ class InventoryServiceProvider extends PackageServiceProvider
                     ];
 
                     foreach ($tables as $table) {
-                        if (! Schema::hasTable($table)) {
+                        if ( ! Schema::hasTable($table)) {
                             continue;
                         }
 
@@ -110,10 +110,7 @@ class InventoryServiceProvider extends PackageServiceProvider
             ->icon('inventories');
     }
 
-    public function packageBooted(): void
-    {
-        //
-    }
+    public function packageBooted(): void {}
 
     public function packageRegistered(): void
     {

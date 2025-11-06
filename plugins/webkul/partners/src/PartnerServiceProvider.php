@@ -26,8 +26,5 @@ class PartnerServiceProvider extends PackageServiceProvider
             ->runsMigrations();
     }
 
-    public function packageBooted(): void
-    {
-        //
-    }
+    public function packageBooted(): void {}
 }

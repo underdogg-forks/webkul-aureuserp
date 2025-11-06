@@ -2,6 +2,7 @@
 
 namespace Webkul\Account\Filament\Resources\TaxResource\Pages;
 
+use BackedEnum;
 use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Resources\Pages\ManageRelatedRecords;
 use Webkul\Account\Enums\DocumentType;
@@ -16,12 +17,7 @@ class ManageDistributionForInvoice extends ManageRelatedRecords
 
     protected static string $relationship = 'distributionForInvoice';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document';
-
-    public function getDocumentType(): string
-    {
-        return DocumentType::INVOICE->value;
-    }
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-document';
 
     public static function getSubNavigationPosition(): SubNavigationPosition
     {
@@ -31,5 +27,10 @@ class ManageDistributionForInvoice extends ManageRelatedRecords
     public static function getNavigationLabel(): string
     {
         return __('accounts::filament/resources/tax/pages/manage-distribution-for-invoice.navigation.title');
+    }
+
+    public function getDocumentType(): string
+    {
+        return DocumentType::INVOICE->value;
     }
 }

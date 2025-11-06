@@ -2,6 +2,7 @@
 
 namespace Webkul\Employee\Filament\Clusters\Configurations\Resources;
 
+use BackedEnum;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
@@ -47,7 +48,7 @@ class ActivityPlanResource extends Resource
 {
     protected static ?string $model = ActivityPlan::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-briefcase';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-briefcase';
 
     protected static ?string $cluster = Configurations::class;
 
@@ -80,7 +81,7 @@ class ActivityPlanResource extends Resource
                             ->preload()
                             ->createOptionForm(fn (Schema $schema) => CompanyResource::form($schema))
                             ->getOptionLabelFromRecordUsing(
-                                fn (Model $record): string => $record->name.($record->trashed() ? ' (Deleted)' : ''),
+                                fn (Model $record): string => $record->name . ($record->trashed() ? ' (Deleted)' : ''),
                             )
                             ->disableOptionWhen(
                                 fn (string $label): bool => str_contains($label, ' (Deleted)'),
@@ -320,9 +321,9 @@ class ActivityPlanResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => ListActivityPlans::route('/'),
-            'view'   => ViewActivityPlan::route('/{record}'),
-            'edit'   => EditActivityPlan::route('/{record}/edit'),
+            'index' => ListActivityPlans::route('/'),
+            'view'  => ViewActivityPlan::route('/{record}'),
+            'edit'  => EditActivityPlan::route('/{record}/edit'),
         ];
     }
 }

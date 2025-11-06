@@ -20,6 +20,11 @@ class EditInternal extends EditRecord
 
     protected static string $resource = InternalResource::class;
 
+    public function updateForm(): void
+    {
+        $this->fillForm();
+    }
+
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('edit', ['record' => $this->getRecord()]);
@@ -77,10 +82,5 @@ class EditInternal extends EditRecord
                         ->body(__('inventories::filament/clusters/operations/resources/internal/pages/edit-internal.header-actions.delete.notification.success.body')),
                 ),
         ];
-    }
-
-    public function updateForm(): void
-    {
-        $this->fillForm();
     }
 }

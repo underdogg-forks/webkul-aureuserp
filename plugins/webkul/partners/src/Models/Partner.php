@@ -23,7 +23,11 @@ use Webkul\Support\Models\State;
 
 class Partner extends Authenticatable implements FilamentUser
 {
-    use HasChatter, HasFactory, HasLogActivity, Notifiable, SoftDeletes;
+    use HasChatter;
+    use HasFactory;
+    use HasLogActivity;
+    use Notifiable;
+    use SoftDeletes;
 
     /**
      * Table name.
@@ -90,7 +94,7 @@ class Partner extends Authenticatable implements FilamentUser
      */
     public function getAvatarUrlAttribute()
     {
-        if (! $this->avatar) {
+        if ( ! $this->avatar) {
             return;
         }
 

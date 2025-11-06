@@ -13,7 +13,8 @@ use Webkul\Security\Models\User;
 
 class Post extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
+    use SoftDeletes;
 
     /**
      * Table name.
@@ -63,8 +64,8 @@ class Post extends Model
      */
     public function getImageUrlAttribute()
     {
-        if (! $this->image) {
-            return null;
+        if ( ! $this->image) {
+            return;
         }
 
         return Storage::url($this->image);
@@ -76,7 +77,7 @@ class Post extends Model
 
         $minutes = ceil($wordCount / 200);
 
-        return $minutes.' min read';
+        return $minutes . ' min read';
     }
 
     public function tags(): BelongsToMany

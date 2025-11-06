@@ -2,6 +2,7 @@
 
 namespace Webkul\Employee\Filament\Clusters\Configurations\Resources;
 
+use BackedEnum;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
@@ -30,7 +31,7 @@ class DepartureReasonResource extends Resource
 {
     protected static ?string $model = DepartureReason::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-fire';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-fire';
 
     protected static ?string $cluster = Configurations::class;
 
@@ -144,9 +145,9 @@ class DepartureReasonResource extends Resource
                             ->body(__('employees::filament/clusters/configurations/resources/departure-reason.table.actions.edit.notification.body')),
                     )
                     ->mutateDataUsing(function (array $data): array {
-                        $data['reason_code'] = $data['reason_code'] ?? crc32($data['name']) % 100000;
+                        $data['reason_code'] ??= crc32($data['name']) % 100000;
 
-                        $data['creator_id'] = $data['creator_id'] ?? Auth::user()->id;
+                        $data['creator_id'] ??= Auth::user()->id;
 
                         return $data;
                     }),

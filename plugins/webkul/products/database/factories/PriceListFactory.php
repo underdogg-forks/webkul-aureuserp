@@ -5,7 +5,7 @@ namespace Webkul\Product\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<\App\Models\PriceList>
+ * @extends Factory<\Webkul\Sale\Models\PriceList>
  */
 class PriceListFactory extends Factory
 {

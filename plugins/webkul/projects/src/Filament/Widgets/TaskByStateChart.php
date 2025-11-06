@@ -2,8 +2,8 @@
 
 namespace Webkul\Project\Filament\Widgets;
 
-use Exception;
 use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
+use Exception;
 use Filament\Widgets\ChartWidget;
 use Filament\Widgets\Concerns\InteractsWithPageFilters;
 use Illuminate\Contracts\Support\Htmlable;
@@ -13,7 +13,8 @@ use Webkul\Project\Models\Task;
 
 class TaskByStateChart extends ChartWidget
 {
-    use HasWidgetShield, InteractsWithPageFilters;
+    use HasWidgetShield;
+    use InteractsWithPageFilters;
 
     protected ?string $heading = 'Tasks By State';
 
@@ -36,29 +37,29 @@ class TaskByStateChart extends ChartWidget
         foreach (TaskState::cases() as $state) {
             $query = Task::query();
 
-            if (! empty($this->pageFilters['selectedProjects'])) {
+            if ( ! empty($this->pageFilters['selectedProjects'])) {
                 $query->whereIn('project_id', $this->pageFilters['selectedProjects']);
             }
 
-            if (! empty($this->pageFilters['selectedAssignees'])) {
+            if ( ! empty($this->pageFilters['selectedAssignees'])) {
                 $query->whereHas('users', function ($q) {
                     $q->whereIn('users.id', $this->pageFilters['selectedAssignees']);
                 });
             }
 
-            if (! empty($this->pageFilters['selectedTags'])) {
+            if ( ! empty($this->pageFilters['selectedTags'])) {
                 $query->whereHas('tags', function ($q) {
                     $q->whereIn('projects_task_tag.tag_id', $this->pageFilters['selectedTags']);
                 });
             }
 
-            if (! empty($this->pageFilters['selectedPartners'])) {
+            if ( ! empty($this->pageFilters['selectedPartners'])) {
                 $query->whereIn('parent_id', $this->pageFilters['selectedPartners']);
             }
 
             $this->applyDateFilters($query);
 
-            $datasets['labels'][] = TaskState::options()[$state->value];
+            $datasets['labels'][]   = TaskState::options()[$state->value];
             $datasets['datasets'][] = $query->where('state', $state->value)->count();
         }
 
@@ -84,35 +85,37 @@ class TaskByStateChart extends ChartWidget
         ];
     }
 
+    protected function getType(): string
+    {
+        return 'pie';
+    }
+
     private function applyDateFilters($query): void
     {
         $startDate = $this->pageFilters['startDate'] ?? null;
-        $endDate = $this->pageFilters['endDate'] ?? null;
+        $endDate   = $this->pageFilters['endDate'] ?? null;
 
-        if (! empty($startDate)) {
+        if ( ! empty($startDate)) {
             try {
                 $startDateCarbon = Carbon::parse($startDate)->startOfDay();
                 $query->where('created_at', '>=', $startDateCarbon);
-            } catch (Exception) {}
+            } catch (Exception) {
+            }
         }
 
-        if (! empty($endDate)) {
+        if ( ! empty($endDate)) {
             try {
                 $endDateCarbon = Carbon::parse($endDate)->endOfDay();
                 $query->where('created_at', '<=', $endDateCarbon);
-            } catch (Exception) {}
+            } catch (Exception) {
+            }
         }
 
         if (empty($startDate) && empty($endDate)) {
             $query->whereBetween('created_at', [
                 now()->subMonth()->startOfDay(),
-                now()->endOfDay()
+                now()->endOfDay(),
             ]);
         }
-    }
-
-    protected function getType(): string
-    {
-        return 'pie';
     }
 }

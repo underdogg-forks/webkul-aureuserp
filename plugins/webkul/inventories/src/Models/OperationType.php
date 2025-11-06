@@ -19,7 +19,14 @@ use Webkul\Support\Models\Company;
 
 class OperationType extends Model implements Sortable
 {
-    use HasFactory, SoftDeletes, SortableTrait;
+    use HasFactory;
+    use SoftDeletes;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     /**
      * Table name.
@@ -94,11 +101,6 @@ class OperationType extends Model implements Sortable
         'auto_print_reception_report_labels' => 'boolean',
         'auto_print_packages'                => 'boolean',
         'auto_print_package_label'           => 'boolean',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function returnOperationType(): BelongsTo

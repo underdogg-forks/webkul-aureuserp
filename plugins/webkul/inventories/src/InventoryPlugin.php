@@ -11,19 +11,19 @@ use Webkul\Support\Package;
 
 class InventoryPlugin implements Plugin
 {
-    public function getId(): string
-    {
-        return 'inventories';
-    }
-
     public static function make(): static
     {
         return app(static::class);
     }
 
+    public function getId(): string
+    {
+        return 'inventories';
+    }
+
     public function register(Panel $panel): void
     {
-        if (! Package::isPluginInstalled($this->getId())) {
+        if ( ! Package::isPluginInstalled($this->getId())) {
             return;
         }
 
@@ -40,15 +40,12 @@ class InventoryPlugin implements Plugin
                             ->url(fn () => ManageOperations::getUrl())
                             ->group('Inventory')
                             ->sort(4)
-                            ->visible(fn() => ManageOperations::canAccess()),
+                            ->visible(fn () => ManageOperations::canAccess()),
                     ]);
             });
     }
 
-    public function boot(Panel $panel): void
-    {
-        //
-    }
+    public function boot(Panel $panel): void {}
 
     protected function getPluginBasePath($path = null): string
     {

@@ -25,11 +25,11 @@ class TimesheetsRelationManager extends RelationManager
 
     public static function canViewForRecord(Model $ownerRecord, string $pageClass): bool
     {
-        if (! app(TimeSettings::class)->enable_timesheets) {
+        if ( ! app(TimeSettings::class)->enable_timesheets) {
             return false;
         }
 
-        if (! $ownerRecord->project) {
+        if ( ! $ownerRecord->project) {
             return true;
         }
 
@@ -80,47 +80,47 @@ class TimesheetsRelationManager extends RelationManager
                 TextColumn::make('unit_amount')
                     ->label(__('projects::filament/resources/task/relation-managers/timesheets.table.columns.time-spent'))
                     ->formatStateUsing(function ($state) {
-                        $hours = floor($state);
+                        $hours   = floor($state);
                         $minutes = ($state - $hours) * 60;
 
-                        return $hours.':'.$minutes;
+                        return $hours . ':' . $minutes;
                     })
                     ->summarize([
                         Sum::make()
                             ->label(__('projects::filament/resources/task/relation-managers/timesheets.table.columns.time-spent'))
                             ->formatStateUsing(function ($state) {
-                                $hours = floor($state);
+                                $hours   = floor($state);
                                 $minutes = ($state - $hours) * 60;
 
-                                return $hours.':'.$minutes;
+                                return $hours . ':' . $minutes;
                             }),
                         Sum::make()
                             ->label(__('projects::filament/resources/task/relation-managers/timesheets.table.columns.time-spent-on-subtasks'))
                             ->formatStateUsing(function ($state) {
                                 $subtaskHours = $this->getOwnerRecord()->subtask_effective_hours;
-                                $hours = floor($subtaskHours);
-                                $minutes = ($subtaskHours - $hours) * 60;
+                                $hours        = floor($subtaskHours);
+                                $minutes      = ($subtaskHours - $hours) * 60;
 
-                                return $hours.':'.$minutes;
+                                return $hours . ':' . $minutes;
                             }),
                         Sum::make()
                             ->label(__('projects::filament/resources/task/relation-managers/timesheets.table.columns.total-time-spent'))
                             ->formatStateUsing(function ($state) {
                                 $subtaskHours = $this->getOwnerRecord()->total_hours_spent;
-                                $hours = floor($subtaskHours);
-                                $minutes = ($subtaskHours - $hours) * 60;
+                                $hours        = floor($subtaskHours);
+                                $minutes      = ($subtaskHours - $hours) * 60;
 
-                                return $hours.':'.$minutes;
+                                return $hours . ':' . $minutes;
                             }),
                         Sum::make()
                             ->label(__('projects::filament/resources/task/relation-managers/timesheets.table.columns.remaining-time'))
                             ->formatStateUsing(function () {
                                 $remainingHours = $this->getOwnerRecord()->remaining_hours;
 
-                                $hours = floor($remainingHours);
+                                $hours   = floor($remainingHours);
                                 $minutes = ($remainingHours - $hours) * 60;
 
-                                return $hours.':'.$minutes;
+                                return $hours . ':' . $minutes;
                             })
                             ->visible((bool) $this->getOwnerRecord()->allocated_hours),
                     ]),

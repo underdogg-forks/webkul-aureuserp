@@ -52,11 +52,6 @@ class CustomFilters extends Component
         return $this;
     }
 
-    protected function getResourceClass(): string
-    {
-        return $this->resourceClass;
-    }
-
     public function getFilters(): array
     {
         $fields = $this->getFields();
@@ -75,17 +70,22 @@ class CustomFilters extends Component
         })->toArray();
     }
 
+    protected function getResourceClass(): string
+    {
+        return $this->resourceClass;
+    }
+
     protected function getFields(): Collection
     {
         $query = Field::query()
             ->where('customizable_type', $this->getResourceClass()::getModel())
             ->where('use_in_table', true);
 
-        if (! empty($this->include)) {
+        if ( ! empty($this->include)) {
             $query->whereIn('code', $this->include);
         }
 
-        if (! empty($this->exclude)) {
+        if ( ! empty($this->exclude)) {
             $query->whereNotIn('code', $this->exclude);
         }
 

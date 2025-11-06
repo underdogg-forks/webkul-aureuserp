@@ -16,7 +16,13 @@ use Webkul\Support\Models\Currency;
 
 class Journal extends Model implements Sortable
 {
-    use HasFactory, SortableTrait;
+    use HasFactory;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     protected $table = 'accounts_journals';
 
@@ -44,11 +50,6 @@ class Journal extends Model implements Sortable
         'refund_order',
         'payment_order',
         'show_on_dashboard',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function bankAccount()
@@ -98,7 +99,7 @@ class Journal extends Model implements Sortable
 
     public function getAvailablePaymentMethodLines(string $paymentType): mixed
     {
-        if (! $this->exists) {
+        if ( ! $this->exists) {
             return PaymentMethodLine::query()->whereNull('id')->get();
         }
 
@@ -121,7 +122,7 @@ class Journal extends Model implements Sortable
 
     public function computeInboundPaymentMethodLines(): void
     {
-        if (! in_array($this->type, ['bank', 'cash', 'credit'])) {
+        if ( ! in_array($this->type, ['bank', 'cash', 'credit'])) {
             $this->inboundPaymentMethodLines()->delete();
 
             return;

@@ -9,14 +9,14 @@ use Webkul\Security\Settings\UserSettings;
 
 class SecurityPlugin implements Plugin
 {
-    public function getId(): string
-    {
-        return 'security';
-    }
-
     public static function make(): static
     {
         return app(static::class);
+    }
+
+    public function getId(): string
+    {
+        return 'security';
     }
 
     public function register(Panel $panel): void
@@ -31,22 +31,19 @@ class SecurityPlugin implements Plugin
             });
 
         if (
-            ! app()->runningInConsole() &&
-            ! app(UserSettings::class)?->enable_reset_password
+            ! app()->runningInConsole()
+            && ! app(UserSettings::class)?->enable_reset_password
         ) {
             $panel->passwordReset(false);
         }
     }
 
-    public function boot(Panel $panel): void
-    {
-        //
-    }
+    public function boot(Panel $panel): void {}
 
     protected function getPluginBasePath($path = null): string
     {
         $reflector = new ReflectionClass(get_class($this));
 
-        return dirname($reflector->getFileName()).($path ?? '');
+        return dirname($reflector->getFileName()) . ($path ?? '');
     }
 }

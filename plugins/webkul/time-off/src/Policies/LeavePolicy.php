@@ -9,7 +9,8 @@ use Webkul\TimeOff\Models\Leave;
 
 class LeavePolicy
 {
-    use HandlesAuthorization, HasScopedPermissions;
+    use HandlesAuthorization;
+    use HasScopedPermissions;
 
     /**
      * Determine whether the user can view any models.
@@ -40,7 +41,7 @@ class LeavePolicy
      */
     public function update(User $user, Leave $leave): bool
     {
-        if (! $user->can('update_time::off')) {
+        if ( ! $user->can('update_time::off')) {
             return false;
         }
 
@@ -52,7 +53,7 @@ class LeavePolicy
      */
     public function delete(User $user, Leave $leave): bool
     {
-        if (! $user->can('delete_time::off')) {
+        if ( ! $user->can('delete_time::off')) {
             return false;
         }
 

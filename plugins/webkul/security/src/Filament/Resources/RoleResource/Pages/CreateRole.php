@@ -4,17 +4,16 @@ namespace Webkul\Security\Filament\Resources\RoleResource\Pages;
 
 use BezhanSalleh\FilamentShield\Support\Utils;
 use Filament\Resources\Pages\CreateRecord;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
-use Webkul\Security\Filament\Resources\RoleResource;
 use Spatie\Permission\PermissionRegistrar;
+use Webkul\Security\Filament\Resources\RoleResource;
 
 class CreateRole extends CreateRecord
 {
-    protected static string $resource = RoleResource::class;
-
     public Collection $permissions;
+
+    protected static string $resource = RoleResource::class;
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
@@ -53,7 +52,7 @@ class CreateRole extends CreateRecord
             return;
         }
 
-        $chunkSize = 500;
+        $chunkSize        = 500;
         $allPermissionIds = collect();
 
         $permissionNames->chunk($chunkSize)->each(function ($chunk) use ($permissionModel, $guard, &$allPermissionIds) {
@@ -64,8 +63,8 @@ class CreateRole extends CreateRecord
             $missingPermissions = $chunk->diff($existingPermissions->keys());
 
             if ($missingPermissions->isNotEmpty()) {
-                $insertData = $missingPermissions->map(fn($name) => [
-                    'name' => $name,
+                $insertData = $missingPermissions->map(fn ($name) => [
+                    'name'       => $name,
                     'guard_name' => $guard,
                     'created_at' => now(),
                     'updated_at' => now(),
@@ -100,7 +99,7 @@ class CreateRole extends CreateRecord
 
         DB::table($tableName)->where($roleColumn, $roleId)->delete();
 
-        if (! empty($permissionIds)) {
+        if ( ! empty($permissionIds)) {
             $chunkSize = 1000;
 
             $chunks = array_chunk($permissionIds, $chunkSize);

@@ -23,6 +23,11 @@ class ManageTime extends SettingsPage
 
     protected static ?string $cluster = Settings::class;
 
+    public static function getNavigationLabel(): string
+    {
+        return __('projects::filament/clusters/settings/pages/manage-time.title');
+    }
+
     public function getBreadcrumbs(): array
     {
         return [
@@ -31,11 +36,6 @@ class ManageTime extends SettingsPage
     }
 
     public function getTitle(): string
-    {
-        return __('projects::filament/clusters/settings/pages/manage-time.title');
-    }
-
-    public static function getNavigationLabel(): string
     {
         return __('projects::filament/clusters/settings/pages/manage-time.title');
     }

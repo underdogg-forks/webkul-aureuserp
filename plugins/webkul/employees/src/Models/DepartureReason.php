@@ -12,7 +12,14 @@ use Webkul\Security\Models\User;
 
 class DepartureReason extends Model implements Sortable
 {
-    use HasCustomFields, HasFactory, SortableTrait;
+    use HasCustomFields;
+    use HasFactory;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     protected $table = 'employees_departure_reasons';
 
@@ -21,11 +28,6 @@ class DepartureReason extends Model implements Sortable
         'reason_code',
         'creator_id',
         'name',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function createdBy()

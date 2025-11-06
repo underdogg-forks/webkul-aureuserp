@@ -16,6 +16,19 @@ class ListActivityPlans extends ListRecords
 
     protected static ?string $pluginName = 'employees';
 
+    public function getTabs(): array
+    {
+        return [
+            'all' => Tab::make(__('employees::filament/clusters/configurations/resources/activity-plan/pages/list-activity-plan.tabs.all'))
+                ->badge(ActivityPlan::where('plugin', static::getPluginName())->count()),
+            'archived' => Tab::make(__('employees::filament/clusters/configurations/resources/activity-plan/pages/list-activity-plan.tabs.archived'))
+                ->badge(ActivityPlan::where('plugin', static::getPluginName())->onlyTrashed()->count())
+                ->modifyQueryUsing(function ($query) {
+                    return $query->where('plugin', static::getPluginName())->onlyTrashed();
+                }),
+        ];
+    }
+
     protected static function getPluginName()
     {
         return static::$pluginName;
@@ -44,19 +57,6 @@ class ListActivityPlans extends ListRecords
                         ->title(__('employees::filament/clusters/configurations/resources/activity-plan/pages/list-activity-plan.header-actions.create.notification.title'))
                         ->body(__('employees::filament/clusters/configurations/resources/activity-plan/pages/list-activity-plan.header-actions.create.notification.body')),
                 ),
-        ];
-    }
-
-    public function getTabs(): array
-    {
-        return [
-            'all' => Tab::make(__('employees::filament/clusters/configurations/resources/activity-plan/pages/list-activity-plan.tabs.all'))
-                ->badge(ActivityPlan::where('plugin', static::getPluginName())->count()),
-            'archived' => Tab::make(__('employees::filament/clusters/configurations/resources/activity-plan/pages/list-activity-plan.tabs.archived'))
-                ->badge(ActivityPlan::where('plugin', static::getPluginName())->onlyTrashed()->count())
-                ->modifyQueryUsing(function ($query) {
-                    return $query->where('plugin', static::getPluginName())->onlyTrashed();
-                }),
         ];
     }
 }

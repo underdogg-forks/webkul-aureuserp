@@ -45,8 +45,5 @@ class ProductServiceProvider extends PackageServiceProvider
             ->hasUninstallCommand(function (UninstallCommand $command) {});
     }
 
-    public function packageBooted(): void
-    {
-        //
-    }
+    public function packageBooted(): void {}
 }

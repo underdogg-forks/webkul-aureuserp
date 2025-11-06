@@ -2,6 +2,7 @@
 
 namespace Webkul\Account\Filament\Resources;
 
+use BackedEnum;
 use Illuminate\Database\Eloquent\Model;
 use Webkul\Account\Filament\Resources\CreditNoteResource\Pages\CreateCreditNote;
 use Webkul\Account\Filament\Resources\CreditNoteResource\Pages\EditCreditNote;
@@ -13,7 +14,7 @@ class CreditNoteResource extends InvoiceResource
 {
     protected static ?string $model = AccountMove::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-credit-card';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-credit-card';
 
     public static function getGlobalSearchResultDetails(Model $record): array
     {

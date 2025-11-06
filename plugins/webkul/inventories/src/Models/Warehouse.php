@@ -19,7 +19,14 @@ use Webkul\Support\Models\Company;
 
 class Warehouse extends Model implements Sortable
 {
-    use HasFactory, SoftDeletes, SortableTrait;
+    use HasFactory;
+    use SoftDeletes;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     /**
      * Table name.
@@ -71,11 +78,6 @@ class Warehouse extends Model implements Sortable
     protected $casts = [
         'reception_steps' => ReceptionStep::class,
         'delivery_steps'  => DeliveryStep::class,
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function locations(): HasMany
@@ -201,7 +203,7 @@ class Warehouse extends Model implements Sortable
     public function suppliedWarehouses(): BelongsToMany
     {
         return $this->belongsToMany(
-            Warehouse::class,
+            self::class,
             'inventories_warehouse_resupplies',
             'supplier_warehouse_id',
             'supplied_warehouse_id'
@@ -211,7 +213,7 @@ class Warehouse extends Model implements Sortable
     public function supplierWarehouses(): BelongsToMany
     {
         return $this->belongsToMany(
-            Warehouse::class,
+            self::class,
             'inventories_warehouse_resupplies',
             'supplied_warehouse_id',
             'supplier_warehouse_id'

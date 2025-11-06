@@ -43,11 +43,6 @@ class EditEmployee extends EditRecord
         ];
     }
 
-    private function getActivityPlans(): mixed
-    {
-        return ActivityPlan::where('plugin', 'employees')->pluck('name', 'id');
-    }
-
     protected function mutateFormDataBeforeFill(array $data): array
     {
         $partner = $this->record->partner;
@@ -64,5 +59,10 @@ class EditEmployee extends EditRecord
             ...$data,
             'creator_id' => Auth::user()->id,
         ];
+    }
+
+    private function getActivityPlans(): mixed
+    {
+        return ActivityPlan::where('plugin', 'employees')->pluck('name', 'id');
     }
 }

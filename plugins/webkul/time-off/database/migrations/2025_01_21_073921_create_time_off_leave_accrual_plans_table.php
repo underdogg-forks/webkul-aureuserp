@@ -8,8 +8,7 @@ use Webkul\TimeOff\Enums\CarryoverDate;
 use Webkul\TimeOff\Enums\CarryoverMonth;
 use Webkul\TimeOff\Enums\TransitionMode;
 
-return new class extends Migration
-{
+return new class () extends Migration {
     /**
      * Run the migrations.
      */

@@ -22,7 +22,10 @@ use Webkul\Support\Models\Company;
 
 class Operation extends Model
 {
-    use HasChatter, HasCustomFields, HasFactory, HasLogActivity;
+    use HasChatter;
+    use HasCustomFields;
+    use HasFactory;
+    use HasLogActivity;
 
     /**
      * Table name.
@@ -180,6 +183,29 @@ class Operation extends Model
     }
 
     /**
+     * Update the full name without triggering additional events.
+     */
+    public function updateName()
+    {
+        if ( ! $this->operationType->warehouse) {
+            $this->name = $this->operationType->sequence_code . '/' . $this->id;
+        } else {
+            $this->name = $this->operationType->warehouse->code . '/' . $this->operationType->sequence_code . '/' . $this->id;
+        }
+    }
+
+    public function updateChildrenNames(): void
+    {
+        foreach ($this->moves as $move) {
+            $move->update(['name' => $this->name]);
+        }
+
+        foreach ($this->moveLines as $moveLine) {
+            $moveLine->update(['name' => $this->name]);
+        }
+    }
+
+    /**
      * Bootstrap any application services.
      */
     protected static function boot()
@@ -199,29 +225,6 @@ class Operation extends Model
                 $operation->updateChildrenNames();
             }
         });
-    }
-
-    /**
-     * Update the full name without triggering additional events
-     */
-    public function updateName()
-    {
-        if (! $this->operationType->warehouse) {
-            $this->name = $this->operationType->sequence_code.'/'.$this->id;
-        } else {
-            $this->name = $this->operationType->warehouse->code.'/'.$this->operationType->sequence_code.'/'.$this->id;
-        }
-    }
-
-    public function updateChildrenNames(): void
-    {
-        foreach ($this->moves as $move) {
-            $move->update(['name' => $this->name]);
-        }
-
-        foreach ($this->moveLines as $moveLine) {
-            $moveLine->update(['name' => $this->name]);
-        }
     }
 
     protected static function newFactory(): OperationFactory

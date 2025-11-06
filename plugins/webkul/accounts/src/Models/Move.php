@@ -24,7 +24,16 @@ use Webkul\Support\Models\UTMSource;
 
 class Move extends Model implements Sortable
 {
-    use HasChatter, HasCustomFields, HasFactory, HasLogActivity, SortableTrait;
+    use HasChatter;
+    use HasCustomFields;
+    use HasFactory;
+    use HasLogActivity;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     protected $table = 'accounts_account_moves';
 
@@ -147,11 +156,6 @@ class Move extends Model implements Sortable
         'move_type'        => MoveType::class,
     ];
 
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
-    ];
-
     public function campaign()
     {
         return $this->belongsTo(UtmCampaign::class, 'campaign_id');
@@ -169,12 +173,12 @@ class Move extends Model implements Sortable
 
     public function taxCashBasisOriginMove()
     {
-        return $this->belongsTo(Move::class, 'tax_cash_basis_origin_move_id');
+        return $this->belongsTo(self::class, 'tax_cash_basis_origin_move_id');
     }
 
     public function autoPostOrigin()
     {
-        return $this->belongsTo(Move::class, 'auto_post_origin_id');
+        return $this->belongsTo(self::class, 'auto_post_origin_id');
     }
 
     public function invoicePaymentTerm()
@@ -349,12 +353,45 @@ class Move extends Model implements Sortable
     {
         if ($this->isSaleDocument(true)) {
             return [JournalType::SALE];
-        } elseif ($this->isPurchaseDocument(true)) {
+        }
+        if ($this->isPurchaseDocument(true)) {
             return [JournalType::PURCHASE];
-        } elseif ($this->origin_payment_id || $this->statement_line_id) {
+        }
+        if ($this->origin_payment_id || $this->statement_line_id) {
             return [JournalType::BANK, JournalType::CASH, JournalType::CREDIT_CARD];
-        } else {
-            return [JournalType::GENERAL];
+        }
+
+        return [JournalType::GENERAL];
+    }
+
+    /**
+     * Update the full name without triggering additional events.
+     */
+    public function updateSequencePrefix()
+    {
+        $suffix = date('Y') . '/' . date('m');
+
+        switch ($this->move_type) {
+            case MoveType::OUT_INVOICE:
+                $this->sequence_prefix = 'INV/' . $suffix;
+
+                break;
+            case MoveType::OUT_REFUND:
+                $this->sequence_prefix = 'RINV/' . $suffix;
+
+                break;
+            case MoveType::IN_INVOICE:
+                $this->sequence_prefix = 'BILL/' . $suffix;
+
+                break;
+            case MoveType::IN_REFUND:
+                $this->sequence_prefix = 'RBILL/' . $suffix;
+
+                break;
+            default:
+                $this->sequence_prefix = $suffix;
+
+                break;
         }
     }
 
@@ -373,39 +410,8 @@ class Move extends Model implements Sortable
             $model->updateSequencePrefix();
 
             $model->updateQuietly([
-                'name' => $model->sequence_prefix.'/'.$model->id,
+                'name' => $model->sequence_prefix . '/' . $model->id,
             ]);
         });
-    }
-
-    /**
-     * Update the full name without triggering additional events
-     */
-    public function updateSequencePrefix()
-    {
-        $suffix = date('Y').'/'.date('m');
-
-        switch ($this->move_type) {
-            case MoveType::OUT_INVOICE:
-                $this->sequence_prefix = 'INV/'.$suffix;
-
-                break;
-            case MoveType::OUT_REFUND:
-                $this->sequence_prefix = 'RINV/'.$suffix;
-
-                break;
-            case MoveType::IN_INVOICE:
-                $this->sequence_prefix = 'BILL/'.$suffix;
-
-                break;
-            case MoveType::IN_REFUND:
-                $this->sequence_prefix = 'RBILL/'.$suffix;
-
-                break;
-            default:
-                $this->sequence_prefix = $suffix;
-
-                break;
-        }
     }
 }

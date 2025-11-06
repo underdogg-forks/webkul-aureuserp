@@ -14,27 +14,6 @@ class PreviewAction extends Action
 
     protected string $template = '';
 
-    public static function getDefaultName(): ?string
-    {
-        return 'customers.invoice.preview';
-    }
-
-    public function getTemplate(): string
-    {
-        return (string) $this->template;
-    }
-
-    public function setTemplate(string $template): static
-    {
-        if (! view()->exists($template)) {
-            throw new InvalidArgumentException("The view [{$template}] does not exist.");
-        }
-
-        $this->template = $template;
-
-        return $this;
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -47,5 +26,26 @@ class PreviewAction extends Action
             ->modalHeading(__('accounts::filament/resources/invoice/actions/preview.modal.title'))
             ->modalSubmitAction(false)
             ->modalContent(fn (Move $record) => view($this->getTemplate(), ['record' => $record]));
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'customers.invoice.preview';
+    }
+
+    public function getTemplate(): string
+    {
+        return (string) $this->template;
+    }
+
+    public function setTemplate(string $template): static
+    {
+        if ( ! view()->exists($template)) {
+            throw new InvalidArgumentException("The view [{$template}] does not exist.");
+        }
+
+        $this->template = $template;
+
+        return $this;
     }
 }

@@ -11,11 +11,6 @@ use Webkul\Purchase\Models\Order;
 
 class PrintRFQAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'purchases.orders.print-rfq';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -24,7 +19,7 @@ class PrintRFQAction extends Action
             ->label(__('purchases::filament/admin/clusters/orders/resources/order/actions/print-rfq.label'))
             ->action(function (Order $record, Component $livewire) {
                 $pdf = PDF::loadView('purchases::filament.admin.clusters.orders.orders.actions.print-quotation', [
-                    'records'  => [$record],
+                    'records' => [$record],
                 ]);
 
                 $pdf->setPaper('a4', 'portrait');
@@ -39,12 +34,17 @@ class PrintRFQAction extends Action
 
                 return response()->streamDownload(function () use ($pdf) {
                     echo $pdf->output();
-                }, 'Purchase Order-'.str_replace('/', '_', $record->name).'.pdf');
+                }, 'Purchase Order-' . str_replace('/', '_', $record->name) . '.pdf');
             })
             ->color(fn (): string => $this->getRecord()->state === OrderState::DRAFT ? 'primary' : 'gray')
             ->visible(fn () => in_array($this->getRecord()->state, [
                 OrderState::DRAFT,
                 OrderState::SENT,
             ]));
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'purchases.orders.print-rfq';
     }
 }

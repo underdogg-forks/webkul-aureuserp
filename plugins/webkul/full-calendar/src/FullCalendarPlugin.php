@@ -21,11 +21,6 @@ class FullCalendarPlugin implements Plugin
 
     protected ?bool $selectable = null;
 
-    public function getId(): string
-    {
-        return 'full-calendar';
-    }
-
     public static function make(): static
     {
         return app(static::class);
@@ -34,6 +29,11 @@ class FullCalendarPlugin implements Plugin
     public static function get(): static
     {
         return filament(app(static::class)->getId());
+    }
+
+    public function getId(): string
+    {
+        return 'full-calendar';
     }
 
     public function setPlugins(array $plugins, bool $merge = true): static
@@ -81,7 +81,7 @@ class FullCalendarPlugin implements Plugin
 
     public function getLocale(): string
     {
-        return $this->locale ?? strtolower(str_replace('_', '-', app()->getLocale()));
+        return $this->locale ?? mb_strtolower(str_replace('_', '-', app()->getLocale()));
     }
 
     public function editable(bool $editable = true): static
@@ -110,7 +110,7 @@ class FullCalendarPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        if (! Package::isPluginInstalled($this->getId())) {
+        if ( ! Package::isPluginInstalled($this->getId())) {
             return;
         }
 
@@ -121,15 +121,12 @@ class FullCalendarPlugin implements Plugin
             ->discoverWidgets(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Webkul\\FullCalendar\\Filament\\Widgets');
     }
 
-    public function boot(Panel $panel): void
-    {
-        //
-    }
+    public function boot(Panel $panel): void {}
 
     protected function getPluginBasePath($path = null): string
     {
         $reflector = new ReflectionClass(get_class($this));
 
-        return dirname($reflector->getFileName()).($path ?? '');
+        return dirname($reflector->getFileName()) . ($path ?? '');
     }
 }

@@ -5,9 +5,9 @@ namespace Webkul\Support\Enums;
 enum ActivityDelayUnit: string
 {
     case MINUTES = 'minutes';
-    case HOURS = 'hours';
-    case DAYS = 'days';
-    case WEEKS = 'weeks';
+    case HOURS   = 'hours';
+    case DAYS    = 'days';
+    case WEEKS   = 'weeks';
 
     /**
      * Returns an array of options for dropdowns or selects.

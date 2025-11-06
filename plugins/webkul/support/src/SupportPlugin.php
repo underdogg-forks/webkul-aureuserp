@@ -10,14 +10,14 @@ use ReflectionClass;
 
 class SupportPlugin implements Plugin
 {
-    public function getId(): string
-    {
-        return 'support';
-    }
-
     public static function make(): static
     {
         return app(static::class);
+    }
+
+    public function getId(): string
+    {
+        return 'support';
     }
 
     public function register(Panel $panel): void
@@ -48,13 +48,14 @@ class SupportPlugin implements Plugin
                     }, 0);
                 });
             </script>
-        "));
+        ")
+        );
     }
 
     protected function getPluginBasePath($path = null): string
     {
         $reflector = new ReflectionClass(get_class($this));
 
-        return dirname($reflector->getFileName()).($path ?? '');
+        return dirname($reflector->getFileName()) . ($path ?? '');
     }
 }

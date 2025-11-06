@@ -40,6 +40,16 @@ class FullCalendarWidget extends Widget implements HasActions, HasConfigurations
 
     protected int|string|array $columnSpan = 'full';
 
+    public function fetchEvents(array $info): array
+    {
+        return [];
+    }
+
+    public function getFormSchema(): array
+    {
+        return [];
+    }
+
     protected function headerActions(): array
     {
         return [
@@ -58,15 +68,5 @@ class FullCalendarWidget extends Widget implements HasActions, HasConfigurations
     protected function viewAction(): Action
     {
         return ViewAction::make();
-    }
-
-    public function fetchEvents(array $info): array
-    {
-        return [];
-    }
-
-    public function getFormSchema(): array
-    {
-        return [];
     }
 }

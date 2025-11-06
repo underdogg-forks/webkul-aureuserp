@@ -48,11 +48,6 @@ class CustomEntries extends Component
         return $this;
     }
 
-    protected function getResourceClass(): string
-    {
-        return $this->resourceClass;
-    }
-
     public function getSchema(): array
     {
         $fields = $this->getFields();
@@ -62,16 +57,21 @@ class CustomEntries extends Component
         })->toArray();
     }
 
+    protected function getResourceClass(): string
+    {
+        return $this->resourceClass;
+    }
+
     protected function getFields(): Collection
     {
         $query = Field::query()
             ->where('customizable_type', $this->getResourceClass()::getModel());
 
-        if (! empty($this->include)) {
+        if ( ! empty($this->include)) {
             $query->whereIn('code', $this->include);
         }
 
-        if (! empty($this->exclude)) {
+        if ( ! empty($this->exclude)) {
             $query->whereNotIn('code', $this->exclude);
         }
 
@@ -93,7 +93,7 @@ class CustomEntries extends Component
         $entry = $entryClass::make($field->code)
             ->label($field->name);
 
-        if (! empty($field->infolist_settings)) {
+        if ( ! empty($field->infolist_settings)) {
             foreach ($field->infolist_settings as $setting) {
                 $this->applySetting($entry, $setting);
             }
@@ -104,15 +104,15 @@ class CustomEntries extends Component
 
     protected function applySetting(Entry $column, array $setting): void
     {
-        $name = $setting['setting'];
+        $name  = $setting['setting'];
         $value = $setting['value'] ?? null;
 
         if (method_exists($column, $name)) {
             if ($value !== null) {
                 if ($name == 'weight') {
-                    $column->{$name}(constant(FontWeight::class."::$value"));
+                    $column->{$name}(constant(FontWeight::class . "::{$value}"));
                 } elseif ($name == 'size') {
-                    $column->{$name}(constant(TextSize::class."::$value"));
+                    $column->{$name}(constant(TextSize::class . "::{$value}"));
                 } else {
                     $column->{$name}($value);
                 }

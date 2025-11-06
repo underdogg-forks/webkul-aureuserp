@@ -2,6 +2,7 @@
 
 namespace Webkul\TimeOff\Filament\Clusters\MyTime\Resources;
 
+use BackedEnum;
 use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\Resource;
@@ -26,7 +27,7 @@ class MyTimeOffResource extends Resource
 
     protected static ?string $model = Leave::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-lifebuoy';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-lifebuoy';
 
     protected static ?int $navigationSort = 2;
 
@@ -44,7 +45,7 @@ class MyTimeOffResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return $schema->schema((new self)->getFormSchema());
+        return $schema->schema((new self())->getFormSchema());
     }
 
     public static function table(Table $table): Table
@@ -110,7 +111,7 @@ class MyTimeOffResource extends Resource
                                         }
 
                                         $startDate = Carbon::parse($record->request_date_from);
-                                        $endDate = $record->request_date_to ? Carbon::parse($record->request_date_to) : $startDate;
+                                        $endDate   = $record->request_date_to ? Carbon::parse($record->request_date_to) : $startDate;
 
                                         return __('time-off::filament/clusters/management/resources/time-off.infolist.entries.days', ['days' => ($startDate->diffInDays($endDate) + 1)]);
                                     })

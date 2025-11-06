@@ -2,6 +2,7 @@
 
 namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources;
 
+use BackedEnum;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
@@ -54,7 +55,7 @@ class WarehouseResource extends Resource
 
     protected static ?string $model = Warehouse::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-building-storefront';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-building-storefront';
 
     protected static ?int $navigationSort = 1;
 
@@ -118,7 +119,7 @@ class WarehouseResource extends Resource
                             ]),
 
                         Section::make(__('inventories::filament/clusters/configurations/resources/warehouse.form.sections.additional.title'))
-                            ->visible(! empty($customFormFields = static::getCustomFormFields()))
+                            ->visible( ! empty($customFormFields = static::getCustomFormFields()))
                             ->schema($customFormFields),
                     ])
                     ->columnSpan(['lg' => 2]),
@@ -373,7 +374,7 @@ class WarehouseResource extends Resource
             ->columns(3);
     }
 
-    static public function getWarehouseSettings(): WarehouseSettings
+    public static function getWarehouseSettings(): WarehouseSettings
     {
         return once(fn () => app(WarehouseSettings::class));
     }
@@ -388,7 +389,7 @@ class WarehouseResource extends Resource
             $route = session('current_route');
         }
 
-        if ($route === self::getRouteBaseName().'.index') {
+        if ($route === self::getRouteBaseName() . '.index') {
             return SubNavigationPosition::Start;
         }
 

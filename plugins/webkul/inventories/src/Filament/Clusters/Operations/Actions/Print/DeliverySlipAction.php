@@ -7,11 +7,6 @@ use Filament\Actions\Action;
 
 class DeliverySlipAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'inventories.operations.print.delivery-slip';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -20,14 +15,19 @@ class DeliverySlipAction extends Action
             ->label(__('inventories::filament/clusters/operations/actions/print/delivery-slip.label'))
             ->action(function ($record) {
                 $pdf = PDF::loadView('inventories::filament.clusters.operations.actions.print-delivery-slip', [
-                    'records'  => [$record],
+                    'records' => [$record],
                 ]);
 
                 $pdf->setPaper('a4', 'portrait');
 
                 return response()->streamDownload(function () use ($pdf) {
                     echo $pdf->output();
-                }, 'Delivery Slip-'.str_replace('/', '_', $record->name).'.pdf');
+                }, 'Delivery Slip-' . str_replace('/', '_', $record->name) . '.pdf');
             });
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'inventories.operations.print.delivery-slip';
     }
 }

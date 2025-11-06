@@ -21,7 +21,6 @@ class Packaging extends BasePackaging
         ]);
 
         $this->mergeCasts([
-
         ]);
     }
 

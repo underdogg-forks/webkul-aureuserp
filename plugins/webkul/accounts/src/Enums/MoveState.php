@@ -12,15 +12,6 @@ enum MoveState: string implements HasLabel
 
     case CANCEL = 'cancel';
 
-    public function getLabel(): ?string
-    {
-        return match ($this) {
-            self::DRAFT  => __('accounts::enums/move-state.draft'),
-            self::POSTED => __('accounts::enums/move-state.posted'),
-            self::CANCEL => __('accounts::enums/move-state.cancel'),
-        };
-    }
-
     public static function options(): array
     {
         return [
@@ -28,5 +19,14 @@ enum MoveState: string implements HasLabel
             self::POSTED->value => __('accounts::enums/move-state.posted'),
             self::CANCEL->value => __('accounts::enums/move-state.cancel'),
         ];
+    }
+
+    public function getLabel(): ?string
+    {
+        return match ($this) {
+            self::DRAFT  => __('accounts::enums/move-state.draft'),
+            self::POSTED => __('accounts::enums/move-state.posted'),
+            self::CANCEL => __('accounts::enums/move-state.cancel'),
+        };
     }
 }

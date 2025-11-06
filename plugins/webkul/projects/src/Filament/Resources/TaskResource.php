@@ -163,7 +163,7 @@ class TaskResource extends Resource
                             ]),
 
                         Section::make(__('projects::filament/resources/task.form.sections.additional.title'))
-                            ->visible(! empty($customFormFields = static::getCustomFormFields()))
+                            ->visible( ! empty($customFormFields = static::getCustomFormFields()))
                             ->schema($customFormFields),
                     ])
                     ->columnSpan(['lg' => 2]),
@@ -176,7 +176,7 @@ class TaskResource extends Resource
                                     ->label(__('projects::filament/resources/task.form.sections.settings.fields.project'))
                                     ->relationship('project', 'name', modifyQueryUsing: fn (Builder $query) => $query->withTrashed())
                                     ->getOptionLabelFromRecordUsing(function (Model $record): string {
-                                        return $record->name.($record->trashed() ? ' (Deleted)' : '');
+                                        return $record->name . ($record->trashed() ? ' (Deleted)' : '');
                                     })
                                     ->disableOptionWhen(function ($label) {
                                         return str_contains($label, ' (Deleted)');
@@ -221,11 +221,11 @@ class TaskResource extends Resource
                                     ->hidden(function (Get $get) {
                                         $project = Project::find($get('project_id'));
 
-                                        if (! $project) {
+                                        if ( ! $project) {
                                             return true;
                                         }
 
-                                        if (! static::getTaskSettings()->enable_milestones) {
+                                        if ( ! static::getTaskSettings()->enable_milestones) {
                                             return true;
                                         }
 
@@ -343,20 +343,20 @@ class TaskResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->formatStateUsing(function ($state) {
-                        $hours = floor($state);
+                        $hours   = floor($state);
                         $minutes = ($state - $hours) * 60;
 
-                        return $hours.':'.$minutes;
+                        return $hours . ':' . $minutes;
                     })
                     ->summarize(
                         Sum::make()
                             ->label(__('projects::filament/resources/task.table.columns.allocated-time'))
                             ->numeric()
                             ->formatStateUsing(function ($state) {
-                                $hours = floor($state);
+                                $hours   = floor($state);
                                 $minutes = ($state - $hours) * 60;
 
-                                return $hours.':'.$minutes;
+                                return $hours . ':' . $minutes;
                             })
                     )
                     ->visible(static::getTimeSettings()->enable_timesheets),
@@ -366,20 +366,20 @@ class TaskResource extends Resource
                     ->toggleable()
                     ->numeric()
                     ->formatStateUsing(function ($state) {
-                        $hours = floor($state);
+                        $hours   = floor($state);
                         $minutes = ($state - $hours) * 60;
 
-                        return $hours.':'.$minutes;
+                        return $hours . ':' . $minutes;
                     })
                     ->summarize(
                         Sum::make()
                             ->label(__('projects::filament/resources/task.table.columns.time-spent'))
                             ->numeric()
                             ->formatStateUsing(function ($state) {
-                                $hours = floor($state);
+                                $hours   = floor($state);
                                 $minutes = ($state - $hours) * 60;
 
-                                return $hours.':'.$minutes;
+                                return $hours . ':' . $minutes;
                             })
                     )
                     ->visible(static::getTimeSettings()->enable_timesheets),
@@ -388,10 +388,10 @@ class TaskResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->formatStateUsing(function ($state) {
-                        $hours = floor($state);
+                        $hours   = floor($state);
                         $minutes = ($state - $hours) * 60;
 
-                        return $hours.':'.$minutes;
+                        return $hours . ':' . $minutes;
                     })
                     ->summarize(
                         Sum::make()
@@ -399,10 +399,10 @@ class TaskResource extends Resource
                             ->numeric()
                             ->numeric()
                             ->formatStateUsing(function ($state) {
-                                $hours = floor($state);
+                                $hours   = floor($state);
                                 $minutes = ($state - $hours) * 60;
 
-                                return $hours.':'.$minutes;
+                                return $hours . ':' . $minutes;
                             })
                     )
                     ->visible(static::getTimeSettings()->enable_timesheets),
@@ -756,10 +756,10 @@ class TaskResource extends Resource
                                             ->suffix(' Hours')
                                             ->placeholder('—')
                                             ->formatStateUsing(function ($state) {
-                                                $hours = floor($state);
+                                                $hours   = floor($state);
                                                 $minutes = ($state - $hours) * 60;
 
-                                                return $hours.':'.$minutes;
+                                                return $hours . ':' . $minutes;
                                             })
                                             ->visible(static::getTimeSettings()->enable_timesheets),
 
@@ -768,10 +768,10 @@ class TaskResource extends Resource
                                             ->icon('heroicon-o-clock')
                                             ->suffix(__('projects::filament/resources/task.infolist.sections.time-tracking.entries.time-spent-suffix'))
                                             ->formatStateUsing(function ($state) {
-                                                $hours = floor($state);
+                                                $hours   = floor($state);
                                                 $minutes = ($state - $hours) * 60;
 
-                                                return $hours.':'.$minutes;
+                                                return $hours . ':' . $minutes;
                                             })
                                             ->visible(static::getTimeSettings()->enable_timesheets),
 
@@ -780,10 +780,10 @@ class TaskResource extends Resource
                                             ->icon('heroicon-o-clock')
                                             ->suffix(__('projects::filament/resources/task.infolist.sections.time-tracking.entries.time-remaining-suffix'))
                                             ->formatStateUsing(function ($state) {
-                                                $hours = floor($state);
+                                                $hours   = floor($state);
                                                 $minutes = ($state - $hours) * 60;
 
-                                                return $hours.':'.$minutes;
+                                                return $hours . ':' . $minutes;
                                             })
                                             ->color(fn ($state): string => $state < 0 ? 'danger' : 'success')
                                             ->visible(static::getTimeSettings()->enable_timesheets),
@@ -803,7 +803,7 @@ class TaskResource extends Resource
                             ->visible(static::getTimeSettings()->enable_timesheets),
 
                         Section::make(__('projects::filament/resources/task.infolist.sections.additional-information.title'))
-                            ->visible(! empty($customInfolistEntries = static::getCustomInfolistEntries()))
+                            ->visible( ! empty($customInfolistEntries = static::getCustomInfolistEntries()))
                             ->schema($customInfolistEntries),
                     ])
                     ->columnSpan(['lg' => 2]),
@@ -846,16 +846,6 @@ class TaskResource extends Resource
             ->columns(3);
     }
 
-    private static function getTimeSettings(): TimeSettings
-    {
-        return once(fn () => app(TimeSettings::class));
-    }
-
-    private static function getTaskSettings(): TaskSettings
-    {
-        return once(fn () => app(TaskSettings::class));
-    }
-
     public static function getRecordSubNavigation(Page $page): array
     {
         return $page->generateNavigationItems([
@@ -891,5 +881,15 @@ class TaskResource extends Resource
             'timesheets' => ManageTimesheets::route('/{record}/timesheets'),
             'sub-tasks'  => ManageSubTasks::route('/{record}/sub-tasks'),
         ];
+    }
+
+    private static function getTimeSettings(): TimeSettings
+    {
+        return once(fn () => app(TimeSettings::class));
+    }
+
+    private static function getTaskSettings(): TaskSettings
+    {
+        return once(fn () => app(TaskSettings::class));
     }
 }

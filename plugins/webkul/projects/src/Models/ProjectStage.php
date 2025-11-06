@@ -15,7 +15,14 @@ use Webkul\Support\Models\Company;
 
 class ProjectStage extends Model implements Sortable
 {
-    use HasFactory, SoftDeletes, SortableTrait;
+    use HasFactory;
+    use SoftDeletes;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     /**
      * Table name.
@@ -46,11 +53,6 @@ class ProjectStage extends Model implements Sortable
     protected $casts = [
         'is_active'    => 'boolean',
         'is_collapsed' => 'boolean',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function creator(): BelongsTo

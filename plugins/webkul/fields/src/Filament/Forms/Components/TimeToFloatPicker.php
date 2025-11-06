@@ -12,27 +12,27 @@ class TimeToFloatPicker extends TimePicker
         parent::setUp();
 
         $this->dehydrateStateUsing(function ($state) {
-            if (! $state) {
-                return null;
+            if ( ! $state) {
+                return;
             }
 
             // Convert time string to Carbon instance
             $time = Carbon::createFromFormat('H:i', $state);
 
             // Convert to float hours
-            $hours = $time->format('H');
+            $hours   = $time->format('H');
             $minutes = $time->format('i');
 
-            return floatval($hours) + (floatval($minutes) / 60);
+            return (float) $hours + ((float) $minutes / 60);
         });
 
         $this->afterStateHydrated(function ($state) {
-            if (! $state) {
-                return null;
+            if ( ! $state) {
+                return;
             }
 
             // Convert float back to time for display
-            $hours = floor($state);
+            $hours   = floor($state);
             $minutes = round(($state - $hours) * 60);
 
             return sprintf('%02d:%02d', $hours, $minutes);

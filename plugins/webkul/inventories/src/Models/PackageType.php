@@ -13,7 +13,13 @@ use Webkul\Support\Models\Company;
 
 class PackageType extends Model implements Sortable
 {
-    use HasFactory, SortableTrait;
+    use HasFactory;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     /**
      * Table name.
@@ -40,11 +46,6 @@ class PackageType extends Model implements Sortable
         'package_carrier_type',
         'company_id',
         'creator_id',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function company(): BelongsTo

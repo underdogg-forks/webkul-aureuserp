@@ -11,7 +11,13 @@ use Webkul\Support\Models\Company;
 
 class Reconcile extends Model implements Sortable
 {
-    use HasFactory, SortableTrait;
+    use HasFactory;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     protected $table = 'accounts_reconciles';
 
@@ -45,11 +51,6 @@ class Reconcile extends Model implements Sortable
         'match_amount_min',
         'match_amount_max',
         'payment_tolerance_parameters',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function company()

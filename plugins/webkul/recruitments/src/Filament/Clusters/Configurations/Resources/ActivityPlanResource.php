@@ -232,9 +232,9 @@ class ActivityPlanResource extends BaseActivityPlanResource
     public static function getPages(): array
     {
         return [
-            'index'  => ListActivityPlans::route('/'),
-            'edit'   => EditActivityPlan::route('/{record}/edit'),
-            'view'   => ViewActivityPlan::route('/{record}'),
+            'index' => ListActivityPlans::route('/'),
+            'edit'  => EditActivityPlan::route('/{record}/edit'),
+            'view'  => ViewActivityPlan::route('/{record}'),
         ];
     }
 }

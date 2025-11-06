@@ -11,6 +11,11 @@ class Plugin extends Model implements Sortable
 {
     use SortableTrait;
 
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
+
     protected $fillable = [
         'name',
         'author',
@@ -27,15 +32,10 @@ class Plugin extends Model implements Sortable
         'is_active' => 'boolean',
     ];
 
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
-    ];
-
     public function dependencies(): BelongsToMany
     {
         return $this->belongsToMany(
-            Plugin::class,
+            self::class,
             'plugin_dependencies',
             'plugin_id',
             'dependency_id'
@@ -45,35 +45,11 @@ class Plugin extends Model implements Sortable
     public function dependents(): BelongsToMany
     {
         return $this->belongsToMany(
-            Plugin::class,
+            self::class,
             'plugin_dependencies',
             'dependency_id',
             'plugin_id'
         );
-    }
-
-    protected static function getAllPluginPackages(): array
-    {
-        $pluginClasses = require base_path('bootstrap/plugins.php');
-        $packages = [];
-
-        foreach ($pluginClasses as $pluginClass) {
-            if (class_exists($pluginClass)) {
-                $pluginInstance = new $pluginClass;
-                $pluginName = $pluginInstance->getId();
-
-                $serviceProviderClass = str_replace('Plugin', 'ServiceProvider', $pluginClass);
-
-                if (class_exists($serviceProviderClass)) {
-                    $serviceProvider = new $serviceProviderClass(app());
-                    $package = new \Webkul\Support\Package;
-                    $serviceProvider->configureCustomPackage($package);
-                    $packages[$pluginName] = $package;
-                }
-            }
-        }
-
-        return $packages;
     }
 
     public function getServiceProviderClass(): ?string
@@ -82,7 +58,7 @@ class Plugin extends Model implements Sortable
 
         foreach ($pluginClasses as $pluginClass) {
             if (class_exists($pluginClass)) {
-                $pluginInstance = new $pluginClass;
+                $pluginInstance = new $pluginClass();
                 if ($pluginInstance->getId() === $this->name) {
                     return str_replace('Plugin', 'ServiceProvider', $pluginClass);
                 }
@@ -95,18 +71,20 @@ class Plugin extends Model implements Sortable
     public function getPackage(): ?\Webkul\Support\Package
     {
         $packages = self::getAllPluginPackages();
+
         return $packages[$this->name] ?? null;
     }
 
     public function getDependenciesFromConfig(): array
     {
         $package = $this->getPackage();
+
         return $package ? $package->dependencies : [];
     }
 
     public function getDependentsFromConfig(): array
     {
-        $packages = self::getAllPluginPackages();
+        $packages   = self::getAllPluginPackages();
         $dependents = [];
 
         foreach ($packages as $pluginName => $package) {
@@ -116,5 +94,29 @@ class Plugin extends Model implements Sortable
         }
 
         return $dependents;
+    }
+
+    protected static function getAllPluginPackages(): array
+    {
+        $pluginClasses = require base_path('bootstrap/plugins.php');
+        $packages      = [];
+
+        foreach ($pluginClasses as $pluginClass) {
+            if (class_exists($pluginClass)) {
+                $pluginInstance = new $pluginClass();
+                $pluginName     = $pluginInstance->getId();
+
+                $serviceProviderClass = str_replace('Plugin', 'ServiceProvider', $pluginClass);
+
+                if (class_exists($serviceProviderClass)) {
+                    $serviceProvider = new $serviceProviderClass(app());
+                    $package         = new \Webkul\Support\Package();
+                    $serviceProvider->configureCustomPackage($package);
+                    $packages[$pluginName] = $package;
+                }
+            }
+        }
+
+        return $packages;
     }
 }

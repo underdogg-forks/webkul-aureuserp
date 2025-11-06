@@ -11,11 +11,6 @@ use Webkul\Purchase\Models\Order;
 
 class LockAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'purchases.orders.lock';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -35,5 +30,10 @@ class LockAction extends Action
                     ->send();
             })
             ->visible(fn () => $this->getRecord()->state === OrderState::PURCHASE);
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'purchases.orders.lock';
     }
 }

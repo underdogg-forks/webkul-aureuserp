@@ -2,6 +2,7 @@
 
 namespace Webkul\Recruitment\Filament\Clusters\Applications\Resources;
 
+use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkActionGroup;
@@ -62,7 +63,7 @@ class ApplicantResource extends Resource
 {
     protected static ?string $model = Applicant::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-user-group';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-user-group';
 
     protected static ?string $cluster = Applications::class;
 
@@ -188,7 +189,7 @@ class ApplicantResource extends Resource
                                             ->hiddenLabel()
                                             ->hidden(fn ($record) => $record->application_status->value === ApplicationStatus::ONGOING->value)
                                             ->state(function ($record) {
-                                                $html = '<span style="display: inline-flex; align-items: center; background-color: '.$record->application_status->getColor().'; color: white; padding: 4px 8px; border-radius: 12px; font-size: 18px; font-weight: 500;">';
+                                                $html = '<span style="display: inline-flex; align-items: center; background-color: ' . $record->application_status->getColor() . '; color: white; padding: 4px 8px; border-radius: 12px; font-size: 18px; font-weight: 500;">';
 
                                                 $html .= view('filament::components.icon', [
                                                     'icon'  => $record->application_status->getIcon(),
@@ -243,22 +244,22 @@ class ApplicantResource extends Resource
                                             ->live()
                                             ->reactive()
                                             ->afterStateHydrated(function (Set $set, Get $get, $state) {
-                                                if (! $get('stage_id') && $state) {
+                                                if ( ! $get('stage_id') && $state) {
                                                     $set('stage_id', RecruitmentStage::where('is_default', 1)->first()->id ?? null);
                                                 }
                                             })
                                             ->afterStateUpdated(function (Set $set, Get $get, ?string $state, ?string $old) {
-                                                if (is_null($state)) {
+                                                if (null === $state) {
                                                     $set('stage_id', null);
 
                                                     return;
                                                 }
 
-                                                if (is_null($old) && $state) {
+                                                if (null === $old && $state) {
                                                     $set('stage_id', RecruitmentStage::where('is_default', 1)->first()->id ?? null);
                                                 }
 
-                                                if (! is_null($old) && ! is_null($state)) {
+                                                if (null !== $old && null !== $state) {
                                                     $jobPosition = JobPosition::find($state);
 
                                                     if ($jobPosition) {
@@ -441,7 +442,7 @@ class ApplicantResource extends Resource
                     })
                     ->tooltip(fn ($record) => $record->refuseReason?->name)
                     ->formatStateUsing(function ($record) {
-                        $html = '<span style="display: inline-flex; align-items: center; background-color: '.$record->application_status->getColor().'; color: white; padding: 4px 8px; border-radius: 12px; font-size: 18px; font-weight: 500;">';
+                        $html = '<span style="display: inline-flex; align-items: center; background-color: ' . $record->application_status->getColor() . '; color: white; padding: 4px 8px; border-radius: 12px; font-size: 18px; font-weight: 500;">';
 
                         $html .= view('filament::components.icon', [
                             'icon'  => $record->application_status->getIcon(),
@@ -743,7 +744,7 @@ class ApplicantResource extends Resource
                                                     })
                                                     ->hidden(fn ($record) => $record->application_status->value === ApplicationStatus::ONGOING->value)
                                                     ->formatStateUsing(function ($record, $state) {
-                                                        $html = '<span style="display: inline-flex; align-items: center; background-color: '.$record->application_status->getColor().'; color: white; padding: 4px 8px; border-radius: 12px; font-size: 18px; font-weight: 500;">';
+                                                        $html = '<span style="display: inline-flex; align-items: center; background-color: ' . $record->application_status->getColor() . '; color: white; padding: 4px 8px; border-radius: 12px; font-size: 18px; font-weight: 500;">';
 
                                                         $html .= view('filament::components.icon', [
                                                             'icon'  => $record->application_status->getIcon(),

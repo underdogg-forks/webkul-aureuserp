@@ -110,6 +110,25 @@ class ProductQuantity extends Model
     }
 
     /**
+     * Update the scheduled_at attribute.
+     */
+    public function updateScheduledAt()
+    {
+        $this->scheduled_at = Carbon::create(
+            now()->year,
+            app(OperationSettings::class)->annual_inventory_month,
+            app(OperationSettings::class)->annual_inventory_day,
+            0,
+            0,
+            0
+        );
+
+        if ($this->location?->cyclic_inventory_frequency) {
+            $this->scheduled_at = now()->addDays($this->location->cyclic_inventory_frequency);
+        }
+    }
+
+    /**
      * Bootstrap any application services.
      */
     protected static function boot()
@@ -119,23 +138,6 @@ class ProductQuantity extends Model
         static::saving(function ($productQuantity) {
             $productQuantity->updateScheduledAt();
         });
-    }
-
-    /**
-     * Update the scheduled_at attribute
-     */
-    public function updateScheduledAt()
-    {
-        $this->scheduled_at = Carbon::create(
-            now()->year,
-            app(OperationSettings::class)->annual_inventory_month,
-            app(OperationSettings::class)->annual_inventory_day,
-            0, 0, 0
-        );
-
-        if ($this->location?->cyclic_inventory_frequency) {
-            $this->scheduled_at = now()->addDays($this->location->cyclic_inventory_frequency);
-        }
     }
 
     protected static function newFactory(): ProductQuantityFactory

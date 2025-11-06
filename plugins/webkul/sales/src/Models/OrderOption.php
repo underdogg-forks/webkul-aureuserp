@@ -12,6 +12,11 @@ class OrderOption extends Model implements Sortable
 {
     use SortableTrait;
 
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
+
     protected $table = 'sales_order_options';
 
     protected $fillable = [
@@ -25,11 +30,6 @@ class OrderOption extends Model implements Sortable
         'quantity',
         'price_unit',
         'discount',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function order()

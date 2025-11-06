@@ -12,7 +12,8 @@ use Illuminate\Queue\SerializesModels;
 
 class FollowerMail extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
     /**
      * Create a new message instance.
@@ -29,7 +30,7 @@ class FollowerMail extends Mailable
     {
         return new Envelope(
             subject: $this->payload['subject'],
-            from: new Address($this->payload['from']['address'], '"'.addslashes($this->payload['from']['name']).'"'),
+            from: new Address($this->payload['from']['address'], '"' . addslashes($this->payload['from']['name']) . '"'),
         );
     }
 

@@ -46,7 +46,7 @@ class WebsiteServiceProvider extends PackageServiceProvider
     {
         $this->registerCustomCss();
 
-        if (! Package::isPluginInstalled(self::$name)) {
+        if ( ! Package::isPluginInstalled(self::$name)) {
             Route::get('/', function () {
                 return redirect()->route('filament.admin.auth.login');
             });
@@ -61,7 +61,7 @@ class WebsiteServiceProvider extends PackageServiceProvider
     public function registerCustomCss()
     {
         FilamentAsset::register([
-            Css::make('website', __DIR__.'/../resources/dist/website.css'),
+            Css::make('website', __DIR__ . '/../resources/dist/website.css'),
         ], 'website');
     }
 }

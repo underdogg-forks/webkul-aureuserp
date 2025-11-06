@@ -11,11 +11,6 @@ use Webkul\Purchase\Models\Order;
 
 class DraftAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'purchases.orders.draft';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -35,5 +30,10 @@ class DraftAction extends Action
                     ->send();
             })
             ->visible(fn () => $this->getRecord()->state == OrderState::CANCELED);
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'purchases.orders.draft';
     }
 }

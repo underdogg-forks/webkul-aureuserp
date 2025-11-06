@@ -5,7 +5,7 @@ namespace Webkul\TimeOff\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<\App\Models\LeaveAllocation>
+ * @extends Factory<\Webkul\Sale\Models\LeaveAllocation>
  */
 class LeaveAllocationFactory extends Factory
 {
@@ -17,7 +17,6 @@ class LeaveAllocationFactory extends Factory
     public function definition(): array
     {
         return [
-            //
         ];
     }
 }

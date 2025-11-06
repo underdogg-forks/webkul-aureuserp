@@ -12,15 +12,6 @@ enum CarryoverDate: string implements HasLabel
 
     case OTHER = 'other';
 
-    public function getLabel(): ?string
-    {
-        return match ($this) {
-            self::YEAR_START => __('time-off::enums/carry-over-date.year-start'),
-            self::ALLOCATION => __('time-off::enums/carry-over-date.allocation'),
-            self::OTHER      => __('time-off::enums/carry-over-date.other'),
-        };
-    }
-
     public static function options(): array
     {
         return [
@@ -28,5 +19,14 @@ enum CarryoverDate: string implements HasLabel
             self::ALLOCATION->value => __('time-off::enums/carry-over-date.allocation'),
             self::OTHER->value      => __('time-off::enums/carry-over-date.other'),
         ];
+    }
+
+    public function getLabel(): ?string
+    {
+        return match ($this) {
+            self::YEAR_START => __('time-off::enums/carry-over-date.year-start'),
+            self::ALLOCATION => __('time-off::enums/carry-over-date.allocation'),
+            self::OTHER      => __('time-off::enums/carry-over-date.other'),
+        };
     }
 }

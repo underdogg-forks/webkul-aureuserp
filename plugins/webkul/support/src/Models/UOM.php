@@ -12,7 +12,8 @@ use Webkul\Support\Database\Factories\UOMFactory;
 
 class UOM extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
+    use SoftDeletes;
 
     /**
      * Table name.
@@ -45,20 +46,21 @@ class UOM extends Model
     }
 
     /**
-     * Convert the given quantity from the current UoM to a given one
+     * Convert the given quantity from the current UoM to a given one.
      *
-     * @param  float  $qty  The quantity to convert
-     * @param  UOM  $toUnit  The destination UoM record
-     * @param  bool  $round  Whether to round the result
-     * @param  string  $roundingMethod  The rounding method ('UP', 'DOWN', etc.)
-     * @param  bool  $raiseIfFailure  Whether to throw an exception on conversion failure
+     * @param float  $qty            The quantity to convert
+     * @param UOM    $toUnit         The destination UoM record
+     * @param bool   $round          Whether to round the result
+     * @param string $roundingMethod The rounding method ('UP', 'DOWN', etc.)
+     * @param bool   $raiseIfFailure Whether to throw an exception on conversion failure
+     *
      * @return float The converted quantity
      *
      * @throws Exception If conversion fails and $raiseIfFailure is true
      */
     public function computeQuantity($qty, $toUnit, $round = true, $roundingMethod = 'UP', $raiseIfFailure = true)
     {
-        if (! $this || ! $qty) {
+        if ( ! $this || ! $qty) {
             return $qty;
         }
 
@@ -68,9 +70,9 @@ class UOM extends Model
                     'The unit of measure :unit defined on the order line doesn\'t belong to the same category as the unit of measure :product_unit defined on the product. Please correct the unit of measure defined on the order line or on the product. They should belong to the same category.',
                     ['unit' => $this->name, 'product_unit' => $toUnit->name]
                 ));
-            } else {
-                return $qty;
             }
+
+            return $qty;
         }
 
         if ($this->id === $toUnit->id) {
@@ -94,12 +96,18 @@ class UOM extends Model
         return $amount;
     }
 
+    protected static function newFactory(): UOMFactory
+    {
+        return UOMFactory::new();
+    }
+
     /**
-     * Custom float rounding implementation
+     * Custom float rounding implementation.
      *
-     * @param  float  $value  The value to round
-     * @param  float  $precision  The precision to round to
-     * @param  string  $method  The rounding method
+     * @param float  $value     The value to round
+     * @param float  $precision The precision to round to
+     * @param string $method    The rounding method
+     *
      * @return float The rounded value
      */
     private function floatRound($value, $precision, $method = 'UP')
@@ -110,7 +118,7 @@ class UOM extends Model
 
         $factor = 1.0 / $precision;
 
-        switch (strtoupper($method)) {
+        switch (mb_strtoupper($method)) {
             case 'CEILING':
             case 'UP':
                 return ceil($value * $factor) / $factor;
@@ -125,10 +133,5 @@ class UOM extends Model
             default:
                 return round($value * $factor) / $factor;
         }
-    }
-
-    protected static function newFactory(): UOMFactory
-    {
-        return UOMFactory::new();
     }
 }

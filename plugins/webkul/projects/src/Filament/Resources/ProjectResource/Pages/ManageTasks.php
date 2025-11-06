@@ -2,6 +2,7 @@
 
 namespace Webkul\Project\Filament\Resources\ProjectResource\Pages;
 
+use BackedEnum;
 use Filament\Actions\ActionGroup;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
@@ -30,21 +31,11 @@ class ManageTasks extends ManageRelatedRecords
 
     protected static string $relationship = 'tasks';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-clipboard-document-list';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-clipboard-document-list';
 
     public static function getNavigationLabel(): string
     {
         return __('projects::filament/resources/project/pages/manage-tasks.title');
-    }
-
-    protected function getHeaderActions(): array
-    {
-        return [
-            CreateAction::make()
-                ->label(__('projects::filament/resources/project/pages/manage-tasks.header-actions.create.label'))
-                ->icon('heroicon-o-plus-circle')
-                ->url(TaskResource::getUrl('create')),
-        ];
     }
 
     public function table(Table $table): Table
@@ -139,6 +130,16 @@ class ManageTasks extends ManageRelatedRecords
                 ->modifyQueryUsing(function ($query) {
                     return $query->onlyTrashed();
                 }),
+        ];
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            CreateAction::make()
+                ->label(__('projects::filament/resources/project/pages/manage-tasks.header-actions.create.label'))
+                ->icon('heroicon-o-plus-circle')
+                ->url(TaskResource::getUrl('create')),
         ];
     }
 }

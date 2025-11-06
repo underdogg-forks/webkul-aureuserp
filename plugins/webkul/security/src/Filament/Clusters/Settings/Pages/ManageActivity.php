@@ -2,6 +2,7 @@
 
 namespace Webkul\Security\Filament\Clusters\Settings\Pages;
 
+use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 use Filament\Actions\Action;
 use Filament\Forms\Components\Placeholder;
@@ -17,13 +18,18 @@ class ManageActivity extends SettingsPage
 
     protected static ?string $cluster = Settings::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
 
     protected static string $settings = UserSettings::class;
 
     public static function getNavigationGroup(): string
     {
         return __('security::filament/clusters/manage-activity.group');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('security::filament/clusters/manage-activity.navigation.label');
     }
 
     public function getBreadcrumbs(): array
@@ -36,11 +42,6 @@ class ManageActivity extends SettingsPage
     public function getTitle(): string
     {
         return __('security::filament/clusters/manage-activity.title');
-    }
-
-    public static function getNavigationLabel(): string
-    {
-        return __('security::filament/clusters/manage-activity.navigation.label');
     }
 
     public function form(Schema $schema): Schema

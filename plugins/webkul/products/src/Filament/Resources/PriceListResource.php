@@ -2,6 +2,7 @@
 
 namespace Webkul\Product\Filament\Resources;
 
+use BackedEnum;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -21,7 +22,7 @@ class PriceListResource extends Resource
 
     protected static bool $shouldRegisterNavigation = false;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-list-bullet';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-list-bullet';
 
     public static function getNavigationLabel(): string
     {
@@ -32,7 +33,6 @@ class PriceListResource extends Resource
     {
         return $schema
             ->components([
-                //
             ]);
     }
 
@@ -40,10 +40,8 @@ class PriceListResource extends Resource
     {
         return $table
             ->columns([
-                //
             ])
             ->filters([
-                //
             ])
             ->recordActions([
                 ViewAction::make(),
@@ -59,7 +57,6 @@ class PriceListResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
         ];
     }
 

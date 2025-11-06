@@ -9,11 +9,6 @@ use Webkul\Account\Models\Payment;
 
 class RejectAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'customers.payment.reject';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -30,5 +25,10 @@ class RejectAction extends Action
             ->hidden(function (Payment $record) {
                 return $record->state != PaymentStatus::IN_PROCESS->value;
             });
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'customers.payment.reject';
     }
 }

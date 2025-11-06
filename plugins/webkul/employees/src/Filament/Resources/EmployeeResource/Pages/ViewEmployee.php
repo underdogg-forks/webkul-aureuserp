@@ -29,11 +29,6 @@ class ViewEmployee extends ViewRecord
         ];
     }
 
-    private function getActivityPlans(): mixed
-    {
-        return ActivityPlan::where('plugin', 'employees')->pluck('name', 'id');
-    }
-
     protected function mutateFormDataBeforeFill(array $data): array
     {
         $partner = $this->record->partner;
@@ -42,5 +37,10 @@ class ViewEmployee extends ViewRecord
             ...$data,
             ...$partner ? $partner->toArray() : [],
         ];
+    }
+
+    private function getActivityPlans(): mixed
+    {
+        return ActivityPlan::where('plugin', 'employees')->pluck('name', 'id');
     }
 }

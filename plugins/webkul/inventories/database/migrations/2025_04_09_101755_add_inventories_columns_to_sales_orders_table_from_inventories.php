@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class () extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,7 +12,7 @@ return new class extends Migration
     {
         if (Schema::hasTable('sales_orders')) {
             Schema::table('sales_orders', function (Blueprint $table) {
-                if (! Schema::hasColumn('sales_orders', 'warehouse_id')) {
+                if ( ! Schema::hasColumn('sales_orders', 'warehouse_id')) {
                     $table->foreignId('warehouse_id')
                         ->nullable()
                         ->constrained('inventories_warehouses')

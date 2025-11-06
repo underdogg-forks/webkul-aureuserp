@@ -8,14 +8,14 @@ use ReflectionClass;
 
 class ChatterPlugin implements Plugin
 {
-    public function getId(): string
-    {
-        return 'chatter';
-    }
-
     public static function make(): static
     {
         return app(static::class);
+    }
+
+    public function getId(): string
+    {
+        return 'chatter';
     }
 
     public function register(Panel $panel): void
@@ -27,15 +27,12 @@ class ChatterPlugin implements Plugin
             ->discoverClusters(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Webkul\\Chatter\\Filament\\Widgets');
     }
 
-    public function boot(Panel $panel): void
-    {
-        //
-    }
+    public function boot(Panel $panel): void {}
 
     protected function getPluginBasePath($path = null): string
     {
         $reflector = new ReflectionClass(get_class($this));
 
-        return dirname($reflector->getFileName()).($path ?? '');
+        return dirname($reflector->getFileName()) . ($path ?? '');
     }
 }

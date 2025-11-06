@@ -10,7 +10,13 @@ use Webkul\Security\Models\User;
 
 class PaymentMethodLine extends Model implements Sortable
 {
-    use HasFactory, SortableTrait;
+    use HasFactory;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     protected $table = 'accounts_payment_method_lines';
 
@@ -21,11 +27,6 @@ class PaymentMethodLine extends Model implements Sortable
         'journal_id',
         'name',
         'creator_id',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function createdBy()

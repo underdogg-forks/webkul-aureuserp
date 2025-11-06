@@ -17,14 +17,6 @@ class ListQuotations extends ListRecords
 
     protected static string $resource = QuotationResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            CreateAction::make()
-                ->icon('heroicon-o-plus-circle'),
-        ];
-    }
-
     public function getPresetTableViews(): array
     {
         return [
@@ -45,6 +37,14 @@ class ListQuotations extends ListRecords
                 ->icon('heroicon-s-archive-box')
                 ->favorite()
                 ->modifyQueryUsing(fn ($query) => $query->onlyTrashed()),
+        ];
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            CreateAction::make()
+                ->icon('heroicon-o-plus-circle'),
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Webkul\Product\Filament\Resources\ProductResource\Pages;
 
+use BackedEnum;
 use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Schemas\Schema;
 use Filament\Support\Enums\Width;
@@ -19,7 +20,7 @@ class ManageVariants extends ManageRelatedRecords
 
     protected static string $relationship = 'variants';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-clipboard-document-list';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-clipboard-document-list';
 
     public static function getNavigationLabel(): string
     {
@@ -57,7 +58,7 @@ class ManageVariants extends ManageRelatedRecords
                 ->state(function ($record) {
                     return $record->combinations->map(function ($combination) {
                         $attributeName = $combination->productAttributeValue?->attribute?->name;
-                        $optionName = $combination->productAttributeValue?->attributeOption?->name;
+                        $optionName    = $combination->productAttributeValue?->attributeOption?->name;
 
                         return $attributeName && $optionName ? "{$attributeName}: {$optionName}" : $optionName;
                     });

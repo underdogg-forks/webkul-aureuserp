@@ -17,14 +17,6 @@ class ListTaxes extends ListRecords
 
     protected static string $resource = TaxResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            CreateAction::make()
-                ->icon('heroicon-o-plus-circle'),
-        ];
-    }
-
     public function getPresetTableViews(): array
     {
         return [
@@ -58,6 +50,14 @@ class ListTaxes extends ListRecords
                 ->favorite()
                 ->label(__('accounts::filament/resources/tax/pages/list-tax.tabs.in-active'))
                 ->modifyQueryUsing(fn (Builder $query) => $query->where('is_active', false)),
+        ];
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            CreateAction::make()
+                ->icon('heroicon-o-plus-circle'),
         ];
     }
 }

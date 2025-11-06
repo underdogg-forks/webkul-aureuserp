@@ -17,7 +17,11 @@ use Webkul\Support\Models\Company;
 
 class Department extends Model
 {
-    use HasChatter, HasCustomFields, HasFactory, HasLogActivity, SoftDeletes;
+    use HasChatter;
+    use HasCustomFields;
+    use HasFactory;
+    use HasLogActivity;
+    use SoftDeletes;
 
     protected $table = 'employees_departments';
 
@@ -40,12 +44,12 @@ class Department extends Model
 
     public function parent(): BelongsTo
     {
-        return $this->belongsTo(Department::class, 'parent_id');
+        return $this->belongsTo(self::class, 'parent_id');
     }
 
     public function masterDepartment(): BelongsTo
     {
-        return $this->belongsTo(Department::class, 'master_department_id');
+        return $this->belongsTo(self::class, 'master_department_id');
     }
 
     public function jobPositions(): HasMany
@@ -78,7 +82,7 @@ class Department extends Model
         parent::boot();
 
         static::creating(function ($department) {
-            if (! static::validateNoRecursion($department)) {
+            if ( ! static::validateNoRecursion($department)) {
                 throw new InvalidArgumentException('Circular reference detected in department hierarchy');
             }
 
@@ -86,7 +90,7 @@ class Department extends Model
         });
 
         static::updating(function ($department) {
-            if (! static::validateNoRecursion($department)) {
+            if ( ! static::validateNoRecursion($department)) {
                 throw new InvalidArgumentException('Circular reference detected in department hierarchy');
             }
 
@@ -96,7 +100,7 @@ class Department extends Model
 
     protected static function validateNoRecursion($department)
     {
-        if (! $department->parent_id) {
+        if ( ! $department->parent_id) {
             return true;
         }
 
@@ -104,7 +108,7 @@ class Department extends Model
             return false;
         }
 
-        $visitedIds = [$department->exists ? $department->id : -1];
+        $visitedIds      = [$department->exists ? $department->id : -1];
         $currentParentId = $department->parent_id;
 
         while ($currentParentId) {
@@ -113,9 +117,9 @@ class Department extends Model
             }
 
             $visitedIds[] = $currentParentId;
-            $parent = static::find($currentParentId);
+            $parent       = static::find($currentParentId);
 
-            if (! $parent) {
+            if ( ! $parent) {
                 break;
             }
 
@@ -128,12 +132,12 @@ class Department extends Model
     protected static function handleDepartmentData($department)
     {
         if ($department->parent_id) {
-            $parent = static::find($department->parent_id);
-            $department->parent_path = $parent?->parent_path.$parent?->id.'/';
+            $parent                  = static::find($department->parent_id);
+            $department->parent_path = $parent?->parent_path . $parent?->id . '/';
 
             $department->master_department_id = static::findTopLevelParentId($parent);
         } else {
-            $department->parent_path = '/';
+            $department->parent_path          = '/';
             $department->master_department_id = null;
         }
 
@@ -153,7 +157,7 @@ class Department extends Model
 
     protected static function getCompleteName($department)
     {
-        $names = [];
+        $names   = [];
         $names[] = $department->name;
 
         $currentDepartment = $department;

@@ -7,14 +7,10 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Group;
+use Throwable;
 
 class FiltersAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'filters.action';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -29,8 +25,8 @@ class FiltersAction extends Action
                     return method_exists($livewire, 'getActiveFilters')
                         ? (count($livewire->getActiveFilters()) ?: null)
                         : null;
-                } catch (\Throwable $e) {
-                    return null;
+                } catch (Throwable $e) {
+                    return;
                 }
             })
             ->slideOver(false)
@@ -90,15 +86,20 @@ class FiltersAction extends Action
                 $action->label(__('chatter::filament/resources/actions/chatter/filters-action.actions.apply'))->icon('heroicon-m-check');
             })
             ->action(function (array $data, $livewire) {
-                $livewire->search = (string) ($data['search'] ?? '');
+                $livewire->search     = (string) ($data['search'] ?? '');
                 $livewire->filterType = (string) ($data['filterType'] ?? 'all');
-                $livewire->dateRange = $data['dateRange'] !== '' ? ($data['dateRange'] ?? null) : null;
-                $livewire->sortBy = (string) ($data['sortBy'] ?? 'created_at_desc');
+                $livewire->dateRange  = $data['dateRange'] !== '' ? ($data['dateRange'] ?? null) : null;
+                $livewire->sortBy     = (string) ($data['sortBy'] ?? 'created_at_desc');
                 $livewire->pinnedOnly = (bool) ($data['pinnedOnly'] ?? false);
 
                 if (method_exists($livewire, 'dispatch')) {
                     $livewire->dispatch('chatter.refresh');
                 }
             });
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'filters.action';
     }
 }

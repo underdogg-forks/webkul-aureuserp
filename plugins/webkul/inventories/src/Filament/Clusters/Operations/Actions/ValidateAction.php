@@ -14,11 +14,6 @@ use Webkul\Inventory\Models\ProductQuantity;
 
 class ValidateAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'inventories.operations.validate';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -79,6 +74,11 @@ class ValidateAction extends Action
             });
     }
 
+    public static function getDefaultName(): ?string
+    {
+        return 'inventories.operations.validate';
+    }
+
     protected function hasMoveErrors(Operation $record): bool
     {
         $record = Inventory::computeTransfer($record);
@@ -95,7 +95,7 @@ class ValidateAction extends Action
     /**
      * Check if the move lines are valid.
      *
-     * @return bool Returns false if a validation warning is triggered.
+     * @return bool returns false if a validation warning is triggered
      */
     private function hasMoveLineErrors($move): bool
     {

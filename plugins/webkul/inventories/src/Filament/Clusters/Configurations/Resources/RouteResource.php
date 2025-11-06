@@ -2,6 +2,7 @@
 
 namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources;
 
+use BackedEnum;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
@@ -52,7 +53,7 @@ class RouteResource extends Resource
 {
     protected static ?string $model = Route::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-arrow-path';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-arrow-path';
 
     protected static ?int $navigationSort = 3;
 
@@ -102,7 +103,7 @@ class RouteResource extends Resource
                                 modifyQueryUsing: fn (Builder $query) => $query->withTrashed(),
                             )
                             ->getOptionLabelFromRecordUsing(
-                                fn (Model $record): string => $record->name.($record->trashed() ? ' (Deleted)' : ''),
+                                fn (Model $record): string => $record->name . ($record->trashed() ? ' (Deleted)' : ''),
                             )
                             ->disableOptionWhen(
                                 fn (string $label): bool => str_contains($label, ' (Deleted)'),
@@ -364,7 +365,7 @@ class RouteResource extends Resource
             $route = session('current_route');
         }
 
-        if ($route === self::getRouteBaseName().'.index') {
+        if ($route === self::getRouteBaseName() . '.index') {
             return SubNavigationPosition::Start;
         }
 
@@ -390,11 +391,11 @@ class RouteResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'   => ListRoutes::route('/'),
-            'create'  => CreateRoute::route('/create'),
-            'view'    => ViewRoute::route('/{record}'),
-            'edit'    => EditRoute::route('/{record}/edit'),
-            'rules'   => ManageRules::route('/{record}/rules'),
+            'index'  => ListRoutes::route('/'),
+            'create' => CreateRoute::route('/create'),
+            'view'   => ViewRoute::route('/{record}'),
+            'edit'   => EditRoute::route('/{record}/edit'),
+            'rules'  => ManageRules::route('/{record}/rules'),
         ];
     }
 }

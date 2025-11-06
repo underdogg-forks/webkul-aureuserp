@@ -12,15 +12,6 @@ enum StartType: string implements HasLabel
 
     case YEARS = 'years';
 
-    public function getLabel(): ?string
-    {
-        return match ($this) {
-            self::DAYS   => __('time-off::enums/start-type.days'),
-            self::MONTHS => __('time-off::enums/start-type.months'),
-            self::YEARS  => __('time-off::enums/start-type.years'),
-        };
-    }
-
     public static function options(): array
     {
         return [
@@ -28,5 +19,14 @@ enum StartType: string implements HasLabel
             self::DAYS->value   => __('time-off::enums/start-type.days'),
             self::YEARS->value  => __('time-off::enums/start-type.years'),
         ];
+    }
+
+    public function getLabel(): ?string
+    {
+        return match ($this) {
+            self::DAYS   => __('time-off::enums/start-type.days'),
+            self::MONTHS => __('time-off::enums/start-type.months'),
+            self::YEARS  => __('time-off::enums/start-type.years'),
+        };
     }
 }

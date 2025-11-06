@@ -16,7 +16,8 @@ use Webkul\Support\Traits\HasRecordNavigationTabs;
 
 class EditInvoice extends EditRecord
 {
-    use HasRecordNavigationTabs, HasRepeaterColumnManager;
+    use HasRecordNavigationTabs;
+    use HasRepeaterColumnManager;
 
     protected static string $resource = InvoiceResource::class;
 
@@ -66,8 +67,8 @@ class EditInvoice extends EditRecord
         if ($data['partner_id']) {
             $partner = Partner::find($data['partner_id']);
 
-            $data['commercial_partner_id'] = $partner->id;
-            $data['partner_shipping_id'] = $partner->id;
+            $data['commercial_partner_id']        = $partner->id;
+            $data['partner_shipping_id']          = $partner->id;
             $data['invoice_partner_display_name'] = $partner->name;
         } else {
             $data['invoice_partner_display_name'] = "#Created By: {$user->name}";

@@ -36,11 +36,11 @@ class ChatterHeaderActions extends Component implements HasActions, HasForms
         mixed $activityPlans = null,
         ChatterAction $chatterAction
     ): void {
-        $this->record = $record;
-        $this->resourceClass = $resourceClass;
+        $this->record              = $record;
+        $this->resourceClass       = $resourceClass;
         $this->messageMailViewPath = $messageMailViewPath;
-        $this->activityPlans = $this->normalizeActivityPlans($activityPlans);
-        $this->chatterAction = $chatterAction;
+        $this->activityPlans       = $this->normalizeActivityPlans($activityPlans);
+        $this->chatterAction       = $chatterAction;
     }
 
     public function messageAction(): MessageAction
@@ -68,6 +68,21 @@ class ChatterHeaderActions extends Component implements HasActions, HasForms
             ->setActivityPlans($this->activityPlans)
             ->record($this->record)
             ->slideOver(false);
+    }
+
+    public function render(): string
+    {
+        return <<<'BLADE'
+            <div>
+                @foreach (['messageAction', 'logAction', 'activityAction'] as $action)
+                    @if ($this->{$action}->isVisible())
+                        {{ $this->{$action} }}
+                    @endif
+                @endforeach
+
+                <x-filament-actions::modals />
+            </div>
+        BLADE;
     }
 
     protected function isActionVisible(string $actionType): bool
@@ -102,20 +117,5 @@ class ChatterHeaderActions extends Component implements HasActions, HasForms
         }
 
         return collect();
-    }
-
-    public function render(): string
-    {
-        return <<<'BLADE'
-            <div>
-                @foreach (['messageAction', 'logAction', 'activityAction'] as $action)
-                    @if ($this->{$action}->isVisible())
-                        {{ $this->{$action} }}
-                    @endif
-                @endforeach
-
-                <x-filament-actions::modals />
-            </div>
-        BLADE;
     }
 }

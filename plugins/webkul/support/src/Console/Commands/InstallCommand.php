@@ -13,9 +13,13 @@ use Webkul\Support\Package;
 
 class InstallCommand extends Command
 {
-    protected Package $package;
-
     public ?Closure $startWith = null;
+
+    public ?Closure $endWith = null;
+
+    public $hidden = true;
+
+    protected Package $package;
 
     protected array $publishes = [];
 
@@ -35,15 +39,11 @@ class InstallCommand extends Command
 
     protected ?string $starRepo = null;
 
-    public ?Closure $endWith = null;
-
-    public $hidden = true;
-
     public function __construct(Package $package)
     {
-        $this->signature = $package->shortName().':install';
+        $this->signature = $package->shortName() . ':install';
 
-        $this->description = 'Install '.$package->name;
+        $this->description = 'Install ' . $package->name;
 
         $this->package = $package;
 
@@ -69,11 +69,11 @@ class InstallCommand extends Command
                 $this->newLine();
 
                 foreach ($this->package->dependencies as $dependency) {
-                    $this->comment('Installing <info>'.$dependency.'</info>...');
+                    $this->comment('Installing <info>' . $dependency . '</info>...');
 
                     $this->newLine();
 
-                    $this->call($dependency.':install');
+                    $this->call($dependency . ':install');
                 }
 
                 $this->newLine();
@@ -81,7 +81,7 @@ class InstallCommand extends Command
                 $this->info('This package requires the following dependencies:');
 
                 foreach ($this->package->dependencies as $dependency) {
-                    $this->line('- <info>'.$dependency.'</info>');
+                    $this->line('- <info>' . $dependency . '</info>');
                 }
 
                 $this->newLine();
@@ -98,11 +98,11 @@ class InstallCommand extends Command
             $this->newLine();
 
             foreach ($this->package->dependencies as $dependency) {
-                $this->comment('Installing <info>'.$dependency.'</info>...');
+                $this->comment('Installing <info>' . $dependency . '</info>...');
 
                 $this->newLine();
 
-                $this->call($dependency.':install');
+                $this->call($dependency . ':install');
             }
 
             $this->newLine();
@@ -254,12 +254,12 @@ class InstallCommand extends Command
 
             $fullPath = $this->package->basePath("../database/migrations/{$migration}.php");
 
-            $path = Str::after($fullPath, base_path().DIRECTORY_SEPARATOR);
+            $path = Str::after($fullPath, base_path() . DIRECTORY_SEPARATOR);
 
             $migrationsToRun[] = $path;
         }
 
-        if (! $migrationsToRun->isEmpty()) {
+        if ( ! $migrationsToRun->isEmpty()) {
             $this->info("⚙️ Running <comment>{$this->package->shortName()}</comment> database migrations...");
 
             foreach ($migrationsToRun as $migration) {
@@ -282,12 +282,12 @@ class InstallCommand extends Command
 
             $fullPath = $this->package->basePath("../database/settings/{$setting}.php");
 
-            $path = Str::after($fullPath, base_path().DIRECTORY_SEPARATOR);
+            $path = Str::after($fullPath, base_path() . DIRECTORY_SEPARATOR);
 
             $settingsToRun[] = $path;
         }
 
-        if (! $settingsToRun->isEmpty()) {
+        if ( ! $settingsToRun->isEmpty()) {
             $this->info("⚙️ Running <comment>{$this->package->shortName()}</comment> settings database migrations...");
 
             foreach ($settingsToRun as $migration) {
@@ -322,7 +322,7 @@ class InstallCommand extends Command
                 $this->info('This package includes the following seeders:');
 
                 foreach ($this->package->seederClasses as $seeder) {
-                    $this->line('- <info>'.$seeder.'</info>');
+                    $this->line('- <info>' . $seeder . '</info>');
                 }
                 $this->newLine();
 
@@ -388,44 +388,44 @@ class InstallCommand extends Command
     {
         $providerName = $this->package->publishableProviderName;
 
-        if (! $providerName) {
+        if ( ! $providerName) {
             return $this;
         }
 
-        $this->callSilent('vendor:publish', ['--tag' => $this->package->shortName().'-provider']);
+        $this->callSilent('vendor:publish', ['--tag' => $this->package->shortName() . '-provider']);
 
         $namespace = Str::replaceLast('\\', '', $this->laravel->getNamespace());
 
-        if (intval(app()->version()) < 11 || ! file_exists(base_path('bootstrap/providers.php'))) {
+        if ((int) (app()->version()) < 11 || ! file_exists(base_path('bootstrap/providers.php'))) {
             $appConfig = file_get_contents(config_path('app.php'));
         } else {
             $appConfig = file_get_contents(base_path('bootstrap/providers.php'));
         }
 
-        $class = '\\Providers\\'.Str::replace('/', '\\', $providerName).'::class';
+        $class = '\\Providers\\' . Str::replace('/', '\\', $providerName) . '::class';
 
-        if (Str::contains($appConfig, $namespace.$class)) {
+        if (Str::contains($appConfig, $namespace . $class)) {
             return $this;
         }
 
-        if (intval(app()->version()) < 11 || ! file_exists(base_path('bootstrap/providers.php'))) {
+        if ((int) (app()->version()) < 11 || ! file_exists(base_path('bootstrap/providers.php'))) {
             file_put_contents(config_path('app.php'), str_replace(
                 "{$namespace}\\Providers\\BroadcastServiceProvider::class,",
-                "{$namespace}\\Providers\\BroadcastServiceProvider::class,".PHP_EOL."        {$namespace}{$class},",
+                "{$namespace}\\Providers\\BroadcastServiceProvider::class," . PHP_EOL . "        {$namespace}{$class},",
                 $appConfig
             ));
         } else {
             file_put_contents(base_path('bootstrap/providers.php'), str_replace(
                 "{$namespace}\\Providers\\AppServiceProvider::class,",
-                "{$namespace}\\Providers\\AppServiceProvider::class,".PHP_EOL."        {$namespace}{$class},",
+                "{$namespace}\\Providers\\AppServiceProvider::class," . PHP_EOL . "        {$namespace}{$class},",
                 $appConfig
             ));
         }
 
-        file_put_contents(app_path('Providers/'.$providerName.'.php'), str_replace(
+        file_put_contents(app_path('Providers/' . $providerName . '.php'), str_replace(
             "namespace App\Providers;",
             "namespace {$namespace}\Providers;",
-            file_get_contents(app_path('Providers/'.$providerName.'.php'))
+            file_get_contents(app_path('Providers/' . $providerName . '.php'))
         ));
 
         return $this;
@@ -439,12 +439,12 @@ class InstallCommand extends Command
 
         $artisan = escapeshellarg(base_path('artisan'));
 
-        $cmd = "$php $artisan shield:generate --all --option=permissions --panel=admin";
+        $cmd = "{$php} {$artisan} shield:generate --all --option=permissions --panel=admin";
 
         exec($cmd, $output, $exitCode);
 
         if ($exitCode !== 0) {
-            $this->error('Failed to generate admin panel permissions. Command output: '.implode(PHP_EOL, $output));
+            $this->error('Failed to generate admin panel permissions. Command output: ' . implode(PHP_EOL, $output));
         }
 
         $role = Role::first();

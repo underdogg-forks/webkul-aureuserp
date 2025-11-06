@@ -12,7 +12,13 @@ use Webkul\Support\Models\Country;
 
 class TaxGroup extends Model implements Sortable
 {
-    use HasFactory, SortableTrait;
+    use HasFactory;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     protected $table = 'accounts_tax_groups';
 
@@ -23,11 +29,6 @@ class TaxGroup extends Model implements Sortable
         'creator_id',
         'name',
         'preceding_subtotal',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function company()

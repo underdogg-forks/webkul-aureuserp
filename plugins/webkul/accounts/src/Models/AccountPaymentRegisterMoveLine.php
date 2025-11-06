@@ -9,9 +9,9 @@ class AccountPaymentRegisterMoveLine extends Model
 {
     use HasFactory;
 
-    protected $table = 'accounts_account_payment_register_move_lines';
-
     public $timestamps = false;
+
+    protected $table = 'accounts_account_payment_register_move_lines';
 
     protected $fillable = [
         'payment_register_id',

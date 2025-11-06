@@ -26,6 +26,11 @@ class ManageCurrency extends SettingsPage
         return __('security::filament/clusters/manage-currency.group');
     }
 
+    public static function getNavigationLabel(): string
+    {
+        return __('security::filament/clusters/manage-currency.title');
+    }
+
     public function getBreadcrumbs(): array
     {
         return [
@@ -34,11 +39,6 @@ class ManageCurrency extends SettingsPage
     }
 
     public function getTitle(): string
-    {
-        return __('security::filament/clusters/manage-currency.title');
-    }
-
-    public static function getNavigationLabel(): string
     {
         return __('security::filament/clusters/manage-currency.title');
     }

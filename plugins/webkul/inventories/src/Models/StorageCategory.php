@@ -15,7 +15,13 @@ use Webkul\Support\Models\Company;
 
 class StorageCategory extends Model implements Sortable
 {
-    use HasFactory, SortableTrait;
+    use HasFactory;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     /**
      * Table name.
@@ -46,11 +52,6 @@ class StorageCategory extends Model implements Sortable
      */
     protected $casts = [
         'allow_new_products' => AllowNewProduct::class,
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function storageCategoryCapacities(): HasMany

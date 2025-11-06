@@ -28,7 +28,7 @@ trait HasScopedPermissions
 
         $owner = $model->{$ownerAttribute};
 
-        if (! $owner) {
+        if ( ! $owner) {
             return false;
         }
 
@@ -62,7 +62,7 @@ trait HasScopedPermissions
 
         $owner = $model->{$ownerAttribute};
 
-        if (! $owner) {
+        if ( ! $owner) {
             return false;
         }
 

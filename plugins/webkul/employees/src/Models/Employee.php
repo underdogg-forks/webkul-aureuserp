@@ -21,7 +21,11 @@ use Webkul\Support\Models\State;
 
 class Employee extends Model
 {
-    use HasChatter, HasCustomFields, HasFactory, HasLogActivity, SoftDeletes;
+    use HasChatter;
+    use HasCustomFields;
+    use HasFactory;
+    use HasLogActivity;
+    use SoftDeletes;
 
     protected $table = 'employees_employees';
 
@@ -220,14 +224,6 @@ class Employee extends Model
         return $this->hasMany(EmployeeResume::class, 'employee_id');
     }
 
-    /**
-     * Get the factory instance for the model.
-     */
-    protected static function newFactory(): EmployeeFactory
-    {
-        return EmployeeFactory::new();
-    }
-
     public function leaveManager(): BelongsTo
     {
         return $this->belongsTo(User::class, 'leave_manager_id');
@@ -244,6 +240,14 @@ class Employee extends Model
     }
 
     /**
+     * Get the factory instance for the model.
+     */
+    protected static function newFactory(): EmployeeFactory
+    {
+        return EmployeeFactory::new();
+    }
+
+    /**
      * Bootstrap the model and its traits.
      */
     protected static function boot()
@@ -251,7 +255,7 @@ class Employee extends Model
         parent::boot();
 
         static::saved(function (self $employee) {
-            if (! $employee->partner_id) {
+            if ( ! $employee->partner_id) {
                 $employee->handlePartnerCreation($employee);
             } else {
                 $employee->handlePartnerUpdation($employee);

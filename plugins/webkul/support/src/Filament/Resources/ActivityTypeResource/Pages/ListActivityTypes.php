@@ -14,6 +14,19 @@ class ListActivityTypes extends ListRecords
 
     protected static ?string $pluginName = 'support';
 
+    public function getTabs(): array
+    {
+        return [
+            'all' => Tab::make(__('support::filament/resources/activity-type/pages/list-activity-type.tabs.all'))
+                ->badge(ActivityType::where('plugin', static::getPluginName())->count()),
+            'archived' => Tab::make(__('support::filament/resources/activity-type/pages/list-activity-type.tabs.archived'))
+                ->badge(ActivityType::onlyTrashed()->count())
+                ->modifyQueryUsing(function ($query) {
+                    return $query->where('plugin', static::getPluginName())->onlyTrashed();
+                }),
+        ];
+    }
+
     protected static function getPluginName()
     {
         return static::$pluginName;
@@ -25,19 +38,6 @@ class ListActivityTypes extends ListRecords
             CreateAction::make()
                 ->label(__('support::filament/resources/activity-type/pages/list-activity-type.header-actions.create.label'))
                 ->icon('heroicon-o-plus-circle'),
-        ];
-    }
-
-    public function getTabs(): array
-    {
-        return [
-            'all' => Tab::make(__('support::filament/resources/activity-type/pages/list-activity-type.tabs.all'))
-                ->badge(ActivityType::where('plugin', static::getPluginName())->count()),
-            'archived' => Tab::make(__('support::filament/resources/activity-type/pages/list-activity-type.tabs.archived'))
-                ->badge(ActivityType::onlyTrashed()->count())
-                ->modifyQueryUsing(function ($query) {
-                    return $query->where('plugin', static::getPluginName())->onlyTrashed();
-                }),
         ];
     }
 }

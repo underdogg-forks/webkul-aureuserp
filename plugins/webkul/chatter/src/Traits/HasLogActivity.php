@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 trait HasLogActivity
 {
     /**
-     * Boot the trait
+     * Boot the trait.
      */
     public static function bootHasLogActivity()
     {
@@ -33,7 +33,7 @@ trait HasLogActivity
     }
 
     /**
-     * Log model activity
+     * Log model activity.
      */
     public function logModelActivity(string $event): ?Model
     {
@@ -65,8 +65,26 @@ trait HasLogActivity
     }
 
     /**
+     * Sort array recursively.
+     */
+    protected static function ksortRecursive(&$array)
+    {
+        if ( ! is_array($array)) {
+            return;
+        }
+
+        ksort($array);
+
+        foreach ($array as &$value) {
+            if (is_array($value)) {
+                static::ksortRecursive($value);
+            }
+        }
+    }
+
+    /**
      * Get attributes to be logged.
-     * Override this in your model to specify which attributes to log
+     * Override this in your model to specify which attributes to log.
      */
     protected function getLogAttributes(): array
     {
@@ -84,56 +102,56 @@ trait HasLogActivity
     }
 
     /**
-     * Get the relationship and attribute to log from the attribute key
+     * Get the relationship and attribute to log from the attribute key.
      */
     protected function parseRelationAttribute(string $key): ?array
     {
-        if (! str_contains($key, '.')) {
+        if ( ! str_contains($key, '.')) {
             return null;
         }
 
-        $parts = explode('.', $key);
-        $relation = $parts[0];
+        $parts     = explode('.', $key);
+        $relation  = $parts[0];
         $attribute = $parts[1];
 
         return [$relation, $attribute];
     }
 
     /**
-     * Get related model value
+     * Get related model value.
      */
     protected function getRelatedValue($relation, $id, $attribute)
     {
         try {
-            if (! method_exists($this, $relation)) {
-                return null;
+            if ( ! method_exists($this, $relation)) {
+                return;
             }
 
-            $relatedModel = $this->$relation()->getRelated();
-            $instance = $relatedModel->find($id);
+            $relatedModel = $this->{$relation}()->getRelated();
+            $instance     = $relatedModel->find($id);
 
-            return $instance ? $instance->$attribute : null;
+            return $instance ? $instance->{$attribute} : null;
         } catch (Exception $e) {
-            Log::error("Error getting related value for {$relation}.{$attribute}: ".$e->getMessage());
+            Log::error("Error getting related value for {$relation}.{$attribute}: " . $e->getMessage());
 
-            return null;
+            return;
         }
     }
 
     /**
-     * Get changes for all monitored attributes
+     * Get changes for all monitored attributes.
      */
     protected function getAllAttributeChanges(): array
     {
-        $changes = [];
-        $original = $this->getOriginal();
-        $current = $this->getDirty();
+        $changes       = [];
+        $original      = $this->getOriginal();
+        $current       = $this->getDirty();
         $logAttributes = $this->getLogAttributes();
 
         foreach ($logAttributes as $key => $title) {
             if ($parsed = $this->parseRelationAttribute($key)) {
                 [$relation, $attribute] = $parsed;
-                $changes[$title] = $this->getRelationshipChanges($relation, $attribute, $original, $current);
+                $changes[$title]        = $this->getRelationshipChanges($relation, $attribute, $original, $current);
             } else {
                 $changes[$title] = $this->getDirectAttributeChanges($key, $original, $current);
             }
@@ -143,16 +161,16 @@ trait HasLogActivity
     }
 
     /**
-     * Get changes for relationship attributes
+     * Get changes for relationship attributes.
      */
     protected function getRelationshipChanges(string $relation, string $attribute, array $original, array $current): ?array
     {
         try {
-            if (! method_exists($this, $relation)) {
+            if ( ! method_exists($this, $relation)) {
                 return null;
             }
 
-            $foreignKey = $this->$relation()->getForeignKeyName();
+            $foreignKey = $this->{$relation}()->getForeignKeyName();
 
             if (array_key_exists($foreignKey, $current)) {
                 $oldValue = $this->getRelatedValue($relation, $original[$foreignKey] ?? null, $attribute);
@@ -169,7 +187,7 @@ trait HasLogActivity
                 }
             }
         } catch (Exception $e) {
-            Log::error("Error tracking relationship changes for {$relation}.{$attribute}: ".$e->getMessage());
+            Log::error("Error tracking relationship changes for {$relation}.{$attribute}: " . $e->getMessage());
         }
 
         return null;
@@ -183,7 +201,7 @@ trait HasLogActivity
 
             if ($oldValue !== $newValue) {
                 return [
-                    'type'      => is_null($oldValue) ? 'added' : 'modified',
+                    'type'      => null === $oldValue ? 'added' : 'modified',
                     'old_value' => $oldValue,
                     'new_value' => $newValue,
                 ];
@@ -194,7 +212,7 @@ trait HasLogActivity
     }
 
     /**
-     * Determine changes in the model
+     * Determine changes in the model.
      */
     protected function determineChanges(string $event): ?array
     {
@@ -206,21 +224,21 @@ trait HasLogActivity
     }
 
     /**
-     * Get model attributes
+     * Get model attributes.
      */
     protected function getModelAttributes(): array
     {
         $logAttributes = $this->getLogAttributes();
-        $attributes = [];
+        $attributes    = [];
 
         foreach ($logAttributes as $key) {
             if ($parsed = $this->parseRelationAttribute($key)) {
                 [$relation, $attribute] = $parsed;
-                $foreignKey = $this->$relation()->getForeignKeyName();
-                $value = $this->getRelatedValue($relation, $this->$foreignKey, $attribute);
-                $attributes[$key] = $value;
+                $foreignKey             = $this->{$relation}()->getForeignKeyName();
+                $value                  = $this->getRelatedValue($relation, $this->{$foreignKey}, $attribute);
+                $attributes[$key]       = $value;
             } else {
-                $value = $this->getAttribute($key);
+                $value            = $this->getAttribute($key);
                 $attributes[$key] = $this->formatAttributeValue($key, $value);
             }
         }
@@ -229,19 +247,19 @@ trait HasLogActivity
     }
 
     /**
-     * Get updated attributes
+     * Get updated attributes.
      */
     protected function getUpdatedAttributes(): array
     {
-        $original = $this->getOriginal();
-        $current = $this->getDirty();
+        $original      = $this->getOriginal();
+        $current       = $this->getDirty();
         $logAttributes = $this->getLogAttributes();
-        $changes = [];
+        $changes       = [];
 
         foreach ($logAttributes as $key) {
             if ($parsed = $this->parseRelationAttribute($key)) {
                 [$relation, $attribute] = $parsed;
-                $foreignKey = $this->$relation()->getForeignKeyName();
+                $foreignKey             = $this->{$relation}()->getForeignKeyName();
 
                 if (array_key_exists($foreignKey, $current)) {
                     $oldValue = $this->getRelatedValue($relation, $original[$foreignKey] ?? null, $attribute);
@@ -249,7 +267,7 @@ trait HasLogActivity
 
                     if ($oldValue !== $newValue) {
                         $changes[$key] = [
-                            'type'      => is_null($oldValue) ? 'added' : 'modified',                            'old_value' => $oldValue,
+                            'type'      => null === $oldValue ? 'added' : 'modified',                            'old_value' => $oldValue,
                             'new_value' => $newValue,
                         ];
                     }
@@ -274,7 +292,7 @@ trait HasLogActivity
     }
 
     /**
-     * Format attribute value
+     * Format attribute value.
      */
     protected function formatAttributeValue(string $key, $value): mixed
     {
@@ -326,38 +344,20 @@ trait HasLogActivity
     }
 
     /**
-     * Sort array recursively
-     */
-    protected static function ksortRecursive(&$array)
-    {
-        if (! is_array($array)) {
-            return;
-        }
-
-        ksort($array);
-
-        foreach ($array as &$value) {
-            if (is_array($value)) {
-                static::ksortRecursive($value);
-            }
-        }
-    }
-
-    /**
-     * Generate activity description
+     * Generate activity description.
      */
     protected function generateActivityDescription(string $event): string
     {
         $modelName = Str::headline(class_basename(static::class));
 
         return match ($event) {
-            'created'      => __('chatter::traits/has-log-activity.activity-log-failed.events.created', [
+            'created' => __('chatter::traits/has-log-activity.activity-log-failed.events.created', [
                 'model' => $modelName,
             ]),
-            'updated'      => __('chatter::traits/has-log-activity.activity-log-failed.events.updated', [
+            'updated' => __('chatter::traits/has-log-activity.activity-log-failed.events.updated', [
                 'model' => $modelName,
             ]),
-            'deleted'      => __('chatter::traits/has-log-activity.activity-log-failed.events.deleted', [
+            'deleted' => __('chatter::traits/has-log-activity.activity-log-failed.events.deleted', [
                 'model' => $modelName,
             ]),
             'soft_deleted' => __('chatter::traits/has-log-activity.activity-log-failed.events.soft-deleted', [
@@ -366,10 +366,10 @@ trait HasLogActivity
             'hard_deleted' => __('chatter::traits/has-log-activity.activity-log-failed.events.hard-deleted', [
                 'model' => $modelName,
             ]),
-            'restored'     => __('chatter::traits/has-log-activity.activity-log-failed.events.restored', [
+            'restored' => __('chatter::traits/has-log-activity.activity-log-failed.events.restored', [
                 'model' => $modelName,
             ]),
-            default        => $event
+            default => $event
         };
     }
 }

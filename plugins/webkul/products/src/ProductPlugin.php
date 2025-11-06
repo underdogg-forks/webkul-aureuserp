@@ -9,19 +9,19 @@ use Webkul\Support\Package;
 
 class ProductPlugin implements Plugin
 {
-    public function getId(): string
-    {
-        return 'products';
-    }
-
     public static function make(): static
     {
         return app(static::class);
     }
 
+    public function getId(): string
+    {
+        return 'products';
+    }
+
     public function register(Panel $panel): void
     {
-        if (! Package::isPluginInstalled($this->getId())) {
+        if ( ! Package::isPluginInstalled($this->getId())) {
             return;
         }
 
@@ -35,15 +35,12 @@ class ProductPlugin implements Plugin
             });
     }
 
-    public function boot(Panel $panel): void
-    {
-        //
-    }
+    public function boot(Panel $panel): void {}
 
     protected function getPluginBasePath($path = null): string
     {
         $reflector = new ReflectionClass(get_class($this));
 
-        return dirname($reflector->getFileName()).($path ?? '');
+        return dirname($reflector->getFileName()) . ($path ?? '');
     }
 }

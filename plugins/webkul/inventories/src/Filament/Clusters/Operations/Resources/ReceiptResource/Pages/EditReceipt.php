@@ -17,9 +17,15 @@ use Webkul\Support\Traits\HasRecordNavigationTabs;
 
 class EditReceipt extends EditRecord
 {
-    use HasRecordNavigationTabs, HasRepeaterColumnManager;
+    use HasRecordNavigationTabs;
+    use HasRepeaterColumnManager;
 
     protected static string $resource = ReceiptResource::class;
+
+    public function updateForm(): void
+    {
+        $this->fillForm();
+    }
 
     protected function getRedirectUrl(): string
     {
@@ -77,10 +83,5 @@ class EditReceipt extends EditRecord
                         ->body(__('inventories::filament/clusters/operations/resources/receipt/pages/edit-receipt.header-actions.delete.notification.success.body')),
                 ),
         ];
-    }
-
-    public function updateForm(): void
-    {
-        $this->fillForm();
     }
 }

@@ -6,11 +6,6 @@ use Filament\Actions\Action;
 
 class PreviewAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'orders.sales.preview-quotation';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -20,5 +15,10 @@ class PreviewAction extends Action
             ->modalFooterActions(fn ($record) => [])
             ->modalContent(fn ($record) => view('sales::sales.quotation', ['record' => $record]))
             ->color('gray');
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'orders.sales.preview-quotation';
     }
 }

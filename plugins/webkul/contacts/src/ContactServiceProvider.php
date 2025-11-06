@@ -20,8 +20,5 @@ class ContactServiceProvider extends PackageServiceProvider
             ->icon('contacts');
     }
 
-    public function packageBooted(): void
-    {
-        //
-    }
+    public function packageBooted(): void {}
 }

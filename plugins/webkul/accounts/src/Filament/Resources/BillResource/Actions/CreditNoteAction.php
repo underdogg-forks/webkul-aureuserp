@@ -20,11 +20,6 @@ use Webkul\Invoice\Filament\Clusters\Vendors\Resources\RefundResource;
 
 class CreditNoteAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'customers.invoice.credit-note';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -71,6 +66,11 @@ class CreditNoteAction extends Action
 
             $livewire->redirect($redirectUrl, navigate: FilamentView::hasSpaMode());
         });
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'customers.invoice.credit-note';
     }
 
     private function createMove(MoveReversal $creditNote, Move $record): Move

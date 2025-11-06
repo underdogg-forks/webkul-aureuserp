@@ -28,6 +28,11 @@ class ManageContacts extends SettingsPage
 
     protected static ?string $cluster = Settings::class;
 
+    public static function getNavigationLabel(): string
+    {
+        return __('website::filament/admin/clusters/settings/pages/manage-contacts.title');
+    }
+
     public function getBreadcrumbs(): array
     {
         return [
@@ -36,11 +41,6 @@ class ManageContacts extends SettingsPage
     }
 
     public function getTitle(): string
-    {
-        return __('website::filament/admin/clusters/settings/pages/manage-contacts.title');
-    }
-
-    public static function getNavigationLabel(): string
     {
         return __('website::filament/admin/clusters/settings/pages/manage-contacts.title');
     }

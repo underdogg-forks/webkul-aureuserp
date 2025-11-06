@@ -9,11 +9,6 @@ use Webkul\Account\Models\Payment;
 
 class MarkAsSendAdnUnsentAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'customers.payment.mark-as-sent-or-unsent';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -31,5 +26,10 @@ class MarkAsSendAdnUnsentAction extends Action
                 return $record->state !== PaymentStatus::IN_PROCESS->value
                     || ($record->paymentMethodLine?->paymentMethod?->code ?? '') !== 'manual';
             });
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'customers.payment.mark-as-sent-or-unsent';
     }
 }

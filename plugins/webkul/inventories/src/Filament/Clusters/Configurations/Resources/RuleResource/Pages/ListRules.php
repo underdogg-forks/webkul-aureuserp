@@ -14,6 +14,19 @@ class ListRules extends ListRecords
 {
     protected static string $resource = RuleResource::class;
 
+    public function getTabs(): array
+    {
+        return [
+            'all' => Tab::make(__('inventories::filament/clusters/configurations/resources/rule/pages/list-rules.tabs.all'))
+                ->badge(Rule::count()),
+            'archived' => Tab::make(__('inventories::filament/clusters/configurations/resources/rule/pages/list-rules.tabs.archived'))
+                ->badge(Rule::onlyTrashed()->count())
+                ->modifyQueryUsing(function ($query) {
+                    return $query->onlyTrashed();
+                }),
+        ];
+    }
+
     protected function getHeaderActions(): array
     {
         return [
@@ -35,19 +48,6 @@ class ListRules extends ListRecords
                         ->title(__('inventories::filament/clusters/configurations/resources/rule/pages/list-rules.header-actions.create.notification.title'))
                         ->body(__('inventories::filament/clusters/configurations/resources/rule/pages/list-rules.header-actions.create.notification.body')),
                 ),
-        ];
-    }
-
-    public function getTabs(): array
-    {
-        return [
-            'all' => Tab::make(__('inventories::filament/clusters/configurations/resources/rule/pages/list-rules.tabs.all'))
-                ->badge(Rule::count()),
-            'archived' => Tab::make(__('inventories::filament/clusters/configurations/resources/rule/pages/list-rules.tabs.archived'))
-                ->badge(Rule::onlyTrashed()->count())
-                ->modifyQueryUsing(function ($query) {
-                    return $query->onlyTrashed();
-                }),
         ];
     }
 }

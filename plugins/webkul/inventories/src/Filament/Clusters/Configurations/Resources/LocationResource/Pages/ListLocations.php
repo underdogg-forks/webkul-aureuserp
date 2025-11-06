@@ -15,30 +15,6 @@ class ListLocations extends ListRecords
 {
     protected static string $resource = LocationResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            CreateAction::make()
-                ->label(__('inventories::filament/clusters/configurations/resources/location/pages/list-locations.header-actions.create.label'))
-                ->icon('heroicon-o-plus-circle')
-                ->mutateDataUsing(function ($data) {
-                    $user = Auth::user();
-
-                    $data['creator_id'] = $user->id;
-
-                    $data['company_id'] = $user->defaultCompany?->id;
-
-                    return $data;
-                })
-                ->successNotification(
-                    Notification::make()
-                        ->success()
-                        ->title(__('inventories::filament/clusters/configurations/resources/location/pages/list-locations.header-actions.create.notification.title'))
-                        ->body(__('inventories::filament/clusters/configurations/resources/location/pages/list-locations.header-actions.create.notification.body')),
-                ),
-        ];
-    }
-
     public function getDefaultActiveTab(): string|int|null
     {
         return 'internal';
@@ -74,6 +50,30 @@ class ListLocations extends ListRecords
                 ->modifyQueryUsing(function ($query) {
                     return $query->onlyTrashed();
                 }),
+        ];
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            CreateAction::make()
+                ->label(__('inventories::filament/clusters/configurations/resources/location/pages/list-locations.header-actions.create.label'))
+                ->icon('heroicon-o-plus-circle')
+                ->mutateDataUsing(function ($data) {
+                    $user = Auth::user();
+
+                    $data['creator_id'] = $user->id;
+
+                    $data['company_id'] = $user->defaultCompany?->id;
+
+                    return $data;
+                })
+                ->successNotification(
+                    Notification::make()
+                        ->success()
+                        ->title(__('inventories::filament/clusters/configurations/resources/location/pages/list-locations.header-actions.create.notification.title'))
+                        ->body(__('inventories::filament/clusters/configurations/resources/location/pages/list-locations.header-actions.create.notification.body')),
+                ),
         ];
     }
 }

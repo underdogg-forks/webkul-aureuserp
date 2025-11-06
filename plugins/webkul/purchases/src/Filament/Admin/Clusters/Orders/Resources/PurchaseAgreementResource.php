@@ -2,6 +2,7 @@
 
 namespace Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources;
 
+use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkActionGroup;
@@ -69,7 +70,7 @@ class PurchaseAgreementResource extends Resource
 
     protected static ?string $model = Requisition::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-check';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-document-check';
 
     protected static bool $shouldRegisterNavigation = true;
 
@@ -115,7 +116,7 @@ class PurchaseAgreementResource extends Resource
                                         fn (Builder $query) => $query->withTrashed()->where('sub_type', 'supplier')
                                     )
                                     ->getOptionLabelFromRecordUsing(function ($record): string {
-                                        return $record->name.($record->trashed() ? ' (Deleted)' : '');
+                                        return $record->name . ($record->trashed() ? ' (Deleted)' : '');
                                     })
                                     ->disableOptionWhen(fn ($label) => str_contains($label, ' (Deleted)'))
                                     ->searchable()
@@ -182,7 +183,7 @@ class PurchaseAgreementResource extends Resource
                                     ->label(__('purchases::filament/admin/clusters/orders/resources/purchase-agreement.form.sections.general.fields.company'))
                                     ->relationship('company', 'name', modifyQueryUsing: fn (Builder $query) => $query->withTrashed())
                                     ->getOptionLabelFromRecordUsing(function ($record): string {
-                                        return $record->name.($record->trashed() ? ' (Deleted)' : '');
+                                        return $record->name . ($record->trashed() ? ' (Deleted)' : '');
                                     })
                                     ->disableOptionWhen(function ($label) {
                                         return str_contains($label, ' (Deleted)');
@@ -204,7 +205,7 @@ class PurchaseAgreementResource extends Resource
                             ]),
 
                         Tab::make(__('purchases::filament/admin/clusters/orders/resources/purchase-agreement.form.tabs.additional.title'))
-                            ->visible(! empty($customFormFields = static::getCustomFormFields()))
+                            ->visible( ! empty($customFormFields = static::getCustomFormFields()))
                             ->schema($customFormFields),
 
                         Tab::make(__('purchases::filament/admin/clusters/orders/resources/purchase-agreement.form.tabs.terms.title'))
@@ -262,7 +263,7 @@ class PurchaseAgreementResource extends Resource
                     ->preload()
                     ->distinct()
                     ->getOptionLabelFromRecordUsing(function ($record): string {
-                        return $record->name.($record->trashed() ? ' (Deleted)' : '');
+                        return $record->name . ($record->trashed() ? ' (Deleted)' : '');
                     })
                     ->disableOptionWhen(function ($value, $state, $component, $label) {
                         if (str_contains($label, ' (Deleted)')) {
@@ -270,7 +271,7 @@ class PurchaseAgreementResource extends Resource
                         }
 
                         $repeater = $component->getParentRepeater();
-                        if (! $repeater) {
+                        if ( ! $repeater) {
                             return false;
                         }
 
@@ -622,7 +623,7 @@ class PurchaseAgreementResource extends Resource
                             ]),
 
                         Section::make(__('purchases::filament/admin/clusters/orders/resources/purchase-agreement.infolist.tabs.additional.title'))
-                            ->visible(! empty($customInfolistEntries = static::getCustomInfolistEntries()))
+                            ->visible( ! empty($customInfolistEntries = static::getCustomInfolistEntries()))
                             ->schema($customInfolistEntries),
 
                         Tab::make(__('purchases::filament/admin/clusters/orders/resources/purchase-agreement.infolist.tabs.terms.title'))

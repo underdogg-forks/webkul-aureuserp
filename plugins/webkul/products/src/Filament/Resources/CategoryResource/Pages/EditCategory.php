@@ -18,6 +18,19 @@ class EditCategory extends EditRecord
 
     protected static string $resource = CategoryResource::class;
 
+    public function save(bool $shouldRedirect = true, bool $shouldSendSavedNotification = true): void
+    {
+        try {
+            parent::save($shouldRedirect, $shouldSendSavedNotification);
+        } catch (Exception $e) {
+            Notification::make()
+                ->danger()
+                ->title(__('products::filament/resources/category/pages/edit-category.save.notification.error.title'))
+                ->body($e->getMessage())
+                ->send();
+        }
+    }
+
     protected function getHeaderActions(): array
     {
         return [
@@ -45,19 +58,6 @@ class EditCategory extends EditRecord
                         ->body(__('products::filament/resources/category/pages/edit-category.header-actions.delete.notification.success.body')),
                 ),
         ];
-    }
-
-    public function save(bool $shouldRedirect = true, bool $shouldSendSavedNotification = true): void
-    {
-        try {
-            parent::save($shouldRedirect, $shouldSendSavedNotification);
-        } catch (Exception $e) {
-            Notification::make()
-                ->danger()
-                ->title(__('products::filament/resources/category/pages/edit-category.save.notification.error.title'))
-                ->body($e->getMessage())
-                ->send();
-        }
     }
 
     protected function getSavedNotification(): Notification

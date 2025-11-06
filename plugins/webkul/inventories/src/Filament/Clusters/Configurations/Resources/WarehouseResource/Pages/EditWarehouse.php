@@ -201,17 +201,17 @@ class EditWarehouse extends EditRecord
 
         $warehouse->receptionRoute->update([
             'name' => match ($this->data['reception_steps']) {
-                ReceptionStep::ONE_STEP->value    => $warehouse->name.': Receive in 1 step (Stock)',
-                ReceptionStep::TWO_STEPS->value   => $warehouse->name.': Receive in 2 steps (Input + Stock)',
-                ReceptionStep::THREE_STEPS->value => $warehouse->name.': Receive in 3 steps (Input + Quality + Stock)',
+                ReceptionStep::ONE_STEP->value    => $warehouse->name . ': Receive in 1 step (Stock)',
+                ReceptionStep::TWO_STEPS->value   => $warehouse->name . ': Receive in 2 steps (Input + Stock)',
+                ReceptionStep::THREE_STEPS->value => $warehouse->name . ': Receive in 3 steps (Input + Quality + Stock)',
             },
         ]);
 
         $warehouse->deliveryRoute->update([
             'name' => match ($this->data['delivery_steps']) {
-                DeliveryStep::ONE_STEP->value    => $warehouse->name.': Deliver in 1 step (Ship)',
-                DeliveryStep::TWO_STEPS->value   => $warehouse->name.': Deliver in 2 steps (Pick + Ship)',
-                DeliveryStep::THREE_STEPS->value => $warehouse->name.': Deliver in 3 steps (Pick + Pack + Ship)',
+                DeliveryStep::ONE_STEP->value    => $warehouse->name . ': Deliver in 1 step (Ship)',
+                DeliveryStep::TWO_STEPS->value   => $warehouse->name . ': Deliver in 2 steps (Pick + Ship)',
+                DeliveryStep::THREE_STEPS->value => $warehouse->name . ': Deliver in 3 steps (Pick + Pack + Ship)',
             },
         ]);
 
@@ -316,7 +316,7 @@ class EditWarehouse extends EditRecord
     {
         $currentStep = $this->data[$stepType] ?? null;
 
-        if (! $currentStep || ! isset($steps[$currentStep])) {
+        if ( ! $currentStep || ! isset($steps[$currentStep])) {
             return;
         }
 
@@ -335,7 +335,7 @@ class EditWarehouse extends EditRecord
     {
         $currentStep = $this->data[$stepType] ?? null;
 
-        if (! $currentStep || ! isset($steps[$currentStep])) {
+        if ( ! $currentStep || ! isset($steps[$currentStep])) {
             return;
         }
 
@@ -358,7 +358,7 @@ class EditWarehouse extends EditRecord
     {
         $currentStep = $this->data[$stepType] ?? null;
 
-        if (! $currentStep || ! isset($steps[$currentStep])) {
+        if ( ! $currentStep || ! isset($steps[$currentStep])) {
             return;
         }
 

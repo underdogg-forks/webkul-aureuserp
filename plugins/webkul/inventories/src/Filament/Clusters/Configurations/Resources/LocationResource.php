@@ -2,6 +2,7 @@
 
 namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources;
 
+use BackedEnum;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Filament\Actions\BulkAction;
 use Filament\Actions\BulkActionGroup;
@@ -55,7 +56,7 @@ class LocationResource extends Resource
 {
     protected static ?string $model = Location::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-map-pin';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-map-pin';
 
     protected static ?int $navigationSort = 2;
 
@@ -124,7 +125,7 @@ class LocationResource extends Resource
                                     ->default(LocationType::INTERNAL->value)
                                     ->live()
                                     ->afterStateUpdated(function (Set $set, Get $get) {
-                                        if (! $get('type') === in_array($get('type'), [LocationType::INTERNAL->value, LocationType::INVENTORY->value])) {
+                                        if ( ! $get('type') === in_array($get('type'), [LocationType::INTERNAL->value, LocationType::INVENTORY->value])) {
                                             $set('is_scrap', false);
                                         }
 
@@ -295,7 +296,6 @@ class LocationResource extends Resource
                                 ->body(__('inventories::filament/clusters/configurations/resources/location.table.actions.force-delete.notification.error.body'))
                                 ->send();
                             $action->cancel();
-
                         }
                     })
                     ->successNotification(
@@ -346,7 +346,6 @@ class LocationResource extends Resource
                                     ->body(__('inventories::filament/clusters/configurations/resources/location.table.bulk-actions.force-delete.notification.error.body'))
                                     ->send();
                                 $action->cancel();
-
                             }
                         })
                         ->successNotification(
@@ -460,7 +459,7 @@ class LocationResource extends Resource
             $route = session('current_route');
         }
 
-        if ($route === self::getRouteBaseName().'.index') {
+        if ($route === self::getRouteBaseName() . '.index') {
             return SubNavigationPosition::Start;
         }
 

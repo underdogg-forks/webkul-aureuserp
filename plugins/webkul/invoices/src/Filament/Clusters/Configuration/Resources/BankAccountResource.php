@@ -18,7 +18,7 @@ class BankAccountResource extends BaseBankAccountResource
     public static function getPages(): array
     {
         return [
-            'index'  => ListBankAccounts::route('/'),
+            'index' => ListBankAccounts::route('/'),
         ];
     }
 }

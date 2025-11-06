@@ -9,8 +9,5 @@ class BankStatementSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
-    {
-        //
-    }
+    public function run(): void {}
 }

@@ -9,13 +9,13 @@ use Webkul\Field\Models\Field;
 class FieldsColumnManager
 {
     /**
-     * Create a new column for the field
+     * Create a new column for the field.
      */
     public static function createColumn(Field $field): void
     {
         $table = static::getTableName($field);
 
-        if (! Schema::hasTable($table)) {
+        if ( ! Schema::hasTable($table)) {
             return;
         }
 
@@ -29,18 +29,18 @@ class FieldsColumnManager
     }
 
     /**
-     * Update an existing column
+     * Update an existing column.
      */
     public static function updateColumn(Field $field): void
     {
         $table = static::getTableName($field);
 
-        if (! Schema::hasTable($table)) {
+        if ( ! Schema::hasTable($table)) {
             return;
         }
 
         Schema::table($table, function (Blueprint $table) use ($field) {
-            if (! Schema::hasColumn($table->getTable(), $field->code)) {
+            if ( ! Schema::hasColumn($table->getTable(), $field->code)) {
                 static::createColumn($field);
 
                 return;
@@ -49,18 +49,18 @@ class FieldsColumnManager
     }
 
     /**
-     * Delete a column
+     * Delete a column.
      */
     public static function deleteColumn(Field $field): void
     {
         $table = static::getTableName($field);
 
-        if (! Schema::hasTable($table)) {
+        if ( ! Schema::hasTable($table)) {
             return;
         }
 
         Schema::table($table, function (Blueprint $table) use ($field) {
-            if (! Schema::hasColumn($table->getTable(), $field->code)) {
+            if ( ! Schema::hasColumn($table->getTable(), $field->code)) {
                 return;
             }
 
@@ -69,14 +69,14 @@ class FieldsColumnManager
     }
 
     /**
-     * Add column to table based on field type
+     * Add column to table based on field type.
      */
     protected static function addColumn(Blueprint $table, Field $field): void
     {
         $typeMethod = static::getColumnType($field);
 
         // Create the column
-        $column = $table->$typeMethod($field->code);
+        $column = $table->{$typeMethod}($field->code);
 
         // Apply common column attributes
         $column->nullable();  // All custom fields are nullable by default
@@ -90,7 +90,7 @@ class FieldsColumnManager
     }
 
     /**
-     * Determine the appropriate column type for text fields
+     * Determine the appropriate column type for text fields.
      */
     protected static function getColumnType(Field $field): string
     {
@@ -108,7 +108,7 @@ class FieldsColumnManager
     }
 
     /**
-     * Determine the appropriate column type for text fields
+     * Determine the appropriate column type for text fields.
      */
     protected static function getTextColumnType(Field $field): string
     {
@@ -120,7 +120,7 @@ class FieldsColumnManager
     }
 
     /**
-     * Apply validation rules to the column
+     * Apply validation rules to the column.
      */
     protected static function applyValidationToColumn($column, array $validation): void
     {
@@ -134,7 +134,7 @@ class FieldsColumnManager
     }
 
     /**
-     * Get the table name for the customizable model
+     * Get the table name for the customizable model.
      */
     protected static function getTableName(Field $field): string
     {

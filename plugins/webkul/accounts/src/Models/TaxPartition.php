@@ -13,7 +13,13 @@ use Webkul\Support\Models\Company;
 
 class TaxPartition extends Model implements Sortable
 {
-    use HasFactory, SortableTrait;
+    use HasFactory;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     protected $table = 'accounts_tax_partition_lines';
 
@@ -29,31 +35,6 @@ class TaxPartition extends Model implements Sortable
         'creator_id',
     ];
 
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
-    ];
-
-    public function createdBy()
-    {
-        return $this->belongsTo(User::class, 'creator_id');
-    }
-
-    public function account()
-    {
-        return $this->belongsTo(Account::class, 'account_id');
-    }
-
-    public function tax()
-    {
-        return $this->belongsTo(Tax::class, 'tax_id');
-    }
-
-    public function company()
-    {
-        return $this->belongsTo(Company::class, 'company_id');
-    }
-
     public static function validateRepartitionLines($invoices, $refunds)
     {
         if ($invoices->count() !== $refunds->count()) {
@@ -64,14 +45,14 @@ class TaxPartition extends Model implements Sortable
             throw new Exception('Invoice and credit note distribution should each contain exactly one record for the base.');
         }
 
-        if (! $invoices->where('repartition_type', 'tax')->count() || ! $refunds->where('repartition_type', 'tax')->count()) {
+        if ( ! $invoices->where('repartition_type', 'tax')->count() || ! $refunds->where('repartition_type', 'tax')->count()) {
             throw new Exception('Invoice and credit note repartition should have at least one tax repartition record.');
         }
 
         foreach ($invoices as $index => $invRep) {
             $refRep = $refunds[$index] ?? null;
 
-            if (! $refRep || $invRep->repartition_type !== $refRep->repartition_type || $invRep->factor_percent !== $refRep->factor_percent) {
+            if ( ! $refRep || $invRep->repartition_type !== $refRep->repartition_type || $invRep->factor_percent !== $refRep->factor_percent) {
                 throw new Exception('Invoice and credit note distribution should match (same percentages, in the same order).');
             }
         }
@@ -140,5 +121,25 @@ class TaxPartition extends Model implements Sortable
                 throw $e;
             }
         });
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'creator_id');
+    }
+
+    public function account()
+    {
+        return $this->belongsTo(Account::class, 'account_id');
+    }
+
+    public function tax()
+    {
+        return $this->belongsTo(Tax::class, 'tax_id');
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id');
     }
 }

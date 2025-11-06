@@ -12,7 +12,13 @@ use Webkul\Support\Models\Country;
 
 class FiscalPosition extends Model implements Sortable
 {
-    use HasFactory, SortableTrait;
+    use HasFactory;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     protected $table = 'accounts_fiscal_positions';
 
@@ -29,11 +35,6 @@ class FiscalPosition extends Model implements Sortable
         'notes',
         'auto_reply',
         'vat_required',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function company()

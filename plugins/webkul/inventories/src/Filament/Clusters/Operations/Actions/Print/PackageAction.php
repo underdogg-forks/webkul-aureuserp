@@ -7,11 +7,6 @@ use Filament\Actions\Action;
 
 class PackageAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'inventories.operations.print.package';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -22,14 +17,19 @@ class PackageAction extends Action
                 $packages = $record->packages()->distinct()->get();
 
                 $pdf = PDF::loadView('inventories::filament.clusters.products.packages.actions.print-with-content', [
-                    'records'  => $packages,
+                    'records' => $packages,
                 ]);
 
                 $pdf->setPaper('a4', 'portrait');
 
                 return response()->streamDownload(function () use ($pdf) {
                     echo $pdf->output();
-                }, 'Package-'.str_replace('/', '_', $record->name).'.pdf');
+                }, 'Package-' . str_replace('/', '_', $record->name) . '.pdf');
             });
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'inventories.operations.print.package';
     }
 }

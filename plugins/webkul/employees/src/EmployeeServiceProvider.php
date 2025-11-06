@@ -49,8 +49,5 @@ class EmployeeServiceProvider extends PackageServiceProvider
             ->icon('employees');
     }
 
-    public function packageBooted(): void
-    {
-        //
-    }
+    public function packageBooted(): void {}
 }

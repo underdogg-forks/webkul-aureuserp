@@ -2,6 +2,7 @@
 
 namespace Webkul\Recruitment\Filament\Clusters\Configurations\Resources;
 
+use BackedEnum;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
@@ -25,7 +26,7 @@ class UTMSourceResource extends Resource
 {
     protected static ?string $model = UTMSource::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-globe-americas';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-globe-americas';
 
     protected static ?string $cluster = Configurations::class;
 

@@ -2,6 +2,7 @@
 
 namespace Webkul\Inventory\Filament\Clusters\Products\Resources;
 
+use BackedEnum;
 use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -41,7 +42,7 @@ class ProductResource extends BaseProductResource
 
     protected static ?string $model = Product::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-shopping-bag';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-shopping-bag';
 
     protected static bool $shouldRegisterNavigation = true;
 
@@ -73,7 +74,7 @@ class ProductResource extends BaseProductResource
                             ->default(true)
                             ->live()
                             ->afterStateUpdated(function (Set $set, Get $get) {
-                                if (! $get('is_storable')) {
+                                if ( ! $get('is_storable')) {
                                     $set('tracking', ProductTracking::QTY->value);
 
                                     $set('use_expiration_date', false);
@@ -163,7 +164,7 @@ class ProductResource extends BaseProductResource
             ->visible(fn (Get $get): bool => $get('type') == ProductType::GOODS);
 
         $firstGroupChildComponents[] = Section::make(__('inventories::filament/clusters/products/resources/product.form.sections.additional.title'))
-            ->visible(! empty($customFormFields = static::getCustomFormFields()))
+            ->visible( ! empty($customFormFields = static::getCustomFormFields()))
             ->schema($customFormFields);
 
         $components[0]->childComponents($firstGroupChildComponents);

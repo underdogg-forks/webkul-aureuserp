@@ -12,11 +12,6 @@ use Webkul\Purchase\Models\Order;
 
 class CancelAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'purchases.orders.cancel';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -64,5 +59,10 @@ class CancelAction extends Action
                 OrderState::DONE,
                 OrderState::CANCELED,
             ]));
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'purchases.orders.cancel';
     }
 }

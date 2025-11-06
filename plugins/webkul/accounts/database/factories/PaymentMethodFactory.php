@@ -5,7 +5,7 @@ namespace Webkul\Account\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<\App\Models\PaymentMethod>
+ * @extends Factory<\Webkul\Sale\Models\PaymentMethod>
  */
 class PaymentMethodFactory extends Factory
 {
@@ -17,7 +17,6 @@ class PaymentMethodFactory extends Factory
     public function definition(): array
     {
         return [
-            //
         ];
     }
 }

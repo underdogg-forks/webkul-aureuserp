@@ -6,7 +6,6 @@ use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 use DanHarrin\LivewireRateLimiting\WithRateLimiting;
 use Exception;
 use Filament\Actions\Action;
-use Filament\Actions\ActionGroup;
 use Filament\Auth\Events\Registered;
 use Filament\Auth\Http\Responses\Contracts\RegistrationResponse;
 use Filament\Auth\Notifications\VerifyEmail;
@@ -34,9 +33,9 @@ class Register extends Page
     use InteractsWithForms;
     use WithRateLimiting;
 
-    protected string $view = 'website::filament.customer.pages.auth.register';
-
     public ?array $data = [];
+
+    protected string $view = 'website::filament.customer.pages.auth.register';
 
     protected string $userModel;
 
@@ -94,6 +93,36 @@ class Register extends Page
         return app(RegistrationResponse::class);
     }
 
+    public function form(Schema $schema): Schema
+    {
+        return $schema;
+    }
+
+    public function loginAction(): Action
+    {
+        return Action::make('login')
+            ->link()
+            ->label(__('website::filament/customer/pages/auth/register.actions.login.label'))
+            ->url(filament()->getLoginUrl());
+    }
+
+    public function getTitle(): string|Htmlable
+    {
+        return __('website::filament/customer/pages/auth/register.title');
+    }
+
+    public function getHeading(): string|Htmlable
+    {
+        return '';
+    }
+
+    public function getRegisterFormAction(): Action
+    {
+        return Action::make('register')
+            ->label(__('website::filament/customer/pages/auth/register.form.actions.register.label'))
+            ->submit('register');
+    }
+
     protected function getRateLimitedNotification(TooManyRequestsException $exception): ?Notification
     {
         return Notification::make()
@@ -115,7 +144,7 @@ class Register extends Page
 
     protected function sendEmailVerificationNotification(Model $user): void
     {
-        if (! $user instanceof MustVerifyEmail) {
+        if ( ! $user instanceof MustVerifyEmail) {
             return;
         }
 
@@ -123,21 +152,16 @@ class Register extends Page
             return;
         }
 
-        if (! method_exists($user, 'notify')) {
+        if ( ! method_exists($user, 'notify')) {
             $userClass = $user::class;
 
             throw new Exception("Model [{$userClass}] does not have a [notify()] method.");
         }
 
-        $notification = app(VerifyEmail::class);
+        $notification      = app(VerifyEmail::class);
         $notification->url = Filament::getVerifyEmailUrl($user);
 
         $user->notify($notification);
-    }
-
-    public function form(Schema $schema): Schema
-    {
-        return $schema;
     }
 
     protected function getForms(): array
@@ -198,14 +222,6 @@ class Register extends Page
             ->dehydrated(false);
     }
 
-    public function loginAction(): Action
-    {
-        return Action::make('login')
-            ->link()
-            ->label(__('website::filament/customer/pages/auth/register.actions.login.label'))
-            ->url(filament()->getLoginUrl());
-    }
-
     protected function getUserModel(): string
     {
         if (isset($this->userModel)) {
@@ -221,28 +237,11 @@ class Register extends Page
         return $this->userModel = $provider->getModel();
     }
 
-    public function getTitle(): string|Htmlable
-    {
-        return __('website::filament/customer/pages/auth/register.title');
-    }
-
-    public function getHeading(): string|Htmlable
-    {
-        return '';
-    }
-
     protected function getFormActions(): array
     {
         return [
             $this->getRegisterFormAction(),
         ];
-    }
-
-    public function getRegisterFormAction(): Action
-    {
-        return Action::make('register')
-            ->label(__('website::filament/customer/pages/auth/register.form.actions.register.label'))
-            ->submit('register');
     }
 
     protected function hasFullWidthFormActions(): bool

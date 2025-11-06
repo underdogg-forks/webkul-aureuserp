@@ -11,13 +11,14 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+
+use function Laravel\Prompts\password;
+use function Laravel\Prompts\text;
+
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Webkul\Support\Models\Company;
 use Webkul\Support\Models\Currency;
-
-use function Laravel\Prompts\password;
-use function Laravel\Prompts\text;
 
 class InstallERP extends Command
 {
@@ -48,7 +49,7 @@ class InstallERP extends Command
             $this->isAlreadyInstalled()
             && ! $this->option('force')
         ) {
-            if (! $this->handleReinstallation()) {
+            if ( ! $this->handleReinstallation()) {
                 $this->info('Installation cancelled.');
 
                 return;
@@ -72,6 +73,23 @@ class InstallERP extends Command
         Event::dispatch('aureus.installed');
 
         $this->info('🎉 ERP System installation completed successfully!');
+    }
+
+    public function backfillMissingCreatorIds($user)
+    {
+        $mappings = [
+            'activity_plans'             => 'creator_id',
+            'partners_partners'          => 'creator_id',
+            'unit_of_measure_categories' => 'creator_id',
+            'unit_of_measures'           => 'creator_id',
+            'utm_campaigns'              => 'created_by',
+            'utm_mediums'                => 'creator_id',
+            'utm_stages'                 => 'created_by',
+        ];
+
+        collect($mappings)
+            ->filter(fn ($column) => null !== $column)
+            ->each(fn ($column, $table) => DB::table($table)->whereNull($column)->update([$column => $user->id]));
     }
 
     /**
@@ -113,7 +131,7 @@ class InstallERP extends Command
 
         $doubleConfirmation = $this->confirm('Are you absolutely sure you want to wipe the database and reinstall? This is your last chance to cancel.');
 
-        if (! $doubleConfirmation) {
+        if ( ! $doubleConfirmation) {
             $this->info('Wise choice! Installation cancelled.');
 
             return false;
@@ -137,7 +155,7 @@ class InstallERP extends Command
             Artisan::call('migrate:fresh', [], $this->getOutput());
             $this->info('✅ Database wiped successfully.');
         } catch (Exception $e) {
-            $this->error('❌ Failed to wipe database: '.$e->getMessage());
+            $this->error('❌ Failed to wipe database: ' . $e->getMessage());
 
             $this->error('Please manually drop your database and create a new one before proceeding.');
 
@@ -245,7 +263,7 @@ class InstallERP extends Command
 
         $adminRoleName = $this->getAdminRoleName();
 
-        if (! $adminUser->hasRole($adminRoleName)) {
+        if ( ! $adminUser->hasRole($adminRoleName)) {
             $adminUser->assignRole($adminRoleName);
         }
 
@@ -328,7 +346,7 @@ class InstallERP extends Command
      */
     protected function validateAdminEmail(string $email, Model $userModel): ?string
     {
-        if (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if ( ! filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return 'The email address must be valid.';
         }
 
@@ -344,7 +362,7 @@ class InstallERP extends Command
      */
     protected function validateAdminPassword(string $password): ?string
     {
-        return strlen($password) >= 8 ? null : 'The password must be at least 8 characters long.';
+        return mb_strlen($password) >= 8 ? null : 'The password must be at least 8 characters long.';
     }
 
     /**
@@ -352,7 +370,7 @@ class InstallERP extends Command
      */
     protected function askToStarGithubRepository(): void
     {
-        if (! $this->confirm('Would you like to star our repo on GitHub?')) {
+        if ( ! $this->confirm('Would you like to star our repo on GitHub?')) {
             return;
         }
 
@@ -387,23 +405,6 @@ class InstallERP extends Command
         $this->info('✅ Storage directory linked successfully.');
     }
 
-    public function backfillMissingCreatorIds($user)
-    {
-        $mappings = [
-            'activity_plans'              => 'creator_id',
-            'partners_partners'           => 'creator_id',
-            'unit_of_measure_categories'  => 'creator_id',
-            'unit_of_measures'            => 'creator_id',
-            'utm_campaigns'               => 'created_by',
-            'utm_mediums'                 => 'creator_id',
-            'utm_stages'                  => 'created_by',
-        ];
-
-        collect($mappings)
-            ->filter(fn ($column) => ! is_null($column))
-            ->each(fn ($column, $table) => DB::table($table)->whereNull($column)->update([$column => $user->id]));
-    }
-
     /**
      * Resolve default settings for the user.
      */
@@ -428,7 +429,7 @@ class InstallERP extends Command
         ];
 
         foreach ($settings as $setting) {
-            if (! isset($setting['payload'])) {
+            if ( ! isset($setting['payload'])) {
                 continue;
             }
 

@@ -9,11 +9,6 @@ use Webkul\Sale\Facades\SaleOrder;
 
 class BackToQuotationAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'orders.sales.bak-to-quotation';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -33,5 +28,10 @@ class BackToQuotationAction extends Action
                     ->body(__('sales::filament/clusters/orders/resources/quotation/actions/back-to-quotation.notification.back-to-quotation.body'))
                     ->send();
             });
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'orders.sales.bak-to-quotation';
     }
 }

@@ -4,9 +4,9 @@ namespace Webkul\Project\Enums;
 
 enum ProjectVisibility: string
 {
-    case PRIVATE = 'private';
+    case PRIVATE  = 'private';
     case INTERNAL = 'internal';
-    case PUBLIC = 'public';
+    case PUBLIC   = 'public';
 
     public static function options(): array
     {

@@ -2,6 +2,7 @@
 
 namespace Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources;
 
+use BackedEnum;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
@@ -39,7 +40,7 @@ class VendorPriceResource extends Resource
 {
     protected static ?string $model = ProductSupplier::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-archive-box';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-archive-box';
 
     protected static ?int $navigationSort = 10;
 
@@ -509,7 +510,6 @@ class VendorPriceResource extends Resource
                                     ]),
                             ])
                             ->columnSpan(['lg' => 1]),
-
                     ])
                     ->columnSpan(['lg' => 1]),
             ])

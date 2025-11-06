@@ -192,7 +192,7 @@ trait EmployeeResumeRelation
                     ->icon('heroicon-o-plus-circle')
                     ->mutateDataUsing(function (array $data): array {
                         $data['creator_id'] = Auth::user()->id;
-                        $data['user_id'] = Auth::user()->id;
+                        $data['user_id']    = Auth::user()->id;
 
                         return $data;
                     })

@@ -17,14 +17,6 @@ class ListCandidates extends ListRecords
 
     protected static string $resource = CandidateResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            CreateAction::make()
-                ->icon('heroicon-o-plus-circle'),
-        ];
-    }
-
     public function getPresetTableViews(): array
     {
         return [
@@ -153,6 +145,14 @@ class ListCandidates extends ListRecords
                         ->orderBy('recruitments_applicants.created_at', 'desc')
                         ->orderBy('recruitments_candidates.created_at', 'desc');
                 }),
+        ];
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            CreateAction::make()
+                ->icon('heroicon-o-plus-circle'),
         ];
     }
 }

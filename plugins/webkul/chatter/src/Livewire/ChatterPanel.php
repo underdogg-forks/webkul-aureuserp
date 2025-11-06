@@ -46,7 +46,10 @@ use Webkul\Support\Models\ActivityType;
 
 class ChatterPanel extends Component implements HasActions, HasForms, HasInfolists
 {
-    use InteractsWithActions, InteractsWithForms, InteractsWithInfolists, WithFileUploads;
+    use InteractsWithActions;
+    use InteractsWithForms;
+    use InteractsWithInfolists;
+    use WithFileUploads;
 
     public Model $record;
 
@@ -133,14 +136,14 @@ class ChatterPanel extends Component implements HasActions, HasForms, HasInfolis
         if ($this->filterType !== 'all') {
             $filters[] = [
                 'key'   => 'filterType',
-                'label' => 'Type: '.ucfirst($this->filterType),
+                'label' => 'Type: ' . ucfirst($this->filterType),
             ];
         }
 
         if (filled($this->dateRange)) {
             $filters[] = [
                 'key'   => 'dateRange',
-                'label' => 'Date: '.$this->getDateRangeLabel(),
+                'label' => 'Date: ' . $this->getDateRangeLabel(),
             ];
         }
 
@@ -157,9 +160,9 @@ class ChatterPanel extends Component implements HasActions, HasForms, HasInfolis
     public function removeFilter(string $key): void
     {
         match ($key) {
-            'search'     => $this->search = '',
+            'search'     => $this->search     = '',
             'filterType' => $this->filterType = 'all',
-            'dateRange'  => $this->dateRange = null,
+            'dateRange'  => $this->dateRange  = null,
             'pinnedOnly' => $this->pinnedOnly = false,
         };
     }
@@ -208,114 +211,6 @@ class ChatterPanel extends Component implements HasActions, HasForms, HasInfolis
     {
         return FiltersAction::make('filters')
             ->visible(fn () => $this->tab === 'messages');
-    }
-
-    private function getDateRangeLabel(): string
-    {
-        return match ($this->dateRange) {
-            'today'     => 'Today',
-            'yesterday' => 'Yesterday',
-            'week'      => 'Last 7 days',
-            'month'     => 'Last 30 days',
-            'quarter'   => 'Last 3 months',
-            'year'      => 'Last year',
-            default     => 'Unknown range',
-        };
-    }
-
-    private function getBaseQuery()
-    {
-        try {
-            $this->record->unsetRelation('messages');
-
-            $this->record->unsetRelation('activities');
-        } catch (Throwable $e) {
-        }
-
-        return $this->record->withFilters($this->filters);
-    }
-
-    private function getFilteredQuery()
-    {
-        $state = $this->getBaseQuery();
-
-        if ($state instanceof Collection) {
-            $query = trim(strtolower($this->search));
-
-            if ($query !== '') {
-                $state = $state->filter(function ($m) use ($query) {
-                    $subject = strtolower((string) data_get($m, 'subject', ''));
-                    $body = strtolower(strip_tags((string) data_get($m, 'body', '')));
-
-                    return str_contains($subject, $query) || str_contains($body, $query);
-                });
-            }
-
-            if ($this->filterType !== 'all') {
-                $state = $state->where('type', $this->filterType);
-            }
-
-            if (filled($this->dateRange)) {
-                $state = $this->applyDateRangeFilter($state);
-            }
-
-            if ($this->pinnedOnly) {
-                $state = $state->filter(fn ($m) => ! empty($m->pinned_at));
-            }
-
-            $state = $this->applySorting($state);
-        }
-
-        return $state;
-    }
-
-    private function applyDateRangeFilter($state)
-    {
-        $now = now();
-
-        return $state->filter(function ($message) use ($now) {
-            $createdAt = Carbon::parse($message->created_at);
-
-            return match ($this->dateRange) {
-                'today'     => $createdAt->isToday(),
-                'yesterday' => $createdAt->isYesterday(),
-                'week'      => $createdAt->gte($now->copy()->subWeek()),
-                'month'     => $createdAt->gte($now->copy()->subMonth()),
-                'quarter'   => $createdAt->gte($now->copy()->subMonths(3)),
-                'year'      => $createdAt->gte($now->copy()->subYear()),
-                default     => true,
-            };
-        });
-    }
-
-    private function applySorting($state)
-    {
-        return $state->sort(function ($a, $b) {
-            $pa = ! empty($a->pinned_at);
-            $pb = ! empty($b->pinned_at);
-
-            if ($pa !== $pb) {
-                return $pa ? -1 : 1;
-            }
-
-            return match ($this->sortBy) {
-                'created_at_asc'  => $a->created_at <=> $b->created_at,
-                'updated_at_desc' => $b->updated_at <=> $a->updated_at,
-                'priority'        => $this->comparePriority($a, $b),
-                default           => $b->created_at <=> $a->created_at,
-            };
-        })->values();
-    }
-
-    private function comparePriority($a, $b): int
-    {
-        $priorityOrder = ['notification' => 4, 'activity' => 3, 'note' => 2, 'comment' => 1];
-
-        $priorityA = $priorityOrder[$a->type] ?? 0;
-
-        $priorityB = $priorityOrder[$b->type] ?? 0;
-
-        return $priorityB <=> $priorityA;
     }
 
     public function fileAction(): FileAction
@@ -411,27 +306,6 @@ class ChatterPanel extends Component implements HasActions, HasForms, HasInfolis
             ]);
     }
 
-    protected function processMessage(int $messageId, ?string $feedback): void
-    {
-        $message = Message::find($messageId);
-
-        if (! $message) {
-            return;
-        }
-
-        $this->record->addMessage([
-            'type' => 'comment',
-            'body' => collect([
-                $message->activityType?->name ? $message->activityType?->name.' done' : null,
-                $message->summary ? $message->summary : null,
-                $message->body ? __('chatter::livewire/chatter-panel.process-message.original-note', ['body' => $message->body]) : null,
-                $feedback ? __('chatter::livewire/chatter-panel.process-message.feedback', ['feedback' => $feedback]) : null,
-            ])->filter()->implode(''),
-        ]);
-
-        $message->delete();
-    }
-
     public function editActivityAction(): Action
     {
         return Action::make('editActivity')
@@ -441,7 +315,7 @@ class ChatterPanel extends Component implements HasActions, HasForms, HasInfolis
             ->label(__('chatter::livewire/chatter-panel.edit-activity.title'))
             ->mountUsing(function (Schema $schema, $livewire) {
                 $activityId = $livewire->mountedActionsArguments[0]['id'];
-                $record = Message::find($activityId);
+                $record     = Message::find($activityId);
 
                 $schema->fill([
                     'activity_plan_id' => $record->activity_plan_id,
@@ -478,8 +352,8 @@ class ChatterPanel extends Component implements HasActions, HasForms, HasInfolis
                                     Placeholder::make('plan_summary')
                                         ->label(__('chatter::livewire/chatter-panel.edit-activity.form.fields.plan-summary'))
                                         ->content(function (Get $get) {
-                                            if (! $get('activity_plan_id')) {
-                                                return null;
+                                            if ( ! $get('activity_plan_id')) {
+                                                return;
                                             }
 
                                             $activityPlanTemplates = ActivityPlan::find($get('activity_plan_id'))
@@ -490,7 +364,7 @@ class ChatterPanel extends Component implements HasActions, HasForms, HasInfolis
                                                 $planDate = $get('date_deadline') ? Carbon::parse($get('date_deadline'))->format('m/d/Y') : '';
                                                 $html .= '<div class="flex items-center space-x-2" style="margin-left: 20px;">
                                                             <span>•</span>
-                                                            <span style="margin-left:2px;">'.$activityPlanTemplate->summary.($planDate ? ' ('.$planDate.')' : '').'</span>
+                                                            <span style="margin-left:2px;">' . $activityPlanTemplate->summary . ($planDate ? ' (' . $planDate . ')' : '') . '</span>
                                                           </div>';
                                             }
                                             $html .= '</div>';
@@ -596,7 +470,7 @@ class ChatterPanel extends Component implements HasActions, HasForms, HasInfolis
     {
         $message = Message::find($id);
 
-        if (! $message) {
+        if ( ! $message) {
             return;
         }
 
@@ -649,5 +523,134 @@ class ChatterPanel extends Component implements HasActions, HasForms, HasInfolis
     public function render(): View
     {
         return view('chatter::livewire.chatter-panel');
+    }
+
+    protected function processMessage(int $messageId, ?string $feedback): void
+    {
+        $message = Message::find($messageId);
+
+        if ( ! $message) {
+            return;
+        }
+
+        $this->record->addMessage([
+            'type' => 'comment',
+            'body' => collect([
+                $message->activityType?->name ? $message->activityType?->name . ' done' : null,
+                $message->summary ? $message->summary : null,
+                $message->body ? __('chatter::livewire/chatter-panel.process-message.original-note', ['body' => $message->body]) : null,
+                $feedback ? __('chatter::livewire/chatter-panel.process-message.feedback', ['feedback' => $feedback]) : null,
+            ])->filter()->implode(''),
+        ]);
+
+        $message->delete();
+    }
+
+    private function getDateRangeLabel(): string
+    {
+        return match ($this->dateRange) {
+            'today'     => 'Today',
+            'yesterday' => 'Yesterday',
+            'week'      => 'Last 7 days',
+            'month'     => 'Last 30 days',
+            'quarter'   => 'Last 3 months',
+            'year'      => 'Last year',
+            default     => 'Unknown range',
+        };
+    }
+
+    private function getBaseQuery()
+    {
+        try {
+            $this->record->unsetRelation('messages');
+
+            $this->record->unsetRelation('activities');
+        } catch (Throwable $e) {
+        }
+
+        return $this->record->withFilters($this->filters);
+    }
+
+    private function getFilteredQuery()
+    {
+        $state = $this->getBaseQuery();
+
+        if ($state instanceof Collection) {
+            $query = mb_trim(mb_strtolower($this->search));
+
+            if ($query !== '') {
+                $state = $state->filter(function ($m) use ($query) {
+                    $subject = mb_strtolower((string) data_get($m, 'subject', ''));
+                    $body    = mb_strtolower(strip_tags((string) data_get($m, 'body', '')));
+
+                    return str_contains($subject, $query) || str_contains($body, $query);
+                });
+            }
+
+            if ($this->filterType !== 'all') {
+                $state = $state->where('type', $this->filterType);
+            }
+
+            if (filled($this->dateRange)) {
+                $state = $this->applyDateRangeFilter($state);
+            }
+
+            if ($this->pinnedOnly) {
+                $state = $state->filter(fn ($m) => ! empty($m->pinned_at));
+            }
+
+            $state = $this->applySorting($state);
+        }
+
+        return $state;
+    }
+
+    private function applyDateRangeFilter($state)
+    {
+        $now = now();
+
+        return $state->filter(function ($message) use ($now) {
+            $createdAt = Carbon::parse($message->created_at);
+
+            return match ($this->dateRange) {
+                'today'     => $createdAt->isToday(),
+                'yesterday' => $createdAt->isYesterday(),
+                'week'      => $createdAt->gte($now->copy()->subWeek()),
+                'month'     => $createdAt->gte($now->copy()->subMonth()),
+                'quarter'   => $createdAt->gte($now->copy()->subMonths(3)),
+                'year'      => $createdAt->gte($now->copy()->subYear()),
+                default     => true,
+            };
+        });
+    }
+
+    private function applySorting($state)
+    {
+        return $state->sort(function ($a, $b) {
+            $pa = ! empty($a->pinned_at);
+            $pb = ! empty($b->pinned_at);
+
+            if ($pa !== $pb) {
+                return $pa ? -1 : 1;
+            }
+
+            return match ($this->sortBy) {
+                'created_at_asc'  => $a->created_at <=> $b->created_at,
+                'updated_at_desc' => $b->updated_at <=> $a->updated_at,
+                'priority'        => $this->comparePriority($a, $b),
+                default           => $b->created_at <=> $a->created_at,
+            };
+        })->values();
+    }
+
+    private function comparePriority($a, $b): int
+    {
+        $priorityOrder = ['notification' => 4, 'activity' => 3, 'note' => 2, 'comment' => 1];
+
+        $priorityA = $priorityOrder[$a->type] ?? 0;
+
+        $priorityB = $priorityOrder[$b->type] ?? 0;
+
+        return $priorityB <=> $priorityA;
     }
 }

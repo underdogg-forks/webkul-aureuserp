@@ -2,6 +2,7 @@
 
 namespace Webkul\Inventory\Filament\Clusters\Products\Resources\LotResource\Pages;
 
+use BackedEnum;
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ManageRelatedRecords;
@@ -28,16 +29,16 @@ class ManageQuantities extends ManageRelatedRecords
 
     protected static string $relationship = 'quantities';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-map-pin';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-map-pin';
 
     /**
-     * @param  array<string, mixed>  $parameters
+     * @param array<string, mixed> $parameters
      */
     public static function canAccess(array $parameters = []): bool
     {
         $canAccess = parent::canAccess($parameters);
 
-        if (! $canAccess) {
+        if ( ! $canAccess) {
             return false;
         }
 
@@ -79,7 +80,7 @@ class ManageQuantities extends ManageRelatedRecords
                     ->rules([
                         'numeric',
                         'min:1',
-                        'max:'.($this->getOwnerRecord()->product->tracking == ProductTracking::SERIAL ? '1' : '999999999'),
+                        'max:' . ($this->getOwnerRecord()->product->tracking == ProductTracking::SERIAL ? '1' : '999999999'),
                     ])
                     ->beforeStateUpdated(function ($record, $state) {
                         $previousQuantity = $record->quantity;
@@ -118,7 +119,8 @@ class ManageQuantities extends ManageRelatedRecords
                                 'location_id' => $adjustmentLocation->id,
                                 'product_id'  => $record->product_id,
                                 'lot_id'      => $record->lot_id,
-                            ], [
+                            ],
+                            [
                                 'quantity'               => -$record->product->on_hand_quantity,
                                 'company_id'             => $record->company_id,
                                 'creator_id'             => Auth::id(),

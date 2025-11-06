@@ -30,7 +30,7 @@ class PluginManagerServiceProvider extends PackageServiceProvider
     public function registerCustomCss()
     {
         FilamentAsset::register([
-            Css::make('plugins', __DIR__.'/../resources/dist/plugin.css'),
+            Css::make('plugins', __DIR__ . '/../resources/dist/plugin.css'),
         ], 'plugins');
     }
 }

@@ -12,6 +12,19 @@ class CreateCategory extends CreateRecord
 {
     protected static string $resource = CategoryResource::class;
 
+    public function create(bool $another = false): void
+    {
+        try {
+            parent::create($another);
+        } catch (Exception $e) {
+            Notification::make()
+                ->danger()
+                ->title(__('products::filament/resources/category/pages/create-category.create.notification.error.title'))
+                ->body($e->getMessage())
+                ->send();
+        }
+    }
+
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('view', ['record' => $this->getRecord()]);
@@ -24,19 +37,6 @@ class CreateCategory extends CreateRecord
         $data['company_id'] = Auth::user()->default_company_id;
 
         return $data;
-    }
-
-    public function create(bool $another = false): void
-    {
-        try {
-            parent::create($another);
-        } catch (Exception $e) {
-            Notification::make()
-                ->danger()
-                ->title(__('products::filament/resources/category/pages/create-category.create.notification.error.title'))
-                ->body($e->getMessage())
-                ->send();
-        }
     }
 
     protected function getCreatedNotification(): Notification

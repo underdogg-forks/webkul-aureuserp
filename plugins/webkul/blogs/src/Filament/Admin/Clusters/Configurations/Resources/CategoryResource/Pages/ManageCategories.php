@@ -14,6 +14,17 @@ class ManageCategories extends ManageRecords
 {
     protected static string $resource = CategoryResource::class;
 
+    public function getTabs(): array
+    {
+        return [
+            'all' => Tab::make(__('blogs::filament/admin/clusters/configurations/resources/category/pages/manage-categories.tabs.all'))
+                ->badge(Category::count()),
+            'archived' => Tab::make(__('blogs::filament/admin/clusters/configurations/resources/category/pages/manage-categories.tabs.archived'))
+                ->badge(Category::onlyTrashed()->count())
+                ->modifyQueryUsing(fn ($query) => $query->onlyTrashed()),
+        ];
+    }
+
     protected function getHeaderActions(): array
     {
         return [
@@ -36,17 +47,6 @@ class ManageCategories extends ManageRecords
                         ->title(__('blogs::filament/admin/clusters/configurations/resources/category/pages/manage-categories.header-actions.create.notification.title'))
                         ->body(__('blogs::filament/admin/clusters/configurations/resources/category/pages/manage-categories.header-actions.create.notification.body')),
                 ),
-        ];
-    }
-
-    public function getTabs(): array
-    {
-        return [
-            'all' => Tab::make(__('blogs::filament/admin/clusters/configurations/resources/category/pages/manage-categories.tabs.all'))
-                ->badge(Category::count()),
-            'archived' => Tab::make(__('blogs::filament/admin/clusters/configurations/resources/category/pages/manage-categories.tabs.archived'))
-                ->badge(Category::onlyTrashed()->count())
-                ->modifyQueryUsing(fn ($query) => $query->onlyTrashed()),
         ];
     }
 }

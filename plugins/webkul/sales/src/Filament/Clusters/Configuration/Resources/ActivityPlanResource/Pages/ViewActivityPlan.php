@@ -12,6 +12,15 @@ class ViewActivityPlan extends ViewRecord
 {
     protected static string $resource = ActivityPlanResource::class;
 
+    public function getSubNavigation(): array
+    {
+        if (filled($cluster = static::getCluster())) {
+            return $this->generateNavigationItems($cluster::getClusteredComponents());
+        }
+
+        return [];
+    }
+
     protected function getHeaderActions(): array
     {
         return [
@@ -24,13 +33,5 @@ class ViewActivityPlan extends ViewRecord
                         ->body(__('sales::filament/clusters/configurations/resources/activity-plan/pages/view-activity-plan.header-actions.delete.notification.body')),
                 ),
         ];
-    }
-    public function getSubNavigation(): array
-    {
-        if (filled($cluster = static::getCluster())) {
-            return $this->generateNavigationItems($cluster::getClusteredComponents());
-        }
-
-        return [];
     }
 }

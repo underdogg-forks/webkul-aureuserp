@@ -14,7 +14,8 @@ use Webkul\Project\Models\Timesheet;
 
 class TopAssigneesWidget extends BaseWidget
 {
-    use HasWidgetShield, InteractsWithPageFilters;
+    use HasWidgetShield;
+    use InteractsWithPageFilters;
 
     protected static ?string $pollingInterval = '15s';
 
@@ -24,8 +25,8 @@ class TopAssigneesWidget extends BaseWidget
     {
         return __('projects::filament/widgets/top-assignees.heading.title');
     }
-    
-    public function getTableRecordKey(Model | array $record): string
+
+    public function getTableRecordKey(Model|array $record): string
     {
         return 'id';
     }
@@ -34,25 +35,25 @@ class TopAssigneesWidget extends BaseWidget
     {
         $query = Timesheet::query();
 
-        if (! empty($this->pageFilters['selectedProjects'])) {
+        if ( ! empty($this->pageFilters['selectedProjects'])) {
             $query->whereIn('project_id', $this->pageFilters['selectedProjects']);
         }
 
-        if (! empty($this->pageFilters['selectedAssignees'])) {
+        if ( ! empty($this->pageFilters['selectedAssignees'])) {
             $query->whereIn('user_id', $this->pageFilters['selectedAssignees']);
         }
 
-        if (! empty($this->pageFilters['selectedPartners'])) {
+        if ( ! empty($this->pageFilters['selectedPartners'])) {
             $query->whereIn('analytic_records.partner_id', $this->pageFilters['selectedPartners']);
         }
 
-        $startDate = ! is_null($this->pageFilters['startDate'] ?? null) ?
-            Carbon::parse($this->pageFilters['startDate']) :
-            null;
+        $startDate = null !== ($this->pageFilters['startDate'] ?? null)
+            ? Carbon::parse($this->pageFilters['startDate'])
+            : null;
 
-        $endDate = ! is_null($this->pageFilters['endDate'] ?? null) ?
-            Carbon::parse($this->pageFilters['endDate']) :
-            now();
+        $endDate = null !== ($this->pageFilters['endDate'] ?? null)
+            ? Carbon::parse($this->pageFilters['endDate'])
+            : now();
 
         $query = $query
             ->join('users', 'users.id', '=', 'analytic_records.user_id')

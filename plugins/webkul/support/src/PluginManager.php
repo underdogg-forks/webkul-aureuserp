@@ -9,6 +9,19 @@ use function Illuminate\Filesystem\join_paths;
 
 class PluginManager implements Plugin
 {
+    public static function make(): static
+    {
+        return app(static::class);
+    }
+
+    public static function get(): static
+    {
+        /** @var static $plugin */
+        $plugin = filament(app(static::class)->getId());
+
+        return $plugin;
+    }
+
     public function getId(): string
     {
         return 'plugin-manager';
@@ -25,22 +38,9 @@ class PluginManager implements Plugin
 
     public function boot(Panel $panel): void {}
 
-    public static function make(): static
-    {
-        return app(static::class);
-    }
-
-    public static function get(): static
-    {
-        /** @var static $plugin */
-        $plugin = filament(app(static::class)->getId());
-
-        return $plugin;
-    }
-
     protected function getPlugins(): array
     {
-        $plugins = require join_paths(base_path().'/bootstrap', 'plugins.php');
+        $plugins = require join_paths(base_path() . '/bootstrap', 'plugins.php');
 
         $plugins = collect($plugins)
             ->unique()

@@ -26,27 +26,19 @@ class Profile extends Page implements HasForms
 {
     use InteractsWithForms;
 
+    public ?array $profileData = [];
+
+    public ?array $passwordData = [];
+
     protected string $view = 'support::pages.profile';
 
     protected static bool $shouldRegisterNavigation = false;
 
     protected static ?string $title = null;
 
-    public ?array $profileData = [];
-
-    public ?array $passwordData = [];
-
     public function mount(): void
     {
         $this->fillForms();
-    }
-
-    protected function getForms(): array
-    {
-        return [
-            'editProfileForm',
-            'editPasswordForm',
-        ];
     }
 
     public function editProfileForm(Schema $schema): Schema
@@ -71,7 +63,7 @@ class Profile extends Page implements HasForms
                                 '1:1',
                             ])
                             ->columnSpanFull()
-                            ->helperText(__('support::filament/pages/profile.fields.avatar').': '.__('support::filament/pages/profile.information_description'))
+                            ->helperText(__('support::filament/pages/profile.fields.avatar') . ': ' . __('support::filament/pages/profile.information_description'))
                             ->deletable(true)
                             ->downloadable(false),
 
@@ -86,7 +78,7 @@ class Profile extends Page implements HasForms
                                     ->rules(['required', 'string', 'max:255'])
                                     ->live(onBlur: true)
                                     ->afterStateUpdated(function ($state, Set $set) {
-                                        $set('name', trim($state));
+                                        $set('name', mb_trim($state));
                                     }),
 
                                 TextInput::make('email')
@@ -100,7 +92,7 @@ class Profile extends Page implements HasForms
                                     ->rules(['required', 'email', 'max:255'])
                                     ->live(onBlur: true)
                                     ->afterStateUpdated(function ($state, Set $set) {
-                                        $set('email', strtolower(trim($state)));
+                                        $set('email', mb_strtolower(mb_trim($state)));
                                     }),
                             ]),
                     ]),
@@ -179,8 +171,8 @@ class Profile extends Page implements HasForms
             }
 
             $user->fill([
-                'name'  => trim($data['name']),
-                'email' => strtolower(trim($data['email'])),
+                'name'  => mb_trim($data['name']),
+                'email' => mb_strtolower(mb_trim($data['email'])),
             ]);
 
             $user->save();
@@ -238,7 +230,7 @@ class Profile extends Page implements HasForms
                 ->success()
                 ->duration(3000)
                 ->send();
-                
+
             if (request()->hasSession()) {
                 request()->session()->invalidate();
                 request()->session()->regenerateToken();
@@ -259,11 +251,34 @@ class Profile extends Page implements HasForms
         return null;
     }
 
+    public function getTitle(): string
+    {
+        return __('support::filament/pages/profile.title');
+    }
+
+    public function getHeading(): string
+    {
+        return __('support::filament/pages/profile.heading');
+    }
+
+    public function getSubheading(): ?string
+    {
+        return __('support::filament/pages/profile.subheading');
+    }
+
+    protected function getForms(): array
+    {
+        return [
+            'editProfileForm',
+            'editPasswordForm',
+        ];
+    }
+
     protected function getUser(): Authenticatable&Model
     {
         $user = Filament::auth()->user();
 
-        if (! $user instanceof Model) {
+        if ( ! $user instanceof Model) {
             throw new Exception('The authenticated user object must be an Eloquent model to allow the profile page to update it.');
         }
 
@@ -294,21 +309,6 @@ class Profile extends Page implements HasForms
             'password'              => '',
             'password_confirmation' => '',
         ]);
-    }
-
-    public function getTitle(): string
-    {
-        return __('support::filament/pages/profile.title');
-    }
-
-    public function getHeading(): string
-    {
-        return __('support::filament/pages/profile.heading');
-    }
-
-    public function getSubheading(): ?string
-    {
-        return __('support::filament/pages/profile.subheading');
     }
 
     protected function getUpdateProfileFormActions(): array

@@ -69,7 +69,7 @@ class SupportServiceProvider extends PackageServiceProvider
 
         Event::listen('aureus.installed', 'Webkul\Support\Listeners\Installer@installed');
 
-        /**
+        /*
          * Route to access template applied image file
          */
         $this->app['router']->get('cache/{filename}', [
@@ -97,7 +97,7 @@ class SupportServiceProvider extends PackageServiceProvider
 
         FilamentView::registerRenderHook(
             PanelsRenderHook::USER_MENU_PROFILE_BEFORE,
-            fn(): string => Blade::render(<<<'BLADE'
+            fn (): string => Blade::render(<<<'BLADE'
                 <x-filament::dropdown.list>
                     <x-filament::dropdown.list.item>
                         <div class="flex items-center gap-2">

@@ -10,7 +10,13 @@ use Webkul\Security\Models\User;
 
 class UtmStage extends Model implements Sortable
 {
-    use HasFactory, SortableTrait;
+    use HasFactory;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     protected $table = 'utm_stages';
 
@@ -18,11 +24,6 @@ class UtmStage extends Model implements Sortable
         'sort',
         'name',
         'created_by',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function createdBy()

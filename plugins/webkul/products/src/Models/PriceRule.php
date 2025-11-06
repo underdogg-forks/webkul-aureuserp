@@ -16,7 +16,14 @@ use Webkul\Support\Models\Currency;
 
 class PriceRule extends Model implements Sortable
 {
-    use HasFactory, SoftDeletes, SortableTrait;
+    use HasFactory;
+    use SoftDeletes;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     /**
      * Table name.
@@ -36,11 +43,6 @@ class PriceRule extends Model implements Sortable
         'currency_id',
         'company_id',
         'creator_id',
-    ];
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
     ];
 
     public function currency(): BelongsTo

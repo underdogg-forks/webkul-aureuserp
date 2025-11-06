@@ -5,7 +5,6 @@ namespace Webkul\Website\Filament\Customer\Auth;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 use DanHarrin\LivewireRateLimiting\WithRateLimiting;
 use Filament\Actions\Action;
-use Filament\Actions\ActionGroup;
 use Filament\Auth\Http\Responses\Contracts\LoginResponse;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\Checkbox;
@@ -28,9 +27,9 @@ class Login extends Page
     use InteractsWithForms;
     use WithRateLimiting;
 
-    protected string $view = 'website::filament.customer.pages.auth.login';
-
     public ?array $data = [];
+
+    protected string $view = 'website::filament.customer.pages.auth.login';
 
     public function mount(): void
     {
@@ -53,15 +52,15 @@ class Login extends Page
 
         $data = $this->form->getState();
 
-        if (! Filament::auth()->attempt($this->getCredentialsFromFormData($data), $data['remember'] ?? false)) {
+        if ( ! Filament::auth()->attempt($this->getCredentialsFromFormData($data), $data['remember'] ?? false)) {
             $this->throwFailureValidationException();
         }
 
         $user = Filament::auth()->user();
 
         if (
-            ($user instanceof FilamentUser) &&
-            (! $user->canAccessPanel(Filament::getCurrentOrDefaultPanel()))
+            ($user instanceof FilamentUser)
+            && ( ! $user->canAccessPanel(Filament::getCurrentOrDefaultPanel()))
         ) {
             Filament::auth()->logout();
 
@@ -71,6 +70,29 @@ class Login extends Page
         session()->regenerate();
 
         return app(LoginResponse::class);
+    }
+
+    public function form(Schema $schema): Schema
+    {
+        return $schema;
+    }
+
+    public function registerAction(): Action
+    {
+        return Action::make('register')
+            ->link()
+            ->label(__('website::filament/customer/pages/auth/login.actions.register.label'))
+            ->url(filament()->getRegistrationUrl());
+    }
+
+    public function getTitle(): string|Htmlable
+    {
+        return __('website::filament/customer/pages/auth/login.title');
+    }
+
+    public function getHeading(): string|Htmlable
+    {
+        return '';
     }
 
     protected function getRateLimitedNotification(TooManyRequestsException $exception): ?Notification
@@ -92,11 +114,6 @@ class Login extends Page
         throw ValidationException::withMessages([
             'data.email' => __('website::filament/customer/pages/auth/login.messages.failed'),
         ]);
-    }
-
-    public function form(Schema $schema): Schema
-    {
-        return $schema;
     }
 
     protected function getForms(): array
@@ -141,24 +158,6 @@ class Login extends Page
     {
         return Checkbox::make('remember')
             ->label(__('website::filament/customer/pages/auth/login.form.remember.label'));
-    }
-
-    public function registerAction(): Action
-    {
-        return Action::make('register')
-            ->link()
-            ->label(__('website::filament/customer/pages/auth/login.actions.register.label'))
-            ->url(filament()->getRegistrationUrl());
-    }
-
-    public function getTitle(): string|Htmlable
-    {
-        return __('website::filament/customer/pages/auth/login.title');
-    }
-
-    public function getHeading(): string|Htmlable
-    {
-        return '';
     }
 
     protected function getFormActions(): array

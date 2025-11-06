@@ -15,15 +15,6 @@ class ListDepartments extends ListRecords
 
     protected static string $resource = DepartmentResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            CreateAction::make()
-                ->label(__('employees::filament/resources/department/pages/list-department.header-actions.create.label'))
-                ->icon('heroicon-o-plus-circle'),
-        ];
-    }
-
     public function getPresetTableViews(): array
     {
         return [
@@ -32,6 +23,15 @@ class ListDepartments extends ListRecords
                 ->favorite()
                 ->label(__('employees::filament/resources/department/pages/list-department.tabs.archived-departments'))
                 ->modifyQueryUsing(fn (Builder $query) => $query->onlyTrashed()),
+        ];
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            CreateAction::make()
+                ->label(__('employees::filament/resources/department/pages/list-department.header-actions.create.label'))
+                ->icon('heroicon-o-plus-circle'),
         ];
     }
 }

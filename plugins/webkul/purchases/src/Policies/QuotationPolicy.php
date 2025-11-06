@@ -9,7 +9,8 @@ use Webkul\Security\Traits\HasScopedPermissions;
 
 class QuotationPolicy
 {
-    use HandlesAuthorization, HasScopedPermissions;
+    use HandlesAuthorization;
+    use HasScopedPermissions;
 
     /**
      * Determine whether the user can view any models.
@@ -40,7 +41,7 @@ class QuotationPolicy
      */
     public function update(User $user, Quotation $quotation): bool
     {
-        if (! $user->can('update_quotation')) {
+        if ( ! $user->can('update_quotation')) {
             return false;
         }
 
@@ -52,7 +53,7 @@ class QuotationPolicy
      */
     public function delete(User $user, Quotation $quotation): bool
     {
-        if (! $user->can('delete_quotation')) {
+        if ( ! $user->can('delete_quotation')) {
             return false;
         }
 

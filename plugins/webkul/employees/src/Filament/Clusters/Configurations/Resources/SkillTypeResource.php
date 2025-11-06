@@ -2,6 +2,7 @@
 
 namespace Webkul\Employee\Filament\Clusters\Configurations\Resources;
 
+use BackedEnum;
 use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
@@ -33,6 +34,7 @@ use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use UnitEnum;
 use Webkul\Employee\Enums\Colors;
 use Webkul\Employee\Filament\Clusters\Configurations;
 use Webkul\Employee\Filament\Clusters\Configurations\Resources\SkillTypeResource\Pages\EditSkillType;
@@ -46,9 +48,9 @@ class SkillTypeResource extends Resource
 {
     protected static ?string $model = SkillType::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-academic-cap';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-academic-cap';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Employee';
+    protected static string|UnitEnum|null $navigationGroup = 'Employee';
 
     protected static ?int $navigationSort = 1;
 
@@ -87,7 +89,7 @@ class SkillTypeResource extends Resource
                         ->options(function () {
                             return collect(Colors::options())->mapWithKeys(function ($value, $key) {
                                 return [
-                                    $key => '<div class="flex items-center gap-4"><span class="flex h-5 w-5 rounded-full" style="background: rgb(var(--'.$key.'-500))"></span> '.$value.'</span>',
+                                    $key => '<div class="flex items-center gap-4"><span class="flex h-5 w-5 rounded-full" style="background: rgb(var(--' . $key . '-500))"></span> ' . $value . '</span>',
                                 ];
                             });
                         })
@@ -116,7 +118,7 @@ class SkillTypeResource extends Resource
                 TextColumn::make('color')
                     ->label(__('employees::filament/clusters/configurations/resources/skill-type.table.columns.color'))
                     ->toggleable(isToggledHiddenByDefault: false)
-                    ->formatStateUsing(fn (Model $skillType) => '<span class="flex h-5 w-5 rounded-full" style="background: rgb(var(--'.$skillType?->color.'-500))"></span>')
+                    ->formatStateUsing(fn (Model $skillType) => '<span class="flex h-5 w-5 rounded-full" style="background: rgb(var(--' . $skillType?->color . '-500))"></span>')
                     ->html()
                     ->sortable(),
                 TextColumn::make('skills.name')
@@ -299,7 +301,7 @@ class SkillTypeResource extends Resource
                         TextEntry::make('color')
                             ->placeholder('—')
                             ->html()
-                            ->formatStateUsing(fn (Model $skillType) => '<span class="flex h-5 w-5 rounded-full" style="background: rgb(var(--'.$skillType->color.'-500))"></span>')
+                            ->formatStateUsing(fn (Model $skillType) => '<span class="flex h-5 w-5 rounded-full" style="background: rgb(var(--' . $skillType->color . '-500))"></span>')
                             ->label(__('employees::filament/clusters/configurations/resources/skill-type.infolist.sections.entries.color')),
                         IconEntry::make('is_active')
                             ->boolean()
