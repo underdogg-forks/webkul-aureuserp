@@ -27,6 +27,8 @@ class ProjectsServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
+        // Temporary: also load migrations from legacy plugin during migration
+        $this->loadMigrationsFrom(base_path('plugins/webkul/projects/database/migrations'));
     }
 
     /**
