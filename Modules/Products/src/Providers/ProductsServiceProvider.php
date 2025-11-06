@@ -29,6 +29,8 @@ class ProductsServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
         // Temporary: also load migrations from legacy plugin during migration
         $this->loadMigrationsFrom(base_path('plugins/webkul/products/database/migrations'));
+        // Temporary: load migrations for shared Support models used by Products (e.g., UOM, Company)
+        $this->loadMigrationsFrom(base_path('plugins/webkul/support/database/migrations'));
     }
 
     /**

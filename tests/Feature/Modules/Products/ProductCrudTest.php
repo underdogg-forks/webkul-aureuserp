@@ -37,6 +37,7 @@ class ProductCrudTest extends TestCase
         Company::factory()->create();
     }
 
+    #[Test]
     public function it_lists_products(): void
     {
         /* Arrange */
@@ -52,6 +53,7 @@ class ProductCrudTest extends TestCase
             ->assertCanNotSeeTableRecords([$service]);
     }
 
+    #[Test]
     public function it_creates_a_product(): void
     {
         /* Arrange */
@@ -82,6 +84,7 @@ class ProductCrudTest extends TestCase
         ]);
     }
 
+    #[Test]
     public function it_updates_a_product(): void
     {
         /* Arrange */
@@ -110,6 +113,7 @@ class ProductCrudTest extends TestCase
         ]);
     }
 
+    #[Test]
     public function it_deletes_a_product(): void
     {
         /* Arrange */
