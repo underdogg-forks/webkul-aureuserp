@@ -119,7 +119,6 @@ class TaskResource extends Resource
                         ProgressStepper::make('stage_id')
                             ->hiddenLabel()
                             ->inline()
-                            ->required()
                             ->options(fn () => TaskStage::orderBy('sort')->get()->mapWithKeys(fn ($stage) => [$stage->id => $stage->name]))
                             ->default(TaskStage::first()?->id),
                         Section::make(__('projects::filament/resources/task.form.sections.general.title'))

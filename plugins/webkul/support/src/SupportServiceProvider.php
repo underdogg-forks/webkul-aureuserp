@@ -14,6 +14,7 @@ use Webkul\Security\Livewire\AcceptInvitation;
 use Webkul\Security\Models\Role;
 use Webkul\Security\Policies\RolePolicy;
 use Webkul\Support\Console\Commands\InstallERP;
+use Webkul\Support\Console\Commands\RepairERP;
 
 class SupportServiceProvider extends PackageServiceProvider
 {
@@ -56,6 +57,7 @@ class SupportServiceProvider extends PackageServiceProvider
             ->runsMigrations()
             ->hasCommands([
                 InstallERP::class,
+                RepairERP::class,
             ]);
     }
 
@@ -107,7 +109,7 @@ class SupportServiceProvider extends PackageServiceProvider
                                 height="24"
                             />
 
-                            {{ __('support::support.version', ['version' => $version]) }} 
+                            {{ __('support::support.version', ['version' => $version]) }}
                         </div>
                     </x-filament::dropdown.list.item>
                 </x-filament::dropdown.list>

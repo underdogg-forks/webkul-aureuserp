@@ -17,6 +17,7 @@ use function Laravel\Prompts\text;
 
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use Throwable;
 use Webkul\Support\Models\Company;
 use Webkul\Support\Models\Currency;
 
@@ -29,6 +30,7 @@ class InstallERP extends Command
      */
     protected $signature = 'erp:install
         {--force : Force reinstallation without confirmation}
+        {--all : Install all Webkul plugins}
         {--admin-name= : Admin user name}
         {--admin-email= : Admin user email}
         {--admin-password= : Admin user password}';
@@ -45,6 +47,10 @@ class InstallERP extends Command
      */
     public function handle()
     {
+        if ($this->option('all')) {
+            return $this->installAllPlugins();
+        }
+
         if (
             $this->isAlreadyInstalled()
             && ! $this->option('force')
@@ -52,7 +58,7 @@ class InstallERP extends Command
             if ( ! $this->handleReinstallation()) {
                 $this->info('Installation cancelled.');
 
-                return;
+                return 0;
             }
         }
 
@@ -73,6 +79,8 @@ class InstallERP extends Command
         Event::dispatch('aureus.installed');
 
         $this->info('🎉 ERP System installation completed successfully!');
+
+        return self::SUCCESS;
     }
 
     public function backfillMissingCreatorIds($user)
@@ -90,6 +98,88 @@ class InstallERP extends Command
         collect($mappings)
             ->filter(fn ($column) => null !== $column)
             ->each(fn ($column, $table) => DB::table($table)->whereNull($column)->update([$column => $user->id]));
+    }
+
+    protected function installAllPlugins(): int
+    {
+        $root = base_path('plugins/webkul');
+        if ( ! File::isDirectory($root)) {
+            $this->error("Directory not found: {$root}");
+
+            return self::FAILURE;
+        }
+
+        $this->info('📦 Installing all Webkul plugins...');
+
+        $dirs = collect(File::directories($root))
+            ->map(fn ($path) => mb_strtolower(basename($path)))
+            ->values();
+
+        foreach ($dirs as $lower) {
+            $this->components?->twoColumnDetail("Installing {$lower}", '...');
+
+            // Run {plugin}:install if available
+            $this->callSilentIfExists("{$lower}:install");
+
+            // Ensure settings migrations are applied
+            $this->runPluginSettingsMigrations($lower);
+
+            // Ensure seeders are run
+            $this->runPluginSeeder($lower);
+
+            $this->components?->twoColumnDetail("Installed {$lower}", 'DONE');
+        }
+
+        $this->newLine();
+        $this->info('✅ All plugins processed.');
+
+        return self::SUCCESS;
+    }
+
+    protected function runPluginSettingsMigrations(string $lowerName): void
+    {
+        $basePath = base_path("plugins/webkul/{$lowerName}/database/settings");
+        if ( ! File::isDirectory($basePath)) {
+            return;
+        }
+
+        $files = collect(File::files($basePath))
+            ->filter(fn ($f) => str_ends_with($f->getFilename(), '.php'))
+            ->map(fn ($f) => str_replace(base_path() . DIRECTORY_SEPARATOR, '', $f->getPathname()));
+
+        foreach ($files as $relative) {
+            $this->callSilent('migrate', [
+                '--path' => $relative,
+            ]);
+        }
+    }
+
+    protected function runPluginSeeder(string $lowerName): void
+    {
+        $studly      = Str::studly(str_replace(['-', '_'], ' ', $lowerName));
+        $seederClass = "Webkul\\{$studly}\\Database\\Seeders\\DatabaseSeeder";
+
+        try {
+            if (class_exists($seederClass)) {
+                $this->callSilent('db:seed', [
+                    '--class' => $seederClass,
+                ]);
+            }
+        } catch (Throwable) {
+            // ignore errors during bulk install
+        }
+    }
+
+    protected function callSilentIfExists(string $command): void
+    {
+        try {
+            $commands = collect(Artisan::all())->keys();
+            if ($commands->contains($command)) {
+                $this->callSilent($command);
+            }
+        } catch (Throwable) {
+            // ignore
+        }
     }
 
     /**
