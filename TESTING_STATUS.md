@@ -1,6 +1,6 @@
 # Filament Resources Testing Status
 
-## Completed Tests (15 resources)
+## Completed Tests (17 resources)
 
 ✅ **Payment** - `tests/Feature/Modules/Payments/PaymentCrudTest.php`
 - Covers: Modules/Core/src/Filament/Resources/PaymentsResource.php
@@ -42,6 +42,10 @@
 - Covers: Modules/Core/src/Filament/Resources/TeamResource.php
 - Table: teams
 
+✅ **Account** - `tests/Feature/Modules/Core/AccountCrudTest.php`
+- Covers: Modules/Core/src/Filament/Resources/AccountResource.php
+- Table: accounts_accounts
+
 ✅ **Journal** - `tests/Feature/Modules/Core/JournalCrudTest.php`
 - Covers: Modules/Core/src/Filament/Resources/JournalResource.php
 - Table: accounts_journals
@@ -49,6 +53,10 @@
 ✅ **Vendor** - `tests/Feature/Modules/Expenses/VendorCrudTest.php`
 - Covers: Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/VendorResource.php
 - Table: partners_partners (sub_type='vendor')
+
+✅ **CRM Partner** - `tests/Feature/Modules/Crm/PartnerCrudTest.php`
+- Covers: Modules/Crm/src/Filament/Resources/PartnerResource.php
+- Table: partners_partners
 
 ✅ **Quotation** - `tests/Feature/Modules/Invoices/QuotationCrudTest.php`
 - Covers: Modules/Invoices/src/Filament/Clusters/Orders/Resources/QuotationResource.php
@@ -68,7 +76,7 @@
 - [x] **Bill** - `Modules/Core/src/Filament/Resources/BillResource.php` ✅
 - [x] **CreditNote** - `Modules/Core/src/Filament/Resources/CreditNoteResource.php` ✅
 - [x] **Refund** - `Modules/Core/src/Filament/Resources/RefundResource.php` ✅
-- [ ] **Account** - `Modules/Core/src/Filament/Resources/AccountResource.php`
+- [x] **Account** - `Modules/Core/src/Filament/Resources/AccountResource.php` ✅
 - [x] **Journal** - `Modules/Core/src/Filament/Resources/JournalResource.php` ✅
 
 ### Core Module (Business Critical)
@@ -91,7 +99,7 @@
 - [x] **Vendor** - `Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/VendorResource.php` ✅
 
 ### CRM Module
-- [ ] **Partner** - `Modules/Crm/src/Filament/Resources/PartnerResource.php`
+- [x] **Partner** - `Modules/Crm/src/Filament/Resources/PartnerResource.php` ✅
 - [ ] **Bank** - `Modules/Crm/src/Filament/Resources/BankResource.php`
 - [ ] **BankAccount** - `Modules/Crm/src/Filament/Resources/BankAccountResource.php`
 - [ ] **Address** - `Modules/Crm/src/Filament/Resources/AddressResource.php`
