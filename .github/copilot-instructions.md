@@ -1,4 +1,65 @@
 <laravel-boost-guidelines>
+
+# AureusERP Copilot Instructions
+
+## Quick Start & Setup
+
+### Project Overview
+AureusERP is a comprehensive open-source Enterprise Resource Planning (ERP) solution built with Laravel 11 and FilamentPHP v4. It uses a modular plugin architecture for extensibility.
+
+### Initial Setup Commands
+```bash
+# Clone and install dependencies
+composer install
+npm install
+
+# Setup environment and database
+cp .env.example .env
+php artisan key:generate
+php artisan erp:install  # Runs migrations, seeders, and creates admin account
+
+# Start development server
+composer run dev  # Runs server, queue, logs, and vite concurrently
+```
+
+### Common Commands Reference
+```bash
+# Development
+composer run dev              # Start all services (server, queue, logs, vite)
+php artisan serve            # Start Laravel server only
+npm run dev                  # Start Vite dev server only
+npm run build                # Build frontend assets
+
+# Plugin Management
+php artisan <plugin-name>:install    # Install a plugin (e.g., inventories:install)
+php artisan <plugin-name>:uninstall  # Uninstall a plugin
+
+# Code Quality
+vendor/bin/pint              # Format code (auto-fix)
+vendor/bin/pint --dirty      # Format only changed files
+php artisan test             # Run all tests
+php artisan test --filter=testName  # Run specific test
+
+# Database
+php artisan migrate          # Run migrations
+php artisan db:seed          # Run seeders
+php artisan tinker          # PHP REPL for debugging
+```
+
+### Technology Stack
+- **PHP**: 8.2.28
+- **Laravel**: v11 (LARAVEL)
+- **FilamentPHP**: v4 (FILAMENT)
+- **Livewire**: v3 (LIVEWIRE)
+- **Tailwind CSS**: v4 (TAILWINDCSS)
+- **PHPUnit**: v11 (PHPUNIT)
+- **Laravel Pint**: v1 (PINT)
+- **Laravel Sail**: v1 (SAIL)
+- **Rector**: v2 (RECTOR)
+- **Laravel Prompts**: v0 (PROMPTS)
+
+---
+
 === foundation rules ===
 
 # Laravel Boost Guidelines
@@ -536,3 +597,204 @@ document.addEventListener('livewire:init', function () {
 - Don’t remove tests without approval; don’t add new dependencies without approval; reuse existing components before creating new ones.
 
 </laravel-boost-guidelines>
+
+---
+
+=== module/plugin development ===
+
+## Module & Plugin Development Guide
+
+### Core Modules (Always Installed)
+These are essential system components that should not be uninstalled:
+- **Analytics**: Business intelligence and reporting
+- **Chatter**: Internal communication platform
+- **Fields**: Customizable data structure management
+- **Security**: Role-based access control and authentication
+- **Support**: Help desk and documentation
+- **Table View**: Customizable data presentation framework
+
+### Installable Modules
+Optional modules that extend functionality:
+- **Business**: Blogs, Accounts, Contacts, Employees, Partners
+- **Operations**: Inventories, Products, Projects, Purchases, Sales
+- **Finance**: Invoices, Payments
+- **HR**: Recruitments, Timeoffs, Timesheet
+- **Website**: Public-facing website for customers
+
+### Creating a New Module
+```bash
+# Use Laravel module package commands
+php artisan module:make <ModuleName>
+
+# Generate module components
+php artisan module:make-model <ModelName> <ModuleName>
+php artisan module:make-controller <ControllerName> <ModuleName>
+php artisan module:make-migration <MigrationName> <ModuleName>
+```
+
+### Module Structure
+Each module follows this structure:
+```
+Modules/<ModuleName>/
+├── Config/
+├── Console/
+├── Database/
+│   ├── factories/
+│   ├── Migrations/
+│   └── Seeders/
+├── Entities/ (Models)
+├── Filament/
+│   ├── Resources/
+│   └── Pages/
+├── Http/
+│   ├── Controllers/
+│   └── Requests/
+├── Providers/
+├── Resources/
+│   ├── assets/
+│   ├── lang/
+│   └── views/
+├── Routes/
+├── Tests/
+└── composer.json
+```
+
+### Module Dependencies
+- Always check for dependencies before installation
+- The system will prompt for conflicts and prerequisites
+- Use existing module structure as a template
+- Follow the plugin architecture patterns from sibling modules
+
+---
+
+=== troubleshooting ===
+
+## Common Issues & Solutions
+
+### Frontend Issues
+
+#### Vite Manifest Error
+**Error**: `Illuminate\Foundation\ViteException: Unable to locate file in Vite manifest`
+
+**Solution**:
+```bash
+npm run build        # For production
+# OR
+npm run dev          # For development (recommended)
+# OR
+composer run dev     # Run all services including vite
+```
+
+#### Frontend Changes Not Reflected
+If UI changes aren't visible:
+1. Ensure Vite is running: `npm run dev`
+2. Clear browser cache
+3. Check if assets need building: `npm run build`
+4. Verify you're on the correct URL/port
+
+### Database Issues
+
+#### Migration Errors
+```bash
+# Reset and re-run migrations (CAUTION: destroys data)
+php artisan migrate:fresh --seed
+
+# Check migration status
+php artisan migrate:status
+
+# Rollback last batch
+php artisan migrate:rollback
+```
+
+#### Plugin Installation Conflicts
+When seeing "package already installed" prompts:
+- **Reseed**: Reinstall the plugin's seed data
+- **Skip**: Continue without modifying existing dependency
+- **Show Seeders**: Display available data seeders
+
+### Testing Issues
+
+#### SQLite PDO Not Available
+If tests fail due to missing SQLite:
+```bash
+# Install SQLite extension
+sudo apt-get install php8.2-sqlite3
+
+# Or skip SQLite tests in setUp method (already implemented)
+```
+
+#### Test Database Issues
+```bash
+# Create test database
+touch database/database.sqlite
+
+# Run tests with fresh database
+php artisan test --env=testing
+```
+
+### Code Quality Issues
+
+#### Pint Formatting Errors
+```bash
+# Auto-fix all formatting issues
+vendor/bin/pint
+
+# Fix only changed files
+vendor/bin/pint --dirty
+
+# Preview changes without applying
+vendor/bin/pint --test --dirty
+```
+
+### Development Environment
+
+#### Port Already in Use
+```bash
+# Use different port
+php artisan serve --port=8001
+
+# Check what's using the port
+lsof -i :8000
+```
+
+#### Permission Issues
+```bash
+# Fix storage permissions
+chmod -R 775 storage bootstrap/cache
+chown -R www-data:www-data storage bootstrap/cache
+```
+
+### Module/Plugin Issues
+
+#### Module Not Loading
+1. Check `modules_statuses.json` - ensure module is enabled
+2. Clear cache: `php artisan cache:clear`
+3. Clear config: `php artisan config:clear`
+4. Regenerate autoload files: `composer dump-autoload`
+
+#### Module Installation Failed
+```bash
+# Manually rollback module migrations
+php artisan module:migrate-rollback <ModuleName>
+
+# Clear all caches
+php artisan optimize:clear
+
+# Try installation again
+php artisan <module-name>:install
+```
+
+---
+
+## Additional Resources
+
+### Documentation
+- **Official Docs**: https://devdocs.aureuserp.com
+- **Support Forum**: https://forums.aureuserp.com
+- **GitHub Issues**: https://github.com/aureuserp/aureuserp/issues
+
+### Getting Help
+- Use the `search-docs` Laravel Boost tool for framework-specific questions
+- Check sibling files/modules for conventions and patterns
+- Refer to Filament v4 documentation for UI components
+- Review existing tests for testing patterns
