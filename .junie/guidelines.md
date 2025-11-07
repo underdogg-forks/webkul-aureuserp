@@ -1,4 +1,4 @@
-Testing guidelines for this repository
+# Testing Guidelines
 
 - All test method names must start with `it_` and be descriptive.
 - Follow Arrange, Act, Assert with explicit phpdoc block comments for each phase:
