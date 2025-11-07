@@ -110,8 +110,9 @@ class ExpensesQuotationCrudTest extends TestCase
         $component = Livewire::actingAs($this->user)
             ->test(ListQuotations::class);
 
-        /* Assert - Both quotations should be visible */
-        $component->assertCanSeeTableRecords([$draftQuotation, $sentQuotation, $purchaseOrder]);
+        /* Assert - Both quotations should be visible, purchase order should not */
+        $component->assertCanSeeTableRecords([$draftQuotation, $sentQuotation])
+            ->assertCanNotSeeTableRecords([$purchaseOrder]);
     }
 
     #[Test]

@@ -29,7 +29,8 @@ class PartnerCrudTest extends TestCase
     {
         parent::setUp();
 
-        Model::unguard();
+        // Model::unguard() removed - Laravel test infrastructure 
+        // handles database transactions automatically
 
         $this->user = User::factory()->create();
 
@@ -123,7 +124,7 @@ class PartnerCrudTest extends TestCase
         /* Act */
         Livewire::actingAs($this->user)
             ->test(ListPartners::class)
-            ->mountAction(TestAction::make('edit')->table($partner), $payload)
+            ->mountAction(TestAction::make('edit')->table($partner))
             ->fillForm($payload)
             ->callMountedAction();
 

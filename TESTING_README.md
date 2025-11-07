@@ -2,13 +2,24 @@
 
 ## Overview
 
-This implementation adds comprehensive CRUD tests for 6 high-priority Filament resources:
+This implementation adds comprehensive CRUD tests for 28 high-priority Filament resources across 5 complete modules, including:
 - Payment
 - Product (existing test, already in repo)
 - Customer (Partner with sub_type='customer')
 - Invoice
+- Bill
+- CreditNote
+- Refund
+- Account
+- Journal
+- Company
+- User
+- Employee
+- Team
+- Role
 - SalesOrder
 - PurchaseOrder
+- And 14 more resources (see TESTING_STATUS.md for complete list)
 
 ## Running the Tests
 
