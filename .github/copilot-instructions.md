@@ -47,7 +47,7 @@ php artisan tinker          # PHP REPL for debugging
 ```
 
 ### Technology Stack
-- **PHP**: 8.2.28
+- **PHP**: 8.2+ (^8.2)
 - **Laravel**: v11 (LARAVEL)
 - **FilamentPHP**: v4 (FILAMENT)
 - **Livewire**: v3 (LIVEWIRE)
@@ -69,7 +69,7 @@ The Laravel Boost guidelines are specifically curated by Laravel maintainers for
 ## Foundational Context
 This application is a Laravel application and its main Laravel ecosystems package & versions are below. You are an expert with them all. Ensure you abide by these specific packages & versions.
 
-- php - 8.2.28
+- php - ^8.2
 - filament/filament (FILAMENT) - v4
 - laravel/framework (LARAVEL) - v11
 - laravel/prompts (PROMPTS) - v0
@@ -605,21 +605,18 @@ document.addEventListener('livewire:init', function () {
 ## Module & Plugin Development Guide
 
 ### Core Modules (Always Installed)
-These are essential system components that should not be uninstalled:
-- **Analytics**: Business intelligence and reporting
-- **Chatter**: Internal communication platform
-- **Fields**: Customizable data structure management
-- **Security**: Role-based access control and authentication
-- **Support**: Help desk and documentation
-- **Table View**: Customizable data presentation framework
+These are essential system components in the Core module that provide foundational functionality.
 
-### Installable Modules
-Optional modules that extend functionality:
-- **Business**: Blogs, Accounts, Contacts, Employees, Partners
-- **Operations**: Inventories, Products, Projects, Purchases, Sales
-- **Finance**: Invoices, Payments
-- **HR**: Recruitments, Timeoffs, Timesheet
-- **Website**: Public-facing website for customers
+### Current Modules
+The repository currently has these modules in the Modules/ directory:
+- **Core**: Foundational system functionality (Analytics, Chatter, Fields, Security, Support, Table View)
+- **CRM**: Customer relationship management
+- **Expenses**: Expense tracking and management
+- **Invoices**: Invoice generation and management
+- **Payments**: Payment processing and tracking
+- **Products**: Product catalog and management
+- **Projects**: Project planning and management
+- **Quotes**: Quote generation and management
 
 ### Creating a New Module
 ```bash
@@ -717,8 +714,8 @@ When seeing "package already installed" prompts:
 #### SQLite PDO Not Available
 If tests fail due to missing SQLite:
 ```bash
-# Install SQLite extension
-sudo apt-get install php8.2-sqlite3
+# Install SQLite extension (adjust php version to match your installation)
+sudo apt-get install php-sqlite3
 
 # Or skip SQLite tests in setUp method (already implemented)
 ```
