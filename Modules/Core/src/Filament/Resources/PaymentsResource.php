@@ -28,7 +28,7 @@ use Filament\Tables\Filters\QueryBuilder\Constraints\RelationshipConstraint;
 use Filament\Tables\Filters\QueryBuilder\Constraints\RelationshipConstraint\Operators\IsRelatedToOperator;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Webkul\Account\Enums\PaymentStatus;
+use Modules\Payments\Enums\PaymentStatus;
 use Webkul\Account\Enums\PaymentType;
 use Webkul\Account\Filament\Resources\PaymentsResource\Pages\CreatePayments;
 use Webkul\Account\Filament\Resources\PaymentsResource\Pages\EditPayments;

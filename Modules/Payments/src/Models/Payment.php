@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Payment\Models;
+namespace Modules\Payments\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PaymentToken extends Model
+class Payment extends Model
 {
     use HasFactory;
 }

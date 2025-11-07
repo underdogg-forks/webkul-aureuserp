@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Payment;
+namespace Modules\Payments;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use ReflectionClass;
-use Webkul\Support\Package;
+use Modules\Core\Support\Package;
 
 class PaymentPlugin implements Plugin
 {
@@ -27,10 +27,10 @@ class PaymentPlugin implements Plugin
 
         $panel
             ->when($panel->getId() == 'admin', function (Panel $panel) {
-                $panel->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Webkul\\Payment\\Filament\\Resources')
-                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Pages'), for: 'Webkul\\Payment\\Filament\\Pages')
-                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Clusters'), for: 'Webkul\\Payment\\Filament\\Clusters')
-                    ->discoverWidgets(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Webkul\\Payment\\Filament\\Widgets');
+                $panel->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Modules\\Payments\\Filament\\Resources')
+                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Pages'), for: 'Modules\\Payments\\Filament\\Pages')
+                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Clusters'), for: 'Modules\\Payments\\Filament\\Clusters')
+                    ->discoverWidgets(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Modules\\Payments\\Filament\\Widgets');
             });
     }
 

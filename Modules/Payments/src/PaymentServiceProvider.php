@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Payment;
+namespace Modules\Payments;
 
-use Webkul\Support\Console\Commands\InstallCommand;
-use Webkul\Support\Console\Commands\UninstallCommand;
-use Webkul\Support\Package;
-use Webkul\Support\PackageServiceProvider;
+use Modules\Core\Support\Console\Commands\InstallCommand;
+use Modules\Core\Support\Console\Commands\UninstallCommand;
+use Modules\Core\Support\Package;
+use Modules\Core\Support\PackageServiceProvider;
 
 class PaymentServiceProvider extends PackageServiceProvider
 {
@@ -25,7 +25,7 @@ class PaymentServiceProvider extends PackageServiceProvider
             ->hasDependencies([
                 'accounts',
             ])
-            ->hasSeeder('Webkul\\Payment\\Database\Seeders\\DatabaseSeeder')
+            ->hasSeeder('Modules\\Payments\\Database\Seeders\\DatabaseSeeder')
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->installDependencies()
