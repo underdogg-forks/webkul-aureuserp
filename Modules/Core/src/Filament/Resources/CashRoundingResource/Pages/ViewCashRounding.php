@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\CashRoundingResource\Pages;
+namespace Modules\Core\Filament\Resources\CashRoundingResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Account\Filament\Resources\CashRoundingResource;
+use Modules\Core\Filament\Resources\CashRoundingResource;
 
 class ViewCashRounding extends ViewRecord
 {

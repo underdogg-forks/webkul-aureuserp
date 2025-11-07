@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources;
+namespace Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Filament\Actions\CreateAction;
@@ -28,13 +28,13 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Purchase\Filament\Admin\Clusters\Configurations;
-use Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\VendorPriceResource\Pages\CreateVendorPrice;
-use Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\VendorPriceResource\Pages\EditVendorPrice;
-use Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\VendorPriceResource\Pages\ListVendorPrices;
-use Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\VendorPriceResource\Pages\ViewVendorPrice;
-use Webkul\Purchase\Filament\Admin\Clusters\Products\Resources\ProductResource\Pages\ManageVendors;
-use Webkul\Purchase\Models\ProductSupplier;
+use Modules\Expenses\Filament\Admin\Clusters\Configurations;
+use Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\VendorPriceResource\Pages\CreateVendorPrice;
+use Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\VendorPriceResource\Pages\EditVendorPrice;
+use Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\VendorPriceResource\Pages\ListVendorPrices;
+use Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\VendorPriceResource\Pages\ViewVendorPrice;
+use Modules\Expenses\Filament\Admin\Clusters\Products\Resources\ProductResource\Pages\ManageVendors;
+use Modules\Expenses\Models\ProductSupplier;
 
 class VendorPriceResource extends Resource
 {

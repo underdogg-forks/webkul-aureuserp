@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Employee\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Webkul\Employee\Database\Factories\EmployeeCategoryFactory;
-use Webkul\Field\Traits\HasCustomFields;
-use Webkul\Security\Models\User;
+use Modules\Core\Database\Factories\EmployeeCategoryFactory;
+use Modules\Core\Traits\HasCustomFields;
+use Modules\Core\Models\User;
 
 class EmployeeCategory extends Model
 {

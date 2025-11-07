@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\RuleResource\Pages;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\RuleResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\RuleResource;
+use Modules\Products\Filament\Clusters\Configurations\Resources\RuleResource;
 
 class CreateRule extends CreateRecord
 {

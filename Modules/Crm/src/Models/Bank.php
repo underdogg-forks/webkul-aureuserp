@@ -1,7 +1,7 @@
 <?php
 
-namespace Webkul\Partner\Models;
+namespace Modules\Crm\Models;
 
-use Webkul\Support\Models\Bank as BaseBank;
+use Modules\Core\Models\Bank as BaseBank;
 
 class Bank extends BaseBank {}

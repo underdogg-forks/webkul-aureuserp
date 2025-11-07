@@ -1,16 +1,16 @@
 <?php
 
-namespace Webkul\Inventory\Models;
+namespace Modules\Products\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
-use Webkul\Inventory\Database\Factories\PackageFactory;
-use Webkul\Inventory\Enums\PackageUse;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Products\Database\Factories\PackageFactory;
+use Modules\Products\Enums\PackageUse;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class Package extends Model
 {

@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\TableViews;
+namespace Modules\Core;
 
 use Filament\Support\Assets\Css;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentView;
 use Filament\View\PanelsRenderHook;
 use Illuminate\Contracts\View\View;
-use Webkul\Support\Package;
-use Webkul\Support\PackageServiceProvider;
+use Modules\Core\Package;
+use Modules\Core\PackageServiceProvider;
 
 class TableViewsServiceProvider extends PackageServiceProvider
 {

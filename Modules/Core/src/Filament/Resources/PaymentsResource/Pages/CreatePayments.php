@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\PaymentsResource\Pages;
+namespace Modules\Core\Filament\Resources\PaymentsResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
 use Modules\Payments\Enums\PaymentStatus;
-use Webkul\Account\Filament\Resources\PaymentsResource;
+use Modules\Core\Filament\Resources\PaymentsResource;
 
 class CreatePayments extends CreateRecord
 {

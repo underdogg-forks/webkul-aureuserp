@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Chatter\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class Attachment extends Model
 {

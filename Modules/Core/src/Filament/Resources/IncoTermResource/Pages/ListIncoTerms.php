@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\IncoTermResource\Pages;
+namespace Modules\Core\Filament\Resources\IncoTermResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
-use Webkul\Account\Filament\Resources\IncoTermResource;
+use Modules\Core\Filament\Resources\IncoTermResource;
 
 class ListIncoTerms extends ListRecords
 {

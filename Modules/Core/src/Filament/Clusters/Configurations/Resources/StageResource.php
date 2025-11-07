@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Configurations\Resources;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -33,12 +33,12 @@ use Filament\Tables\Filters\QueryBuilder\Constraints\RelationshipConstraint\Oper
 use Filament\Tables\Table;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Recruitment\Filament\Clusters\Configurations;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\StageResource\Pages\CreateStage;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\StageResource\Pages\EditStage;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\StageResource\Pages\ListStages;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\StageResource\Pages\ViewStages;
-use Webkul\Recruitment\Models\Stage;
+use Modules\Core\Filament\Clusters\Configurations;
+use Modules\Core\Filament\Clusters\Configurations\Resources\StageResource\Pages\CreateStage;
+use Modules\Core\Filament\Clusters\Configurations\Resources\StageResource\Pages\EditStage;
+use Modules\Core\Filament\Clusters\Configurations\Resources\StageResource\Pages\ListStages;
+use Modules\Core\Filament\Clusters\Configurations\Resources\StageResource\Pages\ViewStages;
+use Modules\Core\Models\Stage;
 
 class StageResource extends Resource
 {

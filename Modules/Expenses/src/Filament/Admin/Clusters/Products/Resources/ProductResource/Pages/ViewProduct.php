@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Products\Resources\ProductResource\Pages;
+namespace Modules\Expenses\Filament\Admin\Clusters\Products\Resources\ProductResource\Pages;
 
-use Webkul\Product\Filament\Resources\ProductResource\Pages\ViewProduct as BaseViewProduct;
-use Webkul\Purchase\Filament\Admin\Clusters\Products\Resources\ProductResource;
+use Modules\Core\Filament\Resources\ProductResource\Pages\ViewProduct as BaseViewProduct;
+use Modules\Expenses\Filament\Admin\Clusters\Products\Resources\ProductResource;
 
 class ViewProduct extends BaseViewProduct
 {

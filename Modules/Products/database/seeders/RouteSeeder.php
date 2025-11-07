@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Inventory\Database\Seeders;
+namespace Modules\Products\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\User;
 
 class RouteSeeder extends Seeder
 {

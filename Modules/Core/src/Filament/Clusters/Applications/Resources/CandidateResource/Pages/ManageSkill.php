@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Applications\Resources\CandidateResource\Pages;
+namespace Modules\Core\Filament\Clusters\Applications\Resources\CandidateResource\Pages;
 
 use BackedEnum;
 use Filament\Resources\Pages\ManageRelatedRecords;
-use Webkul\Recruitment\Filament\Clusters\Applications\Resources\CandidateResource;
-use Webkul\Recruitment\Traits\CandidateSkillRelation;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Clusters\Applications\Resources\CandidateResource;
+use Modules\Core\Traits\CandidateSkillRelation;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ManageSkill extends ManageRelatedRecords
 {

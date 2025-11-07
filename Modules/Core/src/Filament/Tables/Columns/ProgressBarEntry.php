@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Support\Filament\Tables\Columns;
+namespace Modules\Core\Filament\Tables\Columns;
 
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\Concerns\HasColor;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\WarehouseResource\Pages;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\WarehouseResource\Pages;
 
 use BackedEnum;
 use Filament\Actions\CreateAction;
@@ -9,9 +9,9 @@ use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\RouteResource;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\WarehouseResource;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Products\Filament\Clusters\Configurations\Resources\RouteResource;
+use Modules\Products\Filament\Clusters\Configurations\Resources\WarehouseResource;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ManageRoutes extends ManageRelatedRecords
 {

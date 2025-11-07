@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\InvoiceResource\Actions;
+namespace Modules\Core\Filament\Resources\InvoiceResource\Actions;
 
 use Filament\Actions\Action;
 use Filament\Forms\Components\FileUpload;
@@ -8,11 +8,11 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
-use Webkul\Account\Enums\MoveState;
-use Webkul\Account\Facades\Account;
-use Webkul\Account\Models\Move;
-use Webkul\Account\Models\Partner;
-use Webkul\Support\Traits\PDFHandler;
+use Modules\Core\Enums\MoveState;
+use Modules\Core\Facades\Account;
+use Modules\Core\Models\Move;
+use Modules\Core\Models\Partner;
+use Modules\Core\Traits\PDFHandler;
 
 class PrintAndSendAction extends Action
 {

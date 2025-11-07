@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Purchase\Models;
+namespace Modules\Expenses\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Webkul\Account\Models\Move;
+use Modules\Core\Models\Move;
 
 class AccountMove extends Move
 {

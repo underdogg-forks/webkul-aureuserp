@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Chatter\Traits;
+namespace Modules\Core\Traits;
 
 use BackedEnum;
 use Exception;

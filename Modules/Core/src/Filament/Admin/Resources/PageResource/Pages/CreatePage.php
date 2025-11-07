@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Website\Filament\Admin\Resources\PageResource\Pages;
+namespace Modules\Core\Filament\Admin\Resources\PageResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Website\Filament\Admin\Resources\PageResource;
+use Modules\Core\Filament\Admin\Resources\PageResource;
 
 class CreatePage extends CreateRecord
 {

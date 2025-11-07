@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Products\Resources\ProductResource\Pages;
+namespace Modules\Invoices\Filament\Clusters\Products\Resources\ProductResource\Pages;
 
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\ProductResource\Pages\ManageVariants as BaseManageVariants;
-use Webkul\Sale\Filament\Clusters\Products\Resources\ProductResource;
-use Webkul\Sale\Settings\ProductSettings;
+use Modules\Core\Filament\Clusters\Vendors\Resources\ProductResource\Pages\ManageVariants as BaseManageVariants;
+use Modules\Invoices\Filament\Clusters\Products\Resources\ProductResource;
+use Modules\Invoices\Settings\ProductSettings;
 
 class ManageVariants extends BaseManageVariants
 {

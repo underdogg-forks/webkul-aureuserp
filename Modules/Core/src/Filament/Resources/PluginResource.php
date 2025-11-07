@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\PluginManager\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use Exception;
 use Filament\Actions\Action;
@@ -27,9 +27,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema as DBSchema;
 use Throwable;
-use Webkul\PluginManager\Filament\Resources\PluginResource\Pages;
-use Webkul\Support\Models\Plugin;
-use Webkul\Support\Package;
+use Modules\Core\Filament\Resources\PluginResource\Pages;
+use Modules\Core\Models\Plugin;
+use Modules\Core\Package;
 
 class PluginResource extends Resource
 {

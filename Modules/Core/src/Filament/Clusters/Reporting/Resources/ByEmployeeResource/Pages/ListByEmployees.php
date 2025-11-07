@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Reporting\Resources\ByEmployeeResource\Pages;
+namespace Modules\Core\Filament\Clusters\Reporting\Resources\ByEmployeeResource\Pages;
 
-use Webkul\TimeOff\Filament\Clusters\Management\Resources\TimeOffResource\Pages\ListTimeOff;
-use Webkul\TimeOff\Filament\Clusters\Reporting\Resources\ByEmployeeResource;
+use Modules\Core\Filament\Clusters\Management\Resources\TimeOffResource\Pages\ListTimeOff;
+use Modules\Core\Filament\Clusters\Reporting\Resources\ByEmployeeResource;
 
 class ListByEmployees extends ListTimeOff
 {

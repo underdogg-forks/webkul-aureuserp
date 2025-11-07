@@ -1,20 +1,20 @@
 <?php
 
-namespace Webkul\Website\Filament\Admin\Resources;
+namespace Modules\Core\Filament\Admin\Resources;
 
 use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\RelationManagers\RelationGroup;
-use Webkul\Partner\Filament\Resources\PartnerResource as BasePartnerResource;
-use Webkul\Partner\Filament\Resources\PartnerResource\RelationManagers\AddressesRelationManager;
-use Webkul\Partner\Filament\Resources\PartnerResource\RelationManagers\ContactsRelationManager;
-use Webkul\Website\Filament\Admin\Resources\PartnerResource\Pages\CreatePartner;
-use Webkul\Website\Filament\Admin\Resources\PartnerResource\Pages\EditPartner;
-use Webkul\Website\Filament\Admin\Resources\PartnerResource\Pages\ListPartners;
-use Webkul\Website\Filament\Admin\Resources\PartnerResource\Pages\ManageAddresses;
-use Webkul\Website\Filament\Admin\Resources\PartnerResource\Pages\ManageContacts;
-use Webkul\Website\Filament\Admin\Resources\PartnerResource\Pages\ViewPartner;
-use Webkul\Website\Models\Partner;
+use Modules\Crm\Filament\Resources\PartnerResource as BasePartnerResource;
+use Modules\Crm\Filament\Resources\PartnerResource\RelationManagers\AddressesRelationManager;
+use Modules\Crm\Filament\Resources\PartnerResource\RelationManagers\ContactsRelationManager;
+use Modules\Core\Filament\Admin\Resources\PartnerResource\Pages\CreatePartner;
+use Modules\Core\Filament\Admin\Resources\PartnerResource\Pages\EditPartner;
+use Modules\Core\Filament\Admin\Resources\PartnerResource\Pages\ListPartners;
+use Modules\Core\Filament\Admin\Resources\PartnerResource\Pages\ManageAddresses;
+use Modules\Core\Filament\Admin\Resources\PartnerResource\Pages\ManageContacts;
+use Modules\Core\Filament\Admin\Resources\PartnerResource\Pages\ViewPartner;
+use Modules\Core\Models\Partner;
 
 class PartnerResource extends BasePartnerResource
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Account\Database\Factories;
+namespace Modules\Core\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<\Webkul\Sale\Models\BankStatement>
+ * @extends Factory<\Modules\Invoices\Models\BankStatement>
  */
 class BankStatementFactory extends Factory
 {

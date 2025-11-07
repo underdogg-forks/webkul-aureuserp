@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Purchase\Models;
+namespace Modules\Expenses\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,18 +9,18 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Account\Models\Tax;
-use Webkul\Inventory\Models\Location;
-use Webkul\Inventory\Models\Move as InventoryMove;
-use Webkul\Inventory\Models\OrderPoint;
-use Webkul\Partner\Models\Partner;
-use Webkul\Product\Models\Packaging;
-use Webkul\Purchase\Database\Factories\OrderLineFactory;
-use Webkul\Purchase\Enums\QtyReceivedMethod;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
-use Webkul\Support\Models\Currency;
-use Webkul\Support\Models\UOM;
+use Modules\Core\Models\Tax;
+use Modules\Products\Models\Location;
+use Modules\Products\Models\Move as InventoryMove;
+use Modules\Products\Models\OrderPoint;
+use Modules\Crm\Models\Partner;
+use Modules\Core\Models\Packaging;
+use Modules\Expenses\Database\Factories\OrderLineFactory;
+use Modules\Expenses\Enums\QtyReceivedMethod;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
+use Modules\Core\Models\Currency;
+use Modules\Core\Models\UOM;
 
 class OrderLine extends Model implements Sortable
 {

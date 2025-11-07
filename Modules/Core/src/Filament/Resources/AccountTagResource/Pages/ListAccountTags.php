@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\AccountTagResource\Pages;
+namespace Modules\Core\Filament\Resources\AccountTagResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Account\Filament\Resources\AccountTagResource;
+use Modules\Core\Filament\Resources\AccountTagResource;
 
 class ListAccountTags extends ListRecords
 {

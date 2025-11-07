@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Project\Filament\Resources\TaskResource\RelationManagers;
+namespace Modules\Projects\Filament\Resources\TaskResource\RelationManagers;
 
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
@@ -17,7 +17,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Project\Settings\TimeSettings;
+use Modules\Projects\Settings\TimeSettings;
 
 class TimesheetsRelationManager extends RelationManager
 {

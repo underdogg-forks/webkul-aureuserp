@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Support\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Webkul\Field\Traits\HasCustomFields;
-use Webkul\Security\Models\User;
+use Modules\Core\Traits\HasCustomFields;
+use Modules\Core\Models\User;
 
 class ActivityPlan extends Model
 {

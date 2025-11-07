@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Employee\Filament\Resources\DepartmentResource\Pages;
+namespace Modules\Core\Filament\Resources\DepartmentResource\Pages;
 
 use BackedEnum;
 use Filament\Resources\Pages\ManageRelatedRecords;
-use Webkul\Employee\Filament\Resources\DepartmentResource;
-use Webkul\Employee\Traits\Resources\Department\DepartmentEmployee;
+use Modules\Core\Filament\Resources\DepartmentResource;
+use Modules\Core\Traits\Resources\Department\DepartmentEmployee;
 
 class ManageEmployee extends ManageRelatedRecords
 {

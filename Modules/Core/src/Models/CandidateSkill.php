@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Recruitment\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Webkul\Employee\Models\Skill;
-use Webkul\Employee\Models\SkillLevel;
-use Webkul\Employee\Models\SkillType;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\Skill;
+use Modules\Core\Models\SkillLevel;
+use Modules\Core\Models\SkillType;
+use Modules\Core\Models\User;
 
 class CandidateSkill extends Model
 {

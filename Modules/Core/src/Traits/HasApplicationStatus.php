@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Recruitment\Traits;
+namespace Modules\Core\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
-use Webkul\Recruitment\Enums\ApplicationStatus;
-use Webkul\Recruitment\Models\Stage;
+use Modules\Core\Enums\ApplicationStatus;
+use Modules\Core\Models\Stage;
 
 trait HasApplicationStatus
 {

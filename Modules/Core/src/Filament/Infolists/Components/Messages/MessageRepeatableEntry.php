@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Chatter\Filament\Infolists\Components\Messages;
+namespace Modules\Core\Filament\Infolists\Components\Messages;
 
 use Filament\Infolists\Components\RepeatableEntry;
 

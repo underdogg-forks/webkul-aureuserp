@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Employee\Traits\Resources\Department;
+namespace Modules\Core\Traits\Resources\Department;
 
 use Filament\Actions\CreateAction;
 use Filament\Tables\Table;
-use Webkul\Employee\Filament\Resources\EmployeeResource;
+use Modules\Core\Filament\Resources\EmployeeResource;
 
 trait DepartmentEmployee
 {

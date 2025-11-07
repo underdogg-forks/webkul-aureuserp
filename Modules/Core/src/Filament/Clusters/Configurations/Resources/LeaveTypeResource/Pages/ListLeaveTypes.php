@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Configurations\Resources\LeaveTypeResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\LeaveTypeResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\LeaveTypeResource;
-use Webkul\TimeOff\Models\LeaveType;
+use Modules\Core\Filament\Clusters\Configurations\Resources\LeaveTypeResource;
+use Modules\Core\Models\LeaveType;
 
 class ListLeaveTypes extends ListRecords
 {

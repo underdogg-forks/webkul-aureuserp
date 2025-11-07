@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Invoice\Policies;
+namespace Modules\Core\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Webkul\Invoice\Models\Move;
-use Webkul\Security\Models\User;
-use Webkul\Security\Traits\HasScopedPermissions;
+use Modules\Core\Models\Move;
+use Modules\Core\Models\User;
+use Modules\Core\Traits\HasScopedPermissions;
 
 class MovePolicy
 {

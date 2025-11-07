@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Website\Filament\Customer\Resources;
+namespace Modules\Core\Filament\Customer\Resources;
 
 use Filament\Resources\Resource;
-use Webkul\Website\Filament\Customer\Resources\PageResource\Pages\ViewPage;
-use Webkul\Website\Models\Page;
+use Modules\Core\Filament\Customer\Resources\PageResource\Pages\ViewPage;
+use Modules\Core\Models\Page;
 
 class PageResource extends Resource
 {

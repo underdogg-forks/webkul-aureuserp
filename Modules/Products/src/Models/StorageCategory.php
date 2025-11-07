@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Models;
+namespace Modules\Products\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Inventory\Database\Factories\StorageCategoryFactory;
-use Webkul\Inventory\Enums\AllowNewProduct;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Products\Database\Factories\StorageCategoryFactory;
+use Modules\Products\Enums\AllowNewProduct;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class StorageCategory extends Model implements Sortable
 {

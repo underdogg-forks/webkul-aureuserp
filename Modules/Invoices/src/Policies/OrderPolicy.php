@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Sale\Policies;
+namespace Modules\Invoices\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Webkul\Sale\Models\Order;
-use Webkul\Security\Models\User;
-use Webkul\Security\Traits\HasScopedPermissions;
+use Modules\Invoices\Models\Order;
+use Modules\Core\Models\User;
+use Modules\Core\Traits\HasScopedPermissions;
 
 class OrderPolicy
 {

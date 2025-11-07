@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\TimeOff\Traits;
+namespace Modules\Core\Traits;
 
 use Carbon\Carbon;
 use Exception;
@@ -16,12 +16,12 @@ use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Employee\Models\Employee;
-use Webkul\TimeOff\Enums\RequestDateFromPeriod;
-use Webkul\TimeOff\Enums\State;
-use Webkul\TimeOff\Models\Leave;
-use Webkul\TimeOff\Models\LeaveAllocation;
-use Webkul\TimeOff\Models\LeaveType;
+use Modules\Core\Models\Employee;
+use Modules\Core\Enums\RequestDateFromPeriod;
+use Modules\Core\Enums\State;
+use Modules\Core\Models\Leave;
+use Modules\Core\Models\LeaveAllocation;
+use Modules\Core\Models\LeaveType;
 
 trait TimeOffHelper
 {

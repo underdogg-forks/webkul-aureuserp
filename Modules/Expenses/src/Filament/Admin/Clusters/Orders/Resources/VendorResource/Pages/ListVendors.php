@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\VendorResource\Pages;
+namespace Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\VendorResource\Pages;
 
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\VendorResource\Pages\ListVendors as BaseListVendors;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\VendorResource;
+use Modules\Core\Filament\Clusters\Vendors\Resources\VendorResource\Pages\ListVendors as BaseListVendors;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\VendorResource;
 
 class ListVendors extends BaseListVendors
 {

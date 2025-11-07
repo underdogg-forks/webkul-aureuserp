@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Configurations\Resources\RefuseReasonResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\RefuseReasonResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\RefuseReasonResource;
+use Modules\Core\Filament\Clusters\Configurations\Resources\RefuseReasonResource;
 
 class ListRefuseReasons extends ListRecords
 {

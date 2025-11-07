@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Field\Filament\Resources\FieldResource\Pages;
+namespace Modules\Core\Filament\Resources\FieldResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
-use Webkul\Field\FieldsColumnManager;
-use Webkul\Field\Filament\Resources\FieldResource;
+use Modules\Core\FieldsColumnManager;
+use Modules\Core\Filament\Resources\FieldResource;
 
 class CreateField extends CreateRecord
 {

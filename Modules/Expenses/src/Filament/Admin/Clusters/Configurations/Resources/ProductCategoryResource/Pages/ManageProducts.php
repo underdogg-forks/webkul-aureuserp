@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\ProductCategoryResource\Pages;
+namespace Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\ProductCategoryResource\Pages;
 
-use Webkul\Product\Filament\Resources\CategoryResource\Pages\ManageProducts as BaseManageProducts;
-use Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\ProductCategoryResource;
+use Modules\Core\Filament\Resources\CategoryResource\Pages\ManageProducts as BaseManageProducts;
+use Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\ProductCategoryResource;
 
 class ManageProducts extends BaseManageProducts
 {

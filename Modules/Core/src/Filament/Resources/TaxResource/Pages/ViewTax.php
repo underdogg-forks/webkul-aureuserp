@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\TaxResource\Pages;
+namespace Modules\Core\Filament\Resources\TaxResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
@@ -8,8 +8,8 @@ use Filament\Notifications\Notification;
 use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Database\QueryException;
-use Webkul\Account\Filament\Resources\TaxResource;
-use Webkul\Account\Models\Tax;
+use Modules\Core\Filament\Resources\TaxResource;
+use Modules\Core\Models\Tax;
 
 class ViewTax extends ViewRecord
 {

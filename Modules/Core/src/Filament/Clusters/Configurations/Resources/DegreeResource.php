@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Configurations\Resources;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -17,9 +17,9 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\QueryBuilder;
 use Filament\Tables\Filters\QueryBuilder\Constraints\TextConstraint;
 use Filament\Tables\Table;
-use Webkul\Recruitment\Filament\Clusters\Configurations;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\DegreeResource\Pages\ListDegrees;
-use Webkul\Recruitment\Models\Degree;
+use Modules\Core\Filament\Clusters\Configurations;
+use Modules\Core\Filament\Clusters\Configurations\Resources\DegreeResource\Pages\ListDegrees;
+use Modules\Core\Models\Degree;
 
 class DegreeResource extends Resource
 {

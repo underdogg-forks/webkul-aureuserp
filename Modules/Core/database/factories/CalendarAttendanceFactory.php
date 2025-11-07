@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Employee\Database\Factories;
+namespace Modules\Core\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Webkul\Employee\Models\CalendarAttendance;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\CalendarAttendance;
+use Modules\Core\Models\User;
 
 class CalendarAttendanceFactory extends Factory
 {

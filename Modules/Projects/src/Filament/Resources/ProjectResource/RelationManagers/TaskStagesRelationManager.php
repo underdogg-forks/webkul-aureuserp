@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Project\Filament\Resources\ProjectResource\RelationManagers;
+namespace Modules\Projects\Filament\Resources\ProjectResource\RelationManagers;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
@@ -8,7 +8,7 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Project\Filament\Clusters\Configurations\Resources\TaskStageResource;
+use Modules\Projects\Filament\Clusters\Configurations\Resources\TaskStageResource;
 
 class TaskStagesRelationManager extends RelationManager
 {

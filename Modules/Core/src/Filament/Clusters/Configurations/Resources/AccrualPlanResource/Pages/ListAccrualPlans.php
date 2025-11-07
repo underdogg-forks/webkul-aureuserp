@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Configurations\Resources\AccrualPlanResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\AccrualPlanResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\AccrualPlanResource;
+use Modules\Core\Filament\Clusters\Configurations\Resources\AccrualPlanResource;
 
 class ListAccrualPlans extends ListRecords
 {

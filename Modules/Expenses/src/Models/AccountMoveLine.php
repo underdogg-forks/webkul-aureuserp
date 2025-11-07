@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Purchase\Models;
+namespace Modules\Expenses\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Webkul\Account\Models\MoveLine;
+use Modules\Core\Models\MoveLine;
 
 class AccountMoveLine extends MoveLine
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Purchase;
+namespace Modules\Expenses;
 
 use Filament\Contracts\Plugin;
 use Filament\Navigation\NavigationItem;
 use Filament\Panel;
 use ReflectionClass;
-use Webkul\Purchase\Filament\Admin\Clusters\Settings\Pages\ManageProducts;
-use Webkul\Support\Package;
+use Modules\Expenses\Filament\Admin\Clusters\Settings\Pages\ManageProducts;
+use Modules\Core\Package;
 
 class PurchasePlugin implements Plugin
 {
@@ -30,17 +30,17 @@ class PurchasePlugin implements Plugin
         $panel
             ->when($panel->getId() == 'customer', function (Panel $panel) {
                 $panel
-                    ->discoverResources(in: $this->getPluginBasePath('/Filament/Customer/Resources'), for: 'Webkul\\Purchase\\Filament\\Customer\\Resources')
-                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Customer/Pages'), for: 'Webkul\\Purchase\\Filament\\Customer\\Pages')
-                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Customer/Clusters'), for: 'Webkul\\Purchase\\Filament\\Customer\\Clusters')
-                    ->discoverWidgets(in: $this->getPluginBasePath('/Filament/Customer/Widgets'), for: 'Webkul\\Purchase\\Filament\\Customer\\Widgets');
+                    ->discoverResources(in: $this->getPluginBasePath('/Filament/Customer/Resources'), for: 'Modules\\Expenses\\Filament\\Customer\\Resources')
+                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Customer/Pages'), for: 'Modules\\Expenses\\Filament\\Customer\\Pages')
+                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Customer/Clusters'), for: 'Modules\\Expenses\\Filament\\Customer\\Clusters')
+                    ->discoverWidgets(in: $this->getPluginBasePath('/Filament/Customer/Widgets'), for: 'Modules\\Expenses\\Filament\\Customer\\Widgets');
             })
             ->when($panel->getId() == 'admin', function (Panel $panel) {
                 $panel
-                    ->discoverResources(in: $this->getPluginBasePath('/Filament/Admin/Resources'), for: 'Webkul\\Purchase\\Filament\\Admin\\Resources')
-                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Admin/Pages'), for: 'Webkul\\Purchase\\Filament\\Admin\\Pages')
-                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Admin/Clusters'), for: 'Webkul\\Purchase\\Filament\\Admin\\Clusters')
-                    ->discoverWidgets(in: $this->getPluginBasePath('/Filament/Admin/Widgets'), for: 'Webkul\\Purchase\\Filament\\Admin\\Widgets')
+                    ->discoverResources(in: $this->getPluginBasePath('/Filament/Admin/Resources'), for: 'Modules\\Expenses\\Filament\\Admin\\Resources')
+                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Admin/Pages'), for: 'Modules\\Expenses\\Filament\\Admin\\Pages')
+                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Admin/Clusters'), for: 'Modules\\Expenses\\Filament\\Admin\\Clusters')
+                    ->discoverWidgets(in: $this->getPluginBasePath('/Filament/Admin/Widgets'), for: 'Modules\\Expenses\\Filament\\Admin\\Widgets')
                     ->navigationItems([
                         NavigationItem::make('settings')
                             ->label(fn () => __('purchases::app.navigation.settings.label'))

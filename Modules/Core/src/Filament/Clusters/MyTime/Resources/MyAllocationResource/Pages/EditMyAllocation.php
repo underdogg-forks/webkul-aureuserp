@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\MyTime\Resources\MyAllocationResource\Pages;
+namespace Modules\Core\Filament\Clusters\MyTime\Resources\MyAllocationResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Chatter\Filament\Actions as ChatterActions;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
-use Webkul\TimeOff\Filament\Clusters\MyTime\Resources\MyAllocationResource;
+use Modules\Core\Filament\Actions as ChatterActions;
+use Modules\Core\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Clusters\MyTime\Resources\MyAllocationResource;
 
 class EditMyAllocation extends EditRecord
 {

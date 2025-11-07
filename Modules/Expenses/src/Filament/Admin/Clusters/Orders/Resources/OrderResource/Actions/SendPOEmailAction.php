@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\OrderResource\Actions;
+namespace Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\OrderResource\Actions;
 
 use Exception;
 use Filament\Actions\Action;
@@ -11,10 +11,10 @@ use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use Webkul\Account\Models\Partner;
-use Webkul\Purchase\Enums\OrderState;
-use Webkul\Purchase\Facades\PurchaseOrder;
-use Webkul\Purchase\Models\Order;
+use Modules\Core\Models\Partner;
+use Modules\Expenses\Enums\OrderState;
+use Modules\Expenses\Facades\PurchaseOrder;
+use Modules\Expenses\Models\Order;
 
 class SendPOEmailAction extends Action
 {

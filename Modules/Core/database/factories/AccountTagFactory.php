@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Account\Database\Factories;
+namespace Modules\Core\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Webkul\Account\Enums\Applicability;
-use Webkul\Security\Models\User;
+use Modules\Core\Enums\Applicability;
+use Modules\Core\Models\User;
 
 class AccountTagFactory extends Factory
 {

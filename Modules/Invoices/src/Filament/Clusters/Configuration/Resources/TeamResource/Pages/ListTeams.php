@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Configuration\Resources\TeamResource\Pages;
+namespace Modules\Invoices\Filament\Clusters\Configuration\Resources\TeamResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\TeamResource;
-use Webkul\Sale\Models\Team;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\TeamResource;
+use Modules\Invoices\Models\Team;
 
 class ListTeams extends ListRecords
 {

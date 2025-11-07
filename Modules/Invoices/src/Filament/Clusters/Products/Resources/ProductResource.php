@@ -1,20 +1,20 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Products\Resources;
+namespace Modules\Invoices\Filament\Clusters\Products\Resources;
 
 use BackedEnum;
 use Filament\Resources\Pages\Page;
 use Filament\Tables\Filters\QueryBuilder;
 use Filament\Tables\Table;
-use Webkul\Invoice\Filament\Clusters\Customer\Resources\ProductResource as BaseProductResource;
-use Webkul\Sale\Filament\Clusters\Products;
-use Webkul\Sale\Filament\Clusters\Products\Resources\ProductResource\Pages\CreateProduct;
-use Webkul\Sale\Filament\Clusters\Products\Resources\ProductResource\Pages\EditProduct;
-use Webkul\Sale\Filament\Clusters\Products\Resources\ProductResource\Pages\ListProducts;
-use Webkul\Sale\Filament\Clusters\Products\Resources\ProductResource\Pages\ManageAttributes;
-use Webkul\Sale\Filament\Clusters\Products\Resources\ProductResource\Pages\ManageVariants;
-use Webkul\Sale\Filament\Clusters\Products\Resources\ProductResource\Pages\ViewProduct;
-use Webkul\Sale\Models\Product;
+use Modules\Core\Filament\Clusters\Customer\Resources\ProductResource as BaseProductResource;
+use Modules\Invoices\Filament\Clusters\Products;
+use Modules\Invoices\Filament\Clusters\Products\Resources\ProductResource\Pages\CreateProduct;
+use Modules\Invoices\Filament\Clusters\Products\Resources\ProductResource\Pages\EditProduct;
+use Modules\Invoices\Filament\Clusters\Products\Resources\ProductResource\Pages\ListProducts;
+use Modules\Invoices\Filament\Clusters\Products\Resources\ProductResource\Pages\ManageAttributes;
+use Modules\Invoices\Filament\Clusters\Products\Resources\ProductResource\Pages\ManageVariants;
+use Modules\Invoices\Filament\Clusters\Products\Resources\ProductResource\Pages\ViewProduct;
+use Modules\Invoices\Models\Product;
 
 class ProductResource extends BaseProductResource
 {

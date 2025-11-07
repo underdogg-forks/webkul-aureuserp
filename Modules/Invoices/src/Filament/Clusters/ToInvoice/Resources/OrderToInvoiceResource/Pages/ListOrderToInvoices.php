@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\ToInvoice\Resources\OrderToInvoiceResource\Pages;
+namespace Modules\Invoices\Filament\Clusters\ToInvoice\Resources\OrderToInvoiceResource\Pages;
 
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Sale\Filament\Clusters\ToInvoice\Resources\OrderToInvoiceResource;
-use Webkul\TableViews\Filament\Components\PresetView;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Invoices\Filament\Clusters\ToInvoice\Resources\OrderToInvoiceResource;
+use Modules\Core\Filament\Components\PresetView;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ListOrderToInvoices extends ListRecords
 {

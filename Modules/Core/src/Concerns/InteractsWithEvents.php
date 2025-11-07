@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\FullCalendar\Concerns;
+namespace Modules\Core\Concerns;
 
 use Carbon\Carbon;
-use Webkul\FullCalendar\FullCalendarPlugin;
+use Modules\Core\FullCalendarPlugin;
 
 trait InteractsWithEvents
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Partner\Filament\Resources\TitleResource\Pages;
+namespace Modules\Crm\Filament\Resources\TitleResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ManageRecords;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Partner\Filament\Resources\TitleResource;
+use Modules\Crm\Filament\Resources\TitleResource;
 
 class ManageTitles extends ManageRecords
 {

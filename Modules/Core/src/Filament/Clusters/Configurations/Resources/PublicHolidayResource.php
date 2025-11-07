@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Configurations\Resources;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -26,9 +26,9 @@ use Filament\Tables\Filters\QueryBuilder\Constraints\DateConstraint;
 use Filament\Tables\Filters\QueryBuilder\Constraints\TextConstraint;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use Webkul\TimeOff\Filament\Clusters\Configurations;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\PublicHolidayResource\Pages\ListPublicHolidays;
-use Webkul\TimeOff\Models\CalendarLeave;
+use Modules\Core\Filament\Clusters\Configurations;
+use Modules\Core\Filament\Clusters\Configurations\Resources\PublicHolidayResource\Pages\ListPublicHolidays;
+use Modules\Core\Models\CalendarLeave;
 
 class PublicHolidayResource extends Resource
 {

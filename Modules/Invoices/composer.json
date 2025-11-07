@@ -19,16 +19,12 @@
         "psr-4": {
             "Modules\\Invoices\\": "src/",
             "Modules\\Invoices\\Database\\Factories\\": "database/factories/",
-            "Modules\\Invoices\\Database\\Seeders\\": "database/seeders/",
-            "Webkul\\Sale\\": "src/",
-            "Webkul\\Sale\\Database\\Factories\\": "database/factories/",
-            "Webkul\\Sale\\Database\\Seeders\\": "database/seeders/"
+            "Modules\\Invoices\\Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Modules\\Invoices\\Tests\\": "tests/",
-            "Webkul\\Sale\\Tests\\": "tests/"
+            "Modules\\Invoices\\Tests\\": "tests/"
         }
     }
 }

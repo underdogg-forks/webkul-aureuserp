@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Product\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -10,11 +10,11 @@ use Filament\Actions\ViewAction;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
-use Webkul\Product\Filament\Resources\PriceListResource\Pages\CreatePriceList;
-use Webkul\Product\Filament\Resources\PriceListResource\Pages\EditPriceList;
-use Webkul\Product\Filament\Resources\PriceListResource\Pages\ListPriceLists;
-use Webkul\Product\Filament\Resources\PriceListResource\Pages\ViewPriceList;
-use Webkul\Product\Models\PriceList;
+use Modules\Core\Filament\Resources\PriceListResource\Pages\CreatePriceList;
+use Modules\Core\Filament\Resources\PriceListResource\Pages\EditPriceList;
+use Modules\Core\Filament\Resources\PriceListResource\Pages\ListPriceLists;
+use Modules\Core\Filament\Resources\PriceListResource\Pages\ViewPriceList;
+use Modules\Core\Models\PriceList;
 
 class PriceListResource extends Resource
 {

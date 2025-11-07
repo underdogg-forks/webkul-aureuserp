@@ -1,16 +1,16 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Configuration\Resources;
+namespace Modules\Invoices\Filament\Clusters\Configuration\Resources;
 
 use Filament\Resources\Pages\Page;
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\ProductCategoryResource as BaseProductCategoryResource;
-use Webkul\Sale\Filament\Clusters\Configuration;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\ProductCategoryResource\Pages\CreateProductCategory;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\ProductCategoryResource\Pages\EditProductCategory;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\ProductCategoryResource\Pages\ListProductCategories;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\ProductCategoryResource\Pages\ManageProducts;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\ProductCategoryResource\Pages\ViewProductCategory;
-use Webkul\Sale\Models\Category;
+use Modules\Core\Filament\Clusters\Configuration\Resources\ProductCategoryResource as BaseProductCategoryResource;
+use Modules\Invoices\Filament\Clusters\Configuration;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ProductCategoryResource\Pages\CreateProductCategory;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ProductCategoryResource\Pages\EditProductCategory;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ProductCategoryResource\Pages\ListProductCategories;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ProductCategoryResource\Pages\ManageProducts;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ProductCategoryResource\Pages\ViewProductCategory;
+use Modules\Invoices\Models\Category;
 
 class ProductCategoryResource extends BaseProductCategoryResource
 {

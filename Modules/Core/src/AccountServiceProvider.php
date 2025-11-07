@@ -1,16 +1,16 @@
 <?php
 
-namespace Webkul\Account;
+namespace Modules\Core;
 
 use Illuminate\Foundation\AliasLoader;
 use Livewire\Livewire;
-use Webkul\Account\Facades\Account as AccountFacade;
-use Webkul\Account\Facades\Tax as TaxFacade;
-use Webkul\Account\Livewire\InvoiceSummary;
-use Webkul\Support\Console\Commands\InstallCommand;
-use Webkul\Support\Console\Commands\UninstallCommand;
-use Webkul\Support\Package;
-use Webkul\Support\PackageServiceProvider;
+use Modules\Core\Facades\Account as AccountFacade;
+use Modules\Core\Facades\Tax as TaxFacade;
+use Modules\Core\Livewire\InvoiceSummary;
+use Modules\Core\Console\Commands\InstallCommand;
+use Modules\Core\Console\Commands\UninstallCommand;
+use Modules\Core\Package;
+use Modules\Core\PackageServiceProvider;
 
 class AccountServiceProvider extends PackageServiceProvider
 {
@@ -74,7 +74,7 @@ class AccountServiceProvider extends PackageServiceProvider
             ->hasDependencies([
                 'products',
             ])
-            ->hasSeeder('Webkul\\Account\\Database\Seeders\\DatabaseSeeder')
+            ->hasSeeder('Modules\\Core\\Database\Seeders\\DatabaseSeeder')
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->installDependencies()

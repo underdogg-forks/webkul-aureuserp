@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -29,14 +29,14 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Account\Enums\CommunicationStandard;
-use Webkul\Account\Enums\CommunicationType;
-use Webkul\Account\Enums\JournalType;
-use Webkul\Account\Filament\Resources\JournalResource\Pages\CreateJournal;
-use Webkul\Account\Filament\Resources\JournalResource\Pages\EditJournal;
-use Webkul\Account\Filament\Resources\JournalResource\Pages\ListJournals;
-use Webkul\Account\Filament\Resources\JournalResource\Pages\ViewJournal;
-use Webkul\Account\Models\Journal;
+use Modules\Core\Enums\CommunicationStandard;
+use Modules\Core\Enums\CommunicationType;
+use Modules\Core\Enums\JournalType;
+use Modules\Core\Filament\Resources\JournalResource\Pages\CreateJournal;
+use Modules\Core\Filament\Resources\JournalResource\Pages\EditJournal;
+use Modules\Core\Filament\Resources\JournalResource\Pages\ListJournals;
+use Modules\Core\Filament\Resources\JournalResource\Pages\ViewJournal;
+use Modules\Core\Models\Journal;
 
 class JournalResource extends Resource
 {

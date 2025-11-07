@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\WarehouseResource\Pages;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\WarehouseResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\WarehouseResource;
-use Webkul\Inventory\Models\Warehouse;
+use Modules\Products\Filament\Clusters\Configurations\Resources\WarehouseResource;
+use Modules\Products\Models\Warehouse;
 
 class ListWarehouses extends ListRecords
 {

@@ -3,8 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Webkul\TimeOff\Enums\AllocationType;
-use Webkul\TimeOff\Enums\State;
+use Modules\Core\Enums\AllocationType;
+use Modules\Core\Enums\State;
 
 return new class () extends Migration {
     /**

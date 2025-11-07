@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Account\Database\Seeders;
+namespace Modules\Core\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Currency;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Currency;
 
 class AccountSeeder extends Seeder
 {

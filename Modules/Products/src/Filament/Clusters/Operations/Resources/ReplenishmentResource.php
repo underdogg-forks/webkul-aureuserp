@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Resources;
+namespace Modules\Products\Filament\Clusters\Operations\Resources;
 
 use BackedEnum;
 use Filament\Actions\Action;
@@ -12,9 +12,9 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\QueryBuilder;
 use Filament\Tables\Table;
-use Webkul\Inventory\Filament\Clusters\Operations;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\ReplenishmentResource\Pages\ManageReplenishment;
-use Webkul\Inventory\Models\OrderPoint;
+use Modules\Products\Filament\Clusters\Operations;
+use Modules\Products\Filament\Clusters\Operations\Resources\ReplenishmentResource\Pages\ManageReplenishment;
+use Modules\Products\Models\OrderPoint;
 
 class ReplenishmentResource extends Resource
 {

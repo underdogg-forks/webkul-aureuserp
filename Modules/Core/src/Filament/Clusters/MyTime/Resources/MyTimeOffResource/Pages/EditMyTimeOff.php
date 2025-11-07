@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\MyTime\Resources\MyTimeOffResource\Pages;
+namespace Modules\Core\Filament\Clusters\MyTime\Resources\MyTimeOffResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
-use Webkul\Chatter\Filament\Actions as ChatterActions;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
-use Webkul\TimeOff\Filament\Clusters\MyTime\Resources\MyTimeOffResource;
-use Webkul\TimeOff\Traits\TimeOffHelper;
+use Modules\Core\Filament\Actions as ChatterActions;
+use Modules\Core\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Clusters\MyTime\Resources\MyTimeOffResource;
+use Modules\Core\Traits\TimeOffHelper;
 
 class EditMyTimeOff extends EditRecord
 {

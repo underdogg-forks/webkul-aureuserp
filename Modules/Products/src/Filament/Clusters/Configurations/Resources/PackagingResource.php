@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Filament\Forms\Components\Select;
@@ -11,14 +11,14 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use Webkul\Inventory\Filament\Clusters\Configurations;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\PackagingResource\Pages\ManagePackagings;
-use Webkul\Inventory\Models\Packaging;
-use Webkul\Inventory\Settings\OperationSettings;
-use Webkul\Inventory\Settings\ProductSettings;
-use Webkul\Inventory\Settings\WarehouseSettings;
-use Webkul\Product\Enums\ProductType;
-use Webkul\Product\Filament\Resources\PackagingResource as BasePackagingResource;
+use Modules\Products\Filament\Clusters\Configurations;
+use Modules\Products\Filament\Clusters\Configurations\Resources\PackagingResource\Pages\ManagePackagings;
+use Modules\Products\Models\Packaging;
+use Modules\Products\Settings\OperationSettings;
+use Modules\Products\Settings\ProductSettings;
+use Modules\Products\Settings\WarehouseSettings;
+use Modules\Core\Enums\ProductType;
+use Modules\Core\Filament\Resources\PackagingResource as BasePackagingResource;
 
 class PackagingResource extends BasePackagingResource
 {

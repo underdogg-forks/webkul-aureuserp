@@ -1,18 +1,18 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Customer\Resources;
+namespace Modules\Core\Filament\Clusters\Customer\Resources;
 
 use Filament\Actions\Action;
 use Filament\Resources\Pages\Page;
 use Filament\Schemas\Components\Utilities\Get;
-use Webkul\Account\Filament\Resources\CreditNoteResource as BaseCreditNoteResource;
-use Webkul\Invoice\Filament\Clusters\Customer;
-use Webkul\Invoice\Filament\Clusters\Customer\Resources\CreditNotesResource\Pages\CreateCreditNotes;
-use Webkul\Invoice\Filament\Clusters\Customer\Resources\CreditNotesResource\Pages\EditCreditNotes;
-use Webkul\Invoice\Filament\Clusters\Customer\Resources\CreditNotesResource\Pages\ListCreditNotes;
-use Webkul\Invoice\Filament\Clusters\Customer\Resources\CreditNotesResource\Pages\ViewCreditNote;
-use Webkul\Invoice\Models\CreditNote;
-use Webkul\Support\Filament\Forms\Components\Repeater;
+use Modules\Core\Filament\Resources\CreditNoteResource as BaseCreditNoteResource;
+use Modules\Core\Filament\Clusters\Customer;
+use Modules\Core\Filament\Clusters\Customer\Resources\CreditNotesResource\Pages\CreateCreditNotes;
+use Modules\Core\Filament\Clusters\Customer\Resources\CreditNotesResource\Pages\EditCreditNotes;
+use Modules\Core\Filament\Clusters\Customer\Resources\CreditNotesResource\Pages\ListCreditNotes;
+use Modules\Core\Filament\Clusters\Customer\Resources\CreditNotesResource\Pages\ViewCreditNote;
+use Modules\Core\Models\CreditNote;
+use Modules\Core\Filament\Forms\Components\Repeater;
 
 class CreditNotesResource extends BaseCreditNoteResource
 {

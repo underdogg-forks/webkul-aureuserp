@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\LocationResource\Pages;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\LocationResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\LocationResource;
-use Webkul\Inventory\Models\Location;
+use Modules\Products\Filament\Clusters\Configurations\Resources\LocationResource;
+use Modules\Products\Models\Location;
 
 class CreateLocation extends CreateRecord
 {

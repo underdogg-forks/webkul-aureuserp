@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Products\Resources\ProductResource\Pages;
+namespace Modules\Invoices\Filament\Clusters\Products\Resources\ProductResource\Pages;
 
-use Webkul\Product\Filament\Resources\ProductResource\Pages\EditProduct as BaseEditProduct;
-use Webkul\Sale\Filament\Clusters\Products\Resources\ProductResource;
+use Modules\Core\Filament\Resources\ProductResource\Pages\EditProduct as BaseEditProduct;
+use Modules\Invoices\Filament\Clusters\Products\Resources\ProductResource;
 
 class EditProduct extends BaseEditProduct
 {

@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Sale;
+namespace Modules\Invoices;
 
 use Illuminate\Foundation\AliasLoader;
 use Livewire\Livewire;
-use Webkul\Sale\Facades\SaleOrder as SaleOrderFacade;
-use Webkul\Sale\Livewire\Summary;
-use Webkul\Support\Console\Commands\InstallCommand;
-use Webkul\Support\Console\Commands\UninstallCommand;
-use Webkul\Support\Package;
-use Webkul\Support\PackageServiceProvider;
+use Modules\Invoices\Facades\SaleOrder as SaleOrderFacade;
+use Modules\Invoices\Livewire\Summary;
+use Modules\Core\Console\Commands\InstallCommand;
+use Modules\Core\Console\Commands\UninstallCommand;
+use Modules\Core\Package;
+use Modules\Core\PackageServiceProvider;
 
 class SaleServiceProvider extends PackageServiceProvider
 {
@@ -56,7 +56,7 @@ class SaleServiceProvider extends PackageServiceProvider
                 'invoices',
                 'payments',
             ])
-            ->hasSeeder('Webkul\\Sale\\Database\Seeders\\DatabaseSeeder')
+            ->hasSeeder('Modules\\Invoices\\Database\Seeders\\DatabaseSeeder')
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->installDependencies()

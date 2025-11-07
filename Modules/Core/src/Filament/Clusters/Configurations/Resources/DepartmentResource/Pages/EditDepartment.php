@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Configurations\Resources\DepartmentResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\DepartmentResource\Pages;
 
-use Webkul\Employee\Filament\Resources\DepartmentResource\Pages\EditDepartment as BaseEditDepartment;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\DepartmentResource;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Resources\DepartmentResource\Pages\EditDepartment as BaseEditDepartment;
+use Modules\Core\Filament\Clusters\Configurations\Resources\DepartmentResource;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class EditDepartment extends BaseEditDepartment
 {

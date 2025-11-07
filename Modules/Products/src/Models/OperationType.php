@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Models;
+namespace Modules\Products\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,13 +9,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Inventory\Database\Factories\OperationTypeFactory;
-use Webkul\Inventory\Enums;
-use Webkul\Inventory\Enums\CreateBackorder;
-use Webkul\Inventory\Enums\MoveType;
-use Webkul\Inventory\Enums\ReservationMethod;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Products\Database\Factories\OperationTypeFactory;
+use Modules\Products\Enums;
+use Modules\Products\Enums\CreateBackorder;
+use Modules\Products\Enums\MoveType;
+use Modules\Products\Enums\ReservationMethod;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class OperationType extends Model implements Sortable
 {

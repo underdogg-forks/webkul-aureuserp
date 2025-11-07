@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Vendors\Resources\VendorResource\Pages;
+namespace Modules\Core\Filament\Clusters\Vendors\Resources\VendorResource\Pages;
 
 use Illuminate\Contracts\Support\Htmlable;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\VendorResource;
-use Webkul\Partner\Filament\Resources\PartnerResource\Pages\CreatePartner as BaseCreateVendor;
+use Modules\Core\Filament\Clusters\Vendors\Resources\VendorResource;
+use Modules\Crm\Filament\Resources\PartnerResource\Pages\CreatePartner as BaseCreateVendor;
 
 class CreateVendor extends BaseCreateVendor
 {

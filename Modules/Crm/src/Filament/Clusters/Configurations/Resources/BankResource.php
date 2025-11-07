@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Contact\Filament\Clusters\Configurations\Resources;
+namespace Modules\Crm\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
-use Webkul\Contact\Filament\Clusters\Configurations;
-use Webkul\Contact\Filament\Clusters\Configurations\Resources\BankResource\Pages\ManageBanks;
-use Webkul\Partner\Filament\Resources\BankResource as BaseBankResource;
+use Modules\Crm\Filament\Clusters\Configurations;
+use Modules\Crm\Filament\Clusters\Configurations\Resources\BankResource\Pages\ManageBanks;
+use Modules\Crm\Filament\Resources\BankResource as BaseBankResource;
 
 class BankResource extends BaseBankResource
 {

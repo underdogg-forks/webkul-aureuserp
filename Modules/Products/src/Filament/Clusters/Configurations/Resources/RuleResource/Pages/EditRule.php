@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\RuleResource\Pages;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\RuleResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\RuleResource;
+use Modules\Products\Filament\Clusters\Configurations\Resources\RuleResource;
 
 class EditRule extends EditRecord
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Configurations\Resources;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -38,18 +38,18 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
-use Webkul\TimeOff\Enums\AllocationValidationType;
-use Webkul\TimeOff\Enums\EmployeeRequest;
-use Webkul\TimeOff\Enums\LeaveValidationType;
-use Webkul\TimeOff\Enums\RequestUnit;
-use Webkul\TimeOff\Enums\RequiresAllocation;
-use Webkul\TimeOff\Enums\TimeType;
-use Webkul\TimeOff\Filament\Clusters\Configurations;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\LeaveTypeResource\Pages\CreateLeaveType;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\LeaveTypeResource\Pages\EditLeaveType;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\LeaveTypeResource\Pages\ListLeaveTypes;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\LeaveTypeResource\Pages\ViewLeaveType;
-use Webkul\TimeOff\Models\LeaveType;
+use Modules\Core\Enums\AllocationValidationType;
+use Modules\Core\Enums\EmployeeRequest;
+use Modules\Core\Enums\LeaveValidationType;
+use Modules\Core\Enums\RequestUnit;
+use Modules\Core\Enums\RequiresAllocation;
+use Modules\Core\Enums\TimeType;
+use Modules\Core\Filament\Clusters\Configurations;
+use Modules\Core\Filament\Clusters\Configurations\Resources\LeaveTypeResource\Pages\CreateLeaveType;
+use Modules\Core\Filament\Clusters\Configurations\Resources\LeaveTypeResource\Pages\EditLeaveType;
+use Modules\Core\Filament\Clusters\Configurations\Resources\LeaveTypeResource\Pages\ListLeaveTypes;
+use Modules\Core\Filament\Clusters\Configurations\Resources\LeaveTypeResource\Pages\ViewLeaveType;
+use Modules\Core\Models\LeaveType;
 
 class LeaveTypeResource extends Resource
 {

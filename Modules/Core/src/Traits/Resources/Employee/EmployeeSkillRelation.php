@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Employee\Traits\Resources\Employee;
+namespace Modules\Core\Traits\Resources\Employee;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
@@ -20,8 +20,8 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Employee\Models\SkillType;
-use Webkul\Support\Filament\Tables as CustomTables;
+use Modules\Core\Models\SkillType;
+use Modules\Core\Filament\Tables as CustomTables;
 
 trait EmployeeSkillRelation
 {

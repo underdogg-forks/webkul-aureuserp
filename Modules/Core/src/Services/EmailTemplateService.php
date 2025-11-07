@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Support\Services;
+namespace Modules\Core\Services;
 
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use Webkul\Support\Mail\DynamicEmail;
-use Webkul\Support\Models\EmailLog;
-use Webkul\Support\Models\EmailTemplate;
+use Modules\Core\Mail\DynamicEmail;
+use Modules\Core\Models\EmailLog;
+use Modules\Core\Models\EmailTemplate;
 
 class EmailTemplateService
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Settings\Pages;
+namespace Modules\Products\Filament\Clusters\Settings\Pages;
 
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
@@ -8,10 +8,10 @@ use Filament\Forms\Components\Toggle;
 use Filament\Pages\SettingsPage;
 use Filament\Schemas\Schema;
 use UnitEnum;
-use Webkul\Inventory\Enums;
-use Webkul\Inventory\Models\OperationType;
-use Webkul\Inventory\Settings\LogisticSettings;
-use Webkul\Support\Filament\Clusters\Settings;
+use Modules\Products\Enums;
+use Modules\Products\Models\OperationType;
+use Modules\Products\Settings\LogisticSettings;
+use Modules\Core\Filament\Clusters\Settings;
 
 class ManageLogistics extends SettingsPage
 {

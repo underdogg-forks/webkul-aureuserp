@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Employee\Filament\Resources\DepartmentResource\Pages;
+namespace Modules\Core\Filament\Resources\DepartmentResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
-use Webkul\Employee\Filament\Resources\DepartmentResource;
+use Modules\Core\Filament\Resources\DepartmentResource;
 
 class CreateDepartment extends CreateRecord
 {

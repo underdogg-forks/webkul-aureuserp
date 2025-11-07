@@ -2,4 +2,4 @@
 
 namespace Modules\Products\Filament\Resources;
 
-class ProductResource extends \Webkul\Product\Filament\Resources\ProductResource {}
+class ProductResource extends \Modules\Core\Filament\Resources\ProductResource {}

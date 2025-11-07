@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Recruitment\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\User;
 
 class ApplicantCategory extends Model
 {

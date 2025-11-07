@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\MyTime\Resources\MyTimeOffResource\Pages;
+namespace Modules\Core\Filament\Clusters\MyTime\Resources\MyTimeOffResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
-use Webkul\TimeOff\Filament\Clusters\MyTime\Resources\MyTimeOffResource;
-use Webkul\TimeOff\Traits\TimeOffHelper;
+use Modules\Core\Filament\Clusters\MyTime\Resources\MyTimeOffResource;
+use Modules\Core\Traits\TimeOffHelper;
 
 class CreateMyTimeOff extends CreateRecord
 {

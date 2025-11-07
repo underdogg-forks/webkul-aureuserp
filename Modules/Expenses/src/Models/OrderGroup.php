@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Purchase\Models;
+namespace Modules\Expenses\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Webkul\Purchase\Database\Factories\OrderGroupFactory;
-use Webkul\Security\Models\User;
+use Modules\Expenses\Database\Factories\OrderGroupFactory;
+use Modules\Core\Models\User;
 
 class OrderGroup extends Model
 {

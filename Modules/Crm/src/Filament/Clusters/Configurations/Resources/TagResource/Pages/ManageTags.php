@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Contact\Filament\Clusters\Configurations\Resources\TagResource\Pages;
+namespace Modules\Crm\Filament\Clusters\Configurations\Resources\TagResource\Pages;
 
-use Webkul\Contact\Filament\Clusters\Configurations\Resources\TagResource;
-use Webkul\Partner\Filament\Resources\TagResource\Pages\ManageTags as BaseManageTags;
+use Modules\Crm\Filament\Clusters\Configurations\Resources\TagResource;
+use Modules\Crm\Filament\Resources\TagResource\Pages\ManageTags as BaseManageTags;
 
 class ManageTags extends BaseManageTags
 {

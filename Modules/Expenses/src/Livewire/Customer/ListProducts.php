@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Purchase\Livewire\Customer;
+namespace Modules\Expenses\Livewire\Customer;
 
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
@@ -11,7 +11,7 @@ use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use Livewire\Component;
-use Webkul\Purchase\Models\OrderLine;
+use Modules\Expenses\Models\OrderLine;
 
 class ListProducts extends Component implements HasActions, HasForms, HasTable
 {

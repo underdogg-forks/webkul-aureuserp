@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\PurchaseAgreementResource\Pages;
+namespace Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\PurchaseAgreementResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Chatter\Filament\Actions\ChatterAction;
-use Webkul\Purchase\Enums\RequisitionState;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\PurchaseAgreementResource;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Actions\ChatterAction;
+use Modules\Expenses\Enums\RequisitionState;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\PurchaseAgreementResource;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ViewPurchaseAgreement extends ViewRecord
 {

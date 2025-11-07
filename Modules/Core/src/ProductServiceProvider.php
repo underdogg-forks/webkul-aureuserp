@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Product;
+namespace Modules\Core;
 
-use Webkul\Support\Console\Commands\InstallCommand;
-use Webkul\Support\Console\Commands\UninstallCommand;
-use Webkul\Support\Package;
-use Webkul\Support\PackageServiceProvider;
+use Modules\Core\Console\Commands\InstallCommand;
+use Modules\Core\Console\Commands\UninstallCommand;
+use Modules\Core\Package;
+use Modules\Core\PackageServiceProvider;
 
 class ProductServiceProvider extends PackageServiceProvider
 {
@@ -35,7 +35,7 @@ class ProductServiceProvider extends PackageServiceProvider
                 '2025_02_21_053249 _create_products_product_combinations_table',
                 '2025_07_28_080116_alter_products_products_table',
             ])
-            ->hasSeeder('Webkul\\Product\\Database\Seeders\\DatabaseSeeder')
+            ->hasSeeder('Modules\\Core\\Database\Seeders\\DatabaseSeeder')
             ->runsMigrations()
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command

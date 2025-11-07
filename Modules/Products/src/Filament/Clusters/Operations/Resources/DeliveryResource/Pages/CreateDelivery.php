@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Resources\DeliveryResource\Pages;
+namespace Modules\Products\Filament\Clusters\Operations\Resources\DeliveryResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Enums;
-use Webkul\Inventory\Enums\OperationState;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\DeliveryResource;
-use Webkul\Inventory\Models\OperationType;
+use Modules\Products\Enums;
+use Modules\Products\Enums\OperationState;
+use Modules\Products\Filament\Clusters\Operations\Resources\DeliveryResource;
+use Modules\Products\Models\OperationType;
 
 class CreateDelivery extends CreateRecord
 {

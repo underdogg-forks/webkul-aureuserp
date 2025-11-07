@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Project\Filament\Pages;
+namespace Modules\Projects\Filament\Pages;
 
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
@@ -11,15 +11,15 @@ use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
 use Illuminate\Contracts\Support\Htmlable;
-use Webkul\Partner\Models\Partner;
-use Webkul\Project\Filament\Widgets\StatsOverviewWidget;
-use Webkul\Project\Filament\Widgets\TaskByStageChart;
-use Webkul\Project\Filament\Widgets\TaskByStateChart;
-use Webkul\Project\Filament\Widgets\TopAssigneesWidget;
-use Webkul\Project\Filament\Widgets\TopProjectsWidget;
-use Webkul\Project\Models\Project;
-use Webkul\Project\Models\Tag;
-use Webkul\Security\Models\User;
+use Modules\Crm\Models\Partner;
+use Modules\Projects\Filament\Widgets\StatsOverviewWidget;
+use Modules\Projects\Filament\Widgets\TaskByStageChart;
+use Modules\Projects\Filament\Widgets\TaskByStateChart;
+use Modules\Projects\Filament\Widgets\TopAssigneesWidget;
+use Modules\Projects\Filament\Widgets\TopProjectsWidget;
+use Modules\Projects\Models\Project;
+use Modules\Projects\Models\Tag;
+use Modules\Core\Models\User;
 
 class Dashboard extends BaseDashboard
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\TaxResource\Pages;
+namespace Modules\Core\Filament\Resources\TaxResource\Pages;
 
 use BackedEnum;
 use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Resources\Pages\ManageRelatedRecords;
-use Webkul\Account\Enums\DocumentType;
-use Webkul\Account\Filament\Resources\TaxResource;
-use Webkul\Account\Traits\TaxPartition;
+use Modules\Core\Enums\DocumentType;
+use Modules\Core\Filament\Resources\TaxResource;
+use Modules\Core\Traits\TaxPartition;
 
 class ManageDistributionForRefund extends ManageRelatedRecords
 {

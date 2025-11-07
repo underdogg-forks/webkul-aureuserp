@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\TableViews\Filament\Concerns;
+namespace Modules\Core\Filament\Concerns;
 
 use Closure;
 use Filament\Actions\Action;
@@ -9,12 +9,12 @@ use Filament\Support\Concerns\EvaluatesClosures;
 use Filament\Support\Enums\Width;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Attributes\Url;
-use Webkul\TableViews\Filament\Actions\CreateViewAction;
-use Webkul\TableViews\Filament\Actions\EditViewAction;
-use Webkul\TableViews\Filament\Components\PresetView;
-use Webkul\TableViews\Filament\Components\SavedView;
-use Webkul\TableViews\Models\TableView as TableViewModel;
-use Webkul\TableViews\Models\TableViewFavorite as TableViewFavoriteModel;
+use Modules\Core\Filament\Actions\CreateViewAction;
+use Modules\Core\Filament\Actions\EditViewAction;
+use Modules\Core\Filament\Components\PresetView;
+use Modules\Core\Filament\Components\SavedView;
+use Modules\Core\Models\TableView as TableViewModel;
+use Modules\Core\Models\TableViewFavorite as TableViewFavoriteModel;
 
 trait HasTableViews
 {

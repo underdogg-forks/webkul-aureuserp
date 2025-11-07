@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Partner\Database\Factories;
+namespace Modules\Crm\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Webkul\Partner\Models\BankAccount;
-use Webkul\Partner\Models\Partner;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Bank;
+use Modules\Crm\Models\BankAccount;
+use Modules\Crm\Models\Partner;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Bank;
 
 /**
  * @extends Factory<BankAccount>

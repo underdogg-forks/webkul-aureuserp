@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Security\Filament\Clusters\Settings\Pages;
+namespace Modules\Core\Filament\Clusters\Settings\Pages;
 
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
@@ -8,10 +8,10 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 use Filament\Pages\SettingsPage;
 use Filament\Schemas\Schema;
-use Webkul\Security\Models\Role;
-use Webkul\Security\Settings\UserSettings;
-use Webkul\Support\Filament\Clusters\Settings;
-use Webkul\Support\Models\Company;
+use Modules\Core\Models\Role;
+use Modules\Core\Settings\UserSettings;
+use Modules\Core\Filament\Clusters\Settings;
+use Modules\Core\Models\Company;
 
 class ManageUsers extends SettingsPage
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Configurations\Resources\AccrualPlanResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\AccrualPlanResource\Pages;
 
 use BackedEnum;
 use Filament\Resources\Pages\ManageRelatedRecords;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\AccrualPlanResource;
-use Webkul\TimeOff\Traits\LeaveAccrualPlan;
+use Modules\Core\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Clusters\Configurations\Resources\AccrualPlanResource;
+use Modules\Core\Traits\LeaveAccrualPlan;
 
 class ManageMilestone extends ManageRelatedRecords
 {

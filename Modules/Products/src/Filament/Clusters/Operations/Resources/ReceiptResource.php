@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Resources;
+namespace Modules\Products\Filament\Clusters\Operations\Resources;
 
 use BackedEnum;
 use Filament\Actions\ActionGroup;
@@ -17,15 +17,15 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
-use Webkul\Inventory\Enums\OperationState;
-use Webkul\Inventory\Enums\OperationType;
-use Webkul\Inventory\Filament\Clusters\Operations;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\ReceiptResource\Pages\CreateReceipt;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\ReceiptResource\Pages\EditReceipt;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\ReceiptResource\Pages\ListReceipts;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\ReceiptResource\Pages\ManageMoves;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\ReceiptResource\Pages\ViewReceipt;
-use Webkul\Inventory\Models\Receipt;
+use Modules\Products\Enums\OperationState;
+use Modules\Products\Enums\OperationType;
+use Modules\Products\Filament\Clusters\Operations;
+use Modules\Products\Filament\Clusters\Operations\Resources\ReceiptResource\Pages\CreateReceipt;
+use Modules\Products\Filament\Clusters\Operations\Resources\ReceiptResource\Pages\EditReceipt;
+use Modules\Products\Filament\Clusters\Operations\Resources\ReceiptResource\Pages\ListReceipts;
+use Modules\Products\Filament\Clusters\Operations\Resources\ReceiptResource\Pages\ManageMoves;
+use Modules\Products\Filament\Clusters\Operations\Resources\ReceiptResource\Pages\ViewReceipt;
+use Modules\Products\Models\Receipt;
 
 class ReceiptResource extends Resource
 {

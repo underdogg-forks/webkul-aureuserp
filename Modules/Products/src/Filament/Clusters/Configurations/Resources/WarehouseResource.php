@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -36,18 +36,18 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Field\Filament\Traits\HasCustomFields;
-use Webkul\Inventory\Enums\DeliveryStep;
-use Webkul\Inventory\Enums\ReceptionStep;
-use Webkul\Inventory\Filament\Clusters\Configurations;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\WarehouseResource\Pages\CreateWarehouse;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\WarehouseResource\Pages\EditWarehouse;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\WarehouseResource\Pages\ListWarehouses;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\WarehouseResource\Pages\ManageRoutes;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\WarehouseResource\Pages\ViewWarehouse;
-use Webkul\Inventory\Models\Warehouse;
-use Webkul\Inventory\Settings\WarehouseSettings;
-use Webkul\Partner\Filament\Resources\PartnerResource;
+use Modules\Core\Filament\Traits\HasCustomFields;
+use Modules\Products\Enums\DeliveryStep;
+use Modules\Products\Enums\ReceptionStep;
+use Modules\Products\Filament\Clusters\Configurations;
+use Modules\Products\Filament\Clusters\Configurations\Resources\WarehouseResource\Pages\CreateWarehouse;
+use Modules\Products\Filament\Clusters\Configurations\Resources\WarehouseResource\Pages\EditWarehouse;
+use Modules\Products\Filament\Clusters\Configurations\Resources\WarehouseResource\Pages\ListWarehouses;
+use Modules\Products\Filament\Clusters\Configurations\Resources\WarehouseResource\Pages\ManageRoutes;
+use Modules\Products\Filament\Clusters\Configurations\Resources\WarehouseResource\Pages\ViewWarehouse;
+use Modules\Products\Models\Warehouse;
+use Modules\Products\Settings\WarehouseSettings;
+use Modules\Crm\Filament\Resources\PartnerResource;
 
 class WarehouseResource extends Resource
 {

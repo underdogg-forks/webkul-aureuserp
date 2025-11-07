@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\WarehouseResource\Pages;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\WarehouseResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\WarehouseResource;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Products\Filament\Clusters\Configurations\Resources\WarehouseResource;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ViewWarehouse extends ViewRecord
 {

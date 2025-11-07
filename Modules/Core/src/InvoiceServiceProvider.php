@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Invoice;
+namespace Modules\Core;
 
-use Webkul\Support\Console\Commands\InstallCommand;
-use Webkul\Support\Console\Commands\UninstallCommand;
-use Webkul\Support\Package;
-use Webkul\Support\PackageServiceProvider;
+use Modules\Core\Console\Commands\InstallCommand;
+use Modules\Core\Console\Commands\UninstallCommand;
+use Modules\Core\Package;
+use Modules\Core\PackageServiceProvider;
 
 class InvoiceServiceProvider extends PackageServiceProvider
 {

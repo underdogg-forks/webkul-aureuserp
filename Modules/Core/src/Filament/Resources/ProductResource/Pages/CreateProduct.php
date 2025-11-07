@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Product\Filament\Resources\ProductResource\Pages;
+namespace Modules\Core\Filament\Resources\ProductResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Product\Filament\Resources\ProductResource;
+use Modules\Core\Filament\Resources\ProductResource;
 
 class CreateProduct extends CreateRecord
 {

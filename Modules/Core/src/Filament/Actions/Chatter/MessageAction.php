@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Chatter\Filament\Actions\Chatter;
+namespace Modules\Core\Filament\Actions\Chatter;
 
 use Exception;
 use Filament\Actions\Action;
@@ -14,8 +14,8 @@ use Filament\Schemas\Components\Group;
 use Filament\Schemas\Components\Utilities\Get;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
-use Webkul\Chatter\Mail\MessageMail;
-use Webkul\Support\Services\EmailService;
+use Modules\Core\Mail\MessageMail;
+use Modules\Core\Services\EmailService;
 
 class MessageAction extends Action
 {

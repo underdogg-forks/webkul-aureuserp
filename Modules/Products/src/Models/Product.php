@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Inventory\Models;
+namespace Modules\Products\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Webkul\Field\Traits\HasCustomFields;
-use Webkul\Inventory\Enums\LocationType;
-use Webkul\Inventory\Enums\ProductTracking;
-use Webkul\Product\Models\Product as BaseProduct;
-use Webkul\Security\Models\User;
+use Modules\Core\Traits\HasCustomFields;
+use Modules\Products\Enums\LocationType;
+use Modules\Products\Enums\ProductTracking;
+use Modules\Core\Models\Product as BaseProduct;
+use Modules\Core\Models\User;
 
 class Product extends BaseProduct
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Product\Database\Factories;
+namespace Modules\Core\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Webkul\Product\Models\Attribute;
-use Webkul\Product\Models\AttributeOption;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\Attribute;
+use Modules\Core\Models\AttributeOption;
+use Modules\Core\Models\User;
 
 /**
  * @extends Factory<AttributeOption>

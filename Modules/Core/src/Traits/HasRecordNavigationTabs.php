@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Support\Traits;
+namespace Modules\Core\Traits;
 
 use Filament\Pages\Enums\SubNavigationPosition;
-use Webkul\Support\Filament\Widgets\RecordNavigationTabs;
+use Modules\Core\Filament\Widgets\RecordNavigationTabs;
 
 trait HasRecordNavigationTabs
 {

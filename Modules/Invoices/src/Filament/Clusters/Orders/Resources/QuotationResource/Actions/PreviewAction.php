@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Actions;
+namespace Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource\Actions;
 
 use Filament\Actions\Action;
 

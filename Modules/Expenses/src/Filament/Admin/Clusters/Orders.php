@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters;
+namespace Modules\Expenses\Filament\Admin\Clusters;
 
 use Filament\Clusters\Cluster;
 

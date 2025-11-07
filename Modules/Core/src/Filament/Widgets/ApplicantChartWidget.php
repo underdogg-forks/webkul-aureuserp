@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Widgets;
+namespace Modules\Core\Filament\Widgets;
 
 use Filament\Widgets\ChartWidget;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Carbon;
-use Webkul\Recruitment\Models\Applicant;
+use Modules\Core\Models\Applicant;
 
 class ApplicantChartWidget extends ChartWidget
 {

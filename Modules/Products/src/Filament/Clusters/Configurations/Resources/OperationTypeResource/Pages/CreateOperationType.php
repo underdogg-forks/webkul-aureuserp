@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\OperationTypeResource\Pages;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\OperationTypeResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Enums\ReservationMethod;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\OperationTypeResource;
+use Modules\Products\Enums\ReservationMethod;
+use Modules\Products\Filament\Clusters\Configurations\Resources\OperationTypeResource;
 
 class CreateOperationType extends CreateRecord
 {

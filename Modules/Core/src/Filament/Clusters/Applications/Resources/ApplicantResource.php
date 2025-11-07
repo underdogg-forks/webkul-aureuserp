@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Applications\Resources;
+namespace Modules\Core\Filament\Clusters\Applications\Resources;
 
 use BackedEnum;
 use Filament\Actions\Action;
@@ -44,20 +44,20 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\HtmlString;
-use Webkul\Field\Filament\Forms\Components\ProgressStepper;
-use Webkul\Recruitment\Enums\ApplicationStatus;
-use Webkul\Recruitment\Enums\RecruitmentState as RecruitmentStateEnum;
-use Webkul\Recruitment\Filament\Clusters\Applications;
-use Webkul\Recruitment\Filament\Clusters\Applications\Resources\ApplicantResource\Pages\EditApplicant;
-use Webkul\Recruitment\Filament\Clusters\Applications\Resources\ApplicantResource\Pages\ListApplicants;
-use Webkul\Recruitment\Filament\Clusters\Applications\Resources\ApplicantResource\Pages\ManageSkill;
-use Webkul\Recruitment\Filament\Clusters\Applications\Resources\ApplicantResource\Pages\ViewApplicant;
-use Webkul\Recruitment\Filament\Clusters\Applications\Resources\ApplicantResource\RelationManagers\SkillsRelationManager;
-use Webkul\Recruitment\Models\Applicant;
-use Webkul\Recruitment\Models\Candidate;
-use Webkul\Recruitment\Models\JobPosition;
-use Webkul\Recruitment\Models\Stage as RecruitmentStage;
-use Webkul\Security\Filament\Resources\UserResource;
+use Modules\Core\Filament\Forms\Components\ProgressStepper;
+use Modules\Core\Enums\ApplicationStatus;
+use Modules\Core\Enums\RecruitmentState as RecruitmentStateEnum;
+use Modules\Core\Filament\Clusters\Applications;
+use Modules\Core\Filament\Clusters\Applications\Resources\ApplicantResource\Pages\EditApplicant;
+use Modules\Core\Filament\Clusters\Applications\Resources\ApplicantResource\Pages\ListApplicants;
+use Modules\Core\Filament\Clusters\Applications\Resources\ApplicantResource\Pages\ManageSkill;
+use Modules\Core\Filament\Clusters\Applications\Resources\ApplicantResource\Pages\ViewApplicant;
+use Modules\Core\Filament\Clusters\Applications\Resources\ApplicantResource\RelationManagers\SkillsRelationManager;
+use Modules\Core\Models\Applicant;
+use Modules\Core\Models\Candidate;
+use Modules\Core\Models\JobPosition;
+use Modules\Core\Models\Stage as RecruitmentStage;
+use Modules\Core\Filament\Resources\UserResource;
 
 class ApplicantResource extends Resource
 {

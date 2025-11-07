@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Applications\Resources;
+namespace Modules\Core\Filament\Clusters\Applications\Resources;
 
 use BackedEnum;
 use Filament\Actions\Action;
@@ -13,10 +13,10 @@ use Filament\Support\Enums\Size;
 use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Webkul\Employee\Filament\Clusters\Configurations\Resources\JobPositionResource;
-use Webkul\Recruitment\Filament\Clusters\Applications;
-use Webkul\Recruitment\Filament\Clusters\Applications\Resources\JobByPositionResource\Pages\ListJobByPositions;
-use Webkul\Recruitment\Models\JobPosition;
+use Modules\Core\Filament\Clusters\Configurations\Resources\JobPositionResource;
+use Modules\Core\Filament\Clusters\Applications;
+use Modules\Core\Filament\Clusters\Applications\Resources\JobByPositionResource\Pages\ListJobByPositions;
+use Modules\Core\Models\JobPosition;
 
 class JobByPositionResource extends Resource
 {

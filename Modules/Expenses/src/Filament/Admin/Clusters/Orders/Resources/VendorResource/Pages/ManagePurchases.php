@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\VendorResource\Pages;
+namespace Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\VendorResource\Pages;
 
 use BackedEnum;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Tables\Table;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\QuotationResource;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\VendorResource;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\QuotationResource;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\VendorResource;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ManagePurchases extends ManageRelatedRecords
 {

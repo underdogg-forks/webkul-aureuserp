@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Chatter;
+namespace Modules\Core;
 
 use Filament\Support\Assets\Css;
 use Filament\Support\Facades\FilamentAsset;
 use Livewire\Livewire;
-use Webkul\Chatter\Livewire\ChatterHeaderActions;
-use Webkul\Chatter\Livewire\ChatterPanel;
-use Webkul\Support\Package;
-use Webkul\Support\PackageServiceProvider;
+use Modules\Core\Livewire\ChatterHeaderActions;
+use Modules\Core\Livewire\ChatterPanel;
+use Modules\Core\Package;
+use Modules\Core\PackageServiceProvider;
 
 class ChatterServiceProvider extends PackageServiceProvider
 {

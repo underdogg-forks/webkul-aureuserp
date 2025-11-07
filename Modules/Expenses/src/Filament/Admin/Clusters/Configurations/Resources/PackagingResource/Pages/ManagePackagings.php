@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\PackagingResource\Pages;
+namespace Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\PackagingResource\Pages;
 
-use Webkul\Product\Filament\Resources\PackagingResource\Pages\ManagePackagings as BaseManagePackagings;
-use Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\PackagingResource;
+use Modules\Core\Filament\Resources\PackagingResource\Pages\ManagePackagings as BaseManagePackagings;
+use Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\PackagingResource;
 
 class ManagePackagings extends BaseManagePackagings
 {

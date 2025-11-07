@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Inventory\Database\Seeders;
+namespace Modules\Products\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Webkul\Inventory\Enums\DeliveryStep;
-use Webkul\Inventory\Enums\ReceptionStep;
-use Webkul\Security\Models\User;
+use Modules\Products\Enums\DeliveryStep;
+use Modules\Products\Enums\ReceptionStep;
+use Modules\Core\Models\User;
 
 class WarehouseSeeder extends Seeder
 {

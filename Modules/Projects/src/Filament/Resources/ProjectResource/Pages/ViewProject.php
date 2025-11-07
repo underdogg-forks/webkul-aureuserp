@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Project\Filament\Resources\ProjectResource\Pages;
+namespace Modules\Projects\Filament\Resources\ProjectResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Chatter\Filament\Actions\ChatterAction;
-use Webkul\Project\Filament\Resources\ProjectResource;
-use Webkul\Support\Models\ActivityPlan;
+use Modules\Core\Filament\Actions\ChatterAction;
+use Modules\Projects\Filament\Resources\ProjectResource;
+use Modules\Core\Models\ActivityPlan;
 
 class ViewProject extends ViewRecord
 {

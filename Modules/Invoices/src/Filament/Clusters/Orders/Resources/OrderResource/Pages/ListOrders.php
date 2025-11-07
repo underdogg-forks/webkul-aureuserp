@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Orders\Resources\OrderResource\Pages;
+namespace Modules\Invoices\Filament\Clusters\Orders\Resources\OrderResource\Pages;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Sale\Enums\InvoiceStatus;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\OrderResource;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Pages\ListQuotations as BaseListOrders;
-use Webkul\TableViews\Filament\Components\PresetView;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Invoices\Enums\InvoiceStatus;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\OrderResource;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource\Pages\ListQuotations as BaseListOrders;
+use Modules\Core\Filament\Components\PresetView;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ListOrders extends BaseListOrders
 {

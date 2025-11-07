@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\FiscalPositionResource\RelationManagers;
+namespace Modules\Core\Filament\Resources\FiscalPositionResource\RelationManagers;
 
 use Filament\Resources\RelationManagers\RelationManager;
-use Webkul\Account\Traits\FiscalPositionTax;
+use Modules\Core\Traits\FiscalPositionTax;
 
 class FiscalPositionTaxRelationManager extends RelationManager
 {

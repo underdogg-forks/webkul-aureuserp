@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Project\Filament\Resources\TaskResource\Pages;
+namespace Modules\Projects\Filament\Resources\TaskResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
-use Webkul\Chatter\Filament\Actions\ChatterAction;
-use Webkul\Project\Filament\Resources\TaskResource;
-use Webkul\Support\Models\ActivityPlan;
+use Modules\Core\Filament\Actions\ChatterAction;
+use Modules\Projects\Filament\Resources\TaskResource;
+use Modules\Core\Models\ActivityPlan;
 
 class EditTask extends EditRecord
 {

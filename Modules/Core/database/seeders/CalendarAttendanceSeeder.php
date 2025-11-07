@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Employee\Database\Seeders;
+namespace Modules\Core\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Webkul\Employee\Models\Calendar;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\Calendar;
+use Modules\Core\Models\User;
 
 class CalendarAttendanceSeeder extends Seeder
 {

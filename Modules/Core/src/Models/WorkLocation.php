@@ -1,17 +1,17 @@
 <?php
 
-namespace Webkul\Employee\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Webkul\Employee\Database\Factories\WorkLocationFactory;
-use Webkul\Employee\Enums\WorkLocation as WorkLocationEnum;
-use Webkul\Field\Traits\HasCustomFields;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Core\Database\Factories\WorkLocationFactory;
+use Modules\Core\Enums\WorkLocation as WorkLocationEnum;
+use Modules\Core\Traits\HasCustomFields;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class WorkLocation extends Model
 {

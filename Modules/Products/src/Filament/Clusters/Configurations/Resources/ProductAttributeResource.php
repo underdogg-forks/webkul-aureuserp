@@ -1,16 +1,16 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
-use Webkul\Inventory\Filament\Clusters\Configurations;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\ProductAttributeResource\Pages\CreateProductAttribute;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\ProductAttributeResource\Pages\EditProductAttribute;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\ProductAttributeResource\Pages\ListProductAttributes;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\ProductAttributeResource\Pages\ViewProductAttribute;
-use Webkul\Inventory\Models\Attribute;
-use Webkul\Inventory\Settings\ProductSettings;
-use Webkul\Product\Filament\Resources\AttributeResource;
+use Modules\Products\Filament\Clusters\Configurations;
+use Modules\Products\Filament\Clusters\Configurations\Resources\ProductAttributeResource\Pages\CreateProductAttribute;
+use Modules\Products\Filament\Clusters\Configurations\Resources\ProductAttributeResource\Pages\EditProductAttribute;
+use Modules\Products\Filament\Clusters\Configurations\Resources\ProductAttributeResource\Pages\ListProductAttributes;
+use Modules\Products\Filament\Clusters\Configurations\Resources\ProductAttributeResource\Pages\ViewProductAttribute;
+use Modules\Products\Models\Attribute;
+use Modules\Products\Settings\ProductSettings;
+use Modules\Core\Filament\Resources\AttributeResource;
 
 class ProductAttributeResource extends AttributeResource
 {

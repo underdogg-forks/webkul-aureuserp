@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Configuration\Resources\ProductCategoryResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configuration\Resources\ProductCategoryResource\Pages;
 
 use Filament\Pages\Enums\SubNavigationPosition;
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\ProductCategoryResource;
-use Webkul\Product\Filament\Resources\CategoryResource\Pages\CreateCategory;
+use Modules\Core\Filament\Clusters\Configuration\Resources\ProductCategoryResource;
+use Modules\Core\Filament\Resources\CategoryResource\Pages\CreateCategory;
 
 class CreateProductCategory extends CreateCategory
 {

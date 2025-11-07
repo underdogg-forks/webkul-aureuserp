@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\FullCalendar\Contracts;
+namespace Modules\Core\Contracts;
 
 interface HasEvents
 {

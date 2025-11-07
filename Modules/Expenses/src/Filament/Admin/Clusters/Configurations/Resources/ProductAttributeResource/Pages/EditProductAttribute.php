@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\ProductAttributeResource\Pages;
+namespace Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\ProductAttributeResource\Pages;
 
-use Webkul\Product\Filament\Resources\AttributeResource\Pages\EditAttribute;
-use Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\ProductAttributeResource;
+use Modules\Core\Filament\Resources\AttributeResource\Pages\EditAttribute;
+use Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\ProductAttributeResource;
 
 class EditProductAttribute extends EditAttribute
 {

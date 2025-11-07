@@ -1,17 +1,17 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Pages;
+namespace Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
-use Webkul\Chatter\Filament\Actions as ChatterActions;
-use Webkul\Sale\Enums\OrderState;
-use Webkul\Sale\Facades\SaleOrder;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Actions as BaseActions;
-use Webkul\Support\Concerns\HasRepeaterColumnManager;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Actions as ChatterActions;
+use Modules\Invoices\Enums\OrderState;
+use Modules\Invoices\Facades\SaleOrder;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource\Actions as BaseActions;
+use Modules\Core\Concerns\HasRepeaterColumnManager;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class EditQuotation extends EditRecord
 {

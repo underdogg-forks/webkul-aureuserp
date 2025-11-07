@@ -3,10 +3,10 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Webkul\TimeOff\Enums\AccruedGainTime;
-use Webkul\TimeOff\Enums\CarryoverDate;
-use Webkul\TimeOff\Enums\CarryoverMonth;
-use Webkul\TimeOff\Enums\TransitionMode;
+use Modules\Core\Enums\AccruedGainTime;
+use Modules\Core\Enums\CarryoverDate;
+use Modules\Core\Enums\CarryoverMonth;
+use Modules\Core\Enums\TransitionMode;
 
 return new class () extends Migration {
     /**

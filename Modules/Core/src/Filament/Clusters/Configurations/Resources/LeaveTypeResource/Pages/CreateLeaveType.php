@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Configurations\Resources\LeaveTypeResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\LeaveTypeResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\LeaveTypeResource;
+use Modules\Core\Filament\Clusters\Configurations\Resources\LeaveTypeResource;
 
 class CreateLeaveType extends CreateRecord
 {

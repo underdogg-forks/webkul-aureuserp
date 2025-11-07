@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Support\Concerns;
+namespace Modules\Core\Concerns;
 
 use Closure;
 

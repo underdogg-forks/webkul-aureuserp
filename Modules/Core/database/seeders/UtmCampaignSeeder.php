@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Support\Database\Seeders;
+namespace Modules\Core\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
-use Webkul\Support\Models\UtmStage;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
+use Modules\Core\Models\UtmStage;
 
 class UtmCampaignSeeder extends Seeder
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\RouteResource\Pages;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\RouteResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\RouteResource;
+use Modules\Products\Filament\Clusters\Configurations\Resources\RouteResource;
 
 class CreateRoute extends CreateRecord
 {

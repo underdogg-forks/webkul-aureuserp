@@ -1,16 +1,16 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Actions;
+namespace Modules\Products\Filament\Clusters\Operations\Actions;
 
 use Filament\Actions\Action;
 use Filament\Notifications\Notification;
 use Livewire\Component;
-use Webkul\Inventory\Enums\CreateBackorder;
-use Webkul\Inventory\Enums\OperationState;
-use Webkul\Inventory\Enums\ProductTracking;
-use Webkul\Inventory\Facades\Inventory;
-use Webkul\Inventory\Models\Operation;
-use Webkul\Inventory\Models\ProductQuantity;
+use Modules\Products\Enums\CreateBackorder;
+use Modules\Products\Enums\OperationState;
+use Modules\Products\Enums\ProductTracking;
+use Modules\Products\Facades\Inventory;
+use Modules\Products\Models\Operation;
+use Modules\Products\Models\ProductQuantity;
 
 class ValidateAction extends Action
 {

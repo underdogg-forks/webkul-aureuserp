@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Recruitment\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\User;
 
 class Degree extends Model implements Sortable
 {

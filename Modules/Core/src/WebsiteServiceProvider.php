@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Website;
+namespace Modules\Core;
 
 use Filament\Support\Assets\Css;
 use Filament\Support\Facades\FilamentAsset;
 use Illuminate\Support\Facades\Route;
-use Webkul\Support\Console\Commands\InstallCommand;
-use Webkul\Support\Console\Commands\UninstallCommand;
-use Webkul\Support\Package;
-use Webkul\Support\PackageServiceProvider;
-use Webkul\Website\Http\Responses\LogoutResponse;
+use Modules\Core\Console\Commands\InstallCommand;
+use Modules\Core\Console\Commands\UninstallCommand;
+use Modules\Core\Package;
+use Modules\Core\PackageServiceProvider;
+use Modules\Core\Http\Responses\LogoutResponse;
 
 class WebsiteServiceProvider extends PackageServiceProvider
 {
@@ -27,7 +27,7 @@ class WebsiteServiceProvider extends PackageServiceProvider
                 '2025_03_10_064655_alter_partners_partners_table',
             ])
             ->runsMigrations()
-            ->hasSeeder('Webkul\\Website\\Database\Seeders\\DatabaseSeeder')
+            ->hasSeeder('Modules\\Core\\Database\Seeders\\DatabaseSeeder')
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->installDependencies()

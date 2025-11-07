@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Partner\Policies;
+namespace Modules\Crm\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Webkul\Partner\Models\Partner;
-use Webkul\Security\Models\User;
+use Modules\Crm\Models\Partner;
+use Modules\Core\Models\User;
 
 class PartnerPolicy
 {

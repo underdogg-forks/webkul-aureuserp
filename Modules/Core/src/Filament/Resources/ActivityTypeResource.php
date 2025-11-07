@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Support\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use BackedEnum;
 use Filament\Actions\ActionGroup;
@@ -36,17 +36,17 @@ use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Guava\IconPicker\Forms\Components\IconPicker;
 use Illuminate\Database\QueryException;
-use Webkul\Security\Models\User;
-use Webkul\Support\Enums\ActivityChainingType;
-use Webkul\Support\Enums\ActivityDecorationType;
-use Webkul\Support\Enums\ActivityDelayFrom;
-use Webkul\Support\Enums\ActivityDelayUnit;
-use Webkul\Support\Enums\ActivityTypeAction;
-use Webkul\Support\Filament\Resources\ActivityTypeResource\Pages\CreateActivityType;
-use Webkul\Support\Filament\Resources\ActivityTypeResource\Pages\EditActivityType;
-use Webkul\Support\Filament\Resources\ActivityTypeResource\Pages\ListActivityTypes;
-use Webkul\Support\Filament\Resources\ActivityTypeResource\Pages\ViewActivityType;
-use Webkul\Support\Models\ActivityType;
+use Modules\Core\Models\User;
+use Modules\Core\Enums\ActivityChainingType;
+use Modules\Core\Enums\ActivityDecorationType;
+use Modules\Core\Enums\ActivityDelayFrom;
+use Modules\Core\Enums\ActivityDelayUnit;
+use Modules\Core\Enums\ActivityTypeAction;
+use Modules\Core\Filament\Resources\ActivityTypeResource\Pages\CreateActivityType;
+use Modules\Core\Filament\Resources\ActivityTypeResource\Pages\EditActivityType;
+use Modules\Core\Filament\Resources\ActivityTypeResource\Pages\ListActivityTypes;
+use Modules\Core\Filament\Resources\ActivityTypeResource\Pages\ViewActivityType;
+use Modules\Core\Models\ActivityType;
 
 class ActivityTypeResource extends Resource
 {

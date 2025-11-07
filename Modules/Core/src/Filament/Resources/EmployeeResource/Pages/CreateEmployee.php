@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Employee\Filament\Resources\EmployeeResource\Pages;
+namespace Modules\Core\Filament\Resources\EmployeeResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Employee\Filament\Resources\EmployeeResource;
+use Modules\Core\Filament\Resources\EmployeeResource;
 
 class CreateEmployee extends CreateRecord
 {

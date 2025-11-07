@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Widgets;
+namespace Modules\Core\Filament\Widgets;
 
 use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
 use Filament\Support\Colors\Color;
@@ -8,10 +8,10 @@ use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Webkul\TimeOff\Enums\State;
-use Webkul\TimeOff\Models\Leave;
-use Webkul\TimeOff\Models\LeaveAllocation;
-use Webkul\TimeOff\Models\LeaveType;
+use Modules\Core\Enums\State;
+use Modules\Core\Models\Leave;
+use Modules\Core\Models\LeaveAllocation;
+use Modules\Core\Models\LeaveType;
 
 class MyTimeOffWidget extends BaseWidget
 {

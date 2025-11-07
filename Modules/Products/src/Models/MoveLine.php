@@ -1,16 +1,16 @@
 <?php
 
-namespace Webkul\Inventory\Models;
+namespace Modules\Products\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Webkul\Inventory\Database\Factories\MoveLineFactory;
-use Webkul\Inventory\Enums\MoveState;
-use Webkul\Partner\Models\Partner;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
-use Webkul\Support\Models\UOM;
+use Modules\Products\Database\Factories\MoveLineFactory;
+use Modules\Products\Enums\MoveState;
+use Modules\Crm\Models\Partner;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
+use Modules\Core\Models\UOM;
 
 class MoveLine extends Model
 {

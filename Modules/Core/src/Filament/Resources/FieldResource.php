@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Field\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkActionGroup;
@@ -30,11 +30,11 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Schema;
-use Webkul\Field\FieldsColumnManager;
-use Webkul\Field\Filament\Resources\FieldResource\Pages\CreateField;
-use Webkul\Field\Filament\Resources\FieldResource\Pages\EditField;
-use Webkul\Field\Filament\Resources\FieldResource\Pages\ListFields;
-use Webkul\Field\Models\Field;
+use Modules\Core\FieldsColumnManager;
+use Modules\Core\Filament\Resources\FieldResource\Pages\CreateField;
+use Modules\Core\Filament\Resources\FieldResource\Pages\EditField;
+use Modules\Core\Filament\Resources\FieldResource\Pages\ListFields;
+use Modules\Core\Models\Field;
 
 class FieldResource extends Resource
 {
@@ -183,7 +183,7 @@ class FieldResource extends Resource
                                     ->searchable()
                                     ->native(false)
                                     ->disabledOn('edit')
-                                    ->options(fn () => collect(Filament::getResources())->filter(fn ($resource) => in_array('Webkul\Field\Filament\Traits\HasCustomFields', class_uses($resource)))->mapWithKeys(fn ($resource) => [
+                                    ->options(fn () => collect(Filament::getResources())->filter(fn ($resource) => in_array('Modules\Core\Filament\Traits\HasCustomFields', class_uses($resource)))->mapWithKeys(fn ($resource) => [
                                         $resource::getModel() => str($resource)->afterLast('\\')->toString(),
                                     ])),
                             ]),
@@ -234,7 +234,7 @@ class FieldResource extends Resource
                     ]),
                 SelectFilter::make('customizable_type')
                     ->label(__('fields::filament/resources/field.table.filters.resource'))
-                    ->options(fn () => collect(Filament::getResources())->filter(fn ($resource) => in_array('Webkul\Field\Filament\Traits\HasCustomFields', class_uses($resource)))->mapWithKeys(fn ($resource) => [
+                    ->options(fn () => collect(Filament::getResources())->filter(fn ($resource) => in_array('Modules\Core\Filament\Traits\HasCustomFields', class_uses($resource)))->mapWithKeys(fn ($resource) => [
                         $resource::getModel() => str($resource)->afterLast('\\')->toString(),
                     ])),
             ])

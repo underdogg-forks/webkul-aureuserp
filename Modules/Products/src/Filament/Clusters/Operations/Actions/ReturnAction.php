@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Actions;
+namespace Modules\Products\Filament\Clusters\Operations\Actions;
 
 use Filament\Actions\Action;
 use Livewire\Component;
-use Webkul\Inventory\Enums\OperationState;
-use Webkul\Inventory\Facades\Inventory;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\OperationResource;
-use Webkul\Inventory\Models\Operation;
+use Modules\Products\Enums\OperationState;
+use Modules\Products\Facades\Inventory;
+use Modules\Products\Filament\Clusters\Operations\Resources\OperationResource;
+use Modules\Products\Models\Operation;
 
 class ReturnAction extends Action
 {

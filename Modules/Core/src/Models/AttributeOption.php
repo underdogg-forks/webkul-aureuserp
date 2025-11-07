@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Product\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Product\Database\Factories\AttributeOptionFactory;
-use Webkul\Security\Models\User;
+use Modules\Core\Database\Factories\AttributeOptionFactory;
+use Modules\Core\Models\User;
 
 class AttributeOption extends Model implements Sortable
 {

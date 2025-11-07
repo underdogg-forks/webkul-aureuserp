@@ -31,7 +31,7 @@
             
             @foreach ($views as $key => $tableView)
                 @php
-                    $type = $tableView instanceof \Webkul\TableViews\Filament\Components\SavedView ? 'saved' : 'preset';
+                    $type = $tableView instanceof \Modules\Core\Filament\Components\SavedView ? 'saved' : 'preset';
                 @endphp
                 
                 <x-filament::dropdown.list.item

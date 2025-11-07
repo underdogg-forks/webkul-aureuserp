@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Invoice\Policies;
+namespace Modules\Core\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Webkul\Invoice\Models\Tax;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\Tax;
+use Modules\Core\Models\User;
 
 class TaxPolicy
 {

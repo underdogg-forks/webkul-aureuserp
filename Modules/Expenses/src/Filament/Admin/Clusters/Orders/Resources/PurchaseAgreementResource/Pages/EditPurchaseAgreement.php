@@ -1,18 +1,18 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\PurchaseAgreementResource\Pages;
+namespace Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\PurchaseAgreementResource\Pages;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
-use Webkul\Chatter\Filament\Actions\ChatterAction;
-use Webkul\Purchase\Enums\RequisitionState;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\PurchaseAgreementResource;
-use Webkul\Purchase\Models\Requisition;
-use Webkul\Support\Concerns\HasRepeaterColumnManager;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Actions\ChatterAction;
+use Modules\Expenses\Enums\RequisitionState;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\PurchaseAgreementResource;
+use Modules\Expenses\Models\Requisition;
+use Modules\Core\Concerns\HasRepeaterColumnManager;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class EditPurchaseAgreement extends EditRecord
 {

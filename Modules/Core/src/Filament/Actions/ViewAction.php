@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\FullCalendar\Filament\Actions;
+namespace Modules\Core\Filament\Actions;
 
 use Filament\Actions\ViewAction as BaseViewAction;
-use Webkul\FullCalendar\Filament\Widgets\FullCalendarWidget;
+use Modules\Core\Filament\Widgets\FullCalendarWidget;
 
 class ViewAction extends BaseViewAction
 {

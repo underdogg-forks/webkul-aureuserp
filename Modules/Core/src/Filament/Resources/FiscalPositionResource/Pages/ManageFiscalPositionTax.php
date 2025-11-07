@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\FiscalPositionResource\Pages;
+namespace Modules\Core\Filament\Resources\FiscalPositionResource\Pages;
 
 use BackedEnum;
 use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Resources\Pages\ManageRelatedRecords;
-use Webkul\Account\Filament\Resources\FiscalPositionResource;
-use Webkul\Account\Traits\FiscalPositionTax;
+use Modules\Core\Filament\Resources\FiscalPositionResource;
+use Modules\Core\Traits\FiscalPositionTax;
 
 class ManageFiscalPositionTax extends ManageRelatedRecords
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource\Pages;
+namespace Modules\Products\Filament\Clusters\Products\Resources\ProductResource\Pages;
 
 use BackedEnum;
 use Filament\Actions\Action;
@@ -19,20 +19,20 @@ use Filament\Tables\Columns\TextInputColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Enums\LocationType;
-use Webkul\Inventory\Enums\ProductTracking;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\LotResource;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\PackageResource;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource;
-use Webkul\Inventory\Models\Location;
-use Webkul\Inventory\Models\ProductQuantity;
-use Webkul\Inventory\Models\Warehouse;
-use Webkul\Inventory\Settings\OperationSettings;
-use Webkul\Inventory\Settings\TraceabilitySettings;
-use Webkul\Inventory\Settings\WarehouseSettings;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
-use Webkul\TableViews\Filament\Components\PresetView;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Products\Enums\LocationType;
+use Modules\Products\Enums\ProductTracking;
+use Modules\Products\Filament\Clusters\Products\Resources\LotResource;
+use Modules\Products\Filament\Clusters\Products\Resources\PackageResource;
+use Modules\Products\Filament\Clusters\Products\Resources\ProductResource;
+use Modules\Products\Models\Location;
+use Modules\Products\Models\ProductQuantity;
+use Modules\Products\Models\Warehouse;
+use Modules\Products\Settings\OperationSettings;
+use Modules\Products\Settings\TraceabilitySettings;
+use Modules\Products\Settings\WarehouseSettings;
+use Modules\Core\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Components\PresetView;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ManageQuantities extends ManageRelatedRecords
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Employee\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
@@ -58,28 +58,28 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Employee\Enums\DistanceUnit;
-use Webkul\Employee\Enums\Gender;
-use Webkul\Employee\Enums\MaritalStatus;
-use Webkul\Employee\Filament\Clusters\Configurations\Resources\DepartureReasonResource;
-use Webkul\Employee\Filament\Clusters\Configurations\Resources\EmployeeCategoryResource;
-use Webkul\Employee\Filament\Clusters\Configurations\Resources\JobPositionResource;
-use Webkul\Employee\Filament\Clusters\Configurations\Resources\WorkLocationResource;
-use Webkul\Employee\Filament\Resources\EmployeeResource\Pages\CreateEmployee;
-use Webkul\Employee\Filament\Resources\EmployeeResource\Pages\EditEmployee;
-use Webkul\Employee\Filament\Resources\EmployeeResource\Pages\ListEmployees;
-use Webkul\Employee\Filament\Resources\EmployeeResource\Pages\ManageResume;
-use Webkul\Employee\Filament\Resources\EmployeeResource\Pages\ManageSkill;
-use Webkul\Employee\Filament\Resources\EmployeeResource\Pages\ViewEmployee;
-use Webkul\Employee\Filament\Resources\EmployeeResource\RelationManagers\ResumeRelationManager;
-use Webkul\Employee\Filament\Resources\EmployeeResource\RelationManagers\SkillsRelationManager;
-use Webkul\Employee\Models\Calendar;
-use Webkul\Employee\Models\Employee;
-use Webkul\Field\Filament\Traits\HasCustomFields;
-use Webkul\Security\Filament\Resources\CompanyResource;
-use Webkul\Security\Filament\Resources\UserResource;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Country;
+use Modules\Core\Enums\DistanceUnit;
+use Modules\Core\Enums\Gender;
+use Modules\Core\Enums\MaritalStatus;
+use Modules\Core\Filament\Clusters\Configurations\Resources\DepartureReasonResource;
+use Modules\Core\Filament\Clusters\Configurations\Resources\EmployeeCategoryResource;
+use Modules\Core\Filament\Clusters\Configurations\Resources\JobPositionResource;
+use Modules\Core\Filament\Clusters\Configurations\Resources\WorkLocationResource;
+use Modules\Core\Filament\Resources\EmployeeResource\Pages\CreateEmployee;
+use Modules\Core\Filament\Resources\EmployeeResource\Pages\EditEmployee;
+use Modules\Core\Filament\Resources\EmployeeResource\Pages\ListEmployees;
+use Modules\Core\Filament\Resources\EmployeeResource\Pages\ManageResume;
+use Modules\Core\Filament\Resources\EmployeeResource\Pages\ManageSkill;
+use Modules\Core\Filament\Resources\EmployeeResource\Pages\ViewEmployee;
+use Modules\Core\Filament\Resources\EmployeeResource\RelationManagers\ResumeRelationManager;
+use Modules\Core\Filament\Resources\EmployeeResource\RelationManagers\SkillsRelationManager;
+use Modules\Core\Models\Calendar;
+use Modules\Core\Models\Employee;
+use Modules\Core\Filament\Traits\HasCustomFields;
+use Modules\Core\Filament\Resources\CompanyResource;
+use Modules\Core\Filament\Resources\UserResource;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Country;
 
 class EmployeeResource extends Resource
 {

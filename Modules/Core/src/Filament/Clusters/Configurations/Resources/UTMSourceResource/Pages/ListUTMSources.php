@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Configurations\Resources\UTMSourceResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\UTMSourceResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\UTMSourceResource;
+use Modules\Core\Filament\Clusters\Configurations\Resources\UTMSourceResource;
 
 class ListUTMSources extends ListRecords
 {

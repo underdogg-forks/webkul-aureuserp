@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Purchase\Models;
+namespace Modules\Expenses\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Webkul\Purchase\Database\Factories\RequisitionLineFactory;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
-use Webkul\Support\Models\UOM;
+use Modules\Expenses\Database\Factories\RequisitionLineFactory;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
+use Modules\Core\Models\UOM;
 
 class RequisitionLine extends Model
 {

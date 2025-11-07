@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Employee\Filament\Clusters\Configurations\Resources\CalendarResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\CalendarResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;
-use Webkul\Employee\Filament\Clusters\Configurations\Resources\CalendarResource;
-use Webkul\Employee\Models\Calendar;
+use Modules\Core\Filament\Clusters\Configurations\Resources\CalendarResource;
+use Modules\Core\Models\Calendar;
 
 class ListCalendars extends ListRecords
 {

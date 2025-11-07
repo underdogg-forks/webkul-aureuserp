@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Resources\DropshipResource\Pages;
+namespace Modules\Products\Filament\Clusters\Operations\Resources\DropshipResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Contracts\Support\Htmlable;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\DropshipResource;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\OperationResource;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Products\Filament\Clusters\Operations\Resources\DropshipResource;
+use Modules\Products\Filament\Clusters\Operations\Resources\OperationResource;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ListDropships extends ListRecords
 {

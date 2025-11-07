@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use BackedEnum;
 use Filament\Actions\Action;
@@ -46,27 +46,27 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Account\Enums\MoveState;
-use Webkul\Account\Enums\PaymentState;
-use Webkul\Account\Enums\TypeTaxUse;
-use Webkul\Account\Facades\Tax;
-use Webkul\Account\Filament\Resources\InvoiceResource\Pages\CreateInvoice;
-use Webkul\Account\Filament\Resources\InvoiceResource\Pages\EditInvoice;
-use Webkul\Account\Filament\Resources\InvoiceResource\Pages\ListInvoices;
-use Webkul\Account\Filament\Resources\InvoiceResource\Pages\ViewInvoice;
-use Webkul\Account\Livewire\InvoiceSummary;
-use Webkul\Account\Models\Move as AccountMove;
-use Webkul\Account\Models\Partner;
-use Webkul\Field\Filament\Forms\Components\ProgressStepper;
-use Webkul\Invoice\Models\Product;
-use Webkul\Invoice\Settings\ProductSettings;
-use Webkul\Support\Filament\Forms\Components\Repeater;
-use Webkul\Support\Filament\Forms\Components\Repeater\TableColumn;
-use Webkul\Support\Filament\Infolists\Components\RepeatableEntry;
-use Webkul\Support\Filament\Infolists\Components\Repeater\TableColumn as InfolistTableColumn;
-use Webkul\Support\Models\Company;
-use Webkul\Support\Models\Currency;
-use Webkul\Support\Models\UOM;
+use Modules\Core\Enums\MoveState;
+use Modules\Core\Enums\PaymentState;
+use Modules\Core\Enums\TypeTaxUse;
+use Modules\Core\Facades\Tax;
+use Modules\Core\Filament\Resources\InvoiceResource\Pages\CreateInvoice;
+use Modules\Core\Filament\Resources\InvoiceResource\Pages\EditInvoice;
+use Modules\Core\Filament\Resources\InvoiceResource\Pages\ListInvoices;
+use Modules\Core\Filament\Resources\InvoiceResource\Pages\ViewInvoice;
+use Modules\Core\Livewire\InvoiceSummary;
+use Modules\Core\Models\Move as AccountMove;
+use Modules\Core\Models\Partner;
+use Modules\Core\Filament\Forms\Components\ProgressStepper;
+use Modules\Core\Models\Product;
+use Modules\Core\Settings\ProductSettings;
+use Modules\Core\Filament\Forms\Components\Repeater;
+use Modules\Core\Filament\Forms\Components\Repeater\TableColumn;
+use Modules\Core\Filament\Infolists\Components\RepeatableEntry;
+use Modules\Core\Filament\Infolists\Components\Repeater\TableColumn as InfolistTableColumn;
+use Modules\Core\Models\Company;
+use Modules\Core\Models\Currency;
+use Modules\Core\Models\UOM;
 
 class InvoiceResource extends Resource
 {

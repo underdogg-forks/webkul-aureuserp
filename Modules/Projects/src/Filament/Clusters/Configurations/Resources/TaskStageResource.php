@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Project\Filament\Clusters\Configurations\Resources;
+namespace Modules\Projects\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -24,10 +24,10 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
-use Webkul\Project\Filament\Clusters\Configurations;
-use Webkul\Project\Filament\Clusters\Configurations\Resources\TaskStageResource\Pages\ManageTaskStages;
-use Webkul\Project\Filament\Resources\ProjectResource\RelationManagers\TaskStagesRelationManager;
-use Webkul\Project\Models\TaskStage;
+use Modules\Projects\Filament\Clusters\Configurations;
+use Modules\Projects\Filament\Clusters\Configurations\Resources\TaskStageResource\Pages\ManageTaskStages;
+use Modules\Projects\Filament\Resources\ProjectResource\RelationManagers\TaskStagesRelationManager;
+use Modules\Projects\Models\TaskStage;
 
 class TaskStageResource extends Resource
 {

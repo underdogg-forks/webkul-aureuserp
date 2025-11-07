@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Employee\Filament\Resources\DepartmentResource\Pages;
+namespace Modules\Core\Filament\Resources\DepartmentResource\Pages;
 
 use Exception;
 use Filament\Actions\DeleteAction;
@@ -8,8 +8,8 @@ use Filament\Actions\ViewAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Database\Eloquent\Model;
-use Webkul\Chatter\Filament\Actions as ChatterActions;
-use Webkul\Employee\Filament\Resources\DepartmentResource;
+use Modules\Core\Filament\Actions as ChatterActions;
+use Modules\Core\Filament\Resources\DepartmentResource;
 
 class EditDepartment extends EditRecord
 {

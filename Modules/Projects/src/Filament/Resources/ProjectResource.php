@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Project\Filament\Resources;
+namespace Modules\Projects\Filament\Resources;
 
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
@@ -46,25 +46,25 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Field\Filament\Forms\Components\ProgressStepper;
-use Webkul\Field\Filament\Traits\HasCustomFields;
-use Webkul\Partner\Filament\Resources\PartnerResource;
-use Webkul\Project\Enums\ProjectVisibility;
-use Webkul\Project\Filament\Clusters\Configurations\Resources\TagResource;
-use Webkul\Project\Filament\Resources\ProjectResource\Pages\CreateProject;
-use Webkul\Project\Filament\Resources\ProjectResource\Pages\EditProject;
-use Webkul\Project\Filament\Resources\ProjectResource\Pages\ListProjects;
-use Webkul\Project\Filament\Resources\ProjectResource\Pages\ManageMilestones;
-use Webkul\Project\Filament\Resources\ProjectResource\Pages\ManageTasks;
-use Webkul\Project\Filament\Resources\ProjectResource\Pages\ViewProject;
-use Webkul\Project\Filament\Resources\ProjectResource\RelationManagers\MilestonesRelationManager;
-use Webkul\Project\Filament\Resources\ProjectResource\RelationManagers\TaskStagesRelationManager;
-use Webkul\Project\Models\Project;
-use Webkul\Project\Models\ProjectStage;
-use Webkul\Project\Settings\TaskSettings;
-use Webkul\Project\Settings\TimeSettings;
-use Webkul\Security\Filament\Resources\CompanyResource;
-use Webkul\Security\Filament\Resources\UserResource;
+use Modules\Core\Filament\Forms\Components\ProgressStepper;
+use Modules\Core\Filament\Traits\HasCustomFields;
+use Modules\Crm\Filament\Resources\PartnerResource;
+use Modules\Projects\Enums\ProjectVisibility;
+use Modules\Projects\Filament\Clusters\Configurations\Resources\TagResource;
+use Modules\Projects\Filament\Resources\ProjectResource\Pages\CreateProject;
+use Modules\Projects\Filament\Resources\ProjectResource\Pages\EditProject;
+use Modules\Projects\Filament\Resources\ProjectResource\Pages\ListProjects;
+use Modules\Projects\Filament\Resources\ProjectResource\Pages\ManageMilestones;
+use Modules\Projects\Filament\Resources\ProjectResource\Pages\ManageTasks;
+use Modules\Projects\Filament\Resources\ProjectResource\Pages\ViewProject;
+use Modules\Projects\Filament\Resources\ProjectResource\RelationManagers\MilestonesRelationManager;
+use Modules\Projects\Filament\Resources\ProjectResource\RelationManagers\TaskStagesRelationManager;
+use Modules\Projects\Models\Project;
+use Modules\Projects\Models\ProjectStage;
+use Modules\Projects\Settings\TaskSettings;
+use Modules\Projects\Settings\TimeSettings;
+use Modules\Core\Filament\Resources\CompanyResource;
+use Modules\Core\Filament\Resources\UserResource;
 
 class ProjectResource extends Resource
 {

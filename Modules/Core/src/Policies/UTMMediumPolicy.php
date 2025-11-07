@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Recruitment\Policies;
+namespace Modules\Core\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Webkul\Recruitment\Models\UTMMedium;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\UTMMedium;
+use Modules\Core\Models\User;
 
 class UTMMediumPolicy
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Support\Console\Commands;
+namespace Modules\Core\Console\Commands;
 
 use BezhanSalleh\FilamentShield\Support\Utils;
 use Exception;
@@ -18,8 +18,8 @@ use function Laravel\Prompts\text;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Throwable;
-use Webkul\Support\Models\Company;
-use Webkul\Support\Models\Currency;
+use Modules\Core\Models\Company;
+use Modules\Core\Models\Currency;
 
 class InstallERP extends Command
 {
@@ -30,7 +30,7 @@ class InstallERP extends Command
      */
     protected $signature = 'erp:install
         {--force : Force reinstallation without confirmation}
-        {--all : Install all Webkul plugins}
+        {--all : Install all modules}
         {--admin-name= : Admin user name}
         {--admin-email= : Admin user email}
         {--admin-password= : Admin user password}';
@@ -173,7 +173,7 @@ class InstallERP extends Command
     protected function runPluginSeeder(string $lowerName): void
     {
         $studly      = Str::studly(str_replace(['-', '_'], ' ', $lowerName));
-        $seederClass = "Webkul\\{$studly}\\Database\\Seeders\\DatabaseSeeder";
+        $seederClass = "Modules\\{$studly}\\Database\\Seeders\\DatabaseSeeder";
 
         try {
             if (class_exists($seederClass)) {

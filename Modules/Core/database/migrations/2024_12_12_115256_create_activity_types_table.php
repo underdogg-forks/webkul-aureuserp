@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Webkul\Support\Enums\ActivityChainingType;
+use Modules\Core\Enums\ActivityChainingType;
 
 return new class () extends Migration {
     /**

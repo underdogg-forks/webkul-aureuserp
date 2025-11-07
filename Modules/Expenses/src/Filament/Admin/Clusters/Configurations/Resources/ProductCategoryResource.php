@@ -1,18 +1,18 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources;
+namespace Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Resources\Pages\Page;
-use Webkul\Product\Filament\Resources\CategoryResource;
-use Webkul\Purchase\Filament\Admin\Clusters\Configurations;
-use Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\ProductCategoryResource\Pages\CreateProductCategory;
-use Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\ProductCategoryResource\Pages\EditProductCategory;
-use Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\ProductCategoryResource\Pages\ListProductCategories;
-use Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\ProductCategoryResource\Pages\ManageProducts;
-use Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\ProductCategoryResource\Pages\ViewProductCategory;
-use Webkul\Purchase\Models\Category;
+use Modules\Core\Filament\Resources\CategoryResource;
+use Modules\Expenses\Filament\Admin\Clusters\Configurations;
+use Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\ProductCategoryResource\Pages\CreateProductCategory;
+use Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\ProductCategoryResource\Pages\EditProductCategory;
+use Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\ProductCategoryResource\Pages\ListProductCategories;
+use Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\ProductCategoryResource\Pages\ManageProducts;
+use Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\ProductCategoryResource\Pages\ViewProductCategory;
+use Modules\Expenses\Models\Category;
 
 class ProductCategoryResource extends CategoryResource
 {

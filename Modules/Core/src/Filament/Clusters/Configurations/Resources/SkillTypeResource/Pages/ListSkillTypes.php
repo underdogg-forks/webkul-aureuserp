@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Configurations\Resources\SkillTypeResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\SkillTypeResource\Pages;
 
-use Webkul\Employee\Filament\Clusters\Configurations\Resources\SkillTypeResource\Pages\ListSkillTypes as ListSkillTypesBase;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\SkillTypeResource;
+use Modules\Core\Filament\Clusters\Configurations\Resources\SkillTypeResource\Pages\ListSkillTypes as ListSkillTypesBase;
+use Modules\Core\Filament\Clusters\Configurations\Resources\SkillTypeResource;
 
 class ListSkillTypes extends ListSkillTypesBase
 {

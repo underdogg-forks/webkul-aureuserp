@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Recruitment\Database\Seeders;
+namespace Modules\Core\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Webkul\Employee\Models\EmployeeJobPosition;
-use Webkul\Recruitment\Models\Stage;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\EmployeeJobPosition;
+use Modules\Core\Models\Stage;
+use Modules\Core\Models\User;
 
 class StageSeeder extends Seeder
 {

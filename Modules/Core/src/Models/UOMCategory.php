@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Support\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Webkul\Security\Models\User;
-use Webkul\Support\Database\Factories\UOMCategoryFactory;
+use Modules\Core\Models\User;
+use Modules\Core\Database\Factories\UOMCategoryFactory;
 
 class UOMCategory extends Model
 {

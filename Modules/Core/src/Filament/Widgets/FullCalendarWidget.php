@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\FullCalendar\Filament\Widgets;
+namespace Modules\Core\Filament\Widgets;
 
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
@@ -12,18 +12,18 @@ use Filament\Actions\ViewAction;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Widgets\Widget;
-use Webkul\FullCalendar\Concerns\CanBeConfigured;
-use Webkul\FullCalendar\Concerns\InteractsWithEvents;
-use Webkul\FullCalendar\Concerns\InteractsWithHeaderActions;
-use Webkul\FullCalendar\Concerns\InteractsWithModalActions;
-use Webkul\FullCalendar\Concerns\InteractsWithRawJS;
-use Webkul\FullCalendar\Concerns\InteractsWithRecord;
-use Webkul\FullCalendar\Contracts\HasConfigurations;
-use Webkul\FullCalendar\Contracts\HasEvents;
-use Webkul\FullCalendar\Contracts\HasHeaderActions;
-use Webkul\FullCalendar\Contracts\HasModalActions;
-use Webkul\FullCalendar\Contracts\HasRawJs;
-use Webkul\FullCalendar\Contracts\HasRecords;
+use Modules\Core\Concerns\CanBeConfigured;
+use Modules\Core\Concerns\InteractsWithEvents;
+use Modules\Core\Concerns\InteractsWithHeaderActions;
+use Modules\Core\Concerns\InteractsWithModalActions;
+use Modules\Core\Concerns\InteractsWithRawJS;
+use Modules\Core\Concerns\InteractsWithRecord;
+use Modules\Core\Contracts\HasConfigurations;
+use Modules\Core\Contracts\HasEvents;
+use Modules\Core\Contracts\HasHeaderActions;
+use Modules\Core\Contracts\HasModalActions;
+use Modules\Core\Contracts\HasRawJs;
+use Modules\Core\Contracts\HasRecords;
 
 class FullCalendarWidget extends Widget implements HasActions, HasConfigurations, HasEvents, HasForms, HasHeaderActions, HasModalActions, HasRawJs, HasRecords
 {

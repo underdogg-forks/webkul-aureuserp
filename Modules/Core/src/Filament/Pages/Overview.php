@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Pages;
+namespace Modules\Core\Filament\Pages;
 
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 use Filament\Pages\Dashboard as BaseDashboard;
 use Illuminate\Contracts\Support\Htmlable;
-use Webkul\TimeOff\Filament\Widgets\OverviewCalendarWidget;
+use Modules\Core\Filament\Widgets\OverviewCalendarWidget;
 
 class Overview extends BaseDashboard
 {

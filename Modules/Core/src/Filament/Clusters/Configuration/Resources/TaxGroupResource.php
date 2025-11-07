@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Configuration\Resources;
+namespace Modules\Core\Filament\Clusters\Configuration\Resources;
 
-use Webkul\Account\Filament\Resources\TaxGroupResource as BaseTaxGroupResource;
-use Webkul\Invoice\Filament\Clusters\Configuration;
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\TaxGroupResource\Pages\CreateTaxGroup;
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\TaxGroupResource\Pages\EditTaxGroup;
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\TaxGroupResource\Pages\ListTaxGroups;
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\TaxGroupResource\Pages\ViewTaxGroup;
-use Webkul\Invoice\Models\TaxGroup;
+use Modules\Core\Filament\Resources\TaxGroupResource as BaseTaxGroupResource;
+use Modules\Core\Filament\Clusters\Configuration;
+use Modules\Core\Filament\Clusters\Configuration\Resources\TaxGroupResource\Pages\CreateTaxGroup;
+use Modules\Core\Filament\Clusters\Configuration\Resources\TaxGroupResource\Pages\EditTaxGroup;
+use Modules\Core\Filament\Clusters\Configuration\Resources\TaxGroupResource\Pages\ListTaxGroups;
+use Modules\Core\Filament\Clusters\Configuration\Resources\TaxGroupResource\Pages\ViewTaxGroup;
+use Modules\Core\Models\TaxGroup;
 
 class TaxGroupResource extends BaseTaxGroupResource
 {

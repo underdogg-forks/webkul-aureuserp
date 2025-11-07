@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Customer\Resources\PartnerResource\Pages;
+namespace Modules\Core\Filament\Clusters\Customer\Resources\PartnerResource\Pages;
 
 use Illuminate\Contracts\Support\Htmlable;
-use Webkul\Invoice\Filament\Clusters\Customer\Resources\PartnerResource;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\VendorResource\Pages\ViewVendor as BaseViewPartner;
+use Modules\Core\Filament\Clusters\Customer\Resources\PartnerResource;
+use Modules\Core\Filament\Clusters\Vendors\Resources\VendorResource\Pages\ViewVendor as BaseViewPartner;
 
 class ViewPartner extends BaseViewPartner
 {

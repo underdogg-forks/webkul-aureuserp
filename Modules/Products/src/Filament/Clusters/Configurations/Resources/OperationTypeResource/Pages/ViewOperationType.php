@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\OperationTypeResource\Pages;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\OperationTypeResource\Pages;
 
 use Filament\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\OperationTypeResource;
+use Modules\Products\Filament\Clusters\Configurations\Resources\OperationTypeResource;
 
 class ViewOperationType extends ViewRecord
 {

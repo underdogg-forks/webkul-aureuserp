@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Support\Traits;
+namespace Modules\Core\Traits;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Response;

@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Account\Database\Factories;
+namespace Modules\Core\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Webkul\Account\Models\PaymentTerm;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Core\Models\PaymentTerm;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class PaymentTermFactory extends Factory
 {

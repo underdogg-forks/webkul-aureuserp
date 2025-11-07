@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Resources\ScrapResource\Pages;
+namespace Modules\Products\Filament\Clusters\Operations\Resources\ScrapResource\Pages;
 
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Enums\ScrapState;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\ScrapResource;
-use Webkul\Inventory\Models\Location;
-use Webkul\Inventory\Models\Product;
-use Webkul\Inventory\Models\Warehouse;
+use Modules\Products\Enums\ScrapState;
+use Modules\Products\Filament\Clusters\Operations\Resources\ScrapResource;
+use Modules\Products\Models\Location;
+use Modules\Products\Models\Product;
+use Modules\Products\Models\Warehouse;
 
 class CreateScrap extends CreateRecord
 {

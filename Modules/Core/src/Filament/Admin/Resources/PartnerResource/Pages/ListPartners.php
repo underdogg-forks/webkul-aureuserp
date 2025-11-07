@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Website\Filament\Admin\Resources\PartnerResource\Pages;
+namespace Modules\Core\Filament\Admin\Resources\PartnerResource\Pages;
 
-use Webkul\Partner\Filament\Resources\PartnerResource\Pages\ListPartners as BaseListPartners;
-use Webkul\Website\Filament\Admin\Resources\PartnerResource;
+use Modules\Crm\Filament\Resources\PartnerResource\Pages\ListPartners as BaseListPartners;
+use Modules\Core\Filament\Admin\Resources\PartnerResource;
 
 class ListPartners extends BaseListPartners
 {

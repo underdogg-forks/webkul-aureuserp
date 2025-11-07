@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Management\Resources\AllocationResource\Pages;
+namespace Modules\Core\Filament\Clusters\Management\Resources\AllocationResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-use Webkul\TableViews\Filament\Components\PresetView;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
-use Webkul\TimeOff\Enums\State;
-use Webkul\TimeOff\Filament\Clusters\Management\Resources\AllocationResource;
+use Modules\Core\Filament\Components\PresetView;
+use Modules\Core\Filament\Concerns\HasTableViews;
+use Modules\Core\Enums\State;
+use Modules\Core\Filament\Clusters\Management\Resources\AllocationResource;
 
 class ListAllocations extends ListRecords
 {

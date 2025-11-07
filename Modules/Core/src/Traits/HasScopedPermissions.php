@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Security\Traits;
+namespace Modules\Core\Traits;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Webkul\Security\Enums\PermissionType;
-use Webkul\Security\Models\User;
+use Modules\Core\Enums\PermissionType;
+use Modules\Core\Models\User;
 
 trait HasScopedPermissions
 {

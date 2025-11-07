@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Project\Filament\Clusters\Configurations\Resources;
+namespace Modules\Projects\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -26,12 +26,12 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Project\Filament\Clusters\Configurations;
-use Webkul\Project\Filament\Clusters\Configurations\Resources\ActivityPlanResource\Pages\EditActivityPlan;
-use Webkul\Project\Filament\Clusters\Configurations\Resources\ActivityPlanResource\Pages\ListActivityPlans;
-use Webkul\Project\Filament\Clusters\Configurations\Resources\ActivityPlanResource\Pages\ViewActivityPlan;
-use Webkul\Project\Filament\Clusters\Configurations\Resources\ActivityPlanResource\RelationManagers\ActivityTemplateRelationManager;
-use Webkul\Support\Models\ActivityPlan;
+use Modules\Projects\Filament\Clusters\Configurations;
+use Modules\Projects\Filament\Clusters\Configurations\Resources\ActivityPlanResource\Pages\EditActivityPlan;
+use Modules\Projects\Filament\Clusters\Configurations\Resources\ActivityPlanResource\Pages\ListActivityPlans;
+use Modules\Projects\Filament\Clusters\Configurations\Resources\ActivityPlanResource\Pages\ViewActivityPlan;
+use Modules\Projects\Filament\Clusters\Configurations\Resources\ActivityPlanResource\RelationManagers\ActivityTemplateRelationManager;
+use Modules\Core\Models\ActivityPlan;
 
 class ActivityPlanResource extends Resource
 {

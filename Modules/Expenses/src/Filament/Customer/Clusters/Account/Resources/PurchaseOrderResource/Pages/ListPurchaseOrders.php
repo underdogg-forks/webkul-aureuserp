@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Customer\Clusters\Account\Resources\PurchaseOrderResource\Pages;
+namespace Modules\Expenses\Filament\Customer\Clusters\Account\Resources\PurchaseOrderResource\Pages;
 
 use Filament\Resources\Pages\ListRecords;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Webkul\Purchase\Enums\OrderState;
-use Webkul\Purchase\Filament\Customer\Clusters\Account\Resources\PurchaseOrderResource;
+use Modules\Expenses\Enums\OrderState;
+use Modules\Expenses\Filament\Customer\Clusters\Account\Resources\PurchaseOrderResource;
 
 class ListPurchaseOrders extends ListRecords
 {

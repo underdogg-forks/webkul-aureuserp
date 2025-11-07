@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\JournalResource\Pages;
+namespace Modules\Core\Filament\Resources\JournalResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Account\Enums\CommunicationStandard;
-use Webkul\Account\Enums\CommunicationType;
-use Webkul\Account\Filament\Resources\JournalResource;
+use Modules\Core\Enums\CommunicationStandard;
+use Modules\Core\Enums\CommunicationType;
+use Modules\Core\Filament\Resources\JournalResource;
 
 class CreateJournal extends CreateRecord
 {

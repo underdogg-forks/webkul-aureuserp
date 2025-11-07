@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Project\Filament\Clusters\Configurations\Resources\ActivityPlanResource\Pages;
+namespace Modules\Projects\Filament\Clusters\Configurations\Resources\ActivityPlanResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
-use Webkul\Project\Filament\Clusters\Configurations\Resources\ActivityPlanResource;
+use Modules\Projects\Filament\Clusters\Configurations\Resources\ActivityPlanResource;
 
 class EditActivityPlan extends EditRecord
 {

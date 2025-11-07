@@ -291,7 +291,7 @@
                             <th>Quantity</th>
                             <th>To</th>
                             
-                            @if (app(\Webkul\Inventory\Settings\TraceabilitySettings::class)->enable_lots_serial_numbers)
+                            @if (app(\Modules\Products\Settings\TraceabilitySettings::class)->enable_lots_serial_numbers)
                                 <th>Lot/Serial Number</th>
                             @endif
                             
@@ -312,7 +312,7 @@
                                     @endif
                                 </td>
 
-                                @if (app(\Webkul\Inventory\Settings\TraceabilitySettings::class)->enable_lots_serial_numbers)
+                                @if (app(\Modules\Products\Settings\TraceabilitySettings::class)->enable_lots_serial_numbers)
                                     <td>
                                         @if ($item->lot)
                                         <div class="barcode-container">

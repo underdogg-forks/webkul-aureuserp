@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Product\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use BackedEnum;
 use Filament\Actions\CreateAction;
@@ -25,7 +25,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
-use Webkul\Product\Models\Category;
+use Modules\Core\Models\Category;
 
 class CategoryResource extends Resource
 {

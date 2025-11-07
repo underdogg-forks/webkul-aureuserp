@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -42,15 +42,15 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Enums\LocationType;
-use Webkul\Inventory\Filament\Clusters\Configurations;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\LocationResource\Pages\CreateLocation;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\LocationResource\Pages\EditLocation;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\LocationResource\Pages\ListLocations;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\LocationResource\Pages\ViewLocation;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages\ManageLocations;
-use Webkul\Inventory\Models\Location;
-use Webkul\Inventory\Settings\WarehouseSettings;
+use Modules\Products\Enums\LocationType;
+use Modules\Products\Filament\Clusters\Configurations;
+use Modules\Products\Filament\Clusters\Configurations\Resources\LocationResource\Pages\CreateLocation;
+use Modules\Products\Filament\Clusters\Configurations\Resources\LocationResource\Pages\EditLocation;
+use Modules\Products\Filament\Clusters\Configurations\Resources\LocationResource\Pages\ListLocations;
+use Modules\Products\Filament\Clusters\Configurations\Resources\LocationResource\Pages\ViewLocation;
+use Modules\Products\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages\ManageLocations;
+use Modules\Products\Models\Location;
+use Modules\Products\Settings\WarehouseSettings;
 
 class LocationResource extends Resource
 {

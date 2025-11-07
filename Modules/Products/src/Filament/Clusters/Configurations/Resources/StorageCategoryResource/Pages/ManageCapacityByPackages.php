@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages;
 
 use BackedEnum;
 use Filament\Actions\CreateAction;
@@ -15,9 +15,9 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Unique;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\StorageCategoryResource;
-use Webkul\Inventory\Settings\OperationSettings;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Products\Filament\Clusters\Configurations\Resources\StorageCategoryResource;
+use Modules\Products\Settings\OperationSettings;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ManageCapacityByPackages extends ManageRelatedRecords
 {

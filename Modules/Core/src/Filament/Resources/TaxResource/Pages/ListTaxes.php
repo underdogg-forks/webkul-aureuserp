@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\TaxResource\Pages;
+namespace Modules\Core\Filament\Resources\TaxResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Database\Eloquent\Builder;
-use Webkul\Account\Enums\TaxScope;
-use Webkul\Account\Enums\TypeTaxUse;
-use Webkul\Account\Filament\Resources\TaxResource;
-use Webkul\TableViews\Filament\Components\PresetView;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Core\Enums\TaxScope;
+use Modules\Core\Enums\TypeTaxUse;
+use Modules\Core\Filament\Resources\TaxResource;
+use Modules\Core\Filament\Components\PresetView;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ListTaxes extends ListRecords
 {

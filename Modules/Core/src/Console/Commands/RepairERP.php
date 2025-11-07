@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Support\Console\Commands;
+namespace Modules\Core\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
@@ -112,7 +112,7 @@ class RepairERP extends Command
     {
         // Best effort: attempt to run the conventional DatabaseSeeder of the plugin
         $studly      = Str::studly(str_replace(['-', '_'], ' ', $lowerName));
-        $seederClass = "Webkul\\{$studly}\\Database\\Seeders\\DatabaseSeeder";
+        $seederClass = "Modules\\{$studly}\\Database\\Seeders\\DatabaseSeeder";
 
         try {
             if (class_exists($seederClass)) {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Applications\Resources\ApplicantResource\Pages;
+namespace Modules\Core\Filament\Clusters\Applications\Resources\ApplicantResource\Pages;
 
-use Webkul\Recruitment\Filament\Clusters\Applications\Resources\ApplicantResource;
-use Webkul\Recruitment\Filament\Clusters\Applications\Resources\CandidateResource\Pages\ManageSkill as BaseManageSkill;
+use Modules\Core\Filament\Clusters\Applications\Resources\ApplicantResource;
+use Modules\Core\Filament\Clusters\Applications\Resources\CandidateResource\Pages\ManageSkill as BaseManageSkill;
 
 class ManageSkill extends BaseManageSkill
 {

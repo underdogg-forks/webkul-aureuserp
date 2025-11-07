@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\TimeOff;
+namespace Modules\Core;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use ReflectionClass;
-use Webkul\FullCalendar\FullCalendarPlugin;
-use Webkul\Support\Package;
+use Modules\Core\FullCalendarPlugin;
+use Modules\Core\Package;
 
 class TimeOffPlugin implements Plugin
 {
@@ -28,10 +28,10 @@ class TimeOffPlugin implements Plugin
 
         $panel
             ->when($panel->getId() == 'admin', function (Panel $panel) {
-                $panel->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Webkul\\TimeOff\\Filament\\Resources')
-                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Pages'), for: 'Webkul\\TimeOff\\Filament\\Pages')
-                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Clusters'), for: 'Webkul\\TimeOff\\Filament\\Clusters')
-                    ->discoverWidgets(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Webkul\\TimeOff\\Filament\\Widgets');
+                $panel->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Modules\\Core\\Filament\\Resources')
+                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Pages'), for: 'Modules\\Core\\Filament\\Pages')
+                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Clusters'), for: 'Modules\\Core\\Filament\\Clusters')
+                    ->discoverWidgets(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Modules\\Core\\Filament\\Widgets');
             })
             ->plugin(
                 FullCalendarPlugin::make()

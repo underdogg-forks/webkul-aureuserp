@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Website\Filament\Customer\Auth\PasswordReset;
+namespace Modules\Core\Filament\Customer\Auth\PasswordReset;
 
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 use DanHarrin\LivewireRateLimiting\WithRateLimiting;

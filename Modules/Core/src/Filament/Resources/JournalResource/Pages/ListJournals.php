@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\JournalResource\Pages;
+namespace Modules\Core\Filament\Resources\JournalResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Webkul\Account\Filament\Resources\JournalResource;
+use Modules\Core\Filament\Resources\JournalResource;
 
 class ListJournals extends ListRecords
 {

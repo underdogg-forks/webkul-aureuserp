@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Security\Filament\Resources\CompanyResource\Pages;
+namespace Modules\Core\Filament\Resources\CompanyResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Security\Filament\Resources\CompanyResource;
-use Webkul\Security\Models\User;
+use Modules\Core\Filament\Resources\CompanyResource;
+use Modules\Core\Models\User;
 
 class ViewCompany extends ViewRecord
 {

@@ -1,19 +1,19 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Vendors\Resources;
+namespace Modules\Core\Filament\Clusters\Vendors\Resources;
 
 use Filament\Forms;
 use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
-use Webkul\Account\Enums\PaymentType;
-use Webkul\Account\Filament\Resources\PaymentsResource as BasePaymentsResource;
-use Webkul\Invoice\Filament\Clusters\Vendors;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\PaymentsResource\Pages\CreatePayments;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\PaymentsResource\Pages\EditPayments;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\PaymentsResource\Pages\ListPayments;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\PaymentsResource\Pages\ViewPayments;
-use Webkul\Invoice\Models\Partner;
-use Webkul\Invoice\Models\Payment;
+use Modules\Core\Enums\PaymentType;
+use Modules\Core\Filament\Resources\PaymentsResource as BasePaymentsResource;
+use Modules\Core\Filament\Clusters\Vendors;
+use Modules\Core\Filament\Clusters\Vendors\Resources\PaymentsResource\Pages\CreatePayments;
+use Modules\Core\Filament\Clusters\Vendors\Resources\PaymentsResource\Pages\EditPayments;
+use Modules\Core\Filament\Clusters\Vendors\Resources\PaymentsResource\Pages\ListPayments;
+use Modules\Core\Filament\Clusters\Vendors\Resources\PaymentsResource\Pages\ViewPayments;
+use Modules\Core\Models\Partner;
+use Modules\Core\Models\Payment;
 
 class PaymentsResource extends BasePaymentsResource
 {

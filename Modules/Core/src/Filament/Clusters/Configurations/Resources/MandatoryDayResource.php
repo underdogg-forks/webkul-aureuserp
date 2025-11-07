@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Configurations\Resources;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -23,9 +23,9 @@ use Filament\Tables\Filters\QueryBuilder\Constraints\TextConstraint;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
-use Webkul\TimeOff\Filament\Clusters\Configurations;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\MandatoryDayResource\Pages\ListMandatoryDays;
-use Webkul\TimeOff\Models\LeaveMandatoryDay;
+use Modules\Core\Filament\Clusters\Configurations;
+use Modules\Core\Filament\Clusters\Configurations\Resources\MandatoryDayResource\Pages\ListMandatoryDays;
+use Modules\Core\Models\LeaveMandatoryDay;
 
 class MandatoryDayResource extends Resource
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\InvoiceResource\Actions;
+namespace Modules\Core\Filament\Resources\InvoiceResource\Actions;
 
 use Filament\Actions\Action;
 use Filament\Forms\Components\DatePicker;
@@ -9,16 +9,16 @@ use Filament\Schemas\Schema;
 use Filament\Support\Facades\FilamentView;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Webkul\Account\Enums\DisplayType;
-use Webkul\Account\Enums\MoveState;
-use Webkul\Account\Enums\MoveType;
-use Webkul\Account\Enums\PaymentState;
-use Webkul\Account\Facades\Account as AccountFacade;
-use Webkul\Account\Models\Move;
-use Webkul\Account\Models\MoveLine;
-use Webkul\Account\Models\MoveReversal;
-use Webkul\Invoice\Filament\Clusters\Customer\Resources\CreditNotesResource;
-use Webkul\Support\Traits\PDFHandler;
+use Modules\Core\Enums\DisplayType;
+use Modules\Core\Enums\MoveState;
+use Modules\Core\Enums\MoveType;
+use Modules\Core\Enums\PaymentState;
+use Modules\Core\Facades\Account as AccountFacade;
+use Modules\Core\Models\Move;
+use Modules\Core\Models\MoveLine;
+use Modules\Core\Models\MoveReversal;
+use Modules\Core\Filament\Clusters\Customer\Resources\CreditNotesResource;
+use Modules\Core\Traits\PDFHandler;
 
 class CreditNoteAction extends Action
 {

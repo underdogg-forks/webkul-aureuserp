@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\FullCalendar\Concerns;
+namespace Modules\Core\Concerns;
 
 trait InteractsWithRawJS
 {

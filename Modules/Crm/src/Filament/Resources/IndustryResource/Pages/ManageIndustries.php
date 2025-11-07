@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Partner\Filament\Resources\IndustryResource\Pages;
+namespace Modules\Crm\Filament\Resources\IndustryResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ManageRecords;
 use Filament\Schemas\Components\Tabs\Tab;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Partner\Filament\Resources\IndustryResource;
-use Webkul\Partner\Models\Industry;
+use Modules\Crm\Filament\Resources\IndustryResource;
+use Modules\Crm\Models\Industry;
 
 class ManageIndustries extends ManageRecords
 {

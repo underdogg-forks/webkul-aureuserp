@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Chatter\Livewire;
+namespace Modules\Core\Livewire;
 
 use Carbon\Carbon;
 use Closure;
@@ -29,20 +29,20 @@ use Illuminate\Support\HtmlString;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Throwable;
-use Webkul\Chatter\Filament\Actions\Chatter\FileAction;
-use Webkul\Chatter\Filament\Actions\Chatter\FiltersAction;
-use Webkul\Chatter\Filament\Actions\Chatter\FollowerAction;
-use Webkul\Chatter\Filament\Infolists\Components\Activities\ActivitiesRepeatableEntry;
-use Webkul\Chatter\Filament\Infolists\Components\Activities\ContentTextEntry as ActivityContentTextEntry;
-use Webkul\Chatter\Filament\Infolists\Components\Activities\TitleTextEntry as ActivityTitleTextEntry;
-use Webkul\Chatter\Filament\Infolists\Components\Messages\ContentTextEntry as MessageContentTextEntry;
-use Webkul\Chatter\Filament\Infolists\Components\Messages\MessageRepeatableEntry;
-use Webkul\Chatter\Filament\Infolists\Components\Messages\TitleTextEntry as MessageTitleTextEntry;
-use Webkul\Chatter\Models\Message;
-use Webkul\Partner\Models\Partner;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\ActivityPlan;
-use Webkul\Support\Models\ActivityType;
+use Modules\Core\Filament\Actions\Chatter\FileAction;
+use Modules\Core\Filament\Actions\Chatter\FiltersAction;
+use Modules\Core\Filament\Actions\Chatter\FollowerAction;
+use Modules\Core\Filament\Infolists\Components\Activities\ActivitiesRepeatableEntry;
+use Modules\Core\Filament\Infolists\Components\Activities\ContentTextEntry as ActivityContentTextEntry;
+use Modules\Core\Filament\Infolists\Components\Activities\TitleTextEntry as ActivityTitleTextEntry;
+use Modules\Core\Filament\Infolists\Components\Messages\ContentTextEntry as MessageContentTextEntry;
+use Modules\Core\Filament\Infolists\Components\Messages\MessageRepeatableEntry;
+use Modules\Core\Filament\Infolists\Components\Messages\TitleTextEntry as MessageTitleTextEntry;
+use Modules\Core\Models\Message;
+use Modules\Crm\Models\Partner;
+use Modules\Core\Models\User;
+use Modules\Core\Models\ActivityPlan;
+use Modules\Core\Models\ActivityType;
 
 class ChatterPanel extends Component implements HasActions, HasForms, HasInfolists
 {

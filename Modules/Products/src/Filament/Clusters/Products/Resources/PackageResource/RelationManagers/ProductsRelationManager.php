@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Products\Resources\PackageResource\RelationManagers;
+namespace Modules\Products\Filament\Clusters\Products\Resources\PackageResource\RelationManagers;
 
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables\Columns\TextColumn;

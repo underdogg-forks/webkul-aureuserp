@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Support\Filament\Tables\Infolists;
+namespace Modules\Core\Filament\Tables\Infolists;
 
 use Filament\Infolists\Components\IconEntry;
 

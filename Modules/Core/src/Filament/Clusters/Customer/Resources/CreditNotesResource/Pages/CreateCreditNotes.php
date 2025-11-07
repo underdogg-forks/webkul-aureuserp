@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Customer\Resources\CreditNotesResource\Pages;
+namespace Modules\Core\Filament\Clusters\Customer\Resources\CreditNotesResource\Pages;
 
-use Webkul\Account\Filament\Resources\CreditNoteResource\Pages\CreateCreditNote as BaseCreateInvoice;
-use Webkul\Invoice\Filament\Clusters\Customer\Resources\CreditNotesResource;
+use Modules\Core\Filament\Resources\CreditNoteResource\Pages\CreateCreditNote as BaseCreateInvoice;
+use Modules\Core\Filament\Clusters\Customer\Resources\CreditNotesResource;
 
 class CreateCreditNotes extends BaseCreateInvoice
 {

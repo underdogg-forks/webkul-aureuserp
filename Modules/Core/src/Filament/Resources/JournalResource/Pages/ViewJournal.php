@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\JournalResource\Pages;
+namespace Modules\Core\Filament\Resources\JournalResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Account\Filament\Resources\JournalResource;
+use Modules\Core\Filament\Resources\JournalResource;
 
 class ViewJournal extends ViewRecord
 {

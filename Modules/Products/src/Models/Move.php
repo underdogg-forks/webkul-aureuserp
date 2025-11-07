@@ -1,21 +1,21 @@
 <?php
 
-namespace Webkul\Inventory\Models;
+namespace Modules\Products\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Webkul\Inventory\Database\Factories\MoveFactory;
-use Webkul\Inventory\Enums\LocationType;
-use Webkul\Inventory\Enums\MoveState;
-use Webkul\Partner\Models\Partner;
-use Webkul\Purchase\Models\OrderLine as PurchaseOrderLine;
-use Webkul\Sale\Models\OrderLine as SaleOrderLine;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
-use Webkul\Support\Models\UOM;
+use Modules\Products\Database\Factories\MoveFactory;
+use Modules\Products\Enums\LocationType;
+use Modules\Products\Enums\MoveState;
+use Modules\Crm\Models\Partner;
+use Modules\Expenses\Models\OrderLine as PurchaseOrderLine;
+use Modules\Invoices\Models\OrderLine as SaleOrderLine;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
+use Modules\Core\Models\UOM;
 
 class Move extends Model
 {

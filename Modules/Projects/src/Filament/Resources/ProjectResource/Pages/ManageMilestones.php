@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Project\Filament\Resources\ProjectResource\Pages;
+namespace Modules\Projects\Filament\Resources\ProjectResource\Pages;
 
 use BackedEnum;
 use Filament\Actions\CreateAction;
@@ -9,8 +9,8 @@ use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Project\Filament\Clusters\Configurations\Resources\MilestoneResource;
-use Webkul\Project\Filament\Resources\ProjectResource;
+use Modules\Projects\Filament\Clusters\Configurations\Resources\MilestoneResource;
+use Modules\Projects\Filament\Resources\ProjectResource;
 
 class ManageMilestones extends ManageRelatedRecords
 {

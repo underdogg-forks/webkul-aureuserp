@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Account;
+namespace Modules\Core;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use ReflectionClass;
-use Webkul\Support\Package;
+use Modules\Core\Package;
 
 class AccountPlugin implements Plugin
 {
@@ -27,10 +27,10 @@ class AccountPlugin implements Plugin
 
         $panel
             ->when($panel->getId() == 'admin', function (Panel $panel) {
-                $panel->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Webkul\\Account\\Filament\\Resources')
-                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Pages'), for: 'Webkul\\Account\\Filament\\Pages')
-                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Clusters'), for: 'Webkul\\Account\\Filament\\Clusters')
-                    ->discoverWidgets(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Webkul\\Account\\Filament\\Widgets');
+                $panel->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Modules\\Core\\Filament\\Resources')
+                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Pages'), for: 'Modules\\Core\\Filament\\Pages')
+                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Clusters'), for: 'Modules\\Core\\Filament\\Clusters')
+                    ->discoverWidgets(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Modules\\Core\\Filament\\Widgets');
             });
     }
 

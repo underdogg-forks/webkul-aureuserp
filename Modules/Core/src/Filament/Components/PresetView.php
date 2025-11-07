@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\TableViews\Filament\Components;
+namespace Modules\Core\Filament\Components;
 
 use Closure;
 use Filament\Schemas\Components\Tabs\Tab;
-use Webkul\TableViews\Models\TableViewFavorite;
+use Modules\Core\Models\TableViewFavorite;
 
 class PresetView extends Tab
 {

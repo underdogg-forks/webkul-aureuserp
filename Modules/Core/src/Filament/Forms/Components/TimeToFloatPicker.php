@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Field\Filament\Forms\Components;
+namespace Modules\Core\Filament\Forms\Components;
 
 use Carbon\Carbon;
 use Filament\Forms\Components\TimePicker;

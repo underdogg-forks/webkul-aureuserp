@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -20,8 +20,8 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Account\Filament\Resources\IncoTermResource\Pages\ListIncoTerms;
-use Webkul\Account\Models\Incoterm;
+use Modules\Core\Filament\Resources\IncoTermResource\Pages\ListIncoTerms;
+use Modules\Core\Models\Incoterm;
 
 class IncoTermResource extends Resource
 {

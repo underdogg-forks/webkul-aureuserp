@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Employee;
+namespace Modules\Core;
 
-use Webkul\Support\Console\Commands\InstallCommand;
-use Webkul\Support\Console\Commands\UninstallCommand;
-use Webkul\Support\Package;
-use Webkul\Support\PackageServiceProvider;
+use Modules\Core\Console\Commands\InstallCommand;
+use Modules\Core\Console\Commands\UninstallCommand;
+use Modules\Core\Package;
+use Modules\Core\PackageServiceProvider;
 
 class EmployeeServiceProvider extends PackageServiceProvider
 {
@@ -39,7 +39,7 @@ class EmployeeServiceProvider extends PackageServiceProvider
                 '2025_08_20_082638_add_unique_user_id_to_employees_employees_table',
             ])
             ->runsMigrations()
-            ->hasSeeder('Webkul\\Employee\\Database\Seeders\\DatabaseSeeder')
+            ->hasSeeder('Modules\\Core\\Database\Seeders\\DatabaseSeeder')
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->runsMigrations()

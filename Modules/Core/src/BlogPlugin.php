@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Blog;
+namespace Modules\Core;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use ReflectionClass;
-use Webkul\Support\Package;
+use Modules\Core\Package;
 
 class BlogPlugin implements Plugin
 {
@@ -28,17 +28,17 @@ class BlogPlugin implements Plugin
         $panel
             ->when($panel->getId() == 'customer', function (Panel $panel) {
                 $panel
-                    ->discoverResources(in: $this->getPluginBasePath('/Filament/Customer/Resources'), for: 'Webkul\\Blog\\Filament\\Customer\\Resources')
-                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Customer/Pages'), for: 'Webkul\\Blog\\Filament\\Customer\\Pages')
-                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Customer/Clusters'), for: 'Webkul\\Blog\\Filament\\Customer\\Clusters')
-                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Customer/Widgets'), for: 'Webkul\\Blog\\Filament\\Customer\\Widgets');
+                    ->discoverResources(in: $this->getPluginBasePath('/Filament/Customer/Resources'), for: 'Modules\\Core\\Filament\\Customer\\Resources')
+                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Customer/Pages'), for: 'Modules\\Core\\Filament\\Customer\\Pages')
+                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Customer/Clusters'), for: 'Modules\\Core\\Filament\\Customer\\Clusters')
+                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Customer/Widgets'), for: 'Modules\\Core\\Filament\\Customer\\Widgets');
             })
             ->when($panel->getId() == 'admin', function (Panel $panel) {
                 $panel
-                    ->discoverResources(in: $this->getPluginBasePath('/Filament/Admin/Resources'), for: 'Webkul\\Blog\\Filament\\Admin\\Resources')
-                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Admin/Pages'), for: 'Webkul\\Blog\\Filament\\Admin\\Pages')
-                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Admin/Clusters'), for: 'Webkul\\Blog\\Filament\\Admin\\Clusters')
-                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Admin/Widgets'), for: 'Webkul\\Blog\\Filament\\Admin\\Widgets');
+                    ->discoverResources(in: $this->getPluginBasePath('/Filament/Admin/Resources'), for: 'Modules\\Core\\Filament\\Admin\\Resources')
+                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Admin/Pages'), for: 'Modules\\Core\\Filament\\Admin\\Pages')
+                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Admin/Clusters'), for: 'Modules\\Core\\Filament\\Admin\\Clusters')
+                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Admin/Widgets'), for: 'Modules\\Core\\Filament\\Admin\\Widgets');
             });
     }
 

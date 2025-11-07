@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Chatter\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Webkul\Partner\Models\Partner;
+use Modules\Crm\Models\Partner;
 
 class Follower extends Model
 {

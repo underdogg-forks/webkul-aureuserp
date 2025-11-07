@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Vendors\Resources\RefundResource\Pages;
+namespace Modules\Core\Filament\Clusters\Vendors\Resources\RefundResource\Pages;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
-use Webkul\Account\Enums\MoveType;
-use Webkul\Account\Filament\Resources\InvoiceResource\Pages\ListInvoices as BaseListInvoices;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\RefundResource;
-use Webkul\TableViews\Filament\Components\PresetView;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Core\Enums\MoveType;
+use Modules\Core\Filament\Resources\InvoiceResource\Pages\ListInvoices as BaseListInvoices;
+use Modules\Core\Filament\Clusters\Vendors\Resources\RefundResource;
+use Modules\Core\Filament\Components\PresetView;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ListRefunds extends BaseListInvoices
 {

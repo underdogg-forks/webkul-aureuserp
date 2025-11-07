@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Product\Filament\Resources\AttributeResource\Pages;
+namespace Modules\Core\Filament\Resources\AttributeResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Product\Filament\Resources\AttributeResource;
+use Modules\Core\Filament\Resources\AttributeResource;
 
 class CreateAttribute extends CreateRecord
 {

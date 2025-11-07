@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use BackedEnum;
 use Filament\Actions\Action;
@@ -32,27 +32,27 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Account\Enums\MoveState;
-use Webkul\Account\Enums\PaymentState;
-use Webkul\Account\Enums\TypeTaxUse;
-use Webkul\Account\Facades\Tax;
-use Webkul\Account\Filament\Resources\BillResource\Pages\CreateBill;
-use Webkul\Account\Filament\Resources\BillResource\Pages\EditBill;
-use Webkul\Account\Filament\Resources\BillResource\Pages\ListBills;
-use Webkul\Account\Filament\Resources\BillResource\Pages\ViewBill;
-use Webkul\Account\Livewire\InvoiceSummary;
-use Webkul\Account\Models\Move as AccountMove;
-use Webkul\Account\Models\Partner;
-use Webkul\Field\Filament\Forms\Components\ProgressStepper;
-use Webkul\Invoice\Filament\Clusters\Customer\Resources\InvoiceResource;
-use Webkul\Invoice\Models\Product;
-use Webkul\Invoice\Settings\ProductSettings;
-use Webkul\Support\Filament\Forms\Components\Repeater;
-use Webkul\Support\Filament\Forms\Components\Repeater\TableColumn;
-use Webkul\Support\Filament\Infolists\Components\RepeatableEntry;
-use Webkul\Support\Filament\Infolists\Components\Repeater\TableColumn as InfolistTableColumn;
-use Webkul\Support\Models\Currency;
-use Webkul\Support\Models\UOM;
+use Modules\Core\Enums\MoveState;
+use Modules\Core\Enums\PaymentState;
+use Modules\Core\Enums\TypeTaxUse;
+use Modules\Core\Facades\Tax;
+use Modules\Core\Filament\Resources\BillResource\Pages\CreateBill;
+use Modules\Core\Filament\Resources\BillResource\Pages\EditBill;
+use Modules\Core\Filament\Resources\BillResource\Pages\ListBills;
+use Modules\Core\Filament\Resources\BillResource\Pages\ViewBill;
+use Modules\Core\Livewire\InvoiceSummary;
+use Modules\Core\Models\Move as AccountMove;
+use Modules\Core\Models\Partner;
+use Modules\Core\Filament\Forms\Components\ProgressStepper;
+use Modules\Core\Filament\Clusters\Customer\Resources\InvoiceResource;
+use Modules\Core\Models\Product;
+use Modules\Core\Settings\ProductSettings;
+use Modules\Core\Filament\Forms\Components\Repeater;
+use Modules\Core\Filament\Forms\Components\Repeater\TableColumn;
+use Modules\Core\Filament\Infolists\Components\RepeatableEntry;
+use Modules\Core\Filament\Infolists\Components\Repeater\TableColumn as InfolistTableColumn;
+use Modules\Core\Models\Currency;
+use Modules\Core\Models\UOM;
 
 class BillResource extends Resource
 {
@@ -238,7 +238,7 @@ class BillResource extends Resource
                                             ->preload()
                                             ->live()
                                             ->afterStateUpdated(function (Set $set, Get $get) {
-                                                $company = $get('company_id') ? \Webkul\Support\Models\Company::find($get('company_id')) : null;
+                                                $company = $get('company_id') ? \Modules\Core\Models\Company::find($get('company_id')) : null;
 
                                                 if ($company) {
                                                     $set('currency_id', $company->currency_id);

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Chatter\Filament\Actions\Chatter;
+namespace Modules\Core\Filament\Actions\Chatter;
 
 use Filament\Actions\Action;
 use Filament\Forms\Components\Select;

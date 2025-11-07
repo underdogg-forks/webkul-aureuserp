@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Security\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
@@ -39,16 +39,16 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Field\Filament\Traits\HasCustomFields;
-use Webkul\Security\Enums\CompanyStatus;
-use Webkul\Security\Filament\Resources\CompanyResource\Pages\CreateCompany;
-use Webkul\Security\Filament\Resources\CompanyResource\Pages\EditCompany;
-use Webkul\Security\Filament\Resources\CompanyResource\Pages\ListCompanies;
-use Webkul\Security\Filament\Resources\CompanyResource\Pages\ViewCompany;
-use Webkul\Security\Filament\Resources\CompanyResource\RelationManagers\BranchesRelationManager;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
-use Webkul\Support\Models\Currency;
+use Modules\Core\Filament\Traits\HasCustomFields;
+use Modules\Core\Enums\CompanyStatus;
+use Modules\Core\Filament\Resources\CompanyResource\Pages\CreateCompany;
+use Modules\Core\Filament\Resources\CompanyResource\Pages\EditCompany;
+use Modules\Core\Filament\Resources\CompanyResource\Pages\ListCompanies;
+use Modules\Core\Filament\Resources\CompanyResource\Pages\ViewCompany;
+use Modules\Core\Filament\Resources\CompanyResource\RelationManagers\BranchesRelationManager;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
+use Modules\Core\Models\Currency;
 
 class CompanyResource extends Resource
 {

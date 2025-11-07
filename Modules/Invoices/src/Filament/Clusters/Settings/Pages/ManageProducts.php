@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Settings\Pages;
+namespace Modules\Invoices\Filament\Clusters\Settings\Pages;
 
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
@@ -9,8 +9,8 @@ use Filament\Forms\Components\Toggle;
 use Filament\Pages\SettingsPage;
 use Filament\Schemas\Schema;
 use UnitEnum;
-use Webkul\Sale\Settings\ProductSettings;
-use Webkul\Support\Filament\Clusters\Settings;
+use Modules\Invoices\Settings\ProductSettings;
+use Modules\Core\Filament\Clusters\Settings;
 
 class ManageProducts extends SettingsPage
 {

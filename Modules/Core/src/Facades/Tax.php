@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Account\Facades;
+namespace Modules\Core\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

@@ -26,7 +26,7 @@
 
     <div class="progress-text">
         @if (
-            $column instanceof \Webkul\Support\Filament\Tables\Columns\ProgressBarEntry
+            $column instanceof \Modules\Core\Filament\Tables\Columns\ProgressBarEntry
             && $column->getCanShow()
         )
             <small

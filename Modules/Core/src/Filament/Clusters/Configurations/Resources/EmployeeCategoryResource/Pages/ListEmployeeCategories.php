@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Employee\Filament\Clusters\Configurations\Resources\EmployeeCategoryResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\EmployeeCategoryResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
-use Webkul\Employee\Filament\Clusters\Configurations\Resources\EmployeeCategoryResource;
+use Modules\Core\Filament\Clusters\Configurations\Resources\EmployeeCategoryResource;
 
 class ListEmployeeCategories extends ListRecords
 {

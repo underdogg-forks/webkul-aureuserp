@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Employee\Database\Factories;
+namespace Modules\Core\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Webkul\Employee\Models\Department;
-use Webkul\Employee\Models\EmployeeJobPosition;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Core\Models\Department;
+use Modules\Core\Models\EmployeeJobPosition;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class EmployeeJobPositionFactory extends Factory
 {

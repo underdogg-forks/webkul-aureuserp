@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Project\Models;
+namespace Modules\Projects\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Webkul\Project\Database\Factories\MilestoneFactory;
-use Webkul\Security\Models\User;
+use Modules\Projects\Database\Factories\MilestoneFactory;
+use Modules\Core\Models\User;
 
 class Milestone extends Model
 {

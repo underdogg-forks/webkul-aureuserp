@@ -255,10 +255,10 @@
         <!-- Agreement Title -->
         <div class="agreement-title">
             @php
-                $title = $record->state == \Webkul\Sale\Enums\OrderState::SALE ? 'Order' : 'Quotation';
+                $title = $record->state == \Modules\Invoices\Enums\OrderState::SALE ? 'Order' : 'Quotation';
             @endphp
 
-            @if ($record->state == \Webkul\Sale\Enums\OrderState::SALE)
+            @if ($record->state == \Modules\Invoices\Enums\OrderState::SALE)
                 {{ $title }} ID #{{ $record->name }}
             @else
                 {{ $title }} ID #{{ $record->name }}
@@ -292,7 +292,7 @@
                         <th>Product</th>
                         <th>Quantity</th>
 
-                        @if (app(\Webkul\Sale\Settings\ProductSettings::class)->enable_uom)
+                        @if (app(\Modules\Invoices\Settings\ProductSettings::class)->enable_uom)
                             <th>Unit</th>
                         @endif
 
@@ -306,7 +306,7 @@
                         <td>{{ $item->product->name }}</td>
                         <td>{{ number_format($item->product_uom_qty) }}</td>
 
-                        @if (app(\Webkul\Sale\Settings\ProductSettings::class)->enable_uom)
+                        @if (app(\Modules\Invoices\Settings\ProductSettings::class)->enable_uom)
                             <td>{{ $item->product->uom->name }}</td>
                         @endif
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\PaymentsResource\Actions;
+namespace Modules\Core\Filament\Resources\PaymentsResource\Actions;
 
 use Filament\Actions\Action;
 use Livewire\Component;
 use Modules\Payments\Enums\PaymentStatus;
-use Webkul\Account\Models\Payment;
+use Modules\Core\Models\Payment;
 
 class MarkAsSendAdnUnsentAction extends Action
 {

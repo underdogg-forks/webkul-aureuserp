@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages;
 
 use Filament\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\StorageCategoryResource;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Products\Filament\Clusters\Configurations\Resources\StorageCategoryResource;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ViewStorageCategory extends ViewRecord
 {

@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\PaymentsResource\Pages;
+namespace Modules\Core\Filament\Resources\PaymentsResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Payments\Enums\PaymentStatus;
-use Webkul\Account\Filament\Resources\PaymentsResource;
-use Webkul\TableViews\Filament\Components\PresetView;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Core\Filament\Resources\PaymentsResource;
+use Modules\Core\Filament\Components\PresetView;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ListPayments extends ListRecords
 {

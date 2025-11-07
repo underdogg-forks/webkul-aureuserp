@@ -19,20 +19,12 @@
         "psr-4": {
             "Modules\\Projects\\": "src/",
             "Modules\\Projects\\Database\\Factories\\": "database/factories/",
-            "Modules\\Projects\\Database\\Seeders\\": "database/seeders/",
-            "Webkul\\Project\\": "src/",
-            "Webkul\\Project\\Database\\Factories\\": "database/factories/",
-            "Webkul\\Project\\Database\\Seeders\\": "database/seeders/",
-            "Webkul\\Timesheet\\": "src/",
-            "Webkul\\Timesheet\\Database\\Factories\\": "database/factories/",
-            "Webkul\\Timesheet\\Database\\Seeders\\": "database/seeders/"
+            "Modules\\Projects\\Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Modules\\Projects\\Tests\\": "tests/",
-            "Webkul\\Project\\Tests\\": "tests/",
-            "Webkul\\Timesheet\\Tests\\": "tests/"
+            "Modules\\Projects\\Tests\\": "tests/"
         }
     }
 }

@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Website\Filament\Admin\Resources\PageResource\Pages;
+namespace Modules\Core\Filament\Admin\Resources\PageResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Website\Filament\Admin\Resources\PageResource;
+use Modules\Core\Filament\Admin\Resources\PageResource;
 
 class ViewPage extends ViewRecord
 {

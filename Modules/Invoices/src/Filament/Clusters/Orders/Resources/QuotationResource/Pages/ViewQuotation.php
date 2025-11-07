@@ -1,16 +1,16 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Pages;
+namespace Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Chatter\Filament\Actions as ChatterActions;
-use Webkul\Sale\Enums\OrderState;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Actions as BaseActions;
-use Webkul\Support\Concerns\HasRepeatableEntryColumnManager;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Actions as ChatterActions;
+use Modules\Invoices\Enums\OrderState;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource\Actions as BaseActions;
+use Modules\Core\Concerns\HasRepeatableEntryColumnManager;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ViewQuotation extends ViewRecord
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Inventory\Models;
+namespace Modules\Products\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Webkul\Inventory\Database\Factories\PackageDestinationFactory;
-use Webkul\Security\Models\User;
+use Modules\Products\Database\Factories\PackageDestinationFactory;
+use Modules\Core\Models\User;
 
 class PackageDestination extends Model
 {

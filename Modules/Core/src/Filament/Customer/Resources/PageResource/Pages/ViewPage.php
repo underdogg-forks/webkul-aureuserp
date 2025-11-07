@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Website\Filament\Customer\Resources\PageResource\Pages;
+namespace Modules\Core\Filament\Customer\Resources\PageResource\Pages;
 
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Contracts\Support\Htmlable;
-use Webkul\Website\Filament\Customer\Resources\PageResource;
+use Modules\Core\Filament\Customer\Resources\PageResource;
 
 class ViewPage extends ViewRecord
 {

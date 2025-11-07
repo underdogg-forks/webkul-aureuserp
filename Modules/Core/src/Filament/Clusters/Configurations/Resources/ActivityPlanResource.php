@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Configurations\Resources;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
@@ -24,12 +24,12 @@ use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Employee\Filament\Clusters\Configurations\Resources\ActivityPlanResource as BaseActivityPlanResource;
-use Webkul\Recruitment\Filament\Clusters\Configurations;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\ActivityPlanResource\Pages\EditActivityPlan;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\ActivityPlanResource\Pages\ListActivityPlans;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\ActivityPlanResource\Pages\ViewActivityPlan;
-use Webkul\Recruitment\Models\ActivityPlan;
+use Modules\Core\Filament\Clusters\Configurations\Resources\ActivityPlanResource as BaseActivityPlanResource;
+use Modules\Core\Filament\Clusters\Configurations;
+use Modules\Core\Filament\Clusters\Configurations\Resources\ActivityPlanResource\Pages\EditActivityPlan;
+use Modules\Core\Filament\Clusters\Configurations\Resources\ActivityPlanResource\Pages\ListActivityPlans;
+use Modules\Core\Filament\Clusters\Configurations\Resources\ActivityPlanResource\Pages\ViewActivityPlan;
+use Modules\Core\Models\ActivityPlan;
 
 class ActivityPlanResource extends BaseActivityPlanResource
 {

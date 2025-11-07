@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\FiscalPositionResource\Pages;
+namespace Modules\Core\Filament\Resources\FiscalPositionResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
@@ -8,7 +8,7 @@ use Filament\Notifications\Notification;
 use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Account\Filament\Resources\FiscalPositionResource;
+use Modules\Core\Filament\Resources\FiscalPositionResource;
 
 class EditFiscalPosition extends EditRecord
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Account\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Webkul\Account\Enums\AccountType;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Currency;
+use Modules\Core\Enums\AccountType;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Currency;
 
 class Account extends Model
 {

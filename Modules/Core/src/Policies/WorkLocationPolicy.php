@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Employee\Policies;
+namespace Modules\Core\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Webkul\Employee\Models\WorkLocation;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\WorkLocation;
+use Modules\Core\Models\User;
 
 class WorkLocationPolicy
 {

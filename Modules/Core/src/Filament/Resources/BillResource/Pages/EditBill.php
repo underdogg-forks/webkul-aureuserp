@@ -1,18 +1,18 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\BillResource\Pages;
+namespace Modules\Core\Filament\Resources\BillResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Account\Facades\Account;
-use Webkul\Account\Filament\Resources\BillResource;
-use Webkul\Account\Filament\Resources\BillResource\Actions\CreditNoteAction;
-use Webkul\Account\Filament\Resources\InvoiceResource\Actions as BaseActions;
-use Webkul\Chatter\Filament\Actions as ChatterActions;
-use Webkul\Support\Concerns\HasRepeaterColumnManager;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Facades\Account;
+use Modules\Core\Filament\Resources\BillResource;
+use Modules\Core\Filament\Resources\BillResource\Actions\CreditNoteAction;
+use Modules\Core\Filament\Resources\InvoiceResource\Actions as BaseActions;
+use Modules\Core\Filament\Actions as ChatterActions;
+use Modules\Core\Concerns\HasRepeaterColumnManager;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class EditBill extends EditRecord
 {

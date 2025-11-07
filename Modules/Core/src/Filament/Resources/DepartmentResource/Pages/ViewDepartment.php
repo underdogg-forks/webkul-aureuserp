@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Employee\Filament\Resources\DepartmentResource\Pages;
+namespace Modules\Core\Filament\Resources\DepartmentResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Chatter\Filament\Actions as ChatterActions;
-use Webkul\Employee\Filament\Resources\DepartmentResource;
+use Modules\Core\Filament\Actions as ChatterActions;
+use Modules\Core\Filament\Resources\DepartmentResource;
 
 class ViewDepartment extends ViewRecord
 {

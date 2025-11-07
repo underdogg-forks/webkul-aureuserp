@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Project\Filament\Clusters\Configurations\Resources\TaskStageResource\Pages;
+namespace Modules\Projects\Filament\Clusters\Configurations\Resources\TaskStageResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ManageRecords;
 use Filament\Schemas\Components\Tabs\Tab;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Project\Filament\Clusters\Configurations\Resources\TaskStageResource;
-use Webkul\Project\Models\TaskStage;
+use Modules\Projects\Filament\Clusters\Configurations\Resources\TaskStageResource;
+use Modules\Projects\Models\TaskStage;
 
 class ManageTaskStages extends ManageRecords
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Project\Filament\Clusters\Configurations\Resources;
+namespace Modules\Projects\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -20,12 +20,12 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
-use Webkul\Project\Filament\Clusters\Configurations;
-use Webkul\Project\Filament\Clusters\Configurations\Resources\MilestoneResource\Pages;
-use Webkul\Project\Filament\Resources\ProjectResource\Pages\ManageMilestones;
-use Webkul\Project\Filament\Resources\ProjectResource\RelationManagers\MilestonesRelationManager;
-use Webkul\Project\Models\Milestone;
-use Webkul\Project\Settings\TaskSettings;
+use Modules\Projects\Filament\Clusters\Configurations;
+use Modules\Projects\Filament\Clusters\Configurations\Resources\MilestoneResource\Pages;
+use Modules\Projects\Filament\Resources\ProjectResource\Pages\ManageMilestones;
+use Modules\Projects\Filament\Resources\ProjectResource\RelationManagers\MilestonesRelationManager;
+use Modules\Projects\Models\Milestone;
+use Modules\Projects\Settings\TaskSettings;
 
 class MilestoneResource extends Resource
 {

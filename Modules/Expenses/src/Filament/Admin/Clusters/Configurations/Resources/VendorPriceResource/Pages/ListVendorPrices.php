@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\VendorPriceResource\Pages;
+namespace Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\VendorPriceResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\VendorPriceResource;
+use Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\VendorPriceResource;
 
 class ListVendorPrices extends ListRecords
 {

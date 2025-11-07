@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\TableViews\Filament\Actions;
+namespace Modules\Core\Filament\Actions;
 
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\CanCustomizeProcess;
@@ -8,8 +8,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Support\Enums\Width;
 use Guava\IconPicker\Forms\Components\IconPicker;
-use Webkul\TableViews\Models\TableView;
-use Webkul\TableViews\Models\TableViewFavorite;
+use Modules\Core\Models\TableView;
+use Modules\Core\Models\TableViewFavorite;
 
 class EditViewAction extends Action
 {

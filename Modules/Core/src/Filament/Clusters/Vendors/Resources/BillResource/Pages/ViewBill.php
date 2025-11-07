@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Vendors\Resources\BillResource\Pages;
+namespace Modules\Core\Filament\Clusters\Vendors\Resources\BillResource\Pages;
 
-use Webkul\Account\Filament\Resources\BillResource\Pages\ViewBill as BaseViewBill;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\BillResource;
+use Modules\Core\Filament\Resources\BillResource\Pages\ViewBill as BaseViewBill;
+use Modules\Core\Filament\Clusters\Vendors\Resources\BillResource;
 
 class ViewBill extends BaseViewBill
 {

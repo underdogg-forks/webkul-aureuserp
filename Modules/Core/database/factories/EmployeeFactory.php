@@ -1,17 +1,17 @@
 <?php
 
-namespace Webkul\Employee\Database\Factories;
+namespace Modules\Core\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Webkul\Employee\Models\Department;
-use Webkul\Employee\Models\DepartureReason;
-use Webkul\Employee\Models\Employee;
-use Webkul\Employee\Models\EmployeeJobPosition;
-use Webkul\Employee\Models\WorkLocation;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
-use Webkul\Support\Models\Country;
-use Webkul\Support\Models\State;
+use Modules\Core\Models\Department;
+use Modules\Core\Models\DepartureReason;
+use Modules\Core\Models\Employee;
+use Modules\Core\Models\EmployeeJobPosition;
+use Modules\Core\Models\WorkLocation;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
+use Modules\Core\Models\Country;
+use Modules\Core\Models\State;
 
 class EmployeeFactory extends Factory
 {

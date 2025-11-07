@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Resources\ReplenishmentResource\Pages;
+namespace Modules\Products\Filament\Clusters\Operations\Resources\ReplenishmentResource\Pages;
 
 use Filament\Resources\Pages\ManageRecords;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
-use Webkul\Inventory\Enums\OrderPointTrigger;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\ReplenishmentResource;
-use Webkul\TableViews\Filament\Components\PresetView;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Products\Enums\OrderPointTrigger;
+use Modules\Products\Filament\Clusters\Operations\Resources\ReplenishmentResource;
+use Modules\Core\Filament\Components\PresetView;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ManageReplenishment extends ManageRecords
 {

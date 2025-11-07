@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Security\Mail;
+namespace Modules\Core\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\URL;
-use Webkul\Security\Models\Invitation;
+use Modules\Core\Models\Invitation;
 
 class UserInvitationMail extends Mailable
 {

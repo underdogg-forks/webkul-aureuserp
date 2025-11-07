@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\BillResource\Pages;
+namespace Modules\Core\Filament\Resources\BillResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
-use Webkul\Account\Enums\MoveType;
-use Webkul\Account\Filament\Resources\BillResource;
-use Webkul\Account\Filament\Resources\InvoiceResource\Pages\ListInvoices as BaseListBills;
-use Webkul\TableViews\Filament\Components\PresetView;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Core\Enums\MoveType;
+use Modules\Core\Filament\Resources\BillResource;
+use Modules\Core\Filament\Resources\InvoiceResource\Pages\ListInvoices as BaseListBills;
+use Modules\Core\Filament\Components\PresetView;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ListBills extends BaseListBills
 {

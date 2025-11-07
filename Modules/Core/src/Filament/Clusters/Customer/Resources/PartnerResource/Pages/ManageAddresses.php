@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Customer\Resources\PartnerResource\Pages;
+namespace Modules\Core\Filament\Clusters\Customer\Resources\PartnerResource\Pages;
 
-use Webkul\Invoice\Filament\Clusters\Customer\Resources\PartnerResource;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\VendorResource\Pages\ManageAddresses as BaseManageAddresses;
+use Modules\Core\Filament\Clusters\Customer\Resources\PartnerResource;
+use Modules\Core\Filament\Clusters\Vendors\Resources\VendorResource\Pages\ManageAddresses as BaseManageAddresses;
 
 class ManageAddresses extends BaseManageAddresses
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Orders\Resources;
+namespace Modules\Invoices\Filament\Clusters\Orders\Resources;
 
 use BackedEnum;
 use Filament\Resources\Pages\Page;
@@ -8,15 +8,15 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Webkul\Sale\Enums\OrderState;
-use Webkul\Sale\Filament\Clusters\Orders;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\OrderResource\Pages\CreateOrder;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\OrderResource\Pages\EditOrder;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\OrderResource\Pages\ListOrders;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\OrderResource\Pages\ManageDeliveries;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\OrderResource\Pages\ManageInvoices;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\OrderResource\Pages\ViewOrder;
-use Webkul\Sale\Models\Order;
+use Modules\Invoices\Enums\OrderState;
+use Modules\Invoices\Filament\Clusters\Orders;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\OrderResource\Pages\CreateOrder;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\OrderResource\Pages\EditOrder;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\OrderResource\Pages\ListOrders;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\OrderResource\Pages\ManageDeliveries;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\OrderResource\Pages\ManageInvoices;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\OrderResource\Pages\ViewOrder;
+use Modules\Invoices\Models\Order;
 
 class OrderResource extends Resource
 {

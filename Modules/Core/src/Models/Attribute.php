@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Product\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Product\Database\Factories\AttributeFactory;
-use Webkul\Product\Enums\AttributeType;
-use Webkul\Security\Models\User;
+use Modules\Core\Database\Factories\AttributeFactory;
+use Modules\Core\Enums\AttributeType;
+use Modules\Core\Models\User;
 
 class Attribute extends Model implements Sortable
 {

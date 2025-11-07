@@ -1,19 +1,19 @@
 <?php
 
-namespace Webkul\TimeOff\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Webkul\Chatter\Traits\HasChatter;
-use Webkul\Chatter\Traits\HasLogActivity;
-use Webkul\Employee\Models\Calendar;
-use Webkul\Employee\Models\Department;
-use Webkul\Employee\Models\Employee;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
-use Webkul\TimeOff\Enums\RequestDateFromPeriod;
-use Webkul\TimeOff\Enums\State;
+use Modules\Core\Traits\HasChatter;
+use Modules\Core\Traits\HasLogActivity;
+use Modules\Core\Models\Calendar;
+use Modules\Core\Models\Department;
+use Modules\Core\Models\Employee;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
+use Modules\Core\Enums\RequestDateFromPeriod;
+use Modules\Core\Enums\State;
 
 class Leave extends Model
 {

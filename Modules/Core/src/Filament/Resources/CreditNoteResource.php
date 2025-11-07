@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use BackedEnum;
 use Illuminate\Database\Eloquent\Model;
-use Webkul\Account\Filament\Resources\CreditNoteResource\Pages\CreateCreditNote;
-use Webkul\Account\Filament\Resources\CreditNoteResource\Pages\EditCreditNote;
-use Webkul\Account\Filament\Resources\CreditNoteResource\Pages\ListCreditNotes;
-use Webkul\Account\Filament\Resources\CreditNoteResource\Pages\ViewCreditNote;
-use Webkul\Account\Models\Move as AccountMove;
+use Modules\Core\Filament\Resources\CreditNoteResource\Pages\CreateCreditNote;
+use Modules\Core\Filament\Resources\CreditNoteResource\Pages\EditCreditNote;
+use Modules\Core\Filament\Resources\CreditNoteResource\Pages\ListCreditNotes;
+use Modules\Core\Filament\Resources\CreditNoteResource\Pages\ViewCreditNote;
+use Modules\Core\Models\Move as AccountMove;
 
 class CreditNoteResource extends InvoiceResource
 {

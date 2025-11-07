@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Configuration\Resources;
+namespace Modules\Invoices\Filament\Clusters\Configuration\Resources;
 
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\ProductAttributeResource as BaseProductAttributeResource;
-use Webkul\Sale\Filament\Clusters\Configuration;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\ProductAttributeResource\Pages\CreateProductAttribute;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\ProductAttributeResource\Pages\EditProductAttribute;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\ProductAttributeResource\Pages\ListProductAttributes;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\ProductAttributeResource\Pages\ViewProductAttribute;
-use Webkul\Sale\Models\Attribute;
+use Modules\Core\Filament\Clusters\Configuration\Resources\ProductAttributeResource as BaseProductAttributeResource;
+use Modules\Invoices\Filament\Clusters\Configuration;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ProductAttributeResource\Pages\CreateProductAttribute;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ProductAttributeResource\Pages\EditProductAttribute;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ProductAttributeResource\Pages\ListProductAttributes;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ProductAttributeResource\Pages\ViewProductAttribute;
+use Modules\Invoices\Models\Attribute;
 
 class ProductAttributeResource extends BaseProductAttributeResource
 {

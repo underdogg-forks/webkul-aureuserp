@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Actions;
+namespace Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource\Actions;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use Filament\Actions\Action;
@@ -12,10 +12,10 @@ use Filament\Notifications\Notification;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
-use Webkul\Partner\Models\Partner;
-use Webkul\Sale\Enums\OrderState;
-use Webkul\Sale\Facades\SaleOrder;
-use Webkul\Sale\Models\Order;
+use Modules\Crm\Models\Partner;
+use Modules\Invoices\Enums\OrderState;
+use Modules\Invoices\Facades\SaleOrder;
+use Modules\Invoices\Models\Order;
 
 class SendByEmailAction extends Action
 {

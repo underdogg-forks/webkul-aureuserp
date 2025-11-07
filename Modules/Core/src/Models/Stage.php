@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Recruitment\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Employee\Models\EmployeeJobPosition;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\EmployeeJobPosition;
+use Modules\Core\Models\User;
 
 class Stage extends Model implements Sortable
 {

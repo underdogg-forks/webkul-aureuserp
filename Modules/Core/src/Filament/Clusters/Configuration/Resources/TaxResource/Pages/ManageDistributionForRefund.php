@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Configuration\Resources\TaxResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configuration\Resources\TaxResource\Pages;
 
-use Webkul\Account\Filament\Resources\TaxResource\Pages\ManageDistributionForRefund as BaseManageDistributionForRefund;
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\TaxResource;
+use Modules\Core\Filament\Resources\TaxResource\Pages\ManageDistributionForRefund as BaseManageDistributionForRefund;
+use Modules\Core\Filament\Clusters\Configuration\Resources\TaxResource;
 
 class ManageDistributionForRefund extends BaseManageDistributionForRefund
 {

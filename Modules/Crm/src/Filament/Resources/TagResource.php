@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Partner\Filament\Resources;
+namespace Modules\Crm\Filament\Resources;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
@@ -18,7 +18,7 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Columns\ColorColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Webkul\Partner\Models\Tag;
+use Modules\Crm\Models\Tag;
 
 class TagResource extends Resource
 {

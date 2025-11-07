@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Employee\Database\Factories;
+namespace Modules\Core\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Webkul\Employee\Models\DepartureReason;
+use Modules\Core\Models\DepartureReason;
 
 class DepartureReasonFactory extends Factory
 {

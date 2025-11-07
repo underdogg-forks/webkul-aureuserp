@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Configuration\Resources\ProductCategoryResource\Pages;
+namespace Modules\Invoices\Filament\Clusters\Configuration\Resources\ProductCategoryResource\Pages;
 
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\ProductCategoryResource\Pages\ListProductCategories as BaseListProductCategories;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\ProductCategoryResource;
+use Modules\Core\Filament\Clusters\Configuration\Resources\ProductCategoryResource\Pages\ListProductCategories as BaseListProductCategories;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ProductCategoryResource;
 
 class ListProductCategories extends BaseListProductCategories
 {

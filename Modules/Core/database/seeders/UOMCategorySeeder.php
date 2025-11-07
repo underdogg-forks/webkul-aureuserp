@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Support\Database\Seeders;
+namespace Modules\Core\Database\Seeders;
 
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Throwable;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\User;
 
 class UOMCategorySeeder extends Seeder
 {

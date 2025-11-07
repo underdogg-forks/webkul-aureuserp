@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Configurations\Resources\UTMMediumResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\UTMMediumResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\UTMMediumResource;
+use Modules\Core\Filament\Clusters\Configurations\Resources\UTMMediumResource;
 
 class ListUTMMedia extends ListRecords
 {

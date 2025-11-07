@@ -1,16 +1,16 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Applications\Resources\CandidateResource\Pages;
+namespace Modules\Core\Filament\Clusters\Applications\Resources\CandidateResource\Pages;
 
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
-use Webkul\Chatter\Filament\Actions as ChatterActions;
-use Webkul\Employee\Filament\Resources\EmployeeResource;
-use Webkul\Recruitment\Filament\Clusters\Applications\Resources\CandidateResource;
-use Webkul\Recruitment\Models\Candidate;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Actions as ChatterActions;
+use Modules\Core\Filament\Resources\EmployeeResource;
+use Modules\Core\Filament\Clusters\Applications\Resources\CandidateResource;
+use Modules\Core\Models\Candidate;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class EditCandidate extends EditRecord
 {

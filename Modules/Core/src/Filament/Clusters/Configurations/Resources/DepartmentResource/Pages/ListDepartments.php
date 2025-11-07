@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Configurations\Resources\DepartmentResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\DepartmentResource\Pages;
 
-use Webkul\Employee\Filament\Resources\DepartmentResource\Pages\ListDepartments as BaseListDepartments;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\DepartmentResource;
+use Modules\Core\Filament\Resources\DepartmentResource\Pages\ListDepartments as BaseListDepartments;
+use Modules\Core\Filament\Clusters\Configurations\Resources\DepartmentResource;
 
 class ListDepartments extends BaseListDepartments
 {

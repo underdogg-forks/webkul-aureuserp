@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Product\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\User;
 
 class ProductAttributeValue extends Model
 {

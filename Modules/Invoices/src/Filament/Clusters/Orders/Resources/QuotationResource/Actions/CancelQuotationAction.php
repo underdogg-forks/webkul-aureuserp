@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Actions;
+namespace Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource\Actions;
 
 use Filament\Actions\Action;
 use Filament\Forms\Components\RichEditor;
@@ -9,10 +9,10 @@ use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Schema;
 use Livewire\Component;
-use Webkul\Partner\Models\Partner;
-use Webkul\Sale\Enums\OrderState;
-use Webkul\Sale\Facades\SaleOrder;
-use Webkul\Sale\Models\Order;
+use Modules\Crm\Models\Partner;
+use Modules\Invoices\Enums\OrderState;
+use Modules\Invoices\Facades\SaleOrder;
+use Modules\Invoices\Models\Order;
 
 class CancelQuotationAction extends Action
 {

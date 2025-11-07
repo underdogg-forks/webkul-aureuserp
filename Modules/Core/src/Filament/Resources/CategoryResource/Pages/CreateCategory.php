@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Product\Filament\Resources\CategoryResource\Pages;
+namespace Modules\Core\Filament\Resources\CategoryResource\Pages;
 
 use Exception;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Product\Filament\Resources\CategoryResource;
+use Modules\Core\Filament\Resources\CategoryResource;
 
 class CreateCategory extends CreateRecord
 {

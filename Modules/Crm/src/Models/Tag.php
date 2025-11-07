@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Partner\Models;
+namespace Modules\Crm\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Webkul\Partner\Database\Factories\TagFactory;
-use Webkul\Security\Models\User;
+use Modules\Crm\Database\Factories\TagFactory;
+use Modules\Core\Models\User;
 
 class Tag extends Model
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Support\Filament\Widgets;
+namespace Modules\Core\Filament\Widgets;
 
 use Filament\Widgets\Widget;
 

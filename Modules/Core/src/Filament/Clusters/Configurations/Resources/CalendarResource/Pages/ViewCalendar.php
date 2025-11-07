@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Employee\Filament\Clusters\Configurations\Resources\CalendarResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\CalendarResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Employee\Filament\Clusters\Configurations\Resources\CalendarResource;
+use Modules\Core\Filament\Clusters\Configurations\Resources\CalendarResource;
 
 class ViewCalendar extends ViewRecord
 {

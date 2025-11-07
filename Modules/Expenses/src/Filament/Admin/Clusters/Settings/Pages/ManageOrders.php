@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Settings\Pages;
+namespace Modules\Expenses\Filament\Admin\Clusters\Settings\Pages;
 
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
@@ -11,8 +11,8 @@ use Filament\Schemas\Components\Group;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
 use UnitEnum;
-use Webkul\Purchase\Settings\OrderSettings;
-use Webkul\Support\Filament\Clusters\Settings;
+use Modules\Expenses\Settings\OrderSettings;
+use Modules\Core\Filament\Clusters\Settings;
 
 class ManageOrders extends SettingsPage
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Blog\Filament\Customer\Resources\PostResource\Pages;
+namespace Modules\Core\Filament\Customer\Resources\PostResource\Pages;
 
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Contracts\Support\Htmlable;
-use Webkul\Blog\Filament\Customer\Resources\PostResource;
+use Modules\Core\Filament\Customer\Resources\PostResource;
 
 class ViewPost extends ViewRecord
 {

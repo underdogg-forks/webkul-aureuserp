@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\TimeOff\Traits;
+namespace Modules\Core\Traits;
 
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
@@ -30,14 +30,14 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Support\Enums\Week;
-use Webkul\TimeOff\Enums\AccrualValidityType;
-use Webkul\TimeOff\Enums\AddedValueType;
-use Webkul\TimeOff\Enums\CarryoverDay;
-use Webkul\TimeOff\Enums\CarryoverMonth;
-use Webkul\TimeOff\Enums\CarryOverUnusedAccruals;
-use Webkul\TimeOff\Enums\Frequency;
-use Webkul\TimeOff\Enums\StartType;
+use Modules\Core\Enums\Week;
+use Modules\Core\Enums\AccrualValidityType;
+use Modules\Core\Enums\AddedValueType;
+use Modules\Core\Enums\CarryoverDay;
+use Modules\Core\Enums\CarryoverMonth;
+use Modules\Core\Enums\CarryOverUnusedAccruals;
+use Modules\Core\Enums\Frequency;
+use Modules\Core\Enums\StartType;
 
 trait LeaveAccrualPlan
 {

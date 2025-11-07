@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\TimeOff\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
-use Webkul\TimeOff\Enums\LeaveValidationType;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
+use Modules\Core\Enums\LeaveValidationType;
 
 class LeaveType extends Model implements Sortable
 {

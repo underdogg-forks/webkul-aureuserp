@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Employee\Filament\Clusters\Configurations\Resources\SkillTypeResource\RelationManagers;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\SkillTypeResource\RelationManagers;
 
 use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkActionGroup;
@@ -26,8 +26,8 @@ use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Support\Filament\Tables as CustomTables;
-use Webkul\Support\Filament\Tables\Infolists\ProgressBarEntry;
+use Modules\Core\Filament\Tables as CustomTables;
+use Modules\Core\Filament\Tables\Infolists\ProgressBarEntry;
 
 class SkillLevelRelationManager extends RelationManager
 {

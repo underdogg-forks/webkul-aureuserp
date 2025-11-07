@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Inventory;
+namespace Modules\Products;
 
 use Filament\Contracts\Plugin;
 use Filament\Navigation\NavigationItem;
 use Filament\Panel;
 use ReflectionClass;
-use Webkul\Inventory\Filament\Clusters\Settings\Pages\ManageOperations;
-use Webkul\Support\Package;
+use Modules\Products\Filament\Clusters\Settings\Pages\ManageOperations;
+use Modules\Core\Package;
 
 class InventoryPlugin implements Plugin
 {
@@ -30,10 +30,10 @@ class InventoryPlugin implements Plugin
         $panel
             ->when($panel->getId() == 'admin', function (Panel $panel) {
                 $panel
-                    ->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Webkul\\Inventory\\Filament\\Resources')
-                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Pages'), for: 'Webkul\\Inventory\\Filament\\Pages')
-                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Clusters'), for: 'Webkul\\Inventory\\Filament\\Clusters')
-                    ->discoverWidgets(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Webkul\\Inventory\\Filament\\Widgets')
+                    ->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Modules\\Products\\Filament\\Resources')
+                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Pages'), for: 'Modules\\Products\\Filament\\Pages')
+                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Clusters'), for: 'Modules\\Products\\Filament\\Clusters')
+                    ->discoverWidgets(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Modules\\Products\\Filament\\Widgets')
                     ->navigationItems([
                         NavigationItem::make('settings')
                             ->label(fn () => __('inventories::app.navigation.settings.label'))

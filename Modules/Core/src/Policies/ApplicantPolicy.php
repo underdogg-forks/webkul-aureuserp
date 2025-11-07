@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Recruitment\Policies;
+namespace Modules\Core\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Webkul\Recruitment\Models\Applicant;
-use Webkul\Security\Models\User;
-use Webkul\Security\Traits\HasScopedPermissions;
+use Modules\Core\Models\Applicant;
+use Modules\Core\Models\User;
+use Modules\Core\Traits\HasScopedPermissions;
 
 class ApplicantPolicy
 {

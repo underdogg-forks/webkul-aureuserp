@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Resources\QuantityResource\Pages;
+namespace Modules\Products\Filament\Clusters\Operations\Resources\QuantityResource\Pages;
 
 use Filament\Resources\Pages\ManageRecords;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
-use Webkul\Inventory\Enums\LocationType;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\QuantityResource;
-use Webkul\TableViews\Filament\Components\PresetView;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Products\Enums\LocationType;
+use Modules\Products\Filament\Clusters\Operations\Resources\QuantityResource;
+use Modules\Core\Filament\Components\PresetView;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ManageQuantities extends ManageRecords
 {

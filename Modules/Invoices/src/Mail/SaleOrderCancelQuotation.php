@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Sale\Mail;
+namespace Modules\Invoices\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;

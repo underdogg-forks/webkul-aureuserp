@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Sale\Database\Factories;
+namespace Modules\Invoices\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<\Webkul\Sale\Models\Order>
+ * @extends Factory<\Modules\Invoices\Models\Order>
  */
 class OrderFactory extends Factory
 {

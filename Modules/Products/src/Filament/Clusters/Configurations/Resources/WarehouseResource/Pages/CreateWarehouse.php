@@ -1,28 +1,28 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\WarehouseResource\Pages;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\WarehouseResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Enums;
-use Webkul\Inventory\Enums\CreateBackorder;
-use Webkul\Inventory\Enums\DeliveryStep;
-use Webkul\Inventory\Enums\GroupPropagation;
-use Webkul\Inventory\Enums\LocationType;
-use Webkul\Inventory\Enums\MoveType;
-use Webkul\Inventory\Enums\ProcureMethod;
-use Webkul\Inventory\Enums\ReceptionStep;
-use Webkul\Inventory\Enums\ReservationMethod;
-use Webkul\Inventory\Enums\RuleAction;
-use Webkul\Inventory\Enums\RuleAuto;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\WarehouseResource;
-use Webkul\Inventory\Models\Location;
-use Webkul\Inventory\Models\OperationType;
-use Webkul\Inventory\Models\Route;
-use Webkul\Inventory\Models\Rule;
-use Webkul\Inventory\Settings\WarehouseSettings;
+use Modules\Products\Enums;
+use Modules\Products\Enums\CreateBackorder;
+use Modules\Products\Enums\DeliveryStep;
+use Modules\Products\Enums\GroupPropagation;
+use Modules\Products\Enums\LocationType;
+use Modules\Products\Enums\MoveType;
+use Modules\Products\Enums\ProcureMethod;
+use Modules\Products\Enums\ReceptionStep;
+use Modules\Products\Enums\ReservationMethod;
+use Modules\Products\Enums\RuleAction;
+use Modules\Products\Enums\RuleAuto;
+use Modules\Products\Filament\Clusters\Configurations\Resources\WarehouseResource;
+use Modules\Products\Models\Location;
+use Modules\Products\Models\OperationType;
+use Modules\Products\Models\Route;
+use Modules\Products\Models\Rule;
+use Modules\Products\Settings\WarehouseSettings;
 
 class CreateWarehouse extends CreateRecord
 {

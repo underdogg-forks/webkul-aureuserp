@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Partner\Filament\Resources\PartnerResource\Pages;
+namespace Modules\Crm\Filament\Resources\PartnerResource\Pages;
 
 use BackedEnum;
 use Filament\Actions\CreateAction;
@@ -9,8 +9,8 @@ use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Partner\Filament\Resources\PartnerResource;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Crm\Filament\Resources\PartnerResource;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ManageContacts extends ManageRelatedRecords
 {

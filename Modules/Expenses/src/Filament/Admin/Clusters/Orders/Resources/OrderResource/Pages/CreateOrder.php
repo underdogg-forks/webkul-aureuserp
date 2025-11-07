@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\OrderResource\Pages;
+namespace Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\OrderResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Purchase\Enums\OrderState;
-use Webkul\Purchase\Facades\PurchaseOrder;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\OrderResource;
-use Webkul\Support\Concerns\HasRepeaterColumnManager;
+use Modules\Expenses\Enums\OrderState;
+use Modules\Expenses\Facades\PurchaseOrder;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\OrderResource;
+use Modules\Core\Concerns\HasRepeaterColumnManager;
 
 class CreateOrder extends CreateRecord
 {

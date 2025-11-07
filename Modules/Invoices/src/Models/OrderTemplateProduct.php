@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Sale\Models;
+namespace Modules\Invoices\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
-use Webkul\Support\Models\UOM;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
+use Modules\Core\Models\UOM;
 
 class OrderTemplateProduct extends Model
 {

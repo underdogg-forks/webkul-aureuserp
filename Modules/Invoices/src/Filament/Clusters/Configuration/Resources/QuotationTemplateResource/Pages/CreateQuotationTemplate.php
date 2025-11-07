@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Configuration\Resources\QuotationTemplateResource\Pages;
+namespace Modules\Invoices\Filament\Clusters\Configuration\Resources\QuotationTemplateResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\QuotationTemplateResource;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\QuotationTemplateResource;
 
 class CreateQuotationTemplate extends CreateRecord
 {

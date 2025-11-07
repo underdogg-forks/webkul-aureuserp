@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Actions;
+namespace Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource\Actions;
 
 use Filament\Actions\Action;
 use Filament\Notifications\Notification;
-use Webkul\Sale\Enums\OrderState;
-use Webkul\Sale\Facades\SaleOrder;
+use Modules\Invoices\Enums\OrderState;
+use Modules\Invoices\Facades\SaleOrder;
 
 class BackToQuotationAction extends Action
 {

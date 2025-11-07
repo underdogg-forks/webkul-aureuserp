@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Blog\Filament\Admin\Resources;
+namespace Modules\Core\Filament\Admin\Resources;
 
 use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkActionGroup;
@@ -38,11 +38,11 @@ use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
-use Webkul\Blog\Filament\Admin\Resources\PostResource\Pages\CreatePost;
-use Webkul\Blog\Filament\Admin\Resources\PostResource\Pages\EditPost;
-use Webkul\Blog\Filament\Admin\Resources\PostResource\Pages\ListPosts;
-use Webkul\Blog\Filament\Admin\Resources\PostResource\Pages\ViewPost;
-use Webkul\Blog\Models\Post;
+use Modules\Core\Filament\Admin\Resources\PostResource\Pages\CreatePost;
+use Modules\Core\Filament\Admin\Resources\PostResource\Pages\EditPost;
+use Modules\Core\Filament\Admin\Resources\PostResource\Pages\ListPosts;
+use Modules\Core\Filament\Admin\Resources\PostResource\Pages\ViewPost;
+use Modules\Core\Models\Post;
 
 class PostResource extends Resource
 {

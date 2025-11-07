@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Support\Listeners;
+namespace Modules\Core\Listeners;
 
 use Exception;
 use GuzzleHttp\Client;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\User;
 
 class Installer
 {

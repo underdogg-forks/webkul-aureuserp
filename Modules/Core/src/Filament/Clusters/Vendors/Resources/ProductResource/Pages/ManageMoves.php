@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Vendors\Resources\ProductResource\Pages;
+namespace Modules\Core\Filament\Clusters\Vendors\Resources\ProductResource\Pages;
 
 use BackedEnum;
 use Filament\Actions\DeleteAction;
@@ -9,11 +9,11 @@ use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Webkul\Inventory\Enums\ProductTracking;
-use Webkul\Inventory\Settings\OperationSettings;
-use Webkul\Inventory\Settings\TraceabilitySettings;
-use Webkul\Inventory\Settings\WarehouseSettings;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\ProductResource;
+use Modules\Products\Enums\ProductTracking;
+use Modules\Products\Settings\OperationSettings;
+use Modules\Products\Settings\TraceabilitySettings;
+use Modules\Products\Settings\WarehouseSettings;
+use Modules\Core\Filament\Clusters\Vendors\Resources\ProductResource;
 
 class ManageMoves extends ManageRelatedRecords
 {

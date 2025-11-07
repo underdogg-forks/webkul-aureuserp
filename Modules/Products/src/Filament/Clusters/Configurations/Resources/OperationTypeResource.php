@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -41,22 +41,22 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Enums;
-use Webkul\Inventory\Enums\CreateBackorder;
-use Webkul\Inventory\Enums\LocationType;
-use Webkul\Inventory\Enums\MoveType;
-use Webkul\Inventory\Enums\ReservationMethod;
-use Webkul\Inventory\Filament\Clusters\Configurations;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\OperationTypeResource\Pages\CreateOperationType;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\OperationTypeResource\Pages\EditOperationType;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\OperationTypeResource\Pages\ListOperationTypes;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\OperationTypeResource\Pages\ViewOperationType;
-use Webkul\Inventory\Models\Location;
-use Webkul\Inventory\Models\OperationType;
-use Webkul\Inventory\Models\Warehouse;
-use Webkul\Inventory\Settings\OperationSettings;
-use Webkul\Inventory\Settings\TraceabilitySettings;
-use Webkul\Inventory\Settings\WarehouseSettings;
+use Modules\Products\Enums;
+use Modules\Products\Enums\CreateBackorder;
+use Modules\Products\Enums\LocationType;
+use Modules\Products\Enums\MoveType;
+use Modules\Products\Enums\ReservationMethod;
+use Modules\Products\Filament\Clusters\Configurations;
+use Modules\Products\Filament\Clusters\Configurations\Resources\OperationTypeResource\Pages\CreateOperationType;
+use Modules\Products\Filament\Clusters\Configurations\Resources\OperationTypeResource\Pages\EditOperationType;
+use Modules\Products\Filament\Clusters\Configurations\Resources\OperationTypeResource\Pages\ListOperationTypes;
+use Modules\Products\Filament\Clusters\Configurations\Resources\OperationTypeResource\Pages\ViewOperationType;
+use Modules\Products\Models\Location;
+use Modules\Products\Models\OperationType;
+use Modules\Products\Models\Warehouse;
+use Modules\Products\Settings\OperationSettings;
+use Modules\Products\Settings\TraceabilitySettings;
+use Modules\Products\Settings\WarehouseSettings;
 
 class OperationTypeResource extends Resource
 {

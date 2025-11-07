@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\RouteResource\Pages;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\RouteResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\RouteResource;
-use Webkul\Inventory\Models\Route;
+use Modules\Products\Filament\Clusters\Configurations\Resources\RouteResource;
+use Modules\Products\Models\Route;
 
 class ListRoutes extends ListRecords
 {

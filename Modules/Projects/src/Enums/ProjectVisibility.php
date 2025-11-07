@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Project\Enums;
+namespace Modules\Projects\Enums;
 
 enum ProjectVisibility: string
 {

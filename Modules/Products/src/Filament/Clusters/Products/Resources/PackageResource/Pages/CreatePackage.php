@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Products\Resources\PackageResource\Pages;
+namespace Modules\Products\Filament\Clusters\Products\Resources\PackageResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\PackageResource;
+use Modules\Products\Filament\Clusters\Products\Resources\PackageResource;
 
 class CreatePackage extends CreateRecord
 {

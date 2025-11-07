@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Models;
+namespace Modules\Products\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,12 +10,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Inventory\Database\Factories\WarehouseFactory;
-use Webkul\Inventory\Enums\DeliveryStep;
-use Webkul\Inventory\Enums\ReceptionStep;
-use Webkul\Partner\Models\Partner;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Products\Database\Factories\WarehouseFactory;
+use Modules\Products\Enums\DeliveryStep;
+use Modules\Products\Enums\ReceptionStep;
+use Modules\Crm\Models\Partner;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class Warehouse extends Model implements Sortable
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Widgets;
+namespace Modules\Core\Filament\Widgets;
 
 use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
 use Carbon\Carbon;
 use Filament\Widgets\ChartWidget;
 use Illuminate\Contracts\Support\Htmlable;
-use Webkul\TimeOff\Models\Leave;
+use Modules\Core\Models\Leave;
 
 class LeaveTypeWidget extends ChartWidget
 {

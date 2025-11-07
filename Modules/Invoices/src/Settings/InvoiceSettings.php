@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Sale\Settings;
+namespace Modules\Invoices\Settings;
 
 use Spatie\LaravelSettings\Settings;
-use Webkul\Invoice\Enums\InvoicePolicy;
+use Modules\Core\Enums\InvoicePolicy;
 
 class InvoiceSettings extends Settings
 {

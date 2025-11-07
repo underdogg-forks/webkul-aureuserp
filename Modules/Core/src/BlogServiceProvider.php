@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Blog;
+namespace Modules\Core;
 
 use Filament\Support\Assets\Css;
 use Filament\Support\Facades\FilamentAsset;
-use Webkul\Support\Console\Commands\InstallCommand;
-use Webkul\Support\Console\Commands\UninstallCommand;
-use Webkul\Support\Package;
-use Webkul\Support\PackageServiceProvider;
+use Modules\Core\Console\Commands\InstallCommand;
+use Modules\Core\Console\Commands\UninstallCommand;
+use Modules\Core\Package;
+use Modules\Core\PackageServiceProvider;
 
 class BlogServiceProvider extends PackageServiceProvider
 {

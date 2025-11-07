@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Recruitment\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

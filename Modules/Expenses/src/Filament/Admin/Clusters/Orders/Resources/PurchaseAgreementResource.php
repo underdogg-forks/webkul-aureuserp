@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources;
+namespace Modules\Expenses\Filament\Admin\Clusters\Orders\Resources;
 
 use BackedEnum;
 use Filament\Actions\Action;
@@ -45,24 +45,24 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Arr;
-use Webkul\Field\Filament\Forms\Components\ProgressStepper;
-use Webkul\Field\Filament\Traits\HasCustomFields;
-use Webkul\Product\Enums\ProductType;
-use Webkul\Product\Models\Product;
-use Webkul\Purchase\Enums\RequisitionState;
-use Webkul\Purchase\Enums\RequisitionType;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\PurchaseAgreementResource\Pages\CreatePurchaseAgreement;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\PurchaseAgreementResource\Pages\EditPurchaseAgreement;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\PurchaseAgreementResource\Pages\ListPurchaseAgreements;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\PurchaseAgreementResource\Pages\ViewPurchaseAgreement;
-use Webkul\Purchase\Models\Requisition;
-use Webkul\Purchase\Settings\OrderSettings;
-use Webkul\Purchase\Settings\ProductSettings;
-use Webkul\Support\Filament\Forms\Components\Repeater;
-use Webkul\Support\Filament\Forms\Components\Repeater\TableColumn;
-use Webkul\Support\Filament\Infolists\Components\RepeatableEntry;
-use Webkul\Support\Filament\Infolists\Components\Repeater\TableColumn as InfolistTableColumn;
+use Modules\Core\Filament\Forms\Components\ProgressStepper;
+use Modules\Core\Filament\Traits\HasCustomFields;
+use Modules\Core\Enums\ProductType;
+use Modules\Core\Models\Product;
+use Modules\Expenses\Enums\RequisitionState;
+use Modules\Expenses\Enums\RequisitionType;
+use Modules\Expenses\Filament\Admin\Clusters\Orders;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\PurchaseAgreementResource\Pages\CreatePurchaseAgreement;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\PurchaseAgreementResource\Pages\EditPurchaseAgreement;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\PurchaseAgreementResource\Pages\ListPurchaseAgreements;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\PurchaseAgreementResource\Pages\ViewPurchaseAgreement;
+use Modules\Expenses\Models\Requisition;
+use Modules\Expenses\Settings\OrderSettings;
+use Modules\Expenses\Settings\ProductSettings;
+use Modules\Core\Filament\Forms\Components\Repeater;
+use Modules\Core\Filament\Forms\Components\Repeater\TableColumn;
+use Modules\Core\Filament\Infolists\Components\RepeatableEntry;
+use Modules\Core\Filament\Infolists\Components\Repeater\TableColumn as InfolistTableColumn;
 
 class PurchaseAgreementResource extends Resource
 {

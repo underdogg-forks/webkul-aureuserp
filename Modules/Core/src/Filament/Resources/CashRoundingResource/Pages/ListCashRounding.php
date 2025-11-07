@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\CashRoundingResource\Pages;
+namespace Modules\Core\Filament\Resources\CashRoundingResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Webkul\Account\Filament\Resources\CashRoundingResource;
+use Modules\Core\Filament\Resources\CashRoundingResource;
 
 class ListCashRounding extends ListRecords
 {

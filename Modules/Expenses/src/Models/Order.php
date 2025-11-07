@@ -1,29 +1,29 @@
 <?php
 
-namespace Webkul\Purchase\Models;
+namespace Modules\Expenses\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Webkul\Account\Models\FiscalPosition;
-use Webkul\Account\Models\Incoterm;
-use Webkul\Account\Models\Partner;
-use Webkul\Account\Models\PaymentTerm;
-use Webkul\Chatter\Models\Message;
-use Webkul\Chatter\Traits\HasChatter;
-use Webkul\Chatter\Traits\HasLogActivity;
-use Webkul\Field\Traits\HasCustomFields;
-use Webkul\Inventory\Models\Operation;
-use Webkul\Inventory\Models\OperationType;
-use Webkul\Purchase\Database\Factories\OrderFactory;
-use Webkul\Purchase\Enums\OrderInvoiceStatus;
-use Webkul\Purchase\Enums\OrderReceiptStatus;
-use Webkul\Purchase\Enums\OrderState;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
-use Webkul\Support\Models\Currency;
+use Modules\Core\Models\FiscalPosition;
+use Modules\Core\Models\Incoterm;
+use Modules\Core\Models\Partner;
+use Modules\Core\Models\PaymentTerm;
+use Modules\Core\Models\Message;
+use Modules\Core\Traits\HasChatter;
+use Modules\Core\Traits\HasLogActivity;
+use Modules\Core\Traits\HasCustomFields;
+use Modules\Products\Models\Operation;
+use Modules\Products\Models\OperationType;
+use Modules\Expenses\Database\Factories\OrderFactory;
+use Modules\Expenses\Enums\OrderInvoiceStatus;
+use Modules\Expenses\Enums\OrderReceiptStatus;
+use Modules\Expenses\Enums\OrderState;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
+use Modules\Core\Models\Currency;
 
 class Order extends Model
 {

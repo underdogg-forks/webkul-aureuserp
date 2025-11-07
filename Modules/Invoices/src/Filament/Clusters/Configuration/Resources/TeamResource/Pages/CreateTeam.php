@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Configuration\Resources\TeamResource\Pages;
+namespace Modules\Invoices\Filament\Clusters\Configuration\Resources\TeamResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\TeamResource;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\TeamResource;
 
 class CreateTeam extends CreateRecord
 {

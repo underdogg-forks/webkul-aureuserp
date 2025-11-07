@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Settings\Pages;
+namespace Modules\Products\Filament\Clusters\Settings\Pages;
 
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
@@ -12,11 +12,11 @@ use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\HtmlString;
 use UnitEnum;
-use Webkul\Inventory\Enums\ProductTracking;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\LotResource;
-use Webkul\Inventory\Models\Product;
-use Webkul\Inventory\Settings\TraceabilitySettings;
-use Webkul\Support\Filament\Clusters\Settings;
+use Modules\Products\Enums\ProductTracking;
+use Modules\Products\Filament\Clusters\Products\Resources\LotResource;
+use Modules\Products\Models\Product;
+use Modules\Products\Settings\TraceabilitySettings;
+use Modules\Core\Filament\Clusters\Settings;
 
 class ManageTraceability extends SettingsPage
 {

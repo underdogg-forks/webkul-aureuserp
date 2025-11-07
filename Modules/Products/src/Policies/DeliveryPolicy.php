@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Inventory\Policies;
+namespace Modules\Products\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Webkul\Inventory\Models\Delivery;
-use Webkul\Security\Models\User;
-use Webkul\Security\Traits\HasScopedPermissions;
+use Modules\Products\Models\Delivery;
+use Modules\Core\Models\User;
+use Modules\Core\Traits\HasScopedPermissions;
 
 class DeliveryPolicy
 {

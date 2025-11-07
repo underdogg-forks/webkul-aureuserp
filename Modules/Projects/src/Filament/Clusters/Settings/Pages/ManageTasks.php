@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Project\Filament\Clusters\Settings\Pages;
+namespace Modules\Projects\Filament\Clusters\Settings\Pages;
 
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
@@ -9,9 +9,9 @@ use Filament\Pages\SettingsPage;
 use Filament\Schemas\Schema;
 use Illuminate\Support\HtmlString;
 use UnitEnum;
-use Webkul\Project\Filament\Clusters\Configurations\Resources\TaskStageResource;
-use Webkul\Project\Settings\TaskSettings;
-use Webkul\Support\Filament\Clusters\Settings;
+use Modules\Projects\Filament\Clusters\Configurations\Resources\TaskStageResource;
+use Modules\Projects\Settings\TaskSettings;
+use Modules\Core\Filament\Clusters\Settings;
 
 class ManageTasks extends SettingsPage
 {

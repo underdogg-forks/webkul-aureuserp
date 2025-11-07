@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Support\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,11 +10,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Chatter\Traits\HasChatter;
-use Webkul\Field\Traits\HasCustomFields;
-use Webkul\Partner\Models\Partner;
-use Webkul\Security\Models\User;
-use Webkul\Support\Database\Factories\CompanyFactory;
+use Modules\Core\Traits\HasChatter;
+use Modules\Core\Traits\HasCustomFields;
+use Modules\Crm\Models\Partner;
+use Modules\Core\Models\User;
+use Modules\Core\Database\Factories\CompanyFactory;
 
 class Company extends Model implements Sortable
 {

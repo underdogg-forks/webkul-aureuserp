@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Field;
+namespace Modules\Core;
 
 use Filament\Support\Assets\Css;
 use Filament\Support\Facades\FilamentAsset;
 use Illuminate\Support\Facades\Gate;
-use Webkul\Field\Models\Field;
-use Webkul\Field\Policies\FieldPolicy;
-use Webkul\Support\Package;
-use Webkul\Support\PackageServiceProvider;
+use Modules\Core\Models\Field;
+use Modules\Core\Policies\FieldPolicy;
+use Modules\Core\Package;
+use Modules\Core\PackageServiceProvider;
 
 class FieldServiceProvider extends PackageServiceProvider
 {

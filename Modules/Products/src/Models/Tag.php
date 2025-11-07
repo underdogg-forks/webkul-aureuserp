@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Models;
+namespace Modules\Products\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Inventory\Database\Factories\TagFactory;
-use Webkul\Security\Models\User;
+use Modules\Products\Database\Factories\TagFactory;
+use Modules\Core\Models\User;
 
 class Tag extends Model implements Sortable
 {

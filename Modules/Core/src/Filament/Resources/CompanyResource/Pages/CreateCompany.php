@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Security\Filament\Resources\CompanyResource\Pages;
+namespace Modules\Core\Filament\Resources\CompanyResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Security\Filament\Resources\CompanyResource;
+use Modules\Core\Filament\Resources\CompanyResource;
 
 class CreateCompany extends CreateRecord
 {

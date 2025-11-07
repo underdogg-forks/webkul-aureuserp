@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Configuration\Resources\ProductCategoryResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configuration\Resources\ProductCategoryResource\Pages;
 
-use Webkul\Chatter\Filament\Actions as ChatterActions;
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\ProductCategoryResource;
-use Webkul\Product\Filament\Resources\CategoryResource\Pages\ViewCategory;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Actions as ChatterActions;
+use Modules\Core\Filament\Clusters\Configuration\Resources\ProductCategoryResource;
+use Modules\Core\Filament\Resources\CategoryResource\Pages\ViewCategory;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ViewProductCategory extends ViewCategory
 {

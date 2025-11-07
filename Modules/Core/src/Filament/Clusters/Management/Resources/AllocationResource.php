@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Management\Resources;
+namespace Modules\Core\Filament\Clusters\Management\Resources;
 
 use BackedEnum;
 use Filament\Actions\Action;
@@ -26,15 +26,15 @@ use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Webkul\Field\Filament\Forms\Components\ProgressStepper;
-use Webkul\TimeOff\Enums\AllocationType;
-use Webkul\TimeOff\Enums\State;
-use Webkul\TimeOff\Filament\Clusters\Management;
-use Webkul\TimeOff\Filament\Clusters\Management\Resources\AllocationResource\Pages\CreateAllocation;
-use Webkul\TimeOff\Filament\Clusters\Management\Resources\AllocationResource\Pages\EditAllocation;
-use Webkul\TimeOff\Filament\Clusters\Management\Resources\AllocationResource\Pages\ListAllocations;
-use Webkul\TimeOff\Filament\Clusters\Management\Resources\AllocationResource\Pages\ViewAllocation;
-use Webkul\TimeOff\Models\LeaveAllocation;
+use Modules\Core\Filament\Forms\Components\ProgressStepper;
+use Modules\Core\Enums\AllocationType;
+use Modules\Core\Enums\State;
+use Modules\Core\Filament\Clusters\Management;
+use Modules\Core\Filament\Clusters\Management\Resources\AllocationResource\Pages\CreateAllocation;
+use Modules\Core\Filament\Clusters\Management\Resources\AllocationResource\Pages\EditAllocation;
+use Modules\Core\Filament\Clusters\Management\Resources\AllocationResource\Pages\ListAllocations;
+use Modules\Core\Filament\Clusters\Management\Resources\AllocationResource\Pages\ViewAllocation;
+use Modules\Core\Models\LeaveAllocation;
 
 class AllocationResource extends Resource
 {

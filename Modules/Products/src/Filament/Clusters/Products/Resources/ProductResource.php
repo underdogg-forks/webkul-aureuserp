@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Products\Resources;
+namespace Modules\Products\Filament\Clusters\Products\Resources;
 
 use BackedEnum;
 use Filament\Forms\Components\CheckboxList;
@@ -18,23 +18,23 @@ use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Field\Filament\Traits\HasCustomFields;
-use Webkul\Inventory\Enums\MoveState;
-use Webkul\Inventory\Enums\ProductTracking;
-use Webkul\Inventory\Filament\Clusters\Products;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource\Pages\CreateProduct;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource\Pages\EditProduct;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource\Pages\ListProducts;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource\Pages\ManageAttributes;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource\Pages\ManageMoves;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource\Pages\ManageQuantities;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource\Pages\ManageVariants;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource\Pages\ViewProduct;
-use Webkul\Inventory\Models\Move;
-use Webkul\Inventory\Models\Product;
-use Webkul\Inventory\Settings\TraceabilitySettings;
-use Webkul\Product\Enums\ProductType;
-use Webkul\Product\Filament\Resources\ProductResource as BaseProductResource;
+use Modules\Core\Filament\Traits\HasCustomFields;
+use Modules\Products\Enums\MoveState;
+use Modules\Products\Enums\ProductTracking;
+use Modules\Products\Filament\Clusters\Products;
+use Modules\Products\Filament\Clusters\Products\Resources\ProductResource\Pages\CreateProduct;
+use Modules\Products\Filament\Clusters\Products\Resources\ProductResource\Pages\EditProduct;
+use Modules\Products\Filament\Clusters\Products\Resources\ProductResource\Pages\ListProducts;
+use Modules\Products\Filament\Clusters\Products\Resources\ProductResource\Pages\ManageAttributes;
+use Modules\Products\Filament\Clusters\Products\Resources\ProductResource\Pages\ManageMoves;
+use Modules\Products\Filament\Clusters\Products\Resources\ProductResource\Pages\ManageQuantities;
+use Modules\Products\Filament\Clusters\Products\Resources\ProductResource\Pages\ManageVariants;
+use Modules\Products\Filament\Clusters\Products\Resources\ProductResource\Pages\ViewProduct;
+use Modules\Products\Models\Move;
+use Modules\Products\Models\Product;
+use Modules\Products\Settings\TraceabilitySettings;
+use Modules\Core\Enums\ProductType;
+use Modules\Core\Filament\Resources\ProductResource as BaseProductResource;
 
 class ProductResource extends BaseProductResource
 {

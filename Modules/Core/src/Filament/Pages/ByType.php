@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Pages;
+namespace Modules\Core\Filament\Pages;
 
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 use Filament\Pages\Dashboard as BaseDashboard;
-use Webkul\TimeOff\Filament\Clusters\Reporting;
-use Webkul\TimeOff\Filament\Widgets\LeaveTypeWidget;
+use Modules\Core\Filament\Clusters\Reporting;
+use Modules\Core\Filament\Widgets\LeaveTypeWidget;
 
 class ByType extends BaseDashboard
 {

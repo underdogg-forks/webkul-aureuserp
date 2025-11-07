@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Project\Filament\Resources\TaskResource\Pages;
+namespace Modules\Projects\Filament\Resources\TaskResource\Pages;
 
 use BackedEnum;
 use Filament\Actions\CreateAction;
@@ -17,8 +17,8 @@ use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Project\Filament\Resources\TaskResource;
-use Webkul\Project\Settings\TimeSettings;
+use Modules\Projects\Filament\Resources\TaskResource;
+use Modules\Projects\Settings\TimeSettings;
 
 class ManageTimesheets extends ManageRelatedRecords
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Webkul\Purchase\Observers;
+namespace Modules\Expenses\Observers;
 
-use Webkul\Purchase\Models\AccountMove;
+use Modules\Expenses\Models\AccountMove;
 
 class AccountMoveObserver
 {

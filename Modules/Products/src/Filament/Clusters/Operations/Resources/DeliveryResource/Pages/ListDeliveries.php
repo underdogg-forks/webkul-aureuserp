@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Resources\DeliveryResource\Pages;
+namespace Modules\Products\Filament\Clusters\Operations\Resources\DeliveryResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Contracts\Support\Htmlable;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\DeliveryResource;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\OperationResource;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Products\Filament\Clusters\Operations\Resources\DeliveryResource;
+use Modules\Products\Filament\Clusters\Operations\Resources\OperationResource;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ListDeliveries extends ListRecords
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Filament\Actions\CreateAction;
@@ -22,19 +22,19 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Enums\AllowNewProduct;
-use Webkul\Inventory\Filament\Clusters\Configurations;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages\CreateStorageCategory;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages\EditStorageCategory;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages\ListStorageCategories;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages\ManageCapacityByPackages;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages\ManageCapacityByProducts;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages\ManageLocations;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages\ViewStorageCategory;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\StorageCategoryResource\RelationManagers\CapacityByPackagesRelationManager;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\StorageCategoryResource\RelationManagers\CapacityByProductsRelationManager;
-use Webkul\Inventory\Models\StorageCategory;
-use Webkul\Inventory\Settings\WarehouseSettings;
+use Modules\Products\Enums\AllowNewProduct;
+use Modules\Products\Filament\Clusters\Configurations;
+use Modules\Products\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages\CreateStorageCategory;
+use Modules\Products\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages\EditStorageCategory;
+use Modules\Products\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages\ListStorageCategories;
+use Modules\Products\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages\ManageCapacityByPackages;
+use Modules\Products\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages\ManageCapacityByProducts;
+use Modules\Products\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages\ManageLocations;
+use Modules\Products\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages\ViewStorageCategory;
+use Modules\Products\Filament\Clusters\Configurations\Resources\StorageCategoryResource\RelationManagers\CapacityByPackagesRelationManager;
+use Modules\Products\Filament\Clusters\Configurations\Resources\StorageCategoryResource\RelationManagers\CapacityByProductsRelationManager;
+use Modules\Products\Models\StorageCategory;
+use Modules\Products\Settings\WarehouseSettings;
 
 class StorageCategoryResource extends Resource
 {

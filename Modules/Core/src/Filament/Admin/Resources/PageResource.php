@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Website\Filament\Admin\Resources;
+namespace Modules\Core\Filament\Admin\Resources;
 
 use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkActionGroup;
@@ -35,11 +35,11 @@ use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
-use Webkul\Website\Filament\Admin\Resources\PageResource\Pages\CreatePage;
-use Webkul\Website\Filament\Admin\Resources\PageResource\Pages\EditPage;
-use Webkul\Website\Filament\Admin\Resources\PageResource\Pages\ListPages;
-use Webkul\Website\Filament\Admin\Resources\PageResource\Pages\ViewPage;
-use Webkul\Website\Models\Page as PageModel;
+use Modules\Core\Filament\Admin\Resources\PageResource\Pages\CreatePage;
+use Modules\Core\Filament\Admin\Resources\PageResource\Pages\EditPage;
+use Modules\Core\Filament\Admin\Resources\PageResource\Pages\ListPages;
+use Modules\Core\Filament\Admin\Resources\PageResource\Pages\ViewPage;
+use Modules\Core\Models\Page as PageModel;
 
 class PageResource extends Resource
 {

@@ -3,9 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Webkul\Inventory\Enums\CreateBackorder;
-use Webkul\Inventory\Enums\MoveType;
-use Webkul\Inventory\Enums\ReservationMethod;
+use Modules\Products\Enums\CreateBackorder;
+use Modules\Products\Enums\MoveType;
+use Modules\Products\Enums\ReservationMethod;
 
 return new class () extends Migration {
     /**

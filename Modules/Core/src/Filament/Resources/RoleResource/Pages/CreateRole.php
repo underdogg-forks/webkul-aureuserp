@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Security\Filament\Resources\RoleResource\Pages;
+namespace Modules\Core\Filament\Resources\RoleResource\Pages;
 
 use BezhanSalleh\FilamentShield\Support\Utils;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\PermissionRegistrar;
-use Webkul\Security\Filament\Resources\RoleResource;
+use Modules\Core\Filament\Resources\RoleResource;
 
 class CreateRole extends CreateRecord
 {

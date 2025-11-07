@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Employee\Filament\Clusters\Configurations\Resources\CalendarResource\RelationManagers;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\CalendarResource\RelationManagers;
 
 use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkActionGroup;
@@ -31,10 +31,10 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Employee\Enums\CalendarDisplayType;
-use Webkul\Employee\Enums\DayOfWeek;
-use Webkul\Employee\Enums\DayPeriod;
-use Webkul\Employee\Enums\WeekType;
+use Modules\Core\Enums\CalendarDisplayType;
+use Modules\Core\Enums\DayOfWeek;
+use Modules\Core\Enums\DayPeriod;
+use Modules\Core\Enums\WeekType;
 
 class CalendarAttendance extends RelationManager
 {

@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Widgets;
+namespace Modules\Core\Filament\Widgets;
 
 use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
 use Filament\Widgets\Concerns\InteractsWithPageFilters;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use Illuminate\Support\Carbon;
-use Webkul\Employee\Models\EmployeeJobPosition;
-use Webkul\Recruitment\Models\Applicant;
+use Modules\Core\Models\EmployeeJobPosition;
+use Modules\Core\Models\Applicant;
 
 class JobPositionStatsWidget extends BaseWidget
 {

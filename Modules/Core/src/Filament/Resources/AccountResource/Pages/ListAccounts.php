@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\AccountResource\Pages;
+namespace Modules\Core\Filament\Resources\AccountResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Webkul\Account\Filament\Resources\AccountResource;
+use Modules\Core\Filament\Resources\AccountResource;
 
 class ListAccounts extends ListRecords
 {

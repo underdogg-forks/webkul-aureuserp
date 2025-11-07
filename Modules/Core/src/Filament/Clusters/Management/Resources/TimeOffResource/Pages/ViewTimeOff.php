@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Management\Resources\TimeOffResource\Pages;
+namespace Modules\Core\Filament\Clusters\Management\Resources\TimeOffResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Chatter\Filament\Actions as ChatterActions;
-use Webkul\TimeOff\Filament\Clusters\Management\Resources\TimeOffResource;
+use Modules\Core\Filament\Actions as ChatterActions;
+use Modules\Core\Filament\Clusters\Management\Resources\TimeOffResource;
 
 class ViewTimeOff extends ViewRecord
 {

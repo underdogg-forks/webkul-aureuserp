@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\TimeOff\Database\Factories;
+namespace Modules\Core\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Webkul\TimeOff\Models\LeaveType;
+use Modules\Core\Models\LeaveType;
 
 class LeaveTypeFactory extends Factory
 {

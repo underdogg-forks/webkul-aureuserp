@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Applications\Resources\ApplicantResource\Pages;
+namespace Modules\Core\Filament\Clusters\Applications\Resources\ApplicantResource\Pages;
 
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
@@ -14,19 +14,19 @@ use Filament\Resources\Pages\EditRecord;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Chatter\Filament\Actions as ChatterActions;
-use Webkul\Employee\Filament\Resources\EmployeeResource;
-use Webkul\Recruitment\Enums\ApplicationStatus;
-use Webkul\Recruitment\Enums\RecruitmentState;
-use Webkul\Recruitment\Filament\Clusters\Applications\Resources\ApplicantResource;
-use Webkul\Recruitment\Mail\ApplicantRefuseMail;
-use Webkul\Recruitment\Mail\ApplicationConfirmMail;
-use Webkul\Recruitment\Mail\InterviewerAssignedMail;
-use Webkul\Recruitment\Models\Applicant;
-use Webkul\Recruitment\Models\RefuseReason;
-use Webkul\Security\Models\User;
-use Webkul\Support\Services\EmailService;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Actions as ChatterActions;
+use Modules\Core\Filament\Resources\EmployeeResource;
+use Modules\Core\Enums\ApplicationStatus;
+use Modules\Core\Enums\RecruitmentState;
+use Modules\Core\Filament\Clusters\Applications\Resources\ApplicantResource;
+use Modules\Core\Mail\ApplicantRefuseMail;
+use Modules\Core\Mail\ApplicationConfirmMail;
+use Modules\Core\Mail\InterviewerAssignedMail;
+use Modules\Core\Models\Applicant;
+use Modules\Core\Models\RefuseReason;
+use Modules\Core\Models\User;
+use Modules\Core\Services\EmailService;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class EditApplicant extends EditRecord
 {

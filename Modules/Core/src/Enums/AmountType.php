@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Account\Enums;
+namespace Modules\Core\Enums;
 
 use Filament\Support\Contracts\HasLabel;
 

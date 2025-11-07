@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\TableViews\Filament\Components;
+namespace Modules\Core\Filament\Components;
 
 use Closure;
 use Illuminate\Database\Eloquent\Model;

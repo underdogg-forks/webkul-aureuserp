@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Inventory\Models;
+namespace Modules\Products\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Webkul\Inventory\Database\Factories\OrderPointFactory;
-use Webkul\Inventory\Enums\OrderPointTrigger;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Products\Database\Factories\OrderPointFactory;
+use Modules\Products\Enums\OrderPointTrigger;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class OrderPoint extends Model
 {

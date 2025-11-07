@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Account\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\DB;
 use InvalidArgumentException;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Partner\Models\BankAccount;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
-use Webkul\Support\Models\Currency;
+use Modules\Crm\Models\BankAccount;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
+use Modules\Core\Models\Currency;
 
 class Journal extends Model implements Sortable
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Employee\Filament\Clusters\Configurations\Resources\ActivityPlanResource\RelationManagers;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\ActivityPlanResource\RelationManagers;
 
 use Filament\Actions\ActionGroup;
 use Filament\Actions\CreateAction;
@@ -27,12 +27,12 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Security\Models\User;
-use Webkul\Support\Enums\ActivityDelayInterval;
-use Webkul\Support\Enums\ActivityDelayUnit;
-use Webkul\Support\Enums\ActivityResponsibleType;
-use Webkul\Support\Filament\Resources\ActivityTypeResource;
-use Webkul\Support\Models\ActivityType;
+use Modules\Core\Models\User;
+use Modules\Core\Enums\ActivityDelayInterval;
+use Modules\Core\Enums\ActivityDelayUnit;
+use Modules\Core\Enums\ActivityResponsibleType;
+use Modules\Core\Filament\Resources\ActivityTypeResource;
+use Modules\Core\Models\ActivityType;
 
 class ActivityTemplateRelationManager extends RelationManager
 {

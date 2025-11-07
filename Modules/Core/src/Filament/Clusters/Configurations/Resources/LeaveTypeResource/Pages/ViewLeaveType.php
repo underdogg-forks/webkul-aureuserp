@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Configurations\Resources\LeaveTypeResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\LeaveTypeResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\LeaveTypeResource;
+use Modules\Core\Filament\Clusters\Configurations\Resources\LeaveTypeResource;
 
 class ViewLeaveType extends ViewRecord
 {

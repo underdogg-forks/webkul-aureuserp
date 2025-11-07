@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Employee\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Webkul\Employee\Database\Factories\CalendarFactory;
-use Webkul\Field\Traits\HasCustomFields;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Core\Database\Factories\CalendarFactory;
+use Modules\Core\Traits\HasCustomFields;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class Calendar extends Model
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Sale\Settings;
+namespace Modules\Invoices\Settings;
 
 use Spatie\LaravelSettings\Settings;
 

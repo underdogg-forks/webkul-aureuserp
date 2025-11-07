@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Security\Enums;
+namespace Modules\Core\Enums;
 
 enum CompanyStatus: string
 {

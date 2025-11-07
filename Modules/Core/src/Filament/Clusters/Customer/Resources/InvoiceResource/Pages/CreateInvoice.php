@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Customer\Resources\InvoiceResource\Pages;
+namespace Modules\Core\Filament\Clusters\Customer\Resources\InvoiceResource\Pages;
 
-use Webkul\Account\Filament\Resources\InvoiceResource\Pages\CreateInvoice as BaseCreateInvoice;
-use Webkul\Invoice\Filament\Clusters\Customer\Resources\InvoiceResource;
+use Modules\Core\Filament\Resources\InvoiceResource\Pages\CreateInvoice as BaseCreateInvoice;
+use Modules\Core\Filament\Clusters\Customer\Resources\InvoiceResource;
 
 class CreateInvoice extends BaseCreateInvoice
 {

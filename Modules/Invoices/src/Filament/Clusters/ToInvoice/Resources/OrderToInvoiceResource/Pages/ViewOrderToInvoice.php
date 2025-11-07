@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\ToInvoice\Resources\OrderToInvoiceResource\Pages;
+namespace Modules\Invoices\Filament\Clusters\ToInvoice\Resources\OrderToInvoiceResource\Pages;
 
-use Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Pages\ViewQuotation as BaseViewQuotation;
-use Webkul\Sale\Filament\Clusters\ToInvoice\Resources\OrderToInvoiceResource;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource\Pages\ViewQuotation as BaseViewQuotation;
+use Modules\Invoices\Filament\Clusters\ToInvoice\Resources\OrderToInvoiceResource;
 
 class ViewOrderToInvoice extends BaseViewQuotation
 {

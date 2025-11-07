@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Partner\Database\Factories;
+namespace Modules\Crm\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Webkul\Partner\Enums\AccountType;
-use Webkul\Partner\Models\Industry;
-use Webkul\Partner\Models\Partner;
-use Webkul\Partner\Models\Title;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Crm\Enums\AccountType;
+use Modules\Crm\Models\Industry;
+use Modules\Crm\Models\Partner;
+use Modules\Crm\Models\Title;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 /**
  * @extends Factory<Partner>

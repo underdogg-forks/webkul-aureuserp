@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Partner\Database\Factories;
+namespace Modules\Crm\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Webkul\Partner\Models\Industry;
-use Webkul\Security\Models\User;
+use Modules\Crm\Models\Industry;
+use Modules\Core\Models\User;
 
 /**
  * @extends Factory<Industry>

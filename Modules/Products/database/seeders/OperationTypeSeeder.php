@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Inventory\Database\Seeders;
+namespace Modules\Products\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Webkul\Inventory\Enums\CreateBackorder;
-use Webkul\Inventory\Enums\MoveType;
-use Webkul\Inventory\Enums\OperationType;
-use Webkul\Inventory\Enums\ReservationMethod;
-use Webkul\Security\Models\User;
+use Modules\Products\Enums\CreateBackorder;
+use Modules\Products\Enums\MoveType;
+use Modules\Products\Enums\OperationType;
+use Modules\Products\Enums\ReservationMethod;
+use Modules\Core\Models\User;
 
 class OperationTypeSeeder extends Seeder
 {

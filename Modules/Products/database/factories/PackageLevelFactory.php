@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Inventory\Database\Factories;
+namespace Modules\Products\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Webkul\Inventory\Models\PackageLevel;
-use Webkul\Security\Models\User;
+use Modules\Products\Models\PackageLevel;
+use Modules\Core\Models\User;
 
 /**
  * @extends Factory<PackageLevel>

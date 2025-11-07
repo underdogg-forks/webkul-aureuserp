@@ -1,21 +1,21 @@
 <?php
 
-namespace Webkul\Recruitment\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Webkul\Chatter\Traits\HasChatter;
-use Webkul\Chatter\Traits\HasLogActivity;
-use Webkul\Employee\Models\Department;
-use Webkul\Employee\Models\Employee;
-use Webkul\Recruitment\Enums\ApplicationStatus;
-use Webkul\Recruitment\Traits\HasApplicationStatus;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
-use Webkul\Support\Models\UTMMedium;
-use Webkul\Support\Models\UTMSource;
+use Modules\Core\Traits\HasChatter;
+use Modules\Core\Traits\HasLogActivity;
+use Modules\Core\Models\Department;
+use Modules\Core\Models\Employee;
+use Modules\Core\Enums\ApplicationStatus;
+use Modules\Core\Traits\HasApplicationStatus;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
+use Modules\Core\Models\UTMMedium;
+use Modules\Core\Models\UTMSource;
 
 class Applicant extends Model
 {

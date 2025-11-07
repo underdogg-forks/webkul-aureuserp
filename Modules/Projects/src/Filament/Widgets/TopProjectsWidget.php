@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Project\Filament\Widgets;
+namespace Modules\Projects\Filament\Widgets;
 
 use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
 use Filament\Tables;
@@ -10,7 +10,7 @@ use Filament\Widgets\TableWidget as BaseWidget;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
-use Webkul\Project\Models\Timesheet;
+use Modules\Projects\Models\Timesheet;
 
 class TopProjectsWidget extends BaseWidget
 {

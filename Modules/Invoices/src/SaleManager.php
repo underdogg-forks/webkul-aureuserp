@@ -1,38 +1,38 @@
 <?php
 
-namespace Webkul\Sale;
+namespace Modules\Invoices;
 
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Webkul\Account\Enums as AccountEnums;
-use Webkul\Account\Facades\Account as AccountFacade;
-use Webkul\Account\Facades\Tax;
-use Webkul\Account\Models\Move as AccountMove;
-use Webkul\Inventory\Enums as InventoryEnums;
-use Webkul\Inventory\Facades\Inventory as InventoryFacade;
-use Webkul\Inventory\Models\Location;
-use Webkul\Inventory\Models\Move as InventoryMove;
-use Webkul\Inventory\Models\Operation as InventoryOperation;
-use Webkul\Inventory\Models\Product as InventoryProduct;
-use Webkul\Inventory\Models\Rule;
-use Webkul\Inventory\Models\Warehouse;
-use Webkul\Invoice\Enums as InvoiceEnums;
-use Webkul\Partner\Models\Partner;
-use Webkul\Sale\Enums\AdvancedPayment;
-use Webkul\Sale\Enums\InvoiceStatus;
-use Webkul\Sale\Enums\OrderDeliveryStatus;
-use Webkul\Sale\Enums\OrderState;
-use Webkul\Sale\Enums\QtyDeliveredMethod;
-use Webkul\Sale\Mail\SaleOrderCancelQuotation;
-use Webkul\Sale\Mail\SaleOrderQuotation;
-use Webkul\Sale\Models\AdvancedPaymentInvoice;
-use Webkul\Sale\Models\Order;
-use Webkul\Sale\Models\OrderLine;
-use Webkul\Sale\Settings\InvoiceSettings;
-use Webkul\Sale\Settings\QuotationAndOrderSettings;
-use Webkul\Support\Package;
-use Webkul\Support\Services\EmailService;
+use Modules\Core\Enums as AccountEnums;
+use Modules\Core\Facades\Account as AccountFacade;
+use Modules\Core\Facades\Tax;
+use Modules\Core\Models\Move as AccountMove;
+use Modules\Products\Enums as InventoryEnums;
+use Modules\Products\Facades\Inventory as InventoryFacade;
+use Modules\Products\Models\Location;
+use Modules\Products\Models\Move as InventoryMove;
+use Modules\Products\Models\Operation as InventoryOperation;
+use Modules\Products\Models\Product as InventoryProduct;
+use Modules\Products\Models\Rule;
+use Modules\Products\Models\Warehouse;
+use Modules\Core\Enums as InvoiceEnums;
+use Modules\Crm\Models\Partner;
+use Modules\Invoices\Enums\AdvancedPayment;
+use Modules\Invoices\Enums\InvoiceStatus;
+use Modules\Invoices\Enums\OrderDeliveryStatus;
+use Modules\Invoices\Enums\OrderState;
+use Modules\Invoices\Enums\QtyDeliveredMethod;
+use Modules\Invoices\Mail\SaleOrderCancelQuotation;
+use Modules\Invoices\Mail\SaleOrderQuotation;
+use Modules\Invoices\Models\AdvancedPaymentInvoice;
+use Modules\Invoices\Models\Order;
+use Modules\Invoices\Models\OrderLine;
+use Modules\Invoices\Settings\InvoiceSettings;
+use Modules\Invoices\Settings\QuotationAndOrderSettings;
+use Modules\Core\Package;
+use Modules\Core\Services\EmailService;
 
 class SaleManager
 {

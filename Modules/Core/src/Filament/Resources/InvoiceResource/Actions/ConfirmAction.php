@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\InvoiceResource\Actions;
+namespace Modules\Core\Filament\Resources\InvoiceResource\Actions;
 
 use Filament\Actions\Action;
 use Filament\Notifications\Notification;
 use Livewire\Component;
-use Webkul\Account\Enums\AutoPost;
-use Webkul\Account\Enums\MoveState;
-use Webkul\Account\Facades\Account;
-use Webkul\Account\Models\Move;
+use Modules\Core\Enums\AutoPost;
+use Modules\Core\Enums\MoveState;
+use Modules\Core\Facades\Account;
+use Modules\Core\Models\Move;
 
 class ConfirmAction extends Action
 {

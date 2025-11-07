@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Models;
+namespace Modules\Products\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,17 +8,17 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
-use Webkul\Chatter\Traits\HasChatter;
-use Webkul\Chatter\Traits\HasLogActivity;
-use Webkul\Field\Traits\HasCustomFields;
-use Webkul\Inventory\Database\Factories\OperationFactory;
-use Webkul\Inventory\Enums\MoveType;
-use Webkul\Inventory\Enums\OperationState;
-use Webkul\Partner\Models\Partner;
-use Webkul\Purchase\Models\Order as PurchaseOrder;
-use Webkul\Sale\Models\Order as SaleOrder;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Core\Traits\HasChatter;
+use Modules\Core\Traits\HasLogActivity;
+use Modules\Core\Traits\HasCustomFields;
+use Modules\Products\Database\Factories\OperationFactory;
+use Modules\Products\Enums\MoveType;
+use Modules\Products\Enums\OperationState;
+use Modules\Crm\Models\Partner;
+use Modules\Expenses\Models\Order as PurchaseOrder;
+use Modules\Invoices\Models\Order as SaleOrder;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class Operation extends Model
 {

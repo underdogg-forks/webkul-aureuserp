@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Sale\Models;
+namespace Modules\Invoices\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

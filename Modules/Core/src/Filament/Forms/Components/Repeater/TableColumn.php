@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Support\Filament\Forms\Components\Repeater;
+namespace Modules\Core\Filament\Forms\Components\Repeater;
 
 use Closure;
 use Filament\Schemas\Components\Concerns\HasLabel;
@@ -11,7 +11,7 @@ use Filament\Support\Concerns\HasAlignment;
 use Filament\Support\Concerns\HasWidth;
 use Filament\Tables\Columns\Concerns\CanBeToggled;
 use LogicException;
-use Webkul\Support\Concerns\CanBeHidden;
+use Modules\Core\Concerns\CanBeHidden;
 
 class TableColumn extends Component
 {

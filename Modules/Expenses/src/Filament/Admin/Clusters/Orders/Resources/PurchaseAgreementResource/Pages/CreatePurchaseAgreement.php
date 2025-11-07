@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\PurchaseAgreementResource\Pages;
+namespace Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\PurchaseAgreementResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Purchase\Enums\RequisitionState;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\PurchaseAgreementResource;
-use Webkul\Support\Concerns\HasRepeaterColumnManager;
+use Modules\Expenses\Enums\RequisitionState;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\PurchaseAgreementResource;
+use Modules\Core\Concerns\HasRepeaterColumnManager;
 
 class CreatePurchaseAgreement extends CreateRecord
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Employee\Traits\Resources\Employee;
+namespace Modules\Core\Traits\Resources\Employee;
 
 use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
@@ -27,7 +27,7 @@ use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Employee\Enums\ResumeDisplayType;
+use Modules\Core\Enums\ResumeDisplayType;
 
 trait EmployeeResumeRelation
 {

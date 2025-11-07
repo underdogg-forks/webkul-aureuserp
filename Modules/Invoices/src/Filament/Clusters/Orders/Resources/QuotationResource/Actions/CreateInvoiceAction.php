@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Actions;
+namespace Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource\Actions;
 
 use Filament\Actions\Action;
 use Filament\Forms\Components\Radio;
@@ -9,10 +9,10 @@ use Filament\Notifications\Notification;
 use Filament\Schemas\Components\Group;
 use Filament\Schemas\Components\Utilities\Get;
 use Illuminate\Support\Arr;
-use Webkul\Sale\Enums\AdvancedPayment;
-use Webkul\Sale\Enums\InvoiceStatus;
-use Webkul\Sale\Facades\SaleOrder as SalesFacade;
-use Webkul\Sale\Models\Order;
+use Modules\Invoices\Enums\AdvancedPayment;
+use Modules\Invoices\Enums\InvoiceStatus;
+use Modules\Invoices\Facades\SaleOrder as SalesFacade;
+use Modules\Invoices\Models\Order;
 
 class CreateInvoiceAction extends Action
 {

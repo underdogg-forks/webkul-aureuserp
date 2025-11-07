@@ -1,20 +1,20 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Orders\Resources;
+namespace Modules\Invoices\Filament\Clusters\Orders\Resources;
 
 use BackedEnum;
 use Filament\Resources\Pages\Page;
 use Filament\Tables\Table;
-use Webkul\Invoice\Filament\Clusters\Customer\Resources\PartnerResource as BaseCustomerResource;
-use Webkul\Sale\Filament\Clusters\Orders;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\CustomerResource\Pages\CreateCustomer;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\CustomerResource\Pages\EditCustomer;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\CustomerResource\Pages\ListCustomers;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\CustomerResource\Pages\ManageAddresses;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\CustomerResource\Pages\ManageBankAccounts;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\CustomerResource\Pages\ManageContacts;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\CustomerResource\Pages\ViewCustomer;
-use Webkul\Sale\Models\Partner;
+use Modules\Core\Filament\Clusters\Customer\Resources\PartnerResource as BaseCustomerResource;
+use Modules\Invoices\Filament\Clusters\Orders;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\CustomerResource\Pages\CreateCustomer;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\CustomerResource\Pages\EditCustomer;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\CustomerResource\Pages\ListCustomers;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\CustomerResource\Pages\ManageAddresses;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\CustomerResource\Pages\ManageBankAccounts;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\CustomerResource\Pages\ManageContacts;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\CustomerResource\Pages\ViewCustomer;
+use Modules\Invoices\Models\Partner;
 
 class CustomerResource extends BaseCustomerResource
 {

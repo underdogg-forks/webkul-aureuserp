@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\PackageTypeResource\Pages;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\PackageTypeResource\Pages;
 
 use Filament\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\PackageTypeResource;
+use Modules\Products\Filament\Clusters\Configurations\Resources\PackageTypeResource;
 
 class ViewPackageType extends ViewRecord
 {

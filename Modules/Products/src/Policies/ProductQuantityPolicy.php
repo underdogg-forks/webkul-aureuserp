@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Inventory\Policies;
+namespace Modules\Products\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\User;
 
 class ProductQuantityPolicy
 {

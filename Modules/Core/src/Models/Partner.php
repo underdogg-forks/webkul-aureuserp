@@ -1,8 +1,8 @@
 <?php
 
-namespace Webkul\Website\Models;
+namespace Modules\Core\Models;
 
-use Webkul\Partner\Models\Partner as BasePartner;
+use Modules\Crm\Models\Partner as BasePartner;
 
 class Partner extends BasePartner
 {

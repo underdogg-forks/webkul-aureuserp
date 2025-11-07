@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Website;
+namespace Modules\Core;
 
 use Filament\Actions\Action;
 use Filament\Contracts\Plugin;
@@ -9,15 +9,15 @@ use Filament\Panel;
 use Filament\View\PanelsRenderHook;
 use Illuminate\Support\Collection;
 use ReflectionClass;
-use Webkul\Support\Package;
-use Webkul\Website\Filament\Customer\Auth\Login;
-use Webkul\Website\Filament\Customer\Auth\PasswordReset\RequestPasswordReset;
-use Webkul\Website\Filament\Customer\Auth\PasswordReset\ResetPassword;
-use Webkul\Website\Filament\Customer\Auth\Register;
-use Webkul\Website\Filament\Customer\Clusters\Account;
-use Webkul\Website\Filament\Customer\Resources\PageResource;
-use Webkul\Website\Models\Page;
-use Webkul\Website\Settings\ContactSettings;
+use Modules\Core\Package;
+use Modules\Core\Filament\Customer\Auth\Login;
+use Modules\Core\Filament\Customer\Auth\PasswordReset\RequestPasswordReset;
+use Modules\Core\Filament\Customer\Auth\PasswordReset\ResetPassword;
+use Modules\Core\Filament\Customer\Auth\Register;
+use Modules\Core\Filament\Customer\Clusters\Account;
+use Modules\Core\Filament\Customer\Resources\PageResource;
+use Modules\Core\Models\Page;
+use Modules\Core\Settings\ContactSettings;
 
 class WebsitePlugin implements Plugin
 {
@@ -43,10 +43,10 @@ class WebsitePlugin implements Plugin
                     ->login(Login::class)
                     ->registration(Register::class)
                     ->passwordReset(RequestPasswordReset::class, ResetPassword::class)
-                    ->discoverResources(in: $this->getPluginBasePath('/Filament/Customer/Resources'), for: 'Webkul\\Website\\Filament\\Customer\\Resources')
-                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Customer/Pages'), for: 'Webkul\\Website\\Filament\\Customer\\Pages')
-                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Customer/Clusters'), for: 'Webkul\\Website\\Filament\\Customer\\Clusters')
-                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Customer/Widgets'), for: 'Webkul\\Website\\Filament\\Customer\\Widgets')
+                    ->discoverResources(in: $this->getPluginBasePath('/Filament/Customer/Resources'), for: 'Modules\\Core\\Filament\\Customer\\Resources')
+                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Customer/Pages'), for: 'Modules\\Core\\Filament\\Customer\\Pages')
+                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Customer/Clusters'), for: 'Modules\\Core\\Filament\\Customer\\Clusters')
+                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Customer/Widgets'), for: 'Modules\\Core\\Filament\\Customer\\Widgets')
                     ->userMenuItems([
                         'my_account' => Action::make('my_account')->label(fn () => __('website::filament/app.navigation.account.label'))
                             ->url(fn (): string => Account::getUrl())
@@ -71,10 +71,10 @@ class WebsitePlugin implements Plugin
             })
             ->when($panel->getId() == 'admin', function (Panel $panel) {
                 $panel
-                    ->discoverResources(in: $this->getPluginBasePath('/Filament/Admin/Resources'), for: 'Webkul\\Website\\Filament\\Admin\\Resources')
-                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Admin/Pages'), for: 'Webkul\\Website\\Filament\\Admin\\Pages')
-                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Admin/Clusters'), for: 'Webkul\\Website\\Filament\\Admin\\Clusters')
-                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Admin/Widgets'), for: 'Webkul\\Website\\Filament\\Admin\\Widgets');
+                    ->discoverResources(in: $this->getPluginBasePath('/Filament/Admin/Resources'), for: 'Modules\\Core\\Filament\\Admin\\Resources')
+                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Admin/Pages'), for: 'Modules\\Core\\Filament\\Admin\\Pages')
+                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Admin/Clusters'), for: 'Modules\\Core\\Filament\\Admin\\Clusters')
+                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Admin/Widgets'), for: 'Modules\\Core\\Filament\\Admin\\Widgets');
             });
     }
 

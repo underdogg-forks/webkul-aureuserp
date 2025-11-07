@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Website\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Webkul\Security\Models\User;
-use Webkul\Website\Database\Factories\PageFactory;
+use Modules\Core\Models\User;
+use Modules\Core\Database\Factories\PageFactory;
 
 class Page extends Model
 {

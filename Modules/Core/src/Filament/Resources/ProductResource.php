@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Product\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use BackedEnum;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -52,10 +52,10 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Product\Enums\ProductType;
-use Webkul\Product\Models\Category;
-use Webkul\Product\Models\Product;
-use Webkul\Support\Models\UOM;
+use Modules\Core\Enums\ProductType;
+use Modules\Core\Models\Category;
+use Modules\Core\Models\Product;
+use Modules\Core\Models\UOM;
 
 class ProductResource extends Resource
 {

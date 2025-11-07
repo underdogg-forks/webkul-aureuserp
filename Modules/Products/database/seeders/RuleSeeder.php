@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Inventory\Database\Seeders;
+namespace Modules\Products\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Webkul\Inventory\Enums\GroupPropagation;
-use Webkul\Inventory\Enums\ProcureMethod;
-use Webkul\Inventory\Enums\RuleAction;
-use Webkul\Inventory\Enums\RuleAuto;
-use Webkul\Security\Models\User;
+use Modules\Products\Enums\GroupPropagation;
+use Modules\Products\Enums\ProcureMethod;
+use Modules\Products\Enums\RuleAction;
+use Modules\Products\Enums\RuleAuto;
+use Modules\Core\Models\User;
 
 class RuleSeeder extends Seeder
 {

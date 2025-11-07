@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Partner;
+namespace Modules\Crm;
 
-use Webkul\Support\Package;
-use Webkul\Support\PackageServiceProvider;
+use Modules\Core\Package;
+use Modules\Core\PackageServiceProvider;
 
 class PartnerServiceProvider extends PackageServiceProvider
 {

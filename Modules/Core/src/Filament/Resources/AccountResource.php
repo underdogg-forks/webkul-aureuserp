@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -23,12 +23,12 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Webkul\Account\Enums\AccountType;
-use Webkul\Account\Filament\Resources\AccountResource\Pages\CreateAccount;
-use Webkul\Account\Filament\Resources\AccountResource\Pages\EditAccount;
-use Webkul\Account\Filament\Resources\AccountResource\Pages\ListAccounts;
-use Webkul\Account\Filament\Resources\AccountResource\Pages\ViewAccount;
-use Webkul\Account\Models\Account;
+use Modules\Core\Enums\AccountType;
+use Modules\Core\Filament\Resources\AccountResource\Pages\CreateAccount;
+use Modules\Core\Filament\Resources\AccountResource\Pages\EditAccount;
+use Modules\Core\Filament\Resources\AccountResource\Pages\ListAccounts;
+use Modules\Core\Filament\Resources\AccountResource\Pages\ViewAccount;
+use Modules\Core\Models\Account;
 
 class AccountResource extends Resource
 {

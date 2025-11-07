@@ -1,26 +1,26 @@
 <?php
 
-namespace Webkul\Inventory;
+namespace Modules\Products;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Enums\CreateBackorder;
-use Webkul\Inventory\Enums\LocationType;
-use Webkul\Inventory\Enums\MoveState;
-use Webkul\Inventory\Enums\OperationState;
-use Webkul\Inventory\Enums\ProcureMethod;
-use Webkul\Inventory\Enums\ProductTracking;
-use Webkul\Inventory\Enums\RuleAction;
-use Webkul\Inventory\Enums\RuleAuto;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\OperationResource;
-use Webkul\Inventory\Models\Move;
-use Webkul\Inventory\Models\MoveLine;
-use Webkul\Inventory\Models\Operation;
-use Webkul\Inventory\Models\ProductQuantity;
-use Webkul\Inventory\Models\Rule;
-use Webkul\Purchase\Facades\PurchaseOrder as PurchaseOrderFacade;
-use Webkul\Sale\Facades\SaleOrder as SaleFacade;
-use Webkul\Support\Package;
+use Modules\Products\Enums\CreateBackorder;
+use Modules\Products\Enums\LocationType;
+use Modules\Products\Enums\MoveState;
+use Modules\Products\Enums\OperationState;
+use Modules\Products\Enums\ProcureMethod;
+use Modules\Products\Enums\ProductTracking;
+use Modules\Products\Enums\RuleAction;
+use Modules\Products\Enums\RuleAuto;
+use Modules\Products\Filament\Clusters\Operations\Resources\OperationResource;
+use Modules\Products\Models\Move;
+use Modules\Products\Models\MoveLine;
+use Modules\Products\Models\Operation;
+use Modules\Products\Models\ProductQuantity;
+use Modules\Products\Models\Rule;
+use Modules\Expenses\Facades\PurchaseOrder as PurchaseOrderFacade;
+use Modules\Invoices\Facades\SaleOrder as SaleFacade;
+use Modules\Core\Package;
 
 class InventoryManager
 {

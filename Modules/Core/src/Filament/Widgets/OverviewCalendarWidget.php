@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Widgets;
+namespace Modules\Core\Filament\Widgets;
 
 use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
 use Carbon\Carbon;
@@ -11,14 +11,14 @@ use Filament\Schemas\Schema;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
-use Webkul\FullCalendar\Filament\Actions\CreateAction;
-use Webkul\FullCalendar\Filament\Actions\DeleteAction;
-use Webkul\FullCalendar\Filament\Actions\EditAction;
-use Webkul\FullCalendar\Filament\Actions\ViewAction;
-use Webkul\FullCalendar\Filament\Widgets\FullCalendarWidget;
-use Webkul\TimeOff\Enums\State;
-use Webkul\TimeOff\Models\Leave;
-use Webkul\TimeOff\Traits\TimeOffHelper;
+use Modules\Core\Filament\Actions\CreateAction;
+use Modules\Core\Filament\Actions\DeleteAction;
+use Modules\Core\Filament\Actions\EditAction;
+use Modules\Core\Filament\Actions\ViewAction;
+use Modules\Core\Filament\Widgets\FullCalendarWidget;
+use Modules\Core\Enums\State;
+use Modules\Core\Models\Leave;
+use Modules\Core\Traits\TimeOffHelper;
 
 class OverviewCalendarWidget extends FullCalendarWidget
 {

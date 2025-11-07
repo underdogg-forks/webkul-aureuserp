@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Recruitment\Policies;
+namespace Modules\Core\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Webkul\Recruitment\Models\Department;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\Department;
+use Modules\Core\Models\User;
 
 class DepartmentPolicy
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -37,17 +37,17 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Filament\Clusters\Configurations;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\RouteResource\Pages\CreateRoute;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\RouteResource\Pages\EditRoute;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\RouteResource\Pages\ListRoutes;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\RouteResource\Pages\ManageRules;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\RouteResource\Pages\ViewRoute;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\RouteResource\RelationManagers\RulesRelationManager;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\WarehouseResource\Pages\ManageRoutes;
-use Webkul\Inventory\Models\Route;
-use Webkul\Inventory\Settings\ProductSettings;
-use Webkul\Inventory\Settings\WarehouseSettings;
+use Modules\Products\Filament\Clusters\Configurations;
+use Modules\Products\Filament\Clusters\Configurations\Resources\RouteResource\Pages\CreateRoute;
+use Modules\Products\Filament\Clusters\Configurations\Resources\RouteResource\Pages\EditRoute;
+use Modules\Products\Filament\Clusters\Configurations\Resources\RouteResource\Pages\ListRoutes;
+use Modules\Products\Filament\Clusters\Configurations\Resources\RouteResource\Pages\ManageRules;
+use Modules\Products\Filament\Clusters\Configurations\Resources\RouteResource\Pages\ViewRoute;
+use Modules\Products\Filament\Clusters\Configurations\Resources\RouteResource\RelationManagers\RulesRelationManager;
+use Modules\Products\Filament\Clusters\Configurations\Resources\WarehouseResource\Pages\ManageRoutes;
+use Modules\Products\Models\Route;
+use Modules\Products\Settings\ProductSettings;
+use Modules\Products\Settings\WarehouseSettings;
 
 class RouteResource extends Resource
 {

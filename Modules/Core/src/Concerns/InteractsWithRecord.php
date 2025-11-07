@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\FullCalendar\Concerns;
+namespace Modules\Core\Concerns;
 
 use function Filament\Support\get_model_label;
 

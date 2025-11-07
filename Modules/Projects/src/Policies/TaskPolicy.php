@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Project\Policies;
+namespace Modules\Projects\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Webkul\Project\Models\Task;
-use Webkul\Security\Models\User;
-use Webkul\Security\Traits\HasScopedPermissions;
+use Modules\Projects\Models\Task;
+use Modules\Core\Models\User;
+use Modules\Core\Traits\HasScopedPermissions;
 
 class TaskPolicy
 {

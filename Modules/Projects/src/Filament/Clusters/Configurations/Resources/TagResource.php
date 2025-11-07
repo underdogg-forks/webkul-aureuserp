@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Project\Filament\Clusters\Configurations\Resources;
+namespace Modules\Projects\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -19,9 +19,9 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Columns\ColorColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Webkul\Project\Filament\Clusters\Configurations;
-use Webkul\Project\Filament\Clusters\Configurations\Resources\TagResource\Pages\ManageTags;
-use Webkul\Project\Models\Tag;
+use Modules\Projects\Filament\Clusters\Configurations;
+use Modules\Projects\Filament\Clusters\Configurations\Resources\TagResource\Pages\ManageTags;
+use Modules\Projects\Models\Tag;
 
 class TagResource extends Resource
 {

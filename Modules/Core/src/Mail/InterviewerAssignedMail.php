@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Recruitment\Mail;
+namespace Modules\Core\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;

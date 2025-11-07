@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Blog\Filament\Admin\Clusters\Configurations\Resources;
+namespace Modules\Core\Filament\Admin\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -22,9 +22,9 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Str;
-use Webkul\Blog\Filament\Admin\Clusters\Configurations\Resources\CategoryResource\Pages\ManageCategories;
-use Webkul\Blog\Models\Category;
-use Webkul\Website\Filament\Admin\Clusters\Configurations;
+use Modules\Core\Filament\Admin\Clusters\Configurations\Resources\CategoryResource\Pages\ManageCategories;
+use Modules\Core\Models\Category;
+use Modules\Core\Filament\Admin\Clusters\Configurations;
 
 class CategoryResource extends Resource
 {

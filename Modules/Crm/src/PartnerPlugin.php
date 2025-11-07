@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Partner;
+namespace Modules\Crm;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use ReflectionClass;
-use Webkul\Support\Package;
+use Modules\Core\Package;
 
 class PartnerPlugin implements Plugin
 {
@@ -28,10 +28,10 @@ class PartnerPlugin implements Plugin
         $panel
             ->when($panel->getId() == 'admin', function (Panel $panel) {
                 $panel
-                    ->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Webkul\\Partner\\Filament\\Resources')
-                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Pages'), for: 'Webkul\\Partner\\Filament\\Pages')
-                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Clusters'), for: 'Webkul\\Partner\\Filament\\Clusters')
-                    ->discoverWidgets(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Webkul\\Partner\\Filament\\Widgets');
+                    ->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Modules\\Crm\\Filament\\Resources')
+                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Pages'), for: 'Modules\\Crm\\Filament\\Pages')
+                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Clusters'), for: 'Modules\\Crm\\Filament\\Clusters')
+                    ->discoverWidgets(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Modules\\Crm\\Filament\\Widgets');
             });
     }
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\VendorPriceResource\Pages;
+namespace Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\VendorPriceResource\Pages;
 
 use Filament\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Contracts\Support\Htmlable;
-use Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\VendorPriceResource;
+use Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\VendorPriceResource;
 
 class ViewVendorPrice extends ViewRecord
 {

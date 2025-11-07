@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Employee\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,16 +8,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Chatter\Traits\HasChatter;
-use Webkul\Chatter\Traits\HasLogActivity;
-use Webkul\Employee\Database\Factories\EmployeeFactory;
-use Webkul\Field\Traits\HasCustomFields;
-use Webkul\Partner\Models\BankAccount;
-use Webkul\Partner\Models\Partner;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
-use Webkul\Support\Models\Country;
-use Webkul\Support\Models\State;
+use Modules\Core\Traits\HasChatter;
+use Modules\Core\Traits\HasLogActivity;
+use Modules\Core\Database\Factories\EmployeeFactory;
+use Modules\Core\Traits\HasCustomFields;
+use Modules\Crm\Models\BankAccount;
+use Modules\Crm\Models\Partner;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
+use Modules\Core\Models\Country;
+use Modules\Core\Models\State;
 
 class Employee extends Model
 {

@@ -1,16 +1,16 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Resources\ReceiptResource\Pages;
+namespace Modules\Products\Filament\Clusters\Operations\Resources\ReceiptResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Enums;
-use Webkul\Inventory\Enums\OperationState;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\ReceiptResource;
-use Webkul\Inventory\Models\OperationType;
-use Webkul\Support\Concerns\HasRepeaterColumnManager;
+use Modules\Products\Enums;
+use Modules\Products\Enums\OperationState;
+use Modules\Products\Filament\Clusters\Operations\Resources\ReceiptResource;
+use Modules\Products\Models\OperationType;
+use Modules\Core\Concerns\HasRepeaterColumnManager;
 
 class CreateReceipt extends CreateRecord
 {

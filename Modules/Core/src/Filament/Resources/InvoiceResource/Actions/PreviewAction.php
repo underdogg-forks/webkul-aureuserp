@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\InvoiceResource\Actions;
+namespace Modules\Core\Filament\Resources\InvoiceResource\Actions;
 
 use Filament\Actions\Action;
 use InvalidArgumentException;
-use Webkul\Account\Enums\MoveState;
-use Webkul\Account\Models\Move;
-use Webkul\Support\Traits\PDFHandler;
+use Modules\Core\Enums\MoveState;
+use Modules\Core\Models\Move;
+use Modules\Core\Traits\PDFHandler;
 
 class PreviewAction extends Action
 {

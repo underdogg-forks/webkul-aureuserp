@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Support\Enums;
+namespace Modules\Core\Enums;
 
 enum ActivityResponsibleType: string
 {

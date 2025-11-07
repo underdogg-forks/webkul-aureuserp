@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\TimeOff\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\User;
 
 class LeaveAccrualLevel extends Model implements Sortable
 {

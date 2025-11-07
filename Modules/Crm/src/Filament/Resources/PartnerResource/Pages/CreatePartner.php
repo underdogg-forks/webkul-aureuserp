@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Partner\Filament\Resources\PartnerResource\Pages;
+namespace Modules\Crm\Filament\Resources\PartnerResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Contracts\Support\Htmlable;
-use Webkul\Partner\Filament\Resources\PartnerResource;
+use Modules\Crm\Filament\Resources\PartnerResource;
 
 class CreatePartner extends CreateRecord
 {

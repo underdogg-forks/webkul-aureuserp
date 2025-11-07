@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Configuration\Resources;
+namespace Modules\Invoices\Filament\Clusters\Configuration\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -35,12 +35,12 @@ use Filament\Tables\Filters\QueryBuilder\Constraints\RelationshipConstraint\Oper
 use Filament\Tables\Filters\QueryBuilder\Constraints\TextConstraint;
 use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
-use Webkul\Sale\Filament\Clusters\Configuration;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\TeamResource\Pages\CreateTeam;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\TeamResource\Pages\EditTeam;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\TeamResource\Pages\ListTeams;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\TeamResource\Pages\ViewTeam;
-use Webkul\Sale\Models\Team;
+use Modules\Invoices\Filament\Clusters\Configuration;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\TeamResource\Pages\CreateTeam;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\TeamResource\Pages\EditTeam;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\TeamResource\Pages\ListTeams;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\TeamResource\Pages\ViewTeam;
+use Modules\Invoices\Models\Team;
 
 class TeamResource extends Resource
 {

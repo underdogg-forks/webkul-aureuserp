@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Project\Filament\Clusters\Settings\Pages;
+namespace Modules\Projects\Filament\Clusters\Settings\Pages;
 
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
@@ -8,8 +8,8 @@ use Filament\Forms\Components\Toggle;
 use Filament\Pages\SettingsPage;
 use Filament\Schemas\Schema;
 use UnitEnum;
-use Webkul\Project\Settings\TimeSettings;
-use Webkul\Support\Filament\Clusters\Settings;
+use Modules\Projects\Settings\TimeSettings;
+use Modules\Core\Filament\Clusters\Settings;
 
 class ManageTime extends SettingsPage
 {

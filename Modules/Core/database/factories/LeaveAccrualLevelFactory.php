@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\TimeOff\Database\Factories;
+namespace Modules\Core\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<\Webkul\Sale\Models\LeaveAccrualLevel>
+ * @extends Factory<\Modules\Invoices\Models\LeaveAccrualLevel>
  */
 class LeaveAccrualLevelFactory extends Factory
 {

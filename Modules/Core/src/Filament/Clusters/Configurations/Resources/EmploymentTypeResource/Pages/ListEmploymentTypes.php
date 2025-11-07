@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Configurations\Resources\EmploymentTypeResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\EmploymentTypeResource\Pages;
 
-use Webkul\Employee\Filament\Clusters\Configurations\Resources\EmploymentTypeResource\Pages\ListEmploymentTypes as BaseListEmploymentTypes;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\EmploymentTypeResource;
+use Modules\Core\Filament\Clusters\Configurations\Resources\EmploymentTypeResource\Pages\ListEmploymentTypes as BaseListEmploymentTypes;
+use Modules\Core\Filament\Clusters\Configurations\Resources\EmploymentTypeResource;
 
 class ListEmploymentTypes extends BaseListEmploymentTypes
 {

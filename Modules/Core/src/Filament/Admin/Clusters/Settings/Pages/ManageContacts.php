@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Website\Filament\Admin\Clusters\Settings\Pages;
+namespace Modules\Core\Filament\Admin\Clusters\Settings\Pages;
 
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
@@ -9,8 +9,8 @@ use Filament\Pages\SettingsPage;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use UnitEnum;
-use Webkul\Support\Filament\Clusters\Settings;
-use Webkul\Website\Settings\ContactSettings;
+use Modules\Core\Filament\Clusters\Settings;
+use Modules\Core\Settings\ContactSettings;
 
 class ManageContacts extends SettingsPage
 {

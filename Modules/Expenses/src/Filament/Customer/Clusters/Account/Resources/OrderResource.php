@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Customer\Clusters\Account\Resources;
+namespace Modules\Expenses\Filament\Customer\Clusters\Account\Resources;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use Filament\Actions\Action;
@@ -19,9 +19,9 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Purchase\Enums\OrderState;
-use Webkul\Purchase\Models\Order;
-use Webkul\Website\Filament\Customer\Clusters\Account;
+use Modules\Expenses\Enums\OrderState;
+use Modules\Expenses\Models\Order;
+use Modules\Core\Filament\Customer\Clusters\Account;
 
 class OrderResource extends Resource
 {

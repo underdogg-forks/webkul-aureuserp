@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Field\Filament\Tables\Filters;
+namespace Modules\Core\Filament\Tables\Filters;
 
 use Filament\Support\Components\Component;
 use Filament\Tables\Filters\BaseFilter;
@@ -14,7 +14,7 @@ use Filament\Tables\Filters\QueryBuilder\Constraints\TextConstraint;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
-use Webkul\Field\Models\Field;
+use Modules\Core\Models\Field;
 
 class CustomFilters extends Component
 {

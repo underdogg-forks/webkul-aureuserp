@@ -1,20 +1,20 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Configurations\Resources;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Panel;
 use Filament\Resources\Pages\Page;
 use Filament\Tables\Table;
-use Webkul\Employee\Filament\Resources\DepartmentResource as BaseDepartmentResource;
-use Webkul\Recruitment\Filament\Clusters\Configurations;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\DepartmentResource\Pages\CreateDepartment;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\DepartmentResource\Pages\EditDepartment;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\DepartmentResource\Pages\ListDepartments;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\DepartmentResource\Pages\ManageEmployee;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\DepartmentResource\Pages\ViewDepartment;
-use Webkul\Recruitment\Models\Department;
+use Modules\Core\Filament\Resources\DepartmentResource as BaseDepartmentResource;
+use Modules\Core\Filament\Clusters\Configurations;
+use Modules\Core\Filament\Clusters\Configurations\Resources\DepartmentResource\Pages\CreateDepartment;
+use Modules\Core\Filament\Clusters\Configurations\Resources\DepartmentResource\Pages\EditDepartment;
+use Modules\Core\Filament\Clusters\Configurations\Resources\DepartmentResource\Pages\ListDepartments;
+use Modules\Core\Filament\Clusters\Configurations\Resources\DepartmentResource\Pages\ManageEmployee;
+use Modules\Core\Filament\Clusters\Configurations\Resources\DepartmentResource\Pages\ViewDepartment;
+use Modules\Core\Models\Department;
 
 class DepartmentResource extends BaseDepartmentResource
 {

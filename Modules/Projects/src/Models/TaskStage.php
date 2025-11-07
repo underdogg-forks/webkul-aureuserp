@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Project\Models;
+namespace Modules\Projects\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Project\Database\Factories\TaskStageFactory;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Projects\Database\Factories\TaskStageFactory;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class TaskStage extends Model implements Sortable
 {

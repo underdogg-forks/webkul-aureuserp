@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Account\Database\Seeders;
+namespace Modules\Core\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Webkul\Account\Enums\EarlyPayDiscount;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Core\Enums\EarlyPayDiscount;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class PaymentTermSeeder extends Seeder
 {
