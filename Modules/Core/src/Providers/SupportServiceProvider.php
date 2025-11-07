@@ -3,7 +3,6 @@
 namespace Modules\Core\Providers;
 
 use Filament\Panel;
-
 use Filament\Support\Assets\Css;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentView;
@@ -12,11 +11,17 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Livewire;
-use Modules\Core\Livewire\AcceptInvitation;
-use Modules\Core\Models\Role;
-use Modules\Core\Policies\RolePolicy;
+use Modules\Core\Console\Commands\InstallCommand;
+use Modules\Core\Console\Commands\UninstallCommand;
 use Modules\Core\Console\Commands\InstallERP;
 use Modules\Core\Console\Commands\RepairERP;
+use Modules\Core\Livewire\AcceptInvitation;
+use Modules\Core\Models\Role;
+use Modules\Core\Package;
+use Modules\Core\PackageServiceProvider;
+use Modules\Core\Policies\RolePolicy;
+use Modules\Core\Services\PermissionManager;
+use Modules\Core\Traits\HasFilamentDiscovery;
 
 class SupportServiceProvider extends PackageServiceProvider
 {

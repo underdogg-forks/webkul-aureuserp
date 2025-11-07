@@ -124,7 +124,13 @@ trait HasFilamentDiscovery
     protected function getModuleNamespace(): string
     {
         $reflector = new ReflectionClass(get_class($this));
+        $namespace = $reflector->getNamespaceName();
         
-        return $reflector->getNamespaceName();
+        // If the namespace ends with \Providers, remove it to get the module namespace
+        if (str_ends_with($namespace, '\\Providers')) {
+            $namespace = substr($namespace, 0, -10); // Remove '\Providers'
+        }
+        
+        return $namespace;
     }
 }
