@@ -110,7 +110,28 @@ tests/Feature/Modules/
 ## Known Issues & Notes
 
 ### Payment Model Namespace Discrepancy
-The `PaymentsResource` imports `Modules\Core\Models\Payment`, but this model doesn't exist. The actual model is at `Modules\Payments\Models\Payment`. Our tests use the correct import path that actually exists. This may need to be addressed in the PaymentsResource file itself.
+**Issue**: The `PaymentsResource` (line 38) imports `use Modules\Core\Models\Payment;`, but this model file doesn't exist in the codebase. The actual Payment model is located at `Modules\Payments\Models\Payment`.
+
+**Impact**: This appears to be a bug in the PaymentsResource file itself. The resource will fail when actually used since it references a non-existent class.
+
+**Our Approach**: The PaymentCrudTest uses the correct import path (`Modules\Payments\Models\Payment`) that actually exists in the codebase. When the PaymentsResource is fixed to use the correct import, the test will work correctly.
+
+**Recommendation**: The PaymentsResource.php file should be updated to:
+```php
+use Modules\Payments\Models\Payment;  // Instead of Modules\Core\Models\Payment
+```
+
+### Module-Specific Models
+Some modules extend core models to add module-specific behavior. This is intentional:
+- `Modules\Invoices\Models\Partner` extends `Modules\Core\Models\Partner`
+- `Modules\Expenses\Models\Partner` extends `Modules\Core\Models\Partner`
+- `Modules\Invoices\Models\Order` has its own table: `sales_orders`
+- `Modules\Expenses\Models\Order` has its own table: `purchases_orders`
+
+**Tests correctly use module-specific models** to match the resources they're testing:
+- CustomerCrudTest uses `Modules\Invoices\Models\Partner` (matches CustomerResource)
+- SalesOrderCrudTest uses `Modules\Invoices\Models\Order` (matches OrderResource)
+- PurchaseOrderCrudTest uses `Modules\Expenses\Models\Order` (matches PurchaseOrderResource)
 
 ### BaseModel Reference
 Many models extend `App\Models\BaseModel`, but this class doesn't appear to exist in the repository. This might be:
