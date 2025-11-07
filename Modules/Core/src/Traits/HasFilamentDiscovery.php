@@ -9,28 +9,6 @@ use Modules\Core\Package;
 trait HasFilamentDiscovery
 {
     /**
-     * Register Filament resources for the given panel
-     */
-    protected function registerFilamentResources(Panel $panel, string $pluginId): void
-    {
-        if (!Package::isPluginInstalled($pluginId)) {
-            return;
-        }
-
-        $basePath = $this->getModuleBasePath();
-
-        // Register for admin panel
-        if ($panel->getId() === 'admin') {
-            $this->discoverAdminResources($panel, $basePath);
-        }
-
-        // Register for customer panel
-        if ($panel->getId() === 'customer') {
-            $this->discoverCustomerResources($panel, $basePath);
-        }
-    }
-
-    /**
      * Discover resources for admin panel
      */
     protected function discoverAdminResources(Panel $panel, string $basePath): void
