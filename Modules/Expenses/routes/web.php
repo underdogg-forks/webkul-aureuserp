@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Expenses\Http\Controllers\ExpensesController;
+use Webkul\Purchase\Livewire\RespondQuotation;
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::resource('expenses', ExpensesController::class)->names('expenses');
+Route::middleware(['web'])->group(function () {
+    Route::middleware('signed')
+        ->get('purchase/{order}/{action}', RespondQuotation::class)
+        ->name('purchases.quotations.respond');
 });

@@ -27,10 +27,6 @@ class CoreServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
-        // Temporary: load migrations for shared Support models used broadly
-        if (is_dir(base_path('plugins/webkul/support/database/migrations'))) {
-            $this->loadMigrationsFrom(base_path('plugins/webkul/support/database/migrations'));
-        }
     }
 
     /**

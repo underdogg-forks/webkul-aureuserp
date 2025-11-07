@@ -462,7 +462,7 @@ document.addEventListener('livewire:init', function () {
 ## AureusERP Repository Conventions
 - Modules vs plugins: Prefer using Module shims/namespaces where available; legacy Webkul\* namespaces are acceptable during migration to keep functionality intact.
 - Migration/testing priorities: Do B) Core-focused modules first (accounts, employees, fields, full-calendar, plugin-manager, security, support, table-views, time-off), then C) Sales/Finance (invoices, payments, inventories/products).
-- Minimal-change migrations: Keep behavior unchanged; when necessary, temporarily load legacy plugin migrations from plugins/webkul/* alongside Module migrations.
+- Minimal-change migrations: All plugins have been moved from plugins/webkul/* to Modules. Legacy Webkul\* namespaces are preserved via autoload mappings in Module composer.json files.
 - Testing conventions:
   - All PHPUnit methods start with it_ and use explicit /* Arrange */ /* Act */ /* Assert */ phpdoc comments.
   - Prefer meaningful assertions (database state, component behavior) over generic status checks.

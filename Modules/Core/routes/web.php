@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Core\Http\Controllers\CoreController;
+use Webkul\Security\Livewire\AcceptInvitation;
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::resource('cores', CoreController::class)->names('core');
+Route::middleware(['web'])->group(function () {
+    Route::middleware('signed')
+        ->get('invitation/{invitation}/accept', AcceptInvitation::class)
+        ->name('security.invitation.accept');
 });
