@@ -10,46 +10,13 @@ class ProjectStageSeeder extends Seeder
 {
     /**
      * Run the database seeds.
+     * 
+     * Note: This seeder is now deprecated as ProjectStage has been converted to an enum.
+     * The table projects_project_stages is no longer used.
      */
     public function run(): void
     {
-        DB::table('projects_project_stages')->delete();
-
-        $user = User::first();
-
-        DB::table('projects_project_stages')->insert([
-            [
-                'name'       => 'To Do',
-                'is_active'  => 1,
-                'sort'       => 1,
-                'creator_id' => $user?->id,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'name'       => 'In Progress',
-                'is_active'  => 1,
-                'sort'       => 2,
-                'creator_id' => $user?->id,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'name'       => 'Done',
-                'is_active'  => 1,
-                'sort'       => 3,
-                'creator_id' => $user?->id,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'name'       => 'Cancelled',
-                'is_active'  => 1,
-                'sort'       => 4,
-                'creator_id' => $user?->id,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-        ]);
+        // This seeder is intentionally left empty as ProjectStage is now an enum
+        // and no longer requires database seeding.
     }
 }

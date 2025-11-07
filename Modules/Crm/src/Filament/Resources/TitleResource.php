@@ -19,6 +19,12 @@ class TitleResource extends Resource
 
     protected static bool $shouldRegisterNavigation = false;
 
+    public static function isDiscovered(): bool
+    {
+        // Resource disabled - Title is now an enum, not a database model
+        return false;
+    }
+
     public static function form(Schema $schema): Schema
     {
         return $schema

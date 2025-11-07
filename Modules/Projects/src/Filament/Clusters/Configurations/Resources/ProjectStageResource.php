@@ -43,11 +43,8 @@ class ProjectStageResource extends Resource
 
     public static function isDiscovered(): bool
     {
-        if (app()->runningInConsole()) {
-            return true;
-        }
-
-        return app(TaskSettings::class)->enable_project_stages;
+        // Resource disabled - ProjectStage is now an enum, not a database model
+        return false;
     }
 
     public static function form(Schema $schema): Schema

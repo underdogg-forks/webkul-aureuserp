@@ -4,8 +4,8 @@ namespace Modules\Projects\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Crm\Models\Partner;
+use Modules\Projects\Enums\ProjectStage as ProjectStageEnum;
 use Modules\Projects\Models\Project;
-use Modules\Projects\Models\ProjectStage;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
 
@@ -42,7 +42,7 @@ class ProjectFactory extends Factory
             'allow_milestones'        => false,
             'allow_task_dependencies' => false,
             'is_active'               => true,
-            'stage_id'                => ProjectStage::factory(),
+            'stage'                   => fake()->randomElement(ProjectStageEnum::cases())->value,
             'partner_id'              => Partner::factory(),
             'company_id'              => Company::factory(),
             'user_id'                 => User::factory(),
