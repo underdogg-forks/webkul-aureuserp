@@ -18,6 +18,7 @@ use Modules\Core\Traits\HasChatter;
 use Modules\Core\Traits\HasLogActivity;
 use Modules\Crm\Database\Factories\PartnerFactory;
 use Modules\Crm\Enums\AccountType;
+use Modules\Crm\Enums\Title as TitleEnum;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
 use Modules\Core\Models\Country;
@@ -43,6 +44,7 @@ class Partner extends BaseModel implements FilamentUser
      */
     protected $casts = [
         'account_type' => AccountType::class,
+        'title'        => TitleEnum::class,
         'is_active'    => 'boolean',
     ];
     /**
@@ -69,7 +71,7 @@ class Partner extends BaseModel implements FilamentUser
      * 'parent_id',
      * 'creator_id',
      * 'user_id',
-     * 'title_id',
+     * 'title',
      * 'company_id',
      * 'industry_id',
      * ];
@@ -149,11 +151,6 @@ class Partner extends BaseModel implements FilamentUser
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class, 'partners_partner_tag', 'partner_id', 'tag_id');
-    }
-
-    public function title(): BelongsTo
-    {
-        return $this->belongsTo(Title::class);
     }
 
     public function user(): BelongsTo

@@ -18,6 +18,7 @@ use Modules\Core\Traits\HasLogActivity;
 use Modules\Core\Traits\HasCustomFields;
 use Modules\Crm\Models\Partner;
 use Modules\Projects\Database\Factories\ProjectFactory;
+use Modules\Projects\Enums\ProjectStage as ProjectStageEnum;
 use Modules\Core\Models\Scopes\UserPermissionScope;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
@@ -48,12 +49,8 @@ class Project extends BaseModel implements Sortable
         'is_active'               => 'boolean',
         'allow_timesheets'        => 'boolean',
         'allow_milestones'        => 'boolean',
-        'start_date'              => 'date',
-        'end_date'                => 'date',
-        'is_active'               => 'boolean',
-        'allow_timesheets'        => 'boolean',
-        'allow_milestones'        => 'boolean',
         'allow_task_dependencies' => 'boolean',
+        'stage'                   => ProjectStageEnum::class,
     ];
     /**
      * protected $fillable = [
@@ -70,7 +67,7 @@ class Project extends BaseModel implements Sortable
      * 'allow_milestones',
      * 'allow_task_dependencies',
      * 'is_active',
-     * 'stage_id',
+     * 'stage',
      * 'partner_id',
      * 'company_id',
      * 'user_id',
@@ -105,7 +102,7 @@ class Project extends BaseModel implements Sortable
         'allow_milestones',
         'allow_task_dependencies',
         'is_active',
-        'stage.name'   => 'Stage',
+        'stage',
         'partner.name' => 'Customer',
         'company.name' => 'Company',
         'user.name'    => 'Project Manager',
@@ -156,11 +153,6 @@ class Project extends BaseModel implements Sortable
     public function partner(): BelongsTo
     {
         return $this->belongsTo(Partner::class);
-    }
-
-    public function stage(): BelongsTo
-    {
-        return $this->belongsTo(ProjectStage::class);
     }
 
     public function tags(): BelongsToMany
