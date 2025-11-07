@@ -558,7 +558,7 @@ document.addEventListener('livewire:init', function () {
    - @tailwind components;
    - @tailwind utilities;
    + @import "tailwindcss";
-</code-snippet>
+```
 
 
 ### Replaced Utilities
