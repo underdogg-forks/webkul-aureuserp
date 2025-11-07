@@ -163,6 +163,24 @@ Optional plugins that extend functionality:
 - Use transactions for operations that modify multiple related records.
 - Follow the existing naming conventions for models, resources, and migrations.
 
+### Enums vs Database Models for Configuration
+- **Prefer Enums** for simple, fixed configuration values that don't need user customization:
+  - Status values (e.g., TaskStatus, ProjectStatus, OrderStatus)
+  - Workflow stages that are predefined (e.g., TaskStage, ProjectStage)
+  - Payment methods (e.g., PaymentMethod: CASH, CARD, BANK_TRANSFER)
+  - Fixed categories or types that rarely change
+- **Use Database Models** when:
+  - Users need to create, edit, or delete configuration values
+  - Configuration values need relationships to other models
+  - Soft deletes or audit trails are required
+  - The list of values varies significantly per installation
+- **Migration Strategy**: When converting models to enums:
+  1. Create the Enum class with all existing values
+  2. Update all references to use the Enum
+  3. Remove Filament resources and CRUD interfaces
+  4. Keep migration tables for data history, but mark as deprecated
+  5. Add database migration to convert foreign keys to string columns if needed
+
 
 === boost rules ===
 
@@ -592,6 +610,8 @@ document.addEventListener('livewire:init', function () {
   - Group CRUD smoke tests with @group smoke.
   - Use factories/DataProviders; keep fixtures realistic. When relationships/resources aren’t ready, use minimal payloads and skip un-provable assertions with a clear reason.
   - Guard: In tests’ setUp, auto-skip when pdo_sqlite is unavailable.
+  - **Do not create CRUD tests** for resources that should be Enums (e.g., TaskStage, ProjectStage, PaymentMethod, simple status tables).
+  - **Create CRUD tests** for resources that manage user data (e.g., Projects, Tasks, Invoices, Partners, Products).
 - Scaffolding now: Create CRUD smoke tests for all modules; if a List page doesn’t exist yet, mount what’s available and mark the test as skipped with a descriptive message.
 - CSS consolidation: For migrated modules only, begin moving plugin CSS into resources/css/{module}.css and import into resources/css/app.css. Leave non‑migrated plugins for a later pass.
 - Don’t remove tests without approval; don’t add new dependencies without approval; reuse existing components before creating new ones.

@@ -183,6 +183,35 @@ AureusERP is designed to be highly customizable, allowing you to:
 -   Create custom dashboards and reports
 -   Define user roles and permissions
 
+## Architecture & Design Decisions
+
+### Enums vs Database Models
+
+AureusERP follows a pragmatic approach to configuration management:
+
+**Use Enums** for:
+- Fixed status values (e.g., order status, task status)
+- Predefined workflow stages
+- Payment methods and other fixed categories
+- Configuration values that rarely change across installations
+
+**Use Database Models** for:
+- User-customizable configuration
+- Data that requires relationships, soft deletes, or audit trails
+- Values that vary significantly per installation
+- Business entities that users create and manage
+
+This design reduces database overhead and simplifies deployment while maintaining flexibility where needed.
+
+### Module Structure
+
+Each module follows Laravel's conventions with additional Filament integration:
+- **Models**: Business logic and database interactions
+- **Filament Resources**: CRUD interfaces for entities
+- **Migrations**: Database schema definitions
+- **Seeders**: Default data and configuration
+- **Tests**: Feature and unit tests for reliability
+
 ### License
 
 Aureus ERP is a truly opensource ERP framework which will always be free under the MIT License.
