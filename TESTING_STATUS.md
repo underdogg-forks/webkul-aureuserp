@@ -1,6 +1,6 @@
 # Filament Resources Testing Status
 
-## Completed Tests (19 resources)
+## Completed Tests (21 resources)
 
 ✅ **Payment** - `tests/Feature/Modules/Payments/PaymentCrudTest.php`
 - Covers: Modules/Core/src/Filament/Resources/PaymentsResource.php
@@ -66,6 +66,10 @@
 - Covers: Modules/Crm/src/Filament/Resources/BankResource.php
 - Table: banks
 
+✅ **BankAccount** - `tests/Feature/Modules/Crm/BankAccountCrudTest.php`
+- Covers: Modules/Crm/src/Filament/Resources/BankAccountResource.php
+- Table: partners_bank_accounts
+
 ✅ **Quotation** - `tests/Feature/Modules/Invoices/QuotationCrudTest.php`
 - Covers: Modules/Invoices/src/Filament/Clusters/Orders/Resources/QuotationResource.php
 - Table: sales_orders (state=DRAFT or SENT)
@@ -77,6 +81,10 @@
 ✅ **PurchaseOrder** - `tests/Feature/Modules/Expenses/PurchaseOrderCrudTest.php`
 - Covers: Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/PurchaseOrderResource.php
 - Table: purchases_orders
+
+✅ **PurchaseAgreement** - `tests/Feature/Modules/Expenses/PurchaseAgreementCrudTest.php`
+- Covers: Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/PurchaseAgreementResource.php
+- Table: purchases_requisitions (type=AGREEMENT)
 
 ## High-Priority Resources Needing Tests
 
@@ -103,14 +111,14 @@
 ### Expenses Module
 - [ ] **Order** - `Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/OrderResource.php`
 - [ ] **Quotation** - `Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/QuotationResource.php`
-- [ ] **PurchaseAgreement** - `Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/PurchaseAgreementResource.php`
+- [x] **PurchaseAgreement** - `Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/PurchaseAgreementResource.php` ✅
 - [x] **Vendor** - `Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/VendorResource.php` ✅
 
 ### CRM Module
 - [x] **Partner** - `Modules/Crm/src/Filament/Resources/PartnerResource.php` ✅
 - [x] **Bank** - `Modules/Crm/src/Filament/Resources/BankResource.php` ✅
-- [ ] **BankAccount** - `Modules/Crm/src/Filament/Resources/BankAccountResource.php`
-- [ ] **Address** - `Modules/Crm/src/Filament/Resources/AddressResource.php`
+- [x] **BankAccount** - `Modules/Crm/src/Filament/Resources/BankAccountResource.php` ✅
+- [ ] **Address** - `Modules/Crm/src/Filament/Resources/AddressResource.php` (managed via Partner)
 
 ### Projects Module
 - [ ] **Project** - `Modules/Projects/src/Filament/Resources/ProjectResource.php` (has existing test)
