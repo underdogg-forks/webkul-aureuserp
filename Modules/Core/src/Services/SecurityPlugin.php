@@ -1,14 +1,13 @@
 <?php
 
-namespace Modules\Core;
+namespace Modules\Core\Services;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
-use Filament\Support\Facades\FilamentView;
-use Illuminate\Support\HtmlString;
 use ReflectionClass;
+use Modules\Core\Settings\UserSettings;
 
-class SupportPlugin implements Plugin
+class SecurityPlugin implements Plugin
 {
     public static function make(): static
     {
@@ -17,7 +16,7 @@ class SupportPlugin implements Plugin
 
     public function getId(): string
     {
-        return 'support';
+        return 'security';
     }
 
     public function register(Panel $panel): void
@@ -30,27 +29,16 @@ class SupportPlugin implements Plugin
                     ->discoverClusters(in: $this->getPluginBasePath('/Filament/Clusters'), for: 'Modules\\Core\\Filament\\Clusters')
                     ->discoverClusters(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Modules\\Core\\Filament\\Widgets');
             });
+
+        if (
+            ! app()->runningInConsole()
+            && ! app(UserSettings::class)?->enable_reset_password
+        ) {
+            $panel->passwordReset(false);
+        }
     }
 
-    public function boot(Panel $panel): void
-    {
-        FilamentView::registerRenderHook(
-            name: 'panels::scripts.before',
-            hook: fn () => new HtmlString(html: "
-            <script>
-                document.addEventListener('livewire:navigated', function() {
-                    setTimeout(() => {
-                        const activeSidebarItem = document.querySelector('nav .fi-sidebar-item-active');
-
-                        const sidebarWrapper = document.querySelector('nav.fi-sidebar-nav');
-    
-                        sidebarWrapper.scrollTo(0, activeSidebarItem.offsetTop - 250);
-                    }, 0);
-                });
-            </script>
-        ")
-        );
-    }
+    public function boot(Panel $panel): void {}
 
     protected function getPluginBasePath($path = null): string
     {

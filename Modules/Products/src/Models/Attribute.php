@@ -2,6 +2,71 @@
 
 namespace Modules\Products\Models;
 
+use App\Models\BaseModel;
+use Illuminate\Database\Eloquent\Model;
 use Modules\Core\Models\Attribute as BaseAttribute;
+class Attribute extends BaseModel {
+    public $timestamps = false;
 
-class Attribute extends BaseAttribute {}
+    protected $casts = [];
+    /**
+     * protected $fillable = [
+     * //
+     * ];
+     */
+    protected $guarded = [];
+
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+}

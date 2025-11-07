@@ -2,11 +2,58 @@
 
 namespace Modules\Projects\Models;
 
+use App\Models\BaseModel;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Core\Models\Record;
-
-class Timesheet extends Record
+class Timesheet extends BaseModel
 {
+    public $timestamps = false;
+
+    protected $casts = [];
+    /**
+     * protected $fillable = [
+     * //
+     * ];
+     */
+    protected $guarded = [];
+
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * Bootstrap any application services.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($timesheet) {
+            $timesheet->updateTaskTimes();
+        });
+
+        static::updated(function ($timesheet) {
+            $timesheet->updateTaskTimes();
+        });
+
+        static::deleted(function ($timesheet) {
+            $timesheet->updateTaskTimes();
+        });
+    }
+
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
     public function project(): BelongsTo
     {
         return $this->belongsTo(Project::class);
@@ -16,6 +63,15 @@ class Timesheet extends Record
     {
         return $this->belongsTo(Task::class);
     }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
 
     public function updateTaskTimes()
     {
@@ -76,23 +132,32 @@ class Timesheet extends Record
         ]);
     }
 
-    /**
-     * Bootstrap any application services.
-     */
-    protected static function boot()
-    {
-        parent::boot();
+    #endregion
 
-        static::created(function ($timesheet) {
-            $timesheet->updateTaskTimes();
-        });
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
 
-        static::updated(function ($timesheet) {
-            $timesheet->updateTaskTimes();
-        });
+    #endregion
 
-        static::deleted(function ($timesheet) {
-            $timesheet->updateTaskTimes();
-        });
-    }
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
 }

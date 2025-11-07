@@ -2,29 +2,17 @@
 
 namespace Modules\Core\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Core\Enums\AccountType;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Currency;
-
-class Account extends Model
+class Account extends BaseModel
 {
     use HasFactory;
 
-    protected $table = 'accounts_accounts';
-
-    protected $fillable = [
-        'currency_id',
-        'creator_id',
-        'account_type',
-        'name',
-        'code',
-        'note',
-        'deprecated',
-        'reconcile',
-        'non_trade',
-    ];
+    public $timestamps = false;
 
     protected $casts = [
         'deprecated'   => 'boolean',
@@ -32,20 +20,52 @@ class Account extends Model
         'non_trade'    => 'boolean',
         'account_type' => AccountType::class,
     ];
+    /**
+     * protected $fillable = [
+     * 'currency_id',
+     * 'creator_id',
+     * 'account_type',
+     * 'name',
+     * 'code',
+     * 'note',
+     * 'deprecated',
+     * 'reconcile',
+     * 'non_trade',
+     * ];
+     */
+    protected $guarded = [];
 
-    public function currency()
-    {
-        return $this->belongsTo(Currency::class);
-    }
+    protected $table = 'accounts_accounts';
+
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     public function createdBy()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function taxes()
+    public function currency()
     {
-        return $this->belongsToMany(Tax::class, 'accounts_account_taxes', 'account_id', 'tax_id');
+        return $this->belongsTo(Currency::class);
+    }
+
+    public function journals()
+    {
+        return $this->belongsToMany(Journal::class, 'accounts_account_journals', 'account_id', 'journal_id');
     }
 
     public function tags()
@@ -53,8 +73,46 @@ class Account extends Model
         return $this->belongsToMany(Tag::class, 'accounts_account_account_tags', 'account_id', 'account_tag_id');
     }
 
-    public function journals()
+    public function taxes()
     {
-        return $this->belongsToMany(Journal::class, 'accounts_account_journals', 'account_id', 'journal_id');
+        return $this->belongsToMany(Tax::class, 'accounts_account_taxes', 'account_id', 'tax_id');
     }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
 }

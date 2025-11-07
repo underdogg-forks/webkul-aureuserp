@@ -1,13 +1,13 @@
 <?php
 
-namespace Modules\Core;
+namespace Modules\Projects\Services;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use ReflectionClass;
 use Modules\Core\Package;
 
-class RecruitmentPlugin implements Plugin
+class TimesheetPlugin implements Plugin
 {
     public static function make(): static
     {
@@ -16,7 +16,7 @@ class RecruitmentPlugin implements Plugin
 
     public function getId(): string
     {
-        return 'recruitments';
+        return 'timesheets';
     }
 
     public function register(Panel $panel): void
@@ -27,10 +27,10 @@ class RecruitmentPlugin implements Plugin
 
         $panel
             ->when($panel->getId() == 'admin', function (Panel $panel) {
-                $panel->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Modules\\Core\\Filament\\Resources')
-                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Pages'), for: 'Modules\\Core\\Filament\\Pages')
-                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Clusters'), for: 'Modules\\Core\\Filament\\Clusters')
-                    ->discoverWidgets(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Modules\\Core\\Filament\\Widgets');
+                $panel->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Modules\\Projects\\Filament\\Resources')
+                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Pages'), for: 'Modules\\Projects\\Filament\\Pages')
+                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Clusters'), for: 'Modules\\Projects\\Filament\\Clusters')
+                    ->discoverWidgets(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Modules\\Projects\\Filament\\Widgets');
             });
     }
 

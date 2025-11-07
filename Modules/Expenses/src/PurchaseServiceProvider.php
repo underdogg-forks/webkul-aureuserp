@@ -11,6 +11,7 @@ use Modules\Core\Console\Commands\InstallCommand;
 use Modules\Core\Console\Commands\UninstallCommand;
 use Modules\Core\Package;
 use Modules\Core\PackageServiceProvider;
+use Modules\Expenses\Services\PurchaseOrder;
 
 class PurchaseServiceProvider extends PackageServiceProvider
 {

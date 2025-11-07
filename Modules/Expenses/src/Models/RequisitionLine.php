@@ -2,17 +2,33 @@
 
 namespace Modules\Expenses\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Expenses\Database\Factories\RequisitionLineFactory;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
 use Modules\Core\Models\UOM;
-
-class RequisitionLine extends Model
+class RequisitionLine extends BaseModel
 {
     use HasFactory;
+
+    public $timestamps = false;
+
+    protected $casts = [];
+    /**
+     * protected $fillable = [
+     * 'qty',
+     * 'price_unit',
+     * 'requisition_id',
+     * 'product_id',
+     * 'uom_id',
+     * 'company_id',
+     * 'creator_id',
+     * ];
+     */
+    protected $guarded = [];
 
     /**
      * Table name.
@@ -21,35 +37,21 @@ class RequisitionLine extends Model
      */
     protected $table = 'purchases_requisition_lines';
 
-    /**
-     * Fillable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'qty',
-        'price_unit',
-        'requisition_id',
-        'product_id',
-        'uom_id',
-        'company_id',
-        'creator_id',
-    ];
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
 
-    public function requisition(): BelongsTo
-    {
-        return $this->belongsTo(Requisition::class);
-    }
+    #endregion
 
-    public function product(): BelongsTo
-    {
-        return $this->belongsTo(Product::class);
-    }
-
-    public function uom(): BelongsTo
-    {
-        return $this->belongsTo(UOM::class);
-    }
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     public function company(): BelongsTo
     {
@@ -61,8 +63,61 @@ class RequisitionLine extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function requisition(): BelongsTo
+    {
+        return $this->belongsTo(Requisition::class);
+    }
+
+    public function uom(): BelongsTo
+    {
+        return $this->belongsTo(UOM::class);
+    }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
     protected static function newFactory(): RequisitionLineFactory
     {
         return RequisitionLineFactory::new();
     }
+
+    #endregion
 }

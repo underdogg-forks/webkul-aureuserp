@@ -1,13 +1,13 @@
 <?php
 
-namespace Modules\Core;
+namespace Modules\Core\Services;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use ReflectionClass;
-use Modules\Core\Settings\UserSettings;
+use Modules\Core\Package;
 
-class SecurityPlugin implements Plugin
+class EmployeePlugin implements Plugin
 {
     public static function make(): static
     {
@@ -16,26 +16,22 @@ class SecurityPlugin implements Plugin
 
     public function getId(): string
     {
-        return 'security';
+        return 'employees';
     }
 
     public function register(Panel $panel): void
     {
+        if ( ! Package::isPluginInstalled($this->getId())) {
+            return;
+        }
+
         $panel
             ->when($panel->getId() == 'admin', function (Panel $panel) {
-                $panel->passwordReset()
-                    ->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Modules\\Core\\Filament\\Resources')
+                $panel->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Modules\\Core\\Filament\\Resources')
                     ->discoverPages(in: $this->getPluginBasePath('/Filament/Pages'), for: 'Modules\\Core\\Filament\\Pages')
                     ->discoverClusters(in: $this->getPluginBasePath('/Filament/Clusters'), for: 'Modules\\Core\\Filament\\Clusters')
                     ->discoverClusters(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Modules\\Core\\Filament\\Widgets');
             });
-
-        if (
-            ! app()->runningInConsole()
-            && ! app(UserSettings::class)?->enable_reset_password
-        ) {
-            $panel->passwordReset(false);
-        }
     }
 
     public function boot(Panel $panel): void {}

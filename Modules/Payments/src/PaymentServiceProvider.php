@@ -2,10 +2,10 @@
 
 namespace Modules\Payments;
 
-use Modules\Core\Support\Console\Commands\InstallCommand;
-use Modules\Core\Support\Console\Commands\UninstallCommand;
-use Modules\Core\Support\Package;
-use Modules\Core\Support\PackageServiceProvider;
+use Modules\Core\Console\Commands\InstallCommand;
+use Modules\Core\Console\Commands\UninstallCommand;
+use Modules\Core\Package;
+use Modules\Core\PackageServiceProvider;
 
 class PaymentServiceProvider extends PackageServiceProvider
 {

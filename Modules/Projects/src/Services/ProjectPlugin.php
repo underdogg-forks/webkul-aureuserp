@@ -1,13 +1,15 @@
 <?php
 
-namespace Modules\Projects;
+namespace Modules\Projects\Services;
 
 use Filament\Contracts\Plugin;
+use Filament\Navigation\NavigationItem;
 use Filament\Panel;
 use ReflectionClass;
+use Modules\Projects\Filament\Clusters\Settings\Pages\ManageTasks;
 use Modules\Core\Package;
 
-class TimesheetPlugin implements Plugin
+class ProjectPlugin implements Plugin
 {
     public static function make(): static
     {
@@ -16,7 +18,7 @@ class TimesheetPlugin implements Plugin
 
     public function getId(): string
     {
-        return 'timesheets';
+        return 'projects';
     }
 
     public function register(Panel $panel): void
@@ -27,10 +29,19 @@ class TimesheetPlugin implements Plugin
 
         $panel
             ->when($panel->getId() == 'admin', function (Panel $panel) {
-                $panel->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Modules\\Projects\\Filament\\Resources')
+                $panel
+                    ->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Modules\\Projects\\Filament\\Resources')
                     ->discoverPages(in: $this->getPluginBasePath('/Filament/Pages'), for: 'Modules\\Projects\\Filament\\Pages')
                     ->discoverClusters(in: $this->getPluginBasePath('/Filament/Clusters'), for: 'Modules\\Projects\\Filament\\Clusters')
-                    ->discoverWidgets(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Modules\\Projects\\Filament\\Widgets');
+                    ->discoverWidgets(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Modules\\Projects\\Filament\\Widgets')
+                    ->navigationItems([
+                        NavigationItem::make('settings')
+                            ->label(fn () => __('projects::app.navigation.settings.label'))
+                            ->url(fn () => ManageTasks::getUrl())
+                            ->group('Project')
+                            ->sort(3)
+                            ->visible(fn () => ManageTasks::canAccess()),
+                    ]);
             });
     }
 

@@ -2,16 +2,30 @@
 
 namespace Modules\Products\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Products\Database\Factories\PackageLevelFactory;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
-
-class PackageLevel extends Model
+class PackageLevel extends BaseModel
 {
     use HasFactory;
+
+    public $timestamps = false;
+
+    protected $casts = [];
+    /**
+     * protected $fillable = [
+     * 'package_id',
+     * 'operation_id',
+     * 'destination_location_id',
+     * 'company_id',
+     * 'creator_id',
+     * ];
+     */
+    protected $guarded = [];
 
     /**
      * Table name.
@@ -20,33 +34,21 @@ class PackageLevel extends Model
      */
     protected $table = 'inventories_package_levels';
 
-    /**
-     * Fillable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'package_id',
-        'operation_id',
-        'destination_location_id',
-        'company_id',
-        'creator_id',
-    ];
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
 
-    public function package(): BelongsTo
-    {
-        return $this->belongsTo(Package::class);
-    }
+    #endregion
 
-    public function operation(): BelongsTo
-    {
-        return $this->belongsTo(Operation::class);
-    }
-
-    public function destinationLocation(): BelongsTo
-    {
-        return $this->belongsTo(Location::class);
-    }
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     public function company(): BelongsTo
     {
@@ -58,8 +60,61 @@ class PackageLevel extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function destinationLocation(): BelongsTo
+    {
+        return $this->belongsTo(Location::class);
+    }
+
+    public function operation(): BelongsTo
+    {
+        return $this->belongsTo(Operation::class);
+    }
+
+    public function package(): BelongsTo
+    {
+        return $this->belongsTo(Package::class);
+    }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
     protected static function newFactory(): PackageLevelFactory
     {
         return PackageLevelFactory::new();
     }
+
+    #endregion
 }

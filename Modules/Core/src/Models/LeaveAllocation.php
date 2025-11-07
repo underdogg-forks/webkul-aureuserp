@@ -2,8 +2,9 @@
 
 namespace Modules\Core\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Core\Traits\HasChatter;
 use Modules\Core\Traits\HasLogActivity;
 use Modules\Core\Models\Department;
@@ -11,42 +12,51 @@ use Modules\Core\Models\Employee;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
 use Modules\Core\Enums\AllocationType;
-
-class LeaveAllocation extends Model
+class LeaveAllocation extends BaseModel
 {
     use HasChatter;
+
     use HasFactory;
+
     use HasLogActivity;
 
-    protected $table = 'time_off_leave_allocations';
+    public $timestamps = false;
 
-    protected $fillable = [
-        'holiday_status_id',
-        'employee_id',
-        'employee_company_id',
-        'manager_id',
-        'approver_id',
-        'second_approver_id',
-        'department_id',
-        'accrual_plan_id',
-        'creator_id',
-        'name',
-        'state',
-        'allocation_type',
-        'date_from',
-        'date_to',
-        'last_executed_carryover_date',
-        'last_called',
-        'actual_last_called',
-        'next_call',
-        'carried_over_days_expiration_date',
-        'notes',
-        'already_accrued',
-        'number_of_days',
-        'number_of_hours_display',
-        'yearly_accrued_amount',
-        'expiring_carryover_days',
+    protected $casts = [
+        'allocation_type' => AllocationType::class,
     ];
+    /**
+     * protected $fillable = [
+     * 'holiday_status_id',
+     * 'employee_id',
+     * 'employee_company_id',
+     * 'manager_id',
+     * 'approver_id',
+     * 'second_approver_id',
+     * 'department_id',
+     * 'accrual_plan_id',
+     * 'creator_id',
+     * 'name',
+     * 'state',
+     * 'allocation_type',
+     * 'date_from',
+     * 'date_to',
+     * 'last_executed_carryover_date',
+     * 'last_called',
+     * 'actual_last_called',
+     * 'next_call',
+     * 'carried_over_days_expiration_date',
+     * 'notes',
+     * 'already_accrued',
+     * 'number_of_days',
+     * 'number_of_hours_display',
+     * 'yearly_accrued_amount',
+     * 'expiring_carryover_days',
+     * ];
+     */
+    protected $guarded = [];
+
+    protected $table = 'time_off_leave_allocations';
 
     protected array $logAttributes = [
         'holidayStatus.name'                => 'Time Off Type',
@@ -77,28 +87,25 @@ class LeaveAllocation extends Model
         'updated_at'                        => 'Updated At',
     ];
 
-    protected $casts = [
-        'allocation_type' => AllocationType::class,
-    ];
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
 
-    public function employee()
-    {
-        return $this->belongsTo(Employee::class);
-    }
+    #endregion
 
-    public function company()
-    {
-        return $this->belongsTo(Company::class, 'employee_company_id');
-    }
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
-    public function employeeCompany()
+    public function accrualPlan()
     {
-        return $this->belongsTo(Company::class, 'employee_company_id');
-    }
-
-    public function manager()
-    {
-        return $this->belongsTo(Employee::class, 'manager_id');
+        return $this->belongsTo(LeaveAccrualPlan::class, 'accrual_plan_id');
     }
 
     public function approver()
@@ -106,19 +113,9 @@ class LeaveAllocation extends Model
         return $this->belongsTo(Employee::class, 'approver_id');
     }
 
-    public function secondApprover()
+    public function company()
     {
-        return $this->belongsTo(Employee::class, 'second_approver_id');
-    }
-
-    public function department()
-    {
-        return $this->belongsTo(Department::class, 'department_id');
-    }
-
-    public function accrualPlan()
-    {
-        return $this->belongsTo(LeaveAccrualPlan::class, 'accrual_plan_id');
+        return $this->belongsTo(Company::class, 'employee_company_id');
     }
 
     public function createdBy()
@@ -126,8 +123,71 @@ class LeaveAllocation extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'department_id');
+    }
+
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class);
+    }
+
+    public function employeeCompany()
+    {
+        return $this->belongsTo(Company::class, 'employee_company_id');
+    }
+
     public function holidayStatus()
     {
         return $this->belongsTo(LeaveType::class, 'holiday_status_id');
     }
+
+    public function manager()
+    {
+        return $this->belongsTo(Employee::class, 'manager_id');
+    }
+
+    public function secondApprover()
+    {
+        return $this->belongsTo(Employee::class, 'second_approver_id');
+    }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
 }

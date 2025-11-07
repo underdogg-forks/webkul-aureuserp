@@ -36,6 +36,22 @@ class CoreServiceProvider extends ServiceProvider
     {
         $this->app->register(EventServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
+        $this->app->register(\Modules\Core\AccountServiceProvider::class);
+        $this->app->register(\Modules\Core\AnalyticServiceProvider::class);
+        $this->app->register(\Modules\Core\BlogServiceProvider::class);
+        $this->app->register(\Modules\Core\ChatterServiceProvider::class);
+        $this->app->register(\Modules\Core\EmployeeServiceProvider::class);
+        $this->app->register(\Modules\Core\FieldServiceProvider::class);
+        $this->app->register(\Modules\Core\FullCalendarServiceProvider::class);
+        $this->app->register(\Modules\Core\InvoiceServiceProvider::class);
+        $this->app->register(\Modules\Core\PluginManagerServiceProvider::class);
+        $this->app->register(\Modules\Core\ProductServiceProvider::class);
+        $this->app->register(\Modules\Core\RecruitmentServiceProvider::class);
+        $this->app->register(\Modules\Core\SecurityServiceProvider::class);
+        $this->app->register(\Modules\Core\SupportServiceProvider::class);
+        $this->app->register(\Modules\Core\TableViewsServiceProvider::class);
+        $this->app->register(\Modules\Core\TimeOffServiceProvider::class);
+        $this->app->register(\Modules\Core\WebsiteServiceProvider::class);
     }
 
     /**

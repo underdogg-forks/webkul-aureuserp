@@ -1,13 +1,13 @@
 <?php
 
-namespace Modules\Core;
+namespace Modules\Payments\Services;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use ReflectionClass;
 use Modules\Core\Package;
 
-class AccountPlugin implements Plugin
+class PaymentPlugin implements Plugin
 {
     public static function make(): static
     {
@@ -16,7 +16,7 @@ class AccountPlugin implements Plugin
 
     public function getId(): string
     {
-        return 'accounts';
+        return 'payments';
     }
 
     public function register(Panel $panel): void
@@ -27,10 +27,10 @@ class AccountPlugin implements Plugin
 
         $panel
             ->when($panel->getId() == 'admin', function (Panel $panel) {
-                $panel->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Modules\\Core\\Filament\\Resources')
-                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Pages'), for: 'Modules\\Core\\Filament\\Pages')
-                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Clusters'), for: 'Modules\\Core\\Filament\\Clusters')
-                    ->discoverWidgets(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Modules\\Core\\Filament\\Widgets');
+                $panel->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Modules\\Payments\\Filament\\Resources')
+                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Pages'), for: 'Modules\\Payments\\Filament\\Pages')
+                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Clusters'), for: 'Modules\\Payments\\Filament\\Clusters')
+                    ->discoverWidgets(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Modules\\Payments\\Filament\\Widgets');
             });
     }
 

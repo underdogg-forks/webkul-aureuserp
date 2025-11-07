@@ -2,8 +2,9 @@
 
 namespace Modules\Expenses\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -24,63 +25,17 @@ use Modules\Expenses\Enums\OrderState;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
 use Modules\Core\Models\Currency;
-
-class Order extends Model
+class Order extends BaseModel
 {
     use HasChatter;
+
     use HasCustomFields;
+
     use HasFactory;
+
     use HasLogActivity;
 
-    /**
-     * Table name.
-     *
-     * @var string
-     */
-    protected $table = 'purchases_orders';
-
-    /**
-     * Fillable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'description',
-        'priority',
-        'origin',
-        'partner_reference',
-        'state',
-        'invoice_status',
-        'receipt_status',
-        'untaxed_amount',
-        'tax_amount',
-        'total_amount',
-        'total_cc_amount',
-        'currency_rate',
-        'mail_reminder_confirmed',
-        'mail_reception_confirmed',
-        'mail_reception_declined',
-        'invoice_count',
-        'ordered_at',
-        'approved_at',
-        'planned_at',
-        'calendar_start_at',
-        'incoterm_location',
-        'effective_date',
-        'report_grids',
-        'requisition_id',
-        'purchases_group_id',
-        'partner_id',
-        'currency_id',
-        'fiscal_position_id',
-        'payment_term_id',
-        'incoterm_id',
-        'user_id',
-        'company_id',
-        'creator_id',
-        'operation_type_id',
-    ];
+    public $timestamps = false;
 
     /**
      * Table name.
@@ -101,6 +56,53 @@ class Order extends Model
         'calendar_start_at'        => 'datetime',
         'effective_date'           => 'datetime',
     ];
+    /**
+     * protected $fillable = [
+     * 'name',
+     * 'description',
+     * 'priority',
+     * 'origin',
+     * 'partner_reference',
+     * 'state',
+     * 'invoice_status',
+     * 'receipt_status',
+     * 'untaxed_amount',
+     * 'tax_amount',
+     * 'total_amount',
+     * 'total_cc_amount',
+     * 'currency_rate',
+     * 'mail_reminder_confirmed',
+     * 'mail_reception_confirmed',
+     * 'mail_reception_declined',
+     * 'invoice_count',
+     * 'ordered_at',
+     * 'approved_at',
+     * 'planned_at',
+     * 'calendar_start_at',
+     * 'incoterm_location',
+     * 'effective_date',
+     * 'report_grids',
+     * 'requisition_id',
+     * 'purchases_group_id',
+     * 'partner_id',
+     * 'currency_id',
+     * 'fiscal_position_id',
+     * 'payment_term_id',
+     * 'incoterm_id',
+     * 'user_id',
+     * 'company_id',
+     * 'creator_id',
+     * 'operation_type_id',
+     * ];
+     */
+    protected $guarded = [];
+
+    /**
+     * Table name.
+     *
+     * @var string
+     */
+    protected $table = 'purchases_orders';
 
     protected array $logAttributes = [
         'name',
@@ -130,52 +132,41 @@ class Order extends Model
         'creator.name'     => 'Creator',
     ];
 
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
+
     /**
-     * Checks if new invoice is allow or not.
+     * Bootstrap any application services.
      */
-    public function getQtyToInvoiceAttribute()
+    protected static function boot()
     {
-        return $this->lines->sum('qty_to_invoice');
+        parent::boot();
+
+        static::saving(function ($order) {
+            $order->updateName();
+        });
+
+        static::created(function ($order) {
+            $order->update(['name' => $order->name]);
+        });
     }
 
-    public function requisition(): BelongsTo
-    {
-        return $this->belongsTo(Requisition::class);
-    }
+    #endregion
 
-    public function group(): BelongsTo
-    {
-        return $this->belongsTo(OrderGroup::class);
-    }
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
-    public function partner(): BelongsTo
+    public function accountMoves(): BelongsToMany
     {
-        return $this->belongsTo(Partner::class);
-    }
-
-    public function fiscalPosition(): BelongsTo
-    {
-        return $this->belongsTo(FiscalPosition::class);
-    }
-
-    public function paymentTerm(): BelongsTo
-    {
-        return $this->belongsTo(PaymentTerm::class);
-    }
-
-    public function incoterm(): BelongsTo
-    {
-        return $this->belongsTo(Incoterm::class);
-    }
-
-    public function currency(): BelongsTo
-    {
-        return $this->belongsTo(Currency::class);
-    }
-
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(AccountMove::class, 'purchases_order_account_moves', 'order_id', 'move_id');
     }
 
     public function company(): BelongsTo
@@ -188,14 +179,29 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function currency(): BelongsTo
+    {
+        return $this->belongsTo(Currency::class);
+    }
+
+    public function fiscalPosition(): BelongsTo
+    {
+        return $this->belongsTo(FiscalPosition::class);
+    }
+
+    public function group(): BelongsTo
+    {
+        return $this->belongsTo(OrderGroup::class);
+    }
+
+    public function incoterm(): BelongsTo
+    {
+        return $this->belongsTo(Incoterm::class);
+    }
+
     public function lines(): HasMany
     {
         return $this->hasMany(OrderLine::class, 'order_id');
-    }
-
-    public function accountMoves(): BelongsToMany
-    {
-        return $this->belongsToMany(AccountMove::class, 'purchases_order_account_moves', 'order_id', 'move_id');
     }
 
     public function operationType(): BelongsTo
@@ -206,6 +212,43 @@ class Order extends Model
     public function operations(): BelongsToMany
     {
         return $this->belongsToMany(Operation::class, 'purchases_order_operations', 'purchase_order_id', 'inventory_operation_id');
+    }
+
+    public function partner(): BelongsTo
+    {
+        return $this->belongsTo(Partner::class);
+    }
+
+    public function paymentTerm(): BelongsTo
+    {
+        return $this->belongsTo(PaymentTerm::class);
+    }
+
+    public function requisition(): BelongsTo
+    {
+        return $this->belongsTo(Requisition::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * Checks if new invoice is allow or not.
+     */
+    public function getQtyToInvoiceAttribute()
+    {
+        return $this->lines->sum('qty_to_invoice');
     }
 
     /**
@@ -238,24 +281,37 @@ class Order extends Model
         $this->name = 'PO/' . $this->id;
     }
 
-    /**
-     * Bootstrap any application services.
-     */
-    protected static function boot()
-    {
-        parent::boot();
+    #endregion
 
-        static::saving(function ($order) {
-            $order->updateName();
-        });
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
 
-        static::created(function ($order) {
-            $order->update(['name' => $order->name]);
-        });
-    }
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
 
     protected static function newFactory(): OrderFactory
     {
         return OrderFactory::new();
     }
+
+    #endregion
 }

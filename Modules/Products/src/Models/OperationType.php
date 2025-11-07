@@ -2,8 +2,9 @@
 
 namespace Modules\Products\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -16,66 +17,15 @@ use Modules\Products\Enums\MoveType;
 use Modules\Products\Enums\ReservationMethod;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
-
-class OperationType extends Model implements Sortable
+class OperationType extends BaseModel implements Sortable
 {
     use HasFactory;
+
     use SoftDeletes;
+
     use SortableTrait;
 
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
-    ];
-
-    /**
-     * Table name.
-     *
-     * @var string
-     */
-    protected $table = 'inventories_operation_types';
-
-    /**
-     * Fillable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'type',
-        'sort',
-        'sequence_code',
-        'reservation_method',
-        'reservation_days_before',
-        'reservation_days_before_priority',
-        'product_label_format',
-        'lot_label_format',
-        'package_label_to_print',
-        'barcode',
-        'create_backorder',
-        'move_type',
-        'show_entire_packs',
-        'use_create_lots',
-        'use_existing_lots',
-        'print_label',
-        'show_operations',
-        'auto_show_reception_report',
-        'auto_print_delivery_slip',
-        'auto_print_return_slip',
-        'auto_print_product_labels',
-        'auto_print_lot_labels',
-        'auto_print_reception_report',
-        'auto_print_reception_report_labels',
-        'auto_print_packages',
-        'auto_print_package_label',
-        'return_operation_type_id',
-        'source_location_id',
-        'destination_location_id',
-        'warehouse_id',
-        'company_id',
-        'creator_id',
-        'deleted_at',
-    ];
+    public $timestamps = false;
 
     /**
      * Table name.
@@ -102,36 +52,73 @@ class OperationType extends Model implements Sortable
         'auto_print_packages'                => 'boolean',
         'auto_print_package_label'           => 'boolean',
     ];
+    /**
+     * protected $fillable = [
+     * 'name',
+     * 'type',
+     * 'sort',
+     * 'sequence_code',
+     * 'reservation_method',
+     * 'reservation_days_before',
+     * 'reservation_days_before_priority',
+     * 'product_label_format',
+     * 'lot_label_format',
+     * 'package_label_to_print',
+     * 'barcode',
+     * 'create_backorder',
+     * 'move_type',
+     * 'show_entire_packs',
+     * 'use_create_lots',
+     * 'use_existing_lots',
+     * 'print_label',
+     * 'show_operations',
+     * 'auto_show_reception_report',
+     * 'auto_print_delivery_slip',
+     * 'auto_print_return_slip',
+     * 'auto_print_product_labels',
+     * 'auto_print_lot_labels',
+     * 'auto_print_reception_report',
+     * 'auto_print_reception_report_labels',
+     * 'auto_print_packages',
+     * 'auto_print_package_label',
+     * 'return_operation_type_id',
+     * 'source_location_id',
+     * 'destination_location_id',
+     * 'warehouse_id',
+     * 'company_id',
+     * 'creator_id',
+     * 'deleted_at',
+     * ];
+     */
+    protected $guarded = [];
 
-    public function returnOperationType(): BelongsTo
-    {
-        return $this->belongsTo(self::class);
-    }
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
-    public function storageCategory(): BelongsTo
-    {
-        return $this->belongsTo(StorageCategory::class);
-    }
+    /**
+     * Table name.
+     *
+     * @var string
+     */
+    protected $table = 'inventories_operation_types';
 
-    public function sourceLocation(): BelongsTo
-    {
-        return $this->belongsTo(Location::class)->withTrashed();
-    }
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
 
-    public function destinationLocation(): BelongsTo
-    {
-        return $this->belongsTo(Location::class)->withTrashed();
-    }
+    #endregion
 
-    public function warehouse(): BelongsTo
-    {
-        return $this->belongsTo(Warehouse::class)->withTrashed();
-    }
-
-    public function storageCategoryCapacities(): BelongsToMany
-    {
-        return $this->belongsToMany(StorageCategoryCapacity::class, 'inventories_storage_category_capacities', 'storage_category_id', 'package_type_id');
-    }
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     public function company(): BelongsTo
     {
@@ -143,8 +130,76 @@ class OperationType extends Model implements Sortable
         return $this->belongsTo(User::class);
     }
 
+    public function destinationLocation(): BelongsTo
+    {
+        return $this->belongsTo(Location::class)->withTrashed();
+    }
+
+    public function returnOperationType(): BelongsTo
+    {
+        return $this->belongsTo(self::class);
+    }
+
+    public function sourceLocation(): BelongsTo
+    {
+        return $this->belongsTo(Location::class)->withTrashed();
+    }
+
+    public function storageCategory(): BelongsTo
+    {
+        return $this->belongsTo(StorageCategory::class);
+    }
+
+    public function storageCategoryCapacities(): BelongsToMany
+    {
+        return $this->belongsToMany(StorageCategoryCapacity::class, 'inventories_storage_category_capacities', 'storage_category_id', 'package_type_id');
+    }
+
+    public function warehouse(): BelongsTo
+    {
+        return $this->belongsTo(Warehouse::class)->withTrashed();
+    }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
     protected static function newFactory(): OperationTypeFactory
     {
         return OperationTypeFactory::new();
     }
+
+    #endregion
 }

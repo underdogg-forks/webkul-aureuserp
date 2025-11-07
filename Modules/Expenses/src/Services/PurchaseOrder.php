@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Expenses;
+namespace Modules\Expenses\Services;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;

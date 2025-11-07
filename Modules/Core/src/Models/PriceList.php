@@ -2,18 +2,34 @@
 
 namespace Modules\Core\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
 use Modules\Core\Models\Currency;
-
-class PriceList extends Model implements Sortable
+class PriceList extends BaseModel implements Sortable
 {
     use HasFactory;
+
     use SortableTrait;
+
+    public $timestamps = false;
+
+    protected $casts = [];
+    /**
+     * protected $fillable = [
+     * 'sort',
+     * 'currency_id',
+     * 'company_id',
+     * 'creator_id',
+     * 'name',
+     * 'is_active',
+     * ];
+     */
+    protected $guarded = [];
 
     public $sortable = [
         'order_column_name'  => 'sort',
@@ -22,19 +38,21 @@ class PriceList extends Model implements Sortable
 
     protected $table = 'products_product_price_lists';
 
-    protected $fillable = [
-        'sort',
-        'currency_id',
-        'company_id',
-        'creator_id',
-        'name',
-        'is_active',
-    ];
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
 
-    public function currency()
-    {
-        return $this->belongsTo(Currency::class);
-    }
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     public function company()
     {
@@ -45,4 +63,47 @@ class PriceList extends Model implements Sortable
     {
         return $this->belongsTo(User::class);
     }
+
+    public function currency()
+    {
+        return $this->belongsTo(Currency::class);
+    }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
 }

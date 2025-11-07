@@ -2,8 +2,9 @@
 
 namespace Modules\Invoices\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
@@ -12,14 +13,34 @@ use Modules\Core\Traits\HasLogActivity;
 use Modules\Invoices\Database\Factories\TeamFactory;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
-
-class Team extends Model implements Sortable
+class Team extends BaseModel implements Sortable
 {
     use HasChatter;
+
     use HasFactory;
+
     use HasLogActivity;
+
     use SoftDeletes;
+
     use SortableTrait;
+
+    public $timestamps = false;
+
+    protected $casts = [];
+    /**
+     * protected $fillable = [
+     * 'sort',
+     * 'company_id',
+     * 'user_id',
+     * 'color',
+     * 'creator_id',
+     * 'name',
+     * 'is_active',
+     * 'invoiced_target',
+     * ];
+     */
+    protected $guarded = [];
 
     public $sortable = [
         'order_column_name'  => 'sort',
@@ -27,17 +48,6 @@ class Team extends Model implements Sortable
     ];
 
     protected $table = 'sales_teams';
-
-    protected $fillable = [
-        'sort',
-        'company_id',
-        'user_id',
-        'color',
-        'creator_id',
-        'name',
-        'is_active',
-        'invoiced_target',
-    ];
 
     protected array $logAttributes = [
         'name',
@@ -48,14 +58,25 @@ class Team extends Model implements Sortable
         'invoiced_target' => 'Invoiced Target',
     ];
 
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
     public function company()
     {
         return $this->belongsTo(Company::class, 'company_id');
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function createdBy()
@@ -68,8 +89,51 @@ class Team extends Model implements Sortable
         return $this->belongsToMany(User::class, 'sales_team_members', 'team_id', 'user_id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
     protected static function newFactory(): TeamFactory
     {
         return TeamFactory::new();
     }
+
+    #endregion
 }

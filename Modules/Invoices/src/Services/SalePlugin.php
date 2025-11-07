@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Invoices;
+namespace Modules\Invoices\Services;
 
 use Filament\Contracts\Plugin;
 use Filament\Navigation\NavigationItem;

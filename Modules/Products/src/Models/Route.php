@@ -2,8 +2,9 @@
 
 namespace Modules\Products\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -13,12 +14,43 @@ use Spatie\EloquentSortable\SortableTrait;
 use Modules\Products\Database\Factories\RouteFactory;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
-
-class Route extends Model implements Sortable
+class Route extends BaseModel implements Sortable
 {
     use HasFactory;
+
     use SoftDeletes;
+
     use SortableTrait;
+
+    public $timestamps = false;
+
+    /**
+     * Table name.
+     *
+     * @var string
+     */
+    protected $casts = [
+        'product_selectable'          => 'boolean',
+        'product_category_selectable' => 'boolean',
+        'warehouse_selectable'        => 'boolean',
+        'packaging_selectable'        => 'boolean',
+    ];
+    /**
+     * protected $fillable = [
+     * 'sort',
+     * 'name',
+     * 'product_selectable',
+     * 'product_category_selectable',
+     * 'warehouse_selectable',
+     * 'packaging_selectable',
+     * 'supplied_warehouse_id',
+     * 'supplier_warehouse_id',
+     * 'company_id',
+     * 'creator_id',
+     * 'deleted_at',
+     * ];
+     */
+    protected $guarded = [];
 
     public $sortable = [
         'order_column_name'  => 'sort',
@@ -32,51 +64,21 @@ class Route extends Model implements Sortable
      */
     protected $table = 'inventories_routes';
 
-    /**
-     * Fillable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'sort',
-        'name',
-        'product_selectable',
-        'product_category_selectable',
-        'warehouse_selectable',
-        'packaging_selectable',
-        'supplied_warehouse_id',
-        'supplier_warehouse_id',
-        'company_id',
-        'creator_id',
-        'deleted_at',
-    ];
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
 
-    /**
-     * Table name.
-     *
-     * @var string
-     */
-    protected $casts = [
-        'product_selectable'          => 'boolean',
-        'product_category_selectable' => 'boolean',
-        'warehouse_selectable'        => 'boolean',
-        'packaging_selectable'        => 'boolean',
-    ];
+    #endregion
 
-    public function suppliedWarehouse(): BelongsTo
-    {
-        return $this->belongsTo(Warehouse::class);
-    }
-
-    public function supplierWarehouse(): BelongsTo
-    {
-        return $this->belongsTo(Warehouse::class);
-    }
-
-    public function warehouses(): BelongsToMany
-    {
-        return $this->belongsToMany(Warehouse::class, 'inventories_route_warehouses');
-    }
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     public function company(): BelongsTo
     {
@@ -98,8 +100,61 @@ class Route extends Model implements Sortable
         return $this->hasMany(Rule::class);
     }
 
+    public function suppliedWarehouse(): BelongsTo
+    {
+        return $this->belongsTo(Warehouse::class);
+    }
+
+    public function supplierWarehouse(): BelongsTo
+    {
+        return $this->belongsTo(Warehouse::class);
+    }
+
+    public function warehouses(): BelongsToMany
+    {
+        return $this->belongsToMany(Warehouse::class, 'inventories_route_warehouses');
+    }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
     protected static function newFactory(): RouteFactory
     {
         return RouteFactory::new();
     }
+
+    #endregion
 }

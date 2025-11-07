@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Core;
+namespace Modules\Core\Services;
 
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
@@ -28,17 +28,17 @@ class AccountManager
 
             if ($dueTerm) {
                 switch ($dueTerm->delay_type) {
-                    case Enums\DelayType::DAYS_AFTER->value:
+                    case DelayType::DAYS_AFTER->value:
                         $dateMaturity = $dateMaturity->addDays((int) $dueTerm->nb_days);
 
                         break;
 
-                    case Enums\DelayType::DAYS_AFTER_END_OF_MONTH->value:
+                    case DelayType::DAYS_AFTER_END_OF_MONTH->value:
                         $dateMaturity = $dateMaturity->endOfMonth()->addDays((int) $dueTerm->nb_days);
 
                         break;
 
-                    case Enums\DelayType::DAYS_AFTER_END_OF_NEXT_MONTH->value:
+                    case DelayType::DAYS_AFTER_END_OF_NEXT_MONTH->value:
                         $dateMaturity = $dateMaturity->addMonth()->endOfMonth()->addDays((int) $dueTerm->days_next_month);
 
                         break;

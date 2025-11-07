@@ -2,8 +2,9 @@
 
 namespace Modules\Products\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -16,12 +17,47 @@ use Modules\Crm\Models\Partner;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
 use Modules\Core\Models\UOM;
-
-class Scrap extends Model
+class Scrap extends BaseModel
 {
     use HasChatter;
+
     use HasFactory;
+
     use HasLogActivity;
+
+    public $timestamps = false;
+
+    /**
+     * Table name.
+     *
+     * @var string
+     */
+    protected $casts = [
+        'state'            => ScrapState::class,
+        'should_replenish' => 'boolean',
+        'closed_at'        => 'datetime',
+    ];
+    /**
+     * protected $fillable = [
+     * 'name',
+     * 'origin',
+     * 'state',
+     * 'qty',
+     * 'should_replenish',
+     * 'closed_at',
+     * 'product_id',
+     * 'uom_id',
+     * 'lot_id',
+     * 'package_id',
+     * 'partner_id',
+     * 'operation_id',
+     * 'source_location_id',
+     * 'destination_location_id',
+     * 'company_id',
+     * 'creator_id',
+     * ];
+     */
+    protected $guarded = [];
 
     /**
      * Table name.
@@ -29,30 +65,6 @@ class Scrap extends Model
      * @var string
      */
     protected $table = 'inventories_scraps';
-
-    /**
-     * Fillable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'origin',
-        'state',
-        'qty',
-        'should_replenish',
-        'closed_at',
-        'product_id',
-        'uom_id',
-        'lot_id',
-        'package_id',
-        'partner_id',
-        'operation_id',
-        'source_location_id',
-        'destination_location_id',
-        'company_id',
-        'creator_id',
-    ];
 
     protected array $logAttributes = [
         'name',
@@ -73,89 +85,12 @@ class Scrap extends Model
         'creator.name'                  => 'Creator',
     ];
 
-    /**
-     * Table name.
-     *
-     * @var string
-     */
-    protected $casts = [
-        'state'            => ScrapState::class,
-        'should_replenish' => 'boolean',
-        'closed_at'        => 'datetime',
-    ];
-
-    public function product(): BelongsTo
-    {
-        return $this->belongsTo(Product::class)->withTrashed();
-    }
-
-    public function uom(): BelongsTo
-    {
-        return $this->belongsTo(UOM::class);
-    }
-
-    public function lot(): BelongsTo
-    {
-        return $this->belongsTo(Lot::class);
-    }
-
-    public function package(): BelongsTo
-    {
-        return $this->belongsTo(Package::class);
-    }
-
-    public function operation(): BelongsTo
-    {
-        return $this->belongsTo(Operation::class);
-    }
-
-    public function sourceLocation(): BelongsTo
-    {
-        return $this->belongsTo(Location::class);
-    }
-
-    public function destinationLocation(): BelongsTo
-    {
-        return $this->belongsTo(Location::class);
-    }
-
-    public function partner(): BelongsTo
-    {
-        return $this->belongsTo(Partner::class);
-    }
-
-    public function company(): BelongsTo
-    {
-        return $this->belongsTo(Company::class);
-    }
-
-    public function creator(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function tags(): BelongsToMany
-    {
-        return $this->belongsToMany(Tag::class, 'inventories_scrap_tags', 'scrap_id', 'tag_id');
-    }
-
-    public function moves(): HasMany
-    {
-        return $this->hasMany(Move::class);
-    }
-
-    public function moveLines(): HasManyThrough
-    {
-        return $this->hasManyThrough(MoveLine::class, Move::class);
-    }
-
-    /**
-     * Update the full name without triggering additional events.
-     */
-    public function updateName()
-    {
-        $this->name = 'SP/' . $this->id;
-    }
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
 
     /**
      * Bootstrap any application services.
@@ -169,8 +104,128 @@ class Scrap extends Model
         });
     }
 
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    public function creator(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function destinationLocation(): BelongsTo
+    {
+        return $this->belongsTo(Location::class);
+    }
+
+    public function lot(): BelongsTo
+    {
+        return $this->belongsTo(Lot::class);
+    }
+
+    public function moveLines(): HasManyThrough
+    {
+        return $this->hasManyThrough(MoveLine::class, Move::class);
+    }
+
+    public function moves(): HasMany
+    {
+        return $this->hasMany(Move::class);
+    }
+
+    public function operation(): BelongsTo
+    {
+        return $this->belongsTo(Operation::class);
+    }
+
+    public function package(): BelongsTo
+    {
+        return $this->belongsTo(Package::class);
+    }
+
+    public function partner(): BelongsTo
+    {
+        return $this->belongsTo(Partner::class);
+    }
+
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Product::class)->withTrashed();
+    }
+
+    public function sourceLocation(): BelongsTo
+    {
+        return $this->belongsTo(Location::class);
+    }
+
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class, 'inventories_scrap_tags', 'scrap_id', 'tag_id');
+    }
+
+    public function uom(): BelongsTo
+    {
+        return $this->belongsTo(UOM::class);
+    }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * Update the full name without triggering additional events.
+     */
+    public function updateName()
+    {
+        $this->name = 'SP/' . $this->id;
+    }
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
     protected static function newFactory(): ScrapFactory
     {
         return ScrapFactory::new();
     }
+
+    #endregion
 }
