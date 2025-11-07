@@ -14,7 +14,7 @@ return [
     Webkul\Inventory\InventoryServiceProvider::class,
     Webkul\Invoice\InvoiceServiceProvider::class,
     Webkul\Partner\PartnerServiceProvider::class,
-    Webkul\Payment\PaymentServiceProvider::class,
+    Modules\Payments\Providers\PaymentsServiceProvider::class,
     Webkul\Product\ProductServiceProvider::class,
     Webkul\Project\ProjectServiceProvider::class,
     Webkul\Purchase\PurchaseServiceProvider::class,

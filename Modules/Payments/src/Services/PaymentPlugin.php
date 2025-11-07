@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\Payments;
+namespace Modules\Payments\Services;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use ReflectionClass;
-use Modules\Core\Support\Package;
+use Modules\Core\Package;
 
 class PaymentPlugin implements Plugin
 {
