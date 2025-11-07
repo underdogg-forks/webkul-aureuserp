@@ -10,6 +10,7 @@ use Modules\Core\Console\Commands\InstallCommand;
 use Modules\Core\Console\Commands\UninstallCommand;
 use Modules\Core\Package;
 use Modules\Core\PackageServiceProvider;
+use Modules\Products\Services\InventoryManager;
 
 class InventoryServiceProvider extends PackageServiceProvider
 {
