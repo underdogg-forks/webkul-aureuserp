@@ -2,17 +2,41 @@
 
 namespace Modules\Core\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Modules\Core\Models\EmployeeJobPosition;
 use Modules\Core\Models\User;
-
-class Stage extends Model implements Sortable
+class Stage extends BaseModel implements Sortable
 {
     use HasFactory;
+
     use SortableTrait;
+
+    public $timestamps = false;
+
+    protected $casts = [
+        'is_default'  => 'boolean',
+        'hired_stage' => 'boolean',
+        'fold'        => 'boolean',
+    ];
+    /**
+     * protected $fillable = [
+     * 'sort',
+     * 'is_default',
+     * 'creator_id',
+     * 'name',
+     * 'legend_blocked',
+     * 'legend_done',
+     * 'legend_normal',
+     * 'requirements',
+     * 'fold',
+     * 'hired_stage',
+     * ];
+     */
+    protected $guarded = [];
 
     public $sortable = [
         'order_column_name'  => 'sort',
@@ -21,24 +45,21 @@ class Stage extends Model implements Sortable
 
     protected $table = 'recruitments_stages';
 
-    protected $fillable = [
-        'sort',
-        'is_default',
-        'creator_id',
-        'name',
-        'legend_blocked',
-        'legend_done',
-        'legend_normal',
-        'requirements',
-        'fold',
-        'hired_stage',
-    ];
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
 
-    protected $casts = [
-        'is_default'  => 'boolean',
-        'hired_stage' => 'boolean',
-        'fold'        => 'boolean',
-    ];
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     public function createdBy()
     {
@@ -49,4 +70,42 @@ class Stage extends Model implements Sortable
     {
         return $this->belongsToMany(EmployeeJobPosition::class, 'recruitments_stages_jobs', 'stage_id', 'job_id');
     }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
 }

@@ -2,15 +2,34 @@
 
 namespace Modules\Invoices\Models;
 
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Modules\Core\Models\User;
 use Modules\Core\Models\UOM;
-
-class OrderOption extends Model implements Sortable
+class OrderOption extends BaseModel implements Sortable
 {
     use SortableTrait;
+
+    public $timestamps = false;
+
+    protected $casts = [];
+    /**
+     * protected $fillable = [
+     * 'sort',
+     * 'order_id',
+     * 'product_id',
+     * 'line_id',
+     * 'uom_id',
+     * 'creator_id',
+     * 'name',
+     * 'quantity',
+     * 'price_unit',
+     * 'discount',
+     * ];
+     */
+    protected $guarded = [];
 
     public $sortable = [
         'order_column_name'  => 'sort',
@@ -19,18 +38,31 @@ class OrderOption extends Model implements Sortable
 
     protected $table = 'sales_order_options';
 
-    protected $fillable = [
-        'sort',
-        'order_id',
-        'product_id',
-        'line_id',
-        'uom_id',
-        'creator_id',
-        'name',
-        'quantity',
-        'price_unit',
-        'discount',
-    ];
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'creator_id');
+    }
+
+    public function line()
+    {
+        return $this->belongsTo(OrderLine::class, 'line_id');
+    }
 
     public function order()
     {
@@ -42,18 +74,46 @@ class OrderOption extends Model implements Sortable
         return $this->belongsTo(Product::class, 'product_id');
     }
 
-    public function line()
-    {
-        return $this->belongsTo(OrderLine::class, 'line_id');
-    }
-
     public function uom()
     {
         return $this->belongsTo(UOM::class, 'uom_id');
     }
 
-    public function creator()
-    {
-        return $this->belongsTo(User::class, 'creator_id');
-    }
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
 }

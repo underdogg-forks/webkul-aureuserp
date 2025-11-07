@@ -2,8 +2,9 @@
 
 namespace Modules\Projects\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -19,61 +20,21 @@ use Modules\Projects\Enums\TaskState;
 use Modules\Core\Models\Scopes\UserPermissionScope;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
-
-class Task extends Model implements Sortable
+class Task extends BaseModel implements Sortable
 {
     use HasChatter;
+
     use HasCustomFields;
+
     use HasFactory;
+
     use HasLogActivity;
+
     use SoftDeletes;
+
     use SortableTrait;
 
-    public string $recordTitleAttribute = 'title';
-
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
-    ];
-
-    /**
-     * Table name.
-     *
-     * @var string
-     */
-    protected $table = 'projects_tasks';
-
-    /**
-     * Fillable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'title',
-        'description',
-        'color',
-        'priority',
-        'state',
-        'sort',
-        'is_active',
-        'is_recurring',
-        'deadline',
-        'working_hours_open',
-        'working_hours_close',
-        'allocated_hours',
-        'remaining_hours',
-        'effective_hours',
-        'total_hours_spent',
-        'subtask_effective_hours',
-        'overtime',
-        'progress',
-        'stage_id',
-        'project_id',
-        'partner_id',
-        'parent_id',
-        'company_id',
-        'creator_id',
-    ];
+    public $timestamps = false;
 
     /**
      * Table name.
@@ -95,6 +56,49 @@ class Task extends Model implements Sortable
         'overtime'            => 'float',
         'state'               => TaskState::class,
     ];
+    /**
+     * protected $fillable = [
+     * 'title',
+     * 'description',
+     * 'color',
+     * 'priority',
+     * 'state',
+     * 'sort',
+     * 'is_active',
+     * 'is_recurring',
+     * 'deadline',
+     * 'working_hours_open',
+     * 'working_hours_close',
+     * 'allocated_hours',
+     * 'remaining_hours',
+     * 'effective_hours',
+     * 'total_hours_spent',
+     * 'subtask_effective_hours',
+     * 'overtime',
+     * 'progress',
+     * 'stage_id',
+     * 'project_id',
+     * 'partner_id',
+     * 'parent_id',
+     * 'company_id',
+     * 'creator_id',
+     * ];
+     */
+    protected $guarded = [];
+
+    public string $recordTitleAttribute = 'title';
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
+
+    /**
+     * Table name.
+     *
+     * @var string
+     */
+    protected $table = 'projects_tasks';
 
     protected array $logAttributes = [
         'title',
@@ -115,60 +119,12 @@ class Task extends Model implements Sortable
         'creator.name' => 'Creator',
     ];
 
-    public function parent(): BelongsTo
-    {
-        return $this->belongsTo(self::class);
-    }
-
-    public function subTasks(): HasMany
-    {
-        return $this->hasMany(self::class, 'parent_id');
-    }
-
-    public function project(): BelongsTo
-    {
-        return $this->belongsTo(Project::class);
-    }
-
-    public function milestone(): BelongsTo
-    {
-        return $this->belongsTo(Milestone::class);
-    }
-
-    public function stage(): BelongsTo
-    {
-        return $this->belongsTo(TaskStage::class);
-    }
-
-    public function partner(): BelongsTo
-    {
-        return $this->belongsTo(Partner::class);
-    }
-
-    public function creator(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function users(): BelongsToMany
-    {
-        return $this->belongsToMany(User::class, 'projects_task_users');
-    }
-
-    public function company(): BelongsTo
-    {
-        return $this->belongsTo(Company::class);
-    }
-
-    public function tags(): BelongsToMany
-    {
-        return $this->belongsToMany(Tag::class, 'projects_task_tag', 'task_id', 'tag_id');
-    }
-
-    public function timesheets(): HasMany
-    {
-        return $this->hasMany(Timesheet::class);
-    }
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
 
     protected static function booted()
     {
@@ -191,8 +147,110 @@ class Task extends Model implements Sortable
         });
     }
 
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    public function creator(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function milestone(): BelongsTo
+    {
+        return $this->belongsTo(Milestone::class);
+    }
+
+    public function parent(): BelongsTo
+    {
+        return $this->belongsTo(self::class);
+    }
+
+    public function partner(): BelongsTo
+    {
+        return $this->belongsTo(Partner::class);
+    }
+
+    public function project(): BelongsTo
+    {
+        return $this->belongsTo(Project::class);
+    }
+
+    public function stage(): BelongsTo
+    {
+        return $this->belongsTo(TaskStage::class);
+    }
+
+    public function subTasks(): HasMany
+    {
+        return $this->hasMany(self::class, 'parent_id');
+    }
+
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class, 'projects_task_tag', 'task_id', 'tag_id');
+    }
+
+    public function timesheets(): HasMany
+    {
+        return $this->hasMany(Timesheet::class);
+    }
+
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'projects_task_users');
+    }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
     protected static function newFactory(): TaskFactory
     {
         return TaskFactory::new();
     }
+
+    #endregion
 }

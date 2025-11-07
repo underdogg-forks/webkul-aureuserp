@@ -2,8 +2,9 @@
 
 namespace Modules\Products\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Products\Database\Factories\LotFactory;
@@ -11,39 +12,11 @@ use Modules\Products\Enums\LocationType;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
 use Modules\Core\Models\UOM;
-
-class Lot extends Model
+class Lot extends BaseModel
 {
     use HasFactory;
 
-    /**
-     * Table name.
-     *
-     * @var string
-     */
-    protected $table = 'inventories_lots';
-
-    /**
-     * Fillable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'description',
-        'reference',
-        'properties',
-        'expiry_reminded',
-        'expiration_date',
-        'use_date',
-        'removal_date',
-        'alert_date',
-        'product_id',
-        'uom_id',
-        'location_id',
-        'company_id',
-        'creator_id',
-    ];
+    public $timestamps = false;
 
     /**
      * Table name.
@@ -58,21 +31,48 @@ class Lot extends Model
         'removal_date'    => 'datetime',
         'alert_date'      => 'datetime',
     ];
+    /**
+     * protected $fillable = [
+     * 'name',
+     * 'description',
+     * 'reference',
+     * 'properties',
+     * 'expiry_reminded',
+     * 'expiration_date',
+     * 'use_date',
+     * 'removal_date',
+     * 'alert_date',
+     * 'product_id',
+     * 'uom_id',
+     * 'location_id',
+     * 'company_id',
+     * 'creator_id',
+     * ];
+     */
+    protected $guarded = [];
 
-    public function product(): BelongsTo
-    {
-        return $this->belongsTo(Product::class);
-    }
+    /**
+     * Table name.
+     *
+     * @var string
+     */
+    protected $table = 'inventories_lots';
 
-    public function uom(): BelongsTo
-    {
-        return $this->belongsTo(UOM::class);
-    }
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
 
-    public function location(): BelongsTo
-    {
-        return $this->belongsTo(Location::class);
-    }
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     public function company(): BelongsTo
     {
@@ -84,10 +84,34 @@ class Lot extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function location(): BelongsTo
+    {
+        return $this->belongsTo(Location::class);
+    }
+
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Product::class);
+    }
+
     public function quantities(): HasMany
     {
         return $this->hasMany(ProductQuantity::class);
     }
+
+    public function uom(): BelongsTo
+    {
+        return $this->belongsTo(UOM::class);
+    }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
 
     public function getTotalQuantityAttribute()
     {
@@ -99,8 +123,37 @@ class Lot extends Model
             ->sum('quantity');
     }
 
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
     protected static function newFactory(): LotFactory
     {
         return LotFactory::new();
     }
+
+    #endregion
 }

@@ -2,38 +2,60 @@
 
 namespace Modules\Core\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
-
-class FiscalPositionTax extends Model
+class FiscalPositionTax extends BaseModel
 {
     use HasFactory;
 
+    public $timestamps = false;
+
+    protected $casts = [];
+    /**
+     * protected $fillable = [
+     * 'fiscal_position_id',
+     * 'company_id',
+     * 'tax_source_id',
+     * 'tax_destination_id',
+     * 'creator_id',
+     * ];
+     */
+    protected $guarded = [];
+
     protected $table = 'accounts_fiscal_position_taxes';
 
-    protected $fillable = [
-        'fiscal_position_id',
-        'company_id',
-        'tax_source_id',
-        'tax_destination_id',
-        'creator_id',
-    ];
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
 
-    public function fiscalPosition()
-    {
-        return $this->belongsTo(FiscalPosition::class);
-    }
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     public function company()
     {
         return $this->belongsTo(Company::class);
     }
 
-    public function taxSource()
+    public function creator()
     {
-        return $this->belongsTo(Tax::class, 'tax_source_id');
+        return $this->belongsTo(User::class, 'creator_id');
+    }
+
+    public function fiscalPosition()
+    {
+        return $this->belongsTo(FiscalPosition::class);
     }
 
     public function taxDestination()
@@ -41,8 +63,46 @@ class FiscalPositionTax extends Model
         return $this->belongsTo(Tax::class, 'tax_destination_id');
     }
 
-    public function creator()
+    public function taxSource()
     {
-        return $this->belongsTo(User::class, 'creator_id');
+        return $this->belongsTo(Tax::class, 'tax_source_id');
     }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
 }

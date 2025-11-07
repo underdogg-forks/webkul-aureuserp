@@ -2,8 +2,9 @@
 
 namespace Modules\Products\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -16,12 +17,57 @@ use Modules\Products\Enums\ReceptionStep;
 use Modules\Crm\Models\Partner;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
-
-class Warehouse extends Model implements Sortable
+class Warehouse extends BaseModel implements Sortable
 {
     use HasFactory;
+
     use SoftDeletes;
+
     use SortableTrait;
+
+    public $timestamps = false;
+
+    /**
+     * Table name.
+     *
+     * @var string
+     */
+    protected $casts = [
+        'reception_steps' => ReceptionStep::class,
+        'delivery_steps'  => DeliveryStep::class,
+    ];
+    /**
+     * protected $fillable = [
+     * 'name',
+     * 'code',
+     * 'sort',
+     * 'reception_steps',
+     * 'delivery_steps',
+     * 'partner_address_id',
+     * 'company_id',
+     * 'creator_id',
+     * 'view_location_id',
+     * 'lot_stock_location_id',
+     * 'input_stock_location_id',
+     * 'qc_stock_location_id',
+     * 'output_stock_location_id',
+     * 'pack_stock_location_id',
+     * 'mto_pull_id',
+     * 'buy_pull_id',
+     * 'pick_type_id',
+     * 'pack_type_id',
+     * 'out_type_id',
+     * 'in_type_id',
+     * 'internal_type_id',
+     * 'qc_type_id',
+     * 'store_type_id',
+     * 'xdock_type_id',
+     * 'crossdock_route_id',
+     * 'reception_route_id',
+     * 'delivery_route_id',
+     * ];
+     */
+    protected $guarded = [];
 
     public $sortable = [
         'order_column_name'  => 'sort',
@@ -35,54 +81,39 @@ class Warehouse extends Model implements Sortable
      */
     protected $table = 'inventories_warehouses';
 
-    /**
-     * Fillable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'code',
-        'sort',
-        'reception_steps',
-        'delivery_steps',
-        'partner_address_id',
-        'company_id',
-        'creator_id',
-        'view_location_id',
-        'lot_stock_location_id',
-        'input_stock_location_id',
-        'qc_stock_location_id',
-        'output_stock_location_id',
-        'pack_stock_location_id',
-        'mto_pull_id',
-        'buy_pull_id',
-        'pick_type_id',
-        'pack_type_id',
-        'out_type_id',
-        'in_type_id',
-        'internal_type_id',
-        'qc_type_id',
-        'store_type_id',
-        'xdock_type_id',
-        'crossdock_route_id',
-        'reception_route_id',
-        'delivery_route_id',
-    ];
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
 
     /**
-     * Table name.
-     *
-     * @var string
+     * Bootstrap any application services.
      */
-    protected $casts = [
-        'reception_steps' => ReceptionStep::class,
-        'delivery_steps'  => DeliveryStep::class,
-    ];
-
-    public function locations(): HasMany
+    protected static function boot()
     {
-        return $this->hasMany(Location::class, 'parent_id');
+        parent::boot();
+
+        static::updated(function ($warehouse) {
+            if ($warehouse->wasChanged('code')) {
+                $warehouse->viewLocation->update(['name' => $warehouse->code]);
+            }
+        });
+    }
+
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
+    public function buyPull(): BelongsTo
+    {
+        return $this->belongsTo(Rule::class, 'buy_pull_id');
     }
 
     public function company(): BelongsTo
@@ -90,24 +121,24 @@ class Warehouse extends Model implements Sortable
         return $this->belongsTo(Company::class);
     }
 
-    public function partnerAddress(): BelongsTo
-    {
-        return $this->belongsTo(Partner::class);
-    }
-
     public function creator(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function viewLocation(): BelongsTo
+    public function crossdockRoute(): BelongsTo
     {
-        return $this->belongsTo(Location::class, 'view_location_id');
+        return $this->belongsTo(Route::class, 'crossdock_route_id');
     }
 
-    public function lotStockLocation(): BelongsTo
+    public function deliveryRoute(): BelongsTo
     {
-        return $this->belongsTo(Location::class, 'lot_stock_location_id');
+        return $this->belongsTo(Route::class, 'delivery_route_id');
+    }
+
+    public function inType(): BelongsTo
+    {
+        return $this->belongsTo(OperationType::class, 'in_type_id');
     }
 
     public function inputStockLocation(): BelongsTo
@@ -115,9 +146,29 @@ class Warehouse extends Model implements Sortable
         return $this->belongsTo(Location::class, 'input_stock_location_id');
     }
 
-    public function qcStockLocation(): BelongsTo
+    public function internalType(): BelongsTo
     {
-        return $this->belongsTo(Location::class, 'qc_stock_location_id');
+        return $this->belongsTo(OperationType::class, 'internal_type_id');
+    }
+
+    public function locations(): HasMany
+    {
+        return $this->hasMany(Location::class, 'parent_id');
+    }
+
+    public function lotStockLocation(): BelongsTo
+    {
+        return $this->belongsTo(Location::class, 'lot_stock_location_id');
+    }
+
+    public function mtoPull(): BelongsTo
+    {
+        return $this->belongsTo(Rule::class, 'mto_pull_id');
+    }
+
+    public function outType(): BelongsTo
+    {
+        return $this->belongsTo(OperationType::class, 'out_type_id');
     }
 
     public function outputStockLocation(): BelongsTo
@@ -130,14 +181,14 @@ class Warehouse extends Model implements Sortable
         return $this->belongsTo(Location::class, 'pack_stock_location_id');
     }
 
-    public function mtoPull(): BelongsTo
+    public function packType(): BelongsTo
     {
-        return $this->belongsTo(Rule::class, 'mto_pull_id');
+        return $this->belongsTo(OperationType::class, 'pack_type_id');
     }
 
-    public function buyPull(): BelongsTo
+    public function partnerAddress(): BelongsTo
     {
-        return $this->belongsTo(Rule::class, 'buy_pull_id');
+        return $this->belongsTo(Partner::class);
     }
 
     public function pickType(): BelongsTo
@@ -145,24 +196,9 @@ class Warehouse extends Model implements Sortable
         return $this->belongsTo(OperationType::class, 'pick_type_id');
     }
 
-    public function packType(): BelongsTo
+    public function qcStockLocation(): BelongsTo
     {
-        return $this->belongsTo(OperationType::class, 'pack_type_id');
-    }
-
-    public function outType(): BelongsTo
-    {
-        return $this->belongsTo(OperationType::class, 'out_type_id');
-    }
-
-    public function inType(): BelongsTo
-    {
-        return $this->belongsTo(OperationType::class, 'in_type_id');
-    }
-
-    public function internalType(): BelongsTo
-    {
-        return $this->belongsTo(OperationType::class, 'internal_type_id');
+        return $this->belongsTo(Location::class, 'qc_stock_location_id');
     }
 
     public function qcType(): BelongsTo
@@ -170,34 +206,19 @@ class Warehouse extends Model implements Sortable
         return $this->belongsTo(OperationType::class, 'qc_type_id');
     }
 
-    public function storeType(): BelongsTo
-    {
-        return $this->belongsTo(OperationType::class, 'store_type_id');
-    }
-
-    public function xdockType(): BelongsTo
-    {
-        return $this->belongsTo(OperationType::class, 'xdock_type_id');
-    }
-
-    public function crossdockRoute(): BelongsTo
-    {
-        return $this->belongsTo(Route::class, 'crossdock_route_id');
-    }
-
     public function receptionRoute(): BelongsTo
     {
         return $this->belongsTo(Route::class, 'reception_route_id');
     }
 
-    public function deliveryRoute(): BelongsTo
-    {
-        return $this->belongsTo(Route::class, 'delivery_route_id');
-    }
-
     public function routes(): BelongsToMany
     {
         return $this->belongsToMany(Route::class, 'inventories_route_warehouses', 'warehouse_id', 'route_id');
+    }
+
+    public function storeType(): BelongsTo
+    {
+        return $this->belongsTo(OperationType::class, 'store_type_id');
     }
 
     public function suppliedWarehouses(): BelongsToMany
@@ -220,22 +241,56 @@ class Warehouse extends Model implements Sortable
         );
     }
 
-    /**
-     * Bootstrap any application services.
-     */
-    protected static function boot()
+    public function viewLocation(): BelongsTo
     {
-        parent::boot();
-
-        static::updated(function ($warehouse) {
-            if ($warehouse->wasChanged('code')) {
-                $warehouse->viewLocation->update(['name' => $warehouse->code]);
-            }
-        });
+        return $this->belongsTo(Location::class, 'view_location_id');
     }
+
+    public function xdockType(): BelongsTo
+    {
+        return $this->belongsTo(OperationType::class, 'xdock_type_id');
+    }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
 
     protected static function newFactory(): WarehouseFactory
     {
         return WarehouseFactory::new();
     }
+
+    #endregion
 }

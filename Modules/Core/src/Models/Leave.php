@@ -2,8 +2,9 @@
 
 namespace Modules\Core\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Core\Traits\HasChatter;
 use Modules\Core\Traits\HasLogActivity;
@@ -14,45 +15,55 @@ use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
 use Modules\Core\Enums\RequestDateFromPeriod;
 use Modules\Core\Enums\State;
-
-class Leave extends Model
+class Leave extends BaseModel
 {
     use HasChatter;
+
     use HasFactory;
+
     use HasLogActivity;
 
-    protected $table = 'time_off_leaves';
+    public $timestamps = false;
 
-    protected $fillable = [
-        'user_id',
-        'manager_id',
-        'holiday_status_id',
-        'employee_id',
-        'employee_company_id',
-        'company_id',
-        'department_id',
-        'calendar_id',
-        'meeting_id',
-        'first_approver_id',
-        'second_approver_id',
-        'creator_id',
-        'private_name',
-        'attachment',
-        'state',
-        'duration_display',
-        'request_date_from_period',
-        'request_date_from',
-        'request_date_to',
-        'notes',
-        'request_unit_half',
-        'request_unit_hours',
-        'date_from',
-        'date_to',
-        'number_of_days',
-        'number_of_hours',
-        'request_hour_from',
-        'request_hour_to',
+    protected $casts = [
+        'state'                    => State::class,
+        'request_date_from_period' => RequestDateFromPeriod::class,
     ];
+    /**
+     * protected $fillable = [
+     * 'user_id',
+     * 'manager_id',
+     * 'holiday_status_id',
+     * 'employee_id',
+     * 'employee_company_id',
+     * 'company_id',
+     * 'department_id',
+     * 'calendar_id',
+     * 'meeting_id',
+     * 'first_approver_id',
+     * 'second_approver_id',
+     * 'creator_id',
+     * 'private_name',
+     * 'attachment',
+     * 'state',
+     * 'duration_display',
+     * 'request_date_from_period',
+     * 'request_date_from',
+     * 'request_date_to',
+     * 'notes',
+     * 'request_unit_half',
+     * 'request_unit_hours',
+     * 'date_from',
+     * 'date_to',
+     * 'number_of_days',
+     * 'number_of_hours',
+     * 'request_hour_from',
+     * 'request_hour_to',
+     * ];
+     */
+    protected $guarded = [];
+
+    protected $table = 'time_off_leaves';
 
     protected array $logAttributes = [
         'user.name'                => 'User',
@@ -81,24 +92,40 @@ class Leave extends Model
         'request_hour_to'          => 'Request Hour To',
     ];
 
-    protected $casts = [
-        'state'                    => State::class,
-        'request_date_from_period' => RequestDateFromPeriod::class,
-    ];
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
 
-    public function user(): BelongsTo
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
+    public function calendar(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(Calendar::class, 'calendar_id');
     }
 
-    public function manager(): BelongsTo
+    public function company(): BelongsTo
     {
-        return $this->belongsTo(Employee::class, 'manager_id');
+        return $this->belongsTo(Company::class, 'company_id');
     }
 
-    public function holidayStatus(): BelongsTo
+    public function createdBy(): BelongsTo
     {
-        return $this->belongsTo(LeaveType::class, 'holiday_status_id');
+        return $this->belongsTo(User::class, 'creator_id');
+    }
+
+    public function department(): BelongsTo
+    {
+        return $this->belongsTo(Department::class, 'department_id');
     }
 
     public function employee(): BelongsTo
@@ -111,24 +138,19 @@ class Leave extends Model
         return $this->belongsTo(Company::class, 'employee_company_id');
     }
 
-    public function company(): BelongsTo
-    {
-        return $this->belongsTo(Company::class, 'company_id');
-    }
-
-    public function department(): BelongsTo
-    {
-        return $this->belongsTo(Department::class, 'department_id');
-    }
-
-    public function calendar(): BelongsTo
-    {
-        return $this->belongsTo(Calendar::class, 'calendar_id');
-    }
-
     public function firstApprover(): BelongsTo
     {
         return $this->belongsTo(Employee::class, 'first_approver_id');
+    }
+
+    public function holidayStatus(): BelongsTo
+    {
+        return $this->belongsTo(LeaveType::class, 'holiday_status_id');
+    }
+
+    public function manager(): BelongsTo
+    {
+        return $this->belongsTo(Employee::class, 'manager_id');
     }
 
     public function secondApprover(): BelongsTo
@@ -136,8 +158,46 @@ class Leave extends Model
         return $this->belongsTo(Employee::class, 'second_approver_id');
     }
 
-    public function createdBy(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'creator_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
 }

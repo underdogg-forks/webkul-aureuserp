@@ -2,19 +2,34 @@
 
 namespace Modules\Core\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Modules\Core\Database\Factories\DepartureReasonFactory;
 use Modules\Core\Traits\HasCustomFields;
 use Modules\Core\Models\User;
-
-class DepartureReason extends Model implements Sortable
+class DepartureReason extends BaseModel implements Sortable
 {
     use HasCustomFields;
+
     use HasFactory;
+
     use SortableTrait;
+
+    public $timestamps = false;
+
+    protected $casts = [];
+    /**
+     * protected $fillable = [
+     * 'sort',
+     * 'reason_code',
+     * 'creator_id',
+     * 'name',
+     * ];
+     */
+    protected $guarded = [];
 
     public $sortable = [
         'order_column_name'  => 'sort',
@@ -23,12 +38,21 @@ class DepartureReason extends Model implements Sortable
 
     protected $table = 'employees_departure_reasons';
 
-    protected $fillable = [
-        'sort',
-        'reason_code',
-        'creator_id',
-        'name',
-    ];
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     public function createdBy()
     {
@@ -40,6 +64,42 @@ class DepartureReason extends Model implements Sortable
         return $this->hasMany(Employee::class);
     }
 
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
     /**
      * Get the factory instance for the model.
      */
@@ -47,4 +107,6 @@ class DepartureReason extends Model implements Sortable
     {
         return DepartureReasonFactory::new();
     }
+
+    #endregion
 }

@@ -2,28 +2,41 @@
 
 namespace Modules\Core\Models;
 
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
-
-class Attachment extends Model
+class Attachment extends BaseModel
 {
+    public $timestamps = false;
+
+    protected $casts = [];
+    /**
+     * protected $fillable = [
+     * 'company_id',
+     * 'creator_id',
+     * 'message_id',
+     * 'file_size',
+     * 'name',
+     * 'messageable',
+     * 'file_path',
+     * 'original_file_name',
+     * 'mime_type',
+     * ];
+     */
+    protected $guarded = [];
+
     protected $table = 'chatter_attachments';
 
-    protected $fillable = [
-        'company_id',
-        'creator_id',
-        'message_id',
-        'file_size',
-        'name',
-        'messageable',
-        'file_path',
-        'original_file_name',
-        'mime_type',
-    ];
-
     protected $appends = ['url'];
+
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
 
     public static function boot()
     {
@@ -41,9 +54,18 @@ class Attachment extends Model
         });
     }
 
-    public function messageable()
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
+    public function company()
     {
-        return $this->morphTo();
+        return $this->belongsTo(Company::class, 'company_id');
     }
 
     public function createdBy()
@@ -51,18 +73,56 @@ class Attachment extends Model
         return $this->belongsTo(User::class, 'creator_id');
     }
 
-    public function company()
+    public function message()
     {
-        return $this->belongsTo(Company::class, 'company_id');
+        return $this->belongsTo(Message::class, 'message_id');
     }
+
+    public function messageable()
+    {
+        return $this->morphTo();
+    }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
 
     public function getUrlAttribute(): string
     {
         return Storage::url($this->file_path);
     }
 
-    public function message()
-    {
-        return $this->belongsTo(Message::class, 'message_id');
-    }
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
 }

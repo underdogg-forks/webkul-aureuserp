@@ -2,19 +2,41 @@
 
 namespace Modules\Products\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Modules\Products\Database\Factories\PackageTypeFactory;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
-
-class PackageType extends Model implements Sortable
+class PackageType extends BaseModel implements Sortable
 {
     use HasFactory;
+
     use SortableTrait;
+
+    public $timestamps = false;
+
+    protected $casts = [];
+    /**
+     * protected $fillable = [
+     * 'name',
+     * 'sort',
+     * 'barcode',
+     * 'height',
+     * 'width',
+     * 'length',
+     * 'base_weight',
+     * 'max_weight',
+     * 'shipper_package_code',
+     * 'package_carrier_type',
+     * 'company_id',
+     * 'creator_id',
+     * ];
+     */
+    protected $guarded = [];
 
     public $sortable = [
         'order_column_name'  => 'sort',
@@ -28,25 +50,21 @@ class PackageType extends Model implements Sortable
      */
     protected $table = 'inventories_package_types';
 
-    /**
-     * Fillable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'sort',
-        'barcode',
-        'height',
-        'width',
-        'length',
-        'base_weight',
-        'max_weight',
-        'shipper_package_code',
-        'package_carrier_type',
-        'company_id',
-        'creator_id',
-    ];
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     public function company(): BelongsTo
     {
@@ -58,8 +76,46 @@ class PackageType extends Model implements Sortable
         return $this->belongsTo(User::class);
     }
 
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
     protected static function newFactory(): PackageTypeFactory
     {
         return PackageTypeFactory::new();
     }
+
+    #endregion
 }

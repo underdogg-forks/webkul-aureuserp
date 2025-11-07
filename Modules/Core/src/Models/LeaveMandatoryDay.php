@@ -2,30 +2,52 @@
 
 namespace Modules\Core\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
-
-class LeaveMandatoryDay extends Model
+class LeaveMandatoryDay extends BaseModel
 {
     use HasFactory;
 
-    protected $table = 'time_off_leave_mandatory_days';
+    public $timestamps = false;
 
-    protected $fillable = [
-        'company_id',
-        'creator_id',
-        'color',
-        'name',
-        'start_date',
-        'end_date',
-    ];
+    protected $casts = [];
+    /**
+     * protected $fillable = [
+     * 'company_id',
+     * 'creator_id',
+     * 'color',
+     * 'name',
+     * 'start_date',
+     * 'end_date',
+     * ];
+     */
+    protected $guarded = [];
+
+    protected $table = 'time_off_leave_mandatory_days';
 
     protected $dates = [
         'start_date',
         'end_date',
     ];
+
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     public function company()
     {
@@ -36,4 +58,42 @@ class LeaveMandatoryDay extends Model
     {
         return $this->belongsTo(User::class, 'creator_id');
     }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
 }

@@ -2,8 +2,9 @@
 
 namespace Modules\Projects\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -12,12 +13,38 @@ use Spatie\EloquentSortable\SortableTrait;
 use Modules\Projects\Database\Factories\TaskStageFactory;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
-
-class TaskStage extends Model implements Sortable
+class TaskStage extends BaseModel implements Sortable
 {
     use HasFactory;
+
     use SoftDeletes;
+
     use SortableTrait;
+
+    public $timestamps = false;
+
+    /**
+     * Table name.
+     *
+     * @var string
+     */
+    protected $casts = [
+        'is_active'    => 'boolean',
+        'is_collapsed' => 'boolean',
+    ];
+    /**
+     * protected $fillable = [
+     * 'name',
+     * 'is_active',
+     * 'is_collapsed',
+     * 'sort',
+     * 'project_id',
+     * 'company_id',
+     * 'user_id',
+     * 'creator_id',
+     * ];
+     */
+    protected $guarded = [];
 
     public $sortable = [
         'order_column_name'  => 'sort',
@@ -31,31 +58,31 @@ class TaskStage extends Model implements Sortable
      */
     protected $table = 'projects_task_stages';
 
-    /**
-     * Fillable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'is_active',
-        'is_collapsed',
-        'sort',
-        'project_id',
-        'company_id',
-        'user_id',
-        'creator_id',
-    ];
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
 
-    /**
-     * Table name.
-     *
-     * @var string
-     */
-    protected $casts = [
-        'is_active'    => 'boolean',
-        'is_collapsed' => 'boolean',
-    ];
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    public function creator(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function project(): BelongsTo
     {
@@ -72,18 +99,46 @@ class TaskStage extends Model implements Sortable
         return $this->belongsTo(User::class);
     }
 
-    public function creator(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
+    #endregion
 
-    public function company(): BelongsTo
-    {
-        return $this->belongsTo(Company::class);
-    }
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
 
     protected static function newFactory(): TaskStageFactory
     {
         return TaskStageFactory::new();
     }
+
+    #endregion
 }
