@@ -1,6 +1,6 @@
 # Filament Resources Testing Status
 
-## Completed Tests (13 resources)
+## Completed Tests (15 resources)
 
 ✅ **Payment** - `tests/Feature/Modules/Payments/PaymentCrudTest.php`
 - Covers: Modules/Core/src/Filament/Resources/PaymentsResource.php
@@ -42,9 +42,17 @@
 - Covers: Modules/Core/src/Filament/Resources/TeamResource.php
 - Table: teams
 
+✅ **Journal** - `tests/Feature/Modules/Core/JournalCrudTest.php`
+- Covers: Modules/Core/src/Filament/Resources/JournalResource.php
+- Table: accounts_journals
+
 ✅ **Vendor** - `tests/Feature/Modules/Expenses/VendorCrudTest.php`
 - Covers: Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/VendorResource.php
 - Table: partners_partners (sub_type='vendor')
+
+✅ **Quotation** - `tests/Feature/Modules/Invoices/QuotationCrudTest.php`
+- Covers: Modules/Invoices/src/Filament/Clusters/Orders/Resources/QuotationResource.php
+- Table: sales_orders (state=DRAFT or SENT)
 
 ✅ **SalesOrder** - `tests/Feature/Modules/Invoices/SalesOrderCrudTest.php`
 - Covers: Modules/Invoices/src/Filament/Clusters/Orders/Resources/OrderResource.php
@@ -61,7 +69,7 @@
 - [x] **CreditNote** - `Modules/Core/src/Filament/Resources/CreditNoteResource.php` ✅
 - [x] **Refund** - `Modules/Core/src/Filament/Resources/RefundResource.php` ✅
 - [ ] **Account** - `Modules/Core/src/Filament/Resources/AccountResource.php`
-- [ ] **Journal** - `Modules/Core/src/Filament/Resources/JournalResource.php`
+- [x] **Journal** - `Modules/Core/src/Filament/Resources/JournalResource.php` ✅
 
 ### Core Module (Business Critical)
 - [x] **Company** - `Modules/Core/src/Filament/Resources/CompanyResource.php` ✅
@@ -72,7 +80,7 @@
 - [ ] **Role** - `Modules/Core/src/Filament/Resources/RoleResource.php`
 
 ### Invoices Module
-- [ ] **Quotation** - `Modules/Invoices/src/Filament/Clusters/Orders/Resources/QuotationResource.php`
+- [x] **Quotation** - `Modules/Invoices/src/Filament/Clusters/Orders/Resources/QuotationResource.php` ✅
 - [ ] **OrderToInvoice** - `Modules/Invoices/src/Filament/Clusters/ToInvoice/Resources/OrderToInvoiceResource.php`
 - [ ] **OrderToUpsell** - `Modules/Invoices/src/Filament/Clusters/ToInvoice/Resources/OrderToUpsellResource.php`
 
