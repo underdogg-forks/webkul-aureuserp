@@ -341,7 +341,16 @@ class PluginResource extends Resource
         collect($fileNames)
             ->reverse()
             ->each(function ($file) use ($pluginName, $type) {
-                $path = base_path("plugins/webkul/{$pluginName}/database/{$type}/{$file}.php");
+                // Try to find database files in new module structure
+                $modulePath = base_path("Modules/*/{$pluginName}/database/{$type}/{$file}.php");
+                $moduleFiles = glob($modulePath);
+                
+                if (!empty($moduleFiles)) {
+                    $path = $moduleFiles[0];
+                } else {
+                    // Fallback to old location
+                    $path = base_path("plugins/webkul/{$pluginName}/database/{$type}/{$file}.php");
+                }
 
                 if ( ! file_exists($path)) {
                     return;
