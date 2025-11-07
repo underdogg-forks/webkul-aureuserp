@@ -36,22 +36,22 @@ class CoreServiceProvider extends ServiceProvider
     {
         $this->app->register(EventServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
-        $this->app->register(\Modules\Core\AccountServiceProvider::class);
-        $this->app->register(\Modules\Core\AnalyticServiceProvider::class);
-        $this->app->register(\Modules\Core\BlogServiceProvider::class);
-        $this->app->register(\Modules\Core\ChatterServiceProvider::class);
-        $this->app->register(\Modules\Core\EmployeeServiceProvider::class);
-        $this->app->register(\Modules\Core\FieldServiceProvider::class);
-        $this->app->register(\Modules\Core\FullCalendarServiceProvider::class);
-        $this->app->register(\Modules\Core\InvoiceServiceProvider::class);
-        $this->app->register(\Modules\Core\PluginManagerServiceProvider::class);
-        $this->app->register(\Modules\Core\ProductServiceProvider::class);
-        $this->app->register(\Modules\Core\RecruitmentServiceProvider::class);
-        $this->app->register(\Modules\Core\SecurityServiceProvider::class);
-        $this->app->register(\Modules\Core\SupportServiceProvider::class);
-        $this->app->register(\Modules\Core\TableViewsServiceProvider::class);
-        $this->app->register(\Modules\Core\TimeOffServiceProvider::class);
-        $this->app->register(\Modules\Core\WebsiteServiceProvider::class);
+        $this->app->register(\Modules\Core\Providers\AccountServiceProvider::class);
+        $this->app->register(\Modules\Core\Providers\AnalyticServiceProvider::class);
+        $this->app->register(\Modules\Core\Providers\BlogServiceProvider::class);
+        $this->app->register(\Modules\Core\Providers\ChatterServiceProvider::class);
+        $this->app->register(\Modules\Core\Providers\EmployeeServiceProvider::class);
+        $this->app->register(\Modules\Core\Providers\FieldServiceProvider::class);
+        $this->app->register(\Modules\Core\Providers\FullCalendarServiceProvider::class);
+        $this->app->register(\Modules\Core\Providers\InvoiceServiceProvider::class);
+        $this->app->register(\Modules\Core\Providers\PluginManagerServiceProvider::class);
+        $this->app->register(\Modules\Core\Providers\ProductServiceProvider::class);
+        $this->app->register(\Modules\Core\Providers\RecruitmentServiceProvider::class);
+        $this->app->register(\Modules\Core\Providers\SecurityServiceProvider::class);
+        $this->app->register(\Modules\Core\Providers\SupportServiceProvider::class);
+        $this->app->register(\Modules\Core\Providers\TableViewsServiceProvider::class);
+        $this->app->register(\Modules\Core\Providers\TimeOffServiceProvider::class);
+        $this->app->register(\Modules\Core\Providers\WebsiteServiceProvider::class);
     }
 
     /**

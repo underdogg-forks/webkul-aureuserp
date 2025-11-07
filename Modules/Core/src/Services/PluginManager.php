@@ -60,18 +60,18 @@ class PluginManager implements Plugin
 
         foreach ($modules as $modulePath) {
             $moduleName = basename($modulePath);
-            $srcPath = $modulePath . '/src';
+            $providersPath = $modulePath . '/src/Providers';
 
-            if (!File::exists($srcPath)) {
+            if (!File::exists($providersPath)) {
                 continue;
             }
 
-            // Look for *ServiceProvider.php files in the src directory
-            $files = File::glob($srcPath . '/*ServiceProvider.php');
+            // Look for *ServiceProvider.php files in the src/Providers directory
+            $files = File::glob($providersPath . '/*ServiceProvider.php');
 
             foreach ($files as $file) {
                 $className = basename($file, '.php');
-                $serviceProviderClass = "Modules\\{$moduleName}\\{$className}";
+                $serviceProviderClass = "Modules\\{$moduleName}\\Providers\\{$className}";
 
                 if (class_exists($serviceProviderClass)) {
                     $serviceProviders[] = $serviceProviderClass;

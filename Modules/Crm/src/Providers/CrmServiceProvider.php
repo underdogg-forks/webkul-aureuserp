@@ -36,8 +36,8 @@ class CrmServiceProvider extends ServiceProvider
     {
         $this->app->register(EventServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
-        $this->app->register(\Modules\Crm\ContactServiceProvider::class);
-        $this->app->register(\Modules\Crm\PartnerServiceProvider::class);
+        $this->app->register(\Modules\Crm\Providers\ContactServiceProvider::class);
+        $this->app->register(\Modules\Crm\Providers\PartnerServiceProvider::class);
     }
 
     /**
