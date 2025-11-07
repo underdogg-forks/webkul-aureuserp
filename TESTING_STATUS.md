@@ -1,6 +1,6 @@
 # Filament Resources Testing Status
 
-## Completed Tests (17 resources)
+## Completed Tests (19 resources)
 
 ✅ **Payment** - `tests/Feature/Modules/Payments/PaymentCrudTest.php`
 - Covers: Modules/Core/src/Filament/Resources/PaymentsResource.php
@@ -38,6 +38,10 @@
 - Covers: Modules/Core/src/Filament/Resources/UserResource.php
 - Table: users
 
+✅ **Employee** - `tests/Feature/Modules/Core/EmployeeCrudTest.php`
+- Covers: Modules/Core/src/Filament/Resources/EmployeeResource.php
+- Table: employees_employees
+
 ✅ **Team** - `tests/Feature/Modules/Core/TeamCrudTest.php`
 - Covers: Modules/Core/src/Filament/Resources/TeamResource.php
 - Table: teams
@@ -57,6 +61,10 @@
 ✅ **CRM Partner** - `tests/Feature/Modules/Crm/PartnerCrudTest.php`
 - Covers: Modules/Crm/src/Filament/Resources/PartnerResource.php
 - Table: partners_partners
+
+✅ **Bank** - `tests/Feature/Modules/Crm/BankCrudTest.php`
+- Covers: Modules/Crm/src/Filament/Resources/BankResource.php
+- Table: banks
 
 ✅ **Quotation** - `tests/Feature/Modules/Invoices/QuotationCrudTest.php`
 - Covers: Modules/Invoices/src/Filament/Clusters/Orders/Resources/QuotationResource.php
@@ -82,8 +90,8 @@
 ### Core Module (Business Critical)
 - [x] **Company** - `Modules/Core/src/Filament/Resources/CompanyResource.php` ✅
 - [x] **User** - `Modules/Core/src/Filament/Resources/UserResource.php` ✅
-- [ ] **Employee** - `Modules/Core/src/Filament/Resources/EmployeeResource.php`
-- [ ] **Department** - `Modules/Core/src/Filament/Resources/DepartmentResource.php`
+- [x] **Employee** - `Modules/Core/src/Filament/Resources/EmployeeResource.php` ✅
+- [ ] **Department** - `Modules/Core/src/Filament/Resources/DepartmentResource.php` (already has test)
 - [x] **Team** - `Modules/Core/src/Filament/Resources/TeamResource.php` ✅
 - [ ] **Role** - `Modules/Core/src/Filament/Resources/RoleResource.php`
 
@@ -100,7 +108,7 @@
 
 ### CRM Module
 - [x] **Partner** - `Modules/Crm/src/Filament/Resources/PartnerResource.php` ✅
-- [ ] **Bank** - `Modules/Crm/src/Filament/Resources/BankResource.php`
+- [x] **Bank** - `Modules/Crm/src/Filament/Resources/BankResource.php` ✅
 - [ ] **BankAccount** - `Modules/Crm/src/Filament/Resources/BankAccountResource.php`
 - [ ] **Address** - `Modules/Crm/src/Filament/Resources/AddressResource.php`
 
