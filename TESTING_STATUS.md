@@ -1,6 +1,6 @@
 # Filament Resources Testing Status
 
-## Completed Tests (24 resources)
+## Completed Tests (28 resources)
 
 ✅ **Payment** - `tests/Feature/Modules/Payments/PaymentCrudTest.php`
 - Covers: Modules/Core/src/Filament/Resources/PaymentsResource.php
@@ -98,6 +98,22 @@
 - Covers: Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/QuotationResource.php
 - Table: purchases_orders (state=DRAFT or SENT)
 
+✅ **Task** - `tests/Feature/Modules/Projects/TaskCrudTest.php`
+- Covers: Modules/Projects/src/Filament/Resources/TaskResource.php
+- Table: projects_tasks
+
+✅ **Timesheet** - `tests/Feature/Modules/Projects/TimesheetCrudTest.php`
+- Covers: Modules/Projects/src/Filament/Resources/TimesheetResource.php
+- Table: timesheets
+
+✅ **OrderToInvoice** - `tests/Feature/Modules/Invoices/OrderToInvoiceCrudTest.php`
+- Covers: Modules/Invoices/src/Filament/Clusters/ToInvoice/Resources/OrderToInvoiceResource.php
+- Table: sales_orders (invoice_status=TO_INVOICE)
+
+✅ **OrderToUpsell** - `tests/Feature/Modules/Invoices/OrderToUpsellCrudTest.php`
+- Covers: Modules/Invoices/src/Filament/Clusters/ToInvoice/Resources/OrderToUpsellResource.php
+- Table: sales_orders (invoice_status=UPSELLING)
+
 ## High-Priority Resources Needing Tests
 
 ### Core Module (Financial/Critical)
@@ -117,8 +133,8 @@
 
 ### Invoices Module
 - [x] **Quotation** - `Modules/Invoices/src/Filament/Clusters/Orders/Resources/QuotationResource.php` ✅
-- [ ] **OrderToInvoice** - `Modules/Invoices/src/Filament/Clusters/ToInvoice/Resources/OrderToInvoiceResource.php`
-- [ ] **OrderToUpsell** - `Modules/Invoices/src/Filament/Clusters/ToInvoice/Resources/OrderToUpsellResource.php`
+- [x] **OrderToInvoice** - `Modules/Invoices/src/Filament/Clusters/ToInvoice/Resources/OrderToInvoiceResource.php` ✅
+- [x] **OrderToUpsell** - `Modules/Invoices/src/Filament/Clusters/ToInvoice/Resources/OrderToUpsellResource.php` ✅
 
 ### Expenses Module
 - [x] **Order** - `Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/OrderResource.php` ✅
@@ -134,8 +150,8 @@
 
 ### Projects Module
 - [ ] **Project** - `Modules/Projects/src/Filament/Resources/ProjectResource.php` (has existing test)
-- [ ] **Task** - `Modules/Projects/src/Filament/Resources/TaskResource.php`
-- [ ] **Timesheet** - `Modules/Projects/src/Filament/Resources/TimesheetResource.php`
+- [x] **Task** - `Modules/Projects/src/Filament/Resources/TaskResource.php` ✅
+- [x] **Timesheet** - `Modules/Projects/src/Filament/Resources/TimesheetResource.php` ✅
 
 ### Products Module (Operations)
 - [ ] **Lot** - `Modules/Products/src/Filament/Clusters/Products/Resources/LotResource.php`
