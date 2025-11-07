@@ -1,6 +1,6 @@
 # Filament Resources Testing Status
 
-## Completed Tests (6 resources)
+## Completed Tests (9 resources)
 
 ✅ **Payment** - `tests/Feature/Modules/Payments/PaymentCrudTest.php`
 - Covers: Modules/Core/src/Filament/Resources/PaymentsResource.php
@@ -14,6 +14,15 @@
 ✅ **Invoice** - `tests/Feature/Modules/Core/InvoiceCrudTest.php`
 - Covers: Modules/Core/src/Filament/Resources/InvoiceResource.php
 
+✅ **Bill** - `tests/Feature/Modules/Core/BillCrudTest.php`
+- Covers: Modules/Core/src/Filament/Resources/BillResource.php
+
+✅ **CreditNote** - `tests/Feature/Modules/Core/CreditNoteCrudTest.php`
+- Covers: Modules/Core/src/Filament/Resources/CreditNoteResource.php
+
+✅ **Refund** - `tests/Feature/Modules/Core/RefundCrudTest.php`
+- Covers: Modules/Core/src/Filament/Resources/RefundResource.php
+
 ✅ **SalesOrder** - `tests/Feature/Modules/Invoices/SalesOrderCrudTest.php`
 - Covers: Modules/Invoices/src/Filament/Clusters/Orders/Resources/OrderResource.php
 
@@ -23,9 +32,9 @@
 ## High-Priority Resources Needing Tests
 
 ### Core Module (Financial/Critical)
-- [ ] **Bill** - `Modules/Core/src/Filament/Resources/BillResource.php`
-- [ ] **CreditNote** - `Modules/Core/src/Filament/Resources/CreditNoteResource.php`
-- [ ] **Refund** - `Modules/Core/src/Filament/Resources/RefundResource.php`
+- [x] **Bill** - `Modules/Core/src/Filament/Resources/BillResource.php` ✅
+- [x] **CreditNote** - `Modules/Core/src/Filament/Resources/CreditNoteResource.php` ✅
+- [x] **Refund** - `Modules/Core/src/Filament/Resources/RefundResource.php` ✅
 - [ ] **Account** - `Modules/Core/src/Filament/Resources/AccountResource.php`
 - [ ] **Journal** - `Modules/Core/src/Filament/Resources/JournalResource.php`
 
