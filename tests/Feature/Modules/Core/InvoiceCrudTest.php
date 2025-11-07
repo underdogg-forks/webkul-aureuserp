@@ -143,7 +143,7 @@ class InvoiceCrudTest extends TestCase
             ->callMountedAction();
 
         /* Assert */
-        $this->assertDatabaseHas('accounts_moves', [
+        $this->assertDatabaseHas('accounts_account_moves', [
             'partner_id' => $payload['partner_id'],
             'move_type'  => MoveType::OUT_INVOICE->value,
         ]);
@@ -180,7 +180,7 @@ class InvoiceCrudTest extends TestCase
             ->callMountedAction();
 
         /* Assert */
-        $this->assertDatabaseHas('accounts_moves', [
+        $this->assertDatabaseHas('accounts_account_moves', [
             'id'             => $invoice->id,
             'invoice_origin' => $payload['invoice_origin'],
         ]);
@@ -211,7 +211,7 @@ class InvoiceCrudTest extends TestCase
             ->callMountedAction();
 
         /* Assert */
-        $this->assertDatabaseMissing('accounts_moves', [
+        $this->assertDatabaseMissing('accounts_account_moves', [
             'id' => $invoice->id,
         ]);
     }
