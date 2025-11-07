@@ -2,6 +2,8 @@
 
 namespace Modules\Core;
 
+use Filament\Panel;
+
 use Filament\Support\Assets\Css;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentView;
@@ -18,6 +20,8 @@ use Modules\Core\Console\Commands\RepairERP;
 
 class SupportServiceProvider extends PackageServiceProvider
 {
+    use HasFilamentDiscovery;
+
     public static string $name = 'support';
 
     public static string $viewNamespace = 'support';
@@ -117,5 +121,38 @@ class SupportServiceProvider extends PackageServiceProvider
                 'version' => $version,
             ]),
         );
+    }
+
+    /**
+     * Register Filament panel resources
+     */
+    public function registerFilamentPanel(Panel $panel): void
+    {
+        if (!Package::isPluginInstalled(static::$name)) {
+            return;
+        }
+
+        $panel->when($panel->getId() === 'admin', function (Panel $panel) {
+            $basePath = $this->getModuleBasePath();
+            $namespace = $this->getModuleNamespace();
+
+            $panel
+                ->discoverResources(
+                    in: $basePath . '/Filament/Resources',
+                    for: $namespace . '\Filament\Resources'
+                )
+                ->discoverPages(
+                    in: $basePath . '/Filament/Pages',
+                    for: $namespace . '\Filament\Pages'
+                )
+                ->discoverClusters(
+                    in: $basePath . '/Filament/Clusters',
+                    for: $namespace . '\Filament\Clusters'
+                )
+                ->discoverWidgets(
+                    in: $basePath . '/Filament/Widgets',
+                    for: $namespace . '\Filament\Widgets'
+                );
+        });
     }
 }

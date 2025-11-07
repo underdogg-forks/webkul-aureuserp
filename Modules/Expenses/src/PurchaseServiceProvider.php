@@ -2,6 +2,8 @@
 
 namespace Modules\Expenses;
 
+use Filament\Panel;
+use Filament\Navigation\NavigationItem;
 use Illuminate\Foundation\AliasLoader;
 use Livewire\Livewire;
 use Modules\Expenses\Facades\PurchaseOrder as PurchaseOrderFacade;
@@ -11,10 +13,14 @@ use Modules\Core\Console\Commands\InstallCommand;
 use Modules\Core\Console\Commands\UninstallCommand;
 use Modules\Core\Package;
 use Modules\Core\PackageServiceProvider;
+use Modules\Core\Traits\HasFilamentDiscovery;
 use Modules\Expenses\Services\PurchaseOrder;
+use Modules\Expenses\Filament\Admin\Clusters\Settings\Pages\ManageProducts;
 
 class PurchaseServiceProvider extends PackageServiceProvider
 {
+    use HasFilamentDiscovery;
+
     public static string $name = 'purchases';
 
     public static string $viewNamespace = 'purchases';
@@ -73,5 +79,66 @@ class PurchaseServiceProvider extends PackageServiceProvider
         $loader->alias('purchase_order', PurchaseOrderFacade::class);
 
         $this->app->singleton('purchase_order', PurchaseOrder::class);
+    }
+
+    /**
+     * Register Filament panel resources
+     */
+    public function registerFilamentPanel(Panel $panel): void
+    {
+        if (!Package::isPluginInstalled(static::$name)) {
+            return;
+        }
+
+        $basePath = $this->getModuleBasePath();
+        $namespace = $this->getModuleNamespace();
+
+        $panel->when($panel->getId() === 'customer', function (Panel $panel) use ($basePath, $namespace) {
+            $panel
+                ->discoverResources(
+                    in: $basePath . '/Filament/Customer/Resources',
+                    for: $namespace . '\\Filament\\Customer\\Resources'
+                )
+                ->discoverPages(
+                    in: $basePath . '/Filament/Customer/Pages',
+                    for: $namespace . '\\Filament\\Customer\\Pages'
+                )
+                ->discoverClusters(
+                    in: $basePath . '/Filament/Customer/Clusters',
+                    for: $namespace . '\\Filament\\Customer\\Clusters'
+                )
+                ->discoverWidgets(
+                    in: $basePath . '/Filament/Customer/Widgets',
+                    for: $namespace . '\\Filament\\Customer\\Widgets'
+                );
+        });
+
+        $panel->when($panel->getId() === 'admin', function (Panel $panel) use ($basePath, $namespace) {
+            $panel
+                ->discoverResources(
+                    in: $basePath . '/Filament/Admin/Resources',
+                    for: $namespace . '\\Filament\\Admin\\Resources'
+                )
+                ->discoverPages(
+                    in: $basePath . '/Filament/Admin/Pages',
+                    for: $namespace . '\\Filament\\Admin\\Pages'
+                )
+                ->discoverClusters(
+                    in: $basePath . '/Filament/Admin/Clusters',
+                    for: $namespace . '\\Filament\\Admin\\Clusters'
+                )
+                ->discoverWidgets(
+                    in: $basePath . '/Filament/Admin/Widgets',
+                    for: $namespace . '\\Filament\\Admin\\Widgets'
+                )
+                ->navigationItems([
+                    NavigationItem::make('settings')
+                        ->label(fn () => __('purchases::app.navigation.settings.label'))
+                        ->url(fn () => ManageProducts::getUrl())
+                        ->group('Purchase')
+                        ->sort(4)
+                        ->visible(fn () => ManageProducts::canAccess()),
+                ]);
+        });
     }
 }

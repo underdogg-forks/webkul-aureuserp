@@ -2,6 +2,8 @@
 
 namespace Modules\Invoices;
 
+use Filament\Panel;
+use Filament\Navigation\NavigationItem;
 use Illuminate\Foundation\AliasLoader;
 use Livewire\Livewire;
 use Modules\Invoices\Facades\SaleOrder as SaleOrderFacade;
@@ -10,10 +12,14 @@ use Modules\Core\Console\Commands\InstallCommand;
 use Modules\Core\Console\Commands\UninstallCommand;
 use Modules\Core\Package;
 use Modules\Core\PackageServiceProvider;
+use Modules\Core\Traits\HasFilamentDiscovery;
 use Modules\Invoices\Services\SaleManager;
+use Modules\Invoices\Filament\Clusters\Settings\Pages\ManageProducts;
 
 class SaleServiceProvider extends PackageServiceProvider
 {
+    use HasFilamentDiscovery;
+
     public static string $name = 'sales';
 
     public static string $viewNamespace = 'sales';
@@ -80,5 +86,46 @@ class SaleServiceProvider extends PackageServiceProvider
         $loader->alias('sale', SaleOrderFacade::class);
 
         $this->app->singleton('sale', SaleManager::class);
+    }
+
+    /**
+     * Register Filament panel resources
+     */
+    public function registerFilamentPanel(Panel $panel): void
+    {
+        if (!Package::isPluginInstalled(static::$name)) {
+            return;
+        }
+
+        $panel->when($panel->getId() === 'admin', function (Panel $panel) {
+            $basePath = $this->getModuleBasePath();
+            $namespace = $this->getModuleNamespace();
+
+            $panel
+                ->discoverResources(
+                    in: $basePath . '/Filament/Resources',
+                    for: $namespace . '\\Filament\\Resources'
+                )
+                ->discoverPages(
+                    in: $basePath . '/Filament/Pages',
+                    for: $namespace . '\\Filament\\Pages'
+                )
+                ->discoverClusters(
+                    in: $basePath . '/Filament/Clusters',
+                    for: $namespace . '\\Filament\\Clusters'
+                )
+                ->discoverWidgets(
+                    in: $basePath . '/Filament/Widgets',
+                    for: $namespace . '\\Filament\\Widgets'
+                )
+                ->navigationItems([
+                    NavigationItem::make('settings')
+                        ->label(fn () => __('sales::app.navigation.settings.label'))
+                        ->url(fn () => ManageProducts::getUrl())
+                        ->group('Sales')
+                        ->sort(4)
+                        ->visible(fn () => ManageProducts::canAccess()),
+                ]);
+        });
     }
 }
