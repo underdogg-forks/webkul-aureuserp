@@ -1,0 +1,18 @@
+{
+    "name": "modules/invoices",
+    "description": "Invoices Module for AureusERP",
+    "type": "laravel-module",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Modules\\Invoices\\": "app/",
+            "Modules\\Invoices\\Database\\Factories\\": "database/factories/",
+            "Modules\\Invoices\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Invoices\\Tests\\": "tests/"
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "name": "Products",
+    "alias": "products",
+    "description": "Products module with inventory management",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Products\\Providers\\ProductsServiceProvider"
+    ],
+    "files": []
+}

@@ -1,0 +1,11 @@
+{
+    "name": "Crm",
+    "alias": "crm",
+    "description": "CRM module with contacts and partners management",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Crm\\Providers\\CrmServiceProvider"
+    ],
+    "files": []
+}
