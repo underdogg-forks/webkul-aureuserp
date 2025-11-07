@@ -2,8 +2,9 @@
 
 namespace Modules\Core\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use InvalidArgumentException;
@@ -11,12 +12,27 @@ use Modules\Core\Traits\HasChatter;
 use Modules\Core\Traits\HasLogActivity;
 use Modules\Core\Database\Factories\CategoryFactory;
 use Modules\Core\Models\User;
-
-class Category extends Model
+class Category extends BaseModel
 {
     use HasChatter;
+
     use HasFactory;
+
     use HasLogActivity;
+
+    public $timestamps = false;
+
+    protected $casts = [];
+    /**
+     * protected $fillable = [
+     * 'name',
+     * 'full_name',
+     * 'parent_path',
+     * 'parent_id',
+     * 'creator_id',
+     * ];
+     */
+    protected $guarded = [];
 
     /**
      * Table name.
@@ -24,19 +40,6 @@ class Category extends Model
      * @var string
      */
     protected $table = 'products_categories';
-
-    /**
-     * Fillable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'full_name',
-        'parent_path',
-        'parent_id',
-        'creator_id',
-    ];
 
     protected $logAttributes = [
         'name',
@@ -46,30 +49,12 @@ class Category extends Model
         'creator.name' => 'Creator',
     ];
 
-    public function parent(): BelongsTo
-    {
-        return $this->belongsTo(self::class);
-    }
-
-    public function children(): HasMany
-    {
-        return $this->hasMany(self::class, 'parent_id');
-    }
-
-    public function products(): HasMany
-    {
-        return $this->hasMany(Product::class);
-    }
-
-    public function creator(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function priceRuleItems(): HasMany
-    {
-        return $this->hasMany(PriceRuleItem::class);
-    }
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
 
     protected static function boot()
     {
@@ -164,8 +149,80 @@ class Category extends Model
         return implode(' / ', $names);
     }
 
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
+    public function children(): HasMany
+    {
+        return $this->hasMany(self::class, 'parent_id');
+    }
+
+    public function creator(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function parent(): BelongsTo
+    {
+        return $this->belongsTo(self::class);
+    }
+
+    public function priceRuleItems(): HasMany
+    {
+        return $this->hasMany(PriceRuleItem::class);
+    }
+
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
     protected static function newFactory(): CategoryFactory
     {
         return CategoryFactory::new();
     }
+
+    #endregion
 }

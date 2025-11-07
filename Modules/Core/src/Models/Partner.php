@@ -2,10 +2,21 @@
 
 namespace Modules\Core\Models;
 
+use App\Models\BaseModel;
+use Illuminate\Database\Eloquent\Model;
 use Modules\Crm\Models\Partner as BasePartner;
-
-class Partner extends BasePartner
+class Partner extends BaseModel
 {
+    public $timestamps = false;
+
+    protected $casts = [];
+    /**
+     * protected $fillable = [
+     * //
+     * ];
+     */
+    protected $guarded = [];
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -15,6 +26,31 @@ class Partner extends BasePartner
         'password',
         'remember_token',
     ];
+
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
 
     /**
      * Create a new Eloquent model instance.
@@ -35,4 +71,33 @@ class Partner extends BasePartner
 
         parent::__construct($attributes);
     }
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
 }

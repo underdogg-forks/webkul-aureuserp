@@ -2,19 +2,39 @@
 
 namespace Modules\Core\Models;
 
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Core\Models\Product;
-
-class ProductTaxes extends Model
+class ProductTaxes extends BaseModel
 {
     public $timestamps = false;
 
+    protected $casts = [];
+    /**
+     * protected $fillable = [
+     * 'product_id',
+     * 'tax_id',
+     * ];
+     */
+    protected $guarded = [];
+
     protected $table = 'accounts_product_taxes';
 
-    protected $fillable = [
-        'product_id',
-        'tax_id',
-    ];
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     public function product()
     {
@@ -25,4 +45,42 @@ class ProductTaxes extends Model
     {
         return $this->belongsTo(Tax::class, 'tax_id');
     }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
 }

@@ -2,8 +2,9 @@
 
 namespace Modules\Products\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
@@ -11,32 +12,11 @@ use Modules\Products\Database\Factories\PackageFactory;
 use Modules\Products\Enums\PackageUse;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
-
-class Package extends Model
+class Package extends BaseModel
 {
     use HasFactory;
 
-    /**
-     * Table name.
-     *
-     * @var string
-     */
-    protected $table = 'inventories_packages';
-
-    /**
-     * Fillable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'package_use',
-        'pack_date',
-        'package_type_id',
-        'location_id',
-        'company_id',
-        'creator_id',
-    ];
+    public $timestamps = false;
 
     /**
      * Table name.
@@ -47,10 +27,50 @@ class Package extends Model
         'package_use' => PackageUse::class,
         'pack_date'   => 'date',
     ];
+    /**
+     * protected $fillable = [
+     * 'name',
+     * 'package_use',
+     * 'pack_date',
+     * 'package_type_id',
+     * 'location_id',
+     * 'company_id',
+     * 'creator_id',
+     * ];
+     */
+    protected $guarded = [];
 
-    public function packageType(): BelongsTo
+    /**
+     * Table name.
+     *
+     * @var string
+     */
+    protected $table = 'inventories_packages';
+
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
+    public function company(): BelongsTo
     {
-        return $this->belongsTo(PackageType::class);
+        return $this->belongsTo(Company::class);
+    }
+
+    public function creator(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function location(): BelongsTo
@@ -58,21 +78,9 @@ class Package extends Model
         return $this->belongsTo(Location::class);
     }
 
-    public function quantities(): HasMany
+    public function moveLines(): HasMany
     {
-        return $this->hasMany(ProductQuantity::class);
-    }
-
-    public function operations(): HasManyThrough
-    {
-        return $this->hasManyThrough(
-            Operation::class,
-            MoveLine::class,
-            'result_package_id',
-            'id',
-            'id',
-            'operation_id'
-        );
+        return $this->hasMany(MoveLine::class);
     }
 
     public function moves(): HasManyThrough
@@ -87,23 +95,68 @@ class Package extends Model
         );
     }
 
-    public function moveLines(): HasMany
+    public function operations(): HasManyThrough
     {
-        return $this->hasMany(MoveLine::class);
+        return $this->hasManyThrough(
+            Operation::class,
+            MoveLine::class,
+            'result_package_id',
+            'id',
+            'id',
+            'operation_id'
+        );
     }
 
-    public function company(): BelongsTo
+    public function packageType(): BelongsTo
     {
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(PackageType::class);
     }
 
-    public function creator(): BelongsTo
+    public function quantities(): HasMany
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(ProductQuantity::class);
     }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
 
     protected static function newFactory(): PackageFactory
     {
         return PackageFactory::new();
     }
+
+    #endregion
 }

@@ -2,8 +2,9 @@
 
 namespace Modules\Core\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -13,12 +14,27 @@ use Modules\Core\Database\Factories\PriceRuleFactory;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
 use Modules\Core\Models\Currency;
-
-class PriceRule extends Model implements Sortable
+class PriceRule extends BaseModel implements Sortable
 {
     use HasFactory;
+
     use SoftDeletes;
+
     use SortableTrait;
+
+    public $timestamps = false;
+
+    protected $casts = [];
+    /**
+     * protected $fillable = [
+     * 'name',
+     * 'sort',
+     * 'currency_id',
+     * 'company_id',
+     * 'creator_id',
+     * ];
+     */
+    protected $guarded = [];
 
     public $sortable = [
         'order_column_name'  => 'sort',
@@ -32,23 +48,21 @@ class PriceRule extends Model implements Sortable
      */
     protected $table = 'products_price_rules';
 
-    /**
-     * Fillable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'sort',
-        'currency_id',
-        'company_id',
-        'creator_id',
-    ];
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
 
-    public function currency(): BelongsTo
-    {
-        return $this->belongsTo(Currency::class);
-    }
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     public function company(): BelongsTo
     {
@@ -60,13 +74,56 @@ class PriceRule extends Model implements Sortable
         return $this->belongsTo(User::class);
     }
 
+    public function currency(): BelongsTo
+    {
+        return $this->belongsTo(Currency::class);
+    }
+
     public function items(): HasMany
     {
         return $this->hasMany(PriceRuleItem::class);
     }
 
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
     protected static function newFactory(): PriceRuleFactory
     {
         return PriceRuleFactory::new();
     }
+
+    #endregion
 }

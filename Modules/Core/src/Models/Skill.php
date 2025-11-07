@@ -2,8 +2,9 @@
 
 namespace Modules\Core\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -12,13 +13,28 @@ use Spatie\EloquentSortable\SortableTrait;
 use Modules\Core\Database\Factories\SkillFactory;
 use Modules\Core\Traits\HasCustomFields;
 use Modules\Core\Models\User;
-
-class Skill extends Model implements Sortable
+class Skill extends BaseModel implements Sortable
 {
     use HasCustomFields;
+
     use HasFactory;
+
     use SoftDeletes;
+
     use SortableTrait;
+
+    public $timestamps = false;
+
+    protected $casts = [];
+    /**
+     * protected $fillable = [
+     * 'sort',
+     * 'name',
+     * 'skill_type_id',
+     * 'creator_id',
+     * ];
+     */
+    protected $guarded = [];
 
     public $sortable = [
         'order_column_name'  => 'sort',
@@ -27,21 +43,25 @@ class Skill extends Model implements Sortable
 
     protected $table = 'employees_skills';
 
-    protected $fillable = [
-        'sort',
-        'name',
-        'skill_type_id',
-        'creator_id',
-    ];
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
 
-    public function skillType(): BelongsTo
-    {
-        return $this->belongsTo(SkillType::class, 'skill_type_id');
-    }
+    #endregion
 
-    public function skillLevels()
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
+    public function createdBy()
     {
-        return $this->hasMany(SkillLevel::class);
+        return $this->belongsTo(User::class, 'creator_id');
     }
 
     public function employeeSkills(): HasMany
@@ -49,10 +69,51 @@ class Skill extends Model implements Sortable
         return $this->hasMany(EmployeeSkill::class, 'skill_id');
     }
 
-    public function createdBy()
+    public function skillLevels()
     {
-        return $this->belongsTo(User::class, 'creator_id');
+        return $this->hasMany(SkillLevel::class);
     }
+
+    public function skillType(): BelongsTo
+    {
+        return $this->belongsTo(SkillType::class, 'skill_type_id');
+    }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
 
     /**
      * Get the factory instance for the model.
@@ -61,4 +122,6 @@ class Skill extends Model implements Sortable
     {
         return SkillFactory::new();
     }
+
+    #endregion
 }

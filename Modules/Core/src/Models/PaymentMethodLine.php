@@ -2,16 +2,32 @@
 
 namespace Modules\Core\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Modules\Core\Models\User;
-
-class PaymentMethodLine extends Model implements Sortable
+class PaymentMethodLine extends BaseModel implements Sortable
 {
     use HasFactory;
+
     use SortableTrait;
+
+    public $timestamps = false;
+
+    protected $casts = [];
+    /**
+     * protected $fillable = [
+     * 'sort',
+     * 'payment_method_id',
+     * 'payment_account_id',
+     * 'journal_id',
+     * 'name',
+     * 'creator_id',
+     * ];
+     */
+    protected $guarded = [];
 
     public $sortable = [
         'order_column_name'  => 'sort',
@@ -20,23 +36,30 @@ class PaymentMethodLine extends Model implements Sortable
 
     protected $table = 'accounts_payment_method_lines';
 
-    protected $fillable = [
-        'sort',
-        'payment_method_id',
-        'payment_account_id',
-        'journal_id',
-        'name',
-        'creator_id',
-    ];
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     public function createdBy()
     {
         return $this->belongsTo(User::class, 'creator_id');
     }
 
-    public function paymentMethod()
+    public function journal()
     {
-        return $this->belongsTo(PaymentMethod::class);
+        return $this->belongsTo(Journal::class);
     }
 
     public function paymentAccount()
@@ -44,8 +67,46 @@ class PaymentMethodLine extends Model implements Sortable
         return $this->belongsTo(Account::class);
     }
 
-    public function journal()
+    public function paymentMethod()
     {
-        return $this->belongsTo(Journal::class);
+        return $this->belongsTo(PaymentMethod::class);
     }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
 }

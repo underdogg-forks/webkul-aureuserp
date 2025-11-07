@@ -2,8 +2,9 @@
 
 namespace Modules\Products\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -16,62 +17,11 @@ use Modules\Invoices\Models\OrderLine as SaleOrderLine;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
 use Modules\Core\Models\UOM;
-
-class Move extends Model
+class Move extends BaseModel
 {
     use HasFactory;
 
-    /**
-     * Table name.
-     *
-     * @var string
-     */
-    protected $table = 'inventories_moves';
-
-    /**
-     * Fillable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'state',
-        'origin',
-        'procure_method',
-        'reference',
-        'description_picking',
-        'next_serial',
-        'next_serial_count',
-        'is_favorite',
-        'product_qty',
-        'product_uom_qty',
-        'quantity',
-        'is_picked',
-        'is_scraped',
-        'is_inventory',
-        'is_refund',
-        'deadline',
-        'reservation_date',
-        'scheduled_at',
-        'product_id',
-        'uom_id',
-        'source_location_id',
-        'destination_location_id',
-        'final_location_id',
-        'partner_id',
-        'operation_id',
-        'rule_id',
-        'operation_type_id',
-        'origin_returned_move_id',
-        'restrict_partner_id',
-        'warehouse_id',
-        'product_packaging_id',
-        'scrap_id',
-        'company_id',
-        'creator_id',
-        'purchase_order_line_id',
-        'sale_order_line_id',
-    ];
+    public $timestamps = false;
 
     /**
      * Table name.
@@ -90,6 +40,185 @@ class Move extends Model
         'deadline'         => 'datetime',
         'alert_Date'       => 'datetime',
     ];
+    /**
+     * protected $fillable = [
+     * 'name',
+     * 'state',
+     * 'origin',
+     * 'procure_method',
+     * 'reference',
+     * 'description_picking',
+     * 'next_serial',
+     * 'next_serial_count',
+     * 'is_favorite',
+     * 'product_qty',
+     * 'product_uom_qty',
+     * 'quantity',
+     * 'is_picked',
+     * 'is_scraped',
+     * 'is_inventory',
+     * 'is_refund',
+     * 'deadline',
+     * 'reservation_date',
+     * 'scheduled_at',
+     * 'product_id',
+     * 'uom_id',
+     * 'source_location_id',
+     * 'destination_location_id',
+     * 'final_location_id',
+     * 'partner_id',
+     * 'operation_id',
+     * 'rule_id',
+     * 'operation_type_id',
+     * 'origin_returned_move_id',
+     * 'restrict_partner_id',
+     * 'warehouse_id',
+     * 'product_packaging_id',
+     * 'scrap_id',
+     * 'company_id',
+     * 'creator_id',
+     * 'purchase_order_line_id',
+     * 'sale_order_line_id',
+     * ];
+     */
+    protected $guarded = [];
+
+    /**
+     * Table name.
+     *
+     * @var string
+     */
+    protected $table = 'inventories_moves';
+
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    public function creator(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function destinationLocation(): BelongsTo
+    {
+        return $this->belongsTo(Location::class)->withTrashed();
+    }
+
+    public function finalLocation(): BelongsTo
+    {
+        return $this->belongsTo(Location::class)->withTrashed();
+    }
+
+    public function lines(): HasMany
+    {
+        return $this->hasMany(MoveLine::class);
+    }
+
+    public function moveDestinations(): BelongsToMany
+    {
+        return $this->belongsToMany(self::class, 'inventories_move_destinations', 'origin_move_id', 'destination_move_id');
+    }
+
+    public function operation(): BelongsTo
+    {
+        return $this->belongsTo(Operation::class);
+    }
+
+    public function operationType(): BelongsTo
+    {
+        return $this->belongsTo(OperationType::class);
+    }
+
+    public function originReturnedMove(): BelongsTo
+    {
+        return $this->belongsTo(self::class);
+    }
+
+    public function packageLevel(): BelongsTo
+    {
+        return $this->belongsTo(PackageLevel::class);
+    }
+
+    public function partner(): BelongsTo
+    {
+        return $this->belongsTo(Partner::class);
+    }
+
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function productPackaging(): BelongsTo
+    {
+        return $this->belongsTo(Packaging::class);
+    }
+
+    public function purchaseOrderLine(): BelongsTo
+    {
+        return $this->belongsTo(PurchaseOrderLine::class, 'purchase_order_line_id');
+    }
+
+    public function restrictPartner(): BelongsTo
+    {
+        return $this->belongsTo(Partner::class);
+    }
+
+    public function rule(): BelongsTo
+    {
+        return $this->belongsTo(Rule::class);
+    }
+
+    public function saleOrderLine(): BelongsTo
+    {
+        return $this->belongsTo(SaleOrderLine::class, 'sale_order_line_id');
+    }
+
+    public function scrap(): BelongsTo
+    {
+        return $this->belongsTo(Scrap::class);
+    }
+
+    public function sourceLocation(): BelongsTo
+    {
+        return $this->belongsTo(Location::class)->withTrashed();
+    }
+
+    public function uom(): BelongsTo
+    {
+        return $this->belongsTo(UOM::class);
+    }
+
+    public function warehouse(): BelongsTo
+    {
+        return $this->belongsTo(Warehouse::class);
+    }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
 
     /**
      * Determines if a stock move is a purchase return.
@@ -139,118 +268,42 @@ class Move extends Model
             );
     }
 
-    public function product(): BelongsTo
-    {
-        return $this->belongsTo(Product::class);
-    }
-
-    public function uom(): BelongsTo
-    {
-        return $this->belongsTo(UOM::class);
-    }
-
-    public function sourceLocation(): BelongsTo
-    {
-        return $this->belongsTo(Location::class)->withTrashed();
-    }
-
-    public function destinationLocation(): BelongsTo
-    {
-        return $this->belongsTo(Location::class)->withTrashed();
-    }
-
-    public function finalLocation(): BelongsTo
-    {
-        return $this->belongsTo(Location::class)->withTrashed();
-    }
-
-    public function partner(): BelongsTo
-    {
-        return $this->belongsTo(Partner::class);
-    }
-
-    public function operation(): BelongsTo
-    {
-        return $this->belongsTo(Operation::class);
-    }
-
-    public function scrap(): BelongsTo
-    {
-        return $this->belongsTo(Scrap::class);
-    }
-
-    public function rule(): BelongsTo
-    {
-        return $this->belongsTo(Rule::class);
-    }
-
-    public function operationType(): BelongsTo
-    {
-        return $this->belongsTo(OperationType::class);
-    }
-
-    public function originReturnedMove(): BelongsTo
-    {
-        return $this->belongsTo(self::class);
-    }
-
-    public function restrictPartner(): BelongsTo
-    {
-        return $this->belongsTo(Partner::class);
-    }
-
-    public function warehouse(): BelongsTo
-    {
-        return $this->belongsTo(Warehouse::class);
-    }
-
-    public function packageLevel(): BelongsTo
-    {
-        return $this->belongsTo(PackageLevel::class);
-    }
-
-    public function productPackaging(): BelongsTo
-    {
-        return $this->belongsTo(Packaging::class);
-    }
-
-    public function lines(): HasMany
-    {
-        return $this->hasMany(MoveLine::class);
-    }
-
-    public function moveDestinations(): BelongsToMany
-    {
-        return $this->belongsToMany(self::class, 'inventories_move_destinations', 'origin_move_id', 'destination_move_id');
-    }
-
-    public function company(): BelongsTo
-    {
-        return $this->belongsTo(Company::class);
-    }
-
-    public function creator(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
-
     public function shouldBypassReservation(): bool
     {
         return $this->sourceLocation->shouldBypassReservation() || ! $this->product->is_storable;
     }
 
-    public function purchaseOrderLine(): BelongsTo
-    {
-        return $this->belongsTo(PurchaseOrderLine::class, 'purchase_order_line_id');
-    }
+    #endregion
 
-    public function saleOrderLine(): BelongsTo
-    {
-        return $this->belongsTo(SaleOrderLine::class, 'sale_order_line_id');
-    }
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
 
     protected static function newFactory(): MoveFactory
     {
         return MoveFactory::new();
     }
+
+    #endregion
 }

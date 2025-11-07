@@ -2,40 +2,69 @@
 
 namespace Modules\Core\Models;
 
-use Illuminate\Database\Eloquent\Builder;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-
-class ActivityLog extends Model
+class ActivityLog extends BaseModel
 {
-    protected $table = 'activity_logs';
-
-    protected $fillable = [
-        'log_name',
-        'description',
-        'subject_type',
-        'event',
-        'subject_id',
-        'causer_type',
-        'causer_id',
-        'properties',
-    ];
+    public $timestamps = false;
 
     protected $casts = [
         'properties' => 'collection',
     ];
+    /**
+     * protected $fillable = [
+     * 'log_name',
+     * 'description',
+     * 'subject_type',
+     * 'event',
+     * 'subject_id',
+     * 'causer_type',
+     * 'causer_id',
+     * 'properties',
+     * ];
+     */
+    protected $guarded = [];
+
+    protected $table = 'activity_logs';
+
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
+    public function causer(): MorphTo
+    {
+        return $this->morphTo();
+    }
 
     public function subject(): MorphTo
     {
         return $this->morphTo();
     }
 
-    public function causer(): MorphTo
-    {
-        return $this->morphTo();
-    }
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
 
     public function getExtraProperty(string $propertyName, mixed $defaultValue = null): mixed
     {
@@ -55,6 +84,24 @@ class ActivityLog extends Model
     {
         return $this->changes();
     }
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
 
     public function scopeInLog(Builder $query, ...$logNames): Builder
     {
@@ -91,4 +138,15 @@ class ActivityLog extends Model
     {
         return $query->where('batch_uuid', $batchUuid);
     }
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
 }

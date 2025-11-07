@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Models;
 
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -12,33 +13,42 @@ use Modules\Core\Models\Employee;
 use Modules\Crm\Models\Partner;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
-
-class Candidate extends Model
+class Candidate extends BaseModel
 {
     use HasChatter;
+
     use HasLogActivity;
+
     use SoftDeletes;
 
-    protected $table = 'recruitments_candidates';
+    public $timestamps = false;
 
-    protected $fillable = [
-        'message_bounced',
-        'company_id',
-        'partner_id',
-        'degree_id',
-        'manager_id',
-        'employee_id',
-        'creator_id',
-        'email_cc',
-        'name',
-        'email_from',
-        'priority',
-        'phone',
-        'linkedin_profile',
-        'availability_date',
-        'candidate_properties',
-        'is_active',
+    protected $casts = [
+        'candidate_properties' => 'array',
     ];
+    /**
+     * protected $fillable = [
+     * 'message_bounced',
+     * 'company_id',
+     * 'partner_id',
+     * 'degree_id',
+     * 'manager_id',
+     * 'employee_id',
+     * 'creator_id',
+     * 'email_cc',
+     * 'name',
+     * 'email_from',
+     * 'priority',
+     * 'phone',
+     * 'linkedin_profile',
+     * 'availability_date',
+     * 'candidate_properties',
+     * 'is_active',
+     * ];
+     */
+    protected $guarded = [];
+
+    protected $table = 'recruitments_candidates';
 
     protected array $logAttributes = [
         'company.name'     => 'Company',
@@ -58,33 +68,46 @@ class Candidate extends Model
         'is_active' => 'Status',
     ];
 
-    protected $casts = [
-        'candidate_properties' => 'array',
-    ];
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * Bootstrap the model and its traits.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saved(function (self $candidate) {
+            if ( ! $candidate->partner_id) {
+                $candidate->handlePartnerCreation($candidate);
+            } else {
+                $candidate->handlePartnerUpdation($candidate);
+            }
+        });
+    }
+
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
+    public function categories()
+    {
+        return $this->belongsToMany(ApplicantCategory::class, 'recruitments_candidate_applicant_categories', 'candidate_id', 'category_id');
+    }
 
     public function company()
     {
         return $this->belongsTo(Company::class, 'company_id');
-    }
-
-    public function partner()
-    {
-        return $this->belongsTo(Partner::class, 'partner_id');
-    }
-
-    public function degree()
-    {
-        return $this->belongsTo(Degree::class, 'degree_id');
-    }
-
-    public function manager()
-    {
-        return $this->belongsTo(User::class, 'manager_id');
-    }
-
-    public function employee()
-    {
-        return $this->belongsTo(Employee::class, 'employee_id');
     }
 
     public function createdBy()
@@ -92,15 +115,39 @@ class Candidate extends Model
         return $this->belongsTo(User::class, 'creator_id');
     }
 
-    public function categories()
+    public function degree()
     {
-        return $this->belongsToMany(ApplicantCategory::class, 'recruitments_candidate_applicant_categories', 'candidate_id', 'category_id');
+        return $this->belongsTo(Degree::class, 'degree_id');
+    }
+
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class, 'employee_id');
+    }
+
+    public function manager()
+    {
+        return $this->belongsTo(User::class, 'manager_id');
+    }
+
+    public function partner()
+    {
+        return $this->belongsTo(Partner::class, 'partner_id');
     }
 
     public function skills(): HasMany
     {
         return $this->hasMany(CandidateSkill::class, 'candidate_id');
     }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
 
     public function createEmployee()
     {
@@ -121,22 +168,6 @@ class Candidate extends Model
         ]);
 
         return $employee;
-    }
-
-    /**
-     * Bootstrap the model and its traits.
-     */
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::saved(function (self $candidate) {
-            if ( ! $candidate->partner_id) {
-                $candidate->handlePartnerCreation($candidate);
-            } else {
-                $candidate->handlePartnerUpdation($candidate);
-            }
-        });
     }
 
     /**
@@ -179,4 +210,33 @@ class Candidate extends Model
             $candidate->save();
         }
     }
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
 }

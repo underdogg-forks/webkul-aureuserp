@@ -2,20 +2,35 @@
 
 namespace Modules\Products\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Modules\Products\Database\Factories\TagFactory;
 use Modules\Core\Models\User;
-
-class Tag extends Model implements Sortable
+class Tag extends BaseModel implements Sortable
 {
     use HasFactory;
+
     use SoftDeletes;
+
     use SortableTrait;
+
+    public $timestamps = false;
+
+    protected $casts = [];
+    /**
+     * protected $fillable = [
+     * 'name',
+     * 'color',
+     * 'sort',
+     * 'creator_id',
+     * ];
+     */
+    protected $guarded = [];
 
     public $sortable = [
         'order_column_name'  => 'sort',
@@ -29,25 +44,67 @@ class Tag extends Model implements Sortable
      */
     protected $table = 'inventories_tags';
 
-    /**
-     * Fillable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'color',
-        'sort',
-        'creator_id',
-    ];
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     public function creator(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
     protected static function newFactory(): TagFactory
     {
         return TagFactory::new();
     }
+
+    #endregion
 }

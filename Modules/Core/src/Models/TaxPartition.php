@@ -2,19 +2,38 @@
 
 namespace Modules\Core\Models;
 
-use Exception;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Exception;
 use Illuminate\Support\Facades\DB;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
-
-class TaxPartition extends Model implements Sortable
+class TaxPartition extends BaseModel implements Sortable
 {
     use HasFactory;
+
     use SortableTrait;
+
+    public $timestamps = false;
+
+    protected $casts = [];
+    /**
+     * protected $fillable = [
+     * 'account_id',
+     * 'tax_id',
+     * 'company_id',
+     * 'sort',
+     * 'repartition_type',
+     * 'document_type',
+     * 'use_in_tax_closing',
+     * 'factor_percent',
+     * 'creator_id',
+     * ];
+     */
+    protected $guarded = [];
 
     public $sortable = [
         'order_column_name'  => 'sort',
@@ -23,17 +42,12 @@ class TaxPartition extends Model implements Sortable
 
     protected $table = 'accounts_tax_partition_lines';
 
-    protected $fillable = [
-        'account_id',
-        'tax_id',
-        'company_id',
-        'sort',
-        'repartition_type',
-        'document_type',
-        'use_in_tax_closing',
-        'factor_percent',
-        'creator_id',
-    ];
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
 
     public static function validateRepartitionLines($invoices, $refunds)
     {
@@ -123,14 +137,28 @@ class TaxPartition extends Model implements Sortable
         });
     }
 
-    public function createdBy()
-    {
-        return $this->belongsTo(User::class, 'creator_id');
-    }
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     public function account()
     {
         return $this->belongsTo(Account::class, 'account_id');
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id');
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'creator_id');
     }
 
     public function tax()
@@ -138,8 +166,41 @@ class TaxPartition extends Model implements Sortable
         return $this->belongsTo(Tax::class, 'tax_id');
     }
 
-    public function company()
-    {
-        return $this->belongsTo(Company::class, 'company_id');
-    }
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
 }

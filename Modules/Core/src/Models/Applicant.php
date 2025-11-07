@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Models;
 
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
@@ -16,46 +17,17 @@ use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
 use Modules\Core\Models\UTMMedium;
 use Modules\Core\Models\UTMSource;
-
-class Applicant extends Model
+class Applicant extends BaseModel
 {
     use HasApplicationStatus;
+
     use HasChatter;
+
     use HasLogActivity;
+
     use SoftDeletes;
 
-    protected $table = 'recruitments_applicants';
-
-    protected $fillable = [
-        'source_id',
-        'medium_id',
-        'candidate_id',
-        'stage_id',
-        'last_stage_id',
-        'company_id',
-        'recruiter_id',
-        'job_id',
-        'department_id',
-        'refuse_reason_id',
-        'state',
-        'creator_id',
-        'email_cc',
-        'priority',
-        'salary_proposed_extra',
-        'salary_expected_extra',
-        'applicant_properties',
-        'applicant_notes',
-        'is_active',
-        'create_date',
-        'date_closed',
-        'date_opened',
-        'date_last_stage_updated',
-        'refuse_date',
-        'probability',
-        'salary_proposed',
-        'salary_expected',
-        'delay_close',
-    ];
+    public $timestamps = false;
 
     protected $casts = [
         'is_active'               => 'boolean',
@@ -70,19 +42,105 @@ class Applicant extends Model
         'salary_expected'         => 'double',
         'delay_close'             => 'double',
     ];
+    /**
+     * protected $fillable = [
+     * 'source_id',
+     * 'medium_id',
+     * 'candidate_id',
+     * 'stage_id',
+     * 'last_stage_id',
+     * 'company_id',
+     * 'recruiter_id',
+     * 'job_id',
+     * 'department_id',
+     * 'refuse_reason_id',
+     * 'state',
+     * 'creator_id',
+     * 'email_cc',
+     * 'priority',
+     * 'salary_proposed_extra',
+     * 'salary_expected_extra',
+     * 'applicant_properties',
+     * 'applicant_notes',
+     * 'is_active',
+     * 'create_date',
+     * 'date_closed',
+     * 'date_opened',
+     * 'date_last_stage_updated',
+     * 'refuse_date',
+     * 'probability',
+     * 'salary_proposed',
+     * 'salary_expected',
+     * 'delay_close',
+     * ];
+     */
+    protected $guarded = [];
+
+    protected $table = 'recruitments_applicants';
 
     protected $appends = [
         'application_status',
     ];
+
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
 
     public static function getStatusOptions(): array
     {
         return ApplicationStatus::options();
     }
 
-    public function source(): BelongsTo
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
+    public function candidate(): BelongsTo
     {
-        return $this->belongsTo(UTMSource::class);
+        return $this->belongsTo(Candidate::class);
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(ApplicantCategory::class, 'recruitments_applicant_applicant_categories', 'applicant_id', 'category_id');
+    }
+
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    public function createdBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'creator_id');
+    }
+
+    public function department(): BelongsTo
+    {
+        return $this->belongsTo(Department::class);
+    }
+
+    public function interviewer()
+    {
+        return $this->belongsToMany(User::class, 'recruitments_applicant_interviewers', 'applicant_id', 'interviewer_id');
+    }
+
+    public function job(): BelongsTo
+    {
+        return $this->belongsTo(JobPosition::class, 'job_id');
+    }
+
+    public function lastStage(): BelongsTo
+    {
+        return $this->belongsTo(Stage::class, 'last_stage_id');
     }
 
     public function medium(): BelongsTo
@@ -90,9 +148,14 @@ class Applicant extends Model
         return $this->belongsTo(UTMMedium::class);
     }
 
-    public function candidate(): BelongsTo
+    public function recruiter(): BelongsTo
     {
-        return $this->belongsTo(Candidate::class);
+        return $this->belongsTo(User::class, 'recruiter_id');
+    }
+
+    public function refuseReason(): BelongsTo
+    {
+        return $this->belongsTo(RefuseReason::class);
     }
 
     public function skills(): HasManyThrough
@@ -107,55 +170,24 @@ class Applicant extends Model
         );
     }
 
+    public function source(): BelongsTo
+    {
+        return $this->belongsTo(UTMSource::class);
+    }
+
     public function stage(): BelongsTo
     {
         return $this->belongsTo(Stage::class);
     }
 
-    public function lastStage(): BelongsTo
-    {
-        return $this->belongsTo(Stage::class, 'last_stage_id');
-    }
+    #endregion
 
-    public function company(): BelongsTo
-    {
-        return $this->belongsTo(Company::class);
-    }
-
-    public function recruiter(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'recruiter_id');
-    }
-
-    public function interviewer()
-    {
-        return $this->belongsToMany(User::class, 'recruitments_applicant_interviewers', 'applicant_id', 'interviewer_id');
-    }
-
-    public function categories()
-    {
-        return $this->belongsToMany(ApplicantCategory::class, 'recruitments_applicant_applicant_categories', 'applicant_id', 'category_id');
-    }
-
-    public function job(): BelongsTo
-    {
-        return $this->belongsTo(JobPosition::class, 'job_id');
-    }
-
-    public function department(): BelongsTo
-    {
-        return $this->belongsTo(Department::class);
-    }
-
-    public function refuseReason(): BelongsTo
-    {
-        return $this->belongsTo(RefuseReason::class);
-    }
-
-    public function createdBy(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'creator_id');
-    }
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
 
     public function setAsHired(): bool
     {
@@ -228,4 +260,33 @@ class Applicant extends Model
 
         return $employee;
     }
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
 }

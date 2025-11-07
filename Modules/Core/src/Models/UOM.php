@@ -2,18 +2,33 @@
 
 namespace Modules\Core\Models;
 
-use Exception;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Exception;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Core\Models\User;
 use Modules\Core\Database\Factories\UOMFactory;
-
-class UOM extends Model
+class UOM extends BaseModel
 {
     use HasFactory;
+
     use SoftDeletes;
+
+    public $timestamps = false;
+
+    protected $casts = [];
+    /**
+     * protected $fillable = [
+     * 'type',
+     * 'name',
+     * 'factor',
+     * 'category_id',
+     * 'creator_id',
+     * ];
+     */
+    protected $guarded = [];
 
     /**
      * Table name.
@@ -22,18 +37,21 @@ class UOM extends Model
      */
     protected $table = 'unit_of_measures';
 
-    /**
-     * Fillable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'type',
-        'name',
-        'factor',
-        'category_id',
-        'creator_id',
-    ];
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     public function category(): BelongsTo
     {
@@ -44,6 +62,15 @@ class UOM extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
 
     /**
      * Convert the given quantity from the current UoM to a given one.
@@ -96,11 +123,6 @@ class UOM extends Model
         return $amount;
     }
 
-    protected static function newFactory(): UOMFactory
-    {
-        return UOMFactory::new();
-    }
-
     /**
      * Custom float rounding implementation.
      *
@@ -134,4 +156,38 @@ class UOM extends Model
                 return round($value * $factor) / $factor;
         }
     }
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
+    protected static function newFactory(): UOMFactory
+    {
+        return UOMFactory::new();
+    }
+
+    #endregion
 }

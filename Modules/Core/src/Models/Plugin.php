@@ -2,35 +2,79 @@
 
 namespace Modules\Core\Models;
 
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-
-class Plugin extends Model implements Sortable
+class Plugin extends BaseModel implements Sortable
 {
     use SortableTrait;
+
+    public $timestamps = false;
+
+    protected $casts = [
+        'is_active' => 'boolean',
+    ];
+    /**
+     * protected $fillable = [
+     * 'name',
+     * 'author',
+     * 'summary',
+     * 'description',
+     * 'latest_version',
+     * 'license',
+     * 'is_active',
+     * 'is_installed',
+     * 'sort',
+     * ];
+     */
+    protected $guarded = [];
 
     public $sortable = [
         'order_column_name'  => 'sort',
         'sort_when_creating' => true,
     ];
 
-    protected $fillable = [
-        'name',
-        'author',
-        'summary',
-        'description',
-        'latest_version',
-        'license',
-        'is_active',
-        'is_installed',
-        'sort',
-    ];
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
 
-    protected $casts = [
-        'is_active' => 'boolean',
-    ];
+    protected static function getAllPluginPackages(): array
+    {
+        $pluginClasses = require base_path('bootstrap/plugins.php');
+        $packages      = [];
+
+        foreach ($pluginClasses as $pluginClass) {
+            if (class_exists($pluginClass)) {
+                $pluginInstance = new $pluginClass();
+                $pluginName     = $pluginInstance->getId();
+
+                $serviceProviderClass = str_replace('Plugin', 'ServiceProvider', $pluginClass);
+
+                if (class_exists($serviceProviderClass)) {
+                    $serviceProvider = new $serviceProviderClass(app());
+                    $package         = new \Modules\Core\Package();
+                    $serviceProvider->configureCustomPackage($package);
+                    $packages[$pluginName] = $package;
+                }
+            }
+        }
+
+        return $packages;
+    }
+
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     public function dependencies(): BelongsToMany
     {
@@ -51,6 +95,15 @@ class Plugin extends Model implements Sortable
             'plugin_id'
         );
     }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
 
     public function getServiceProviderClass(): ?string
     {
@@ -96,27 +149,32 @@ class Plugin extends Model implements Sortable
         return $dependents;
     }
 
-    protected static function getAllPluginPackages(): array
-    {
-        $pluginClasses = require base_path('bootstrap/plugins.php');
-        $packages      = [];
+    #endregion
 
-        foreach ($pluginClasses as $pluginClass) {
-            if (class_exists($pluginClass)) {
-                $pluginInstance = new $pluginClass();
-                $pluginName     = $pluginInstance->getId();
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
 
-                $serviceProviderClass = str_replace('Plugin', 'ServiceProvider', $pluginClass);
+    #endregion
 
-                if (class_exists($serviceProviderClass)) {
-                    $serviceProvider = new $serviceProviderClass(app());
-                    $package         = new \Modules\Core\Package();
-                    $serviceProvider->configureCustomPackage($package);
-                    $packages[$pluginName] = $package;
-                }
-            }
-        }
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
 
-        return $packages;
-    }
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
 }

@@ -2,8 +2,9 @@
 
 namespace Modules\Products\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -19,51 +20,17 @@ use Modules\Expenses\Models\Order as PurchaseOrder;
 use Modules\Invoices\Models\Order as SaleOrder;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
-
-class Operation extends Model
+class Operation extends BaseModel
 {
     use HasChatter;
+
     use HasCustomFields;
+
     use HasFactory;
+
     use HasLogActivity;
 
-    /**
-     * Table name.
-     *
-     * @var string
-     */
-    protected $table = 'inventories_operations';
-
-    /**
-     * Fillable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'origin',
-        'move_type',
-        'state',
-        'is_favorite',
-        'description',
-        'has_deadline_issue',
-        'is_printed',
-        'is_locked',
-        'deadline',
-        'scheduled_at',
-        'closed_at',
-        'user_id',
-        'owner_id',
-        'operation_type_id',
-        'source_location_id',
-        'destination_location_id',
-        'back_order_id',
-        'return_id',
-        'partner_id',
-        'company_id',
-        'creator_id',
-        'sale_order_id',
-    ];
+    public $timestamps = false;
 
     /**
      * Table name.
@@ -81,6 +48,41 @@ class Operation extends Model
         'scheduled_at'       => 'datetime',
         'closed_at'          => 'datetime',
     ];
+    /**
+     * protected $fillable = [
+     * 'name',
+     * 'origin',
+     * 'move_type',
+     * 'state',
+     * 'is_favorite',
+     * 'description',
+     * 'has_deadline_issue',
+     * 'is_printed',
+     * 'is_locked',
+     * 'deadline',
+     * 'scheduled_at',
+     * 'closed_at',
+     * 'user_id',
+     * 'owner_id',
+     * 'operation_type_id',
+     * 'source_location_id',
+     * 'destination_location_id',
+     * 'back_order_id',
+     * 'return_id',
+     * 'partner_id',
+     * 'company_id',
+     * 'creator_id',
+     * 'sale_order_id',
+     * ];
+     */
+    protected $guarded = [];
+
+    /**
+     * Table name.
+     *
+     * @var string
+     */
+    protected $table = 'inventories_operations';
 
     protected array $logAttributes = [
         'name',
@@ -107,44 +109,47 @@ class Operation extends Model
         'creator.name'                  => 'Creator',
     ];
 
-    public function user(): BelongsTo
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * Bootstrap any application services.
+     */
+    protected static function boot()
     {
-        return $this->belongsTo(User::class);
+        parent::boot();
+
+        static::saving(function ($operation) {
+            $operation->updateName();
+        });
+
+        static::created(function ($operation) {
+            $operation->update(['name' => $operation->name]);
+        });
+
+        static::updated(function ($operation) {
+            if ($operation->wasChanged('operation_type_id')) {
+                $operation->updateChildrenNames();
+            }
+        });
     }
 
-    public function owner(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
+    #endregion
 
-    public function operationType(): BelongsTo
-    {
-        return $this->belongsTo(OperationType::class)->withTrashed();
-    }
-
-    public function sourceLocation(): BelongsTo
-    {
-        return $this->belongsTo(Location::class)->withTrashed();
-    }
-
-    public function destinationLocation(): BelongsTo
-    {
-        return $this->belongsTo(Location::class)->withTrashed();
-    }
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     public function backOrderOf(): BelongsTo
     {
         return $this->belongsTo(self::class);
-    }
-
-    public function returnOf(): BelongsTo
-    {
-        return $this->belongsTo(self::class);
-    }
-
-    public function partner(): BelongsTo
-    {
-        return $this->belongsTo(Partner::class);
     }
 
     public function company(): BelongsTo
@@ -157,9 +162,9 @@ class Operation extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function moves(): HasMany
+    public function destinationLocation(): BelongsTo
     {
-        return $this->hasMany(Move::class, 'operation_id');
+        return $this->belongsTo(Location::class)->withTrashed();
     }
 
     public function moveLines(): HasMany
@@ -167,9 +172,29 @@ class Operation extends Model
         return $this->hasMany(MoveLine::class, 'operation_id');
     }
 
+    public function moves(): HasMany
+    {
+        return $this->hasMany(Move::class, 'operation_id');
+    }
+
+    public function operationType(): BelongsTo
+    {
+        return $this->belongsTo(OperationType::class)->withTrashed();
+    }
+
+    public function owner(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function packages(): HasManyThrough
     {
         return $this->hasManyThrough(Package::class, MoveLine::class, 'operation_id', 'id', 'id', 'result_package_id');
+    }
+
+    public function partner(): BelongsTo
+    {
+        return $this->belongsTo(Partner::class);
     }
 
     public function purchaseOrders(): BelongsToMany
@@ -177,10 +202,34 @@ class Operation extends Model
         return $this->belongsToMany(PurchaseOrder::class, 'purchases_order_operations', 'inventory_operation_id', 'purchase_order_id');
     }
 
+    public function returnOf(): BelongsTo
+    {
+        return $this->belongsTo(self::class);
+    }
+
     public function saleOrder(): BelongsTo
     {
         return $this->belongsTo(SaleOrder::class, 'sale_order_id');
     }
+
+    public function sourceLocation(): BelongsTo
+    {
+        return $this->belongsTo(Location::class)->withTrashed();
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
 
     /**
      * Update the full name without triggering additional events.
@@ -205,30 +254,37 @@ class Operation extends Model
         }
     }
 
-    /**
-     * Bootstrap any application services.
-     */
-    protected static function boot()
-    {
-        parent::boot();
+    #endregion
 
-        static::saving(function ($operation) {
-            $operation->updateName();
-        });
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
 
-        static::created(function ($operation) {
-            $operation->update(['name' => $operation->name]);
-        });
+    #endregion
 
-        static::updated(function ($operation) {
-            if ($operation->wasChanged('operation_type_id')) {
-                $operation->updateChildrenNames();
-            }
-        });
-    }
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
 
     protected static function newFactory(): OperationFactory
     {
         return OperationFactory::new();
     }
+
+    #endregion
 }

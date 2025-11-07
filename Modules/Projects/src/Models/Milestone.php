@@ -2,36 +2,17 @@
 
 namespace Modules\Projects\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Projects\Database\Factories\MilestoneFactory;
 use Modules\Core\Models\User;
-
-class Milestone extends Model
+class Milestone extends BaseModel
 {
     use HasFactory;
 
-    /**
-     * Table name.
-     *
-     * @var string
-     */
-    protected $table = 'projects_milestones';
-
-    /**
-     * Fillable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'deadline',
-        'is_completed',
-        'completed_at',
-        'project_id',
-        'creator_id',
-    ];
+    public $timestamps = false;
 
     /**
      * Table name.
@@ -43,19 +24,91 @@ class Milestone extends Model
         'deadline'     => 'datetime',
         'completed_at' => 'datetime',
     ];
+    /**
+     * protected $fillable = [
+     * 'name',
+     * 'deadline',
+     * 'is_completed',
+     * 'completed_at',
+     * 'project_id',
+     * 'creator_id',
+     * ];
+     */
+    protected $guarded = [];
 
-    public function project(): BelongsTo
-    {
-        return $this->belongsTo(Project::class);
-    }
+    /**
+     * Table name.
+     *
+     * @var string
+     */
+    protected $table = 'projects_milestones';
+
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     public function creator(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    public function project(): BelongsTo
+    {
+        return $this->belongsTo(Project::class);
+    }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
     protected static function newFactory(): MilestoneFactory
     {
         return MilestoneFactory::new();
     }
+
+    #endregion
 }

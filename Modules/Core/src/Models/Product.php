@@ -2,8 +2,9 @@
 
 namespace Modules\Core\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -17,58 +18,19 @@ use Modules\Core\Enums\ProductType;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
 use Modules\Core\Models\UOM;
-
-class Product extends Model implements Sortable
+class Product extends BaseModel implements Sortable
 {
     use HasChatter;
+
     use HasFactory;
+
     use HasLogActivity;
+
     use SoftDeletes;
+
     use SortableTrait;
 
-    public $sortable = [
-        'order_column_name'  => 'sort',
-        'sort_when_creating' => true,
-    ];
-
-    /**
-     * Table name.
-     *
-     * @var string
-     */
-    protected $table = 'products_products';
-
-    /**
-     * Fillable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'type',
-        'name',
-        'service_tracking',
-        'reference',
-        'barcode',
-        'price',
-        'cost',
-        'volume',
-        'weight',
-        'description',
-        'description_purchase',
-        'description_sale',
-        'enable_sales',
-        'enable_purchase',
-        'is_favorite',
-        'is_configurable',
-        'images',
-        'sort',
-        'parent_id',
-        'uom_id',
-        'uom_po_id',
-        'category_id',
-        'company_id',
-        'creator_id',
-    ];
+    public $timestamps = false;
 
     /**
      * Table name.
@@ -85,6 +47,47 @@ class Product extends Model implements Sortable
         'cost'            => 'float',
         'price'           => 'float',
     ];
+    /**
+     * protected $fillable = [
+     * 'type',
+     * 'name',
+     * 'service_tracking',
+     * 'reference',
+     * 'barcode',
+     * 'price',
+     * 'cost',
+     * 'volume',
+     * 'weight',
+     * 'description',
+     * 'description_purchase',
+     * 'description_sale',
+     * 'enable_sales',
+     * 'enable_purchase',
+     * 'is_favorite',
+     * 'is_configurable',
+     * 'images',
+     * 'sort',
+     * 'parent_id',
+     * 'uom_id',
+     * 'uom_po_id',
+     * 'category_id',
+     * 'company_id',
+     * 'creator_id',
+     * ];
+     */
+    protected $guarded = [];
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
+
+    /**
+     * Table name.
+     *
+     * @var string
+     */
+    protected $table = 'products_products';
 
     protected array $logAttributes = [
         'type',
@@ -109,19 +112,30 @@ class Product extends Model implements Sortable
         'creator.name'  => 'Creator',
     ];
 
-    public function parent(): BelongsTo
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
+    public function attribute_values(): HasMany
     {
-        return $this->belongsTo(self::class);
+        return $this->hasMany(ProductAttributeValue::class, 'product_id');
     }
 
-    public function uom(): BelongsTo
+    public function attributes(): HasMany
     {
-        return $this->belongsTo(UOM::class);
-    }
-
-    public function uomPO(): BelongsTo
-    {
-        return $this->belongsTo(UOM::class);
+        return $this->hasMany(ProductAttribute::class);
     }
 
     public function category(): BelongsTo
@@ -129,9 +143,9 @@ class Product extends Model implements Sortable
         return $this->belongsTo(Category::class);
     }
 
-    public function tags(): BelongsToMany
+    public function combinations(): HasMany
     {
-        return $this->belongsToMany(Tag::class, 'products_product_tag', 'product_id', 'tag_id');
+        return $this->hasMany(ProductCombination::class, 'product_id');
     }
 
     public function company(): BelongsTo
@@ -144,24 +158,9 @@ class Product extends Model implements Sortable
         return $this->belongsTo(User::class);
     }
 
-    public function attributes(): HasMany
+    public function parent(): BelongsTo
     {
-        return $this->hasMany(ProductAttribute::class);
-    }
-
-    public function attribute_values(): HasMany
-    {
-        return $this->hasMany(ProductAttributeValue::class, 'product_id');
-    }
-
-    public function variants(): HasMany
-    {
-        return $this->hasMany(self::class, 'parent_id');
-    }
-
-    public function combinations(): HasMany
-    {
-        return $this->hasMany(ProductCombination::class, 'product_id');
+        return $this->belongsTo(self::class);
     }
 
     public function priceRuleItems(): HasMany
@@ -179,8 +178,66 @@ class Product extends Model implements Sortable
         return $this->hasMany(ProductSupplier::class);
     }
 
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class, 'products_product_tag', 'product_id', 'tag_id');
+    }
+
+    public function uom(): BelongsTo
+    {
+        return $this->belongsTo(UOM::class);
+    }
+
+    public function uomPO(): BelongsTo
+    {
+        return $this->belongsTo(UOM::class);
+    }
+
+    public function variants(): HasMany
+    {
+        return $this->hasMany(self::class, 'parent_id');
+    }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
     protected static function newFactory(): ProductFactory
     {
         return ProductFactory::new();
     }
+
+    #endregion
 }

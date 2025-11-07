@@ -2,6 +2,8 @@
 
 namespace Modules\Core\Models;
 
+use App\Models\BaseModel;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Core\Models\Employee;
@@ -10,9 +12,88 @@ use Modules\Core\Models\Skill;
 use Modules\Crm\Models\Industry;
 use Modules\Crm\Models\Partner;
 use Modules\Core\Models\User;
-
-class JobPosition extends BaseJobPosition
+class JobPosition extends BaseModel
 {
+    public $timestamps = false;
+
+    protected $casts = [];
+    /**
+     * protected $fillable = [
+     * //
+     * ];
+     */
+    protected $guarded = [];
+
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::updated(function ($jobPosition) {
+            cache()->forget("job_position_{$jobPosition->id}_employee_count");
+            cache()->forget("job_position_{$jobPosition->id}_hired_count");
+        });
+    }
+
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
+    public function address(): BelongsTo
+    {
+        return $this->belongsTo(Partner::class, 'address_id')->where('sub_type', 'company');
+    }
+
+    public function applications()
+    {
+        return $this->hasMany(Applicant::class, 'job_id');
+    }
+
+    public function industry(): BelongsTo
+    {
+        return $this->belongsTo(Industry::class, 'industry_id');
+    }
+
+    public function interviewers()
+    {
+        return $this->belongsToMany(User::class, 'recruitments_job_position_interviewers', 'job_position_id', 'user_id');
+    }
+
+    public function manager(): BelongsTo
+    {
+        return $this->belongsTo(Employee::class, 'manager_id');
+    }
+
+    public function recruiter(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'recruiter_id');
+    }
+
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class, 'job_position_skills', 'job_position_id', 'skill_id');
+    }
+
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
     /**
      * Create a new Eloquent model instance.
      *
@@ -36,51 +117,6 @@ class JobPosition extends BaseJobPosition
         ]);
 
         parent::__construct($attributes);
-    }
-
-    public function address(): BelongsTo
-    {
-        return $this->belongsTo(Partner::class, 'address_id')->where('sub_type', 'company');
-    }
-
-    public function skills()
-    {
-        return $this->belongsToMany(Skill::class, 'job_position_skills', 'job_position_id', 'skill_id');
-    }
-
-    public function interviewers()
-    {
-        return $this->belongsToMany(User::class, 'recruitments_job_position_interviewers', 'job_position_id', 'user_id');
-    }
-
-    public function manager(): BelongsTo
-    {
-        return $this->belongsTo(Employee::class, 'manager_id');
-    }
-
-    public function recruiter(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'recruiter_id');
-    }
-
-    public function industry(): BelongsTo
-    {
-        return $this->belongsTo(Industry::class, 'industry_id');
-    }
-
-    public function applications()
-    {
-        return $this->hasMany(Applicant::class, 'job_id');
-    }
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::updated(function ($jobPosition) {
-            cache()->forget("job_position_{$jobPosition->id}_employee_count");
-            cache()->forget("job_position_{$jobPosition->id}_hired_count");
-        });
     }
 
     protected function noOfEmployee(): Attribute
@@ -122,4 +158,33 @@ class JobPosition extends BaseJobPosition
             }
         );
     }
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
 }

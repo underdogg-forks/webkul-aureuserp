@@ -2,8 +2,9 @@
 
 namespace Modules\Core\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\DB;
 use InvalidArgumentException;
@@ -13,11 +14,43 @@ use Modules\Crm\Models\BankAccount;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
 use Modules\Core\Models\Currency;
-
-class Journal extends Model implements Sortable
+class Journal extends BaseModel implements Sortable
 {
     use HasFactory;
+
     use SortableTrait;
+
+    public $timestamps = false;
+
+    protected $casts = [];
+    /**
+     * protected $fillable = [
+     * 'default_account_id',
+     * 'suspense_account_id',
+     * 'sort',
+     * 'currency_id',
+     * 'company_id',
+     * 'profit_account_id',
+     * 'loss_account_id',
+     * 'bank_account_id',
+     * 'creator_id',
+     * 'color',
+     * 'access_token',
+     * 'code',
+     * 'type',
+     * 'invoice_reference_type',
+     * 'invoice_reference_model',
+     * 'bank_statements_source',
+     * 'name',
+     * 'order_override_regex',
+     * 'auto_check_on_post',
+     * 'restrict_mode_hash_table',
+     * 'refund_order',
+     * 'payment_order',
+     * 'show_on_dashboard',
+     * ];
+     */
+    protected $guarded = [];
 
     public $sortable = [
         'order_column_name'  => 'sort',
@@ -26,31 +59,26 @@ class Journal extends Model implements Sortable
 
     protected $table = 'accounts_journals';
 
-    protected $fillable = [
-        'default_account_id',
-        'suspense_account_id',
-        'sort',
-        'currency_id',
-        'company_id',
-        'profit_account_id',
-        'loss_account_id',
-        'bank_account_id',
-        'creator_id',
-        'color',
-        'access_token',
-        'code',
-        'type',
-        'invoice_reference_type',
-        'invoice_reference_model',
-        'bank_statements_source',
-        'name',
-        'order_override_regex',
-        'auto_check_on_post',
-        'restrict_mode_hash_table',
-        'refund_order',
-        'payment_order',
-        'show_on_dashboard',
-    ];
+    #region Static Methods
+    /*
+    |--------------------------------------------------------------------------
+    | Static Methods
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Relationships
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
+    public function allowedAccounts()
+    {
+        return $this->belongsToMany(Account::class, 'accounts_journal_accounts', 'journal_id', 'account_id');
+    }
 
     public function bankAccount()
     {
@@ -77,9 +105,19 @@ class Journal extends Model implements Sortable
         return $this->belongsTo(Account::class, 'default_account_id');
     }
 
+    public function inboundPaymentMethodLines(): HasMany
+    {
+        return $this->hasMany(PaymentMethodLine::class)->where('type', 'inbound');
+    }
+
     public function lossAccount()
     {
         return $this->belongsTo(Account::class, 'loss_account_id');
+    }
+
+    public function outboundPaymentMethodLines(): HasMany
+    {
+        return $this->hasMany(PaymentMethodLine::class)->where('type', 'outbound');
     }
 
     public function profitAccount()
@@ -92,10 +130,14 @@ class Journal extends Model implements Sortable
         return $this->belongsTo(Account::class, 'suspense_account_id');
     }
 
-    public function allowedAccounts()
-    {
-        return $this->belongsToMany(Account::class, 'accounts_journal_accounts', 'journal_id', 'account_id');
-    }
+    #endregion
+
+    #region Accessors
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
 
     public function getAvailablePaymentMethodLines(string $paymentType): mixed
     {
@@ -108,16 +150,6 @@ class Journal extends Model implements Sortable
             'outbound' => $this->outboundPaymentMethodLines,
             default    => throw new InvalidArgumentException('Invalid payment type'),
         };
-    }
-
-    public function inboundPaymentMethodLines(): HasMany
-    {
-        return $this->hasMany(PaymentMethodLine::class)->where('type', 'inbound');
-    }
-
-    public function outboundPaymentMethodLines(): HasMany
-    {
-        return $this->hasMany(PaymentMethodLine::class)->where('type', 'outbound');
     }
 
     public function computeInboundPaymentMethodLines(): void
@@ -149,4 +181,33 @@ class Journal extends Model implements Sortable
             ->where('active', true)
             ->get();
     }
+
+    #endregion
+
+    #region Mutators
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Scopes
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
+
+    #region Factory
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+
+    #endregion
 }
