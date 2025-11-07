@@ -1,0 +1,76 @@
+<?php
+
+namespace Modules\Products\Filament\Clusters\Operations\Resources\DropshipResource\Pages;
+
+use Filament\Notifications\Notification;
+use Filament\Resources\Pages\CreateRecord;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Support\Facades\Auth;
+use Modules\Products\Enums;
+use Modules\Products\Enums\OperationState;
+use Modules\Products\Filament\Clusters\Operations\Resources\DropshipResource;
+use Modules\Products\Models\OperationType;
+
+class CreateDropship extends CreateRecord
+{
+    protected static string $resource = DropshipResource::class;
+
+    public function getSubNavigation(): array
+    {
+        if (filled($cluster = static::getCluster())) {
+            return $this->generateNavigationItems($cluster::getClusteredComponents());
+        }
+
+        return [];
+    }
+
+    public function getTitle(): string|Htmlable
+    {
+        return __('inventories::filament/clusters/operations/resources/dropship/pages/create-dropship.title');
+    }
+
+    public function mount(): void
+    {
+        parent::mount();
+
+        $operationType = OperationType::where('type', Enums\OperationType::DROPSHIP)->first();
+
+        $this->data['operation_type_id'] = $operationType?->id;
+
+        $this->data['source_location_id'] = $operationType?->source_location_id;
+
+        $this->data['destination_location_id'] = $operationType?->destination_location_id;
+
+        $this->form->fill($this->data);
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('edit', ['record' => $this->getRecord()]);
+    }
+
+    protected function getCreatedNotification(): Notification
+    {
+        return Notification::make()
+            ->success()
+            ->title(__('inventories::filament/clusters/operations/resources/dropship/pages/create-dropship.notification.title'))
+            ->body(__('inventories::filament/clusters/operations/resources/dropship/pages/create-dropship.notification.body'));
+    }
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $operationType = OperationType::find($data['operation_type_id']);
+
+        $data['company_id'] ??= $operationType->destinationLocation->company_id;
+
+        $data['source_location_id'] ??= $operationType->source_location_id;
+
+        $data['destination_location_id'] ??= $operationType->destination_location_id;
+
+        $data['state'] ??= OperationState::DRAFT;
+
+        $data['creator_id'] = Auth::id();
+
+        return $data;
+    }
+}

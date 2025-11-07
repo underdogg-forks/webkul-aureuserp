@@ -1,0 +1,40 @@
+<?php
+
+namespace Modules\Invoices\Filament\Clusters\Configuration\Resources;
+
+use Modules\Invoices\Filament\Clusters\Configuration;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ActivityTypeResource\Pages\CreateActivityType;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ActivityTypeResource\Pages\EditActivityType;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ActivityTypeResource\Pages\ListActivityTypes;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ActivityTypeResource\Pages\ViewActivityType;
+use Modules\Invoices\Models\ActivityType;
+use Modules\Core\Filament\Resources\ActivityTypeResource as BaseActivityTypeResource;
+
+class ActivityTypeResource extends BaseActivityTypeResource
+{
+    protected static ?string $model = ActivityType::class;
+
+    protected static bool $shouldRegisterNavigation = true;
+
+    protected static ?string $cluster = Configuration::class;
+
+    public static function getModelLabel(): string
+    {
+        return __('Activity Type');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Activities');
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index'  => ListActivityTypes::route('/'),
+            'create' => CreateActivityType::route('/create'),
+            'edit'   => EditActivityType::route('/{record}/edit'),
+            'view'   => ViewActivityType::route('/{record}'),
+        ];
+    }
+}

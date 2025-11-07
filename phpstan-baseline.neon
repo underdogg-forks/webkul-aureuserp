@@ -1,0 +1,1039 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Class Modules\\Core\\Http\\Controllers\\CoreController not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Core/routes/api.php
+
+		-
+			message: '#^Class Modules\\Core\\Http\\Controllers\\CoreController not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Core/routes/web.php
+
+		-
+			message: '#^Class Modules\\Crm\\Http\\Controllers\\CrmController not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Crm/routes/api.php
+
+		-
+			message: '#^Class Modules\\Crm\\Http\\Controllers\\CrmController not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Crm/routes/web.php
+
+		-
+			message: '#^Class Modules\\Expenses\\Http\\Controllers\\ExpensesController not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Expenses/routes/api.php
+
+		-
+			message: '#^Class Modules\\Expenses\\Http\\Controllers\\ExpensesController not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Expenses/routes/web.php
+
+		-
+			message: '#^Class Modules\\Invoices\\Http\\Controllers\\InvoicesController not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Invoices/routes/api.php
+
+		-
+			message: '#^Class Modules\\Invoices\\Http\\Controllers\\InvoicesController not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Invoices/routes/web.php
+
+		-
+			message: '#^Class Modules\\Payments\\Http\\Controllers\\PaymentsController not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Payments/routes/api.php
+
+		-
+			message: '#^Class Modules\\Payments\\Http\\Controllers\\PaymentsController not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Payments/routes/web.php
+
+		-
+			message: '#^Class Modules\\Products\\Http\\Controllers\\ProductsController not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Products/routes/api.php
+
+		-
+			message: '#^Class Modules\\Products\\Http\\Controllers\\ProductsController not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Products/routes/web.php
+
+		-
+			message: '#^Class Modules\\Projects\\Http\\Controllers\\ProjectsController not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Projects/routes/api.php
+
+		-
+			message: '#^Class Modules\\Projects\\Http\\Controllers\\ProjectsController not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Projects/routes/web.php
+
+		-
+			message: '#^Class Modules\\Quotes\\Http\\Controllers\\QuotesController not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Quotes/routes/api.php
+
+		-
+			message: '#^Class Modules\\Quotes\\Http\\Controllers\\QuotesController not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Quotes/routes/web.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''infolist'' \(''infolist'', ''infolist''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/filament/resources/account.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''amount\-type'' \(''amount\-type'', ''amount\-type''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/filament/resources/tax.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''service'' \(self\:\:SERVICE\-\>value, self\:\:SERVICE\-\>value\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/src/Enums/TaxScope.php
+
+		-
+			message: '#^Static call to instance method Webkul\\Account\\Facades\\Account\:\:computeAccountMove\(\)\.$#'
+			identifier: method.staticCall
+			count: 1
+			path: Modules/Core/src/Filament/Resources/BillResource/Actions/CreditNoteAction.php
+
+		-
+			message: '#^Static call to instance method Webkul\\Account\\Facades\\Account\:\:computeAccountMove\(\)\.$#'
+			identifier: method.staticCall
+			count: 1
+			path: Modules/Core/src/Filament/Resources/BillResource/Pages/CreateBill.php
+
+		-
+			message: '#^Static call to instance method Webkul\\Account\\Facades\\Account\:\:computeAccountMove\(\)\.$#'
+			identifier: method.staticCall
+			count: 1
+			path: Modules/Core/src/Filament/Resources/BillResource/Pages/EditBill.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Account\\Filament\\Resources\\InvoiceResource\\Pages\\ListInvoices\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Resources/BillResource/Pages/ListBills.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Account\\Filament\\Resources\\InvoiceResource\\Pages\\ListInvoices\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Resources/BillResource/Pages/ListBills.php
+
+		-
+			message: '#^Static call to instance method Webkul\\Account\\Facades\\Account\:\:computeAccountMove\(\)\.$#'
+			identifier: method.staticCall
+			count: 1
+			path: Modules/Core/src/Filament/Resources/CreditNoteResource/Pages/CreateCreditNote.php
+
+		-
+			message: '#^Static call to instance method Webkul\\Account\\Facades\\Account\:\:computeAccountMove\(\)\.$#'
+			identifier: method.staticCall
+			count: 1
+			path: Modules/Core/src/Filament/Resources/CreditNoteResource/Pages/EditCreditNote.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Account\\Filament\\Resources\\InvoiceResource\\Pages\\ListInvoices\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Resources/CreditNoteResource/Pages/ListCreditNotes.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Account\\Filament\\Resources\\InvoiceResource\\Pages\\ListInvoices\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Resources/CreditNoteResource/Pages/ListCreditNotes.php
+
+		-
+			message: '#^Static call to instance method Webkul\\Account\\Facades\\Account\:\:computeAccountMove\(\)\.$#'
+			identifier: method.staticCall
+			count: 1
+			path: Modules/Core/src/Filament/Resources/InvoiceResource/Actions/CreditNoteAction.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''date'' \(''date'', ''date''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/src/Filament/Resources/InvoiceResource/Actions/PayAction.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''payment_date'' \(''payment_date'', ''payment_date''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/src/Filament/Resources/InvoiceResource/Actions/PayAction.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''payment_type'' \(''payment_type'', ''payment_type''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/src/Filament/Resources/InvoiceResource/Actions/PayAction.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''state'' \(''state'', ''state''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/src/Filament/Resources/InvoiceResource/Actions/PayAction.php
+
+		-
+			message: '#^Static call to instance method Webkul\\Account\\Facades\\Account\:\:computeAccountMove\(\)\.$#'
+			identifier: method.staticCall
+			count: 1
+			path: Modules/Core/src/Filament/Resources/InvoiceResource/Pages/CreateInvoice.php
+
+		-
+			message: '#^Static call to instance method Webkul\\Account\\Facades\\Account\:\:computeAccountMove\(\)\.$#'
+			identifier: method.staticCall
+			count: 1
+			path: Modules/Core/src/Filament/Resources/InvoiceResource/Pages/EditInvoice.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Account\\Filament\\Resources\\InvoiceResource\\Pages\\ListInvoices\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Resources/InvoiceResource/Pages/ListInvoices.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Account\\Filament\\Resources\\InvoiceResource\\Pages\\ListInvoices\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Resources/InvoiceResource/Pages/ListInvoices.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Account\\Filament\\Resources\\PaymentsResource\\Pages\\ListPayments\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Resources/PaymentsResource/Pages/ListPayments.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Account\\Filament\\Resources\\PaymentsResource\\Pages\\ListPayments\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Resources/PaymentsResource/Pages/ListPayments.php
+
+		-
+			message: '#^Static call to instance method Webkul\\Account\\Facades\\Account\:\:computeAccountMove\(\)\.$#'
+			identifier: method.staticCall
+			count: 1
+			path: Modules/Core/src/Filament/Resources/RefundResource/Pages/CreateRefund.php
+
+		-
+			message: '#^Static call to instance method Webkul\\Account\\Facades\\Account\:\:computeAccountMove\(\)\.$#'
+			identifier: method.staticCall
+			count: 1
+			path: Modules/Core/src/Filament/Resources/RefundResource/Pages/EditRefund.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Account\\Filament\\Resources\\TaxResource\\Pages\\ListTaxes\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Resources/TaxResource/Pages/ListTaxes.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Account\\Filament\\Resources\\TaxResource\\Pages\\ListTaxes\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Resources/TaxResource/Pages/ListTaxes.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Blog\\Filament\\Admin\\Resources\\PostResource\\Pages\\ListPosts\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Admin/Resources/PostResource/Pages/ListPosts.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Blog\\Filament\\Admin\\Resources\\PostResource\\Pages\\ListPosts\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Admin/Resources/PostResource/Pages/ListPosts.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''original\-note'' \(''original\-note'', ''original\-note''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/livewire/chatter-panel.php
+
+		-
+			message: '#^Deprecated in PHP 8\.3\: Required parameter \$chatterAction follows optional parameter \$activityPlans\.$#'
+			identifier: parameter.requiredAfterOptional
+			count: 1
+			path: Modules/Core/src/Livewire/ChatterHeaderActions.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''attendance\-name'' \(''attendance\-name'', ''attendance\-name''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/filament/clusters/configurations/resources/calendar/relation-managers/working-hours.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''bank'' \(''bank'', ''bank''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/filament/resources/employee.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''bank\-account\-holder\-name'' \(''bank\-account\-holder\-name'', ''bank\-account\-holder\-name''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/filament/resources/employee.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''bank\-account\-number'' \(''bank\-account\-number'', ''bank\-account\-number''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/filament/resources/employee.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''bank\-country'' \(''bank\-country'', ''bank\-country''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/filament/resources/employee.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''bank\-state'' \(''bank\-state'', ''bank\-state''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/filament/resources/employee.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''country\-of\-birth'' \(''country\-of\-birth'', ''country\-of\-birth''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/filament/resources/employee.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''create\-bank'' \(''create\-bank'', ''create\-bank''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/filament/resources/employee.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''private\-email'' \(''private\-email'', ''private\-email''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/filament/resources/employee.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''send\-money'' \(''send\-money'', ''send\-money''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/filament/resources/employee.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''status'' \(''status'', ''status''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/filament/resources/employee.php
+
+		-
+			message: '#^Array has 3 duplicate keys with value ''bank\-account'' \(''bank\-account'', ''bank\-account'', ''bank\-account''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/filament/resources/employee.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''type'' \(''type'', ''type''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/filament/resources/employee/relation-manager/resume.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Employee\\Filament\\Clusters\\Configurations\\Resources\\JobPositionResource\\Pages\\ListJobPositions\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Clusters/Configurations/Resources/JobPositionResource/Pages/ListJobPositions.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Employee\\Filament\\Clusters\\Configurations\\Resources\\JobPositionResource\\Pages\\ListJobPositions\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Clusters/Configurations/Resources/JobPositionResource/Pages/ListJobPositions.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Employee\\Filament\\Clusters\\Reportings\\Resources\\EmployeeSkillResource\\Pages\\ListEmployeeSkills\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Clusters/Reportings/Resources/EmployeeSkillResource/Pages/ListEmployeeSkills.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Employee\\Filament\\Clusters\\Reportings\\Resources\\EmployeeSkillResource\\Pages\\ListEmployeeSkills\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Clusters/Reportings/Resources/EmployeeSkillResource/Pages/ListEmployeeSkills.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Employee\\Filament\\Resources\\DepartmentResource\\Pages\\ListDepartments\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Resources/DepartmentResource/Pages/ListDepartments.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Employee\\Filament\\Resources\\DepartmentResource\\Pages\\ListDepartments\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Resources/DepartmentResource/Pages/ListDepartments.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Employee\\Filament\\Resources\\EmployeeResource\\Pages\\ListEmployees\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Resources/EmployeeResource/Pages/ListEmployees.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Employee\\Filament\\Resources\\EmployeeResource\\Pages\\ListEmployees\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Resources/EmployeeResource/Pages/ListEmployees.php
+
+		-
+			message: '#^Class Filament\\Forms\\Components\\DatePicker referenced with incorrect case\: Filament\\Forms\\Components\\Datepicker\.$#'
+			identifier: class.nameCase
+			count: 1
+			path: Modules/Core/src/Filament/Resources/EmployeeResource/Pages/ManageResume.php
+
+		-
+			message: '#^Class Filament\\Forms\\Components\\DatePicker referenced with incorrect case\: Filament\\Forms\\Components\\Datepicker\.$#'
+			identifier: class.nameCase
+			count: 1
+			path: Modules/Core/src/Filament/Resources/EmployeeResource/RelationManagers/ResumeRelationManager.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''url'' \(''url'', ''url''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/filament/resources/field.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''quantity'' \(''quantity'', ''quantity''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Products/resources/lang/en/filament/clusters/operations/actions/print/labels.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''company'' \(''company'', ''company''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Products/resources/lang/en/filament/clusters/operations/resources/quantity.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''operation_type_id'' \(''operation_type_id'', ''operation_type_id''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Products/src/Filament/Clusters/Configurations/Resources/WarehouseResource/Pages/CreateWarehouse.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Operations\\Resources\\DeliveryResource\\Pages\\ListDeliveries\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Operations/Resources/DeliveryResource/Pages/ListDeliveries.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Operations\\Resources\\DeliveryResource\\Pages\\ListDeliveries\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Operations/Resources/DeliveryResource/Pages/ListDeliveries.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Operations\\Resources\\DropshipResource\\Pages\\ListDropships\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Operations/Resources/DropshipResource/Pages/ListDropships.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Operations\\Resources\\DropshipResource\\Pages\\ListDropships\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Operations/Resources/DropshipResource/Pages/ListDropships.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Operations\\Resources\\InternalResource\\Pages\\ListInternals\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Operations/Resources/InternalResource/Pages/ListInternals.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Operations\\Resources\\InternalResource\\Pages\\ListInternals\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Operations/Resources/InternalResource/Pages/ListInternals.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Operations\\Resources\\QuantityResource\\Pages\\ManageQuantities\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Operations/Resources/QuantityResource/Pages/ManageQuantities.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Operations\\Resources\\QuantityResource\\Pages\\ManageQuantities\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Operations/Resources/QuantityResource/Pages/ManageQuantities.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Operations\\Resources\\ReceiptResource\\Pages\\ListReceipts\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Operations/Resources/ReceiptResource/Pages/ListReceipts.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Operations\\Resources\\ReceiptResource\\Pages\\ListReceipts\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Operations/Resources/ReceiptResource/Pages/ListReceipts.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Operations\\Resources\\ReplenishmentResource\\Pages\\ManageReplenishment\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Operations/Resources/ReplenishmentResource/Pages/ManageReplenishment.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Operations\\Resources\\ReplenishmentResource\\Pages\\ManageReplenishment\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Operations/Resources/ReplenishmentResource/Pages/ManageReplenishment.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Operations\\Resources\\ScrapResource\\Pages\\ListScraps\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Operations/Resources/ScrapResource/Pages/ListScraps.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Operations\\Resources\\ScrapResource\\Pages\\ListScraps\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Operations/Resources/ScrapResource/Pages/ListScraps.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Products\\Resources\\LotResource\\Pages\\ListLots\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Products/Resources/LotResource/Pages/ListLots.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Products\\Resources\\LotResource\\Pages\\ListLots\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Products/Resources/LotResource/Pages/ListLots.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Products\\Resources\\PackageResource\\Pages\\ListPackages\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Products/Resources/PackageResource/Pages/ListPackages.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Products\\Resources\\PackageResource\\Pages\\ListPackages\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Products/Resources/PackageResource/Pages/ListPackages.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Products\\Resources\\PackageResource\\Pages\\ManageOperations\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Products/Resources/PackageResource/Pages/ManageOperations.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Products\\Resources\\PackageResource\\Pages\\ManageOperations\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Products/Resources/PackageResource/Pages/ManageOperations.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Products\\Resources\\ProductResource\\Pages\\ManageMoves\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Products/Resources/ProductResource/Pages/ManageMoves.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Products\\Resources\\ProductResource\\Pages\\ManageMoves\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Products/Resources/ProductResource/Pages/ManageMoves.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Products\\Resources\\ProductResource\\Pages\\ManageQuantities\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Products/Resources/ProductResource/Pages/ManageQuantities.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Inventory\\Filament\\Clusters\\Products\\Resources\\ProductResource\\Pages\\ManageQuantities\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Products/src/Filament/Clusters/Products/Resources/ProductResource/Pages/ManageQuantities.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''infolist'' \(''infolist'', ''infolist''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/filament/clusters/configurations/resources/account.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''payment\-term'' \(''payment\-term'', ''payment\-term''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/filament/clusters/configurations/resources/payment-term.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''amount\-type'' \(''amount\-type'', ''amount\-type''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/filament/clusters/configurations/resources/tax.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Account\\Filament\\Resources\\InvoiceResource\\Pages\\ListInvoices\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Clusters/Vendors/Resources/RefundResource/Pages/ListRefunds.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Account\\Filament\\Resources\\InvoiceResource\\Pages\\ListInvoices\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Clusters/Vendors/Resources/RefundResource/Pages/ListRefunds.php
+
+		-
+			message: '#^Parameter \$move of method Webkul\\Invoice\\Policies\\MovePolicy\:\:delete\(\) has invalid type Webkul\\Invoice\\Models\\Move\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Core/src/Policies/MovePolicy.php
+
+		-
+			message: '#^Parameter \$move of method Webkul\\Invoice\\Policies\\MovePolicy\:\:forceDelete\(\) has invalid type Webkul\\Invoice\\Models\\Move\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Core/src/Policies/MovePolicy.php
+
+		-
+			message: '#^Parameter \$move of method Webkul\\Invoice\\Policies\\MovePolicy\:\:replicate\(\) has invalid type Webkul\\Invoice\\Models\\Move\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Core/src/Policies/MovePolicy.php
+
+		-
+			message: '#^Parameter \$move of method Webkul\\Invoice\\Policies\\MovePolicy\:\:restore\(\) has invalid type Webkul\\Invoice\\Models\\Move\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Core/src/Policies/MovePolicy.php
+
+		-
+			message: '#^Parameter \$move of method Webkul\\Invoice\\Policies\\MovePolicy\:\:update\(\) has invalid type Webkul\\Invoice\\Models\\Move\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Core/src/Policies/MovePolicy.php
+
+		-
+			message: '#^Parameter \$move of method Webkul\\Invoice\\Policies\\MovePolicy\:\:view\(\) has invalid type Webkul\\Invoice\\Models\\Move\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Core/src/Policies/MovePolicy.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''industry'' \(''industry'', ''industry''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Crm/resources/lang/en/filament/resources/partner.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''parent'' \(''parent'', ''parent''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Crm/resources/lang/en/filament/resources/partner.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Partner\\Filament\\Resources\\PartnerResource\\Pages\\ListPartners\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Crm/src/Filament/Resources/PartnerResource/Pages/ListPartners.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Partner\\Filament\\Resources\\PartnerResource\\Pages\\ListPartners\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Crm/src/Filament/Resources/PartnerResource/Pages/ListPartners.php
+
+		-
+			message: '#^Call to protected static method getAllPluginPackages\(\) of class Webkul\\Support\\Models\\Plugin\.$#'
+			identifier: staticMethod.protected
+			count: 1
+			path: Modules/Core/database/seeders/PluginSeeder.php
+
+		-
+			message: '#^Call to protected static method getAllPluginPackages\(\) of class Webkul\\Support\\Models\\Plugin\.$#'
+			identifier: staticMethod.protected
+			count: 1
+			path: Modules/Core/src/Filament/Resources/PluginResource.php
+
+		-
+			message: '#^Call to protected static method getAllPluginPackages\(\) of class Webkul\\Support\\Models\\Plugin\.$#'
+			identifier: staticMethod.protected
+			count: 2
+			path: Modules/Core/src/Filament/Resources/PluginResource/Pages/ListPlugins.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''created\-at'' \(''created\-at'', ''created\-at''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/filament/resources/category.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Product\\Filament\\Resources\\ProductResource\\Pages\\ListProducts\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Resources/ProductResource/Pages/ListProducts.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Product\\Filament\\Resources\\ProductResource\\Pages\\ListProducts\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Resources/ProductResource/Pages/ListProducts.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Project\\Filament\\Resources\\ProjectResource\\Pages\\ListProjects\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Projects/src/Filament/Resources/ProjectResource/Pages/ListProjects.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Project\\Filament\\Resources\\ProjectResource\\Pages\\ListProjects\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Projects/src/Filament/Resources/ProjectResource/Pages/ListProjects.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Project\\Filament\\Resources\\ProjectResource\\Pages\\ManageTasks\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Projects/src/Filament/Resources/ProjectResource/Pages/ManageTasks.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Project\\Filament\\Resources\\ProjectResource\\Pages\\ManageTasks\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Projects/src/Filament/Resources/ProjectResource/Pages/ManageTasks.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Project\\Filament\\Resources\\TaskResource\\Pages\\ListTasks\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Projects/src/Filament/Resources/TaskResource/Pages/ListTasks.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Project\\Filament\\Resources\\TaskResource\\Pages\\ListTasks\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Projects/src/Filament/Resources/TaskResource/Pages/ListTasks.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''allow_milestones'' \(''allow_milestones'', ''allow_milestones''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Projects/src/Models/Project.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''allow_timesheets'' \(''allow_timesheets'', ''allow_timesheets''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Projects/src/Models/Project.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''end_date'' \(''end_date'', ''end_date''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Projects/src/Models/Project.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''is_active'' \(''is_active'', ''is_active''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Projects/src/Models/Project.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''start_date'' \(''start_date'', ''start_date''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Projects/src/Models/Project.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''is_active'' \(''is_active'', ''is_active''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Projects/src/Models/Task.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''billing\-status'' \(''billing\-status'', ''billing\-status''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Expenses/resources/lang/en/filament/admin/clusters/orders/resources/order.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''status'' \(''status'', ''status''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Expenses/resources/lang/en/filament/admin/clusters/orders/resources/order.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Purchase\\Filament\\Admin\\Clusters\\Orders\\Resources\\OrderResource\\Pages\\ListOrders\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/OrderResource/Pages/ListOrders.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Purchase\\Filament\\Admin\\Clusters\\Orders\\Resources\\OrderResource\\Pages\\ListOrders\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/OrderResource/Pages/ListOrders.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Purchase\\Filament\\Admin\\Clusters\\Orders\\Resources\\PurchaseAgreementResource\\Pages\\ListPurchaseAgreements\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/PurchaseAgreementResource/Pages/ListPurchaseAgreements.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Purchase\\Filament\\Admin\\Clusters\\Orders\\Resources\\PurchaseAgreementResource\\Pages\\ListPurchaseAgreements\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/PurchaseAgreementResource/Pages/ListPurchaseAgreements.php
+
+		-
+			message: '#^Static call to instance method Webkul\\Account\\Facades\\Account\:\:computeAccountMove\(\)\.$#'
+			identifier: method.staticCall
+			count: 1
+			path: Modules/Expenses/src/PurchaseOrder.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Recruitment\\Filament\\Clusters\\Applications\\Resources\\ApplicantResource\\Pages\\ListApplicants\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Clusters/Applications/Resources/ApplicantResource/Pages/ListApplicants.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Recruitment\\Filament\\Clusters\\Applications\\Resources\\ApplicantResource\\Pages\\ListApplicants\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Clusters/Applications/Resources/ApplicantResource/Pages/ListApplicants.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Recruitment\\Filament\\Clusters\\Applications\\Resources\\CandidateResource\\Pages\\ListCandidates\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Clusters/Applications/Resources/CandidateResource/Pages/ListCandidates.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Recruitment\\Filament\\Clusters\\Applications\\Resources\\CandidateResource\\Pages\\ListCandidates\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Clusters/Applications/Resources/CandidateResource/Pages/ListCandidates.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''company_id'' \(''company_id'', ''company_id''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/src/Models/Applicant.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''company_id'' \(''company_id'', ''company_id''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/src/Models/Candidate.php
+
+		-
+			message: '#^Class Webkul\\Sale\\Filament\\Clusters\\Configuration\\Resources\\QuotationTemplateResource not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Invoices/src/Filament/Clusters/Configuration/Resources/QuotationTemplateResource/Pages/CreateQuotationTemplate.php
+
+		-
+			message: '#^Class Webkul\\Sale\\Filament\\Clusters\\Configuration\\Resources\\QuotationTemplateResource not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Invoices/src/Filament/Clusters/Configuration/Resources/QuotationTemplateResource/Pages/EditQuotationTemplate.php
+
+		-
+			message: '#^Class Webkul\\Sale\\Filament\\Clusters\\Configuration\\Resources\\QuotationTemplateResource not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Invoices/src/Filament/Clusters/Configuration/Resources/QuotationTemplateResource/Pages/ListQuotationTemplates.php
+
+		-
+			message: '#^Class Webkul\\Sale\\Filament\\Clusters\\Configuration\\Resources\\QuotationTemplateResource not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Invoices/src/Filament/Clusters/Configuration/Resources/QuotationTemplateResource/Pages/ViewQuotationTemplate.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Sale\\Filament\\Clusters\\Orders\\Resources\\QuotationResource\\Pages\\ListQuotations\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Invoices/src/Filament/Clusters/Orders/Resources/OrderResource/Pages/ListOrders.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Sale\\Filament\\Clusters\\Orders\\Resources\\QuotationResource\\Pages\\ListQuotations\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Invoices/src/Filament/Clusters/Orders/Resources/OrderResource/Pages/ListOrders.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Sale\\Filament\\Clusters\\Orders\\Resources\\QuotationResource\\Pages\\ListQuotations\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Invoices/src/Filament/Clusters/Orders/Resources/QuotationResource/Pages/ListQuotations.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Sale\\Filament\\Clusters\\Orders\\Resources\\QuotationResource\\Pages\\ListQuotations\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Invoices/src/Filament/Clusters/Orders/Resources/QuotationResource/Pages/ListQuotations.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Sale\\Filament\\Clusters\\ToInvoice\\Resources\\OrderToInvoiceResource\\Pages\\ListOrderToInvoices\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Invoices/src/Filament/Clusters/ToInvoice/Resources/OrderToInvoiceResource/Pages/ListOrderToInvoices.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Sale\\Filament\\Clusters\\ToInvoice\\Resources\\OrderToInvoiceResource\\Pages\\ListOrderToInvoices\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Invoices/src/Filament/Clusters/ToInvoice/Resources/OrderToInvoiceResource/Pages/ListOrderToInvoices.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Sale\\Filament\\Clusters\\ToInvoice\\Resources\\OrderToUpsellResource\\Pages\\ListOrderToUpsells\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Invoices/src/Filament/Clusters/ToInvoice/Resources/OrderToUpsellResource/Pages/ListOrderToUpsells.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Sale\\Filament\\Clusters\\ToInvoice\\Resources\\OrderToUpsellResource\\Pages\\ListOrderToUpsells\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Invoices/src/Filament/Clusters/ToInvoice/Resources/OrderToUpsellResource/Pages/ListOrderToUpsells.php
+
+		-
+			message: '#^Static call to instance method Webkul\\Account\\Facades\\Account\:\:computeAccountMove\(\)\.$#'
+			identifier: method.staticCall
+			count: 1
+			path: Modules/Invoices/src/SaleManager.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''infolist'' \(''infolist'', ''infolist''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/filament/resources/team.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Security\\Filament\\Resources\\CompanyResource\\Pages\\ListCompanies\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Resources/CompanyResource/Pages/ListCompanies.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Security\\Filament\\Resources\\CompanyResource\\Pages\\ListCompanies\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Resources/CompanyResource/Pages/ListCompanies.php
+
+		-
+			message: '#^Instantiated class Webkul\\Support\\Mail\\DynamicEmail not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: Modules/Core/src/Services/EmailTemplateService.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''description'' \(''description'', ''description''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/filament/clusters/management/resources/time-off.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''description'' \(''description'', ''description''\)\.$#'
+			identifier: array.duplicateKey
+			count: 2
+			path: Modules/Core/resources/lang/en/filament/clusters/my-time/resources/my-time-off.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''accrual\-frequency'' \(''accrual\-frequency'', ''accrual\-frequency''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/traits/leave-accrual-plan.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''start\-type'' \(''start\-type'', ''start\-type''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: Modules/Core/resources/lang/en/traits/leave-accrual-plan.php
+
+		-
+			message: '#^Cannot unset property Webkul\\TimeOff\\Filament\\Clusters\\Management\\Resources\\AllocationResource\\Pages\\ListAllocations\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Clusters/Management/Resources/AllocationResource/Pages/ListAllocations.php
+
+		-
+			message: '#^Cannot unset property Webkul\\TimeOff\\Filament\\Clusters\\Management\\Resources\\AllocationResource\\Pages\\ListAllocations\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Clusters/Management/Resources/AllocationResource/Pages/ListAllocations.php
+
+		-
+			message: '#^Cannot unset property Webkul\\TimeOff\\Filament\\Clusters\\Management\\Resources\\TimeOffResource\\Pages\\ListTimeOff\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Clusters/Management/Resources/TimeOffResource/Pages/ListTimeOff.php
+
+		-
+			message: '#^Cannot unset property Webkul\\TimeOff\\Filament\\Clusters\\Management\\Resources\\TimeOffResource\\Pages\\ListTimeOff\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Clusters/Management/Resources/TimeOffResource/Pages/ListTimeOff.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Timesheet\\Filament\\Resources\\TimesheetResource\\Pages\\ManageTimesheets\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Projects/src/Filament/Resources/TimesheetResource/Pages/ManageTimesheets.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Timesheet\\Filament\\Resources\\TimesheetResource\\Pages\\ManageTimesheets\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Projects/src/Filament/Resources/TimesheetResource/Pages/ManageTimesheets.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Website\\Filament\\Admin\\Resources\\PageResource\\Pages\\ListPages\:\:\$cachedFavoriteTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Admin/Resources/PageResource/Pages/ListPages.php
+
+		-
+			message: '#^Cannot unset property Webkul\\Website\\Filament\\Admin\\Resources\\PageResource\\Pages\\ListPages\:\:\$cachedTableViews because it might have hooks in a subclass\.$#'
+			identifier: unset.possiblyHookedProperty
+			count: 6
+			path: Modules/Core/src/Filament/Admin/Resources/PageResource/Pages/ListPages.php

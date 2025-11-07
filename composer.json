@@ -9,10 +9,21 @@
         "framework"
     ],
     "license": "MIT",
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true,
+            "wikimedia/composer-merge-plugin": true
+        }
+    },
+    "minimum-stability": "beta",
+    "prefer-stable": true,
     "require": {
         "php": "^8.2",
         "awcodes/filament-badgeable-column": "^3.0",
-        "barryvdh/laravel-debugbar": "^3.16",
         "barryvdh/laravel-dompdf": "^3.1.1",
         "bezhansalleh/filament-shield": "^4.0.2",
         "filament/filament": "^4.2.0",
@@ -28,6 +39,7 @@
         "wikimedia/composer-merge-plugin": "^2.1"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.16",
         "fakerphp/faker": "^1.24.1",
         "filament/upgrade": "^4.2.0",
         "laravel/boost": "^1.7.1",
@@ -36,7 +48,8 @@
         "laravel/sail": "^1.47",
         "mockery/mockery": "^1.6.12",
         "nunomaduro/collision": "^8.8.2",
-        "phpunit/phpunit": "^11.5.43"
+        "phpunit/phpunit": "^11.5.43",
+        "roave/security-advisories": "dev-latest"
     },
     "autoload": {
         "psr-4": {
@@ -78,22 +91,10 @@
         },
         "merge-plugin": {
             "include": [
-                "plugins/*/*/composer.json"
+                "Modules/*/composer.json"
             ]
         }
     },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "allow-plugins": {
-            "pestphp/pest-plugin": true,
-            "php-http/discovery": true,
-            "wikimedia/composer-merge-plugin": true
-        }
-    },
-    "minimum-stability": "beta",
-    "prefer-stable": true,
     "support": {
         "issues": "https://github.com/aureuserp/aureuserp/issues",
         "forum": "https://forums.aureuserp.com",

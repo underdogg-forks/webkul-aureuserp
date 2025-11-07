@@ -1,0 +1,63 @@
+<?php
+
+namespace Modules\Products\Filament\Clusters\Settings\Pages;
+
+use BackedEnum;
+use BezhanSalleh\FilamentShield\Traits\HasPageShield;
+use Filament\Forms\Components\Toggle;
+use Filament\Pages\SettingsPage;
+use Filament\Schemas\Schema;
+use UnitEnum;
+use Modules\Products\Enums;
+use Modules\Products\Models\OperationType;
+use Modules\Products\Settings\LogisticSettings;
+use Modules\Core\Filament\Clusters\Settings;
+
+class ManageLogistics extends SettingsPage
+{
+    use HasPageShield;
+
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-truck';
+
+    protected static ?string $slug = 'inventory/manage-logistics';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Inventory';
+
+    protected static ?int $navigationSort = 5;
+
+    protected static string $settings = LogisticSettings::class;
+
+    protected static ?string $cluster = Settings::class;
+
+    public static function getNavigationLabel(): string
+    {
+        return __('inventories::filament/clusters/settings/pages/manage-logistics.title');
+    }
+
+    public function getBreadcrumbs(): array
+    {
+        return [
+            __('inventories::filament/clusters/settings/pages/manage-logistics.title'),
+        ];
+    }
+
+    public function getTitle(): string
+    {
+        return __('inventories::filament/clusters/settings/pages/manage-logistics.title');
+    }
+
+    public function form(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                Toggle::make('enable_dropshipping')
+                    ->label(__('inventories::filament/clusters/settings/pages/manage-logistics.form.enable-dropshipping'))
+                    ->helperText(__('inventories::filament/clusters/settings/pages/manage-logistics.form.enable-dropshipping-helper-text')),
+            ]);
+    }
+
+    protected function afterSave(): void
+    {
+        OperationType::withTrashed()->where('type', Enums\OperationType::DROPSHIP)->update(['deleted_at' => $this->data['enable_dropshipping'] ? null : now()]);
+    }
+}

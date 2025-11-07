@@ -373,10 +373,10 @@ Forms\Components\Select::make('user_id')
 
 - Prefer lifecycle hooks like `mount()`, `updatedFoo()`) for initialization and reactive side effects:
 
-<code-snippet name="Lifecycle hook examples" lang="php">
-    public function mount(User $user) { $this->user = $user; }
-    public function updatedSearch() { $this->resetPage(); }
-</code-snippet>
+```php
+public function mount(User $user) { $this->user = $user; }
+public function updatedSearch() { $this->resetPage(); }
+```
 
 
 ## Testing Livewire
@@ -418,7 +418,7 @@ Forms\Components\Select::make('user_id')
 ### Lifecycle Hooks
 - You can listen for `livewire:init` to hook into Livewire initialization, and `fail.status === 419` for the page expiring:
 
-<code-snippet name="livewire:load example" lang="js">
+```js
 document.addEventListener('livewire:init', function () {
     Livewire.hook('request', ({ fail }) => {
         if (fail && fail.status === 419) {
@@ -430,7 +430,7 @@ document.addEventListener('livewire:init', function () {
         console.error(message);
     });
 });
-</code-snippet>
+```
 
 
 === pint/core rules ===
@@ -471,13 +471,13 @@ document.addEventListener('livewire:init', function () {
 ### Spacing
 - When listing items, use gap utilities for spacing, don't use margins.
 
-    <code-snippet name="Valid Flex Gap Spacing Example" lang="html">
-        <div class="flex gap-8">
-            <div>Superior</div>
-            <div>Michigan</div>
-            <div>Erie</div>
-        </div>
-    </code-snippet>
+```html
+<div class="flex gap-8">
+    <div>Superior</div>
+    <div>Michigan</div>
+    <div>Erie</div>
+</div>
+```
 
 
 ### Dark Mode
@@ -492,7 +492,7 @@ document.addEventListener('livewire:init', function () {
 - `corePlugins` is not supported in Tailwind v4.
 - In Tailwind v4, you import Tailwind using a regular CSS `@import` statement, not using the `@tailwind` directives used in v3:
 
-<code-snippet name="Tailwind v4 Import Tailwind Diff" lang="diff"
+```diff
    - @tailwind base;
    - @tailwind components;
    - @tailwind utilities;
@@ -517,4 +517,22 @@ document.addEventListener('livewire:init', function () {
 | overflow-ellipsis | text-ellipsis |
 | decoration-slice | box-decoration-slice |
 | decoration-clone | box-decoration-clone |
+
+=== repository rules ===
+
+## AureusERP Repository Conventions
+- Modules vs plugins: Prefer using Module shims/namespaces where available; legacy Webkul\* namespaces are acceptable during migration to keep functionality intact.
+- Migration/testing priorities: Do B) Core-focused modules first (accounts, employees, fields, full-calendar, plugin-manager, security, support, table-views, time-off), then C) Sales/Finance (invoices, payments, inventories/products).
+- Minimal-change migrations: All plugins have been moved from plugins/webkul/* to Modules. Legacy Webkul\* namespaces are preserved via autoload mappings in Module composer.json files.
+- Testing conventions:
+  - All PHPUnit methods start with it_ and use explicit /* Arrange */ /* Act */ /* Assert */ phpdoc comments.
+  - Prefer meaningful assertions (database state, component behavior) over generic status checks.
+  - Use Livewire/Filament helpers for CRUD actions on List pages (mountAction('create'), TestAction::make('edit')->table($record), TestAction::make('delete')->table($record)).
+  - Group CRUD smoke tests with @group smoke.
+  - Use factories/DataProviders; keep fixtures realistic. When relationships/resources aren’t ready, use minimal payloads and skip un-provable assertions with a clear reason.
+  - Guard: In tests’ setUp, auto-skip when pdo_sqlite is unavailable.
+- Scaffolding now: Create CRUD smoke tests for all modules; if a List page doesn’t exist yet, mount what’s available and mark the test as skipped with a descriptive message.
+- CSS consolidation: For migrated modules only, begin moving plugin CSS into resources/css/{module}.css and import into resources/css/app.css. Leave non‑migrated plugins for a later pass.
+- Don’t remove tests without approval; don’t add new dependencies without approval; reuse existing components before creating new ones.
+
 </laravel-boost-guidelines>

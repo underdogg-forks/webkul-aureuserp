@@ -1,0 +1,17 @@
+<?php
+
+namespace Modules\Core\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class ApplicantInterviewer extends Model
+{
+    public $timestamps = false;
+
+    protected $table = 'recruitments_applicant_interviewers';
+
+    protected $fillable = [
+        'applicant_id',
+        'interviewer_id',
+    ];
+}
