@@ -102,7 +102,7 @@ class Project extends BaseModel implements Sortable
         'allow_milestones',
         'allow_task_dependencies',
         'is_active',
-        'stage',
+        'stage'        => 'Stage',
         'partner.name' => 'Customer',
         'company.name' => 'Company',
         'user.name'    => 'Project Manager',

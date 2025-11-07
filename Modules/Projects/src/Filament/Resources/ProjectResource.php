@@ -547,6 +547,7 @@ class ProjectResource extends Resource
                                             ->label(__('projects::filament/resources/project.infolist.sections.additional.entries.current-stage'))
                                             ->icon('heroicon-o-flag')
                                             ->badge()
+                                            ->formatStateUsing(fn ($state) => $state?->getLabel())
                                             ->visible(static::getTaskSettings()->enable_project_stages),
 
                                         TextEntry::make('tags.name')
