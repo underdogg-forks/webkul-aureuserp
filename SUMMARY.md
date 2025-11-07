@@ -175,6 +175,30 @@ This PR successfully implements comprehensive CRUD tests for the 6 highest-prior
 - **Lines of Code**: 192 lines
 - **Dependencies**: User, Company, Currency, Partner
 
+### 22. RoleCrudTest ✅
+**File**: `tests/Feature/Modules/Core/RoleCrudTest.php`
+- **Model**: Spatie\Permission\Models\Role
+- **Table**: roles
+- **Tests**: List, Create (with guard_name), Update, Delete (hard)
+- **Lines of Code**: 126 lines
+- **Dependencies**: User
+
+### 23. ExpensesOrderCrudTest ✅
+**File**: `tests/Feature/Modules/Expenses/ExpensesOrderCrudTest.php`
+- **Model**: Modules\Expenses\Models\Order
+- **Table**: purchases_orders (all states)
+- **Tests**: List (all orders), Create, Update, Delete (soft)
+- **Lines of Code**: 190 lines
+- **Dependencies**: User, Company, Currency, Partner
+
+### 24. ExpensesQuotationCrudTest ✅
+**File**: `tests/Feature/Modules/Expenses/ExpensesQuotationCrudTest.php`
+- **Model**: Modules\Expenses\Models\Order
+- **Table**: purchases_orders (state=DRAFT or SENT)
+- **Tests**: List (filters quotations), Create, Update, Delete (soft)
+- **Lines of Code**: 206 lines
+- **Dependencies**: User, Company, Currency, Partner
+
 ## Documentation Created
 
 ### TESTING_README.md (221 lines)
@@ -196,12 +220,12 @@ Comprehensive resource inventory:
 
 ## Statistics
 
-- **Test Files Created**: 20 new + 1 existing = 21 total
-- **Test Methods**: 84 test methods (4 per resource × 21 resources)
-- **Lines of Code**: ~3,675 lines of test code
+- **Test Files Created**: 23 new + 1 existing = 24 total
+- **Test Methods**: 96 test methods (4 per resource × 24 resources)
+- **Lines of Code**: ~4,200 lines of test code
 - **Documentation**: ~600 lines of documentation
-- **Resources Tested**: 21 out of 143+ total resources (~15% coverage)
-- **Coverage**: 100% of critical financial operations, 100% of CRM module, 67% of business critical
+- **Resources Tested**: 24 out of 143+ total resources (~17% coverage)
+- **Coverage**: 100% of critical financial operations, 100% of CRM module, 100% of Expenses module, 83% of business critical, 67% of business critical
 
 ## Test Quality
 
@@ -231,8 +255,8 @@ php artisan test tests/Feature
 
 ## Next Steps
 
-1. **Immediate**: These 21 tests are ready to use
-2. **Short-term**: Add tests for remaining business critical (Role), expenses (Order, Quotation)
+1. **Immediate**: These 24 tests are ready to use
+2. **Short-term**: Add tests for Invoices module resources (OrderToInvoice, OrderToUpsell)
 3. **Medium-term**: Cover medium-priority resources (Projects, Products operations, additional modules)
 4. **Long-term**: Complete coverage of all 143+ resources
 
@@ -273,6 +297,7 @@ tests/Feature/Modules/
 │   ├── InvoiceCrudTest.php (NEW)
 │   ├── JournalCrudTest.php (NEW)
 │   ├── RefundCrudTest.php (NEW)
+│   ├── RoleCrudTest.php (NEW)
 │   ├── TeamCrudTest.php (NEW)
 │   └── UserCrudTest.php (NEW)
 ├── Crm/
@@ -280,6 +305,8 @@ tests/Feature/Modules/
 │   ├── BankCrudTest.php (NEW)
 │   └── PartnerCrudTest.php (NEW)
 ├── Expenses/
+│   ├── ExpensesOrderCrudTest.php (NEW)
+│   ├── ExpensesQuotationCrudTest.php (NEW)
 │   ├── PurchaseAgreementCrudTest.php (NEW)
 │   ├── PurchaseOrderCrudTest.php (NEW)
 │   └── VendorCrudTest.php (NEW)
@@ -301,6 +328,6 @@ SUMMARY.md (UPDATED - this file)
 **Status**: ✅ Complete and Ready for Review
 **Test Group**: smoke
 **Priority**: High
-**Resources Tested**: 21 of 143+ (15% coverage)
-**Major Milestones**: 100% of Financial/Critical, 100% of CRM Module
+**Resources Tested**: 24 of 143+ (17% coverage)
+**Major Milestones**: 100% of Financial/Critical, 100% of CRM Module, 100% of Expenses Module
 **Maintainability**: High (well documented, follows patterns)
