@@ -1,0 +1,75 @@
+<?php
+
+namespace Modules\Invoices\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\EloquentSortable\Sortable;
+use Spatie\EloquentSortable\SortableTrait;
+use Modules\Core\Models\Journal;
+use Modules\Invoices\Enums\OrderDisplayType;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
+
+class OrderTemplate extends Model implements Sortable
+{
+    use HasFactory;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
+
+    protected $table = 'sales_order_templates';
+
+    protected $fillable = [
+        'sort',
+        'company_id',
+        'number_of_days',
+        'creator_id',
+        'name',
+        'note',
+        'journal_id',
+        'is_active',
+        'require_signature',
+        'require_payment',
+        'prepayment_percentage',
+    ];
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id');
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'creator_id');
+    }
+
+    public function journal()
+    {
+        return $this->belongsTo(Journal::class, 'journal_id');
+    }
+
+    public function products()
+    {
+        return $this
+            ->hasMany(OrderTemplateProduct::class, 'order_template_id')
+            ->whereNull('display_type');
+    }
+
+    public function sections()
+    {
+        return $this
+            ->hasMany(OrderTemplateProduct::class, 'order_template_id')
+            ->where('display_type', OrderDisplayType::SECTION->value);
+    }
+
+    public function notes()
+    {
+        return $this
+            ->hasMany(OrderTemplateProduct::class, 'order_template_id')
+            ->where('display_type', OrderDisplayType::NOTE->value);
+    }
+}

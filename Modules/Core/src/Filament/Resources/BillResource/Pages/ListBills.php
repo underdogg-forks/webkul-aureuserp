@@ -1,0 +1,39 @@
+<?php
+
+namespace Modules\Core\Filament\Resources\BillResource\Pages;
+
+use Filament\Actions\CreateAction;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Arr;
+use Modules\Core\Enums\MoveType;
+use Modules\Core\Filament\Resources\BillResource;
+use Modules\Core\Filament\Resources\InvoiceResource\Pages\ListInvoices as BaseListBills;
+use Modules\Core\Filament\Components\PresetView;
+use Modules\Core\Filament\Concerns\HasTableViews;
+
+class ListBills extends BaseListBills
+{
+    use HasTableViews;
+
+    protected static string $resource = BillResource::class;
+
+    public function getPresetTableViews(): array
+    {
+        return [
+            'bill' => PresetView::make(__('accounts::filament/resources/bill/pages/list-bill.tabs.bills'))
+                ->favorite()
+                ->setAsDefault()
+                ->icon('heroicon-s-receipt-percent')
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('move_type', MoveType::IN_INVOICE)),
+            ...Arr::except(parent::getPresetTableViews(), 'invoice'),
+        ];
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            CreateAction::make()
+                ->icon('heroicon-o-plus-circle'),
+        ];
+    }
+}

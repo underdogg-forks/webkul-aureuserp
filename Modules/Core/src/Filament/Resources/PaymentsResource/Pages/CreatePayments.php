@@ -1,0 +1,44 @@
+<?php
+
+namespace Modules\Core\Filament\Resources\PaymentsResource\Pages;
+
+use Filament\Notifications\Notification;
+use Filament\Resources\Pages\CreateRecord;
+use Illuminate\Support\Facades\Auth;
+use Modules\Payments\Enums\PaymentStatus;
+use Modules\Core\Filament\Resources\PaymentsResource;
+
+class CreatePayments extends CreateRecord
+{
+    protected static string $resource = PaymentsResource::class;
+
+    public function getSubNavigation(): array
+    {
+        if (filled($cluster = static::getCluster())) {
+            return $this->generateNavigationItems($cluster::getClusteredComponents());
+        }
+
+        return [];
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('view', ['record' => $this->getRecord()]);
+    }
+
+    protected function getCreatedNotification(): ?Notification
+    {
+        return Notification::make()
+            ->success()
+            ->title(__('accounts::filament/resources/payment/pages/create-payment.notification.title'))
+            ->body(__('accounts::filament/resources/payment/pages/create-payment.notification.body'));
+    }
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['state']      = PaymentStatus::DRAFT->value;
+        $data['creator_id'] = Auth::user()->id;
+
+        return $data;
+    }
+}

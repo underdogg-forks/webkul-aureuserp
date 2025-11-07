@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
      |--------------------------------------------------------------------------
      | Debugbar Settings
@@ -215,8 +214,8 @@ return [
             'show_guards' => true, // Show the guards that are used
         ],
         'db' => [
-            'with_params'       => true,   // Render SQL with the parameters substituted
-            'exclude_paths'     => [       // Paths to exclude entirely from the collector
+            'with_params'   => true,   // Render SQL with the parameters substituted
+            'exclude_paths' => [       // Paths to exclude entirely from the collector
                 //                'vendor/laravel/framework/src/Illuminate/Session', // Exclude sessions queries
             ],
             'backtrace'               => true,   // Use a backtrace to find the origin of the query in your files.
@@ -226,12 +225,12 @@ return [
             'explain'                 => [                 // Show EXPLAIN output on queries
                 'enabled' => false,
             ],
-            'hints'             => false,   // Show hints for common mistakes
-            'show_copy'         => true,    // Show copy button next to the query,
-            'slow_threshold'    => false,   // Only track queries that last longer than this time in ms
-            'memory_usage'      => false,   // Show queries memory usage
-            'soft_limit'        => 500,      // After the soft limit, no parameters/backtrace are captured
-            'hard_limit'        => 500,      // After the hard limit, queries are ignored
+            'hints'          => false,   // Show hints for common mistakes
+            'show_copy'      => true,    // Show copy button next to the query,
+            'slow_threshold' => false,   // Only track queries that last longer than this time in ms
+            'memory_usage'   => false,   // Show queries memory usage
+            'soft_limit'     => 500,      // After the soft limit, no parameters/backtrace are captured
+            'hard_limit'     => 500,      // After the hard limit, queries are ignored
         ],
         'mail' => [
             'timeline'  => true,  // Add mails to the timeline

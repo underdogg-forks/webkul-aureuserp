@@ -42,6 +42,67 @@ This application is a Laravel application and its main Laravel ecosystems packag
 - You must only create documentation files if explicitly requested by the user.
 
 
+=== aureuserp rules ===
+
+# AureusERP Specific Guidelines
+
+## Project Overview
+This is AureusERP, a comprehensive open-source Enterprise Resource Planning (ERP) solution built with Laravel 11 and FilamentPHP v4. It's designed for SMEs and large-scale enterprises with a highly modular plugin architecture.
+
+## Installation & Setup
+- Initial setup: `php artisan erp:install` - This sets up migrations, seeders, roles/permissions via Filament Shield, and admin credentials.
+- The system uses a plugin-based architecture with Core Plugins (system plugins) and Installable Plugins.
+- To install a plugin: `php artisan <plugin-name>:install` (e.g., `php artisan inventories:install`).
+- When developing, use `composer run dev` to start server, queue, logs, and vite concurrently.
+
+## Core Plugins (Always Installed)
+The following plugins are essential system components:
+- Analytics: Business intelligence and reporting
+- Chatter: Internal communication platform
+- Fields: Customizable data structure management
+- Security: Role-based access control
+- Support: Help desk and documentation
+- Table View: Customizable data presentation
+
+## Installable Plugins
+Optional plugins that extend functionality:
+- Blogs, Accounts, Contacts, CRM, Documents, Events, Inventories, Invoices, Leads, Notes, Orders, Products, Projects, Purchase Orders, Quotations, Sales, Tasks, Warehouse, Websites, Worksheets
+
+## Plugin Development
+- Each plugin follows Laravel package structure within the `plugins/` directory.
+- Plugins have their own migrations, seeders, routes, resources, and service providers.
+- Always check for plugin dependencies before installation - the system will prompt for conflicts.
+- Use the existing plugin structure as a template when creating new plugins.
+
+## Security Best Practices
+- Always use Laravel's built-in authentication (via Filament Shield for role-based access).
+- Never bypass Eloquent for user input - always validate through Form Requests.
+- Use policies and gates for authorization checks, especially in Filament resources.
+- Sensitive operations should be queued and logged appropriately.
+- Never commit `.env` files or expose environment variables directly.
+- Use `config()` helper instead of `env()` outside config files.
+- Validate all file uploads and restrict file types appropriately.
+- Apply CSRF protection on all state-changing operations (default in Laravel).
+
+## Performance Guidelines
+- Use eager loading to prevent N+1 queries: `->with(['relationship'])`.
+- Cache frequently accessed data using Laravel's cache facade.
+- Queue long-running operations using Laravel's queue system.
+- Use database indexes on frequently queried columns.
+- Optimize Filament tables with proper pagination and deferred filters.
+- Use lazy loading for large collections when appropriate.
+- Monitor query performance in development with Laravel Debugbar or Telescope.
+- Minimize the number of database queries in loops.
+
+## ERP-Specific Patterns
+- Follow existing patterns for module resources (e.g., accounts, contacts, products).
+- Use Filament's relationship management for associated records.
+- Implement proper validation rules that match business logic (e.g., invoice amounts, inventory quantities).
+- Maintain audit trails for critical business operations.
+- Use transactions for operations that modify multiple related records.
+- Follow the existing naming conventions for models, resources, and migrations.
+
+
 === boost rules ===
 
 ## Laravel Boost
@@ -312,10 +373,10 @@ Forms\Components\Select::make('user_id')
 
 - Prefer lifecycle hooks like `mount()`, `updatedFoo()`) for initialization and reactive side effects:
 
-<code-snippet name="Lifecycle hook examples" lang="php">
-    public function mount(User $user) { $this->user = $user; }
-    public function updatedSearch() { $this->resetPage(); }
-</code-snippet>
+```php
+public function mount(User $user) { $this->user = $user; }
+public function updatedSearch() { $this->resetPage(); }
+```
 
 
 ## Testing Livewire
@@ -357,7 +418,7 @@ Forms\Components\Select::make('user_id')
 ### Lifecycle Hooks
 - You can listen for `livewire:init` to hook into Livewire initialization, and `fail.status === 419` for the page expiring:
 
-<code-snippet name="livewire:load example" lang="js">
+```js
 document.addEventListener('livewire:init', function () {
     Livewire.hook('request', ({ fail }) => {
         if (fail && fail.status === 419) {
@@ -369,7 +430,7 @@ document.addEventListener('livewire:init', function () {
         console.error(message);
     });
 });
-</code-snippet>
+```
 
 
 === pint/core rules ===
@@ -410,13 +471,13 @@ document.addEventListener('livewire:init', function () {
 ### Spacing
 - When listing items, use gap utilities for spacing, don't use margins.
 
-    <code-snippet name="Valid Flex Gap Spacing Example" lang="html">
-        <div class="flex gap-8">
-            <div>Superior</div>
-            <div>Michigan</div>
-            <div>Erie</div>
-        </div>
-    </code-snippet>
+```html
+<div class="flex gap-8">
+    <div>Superior</div>
+    <div>Michigan</div>
+    <div>Erie</div>
+</div>
+```
 
 
 ### Dark Mode
@@ -431,7 +492,7 @@ document.addEventListener('livewire:init', function () {
 - `corePlugins` is not supported in Tailwind v4.
 - In Tailwind v4, you import Tailwind using a regular CSS `@import` statement, not using the `@tailwind` directives used in v3:
 
-<code-snippet name="Tailwind v4 Import Tailwind Diff" lang="diff"
+```diff
    - @tailwind base;
    - @tailwind components;
    - @tailwind utilities;
@@ -456,4 +517,22 @@ document.addEventListener('livewire:init', function () {
 | overflow-ellipsis | text-ellipsis |
 | decoration-slice | box-decoration-slice |
 | decoration-clone | box-decoration-clone |
+
+=== repository rules ===
+
+## AureusERP Repository Conventions
+- Modules vs plugins: Prefer using Module shims/namespaces where available; legacy Webkul\* namespaces are acceptable during migration to keep functionality intact.
+- Migration/testing priorities: Do B) Core-focused modules first (accounts, employees, fields, full-calendar, plugin-manager, security, support, table-views, time-off), then C) Sales/Finance (invoices, payments, inventories/products).
+- Minimal-change migrations: All plugins have been moved from plugins/webkul/* to Modules. Legacy Webkul\* namespaces are preserved via autoload mappings in Module composer.json files.
+- Testing conventions:
+  - All PHPUnit methods start with it_ and use explicit /* Arrange */ /* Act */ /* Assert */ phpdoc comments.
+  - Prefer meaningful assertions (database state, component behavior) over generic status checks.
+  - Use Livewire/Filament helpers for CRUD actions on List pages (mountAction('create'), TestAction::make('edit')->table($record), TestAction::make('delete')->table($record)).
+  - Group CRUD smoke tests with @group smoke.
+  - Use factories/DataProviders; keep fixtures realistic. When relationships/resources aren’t ready, use minimal payloads and skip un-provable assertions with a clear reason.
+  - Guard: In tests’ setUp, auto-skip when pdo_sqlite is unavailable.
+- Scaffolding now: Create CRUD smoke tests for all modules; if a List page doesn’t exist yet, mount what’s available and mark the test as skipped with a descriptive message.
+- CSS consolidation: For migrated modules only, begin moving plugin CSS into resources/css/{module}.css and import into resources/css/app.css. Leave non‑migrated plugins for a later pass.
+- Don’t remove tests without approval; don’t add new dependencies without approval; reuse existing components before creating new ones.
+
 </laravel-boost-guidelines>

@@ -1,0 +1,65 @@
+<?php
+
+namespace Modules\Core\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\EloquentSortable\Sortable;
+use Spatie\EloquentSortable\SortableTrait;
+use Modules\Core\Database\Factories\PackagingFactory;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
+
+class Packaging extends Model implements Sortable
+{
+    use HasFactory;
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
+
+    /**
+     * Table name.
+     *
+     * @var string
+     */
+    protected $table = 'products_packagings';
+
+    /**
+     * Fillable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'barcode',
+        'qty',
+        'sort',
+        'product_id',
+        'company_id',
+        'creator_id',
+    ];
+
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Product::class)->withTrashed();
+    }
+
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    public function creator(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    protected static function newFactory(): PackagingFactory
+    {
+        return PackagingFactory::new();
+    }
+}

@@ -1,0 +1,24 @@
+<?php
+
+namespace Modules\Core\Filament\Clusters\Customer\Resources\PartnerResource\Pages;
+
+use Illuminate\Contracts\Support\Htmlable;
+use Modules\Core\Filament\Clusters\Customer\Resources\PartnerResource;
+use Modules\Core\Filament\Clusters\Vendors\Resources\VendorResource\Pages\CreateVendor as BaseCreatePartner;
+
+class CreatePartner extends BaseCreatePartner
+{
+    protected static string $resource = PartnerResource::class;
+
+    public function getTitle(): string|Htmlable
+    {
+        return __('Customer');
+    }
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['sub_type'] = 'customer';
+
+        return $data;
+    }
+}

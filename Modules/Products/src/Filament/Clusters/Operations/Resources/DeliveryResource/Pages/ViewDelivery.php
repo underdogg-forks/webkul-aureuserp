@@ -1,0 +1,65 @@
+<?php
+
+namespace Modules\Products\Filament\Clusters\Operations\Resources\DeliveryResource\Pages;
+
+use Filament\Actions\ActionGroup;
+use Filament\Actions\DeleteAction;
+use Filament\Notifications\Notification;
+use Filament\Resources\Pages\ViewRecord;
+use Illuminate\Database\QueryException;
+use Modules\Core\Filament\Actions\ChatterAction;
+use Modules\Products\Enums\OperationState;
+use Modules\Products\Filament\Clusters\Operations\Actions as OperationActions;
+use Modules\Products\Filament\Clusters\Operations\Resources\DeliveryResource;
+use Modules\Products\Models\Delivery;
+use Modules\Core\Concerns\HasRepeatableEntryColumnManager;
+use Modules\Core\Traits\HasRecordNavigationTabs;
+
+class ViewDelivery extends ViewRecord
+{
+    use HasRecordNavigationTabs;
+    use HasRepeatableEntryColumnManager;
+
+    protected static string $resource = DeliveryResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            ChatterAction::make()
+                ->setResource(static::$resource),
+            ActionGroup::make([
+                OperationActions\Print\PickingOperationAction::make(),
+                OperationActions\Print\DeliverySlipAction::make(),
+                OperationActions\Print\PackageAction::make(),
+                OperationActions\Print\LabelsAction::make(),
+            ])
+                ->label(__('inventories::filament/clusters/operations/resources/delivery/pages/view-delivery.header-actions.print.label'))
+                ->icon('heroicon-o-printer')
+                ->color('gray')
+                ->button(),
+            DeleteAction::make()
+                ->hidden(fn () => $this->getRecord()->state == OperationState::DONE)
+                ->action(function (DeleteAction $action, Delivery $record) {
+                    try {
+                        $record->delete();
+
+                        $action->success();
+                    } catch (QueryException $e) {
+                        Notification::make()
+                            ->danger()
+                            ->title(__('inventories::filament/clusters/operations/resources/delivery/pages/view-delivery.header-actions.delete.notification.error.title'))
+                            ->body(__('inventories::filament/clusters/operations/resources/delivery/pages/view-delivery.header-actions.delete.notification.error.body'))
+                            ->send();
+
+                        $action->failure();
+                    }
+                })
+                ->successNotification(
+                    Notification::make()
+                        ->success()
+                        ->title(__('inventories::filament/clusters/operations/resources/delivery/pages/view-delivery.header-actions.delete.notification.success.title'))
+                        ->body(__('inventories::filament/clusters/operations/resources/delivery/pages/view-delivery.header-actions.delete.notification.success.body')),
+                ),
+        ];
+    }
+}
