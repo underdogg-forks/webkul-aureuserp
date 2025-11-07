@@ -1,9 +1,10 @@
 <?php
 
-namespace Webkul\Account\Models;
+namespace Modules\Payments\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Core\Models\MoveLine;
 
 class AccountPaymentRegisterMoveLine extends Model
 {

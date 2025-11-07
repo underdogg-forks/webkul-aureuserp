@@ -1,12 +1,14 @@
 <?php
 
-namespace Webkul\Account\Models;
+namespace Modules\Payments\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Account;
+use Modules\Core\Models\Journal;
 
 class PaymentMethodLine extends Model implements Sortable
 {

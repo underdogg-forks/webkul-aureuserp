@@ -1,14 +1,17 @@
 <?php
 
-namespace Webkul\Account\Models;
+namespace Modules\Payments\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Webkul\Partner\Models\BankAccount;
-use Webkul\Partner\Models\Partner;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
-use Webkul\Support\Models\Currency;
+use Modules\Core\Models\Partner;
+use Modules\Core\Models\BankAccount;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
+use Modules\Core\Models\Currency;
+use Modules\Core\Models\Journal;
+use Modules\Core\Models\Account;
+use Modules\Core\Models\MoveLine;
 
 class PaymentRegister extends Model
 {
