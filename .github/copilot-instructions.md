@@ -42,6 +42,67 @@ This application is a Laravel application and its main Laravel ecosystems packag
 - You must only create documentation files if explicitly requested by the user.
 
 
+=== aureuserp rules ===
+
+# AureusERP Specific Guidelines
+
+## Project Overview
+This is AureusERP, a comprehensive open-source Enterprise Resource Planning (ERP) solution built with Laravel 11 and FilamentPHP v4. It's designed for SMEs and large-scale enterprises with a highly modular plugin architecture.
+
+## Installation & Setup
+- Initial setup: `php artisan erp:install` - This sets up migrations, seeders, roles/permissions via Filament Shield, and admin credentials.
+- The system uses a plugin-based architecture with Core Plugins (system plugins) and Installable Plugins.
+- To install a plugin: `php artisan <plugin-name>:install` (e.g., `php artisan inventories:install`).
+- When developing, use `composer run dev` to start server, queue, logs, and vite concurrently.
+
+## Core Plugins (Always Installed)
+The following plugins are essential system components:
+- Analytics: Business intelligence and reporting
+- Chatter: Internal communication platform
+- Fields: Customizable data structure management
+- Security: Role-based access control
+- Support: Help desk and documentation
+- Table View: Customizable data presentation
+
+## Installable Plugins
+Optional plugins that extend functionality:
+- Blogs, Accounts, Contacts, CRM, Documents, Events, Inventories, Invoices, Leads, Notes, Orders, Products, Projects, Purchase Orders, Quotations, Sales, Tasks, Warehouse, Websites, Worksheets
+
+## Plugin Development
+- Each plugin follows Laravel package structure within the `plugins/` directory.
+- Plugins have their own migrations, seeders, routes, resources, and service providers.
+- Always check for plugin dependencies before installation - the system will prompt for conflicts.
+- Use the existing plugin structure as a template when creating new plugins.
+
+## Security Best Practices
+- Always use Laravel's built-in authentication (via Filament Shield for role-based access).
+- Never bypass Eloquent for user input - always validate through Form Requests.
+- Use policies and gates for authorization checks, especially in Filament resources.
+- Sensitive operations should be queued and logged appropriately.
+- Never commit `.env` files or expose environment variables directly.
+- Use `config()` helper instead of `env()` outside config files.
+- Validate all file uploads and restrict file types appropriately.
+- Apply CSRF protection on all state-changing operations (default in Laravel).
+
+## Performance Guidelines
+- Use eager loading to prevent N+1 queries: `->with(['relationship'])`.
+- Cache frequently accessed data using Laravel's cache facade.
+- Queue long-running operations using Laravel's queue system.
+- Use database indexes on frequently queried columns.
+- Optimize Filament tables with proper pagination and deferred filters.
+- Use lazy loading for large collections when appropriate.
+- Monitor query performance in development with Laravel Debugbar or Telescope.
+- Minimize the number of database queries in loops.
+
+## ERP-Specific Patterns
+- Follow existing patterns for module resources (e.g., accounts, contacts, products).
+- Use Filament's relationship management for associated records.
+- Implement proper validation rules that match business logic (e.g., invoice amounts, inventory quantities).
+- Maintain audit trails for critical business operations.
+- Use transactions for operations that modify multiple related records.
+- Follow the existing naming conventions for models, resources, and migrations.
+
+
 === boost rules ===
 
 ## Laravel Boost
