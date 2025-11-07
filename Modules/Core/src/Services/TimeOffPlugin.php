@@ -5,7 +5,7 @@ namespace Modules\Core\Services;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use ReflectionClass;
-use Modules\Core\FullCalendarPlugin;
+use Modules\Core\Services\FullCalendarPlugin;
 use Modules\Core\Package;
 
 class TimeOffPlugin implements Plugin
