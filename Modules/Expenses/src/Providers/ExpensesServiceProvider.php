@@ -36,7 +36,7 @@ class ExpensesServiceProvider extends ServiceProvider
     {
         $this->app->register(EventServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
-        $this->app->register(\Modules\Expenses\PurchaseServiceProvider::class);
+        $this->app->register(\Modules\Expenses\Providers\PurchaseServiceProvider::class);
     }
 
     /**

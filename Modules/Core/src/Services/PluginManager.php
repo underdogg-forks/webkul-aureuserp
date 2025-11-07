@@ -4,8 +4,7 @@ namespace Modules\Core\Services;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
-
-use function Illuminate\Filesystem\join_paths;
+use Illuminate\Support\Facades\File;
 
 class PluginManager implements Plugin
 {
@@ -29,25 +28,57 @@ class PluginManager implements Plugin
 
     public function register(Panel $panel): void
     {
-        $plugins = $this->getPlugins();
+        $serviceProviders = $this->getServiceProviders();
 
-        foreach ($plugins as $modulePlugin) {
-            $panel->plugin($modulePlugin::make());
+        foreach ($serviceProviders as $serviceProviderClass) {
+            // Get the service provider instance from the container
+            $serviceProvider = app($serviceProviderClass);
+            
+            // Check if the service provider has the registerFilamentPanel method
+            if (method_exists($serviceProvider, 'registerFilamentPanel')) {
+                $serviceProvider->registerFilamentPanel($panel);
+            }
         }
     }
 
     public function boot(Panel $panel): void {}
 
-    protected function getPlugins(): array
+    /**
+     * Get all module service providers that should register Filament resources
+     */
+    protected function getServiceProviders(): array
     {
-        $plugins = require join_paths(base_path() . '/bootstrap', 'plugins.php');
+        $serviceProviders = [];
+        $modulesPath = base_path('Modules');
 
-        $plugins = collect($plugins)
-            ->unique()
-            ->sort()
-            ->values()
-            ->toArray();
+        if (!File::exists($modulesPath)) {
+            return $serviceProviders;
+        }
 
-        return $plugins;
+        // Get all module directories
+        $modules = File::directories($modulesPath);
+
+        foreach ($modules as $modulePath) {
+            $moduleName = basename($modulePath);
+            $providersPath = $modulePath . '/src/Providers';
+
+            if (!File::exists($providersPath)) {
+                continue;
+            }
+
+            // Look for *ServiceProvider.php files in the src/Providers directory
+            $files = File::glob($providersPath . '/*ServiceProvider.php');
+
+            foreach ($files as $file) {
+                $className = basename($file, '.php');
+                $serviceProviderClass = "Modules\\{$moduleName}\\Providers\\{$className}";
+
+                if (class_exists($serviceProviderClass)) {
+                    $serviceProviders[] = $serviceProviderClass;
+                }
+            }
+        }
+
+        return $serviceProviders;
     }
 }
