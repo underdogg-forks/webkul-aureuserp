@@ -4,7 +4,7 @@ namespace Webkul\Account\Filament\Resources\PaymentsResource\Actions;
 
 use Filament\Actions\Action;
 use Livewire\Component;
-use Webkul\Account\Enums\PaymentStatus;
+use Modules\Payments\Enums\PaymentStatus;
 use Webkul\Account\Models\Payment;
 
 class RejectAction extends Action
