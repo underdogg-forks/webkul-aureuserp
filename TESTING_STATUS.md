@@ -1,6 +1,6 @@
 # Filament Resources Testing Status
 
-## Completed Tests (21 resources)
+## Completed Tests (24 resources)
 
 ✅ **Payment** - `tests/Feature/Modules/Payments/PaymentCrudTest.php`
 - Covers: Modules/Core/src/Filament/Resources/PaymentsResource.php
@@ -46,6 +46,10 @@
 - Covers: Modules/Core/src/Filament/Resources/TeamResource.php
 - Table: teams
 
+✅ **Role** - `tests/Feature/Modules/Core/RoleCrudTest.php`
+- Covers: Modules/Core/src/Filament/Resources/RoleResource.php
+- Table: roles
+
 ✅ **Account** - `tests/Feature/Modules/Core/AccountCrudTest.php`
 - Covers: Modules/Core/src/Filament/Resources/AccountResource.php
 - Table: accounts_accounts
@@ -86,6 +90,14 @@
 - Covers: Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/PurchaseAgreementResource.php
 - Table: purchases_requisitions (type=AGREEMENT)
 
+✅ **Expenses Order** - `tests/Feature/Modules/Expenses/ExpensesOrderCrudTest.php`
+- Covers: Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/OrderResource.php
+- Table: purchases_orders (all states)
+
+✅ **Expenses Quotation** - `tests/Feature/Modules/Expenses/ExpensesQuotationCrudTest.php`
+- Covers: Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/QuotationResource.php
+- Table: purchases_orders (state=DRAFT or SENT)
+
 ## High-Priority Resources Needing Tests
 
 ### Core Module (Financial/Critical)
@@ -101,7 +113,7 @@
 - [x] **Employee** - `Modules/Core/src/Filament/Resources/EmployeeResource.php` ✅
 - [ ] **Department** - `Modules/Core/src/Filament/Resources/DepartmentResource.php` (already has test)
 - [x] **Team** - `Modules/Core/src/Filament/Resources/TeamResource.php` ✅
-- [ ] **Role** - `Modules/Core/src/Filament/Resources/RoleResource.php`
+- [x] **Role** - `Modules/Core/src/Filament/Resources/RoleResource.php` ✅
 
 ### Invoices Module
 - [x] **Quotation** - `Modules/Invoices/src/Filament/Clusters/Orders/Resources/QuotationResource.php` ✅
@@ -109,8 +121,8 @@
 - [ ] **OrderToUpsell** - `Modules/Invoices/src/Filament/Clusters/ToInvoice/Resources/OrderToUpsellResource.php`
 
 ### Expenses Module
-- [ ] **Order** - `Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/OrderResource.php`
-- [ ] **Quotation** - `Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/QuotationResource.php`
+- [x] **Order** - `Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/OrderResource.php` ✅
+- [x] **Quotation** - `Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/QuotationResource.php` ✅
 - [x] **PurchaseAgreement** - `Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/PurchaseAgreementResource.php` ✅
 - [x] **Vendor** - `Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/VendorResource.php` ✅
 
