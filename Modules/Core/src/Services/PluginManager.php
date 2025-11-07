@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Core;
+namespace Modules\Core\Services;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;

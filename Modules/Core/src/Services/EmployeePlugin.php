@@ -1,12 +1,13 @@
 <?php
 
-namespace Modules\Core;
+namespace Modules\Core\Services;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use ReflectionClass;
+use Modules\Core\Package;
 
-class FieldsPlugin implements Plugin
+class EmployeePlugin implements Plugin
 {
     public static function make(): static
     {
@@ -15,11 +16,15 @@ class FieldsPlugin implements Plugin
 
     public function getId(): string
     {
-        return 'fields';
+        return 'employees';
     }
 
     public function register(Panel $panel): void
     {
+        if ( ! Package::isPluginInstalled($this->getId())) {
+            return;
+        }
+
         $panel
             ->when($panel->getId() == 'admin', function (Panel $panel) {
                 $panel->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Modules\\Core\\Filament\\Resources')

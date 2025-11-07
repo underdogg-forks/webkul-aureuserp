@@ -1,13 +1,15 @@
 <?php
 
-namespace Modules\Core;
+namespace Modules\Core\Services;
 
 use Filament\Contracts\Plugin;
+use Filament\Navigation\NavigationItem;
 use Filament\Panel;
 use ReflectionClass;
+use Modules\Core\Filament\Clusters\Settings\Pages\Products;
 use Modules\Core\Package;
 
-class RecruitmentPlugin implements Plugin
+class InvoicePlugin implements Plugin
 {
     public static function make(): static
     {
@@ -16,7 +18,7 @@ class RecruitmentPlugin implements Plugin
 
     public function getId(): string
     {
-        return 'recruitments';
+        return 'invoices';
     }
 
     public function register(Panel $panel): void
@@ -30,7 +32,15 @@ class RecruitmentPlugin implements Plugin
                 $panel->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Modules\\Core\\Filament\\Resources')
                     ->discoverPages(in: $this->getPluginBasePath('/Filament/Pages'), for: 'Modules\\Core\\Filament\\Pages')
                     ->discoverClusters(in: $this->getPluginBasePath('/Filament/Clusters'), for: 'Modules\\Core\\Filament\\Clusters')
-                    ->discoverWidgets(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Modules\\Core\\Filament\\Widgets');
+                    ->discoverWidgets(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Modules\\Core\\Filament\\Widgets')
+                    ->navigationItems([
+                        NavigationItem::make('settings')
+                            ->label(fn () => __('invoices::app.navigation.settings.label'))
+                            ->url(fn () => Products::getUrl())
+                            ->group('Invoices')
+                            ->sort(4)
+                            ->visible(fn () => Products::canAccess()),
+                    ]);
             });
     }
 

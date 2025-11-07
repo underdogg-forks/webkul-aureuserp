@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Core;
+namespace Modules\Core\Services;
 
 use BezhanSalleh\FilamentShield\Facades\FilamentShield;
 use Illuminate\Support\Str;
