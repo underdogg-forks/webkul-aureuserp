@@ -1,6 +1,6 @@
 # Filament Resources Testing Status
 
-## Completed Tests (11 resources)
+## Completed Tests (13 resources)
 
 ✅ **Payment** - `tests/Feature/Modules/Payments/PaymentCrudTest.php`
 - Covers: Modules/Core/src/Filament/Resources/PaymentsResource.php
@@ -29,6 +29,12 @@
 ✅ **User** - `tests/Feature/Modules/Core/UserCrudTest.php`
 - Covers: Modules/Core/src/Filament/Resources/UserResource.php
 
+✅ **Team** - `tests/Feature/Modules/Core/TeamCrudTest.php`
+- Covers: Modules/Core/src/Filament/Resources/TeamResource.php
+
+✅ **Vendor** - `tests/Feature/Modules/Expenses/VendorCrudTest.php`
+- Covers: Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/VendorResource.php
+
 ✅ **SalesOrder** - `tests/Feature/Modules/Invoices/SalesOrderCrudTest.php`
 - Covers: Modules/Invoices/src/Filament/Clusters/Orders/Resources/OrderResource.php
 
@@ -49,7 +55,7 @@
 - [x] **User** - `Modules/Core/src/Filament/Resources/UserResource.php` ✅
 - [ ] **Employee** - `Modules/Core/src/Filament/Resources/EmployeeResource.php`
 - [ ] **Department** - `Modules/Core/src/Filament/Resources/DepartmentResource.php`
-- [ ] **Team** - `Modules/Core/src/Filament/Resources/TeamResource.php`
+- [x] **Team** - `Modules/Core/src/Filament/Resources/TeamResource.php` ✅
 - [ ] **Role** - `Modules/Core/src/Filament/Resources/RoleResource.php`
 
 ### Invoices Module
@@ -61,7 +67,7 @@
 - [ ] **Order** - `Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/OrderResource.php`
 - [ ] **Quotation** - `Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/QuotationResource.php`
 - [ ] **PurchaseAgreement** - `Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/PurchaseAgreementResource.php`
-- [ ] **Vendor** - `Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/VendorResource.php`
+- [x] **Vendor** - `Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/VendorResource.php` ✅
 
 ### CRM Module
 - [ ] **Partner** - `Modules/Crm/src/Filament/Resources/PartnerResource.php`
