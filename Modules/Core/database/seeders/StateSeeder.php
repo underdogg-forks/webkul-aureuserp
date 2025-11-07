@@ -13,7 +13,7 @@ class StateSeeder extends Seeder
      */
     public function run(): void
     {
-        $path = base_path('plugins/webkul/security/src/Data/states.json');
+        $path = module_path('Core', 'src/Data/states.json');
 
         if (File::exists($path)) {
             $states = json_decode(File::get($path), true);

@@ -336,12 +336,29 @@ class PluginResource extends Resource
         }
     }
 
+    protected static function getModuleForPlugin(string $pluginName): string
+    {
+        $pluginToModule = [
+            'projects' => 'Projects',
+            'timesheets' => 'Projects',
+            'contacts' => 'Crm',
+            'partners' => 'Crm',
+            'inventories' => 'Products',
+            'purchases' => 'Expenses',
+            'sales' => 'Invoices',
+        ];
+        
+        return $pluginToModule[$pluginName] ?? 'Core';
+    }
+
     protected static function runDownMigrations(string $pluginName, array $fileNames, string $type): void
     {
         collect($fileNames)
             ->reverse()
             ->each(function ($file) use ($pluginName, $type) {
-                $path = base_path("plugins/webkul/{$pluginName}/database/{$type}/{$file}.php");
+                // Plugins are now in Modules
+                $moduleName = self::getModuleForPlugin($pluginName);
+                $path = module_path($moduleName, "database/{$type}/{$file}.php");
 
                 if ( ! file_exists($path)) {
                     return;

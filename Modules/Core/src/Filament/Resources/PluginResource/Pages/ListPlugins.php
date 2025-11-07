@@ -66,9 +66,10 @@ class ListPlugins extends ListRecords
             $synced = 0;
 
             $packages->each(function ($package, $name) use (&$synced) {
-                $composerPath = base_path("plugins/webkul/{$name}/composer.json");
+                // Plugins now integrated into Modules
+                $composerPath = null; // base_path("plugins/webkul/{$name}/composer.json");
 
-                $composer = file_exists($composerPath)
+                $composer = $composerPath && file_exists($composerPath)
                     ? json_decode(file_get_contents($composerPath), true) ?? []
                     : [];
 

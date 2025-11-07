@@ -102,20 +102,19 @@ class InstallERP extends Command
 
     protected function installAllPlugins(): int
     {
-        $root = base_path('plugins/webkul');
-        if ( ! File::isDirectory($root)) {
-            $this->error("Directory not found: {$root}");
+        // Plugins are now integrated into Modules
+        // We can enumerate the known plugins
+        $pluginNames = [
+            'projects', 'timesheets', 'contacts', 'partners', 'inventories', 
+            'purchases', 'sales', 'accounts', 'analytics', 'blogs', 'chatter',
+            'employees', 'fields', 'full-calendar', 'invoices', 'payments',
+            'plugin-manager', 'products', 'recruitments', 'security', 'support',
+            'table-views', 'time-off', 'website'
+        ];
 
-            return self::FAILURE;
-        }
+        $this->info('📦 Installing all plugins (now in Modules)...');
 
-        $this->info('📦 Installing all Webkul plugins...');
-
-        $dirs = collect(File::directories($root))
-            ->map(fn ($path) => mb_strtolower(basename($path)))
-            ->values();
-
-        foreach ($dirs as $lower) {
+        foreach ($pluginNames as $lower) {
             $this->components?->twoColumnDetail("Installing {$lower}", '...');
 
             // Run {plugin}:install if available
@@ -136,9 +135,26 @@ class InstallERP extends Command
         return self::SUCCESS;
     }
 
+    protected function getModuleForPlugin(string $pluginName): string
+    {
+        $pluginToModule = [
+            'projects' => 'Projects',
+            'timesheets' => 'Projects',
+            'contacts' => 'Crm',
+            'partners' => 'Crm',
+            'inventories' => 'Products',
+            'purchases' => 'Expenses',
+            'sales' => 'Invoices',
+        ];
+        
+        return $pluginToModule[$pluginName] ?? 'Core';
+    }
+
     protected function runPluginSettingsMigrations(string $lowerName): void
     {
-        $basePath = base_path("plugins/webkul/{$lowerName}/database/settings");
+        // Plugins are now in Modules
+        $moduleName = $this->getModuleForPlugin($lowerName);
+        $basePath = module_path($moduleName, 'database/settings');
         if ( ! File::isDirectory($basePath)) {
             return;
         }

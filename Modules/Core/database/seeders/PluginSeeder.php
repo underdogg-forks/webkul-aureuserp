@@ -16,9 +16,10 @@ class PluginSeeder extends Seeder
                 continue;
             }
 
-            $composerPath = base_path("plugins/webkul/{$pluginName}/composer.json");
+            // Plugin is now in Modules, composer.json path would need module mapping
+            $composerPath = null; // base_path("plugins/webkul/{$pluginName}/composer.json");
             $composerData = [];
-            if (file_exists($composerPath)) {
+            if ($composerPath && file_exists($composerPath)) {
                 $composerData = json_decode(file_get_contents($composerPath), true);
             }
 

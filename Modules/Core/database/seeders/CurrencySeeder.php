@@ -13,7 +13,7 @@ class CurrencySeeder extends Seeder
      */
     public function run(): void
     {
-        $path = base_path('plugins/webkul/security/src/Data/currencies.json');
+        $path = module_path('Core', 'src/Data/currencies.json');
 
         if (File::exists($path)) {
             $currencies = json_decode(File::get($path), true);

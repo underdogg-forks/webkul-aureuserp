@@ -13,7 +13,7 @@ class CountrySeeder extends Seeder
      */
     public function run(): void
     {
-        $path = base_path('plugins/webkul/security/src/Data/countries.json');
+        $path = module_path('Core', 'src/Data/countries.json');
 
         if (File::exists($path)) {
             $countries = json_decode(File::get($path), true);

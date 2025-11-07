@@ -68,9 +68,26 @@ class RepairERP extends Command
         }
     }
 
+    protected function getModuleForPlugin(string $pluginName): string
+    {
+        $pluginToModule = [
+            'projects' => 'Projects',
+            'timesheets' => 'Projects',
+            'contacts' => 'Crm',
+            'partners' => 'Crm',
+            'inventories' => 'Products',
+            'purchases' => 'Expenses',
+            'sales' => 'Invoices',
+        ];
+        
+        return $pluginToModule[$pluginName] ?? 'Core';
+    }
+
     protected function runPluginSettingsMigrations(string $lowerName): void
     {
-        $basePath = base_path("plugins/webkul/{$lowerName}/database/settings");
+        // Plugins are now in Modules
+        $moduleName = $this->getModuleForPlugin($lowerName);
+        $basePath = module_path($moduleName, 'database/settings');
         if ( ! File::isDirectory($basePath)) {
             return;
         }

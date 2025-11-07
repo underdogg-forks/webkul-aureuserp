@@ -27,14 +27,6 @@ class QuotesServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
-        // Temporary: also load migrations from legacy plugin during migration
-        if (is_dir(base_path('plugins/webkul/quotes/database/migrations'))) {
-            $this->loadMigrationsFrom(base_path('plugins/webkul/quotes/database/migrations'));
-        }
-        // Temporary: load migrations for shared Support models used by Quotes
-        if (is_dir(base_path('plugins/webkul/support/database/migrations'))) {
-            $this->loadMigrationsFrom(base_path('plugins/webkul/support/database/migrations'));
-        }
     }
 
     /**
