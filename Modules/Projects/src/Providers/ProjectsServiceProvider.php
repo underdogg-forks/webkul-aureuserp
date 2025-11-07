@@ -36,6 +36,8 @@ class ProjectsServiceProvider extends ServiceProvider
     {
         $this->app->register(EventServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
+        $this->app->register(\Modules\Projects\ProjectServiceProvider::class);
+        $this->app->register(\Modules\Projects\TimesheetServiceProvider::class);
     }
 
     /**

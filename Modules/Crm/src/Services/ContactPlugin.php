@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Crm;
+namespace Modules\Crm\Services;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;

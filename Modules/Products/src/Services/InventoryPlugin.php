@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Products;
+namespace Modules\Products\Services;
 
 use Filament\Contracts\Plugin;
 use Filament\Navigation\NavigationItem;

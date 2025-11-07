@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Expenses;
+namespace Modules\Expenses\Services;
 
 use Filament\Contracts\Plugin;
 use Filament\Navigation\NavigationItem;

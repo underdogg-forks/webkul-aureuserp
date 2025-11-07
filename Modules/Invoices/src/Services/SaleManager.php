@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Invoices;
+namespace Modules\Invoices\Services;
 
 use Exception;
 use Illuminate\Support\Facades\Auth;
