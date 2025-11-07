@@ -7,14 +7,16 @@ use Filament\Actions\Testing\TestAction;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Livewire\Livewire;
+use Modules\Core\Enums\ProductType;
+use Modules\Core\Models\Category;
+use Modules\Core\Models\Company;
+use Modules\Core\Models\Currency;
+use Modules\Core\Models\Product;
+use Modules\Core\Models\UOM;
+use Modules\Core\Models\UOMCategory;
+use Modules\Products\Filament\Resources\ProductResource\Pages\ListProducts;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
-use Webkul\Product\Enums\ProductType;
-use Webkul\Product\Filament\Resources\ProductResource\Pages\ListProducts;
-use Webkul\Product\Models\Category;
-use Webkul\Product\Models\Product;
-use Webkul\Support\Models\Company;
-use Webkul\Support\Models\UOM;
 
 /**
  * @group smoke
@@ -27,23 +29,82 @@ class ProductCrudTest extends TestCase
     {
         parent::setUp();
 
-        // Prevent mass assignment issues in tests when using factories
         Model::unguard();
 
         $this->user = User::factory()->create();
 
-        // Ensure required related records exist for form defaults/relationships
-        UOM::factory()->create();
+        $this->user->forceFill([
+            'resource_permission' => 'global',
+        ])->save();
+
+        $currency = Currency::create([
+            'name'           => 'USD',
+            'symbol'         => '$',
+            'iso_numeric'    => 840,
+            'decimal_places' => 2,
+            'full_name'      => 'US Dollar',
+            'rounding'       => 0.00,
+            'active'         => true,
+        ]);
+
+        $uomCategory = UOMCategory::create([
+            'name' => 'Unit',
+        ]);
+
+        UOM::create([
+            'name'        => 'Units',
+            'type'        => 'unit',
+            'factor'      => 1,
+            'rounding'    => 0,
+            'category_id' => $uomCategory->id,
+        ]);
+
+        $company = Company::create([
+            'name'        => 'Acme Corp',
+            'company_id'  => (string) Str::uuid(),
+            'email'       => 'info@example.com',
+            'currency_id' => $currency->id,
+            'creator_id'  => $this->user->id,
+        ]);
+
+        $this->user->forceFill([
+            'default_company_id' => $company->id,
+        ])->save();
+
         Category::factory()->create();
-        Company::factory()->create();
     }
 
     #[Test]
     public function it_lists_products(): void
     {
         /* Arrange */
-        $goods   = Product::factory()->create(['type' => ProductType::GOODS]);
-        $service = Product::factory()->create(['type' => ProductType::SERVICE]);
+        $category = Category::first();
+        $company  = Company::first();
+        $uom      = UOM::first();
+
+        $goods = Product::create([
+            'name'        => 'Goods Item',
+            'type'        => ProductType::GOODS->value,
+            'price'       => 25.00,
+            'cost'        => 10.00,
+            'category_id' => $category->id,
+            'company_id'  => $company->id,
+            'uom_id'      => $uom->id,
+            'uom_po_id'   => $uom->id,
+            'creator_id'  => $this->user->id,
+        ]);
+
+        $service = Product::create([
+            'name'        => 'Service Item',
+            'type'        => ProductType::SERVICE->value,
+            'price'       => 40.00,
+            'cost'        => 0.00,
+            'category_id' => $category->id,
+            'company_id'  => $company->id,
+            'uom_id'      => $uom->id,
+            'uom_po_id'   => $uom->id,
+            'creator_id'  => $this->user->id,
+        ]);
 
         /* Act */
         $component = Livewire::actingAs($this->user)
@@ -89,9 +150,20 @@ class ProductCrudTest extends TestCase
     public function it_updates_a_product(): void
     {
         /* Arrange */
-        $product = Product::factory()->create([
-            'type'  => ProductType::GOODS,
-            'price' => 10.00,
+        $category = Category::first();
+        $company  = Company::first();
+        $uom      = UOM::first();
+
+        $product = Product::create([
+            'name'        => 'Inventory Item',
+            'type'        => ProductType::GOODS->value,
+            'price'       => 10.00,
+            'cost'        => 5.00,
+            'category_id' => $category->id,
+            'company_id'  => $company->id,
+            'uom_id'      => $uom->id,
+            'uom_po_id'   => $uom->id,
+            'creator_id'  => $this->user->id,
         ]);
 
         $payload = [
@@ -118,7 +190,21 @@ class ProductCrudTest extends TestCase
     public function it_deletes_a_product(): void
     {
         /* Arrange */
-        $product = Product::factory()->create();
+        $category = Category::first();
+        $company  = Company::first();
+        $uom      = UOM::first();
+
+        $product = Product::create([
+            'name'        => 'Disposable Item',
+            'type'        => ProductType::GOODS->value,
+            'price'       => 15.00,
+            'cost'        => 7.00,
+            'category_id' => $category->id,
+            'company_id'  => $company->id,
+            'uom_id'      => $uom->id,
+            'uom_po_id'   => $uom->id,
+            'creator_id'  => $this->user->id,
+        ]);
 
         /* Act */
         $component = Livewire::actingAs($this->user)
