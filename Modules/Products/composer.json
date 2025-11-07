@@ -19,12 +19,16 @@
         "psr-4": {
             "Modules\\Products\\": "src/",
             "Modules\\Products\\Database\\Factories\\": "database/factories/",
-            "Modules\\Products\\Database\\Seeders\\": "database/seeders/"
+            "Modules\\Products\\Database\\Seeders\\": "database/seeders/",
+            "Webkul\\Inventory\\": "src/",
+            "Webkul\\Inventory\\Database\\Factories\\": "database/factories/",
+            "Webkul\\Inventory\\Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Modules\\Products\\Tests\\": "tests/"
+            "Modules\\Products\\Tests\\": "tests/",
+            "Webkul\\Inventory\\Tests\\": "tests/"
         }
     }
 }
