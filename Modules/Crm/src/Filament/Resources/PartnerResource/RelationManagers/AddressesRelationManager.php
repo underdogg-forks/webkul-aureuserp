@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Partner\Filament\Resources\PartnerResource\RelationManagers;
+namespace Modules\Crm\Filament\Resources\PartnerResource\RelationManagers;
 
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
-use Webkul\Partner\Filament\Resources\AddressResource;
+use Modules\Crm\Filament\Resources\AddressResource;
 
 class AddressesRelationManager extends RelationManager
 {

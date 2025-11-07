@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Product\Filament\Resources\PriceListResource\Pages;
+namespace Modules\Core\Filament\Resources\PriceListResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Webkul\Product\Filament\Resources\PriceListResource;
+use Modules\Core\Filament\Resources\PriceListResource;
 
 class ListPriceLists extends ListRecords
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\AccountResource\Pages;
+namespace Modules\Core\Filament\Resources\AccountResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
-use Webkul\Account\Filament\Resources\AccountResource;
+use Modules\Core\Filament\Resources\AccountResource;
 
 class EditAccount extends EditRecord
 {

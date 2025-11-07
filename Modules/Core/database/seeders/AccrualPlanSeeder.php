@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\TimeOff\Database\Seeders;
+namespace Modules\Core\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class AccrualPlanSeeder extends Seeder
 {

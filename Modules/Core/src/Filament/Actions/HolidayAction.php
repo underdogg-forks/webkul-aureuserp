@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Actions;
+namespace Modules\Core\Filament\Actions;
 
 use Filament\Actions\Action;
 use Filament\Forms\Components\Placeholder;
 use Filament\Support\Enums\Width;
 use Illuminate\Support\HtmlString;
-use Webkul\Employee\Models\CalendarLeaves;
-use Webkul\TimeOff\Models\LeaveMandatoryDay;
+use Modules\Core\Models\CalendarLeaves;
+use Modules\Core\Models\LeaveMandatoryDay;
 
 class HolidayAction extends Action
 {

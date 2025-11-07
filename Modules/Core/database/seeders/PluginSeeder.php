@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\PluginManager\Database\Seeders;
+namespace Modules\Core\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Webkul\Support\Models\Plugin;
+use Modules\Core\Models\Plugin;
 
 class PluginSeeder extends Seeder
 {

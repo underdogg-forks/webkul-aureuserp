@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Security\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
@@ -13,8 +13,8 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Webkul\Security\Filament\Resources\TeamResource\Pages\ManageTeams;
-use Webkul\Security\Models\Team;
+use Modules\Core\Filament\Resources\TeamResource\Pages\ManageTeams;
+use Modules\Core\Models\Team;
 
 class TeamResource extends Resource
 {

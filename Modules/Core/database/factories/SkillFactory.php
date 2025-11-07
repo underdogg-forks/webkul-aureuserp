@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Employee\Database\Factories;
+namespace Modules\Core\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Webkul\Employee\Models\Skill;
+use Modules\Core\Models\Skill;
 
 class SkillFactory extends Factory
 {

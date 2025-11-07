@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Actions;
+namespace Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource\Actions;
 
 use Filament\Actions\Action;
-use Webkul\Sale\Facades\SaleOrder;
-use Webkul\Sale\Models\Order;
-use Webkul\Sale\Settings\QuotationAndOrderSettings;
+use Modules\Invoices\Facades\SaleOrder;
+use Modules\Invoices\Models\Order;
+use Modules\Invoices\Settings\QuotationAndOrderSettings;
 
 class LockAndUnlockAction extends Action
 {

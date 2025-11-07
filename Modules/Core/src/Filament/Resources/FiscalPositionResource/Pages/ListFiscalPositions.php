@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\FiscalPositionResource\Pages;
+namespace Modules\Core\Filament\Resources\FiscalPositionResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Webkul\Account\Filament\Resources\FiscalPositionResource;
+use Modules\Core\Filament\Resources\FiscalPositionResource;
 
 class ListFiscalPositions extends ListRecords
 {

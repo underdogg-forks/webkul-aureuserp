@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Field\Traits;
+namespace Modules\Core\Traits;
 
 use Exception;
-use Webkul\Field\Models\Field;
+use Modules\Core\Models\Field;
 
 trait HasCustomFields
 {

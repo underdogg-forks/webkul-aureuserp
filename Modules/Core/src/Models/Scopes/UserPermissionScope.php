@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Security\Models\Scopes;
+namespace Modules\Core\Models\Scopes;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Security\Enums\PermissionType;
+use Modules\Core\Enums\PermissionType;
 
 class UserPermissionScope implements Scope
 {

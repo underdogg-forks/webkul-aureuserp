@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Partner\Filament\Resources;
+namespace Modules\Crm\Filament\Resources;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
@@ -11,7 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Webkul\Partner\Models\Title;
+use Modules\Crm\Models\Title;
 
 class TitleResource extends Resource
 {

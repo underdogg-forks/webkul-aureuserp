@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Security\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
@@ -36,13 +36,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
-use Webkul\Security\Enums\PermissionType;
-use Webkul\Security\Filament\Resources\UserResource\Pages\CreateUser;
-use Webkul\Security\Filament\Resources\UserResource\Pages\EditUser;
-use Webkul\Security\Filament\Resources\UserResource\Pages\ListUsers;
-use Webkul\Security\Filament\Resources\UserResource\Pages\ViewUsers;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Core\Enums\PermissionType;
+use Modules\Core\Filament\Resources\UserResource\Pages\CreateUser;
+use Modules\Core\Filament\Resources\UserResource\Pages\EditUser;
+use Modules\Core\Filament\Resources\UserResource\Pages\ListUsers;
+use Modules\Core\Filament\Resources\UserResource\Pages\ViewUsers;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class UserResource extends Resource
 {

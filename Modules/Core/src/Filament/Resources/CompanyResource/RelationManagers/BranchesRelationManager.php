@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Security\Filament\Resources\CompanyResource\RelationManagers;
+namespace Modules\Core\Filament\Resources\CompanyResource\RelationManagers;
 
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
@@ -40,9 +40,9 @@ use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Security\Enums\CompanyStatus;
-use Webkul\Support\Models\Country;
-use Webkul\Support\Models\Currency;
+use Modules\Core\Enums\CompanyStatus;
+use Modules\Core\Models\Country;
+use Modules\Core\Models\Currency;
 
 class BranchesRelationManager extends RelationManager
 {

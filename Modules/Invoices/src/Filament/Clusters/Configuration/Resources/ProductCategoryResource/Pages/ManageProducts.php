@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Configuration\Resources\ProductCategoryResource\Pages;
+namespace Modules\Invoices\Filament\Clusters\Configuration\Resources\ProductCategoryResource\Pages;
 
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\ProductCategoryResource\Pages\ManageProducts as BaseManageProducts;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\ProductCategoryResource;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Clusters\Configuration\Resources\ProductCategoryResource\Pages\ManageProducts as BaseManageProducts;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ProductCategoryResource;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ManageProducts extends BaseManageProducts
 {

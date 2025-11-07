@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Product\Filament\Resources\ProductResource\Pages;
+namespace Modules\Core\Filament\Resources\ProductResource\Pages;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use Filament\Actions\Action;
@@ -9,9 +9,9 @@ use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
-use Webkul\Chatter\Filament\Actions\ChatterAction;
-use Webkul\Product\Filament\Resources\ProductResource;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Actions\ChatterAction;
+use Modules\Core\Filament\Resources\ProductResource;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class EditProduct extends EditRecord
 {

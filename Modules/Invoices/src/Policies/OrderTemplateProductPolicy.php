@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Sale\Policies;
+namespace Modules\Invoices\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Webkul\Sale\Models\OrderTemplateProduct;
-use Webkul\Security\Models\User;
+use Modules\Invoices\Models\OrderTemplateProduct;
+use Modules\Core\Models\User;
 
 class OrderTemplateProductPolicy
 {

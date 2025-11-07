@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Blog\Filament\Admin\Resources\PostResource\Pages;
+namespace Modules\Core\Filament\Admin\Resources\PostResource\Pages;
 
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Blog\Filament\Admin\Resources\PostResource;
-use Webkul\Blog\Models\Post;
+use Modules\Core\Filament\Admin\Resources\PostResource;
+use Modules\Core\Models\Post;
 
 class EditPost extends EditRecord
 {

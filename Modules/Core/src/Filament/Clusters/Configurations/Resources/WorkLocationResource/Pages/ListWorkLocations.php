@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Employee\Filament\Clusters\Configurations\Resources\WorkLocationResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\WorkLocationResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;
-use Webkul\Employee\Filament\Clusters\Configurations\Resources\WorkLocationResource;
+use Modules\Core\Filament\Clusters\Configurations\Resources\WorkLocationResource;
 
 class ListWorkLocations extends ListRecords
 {

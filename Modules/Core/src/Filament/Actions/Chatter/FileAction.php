@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Chatter\Filament\Actions\Chatter;
+namespace Modules\Core\Filament\Actions\Chatter;
 
 use Exception;
 use Filament\Actions\Action;

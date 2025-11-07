@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\OrderResource\Pages;
+namespace Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\OrderResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Purchase\Enums\OrderState;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\OrderResource;
-use Webkul\TableViews\Filament\Components\PresetView;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Expenses\Enums\OrderState;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\OrderResource;
+use Modules\Core\Filament\Components\PresetView;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ListOrders extends ListRecords
 {

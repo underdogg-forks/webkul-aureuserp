@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Purchase\Policies;
+namespace Modules\Expenses\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Webkul\Purchase\Models\ProductSupplier;
-use Webkul\Security\Models\User;
+use Modules\Expenses\Models\ProductSupplier;
+use Modules\Core\Models\User;
 
 class ProductSupplierPolicy
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Management\Resources;
+namespace Modules\Core\Filament\Clusters\Management\Resources;
 
 use BackedEnum;
 use Filament\Actions\Action;
@@ -21,14 +21,14 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Carbon;
-use Webkul\TimeOff\Enums\State;
-use Webkul\TimeOff\Filament\Clusters\Management;
-use Webkul\TimeOff\Filament\Clusters\Management\Resources\TimeOffResource\Pages\CreateTimeOff;
-use Webkul\TimeOff\Filament\Clusters\Management\Resources\TimeOffResource\Pages\EditTimeOff;
-use Webkul\TimeOff\Filament\Clusters\Management\Resources\TimeOffResource\Pages\ListTimeOff;
-use Webkul\TimeOff\Filament\Clusters\Management\Resources\TimeOffResource\Pages\ViewTimeOff;
-use Webkul\TimeOff\Models\Leave;
-use Webkul\TimeOff\Traits\TimeOffHelper;
+use Modules\Core\Enums\State;
+use Modules\Core\Filament\Clusters\Management;
+use Modules\Core\Filament\Clusters\Management\Resources\TimeOffResource\Pages\CreateTimeOff;
+use Modules\Core\Filament\Clusters\Management\Resources\TimeOffResource\Pages\EditTimeOff;
+use Modules\Core\Filament\Clusters\Management\Resources\TimeOffResource\Pages\ListTimeOff;
+use Modules\Core\Filament\Clusters\Management\Resources\TimeOffResource\Pages\ViewTimeOff;
+use Modules\Core\Models\Leave;
+use Modules\Core\Traits\TimeOffHelper;
 
 class TimeOffResource extends Resource
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\TimeOff\Policies;
+namespace Modules\Core\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Webkul\Security\Models\User;
-use Webkul\TimeOff\Models\LeaveAllocation;
+use Modules\Core\Models\User;
+use Modules\Core\Models\LeaveAllocation;
 
 class LeaveAllocationPolicy
 {

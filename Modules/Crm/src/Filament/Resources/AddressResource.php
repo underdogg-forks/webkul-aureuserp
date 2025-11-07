@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Partner\Filament\Resources;
+namespace Modules\Crm\Filament\Resources;
 
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
@@ -18,10 +18,10 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Partner\Enums\AccountType;
-use Webkul\Partner\Enums\AddressType;
-use Webkul\Partner\Filament\Resources\PartnerResource\Pages\ManageAddresses;
-use Webkul\Partner\Models\Partner;
+use Modules\Crm\Enums\AccountType;
+use Modules\Crm\Enums\AddressType;
+use Modules\Crm\Filament\Resources\PartnerResource\Pages\ManageAddresses;
+use Modules\Crm\Models\Partner;
 
 class AddressResource extends Resource
 {

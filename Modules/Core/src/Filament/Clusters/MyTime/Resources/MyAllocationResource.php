@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\MyTime\Resources;
+namespace Modules\Core\Filament\Clusters\MyTime\Resources;
 
 use BackedEnum;
 use Filament\Actions\Action;
@@ -27,15 +27,15 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Field\Filament\Forms\Components\ProgressStepper;
-use Webkul\TimeOff\Enums\AllocationType;
-use Webkul\TimeOff\Enums\State;
-use Webkul\TimeOff\Filament\Clusters\MyTime;
-use Webkul\TimeOff\Filament\Clusters\MyTime\Resources\MyAllocationResource\Pages\CreateMyAllocation;
-use Webkul\TimeOff\Filament\Clusters\MyTime\Resources\MyAllocationResource\Pages\EditMyAllocation;
-use Webkul\TimeOff\Filament\Clusters\MyTime\Resources\MyAllocationResource\Pages\ListMyAllocations;
-use Webkul\TimeOff\Filament\Clusters\MyTime\Resources\MyAllocationResource\Pages\ViewMyAllocation;
-use Webkul\TimeOff\Models\LeaveAllocation;
+use Modules\Core\Filament\Forms\Components\ProgressStepper;
+use Modules\Core\Enums\AllocationType;
+use Modules\Core\Enums\State;
+use Modules\Core\Filament\Clusters\MyTime;
+use Modules\Core\Filament\Clusters\MyTime\Resources\MyAllocationResource\Pages\CreateMyAllocation;
+use Modules\Core\Filament\Clusters\MyTime\Resources\MyAllocationResource\Pages\EditMyAllocation;
+use Modules\Core\Filament\Clusters\MyTime\Resources\MyAllocationResource\Pages\ListMyAllocations;
+use Modules\Core\Filament\Clusters\MyTime\Resources\MyAllocationResource\Pages\ViewMyAllocation;
+use Modules\Core\Models\LeaveAllocation;
 
 class MyAllocationResource extends Resource
 {

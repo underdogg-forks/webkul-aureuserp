@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -36,18 +36,18 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\HtmlString;
-use Webkul\Inventory\Enums\RuleAction;
-use Webkul\Inventory\Filament\Clusters\Configurations;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\RouteResource\Pages\ManageRules;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\RouteResource\RelationManagers\RulesRelationManager;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\RuleResource\Pages\CreateRule;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\RuleResource\Pages\EditRule;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\RuleResource\Pages\ListRules;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\RuleResource\Pages\ViewRule;
-use Webkul\Inventory\Models\OperationType;
-use Webkul\Inventory\Models\Rule;
-use Webkul\Inventory\Settings\WarehouseSettings;
-use Webkul\Partner\Filament\Resources\PartnerResource;
+use Modules\Products\Enums\RuleAction;
+use Modules\Products\Filament\Clusters\Configurations;
+use Modules\Products\Filament\Clusters\Configurations\Resources\RouteResource\Pages\ManageRules;
+use Modules\Products\Filament\Clusters\Configurations\Resources\RouteResource\RelationManagers\RulesRelationManager;
+use Modules\Products\Filament\Clusters\Configurations\Resources\RuleResource\Pages\CreateRule;
+use Modules\Products\Filament\Clusters\Configurations\Resources\RuleResource\Pages\EditRule;
+use Modules\Products\Filament\Clusters\Configurations\Resources\RuleResource\Pages\ListRules;
+use Modules\Products\Filament\Clusters\Configurations\Resources\RuleResource\Pages\ViewRule;
+use Modules\Products\Models\OperationType;
+use Modules\Products\Models\Rule;
+use Modules\Products\Settings\WarehouseSettings;
+use Modules\Crm\Filament\Resources\PartnerResource;
 
 class RuleResource extends Resource
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Security\Livewire;
+namespace Modules\Core\Livewire;
 
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
@@ -10,10 +10,10 @@ use Filament\Pages\Concerns\InteractsWithFormActions;
 use Filament\Pages\SimplePage;
 use Filament\Schemas\Schema;
 use Illuminate\Validation\Rules\Password;
-use Webkul\Project\Filament\Pages\Dashboard;
-use Webkul\Security\Models\Invitation;
-use Webkul\Security\Models\User;
-use Webkul\Security\Settings\UserSettings;
+use Modules\Projects\Filament\Pages\Dashboard;
+use Modules\Core\Models\Invitation;
+use Modules\Core\Models\User;
+use Modules\Core\Settings\UserSettings;
 
 class AcceptInvitation extends SimplePage
 {

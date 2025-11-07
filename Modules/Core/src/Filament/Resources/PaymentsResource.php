@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -29,14 +29,14 @@ use Filament\Tables\Filters\QueryBuilder\Constraints\RelationshipConstraint\Oper
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Payments\Enums\PaymentStatus;
-use Webkul\Account\Enums\PaymentType;
-use Webkul\Account\Filament\Resources\PaymentsResource\Pages\CreatePayments;
-use Webkul\Account\Filament\Resources\PaymentsResource\Pages\EditPayments;
-use Webkul\Account\Filament\Resources\PaymentsResource\Pages\ListPayments;
-use Webkul\Account\Filament\Resources\PaymentsResource\Pages\ViewPayments;
-use Webkul\Account\Models\Partner;
-use Webkul\Account\Models\Payment;
-use Webkul\Field\Filament\Forms\Components\ProgressStepper;
+use Modules\Core\Enums\PaymentType;
+use Modules\Core\Filament\Resources\PaymentsResource\Pages\CreatePayments;
+use Modules\Core\Filament\Resources\PaymentsResource\Pages\EditPayments;
+use Modules\Core\Filament\Resources\PaymentsResource\Pages\ListPayments;
+use Modules\Core\Filament\Resources\PaymentsResource\Pages\ViewPayments;
+use Modules\Core\Models\Partner;
+use Modules\Core\Models\Payment;
+use Modules\Core\Filament\Forms\Components\ProgressStepper;
 
 class PaymentsResource extends Resource
 {

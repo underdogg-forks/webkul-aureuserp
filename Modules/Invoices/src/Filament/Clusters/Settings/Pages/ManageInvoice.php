@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Settings\Pages;
+namespace Modules\Invoices\Filament\Clusters\Settings\Pages;
 
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
@@ -8,9 +8,9 @@ use Filament\Forms\Components\Radio;
 use Filament\Pages\SettingsPage;
 use Filament\Schemas\Schema;
 use UnitEnum;
-use Webkul\Invoice\Enums\InvoicePolicy;
-use Webkul\Sale\Settings\InvoiceSettings;
-use Webkul\Support\Filament\Clusters\Settings;
+use Modules\Core\Enums\InvoicePolicy;
+use Modules\Invoices\Settings\InvoiceSettings;
+use Modules\Core\Filament\Clusters\Settings;
 
 class ManageInvoice extends SettingsPage
 {

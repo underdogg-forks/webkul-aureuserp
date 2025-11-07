@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Partner\Filament\Resources;
+namespace Modules\Crm\Filament\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -24,7 +24,7 @@ use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Webkul\Partner\Models\BankAccount;
+use Modules\Crm\Models\BankAccount;
 
 class BankAccountResource extends Resource
 {

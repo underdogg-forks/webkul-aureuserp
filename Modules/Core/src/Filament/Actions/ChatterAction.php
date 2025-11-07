@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Chatter\Filament\Actions;
+namespace Modules\Core\Filament\Actions;
 
 use Closure;
 use Filament\Actions\Action;

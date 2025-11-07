@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Customer\Clusters\Account\Resources;
+namespace Modules\Expenses\Filament\Customer\Clusters\Account\Resources;
 
 use BackedEnum;
-use Webkul\Purchase\Filament\Customer\Clusters\Account\Resources\PurchaseOrderResource\Pages\ListPurchaseOrders;
-use Webkul\Purchase\Filament\Customer\Clusters\Account\Resources\PurchaseOrderResource\Pages\ViewPurchaseOrder;
-use Webkul\Purchase\Models\CustomerPurchaseOrder as PurchaseOrder;
+use Modules\Expenses\Filament\Customer\Clusters\Account\Resources\PurchaseOrderResource\Pages\ListPurchaseOrders;
+use Modules\Expenses\Filament\Customer\Clusters\Account\Resources\PurchaseOrderResource\Pages\ViewPurchaseOrder;
+use Modules\Expenses\Models\CustomerPurchaseOrder as PurchaseOrder;
 
 class PurchaseOrderResource extends OrderResource
 {

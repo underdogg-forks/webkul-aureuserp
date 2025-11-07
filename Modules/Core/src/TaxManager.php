@@ -1,8 +1,8 @@
 <?php
 
-namespace Webkul\Account;
+namespace Modules\Core;
 
-use Webkul\Account\Models\Tax;
+use Modules\Core\Models\Tax;
 
 class TaxManager
 {

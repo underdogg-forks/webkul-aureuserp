@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Products\Resources;
+namespace Modules\Products\Filament\Clusters\Products\Resources;
 
 use BackedEnum;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -32,22 +32,22 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
-use Webkul\Inventory\Enums\ProductTracking;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\DeliveryResource\Pages\EditDelivery;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\DropshipResource\Pages\EditDropship;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\InternalResource\Pages\EditInternal;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\ReceiptResource\Pages\EditReceipt;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\ScrapResource\Pages\CreateScrap;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\ScrapResource\Pages\EditScrap;
-use Webkul\Inventory\Filament\Clusters\Products;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\LotResource\Pages;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\LotResource\Pages\CreateLot;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\LotResource\Pages\EditLot;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\LotResource\Pages\ListLots;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\LotResource\Pages\ViewLot;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource\Pages\ManageQuantities;
-use Webkul\Inventory\Models\Lot;
-use Webkul\Inventory\Settings\TraceabilitySettings;
+use Modules\Products\Enums\ProductTracking;
+use Modules\Products\Filament\Clusters\Operations\Resources\DeliveryResource\Pages\EditDelivery;
+use Modules\Products\Filament\Clusters\Operations\Resources\DropshipResource\Pages\EditDropship;
+use Modules\Products\Filament\Clusters\Operations\Resources\InternalResource\Pages\EditInternal;
+use Modules\Products\Filament\Clusters\Operations\Resources\ReceiptResource\Pages\EditReceipt;
+use Modules\Products\Filament\Clusters\Operations\Resources\ScrapResource\Pages\CreateScrap;
+use Modules\Products\Filament\Clusters\Operations\Resources\ScrapResource\Pages\EditScrap;
+use Modules\Products\Filament\Clusters\Products;
+use Modules\Products\Filament\Clusters\Products\Resources\LotResource\Pages;
+use Modules\Products\Filament\Clusters\Products\Resources\LotResource\Pages\CreateLot;
+use Modules\Products\Filament\Clusters\Products\Resources\LotResource\Pages\EditLot;
+use Modules\Products\Filament\Clusters\Products\Resources\LotResource\Pages\ListLots;
+use Modules\Products\Filament\Clusters\Products\Resources\LotResource\Pages\ViewLot;
+use Modules\Products\Filament\Clusters\Products\Resources\ProductResource\Pages\ManageQuantities;
+use Modules\Products\Models\Lot;
+use Modules\Products\Settings\TraceabilitySettings;
 
 class LotResource extends Resource
 {

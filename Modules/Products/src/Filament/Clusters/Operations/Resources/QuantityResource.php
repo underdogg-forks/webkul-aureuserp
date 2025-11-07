@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Resources;
+namespace Modules\Products\Filament\Clusters\Operations\Resources;
 
 use BackedEnum;
 use Filament\Actions\Action;
@@ -25,21 +25,21 @@ use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Enums\LocationType;
-use Webkul\Inventory\Enums\ProductTracking;
-use Webkul\Inventory\Filament\Clusters\Operations;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\QuantityResource\Pages\ManageQuantities;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\LotResource;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\PackageResource;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource;
-use Webkul\Inventory\Models\Location;
-use Webkul\Inventory\Models\Product;
-use Webkul\Inventory\Models\ProductQuantity;
-use Webkul\Inventory\Models\Warehouse;
-use Webkul\Inventory\Settings\OperationSettings;
-use Webkul\Inventory\Settings\ProductSettings;
-use Webkul\Inventory\Settings\TraceabilitySettings;
-use Webkul\Inventory\Settings\WarehouseSettings;
+use Modules\Products\Enums\LocationType;
+use Modules\Products\Enums\ProductTracking;
+use Modules\Products\Filament\Clusters\Operations;
+use Modules\Products\Filament\Clusters\Operations\Resources\QuantityResource\Pages\ManageQuantities;
+use Modules\Products\Filament\Clusters\Products\Resources\LotResource;
+use Modules\Products\Filament\Clusters\Products\Resources\PackageResource;
+use Modules\Products\Filament\Clusters\Products\Resources\ProductResource;
+use Modules\Products\Models\Location;
+use Modules\Products\Models\Product;
+use Modules\Products\Models\ProductQuantity;
+use Modules\Products\Models\Warehouse;
+use Modules\Products\Settings\OperationSettings;
+use Modules\Products\Settings\ProductSettings;
+use Modules\Products\Settings\TraceabilitySettings;
+use Modules\Products\Settings\WarehouseSettings;
 
 class QuantityResource extends Resource
 {

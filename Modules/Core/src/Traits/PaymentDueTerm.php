@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Account\Traits;
+namespace Modules\Core\Traits;
 
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
@@ -12,8 +12,8 @@ use Filament\Notifications\Notification;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Webkul\Account\Enums\DelayType;
-use Webkul\Account\Enums\DueTermValue;
+use Modules\Core\Enums\DelayType;
+use Modules\Core\Enums\DueTermValue;
 
 trait PaymentDueTerm
 {

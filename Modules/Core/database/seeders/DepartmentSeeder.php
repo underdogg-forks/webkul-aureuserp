@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Employee\Database\Seeders;
+namespace Modules\Core\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Webkul\Employee\Models\Employee;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Core\Models\Employee;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class DepartmentSeeder extends Seeder
 {

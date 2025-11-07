@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Configuration\Resources;
+namespace Modules\Invoices\Filament\Clusters\Configuration\Resources;
 
 use BackedEnum;
-use Webkul\Product\Filament\Resources\PackagingResource as BasePackagingResource;
-use Webkul\Sale\Filament\Clusters\Configuration;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\PackagingResource\Pages\ManagePackagings;
-use Webkul\Sale\Models\Packaging;
-use Webkul\Sale\Settings\ProductSettings;
+use Modules\Core\Filament\Resources\PackagingResource as BasePackagingResource;
+use Modules\Invoices\Filament\Clusters\Configuration;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\PackagingResource\Pages\ManagePackagings;
+use Modules\Invoices\Models\Packaging;
+use Modules\Invoices\Settings\ProductSettings;
 
 class PackagingResource extends BasePackagingResource
 {

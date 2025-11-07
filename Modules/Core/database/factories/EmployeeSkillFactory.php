@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Employee\Database\Factories;
+namespace Modules\Core\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Webkul\Employee\Models\Employee;
-use Webkul\Employee\Models\EmployeeSkill;
-use Webkul\Employee\Models\Skill;
-use Webkul\Employee\Models\SkillLevel;
+use Modules\Core\Models\Employee;
+use Modules\Core\Models\EmployeeSkill;
+use Modules\Core\Models\Skill;
+use Modules\Core\Models\SkillLevel;
 
 class EmployeeSkillFactory extends Factory
 {

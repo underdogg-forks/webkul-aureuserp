@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Products\Resources\PackageResource\Pages;
+namespace Modules\Products\Filament\Clusters\Products\Resources\PackageResource\Pages;
 
 use BackedEnum;
 use Filament\Actions\ActionGroup;
@@ -10,12 +10,12 @@ use Filament\Actions\ViewAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Tables\Table;
-use Webkul\Inventory\Enums\OperationState;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\OperationResource;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\PackageResource;
-use Webkul\Inventory\Models\Operation;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Products\Enums\OperationState;
+use Modules\Products\Filament\Clusters\Operations\Resources\OperationResource;
+use Modules\Products\Filament\Clusters\Products\Resources\PackageResource;
+use Modules\Products\Models\Operation;
+use Modules\Core\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ManageOperations extends ManageRelatedRecords
 {

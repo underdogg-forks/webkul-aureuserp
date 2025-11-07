@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Customer\Resources\PartnerResource\Pages;
+namespace Modules\Core\Filament\Clusters\Customer\Resources\PartnerResource\Pages;
 
 use BackedEnum;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
-use Webkul\Invoice\Filament\Clusters\Customer\Resources\PartnerResource;
-use Webkul\Partner\Filament\Resources\BankAccountResource;
+use Modules\Core\Filament\Clusters\Customer\Resources\PartnerResource;
+use Modules\Crm\Filament\Resources\BankAccountResource;
 
 class ManageBankAccounts extends ManageRelatedRecords
 {

@@ -1,7 +1,7 @@
 <?php
 
-namespace Webkul\Purchase\Models;
+namespace Modules\Expenses\Models;
 
-use Webkul\Product\Models\ProductSupplier as BaseProductSupplier;
+use Modules\Core\Models\ProductSupplier as BaseProductSupplier;
 
 class ProductSupplier extends BaseProductSupplier {}

@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Partner\Models;
+namespace Modules\Crm\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Webkul\Partner\Database\Factories\TitleFactory;
-use Webkul\Security\Models\User;
+use Modules\Crm\Database\Factories\TitleFactory;
+use Modules\Core\Models\User;
 
 class Title extends Model
 {

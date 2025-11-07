@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Product\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Product\Database\Factories\PackagingFactory;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Core\Database\Factories\PackagingFactory;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class Packaging extends Model implements Sortable
 {

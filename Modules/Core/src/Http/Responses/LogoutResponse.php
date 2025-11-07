@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Website\Http\Responses;
+namespace Modules\Core\Http\Responses;
 
 use Illuminate\Http\RedirectResponse;
-use Webkul\Website\Filament\Customer\Pages\Homepage;
+use Modules\Core\Filament\Customer\Pages\Homepage;
 
 class LogoutResponse implements \Filament\Auth\Http\Responses\Contracts\LogoutResponse
 {

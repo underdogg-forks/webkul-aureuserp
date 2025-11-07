@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\VendorPriceResource\Pages;
+namespace Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\VendorPriceResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
@@ -8,8 +8,8 @@ use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\QueryException;
-use Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\VendorPriceResource;
-use Webkul\Purchase\Models\ProductSupplier;
+use Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\VendorPriceResource;
+use Modules\Expenses\Models\ProductSupplier;
 
 class EditVendorPrice extends EditRecord
 {

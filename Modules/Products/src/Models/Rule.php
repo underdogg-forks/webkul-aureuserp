@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Models;
+namespace Modules\Products\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,14 +8,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Inventory\Database\Factories\RuleFactory;
-use Webkul\Inventory\Enums\GroupPropagation;
-use Webkul\Inventory\Enums\ProcureMethod;
-use Webkul\Inventory\Enums\RuleAction;
-use Webkul\Inventory\Enums\RuleAuto;
-use Webkul\Partner\Models\Partner;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Products\Database\Factories\RuleFactory;
+use Modules\Products\Enums\GroupPropagation;
+use Modules\Products\Enums\ProcureMethod;
+use Modules\Products\Enums\RuleAction;
+use Modules\Products\Enums\RuleAuto;
+use Modules\Crm\Models\Partner;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class Rule extends Model implements Sortable
 {

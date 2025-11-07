@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Webkul\Purchase\Livewire\RespondQuotation;
+use Modules\Expenses\Livewire\RespondQuotation;
 
 Route::middleware(['web'])->group(function () {
     Route::middleware('signed')

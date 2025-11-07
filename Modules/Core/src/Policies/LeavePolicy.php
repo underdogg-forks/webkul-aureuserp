@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\TimeOff\Policies;
+namespace Modules\Core\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Webkul\Security\Models\User;
-use Webkul\Security\Traits\HasScopedPermissions;
-use Webkul\TimeOff\Models\Leave;
+use Modules\Core\Models\User;
+use Modules\Core\Traits\HasScopedPermissions;
+use Modules\Core\Models\Leave;
 
 class LeavePolicy
 {

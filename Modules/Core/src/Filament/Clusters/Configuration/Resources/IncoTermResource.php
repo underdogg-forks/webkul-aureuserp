@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Configuration\Resources;
+namespace Modules\Core\Filament\Clusters\Configuration\Resources;
 
-use Webkul\Account\Filament\Resources\IncoTermResource as BaseIncoTermResource;
-use Webkul\Invoice\Filament\Clusters\Configuration;
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\IncoTermResource\Pages\ListIncoTerms;
-use Webkul\Invoice\Models\Incoterm;
+use Modules\Core\Filament\Resources\IncoTermResource as BaseIncoTermResource;
+use Modules\Core\Filament\Clusters\Configuration;
+use Modules\Core\Filament\Clusters\Configuration\Resources\IncoTermResource\Pages\ListIncoTerms;
+use Modules\Core\Models\Incoterm;
 
 class IncoTermResource extends BaseIncoTermResource
 {

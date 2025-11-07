@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\PackageTypeResource\Pages;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\PackageTypeResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\PackageTypeResource;
+use Modules\Products\Filament\Clusters\Configurations\Resources\PackageTypeResource;
 
 class ListPackageTypes extends ListRecords
 {

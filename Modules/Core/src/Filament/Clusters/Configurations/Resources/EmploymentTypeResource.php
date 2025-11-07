@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Configurations\Resources;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources;
 
-use Webkul\Employee\Filament\Clusters\Configurations\Resources\EmploymentTypeResource as BaseEmploymentTypeResource;
-use Webkul\Recruitment\Filament\Clusters\Configurations;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\EmploymentTypeResource\Pages\ListEmploymentTypes;
-use Webkul\Recruitment\Models\EmploymentType;
+use Modules\Core\Filament\Clusters\Configurations\Resources\EmploymentTypeResource as BaseEmploymentTypeResource;
+use Modules\Core\Filament\Clusters\Configurations;
+use Modules\Core\Filament\Clusters\Configurations\Resources\EmploymentTypeResource\Pages\ListEmploymentTypes;
+use Modules\Core\Models\EmploymentType;
 
 class EmploymentTypeResource extends BaseEmploymentTypeResource
 {

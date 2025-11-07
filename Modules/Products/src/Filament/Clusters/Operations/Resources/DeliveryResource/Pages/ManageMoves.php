@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Resources\DeliveryResource\Pages;
+namespace Modules\Products\Filament\Clusters\Operations\Resources\DeliveryResource\Pages;
 
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\DeliveryResource;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\OperationResource\Pages\ManageMoves as OperationManageMoves;
+use Modules\Products\Filament\Clusters\Operations\Resources\DeliveryResource;
+use Modules\Products\Filament\Clusters\Operations\Resources\OperationResource\Pages\ManageMoves as OperationManageMoves;
 
 class ManageMoves extends OperationManageMoves
 {

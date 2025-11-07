@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Configurations\Resources\PublicHolidayResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\PublicHolidayResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Support\Facades\Auth;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\PublicHolidayResource;
+use Modules\Core\Filament\Clusters\Configurations\Resources\PublicHolidayResource;
 
 class ListPublicHolidays extends ListRecords
 {

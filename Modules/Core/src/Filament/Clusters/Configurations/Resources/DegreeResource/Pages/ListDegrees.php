@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Configurations\Resources\DegreeResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\DegreeResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\DegreeResource;
+use Modules\Core\Filament\Clusters\Configurations\Resources\DegreeResource;
 
 class ListDegrees extends ListRecords
 {

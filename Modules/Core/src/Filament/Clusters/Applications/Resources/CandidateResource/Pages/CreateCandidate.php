@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Applications\Resources\CandidateResource\Pages;
+namespace Modules\Core\Filament\Clusters\Applications\Resources\CandidateResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Recruitment\Filament\Clusters\Applications\Resources\CandidateResource;
+use Modules\Core\Filament\Clusters\Applications\Resources\CandidateResource;
 
 class CreateCandidate extends CreateRecord
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -21,11 +21,11 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
-use Webkul\Account\Filament\Resources\TaxGroupResource\Pages\CreateTaxGroup;
-use Webkul\Account\Filament\Resources\TaxGroupResource\Pages\EditTaxGroup;
-use Webkul\Account\Filament\Resources\TaxGroupResource\Pages\ListTaxGroups;
-use Webkul\Account\Filament\Resources\TaxGroupResource\Pages\ViewTaxGroup;
-use Webkul\Account\Models\TaxGroup;
+use Modules\Core\Filament\Resources\TaxGroupResource\Pages\CreateTaxGroup;
+use Modules\Core\Filament\Resources\TaxGroupResource\Pages\EditTaxGroup;
+use Modules\Core\Filament\Resources\TaxGroupResource\Pages\ListTaxGroups;
+use Modules\Core\Filament\Resources\TaxGroupResource\Pages\ViewTaxGroup;
+use Modules\Core\Models\TaxGroup;
 
 class TaxGroupResource extends Resource
 {

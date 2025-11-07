@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Field\Filament\Forms\Components;
+namespace Modules\Core\Filament\Forms\Components;
 
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\CheckboxList;
@@ -15,7 +15,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Component;
 use Illuminate\Support\Collection;
-use Webkul\Field\Models\Field;
+use Modules\Core\Models\Field;
 
 class CustomFields extends Component
 {

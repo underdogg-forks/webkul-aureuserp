@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\PurchaseOrderResource\Pages;
+namespace Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\PurchaseOrderResource\Pages;
 
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\OrderResource\Pages\EditOrder;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\PurchaseOrderResource;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\OrderResource\Pages\EditOrder;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\PurchaseOrderResource;
 
 class EditPurchaseOrder extends EditOrder
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Configuration\Resources\QuotationTemplateResource\Pages;
+namespace Modules\Invoices\Filament\Clusters\Configuration\Resources\QuotationTemplateResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Notifications\Notification;
 use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Resources\Pages\EditRecord;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\QuotationTemplateResource;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\QuotationTemplateResource;
 
 class EditQuotationTemplate extends EditRecord
 {

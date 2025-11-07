@@ -1,21 +1,21 @@
 <?php
 
-namespace Webkul\Account;
+namespace Modules\Core;
 
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Account\Enums\DelayType;
-use Webkul\Account\Enums\DisplayType;
-use Webkul\Account\Enums\MoveState;
-use Webkul\Account\Enums\PaymentState;
-use Webkul\Account\Facades\Tax as TaxFacade;
-use Webkul\Account\Mail\Invoice\Actions\InvoiceEmail;
-use Webkul\Account\Models\Journal;
-use Webkul\Account\Models\Move as AccountMove;
-use Webkul\Account\Models\MoveLine;
-use Webkul\Account\Models\Partner;
-use Webkul\Account\Models\Tax;
-use Webkul\Support\Services\EmailService;
+use Modules\Core\Enums\DelayType;
+use Modules\Core\Enums\DisplayType;
+use Modules\Core\Enums\MoveState;
+use Modules\Core\Enums\PaymentState;
+use Modules\Core\Facades\Tax as TaxFacade;
+use Modules\Core\Mail\Invoice\Actions\InvoiceEmail;
+use Modules\Core\Models\Journal;
+use Modules\Core\Models\Move as AccountMove;
+use Modules\Core\Models\MoveLine;
+use Modules\Core\Models\Partner;
+use Modules\Core\Models\Tax;
+use Modules\Core\Services\EmailService;
 
 class AccountManager
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Project\Filament\Resources\ProjectResource\Pages;
+namespace Modules\Projects\Filament\Resources\ProjectResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Project\Filament\Resources\ProjectResource;
+use Modules\Projects\Filament\Resources\ProjectResource;
 
 class CreateProject extends CreateRecord
 {

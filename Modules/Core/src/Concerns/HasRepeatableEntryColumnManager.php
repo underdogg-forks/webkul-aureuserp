@@ -1,8 +1,8 @@
 <?php
 
-namespace Webkul\Support\Concerns;
+namespace Modules\Core\Concerns;
 
-use Webkul\Support\Filament\Infolists\Components\RepeatableEntry;
+use Modules\Core\Filament\Infolists\Components\RepeatableEntry;
 
 trait HasRepeatableEntryColumnManager
 {

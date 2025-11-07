@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Settings\Pages;
+namespace Modules\Products\Filament\Clusters\Settings\Pages;
 
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
@@ -12,9 +12,9 @@ use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\HtmlString;
 use UnitEnum;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\PackageResource;
-use Webkul\Inventory\Settings\OperationSettings;
-use Webkul\Support\Filament\Clusters\Settings;
+use Modules\Products\Filament\Clusters\Products\Resources\PackageResource;
+use Modules\Products\Settings\OperationSettings;
+use Modules\Core\Filament\Clusters\Settings;
 
 class ManageOperations extends SettingsPage
 {

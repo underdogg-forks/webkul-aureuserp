@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\FullCalendar\Filament\Actions;
+namespace Modules\Core\Filament\Actions;
 
 use Filament\Actions\CreateAction as BaseCreateAction;
-use Webkul\FullCalendar\Filament\Widgets\FullCalendarWidget;
+use Modules\Core\Filament\Widgets\FullCalendarWidget;
 
 class CreateAction extends BaseCreateAction
 {

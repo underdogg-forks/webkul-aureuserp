@@ -1,17 +1,17 @@
 <?php
 
-namespace Webkul\Inventory\Models;
+namespace Modules\Products\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Webkul\Inventory\Database\Factories\LocationFactory;
-use Webkul\Inventory\Enums\LocationType;
-use Webkul\Product\Enums\ProductRemoval;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Products\Database\Factories\LocationFactory;
+use Modules\Products\Enums\LocationType;
+use Modules\Core\Enums\ProductRemoval;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class Location extends Model
 {

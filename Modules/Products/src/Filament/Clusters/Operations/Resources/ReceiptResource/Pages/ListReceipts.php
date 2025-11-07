@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Resources\ReceiptResource\Pages;
+namespace Modules\Products\Filament\Clusters\Operations\Resources\ReceiptResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Contracts\Support\Htmlable;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\OperationResource;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\ReceiptResource;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Products\Filament\Clusters\Operations\Resources\OperationResource;
+use Modules\Products\Filament\Clusters\Operations\Resources\ReceiptResource;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ListReceipts extends ListRecords
 {

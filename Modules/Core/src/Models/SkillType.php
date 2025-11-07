@@ -1,7 +1,7 @@
 <?php
 
-namespace Webkul\Recruitment\Models;
+namespace Modules\Core\Models;
 
-use Webkul\Employee\Models\SkillType as BaseSkillType;
+use Modules\Core\Models\SkillType as BaseSkillType;
 
 class SkillType extends BaseSkillType {}

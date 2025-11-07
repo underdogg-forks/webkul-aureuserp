@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Security\Filament\Clusters\Settings\Pages;
+namespace Modules\Core\Filament\Clusters\Settings\Pages;
 
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
@@ -9,8 +9,8 @@ use Filament\Forms\Components\Placeholder;
 use Filament\Pages\SettingsPage;
 use Filament\Schemas\Components\Actions;
 use Filament\Schemas\Schema;
-use Webkul\Security\Settings\UserSettings;
-use Webkul\Support\Filament\Clusters\Settings;
+use Modules\Core\Settings\UserSettings;
+use Modules\Core\Filament\Clusters\Settings;
 
 class ManageActivity extends SettingsPage
 {

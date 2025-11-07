@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Partner\Filament\Resources\PartnerResource\Pages;
+namespace Modules\Crm\Filament\Resources\PartnerResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
-use Webkul\Partner\Enums\AccountType;
-use Webkul\Partner\Filament\Resources\PartnerResource;
-use Webkul\TableViews\Filament\Components\PresetView;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Crm\Enums\AccountType;
+use Modules\Crm\Filament\Resources\PartnerResource;
+use Modules\Core\Filament\Components\PresetView;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ListPartners extends ListRecords
 {

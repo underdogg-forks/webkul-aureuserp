@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Project\Models;
+namespace Modules\Projects\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,14 +12,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Chatter\Traits\HasChatter;
-use Webkul\Chatter\Traits\HasLogActivity;
-use Webkul\Field\Traits\HasCustomFields;
-use Webkul\Partner\Models\Partner;
-use Webkul\Project\Database\Factories\ProjectFactory;
-use Webkul\Security\Models\Scopes\UserPermissionScope;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Core\Traits\HasChatter;
+use Modules\Core\Traits\HasLogActivity;
+use Modules\Core\Traits\HasCustomFields;
+use Modules\Crm\Models\Partner;
+use Modules\Projects\Database\Factories\ProjectFactory;
+use Modules\Core\Models\Scopes\UserPermissionScope;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class Project extends Model implements Sortable
 {

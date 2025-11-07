@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Product\Filament\Resources\ProductResource\Actions;
+namespace Modules\Core\Filament\Resources\ProductResource\Actions;
 
 use Closure;
 use Exception;
@@ -10,10 +10,10 @@ use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Product\Filament\Resources\ProductResource\Pages\ManageAttributes;
-use Webkul\Product\Models\Product;
-use Webkul\Product\Models\ProductAttribute;
-use Webkul\Product\Models\ProductCombination;
+use Modules\Core\Filament\Resources\ProductResource\Pages\ManageAttributes;
+use Modules\Core\Models\Product;
+use Modules\Core\Models\ProductAttribute;
+use Modules\Core\Models\ProductCombination;
 
 class GenerateVariantsAction extends Action
 {

@@ -1,17 +1,17 @@
 <?php
 
-namespace Webkul\Project\Filament\Resources\TaskResource\Pages;
+namespace Modules\Projects\Filament\Resources\TaskResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Project\Enums\TaskState;
-use Webkul\Project\Filament\Resources\TaskResource;
-use Webkul\Project\Filament\Widgets\StatsOverviewWidget;
-use Webkul\TableViews\Filament\Components\PresetView;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Projects\Enums\TaskState;
+use Modules\Projects\Filament\Resources\TaskResource;
+use Modules\Projects\Filament\Widgets\StatsOverviewWidget;
+use Modules\Core\Filament\Components\PresetView;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ListTasks extends ListRecords
 {

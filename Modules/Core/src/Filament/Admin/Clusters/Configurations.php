@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Website\Filament\Admin\Clusters;
+namespace Modules\Core\Filament\Admin\Clusters;
 
 use Filament\Clusters\Cluster;
 

@@ -1,23 +1,23 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Products\Resources;
+namespace Modules\Expenses\Filament\Admin\Clusters\Products\Resources;
 
 use BackedEnum;
 use Filament\Resources\Pages\Page;
 use Filament\Schemas\Schema;
 use Filament\Tables\Filters\QueryBuilder;
 use Filament\Tables\Table;
-use Webkul\Field\Filament\Traits\HasCustomFields;
-use Webkul\Product\Filament\Resources\ProductResource as BaseProductResource;
-use Webkul\Purchase\Filament\Admin\Clusters\Products;
-use Webkul\Purchase\Filament\Admin\Clusters\Products\Resources\ProductResource\Pages\CreateProduct;
-use Webkul\Purchase\Filament\Admin\Clusters\Products\Resources\ProductResource\Pages\EditProduct;
-use Webkul\Purchase\Filament\Admin\Clusters\Products\Resources\ProductResource\Pages\ListProducts;
-use Webkul\Purchase\Filament\Admin\Clusters\Products\Resources\ProductResource\Pages\ManageAttributes;
-use Webkul\Purchase\Filament\Admin\Clusters\Products\Resources\ProductResource\Pages\ManageVariants;
-use Webkul\Purchase\Filament\Admin\Clusters\Products\Resources\ProductResource\Pages\ManageVendors;
-use Webkul\Purchase\Filament\Admin\Clusters\Products\Resources\ProductResource\Pages\ViewProduct;
-use Webkul\Purchase\Models\Product;
+use Modules\Core\Filament\Traits\HasCustomFields;
+use Modules\Core\Filament\Resources\ProductResource as BaseProductResource;
+use Modules\Expenses\Filament\Admin\Clusters\Products;
+use Modules\Expenses\Filament\Admin\Clusters\Products\Resources\ProductResource\Pages\CreateProduct;
+use Modules\Expenses\Filament\Admin\Clusters\Products\Resources\ProductResource\Pages\EditProduct;
+use Modules\Expenses\Filament\Admin\Clusters\Products\Resources\ProductResource\Pages\ListProducts;
+use Modules\Expenses\Filament\Admin\Clusters\Products\Resources\ProductResource\Pages\ManageAttributes;
+use Modules\Expenses\Filament\Admin\Clusters\Products\Resources\ProductResource\Pages\ManageVariants;
+use Modules\Expenses\Filament\Admin\Clusters\Products\Resources\ProductResource\Pages\ManageVendors;
+use Modules\Expenses\Filament\Admin\Clusters\Products\Resources\ProductResource\Pages\ViewProduct;
+use Modules\Expenses\Models\Product;
 
 class ProductResource extends BaseProductResource
 {

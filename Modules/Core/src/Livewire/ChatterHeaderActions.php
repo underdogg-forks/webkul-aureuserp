@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Chatter\Livewire;
+namespace Modules\Core\Livewire;
 
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
@@ -9,10 +9,10 @@ use Filament\Forms\Contracts\HasForms;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Livewire\Component;
-use Webkul\Chatter\Filament\Actions\Chatter\ActivityAction;
-use Webkul\Chatter\Filament\Actions\Chatter\LogAction;
-use Webkul\Chatter\Filament\Actions\Chatter\MessageAction;
-use Webkul\Chatter\Filament\Actions\ChatterAction;
+use Modules\Core\Filament\Actions\Chatter\ActivityAction;
+use Modules\Core\Filament\Actions\Chatter\LogAction;
+use Modules\Core\Filament\Actions\Chatter\MessageAction;
+use Modules\Core\Filament\Actions\ChatterAction;
 
 class ChatterHeaderActions extends Component implements HasActions, HasForms
 {

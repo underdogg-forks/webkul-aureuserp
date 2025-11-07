@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\InvoiceResource\Actions;
+namespace Modules\Core\Filament\Resources\InvoiceResource\Actions;
 
 use Filament\Actions\Action;
 use Livewire\Component;
-use Webkul\Account\Enums\MoveState;
-use Webkul\Account\Enums\MoveType;
-use Webkul\Account\Facades\Account;
-use Webkul\Account\Models\Move;
+use Modules\Core\Enums\MoveState;
+use Modules\Core\Enums\MoveType;
+use Modules\Core\Facades\Account;
+use Modules\Core\Models\Move;
 
 class CancelAction extends Action
 {

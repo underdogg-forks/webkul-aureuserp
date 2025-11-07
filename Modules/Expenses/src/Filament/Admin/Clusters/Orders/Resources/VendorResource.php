@@ -1,24 +1,24 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources;
+namespace Modules\Expenses\Filament\Admin\Clusters\Orders\Resources;
 
 use BackedEnum;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\RelationManagers\RelationGroup;
-use Webkul\Field\Filament\Traits\HasCustomFields;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\VendorResource as BaseVendorResource;
-use Webkul\Partner\Filament\Resources\PartnerResource\RelationManagers\AddressesRelationManager;
-use Webkul\Partner\Filament\Resources\PartnerResource\RelationManagers\ContactsRelationManager;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\VendorResource\Pages\CreateVendor;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\VendorResource\Pages\EditVendor;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\VendorResource\Pages\ListVendors;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\VendorResource\Pages\ManageAddresses;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\VendorResource\Pages\ManageBills;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\VendorResource\Pages\ManageContacts;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\VendorResource\Pages\ManagePurchases;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\VendorResource\Pages\ViewVendor;
-use Webkul\Purchase\Models\Partner;
+use Modules\Core\Filament\Traits\HasCustomFields;
+use Modules\Core\Filament\Clusters\Vendors\Resources\VendorResource as BaseVendorResource;
+use Modules\Crm\Filament\Resources\PartnerResource\RelationManagers\AddressesRelationManager;
+use Modules\Crm\Filament\Resources\PartnerResource\RelationManagers\ContactsRelationManager;
+use Modules\Expenses\Filament\Admin\Clusters\Orders;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\VendorResource\Pages\CreateVendor;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\VendorResource\Pages\EditVendor;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\VendorResource\Pages\ListVendors;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\VendorResource\Pages\ManageAddresses;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\VendorResource\Pages\ManageBills;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\VendorResource\Pages\ManageContacts;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\VendorResource\Pages\ManagePurchases;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\VendorResource\Pages\ViewVendor;
+use Modules\Expenses\Models\Partner;
 
 class VendorResource extends BaseVendorResource
 {

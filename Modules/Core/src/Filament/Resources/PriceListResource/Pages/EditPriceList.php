@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Product\Filament\Resources\PriceListResource\Pages;
+namespace Modules\Core\Filament\Resources\PriceListResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Resources\Pages\EditRecord;
-use Webkul\Product\Filament\Resources\PriceListResource;
+use Modules\Core\Filament\Resources\PriceListResource;
 
 class EditPriceList extends EditRecord
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Employee\Filament\Resources\EmployeeResource\RelationManagers;
+namespace Modules\Core\Filament\Resources\EmployeeResource\RelationManagers;
 
 use Filament\Resources\RelationManagers\RelationManager;
-use Webkul\Employee\Traits\Resources\Employee\EmployeeSkillRelation;
+use Modules\Core\Traits\Resources\Employee\EmployeeSkillRelation;
 
 class SkillsRelationManager extends RelationManager
 {

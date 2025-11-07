@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Configurations\Resources;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Filament\Actions\Action;
@@ -40,18 +40,18 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
-use Webkul\Employee\Filament\Resources\DepartmentResource;
-use Webkul\Employee\Models\Department;
-use Webkul\Partner\Filament\Resources\AddressResource;
-use Webkul\Partner\Filament\Resources\IndustryResource;
-use Webkul\Recruitment\Filament\Clusters\Configurations;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\JobPositionResource\Pages\CreateJobPosition;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\JobPositionResource\Pages\EditJobPosition;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\JobPositionResource\Pages\ListJobPositions;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\JobPositionResource\Pages\ViewJobPosition;
-use Webkul\Recruitment\Models\JobPosition;
-use Webkul\Security\Filament\Resources\CompanyResource;
-use Webkul\Security\Filament\Resources\UserResource;
+use Modules\Core\Filament\Resources\DepartmentResource;
+use Modules\Core\Models\Department;
+use Modules\Crm\Filament\Resources\AddressResource;
+use Modules\Crm\Filament\Resources\IndustryResource;
+use Modules\Core\Filament\Clusters\Configurations;
+use Modules\Core\Filament\Clusters\Configurations\Resources\JobPositionResource\Pages\CreateJobPosition;
+use Modules\Core\Filament\Clusters\Configurations\Resources\JobPositionResource\Pages\EditJobPosition;
+use Modules\Core\Filament\Clusters\Configurations\Resources\JobPositionResource\Pages\ListJobPositions;
+use Modules\Core\Filament\Clusters\Configurations\Resources\JobPositionResource\Pages\ViewJobPosition;
+use Modules\Core\Models\JobPosition;
+use Modules\Core\Filament\Resources\CompanyResource;
+use Modules\Core\Filament\Resources\UserResource;
 
 class JobPositionResource extends Resource
 {

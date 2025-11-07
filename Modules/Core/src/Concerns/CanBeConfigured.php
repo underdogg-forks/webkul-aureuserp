@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\FullCalendar\Concerns;
+namespace Modules\Core\Concerns;
 
 use Illuminate\Support\Arr;
-use Webkul\FullCalendar\FullCalendarPlugin;
+use Modules\Core\FullCalendarPlugin;
 
 trait CanBeConfigured
 {

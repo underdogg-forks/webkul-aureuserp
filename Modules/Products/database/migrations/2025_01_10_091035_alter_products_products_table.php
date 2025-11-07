@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Webkul\Inventory\Enums\ProductTracking;
+use Modules\Products\Enums\ProductTracking;
 
 return new class () extends Migration {
     /**

@@ -1,5 +1,5 @@
 @php
-    $plugin = \Webkul\FullCalendar\FullCalendarPlugin::get();
+    $plugin = \Modules\Core\FullCalendarPlugin::get();
 @endphp
 
 <x-filament-widgets::widget>

@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Employee\Database\Seeders;
+namespace Modules\Core\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\User;
 
 class SkillLevelSeeder extends Seeder
 {

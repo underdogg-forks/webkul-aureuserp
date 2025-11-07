@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Project\Models;
+namespace Modules\Projects\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Webkul\Analytic\Models\Record;
+use Modules\Core\Models\Record;
 
 class Timesheet extends Record
 {

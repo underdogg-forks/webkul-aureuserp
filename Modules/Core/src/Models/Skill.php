@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Employee\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Employee\Database\Factories\SkillFactory;
-use Webkul\Field\Traits\HasCustomFields;
-use Webkul\Security\Models\User;
+use Modules\Core\Database\Factories\SkillFactory;
+use Modules\Core\Traits\HasCustomFields;
+use Modules\Core\Models\User;
 
 class Skill extends Model implements Sortable
 {

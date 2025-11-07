@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Partner\Filament\Resources;
+namespace Modules\Crm\Filament\Resources;
 
 use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
@@ -50,8 +50,8 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Partner\Enums\AccountType;
-use Webkul\Partner\Models\Partner;
+use Modules\Crm\Enums\AccountType;
+use Modules\Crm\Models\Partner;
 
 class PartnerResource extends Resource
 {

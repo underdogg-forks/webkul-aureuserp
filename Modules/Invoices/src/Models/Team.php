@@ -1,17 +1,17 @@
 <?php
 
-namespace Webkul\Sale\Models;
+namespace Modules\Invoices\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Chatter\Traits\HasChatter;
-use Webkul\Chatter\Traits\HasLogActivity;
-use Webkul\Sale\Database\Factories\TeamFactory;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Core\Traits\HasChatter;
+use Modules\Core\Traits\HasLogActivity;
+use Modules\Invoices\Database\Factories\TeamFactory;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class Team extends Model implements Sortable
 {

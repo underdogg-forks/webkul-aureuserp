@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Pages;
+namespace Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Sale\Enums\OrderState;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource;
-use Webkul\TableViews\Filament\Components\PresetView;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Invoices\Enums\OrderState;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource;
+use Modules\Core\Filament\Components\PresetView;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ListQuotations extends ListRecords
 {

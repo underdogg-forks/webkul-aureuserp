@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\PluginManager\Filament\Resources\PluginResource\Pages;
+namespace Modules\Core\Filament\Resources\PluginResource\Pages;
 
 use Filament\Actions\Action;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;
 use Throwable;
-use Webkul\PluginManager\Filament\Resources\PluginResource;
-use Webkul\Support\Models\Plugin;
+use Modules\Core\Filament\Resources\PluginResource;
+use Modules\Core\Models\Plugin;
 
 class ListPlugins extends ListRecords
 {

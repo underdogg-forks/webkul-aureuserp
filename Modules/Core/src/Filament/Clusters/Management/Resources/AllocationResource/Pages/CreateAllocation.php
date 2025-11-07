@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Management\Resources\AllocationResource\Pages;
+namespace Modules\Core\Filament\Clusters\Management\Resources\AllocationResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
-use Webkul\TimeOff\Filament\Clusters\Management\Resources\AllocationResource;
+use Modules\Core\Filament\Clusters\Management\Resources\AllocationResource;
 
 class CreateAllocation extends CreateRecord
 {

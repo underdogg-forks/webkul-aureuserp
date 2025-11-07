@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Security\Models;
+namespace Modules\Core\Models;
 
 use App\Models\User as BaseUser;
 use Filament\Models\Contracts\FilamentUser;
@@ -12,10 +12,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;
-use Webkul\Employee\Models\Department;
-use Webkul\Employee\Models\Employee;
-use Webkul\Partner\Models\Partner;
-use Webkul\Support\Models\Company;
+use Modules\Core\Models\Department;
+use Modules\Core\Models\Employee;
+use Modules\Crm\Models\Partner;
+use Modules\Core\Models\Company;
 
 class User extends BaseUser implements FilamentUser
 {

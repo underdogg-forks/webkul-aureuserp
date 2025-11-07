@@ -1,19 +1,19 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Resources\DeliveryResource\Pages;
+namespace Modules\Products\Filament\Clusters\Operations\Resources\DeliveryResource\Pages;
 
 use Filament\Actions\ActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Database\QueryException;
-use Webkul\Chatter\Filament\Actions\ChatterAction;
-use Webkul\Inventory\Enums\OperationState;
-use Webkul\Inventory\Filament\Clusters\Operations\Actions as OperationActions;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\DeliveryResource;
-use Webkul\Inventory\Models\Delivery;
-use Webkul\Support\Concerns\HasRepeatableEntryColumnManager;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Actions\ChatterAction;
+use Modules\Products\Enums\OperationState;
+use Modules\Products\Filament\Clusters\Operations\Actions as OperationActions;
+use Modules\Products\Filament\Clusters\Operations\Resources\DeliveryResource;
+use Modules\Products\Models\Delivery;
+use Modules\Core\Concerns\HasRepeatableEntryColumnManager;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ViewDelivery extends ViewRecord
 {

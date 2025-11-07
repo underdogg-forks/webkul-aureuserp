@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Product\Filament\Resources\ProductResource\Pages;
+namespace Modules\Core\Filament\Resources\ProductResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Webkul\Product\Enums\ProductType;
-use Webkul\Product\Filament\Resources\ProductResource;
-use Webkul\TableViews\Filament\Components\PresetView;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Core\Enums\ProductType;
+use Modules\Core\Filament\Resources\ProductResource;
+use Modules\Core\Filament\Components\PresetView;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ListProducts extends ListRecords
 {

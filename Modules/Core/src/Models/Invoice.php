@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Invoice\Models;
+namespace Modules\Core\Models;
 
-use Webkul\Account\Models\Move as BaseMove;
-use Webkul\Account\Models\MoveLine;
+use Modules\Core\Models\Move as BaseMove;
+use Modules\Core\Models\MoveLine;
 
 class Invoice extends BaseMove
 {

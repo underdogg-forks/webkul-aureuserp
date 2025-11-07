@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Customer\Clusters\Account\Resources\QuotationResource\Pages;
+namespace Modules\Expenses\Filament\Customer\Clusters\Account\Resources\QuotationResource\Pages;
 
 use Filament\Resources\Pages\ListRecords;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Webkul\Purchase\Enums\OrderState;
-use Webkul\Purchase\Filament\Customer\Clusters\Account\Resources\QuotationResource;
+use Modules\Expenses\Enums\OrderState;
+use Modules\Expenses\Filament\Customer\Clusters\Account\Resources\QuotationResource;
 
 class ListQuotations extends ListRecords
 {

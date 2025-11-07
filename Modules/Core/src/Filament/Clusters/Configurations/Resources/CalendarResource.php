@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Employee\Filament\Clusters\Configurations\Resources;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Filament\Actions\ActionGroup;
@@ -39,13 +39,13 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Employee\Filament\Clusters\Configurations;
-use Webkul\Employee\Filament\Clusters\Configurations\Resources\CalendarResource\Pages\CreateCalendar;
-use Webkul\Employee\Filament\Clusters\Configurations\Resources\CalendarResource\Pages\EditCalendar;
-use Webkul\Employee\Filament\Clusters\Configurations\Resources\CalendarResource\Pages\ListCalendars;
-use Webkul\Employee\Filament\Clusters\Configurations\Resources\CalendarResource\Pages\ViewCalendar;
-use Webkul\Employee\Filament\Clusters\Configurations\Resources\CalendarResource\RelationManagers\CalendarAttendance;
-use Webkul\Employee\Models\Calendar;
+use Modules\Core\Filament\Clusters\Configurations;
+use Modules\Core\Filament\Clusters\Configurations\Resources\CalendarResource\Pages\CreateCalendar;
+use Modules\Core\Filament\Clusters\Configurations\Resources\CalendarResource\Pages\EditCalendar;
+use Modules\Core\Filament\Clusters\Configurations\Resources\CalendarResource\Pages\ListCalendars;
+use Modules\Core\Filament\Clusters\Configurations\Resources\CalendarResource\Pages\ViewCalendar;
+use Modules\Core\Filament\Clusters\Configurations\Resources\CalendarResource\RelationManagers\CalendarAttendance;
+use Modules\Core\Models\Calendar;
 
 class CalendarResource extends Resource
 {

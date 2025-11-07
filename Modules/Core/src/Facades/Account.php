@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Account\Facades;
+namespace Modules\Core\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Webkul\Account\Models\Move;
+use Modules\Core\Models\Move;
 
 /**
  * @method static computeAccountMove(Move $record)

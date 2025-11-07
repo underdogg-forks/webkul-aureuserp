@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Timesheet\Filament\Resources;
+namespace Modules\Projects\Filament\Resources;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
@@ -23,8 +23,8 @@ use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
-use Webkul\Project\Models\Timesheet;
-use Webkul\Timesheet\Filament\Resources\TimesheetResource\Pages\ManageTimesheets;
+use Modules\Projects\Models\Timesheet;
+use Modules\Projects\Filament\Resources\TimesheetResource\Pages\ManageTimesheets;
 
 class TimesheetResource extends Resource
 {

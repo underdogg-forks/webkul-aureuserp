@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Configuration\Resources;
+namespace Modules\Core\Filament\Clusters\Configuration\Resources;
 
-use Webkul\Account\Filament\Resources\BankAccountResource as BaseBankAccountResource;
-use Webkul\Invoice\Filament\Clusters\Configuration;
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\BankAccountResource\Pages\ListBankAccounts;
-use Webkul\Invoice\Models\BankAccount;
+use Modules\Core\Filament\Resources\BankAccountResource as BaseBankAccountResource;
+use Modules\Core\Filament\Clusters\Configuration;
+use Modules\Core\Filament\Clusters\Configuration\Resources\BankAccountResource\Pages\ListBankAccounts;
+use Modules\Core\Models\BankAccount;
 
 class BankAccountResource extends BaseBankAccountResource
 {

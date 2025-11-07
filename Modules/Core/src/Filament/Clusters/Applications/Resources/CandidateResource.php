@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Applications\Resources;
+namespace Modules\Core\Filament\Clusters\Applications\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -36,14 +36,14 @@ use Filament\Tables\Filters\QueryBuilder\Constraints\RelationshipConstraint\Oper
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\HtmlString;
-use Webkul\Recruitment\Filament\Clusters\Applications;
-use Webkul\Recruitment\Filament\Clusters\Applications\Resources\CandidateResource\Pages\CreateCandidate;
-use Webkul\Recruitment\Filament\Clusters\Applications\Resources\CandidateResource\Pages\EditCandidate;
-use Webkul\Recruitment\Filament\Clusters\Applications\Resources\CandidateResource\Pages\ListCandidates;
-use Webkul\Recruitment\Filament\Clusters\Applications\Resources\CandidateResource\Pages\ManageSkill;
-use Webkul\Recruitment\Filament\Clusters\Applications\Resources\CandidateResource\Pages\ViewCandidate;
-use Webkul\Recruitment\Filament\Clusters\Applications\Resources\CandidateResource\RelationManagers\SkillsRelationManager;
-use Webkul\Recruitment\Models\Candidate;
+use Modules\Core\Filament\Clusters\Applications;
+use Modules\Core\Filament\Clusters\Applications\Resources\CandidateResource\Pages\CreateCandidate;
+use Modules\Core\Filament\Clusters\Applications\Resources\CandidateResource\Pages\EditCandidate;
+use Modules\Core\Filament\Clusters\Applications\Resources\CandidateResource\Pages\ListCandidates;
+use Modules\Core\Filament\Clusters\Applications\Resources\CandidateResource\Pages\ManageSkill;
+use Modules\Core\Filament\Clusters\Applications\Resources\CandidateResource\Pages\ViewCandidate;
+use Modules\Core\Filament\Clusters\Applications\Resources\CandidateResource\RelationManagers\SkillsRelationManager;
+use Modules\Core\Models\Candidate;
 
 class CandidateResource extends Resource
 {

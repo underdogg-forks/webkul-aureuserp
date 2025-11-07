@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Project\Filament\Widgets;
+namespace Modules\Projects\Filament\Widgets;
 
 use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
 use Exception;
@@ -8,8 +8,8 @@ use Filament\Widgets\ChartWidget;
 use Filament\Widgets\Concerns\InteractsWithPageFilters;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Carbon;
-use Webkul\Project\Enums\TaskState;
-use Webkul\Project\Models\Task;
+use Modules\Projects\Enums\TaskState;
+use Modules\Projects\Models\Task;
 
 class TaskByStateChart extends ChartWidget
 {

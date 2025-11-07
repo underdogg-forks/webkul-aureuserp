@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Employee\Filament\Clusters\Reportings\Resources;
+namespace Modules\Core\Filament\Clusters\Reportings\Resources;
 
 use BackedEnum;
 use Filament\Actions\ActionGroup;
@@ -18,10 +18,10 @@ use Filament\Tables\Filters\QueryBuilder\Constraints\RelationshipConstraint\Oper
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
-use Webkul\Employee\Filament\Clusters\Reportings;
-use Webkul\Employee\Filament\Clusters\Reportings\Resources\EmployeeSkillResource\Pages\ListEmployeeSkills;
-use Webkul\Employee\Models\EmployeeSkill;
-use Webkul\Support\Filament\Tables as CustomTables;
+use Modules\Core\Filament\Clusters\Reportings;
+use Modules\Core\Filament\Clusters\Reportings\Resources\EmployeeSkillResource\Pages\ListEmployeeSkills;
+use Modules\Core\Models\EmployeeSkill;
+use Modules\Core\Filament\Tables as CustomTables;
 
 class EmployeeSkillResource extends Resource
 {

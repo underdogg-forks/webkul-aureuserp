@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Project\Filament\Clusters\Configurations\Resources\ProjectStageResource\Pages;
+namespace Modules\Projects\Filament\Clusters\Configurations\Resources\ProjectStageResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ManageRecords;
 use Filament\Schemas\Components\Tabs\Tab;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Project\Filament\Clusters\Configurations\Resources\ProjectStageResource;
-use Webkul\Project\Models\ProjectStage;
+use Modules\Projects\Filament\Clusters\Configurations\Resources\ProjectStageResource;
+use Modules\Projects\Models\ProjectStage;
 
 class ManageProjectStages extends ManageRecords
 {

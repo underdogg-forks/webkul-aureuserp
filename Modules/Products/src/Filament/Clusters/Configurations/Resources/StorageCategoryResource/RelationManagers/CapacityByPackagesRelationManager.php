@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\StorageCategoryResource\RelationManagers;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\StorageCategoryResource\RelationManagers;
 
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
@@ -15,7 +15,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Unique;
-use Webkul\Inventory\Settings\OperationSettings;
+use Modules\Products\Settings\OperationSettings;
 
 class CapacityByPackagesRelationManager extends RelationManager
 {

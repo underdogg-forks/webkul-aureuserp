@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource\Pages;
+namespace Modules\Products\Filament\Clusters\Products\Resources\ProductResource\Pages;
 
 use BackedEnum;
 use Filament\Actions\DeleteAction;
@@ -9,17 +9,17 @@ use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Webkul\Inventory\Enums\LocationType;
-use Webkul\Inventory\Enums\MoveState;
-use Webkul\Inventory\Enums\OperationType;
-use Webkul\Inventory\Enums\ProductTracking;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource;
-use Webkul\Inventory\Settings\OperationSettings;
-use Webkul\Inventory\Settings\TraceabilitySettings;
-use Webkul\Inventory\Settings\WarehouseSettings;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
-use Webkul\TableViews\Filament\Components\PresetView;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Products\Enums\LocationType;
+use Modules\Products\Enums\MoveState;
+use Modules\Products\Enums\OperationType;
+use Modules\Products\Enums\ProductTracking;
+use Modules\Products\Filament\Clusters\Products\Resources\ProductResource;
+use Modules\Products\Settings\OperationSettings;
+use Modules\Products\Settings\TraceabilitySettings;
+use Modules\Products\Settings\WarehouseSettings;
+use Modules\Core\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Components\PresetView;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ManageMoves extends ManageRelatedRecords
 {

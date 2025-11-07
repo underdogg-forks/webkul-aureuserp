@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Security\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Collection;
 use Spatie\Permission\Models\Permission as BasePermission;
-use Webkul\Security\PermissionRegistrar;
+use Modules\Core\PermissionRegistrar;
 
 class Permission extends BasePermission
 {

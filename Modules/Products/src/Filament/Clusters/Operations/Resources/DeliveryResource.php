@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Resources;
+namespace Modules\Products\Filament\Clusters\Operations\Resources;
 
 use BackedEnum;
 use Filament\Actions\ActionGroup;
@@ -17,15 +17,15 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
-use Webkul\Inventory\Enums\OperationState;
-use Webkul\Inventory\Enums\OperationType;
-use Webkul\Inventory\Filament\Clusters\Operations;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\DeliveryResource\Pages\CreateDelivery;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\DeliveryResource\Pages\EditDelivery;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\DeliveryResource\Pages\ListDeliveries;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\DeliveryResource\Pages\ManageMoves;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\DeliveryResource\Pages\ViewDelivery;
-use Webkul\Inventory\Models\Delivery;
+use Modules\Products\Enums\OperationState;
+use Modules\Products\Enums\OperationType;
+use Modules\Products\Filament\Clusters\Operations;
+use Modules\Products\Filament\Clusters\Operations\Resources\DeliveryResource\Pages\CreateDelivery;
+use Modules\Products\Filament\Clusters\Operations\Resources\DeliveryResource\Pages\EditDelivery;
+use Modules\Products\Filament\Clusters\Operations\Resources\DeliveryResource\Pages\ListDeliveries;
+use Modules\Products\Filament\Clusters\Operations\Resources\DeliveryResource\Pages\ManageMoves;
+use Modules\Products\Filament\Clusters\Operations\Resources\DeliveryResource\Pages\ViewDelivery;
+use Modules\Products\Models\Delivery;
 
 class DeliveryResource extends Resource
 {

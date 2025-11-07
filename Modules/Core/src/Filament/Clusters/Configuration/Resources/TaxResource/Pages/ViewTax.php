@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Configuration\Resources\TaxResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configuration\Resources\TaxResource\Pages;
 
 use Filament\Pages\Enums\SubNavigationPosition;
-use Webkul\Account\Filament\Resources\TaxResource\Pages\ViewTax as BaseViewTax;
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\TaxResource;
+use Modules\Core\Filament\Resources\TaxResource\Pages\ViewTax as BaseViewTax;
+use Modules\Core\Filament\Clusters\Configuration\Resources\TaxResource;
 
 class ViewTax extends BaseViewTax
 {

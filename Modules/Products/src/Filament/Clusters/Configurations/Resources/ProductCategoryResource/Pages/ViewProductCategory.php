@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\ProductCategoryResource\Pages;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\ProductCategoryResource\Pages;
 
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\ProductCategoryResource;
-use Webkul\Product\Filament\Resources\CategoryResource\Pages\ViewCategory;
+use Modules\Products\Filament\Clusters\Configurations\Resources\ProductCategoryResource;
+use Modules\Core\Filament\Resources\CategoryResource\Pages\ViewCategory;
 
 class ViewProductCategory extends ViewCategory
 {

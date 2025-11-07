@@ -19,16 +19,12 @@
         "psr-4": {
             "Modules\\Expenses\\": "src/",
             "Modules\\Expenses\\Database\\Factories\\": "database/factories/",
-            "Modules\\Expenses\\Database\\Seeders\\": "database/seeders/",
-            "Webkul\\Purchase\\": "src/",
-            "Webkul\\Purchase\\Database\\Factories\\": "database/factories/",
-            "Webkul\\Purchase\\Database\\Seeders\\": "database/seeders/"
+            "Modules\\Expenses\\Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Modules\\Expenses\\Tests\\": "tests/",
-            "Webkul\\Purchase\\Tests\\": "tests/"
+            "Modules\\Expenses\\Tests\\": "tests/"
         }
     }
 }

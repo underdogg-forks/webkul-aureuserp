@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Configuration\Resources\BankAccountResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configuration\Resources\BankAccountResource\Pages;
 
-use Webkul\Account\Filament\Resources\BankAccountResource\Pages\ListBankAccounts as BaseManageBankAccounts;
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\BankAccountResource;
+use Modules\Core\Filament\Resources\BankAccountResource\Pages\ListBankAccounts as BaseManageBankAccounts;
+use Modules\Core\Filament\Clusters\Configuration\Resources\BankAccountResource;
 
 class ListBankAccounts extends BaseManageBankAccounts
 {

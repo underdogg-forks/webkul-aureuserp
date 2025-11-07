@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\TaxResource\RelationManagers;
+namespace Modules\Core\Filament\Resources\TaxResource\RelationManagers;
 
 use Filament\Resources\RelationManagers\RelationManager;
-use Webkul\Account\Enums\DocumentType;
-use Webkul\Account\Traits\TaxPartition;
+use Modules\Core\Enums\DocumentType;
+use Modules\Core\Traits\TaxPartition;
 
 class DistributionForInvoiceRelationManager extends RelationManager
 {

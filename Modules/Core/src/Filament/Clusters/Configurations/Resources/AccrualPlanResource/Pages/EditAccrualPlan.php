@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Configurations\Resources\AccrualPlanResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\AccrualPlanResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\AccrualPlanResource;
+use Modules\Core\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Clusters\Configurations\Resources\AccrualPlanResource;
 
 class EditAccrualPlan extends EditRecord
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Inventory\Database\Seeders;
+namespace Modules\Products\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Webkul\Inventory\Enums\LocationType;
-use Webkul\Security\Models\User;
+use Modules\Products\Enums\LocationType;
+use Modules\Core\Models\User;
 
 class LocationSeeder extends Seeder
 {

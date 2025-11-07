@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Actions;
+namespace Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource\Actions;
 
 use Exception;
 use Filament\Actions\Action;
 use Filament\Notifications\Notification;
 use Filament\Support\Facades\FilamentView;
-use Webkul\Sale\Enums\OrderState;
-use Webkul\Sale\Facades\SaleOrder;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\OrderResource;
+use Modules\Invoices\Enums\OrderState;
+use Modules\Invoices\Facades\SaleOrder;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\OrderResource;
 
 class ConfirmAction extends Action
 {

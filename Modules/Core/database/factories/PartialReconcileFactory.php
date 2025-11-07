@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Account\Database\Factories;
+namespace Modules\Core\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<\Webkul\Sale\Models\PartialReconcile>
+ * @extends Factory<\Modules\Invoices\Models\PartialReconcile>
  */
 class PartialReconcileFactory extends Factory
 {

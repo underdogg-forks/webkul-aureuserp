@@ -1,31 +1,31 @@
 <?php
 
-namespace Webkul\Purchase;
+namespace Modules\Expenses;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
-use Webkul\Account\Enums as AccountEnums;
-use Webkul\Account\Facades\Account as AccountFacade;
-use Webkul\Account\Facades\Tax as TaxFacade;
-use Webkul\Account\Models\Partner;
-use Webkul\Inventory\Enums as InventoryEnums;
-use Webkul\Inventory\Facades\Inventory;
-use Webkul\Inventory\Models\Location;
-use Webkul\Inventory\Models\Move;
-use Webkul\Inventory\Models\OperationType;
-use Webkul\Inventory\Models\Receipt;
-use Webkul\Product\Enums\ProductType;
-use Webkul\Purchase\Enums as PurchaseEnums;
-use Webkul\Purchase\Enums\QtyReceivedMethod;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\PurchaseOrderResource;
-use Webkul\Purchase\Mail\VendorPurchaseOrderMail;
-use Webkul\Purchase\Models\AccountMove;
-use Webkul\Purchase\Models\Order;
-use Webkul\Purchase\Models\OrderLine;
-use Webkul\Purchase\Settings\OrderSettings;
-use Webkul\Support\Package;
+use Modules\Core\Enums as AccountEnums;
+use Modules\Core\Facades\Account as AccountFacade;
+use Modules\Core\Facades\Tax as TaxFacade;
+use Modules\Core\Models\Partner;
+use Modules\Products\Enums as InventoryEnums;
+use Modules\Products\Facades\Inventory;
+use Modules\Products\Models\Location;
+use Modules\Products\Models\Move;
+use Modules\Products\Models\OperationType;
+use Modules\Products\Models\Receipt;
+use Modules\Core\Enums\ProductType;
+use Modules\Expenses\Enums as PurchaseEnums;
+use Modules\Expenses\Enums\QtyReceivedMethod;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\PurchaseOrderResource;
+use Modules\Expenses\Mail\VendorPurchaseOrderMail;
+use Modules\Expenses\Models\AccountMove;
+use Modules\Expenses\Models\Order;
+use Modules\Expenses\Models\OrderLine;
+use Modules\Expenses\Settings\OrderSettings;
+use Modules\Core\Package;
 
 class PurchaseOrder
 {

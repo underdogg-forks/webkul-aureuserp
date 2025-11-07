@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Configuration\Resources;
+namespace Modules\Invoices\Filament\Clusters\Configuration\Resources;
 
-use Webkul\Sale\Filament\Clusters\Configuration;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\ActivityTypeResource\Pages\CreateActivityType;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\ActivityTypeResource\Pages\EditActivityType;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\ActivityTypeResource\Pages\ListActivityTypes;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\ActivityTypeResource\Pages\ViewActivityType;
-use Webkul\Sale\Models\ActivityType;
-use Webkul\Support\Filament\Resources\ActivityTypeResource as BaseActivityTypeResource;
+use Modules\Invoices\Filament\Clusters\Configuration;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ActivityTypeResource\Pages\CreateActivityType;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ActivityTypeResource\Pages\EditActivityType;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ActivityTypeResource\Pages\ListActivityTypes;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ActivityTypeResource\Pages\ViewActivityType;
+use Modules\Invoices\Models\ActivityType;
+use Modules\Core\Filament\Resources\ActivityTypeResource as BaseActivityTypeResource;
 
 class ActivityTypeResource extends BaseActivityTypeResource
 {

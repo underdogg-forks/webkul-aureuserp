@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Product\Filament\Resources\ProductResource\Pages;
+namespace Modules\Core\Filament\Resources\ProductResource\Pages;
 
 use BackedEnum;
 use Filament\Actions\CreateAction;
@@ -16,11 +16,11 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Product\Filament\Resources\AttributeResource;
-use Webkul\Product\Filament\Resources\ProductResource;
-use Webkul\Product\Filament\Resources\ProductResource\Actions\GenerateVariantsAction;
-use Webkul\Product\Models\ProductAttribute;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Resources\AttributeResource;
+use Modules\Core\Filament\Resources\ProductResource;
+use Modules\Core\Filament\Resources\ProductResource\Actions\GenerateVariantsAction;
+use Modules\Core\Models\ProductAttribute;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ManageAttributes extends ManageRelatedRecords
 {

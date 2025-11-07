@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Configuration\Resources\ProductAttributeResource\Pages;
+namespace Modules\Invoices\Filament\Clusters\Configuration\Resources\ProductAttributeResource\Pages;
 
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\ProductAttributeResource\Pages\ViewProductAttribute as BaseViewProductAttribute;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\ProductAttributeResource;
+use Modules\Core\Filament\Clusters\Configuration\Resources\ProductAttributeResource\Pages\ViewProductAttribute as BaseViewProductAttribute;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ProductAttributeResource;
 
 class ViewProductAttribute extends BaseViewProductAttribute
 {

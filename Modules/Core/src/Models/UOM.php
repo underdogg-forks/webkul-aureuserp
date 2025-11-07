@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Support\Models;
+namespace Modules\Core\Models;
 
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Webkul\Security\Models\User;
-use Webkul\Support\Database\Factories\UOMFactory;
+use Modules\Core\Models\User;
+use Modules\Core\Database\Factories\UOMFactory;
 
 class UOM extends Model
 {

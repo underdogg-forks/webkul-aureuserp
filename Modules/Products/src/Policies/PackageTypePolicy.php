@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Inventory\Policies;
+namespace Modules\Products\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Webkul\Inventory\Models\PackageType;
-use Webkul\Security\Models\User;
+use Modules\Products\Models\PackageType;
+use Modules\Core\Models\User;
 
 class PackageTypePolicy
 {

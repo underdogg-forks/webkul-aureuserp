@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Orders\Resources\CustomerResource\Pages;
+namespace Modules\Invoices\Filament\Clusters\Orders\Resources\CustomerResource\Pages;
 
-use Webkul\Invoice\Filament\Clusters\Customer\Resources\PartnerResource\Pages\ManageAddresses as BaseManageAddresses;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\CustomerResource;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Clusters\Customer\Resources\PartnerResource\Pages\ManageAddresses as BaseManageAddresses;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\CustomerResource;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ManageAddresses extends BaseManageAddresses
 {

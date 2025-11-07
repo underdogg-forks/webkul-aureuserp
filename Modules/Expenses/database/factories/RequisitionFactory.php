@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Purchase\Database\Factories;
+namespace Modules\Expenses\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Webkul\Purchase\Models\Requisition;
-use Webkul\Security\Models\User;
+use Modules\Expenses\Models\Requisition;
+use Modules\Core\Models\User;
 
 /**
  * @extends Factory<Requisition>

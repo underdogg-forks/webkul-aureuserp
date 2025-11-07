@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\FiscalPositionResource\Pages;
+namespace Modules\Core\Filament\Resources\FiscalPositionResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Notifications\Notification;
 use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Account\Filament\Resources\FiscalPositionResource;
+use Modules\Core\Filament\Resources\FiscalPositionResource;
 
 class ViewFiscalPosition extends ViewRecord
 {

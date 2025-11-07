@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Security\Filament\Resources\TeamResource\Pages;
+namespace Modules\Core\Filament\Resources\TeamResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ManageRecords;
-use Webkul\Security\Filament\Resources\TeamResource;
+use Modules\Core\Filament\Resources\TeamResource;
 
 class ManageTeams extends ManageRecords
 {

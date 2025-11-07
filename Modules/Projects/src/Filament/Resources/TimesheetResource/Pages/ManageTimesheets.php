@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Timesheet\Filament\Resources\TimesheetResource\Pages;
+namespace Modules\Projects\Filament\Resources\TimesheetResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ManageRecords;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Project\Models\Timesheet;
-use Webkul\TableViews\Filament\Components\PresetView;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
-use Webkul\Timesheet\Filament\Resources\TimesheetResource;
+use Modules\Projects\Models\Timesheet;
+use Modules\Core\Filament\Components\PresetView;
+use Modules\Core\Filament\Concerns\HasTableViews;
+use Modules\Projects\Filament\Resources\TimesheetResource;
 
 class ManageTimesheets extends ManageRecords
 {

@@ -19,20 +19,12 @@
         "psr-4": {
             "Modules\\Crm\\": "src/",
             "Modules\\Crm\\Database\\Factories\\": "database/factories/",
-            "Modules\\Crm\\Database\\Seeders\\": "database/seeders/",
-            "Webkul\\Contact\\": "src/",
-            "Webkul\\Contact\\Database\\Factories\\": "database/factories/",
-            "Webkul\\Contact\\Database\\Seeders\\": "database/seeders/",
-            "Webkul\\Partner\\": "src/",
-            "Webkul\\Partner\\Database\\Factories\\": "database/factories/",
-            "Webkul\\Partner\\Database\\Seeders\\": "database/seeders/"
+            "Modules\\Crm\\Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Modules\\Crm\\Tests\\": "tests/",
-            "Webkul\\Contact\\Tests\\": "tests/",
-            "Webkul\\Partner\\Tests\\": "tests/"
+            "Modules\\Crm\\Tests\\": "tests/"
         }
     }
 }

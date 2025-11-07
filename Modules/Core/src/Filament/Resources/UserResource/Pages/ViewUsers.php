@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Security\Filament\Resources\UserResource\Pages;
+namespace Modules\Core\Filament\Resources\UserResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Security\Filament\Resources\UserResource;
-use Webkul\Security\Models\User;
+use Modules\Core\Filament\Resources\UserResource;
+use Modules\Core\Models\User;
 
 class ViewUsers extends ViewRecord
 {

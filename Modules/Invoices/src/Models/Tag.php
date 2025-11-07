@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Sale\Models;
+namespace Modules\Invoices\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\User;
 
 class Tag extends Model
 {

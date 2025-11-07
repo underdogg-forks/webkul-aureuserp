@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Vendors\Resources\ProductResource\Pages;
+namespace Modules\Core\Filament\Clusters\Vendors\Resources\ProductResource\Pages;
 
 use BackedEnum;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\ProductResource;
-use Webkul\Product\Filament\Resources\ProductResource\Pages\ManageAttributes as BaseManageAttributes;
+use Modules\Core\Filament\Clusters\Vendors\Resources\ProductResource;
+use Modules\Core\Filament\Resources\ProductResource\Pages\ManageAttributes as BaseManageAttributes;
 
 class ManageAttributes extends BaseManageAttributes
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Security\Filament\Resources\CompanyResource\Pages;
+namespace Modules\Core\Filament\Resources\CompanyResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;
-use Webkul\Security\Filament\Resources\CompanyResource;
-use Webkul\Support\Models\Company;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Core\Filament\Resources\CompanyResource;
+use Modules\Core\Models\Company;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ListCompanies extends ListRecords
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages;
 
 use BackedEnum;
 use Filament\Actions\CreateAction;
@@ -9,10 +9,10 @@ use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\LocationResource;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\StorageCategoryResource;
-use Webkul\Inventory\Settings\WarehouseSettings;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Products\Filament\Clusters\Configurations\Resources\LocationResource;
+use Modules\Products\Filament\Clusters\Configurations\Resources\StorageCategoryResource;
+use Modules\Products\Settings\WarehouseSettings;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ManageLocations extends ManageRelatedRecords
 {

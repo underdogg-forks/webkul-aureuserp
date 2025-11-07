@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\TimeOff\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
-use Webkul\TimeOff\Enums\AccruedGainTime;
-use Webkul\TimeOff\Enums\CarryoverDate;
-use Webkul\TimeOff\Enums\CarryoverDay;
-use Webkul\TimeOff\Enums\CarryoverMonth;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
+use Modules\Core\Enums\AccruedGainTime;
+use Modules\Core\Enums\CarryoverDate;
+use Modules\Core\Enums\CarryoverDay;
+use Modules\Core\Enums\CarryoverMonth;
 
 class LeaveAccrualPlan extends Model
 {

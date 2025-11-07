@@ -1,7 +1,7 @@
 <?php
 
-namespace Webkul\Sale\Models;
+namespace Modules\Invoices\Models;
 
-use Webkul\Support\Models\ActivityPlan as BaseActivityPlan;
+use Modules\Core\Models\ActivityPlan as BaseActivityPlan;
 
 class ActivityPlan extends BaseActivityPlan {}

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Product\Filament\Resources\CategoryResource\Pages;
+namespace Modules\Core\Filament\Resources\CategoryResource\Pages;
 
 use BackedEnum;
 use Filament\Actions\CreateAction;
@@ -9,11 +9,11 @@ use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Product\Enums\ProductType;
-use Webkul\Product\Filament\Resources\CategoryResource;
-use Webkul\Product\Filament\Resources\ProductResource;
-use Webkul\Support\Models\UOM;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Enums\ProductType;
+use Modules\Core\Filament\Resources\CategoryResource;
+use Modules\Core\Filament\Resources\ProductResource;
+use Modules\Core\Models\UOM;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ManageProducts extends ManageRelatedRecords
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Purchase\Settings;
+namespace Modules\Expenses\Settings;
 
 use Spatie\LaravelSettings\Settings;
 

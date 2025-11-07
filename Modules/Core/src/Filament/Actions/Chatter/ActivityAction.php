@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Chatter\Filament\Actions\Chatter;
+namespace Modules\Core\Filament\Actions\Chatter;
 
 use Exception;
 use Filament\Actions\Action;
@@ -16,9 +16,9 @@ use Filament\Schemas\Components\Utilities\Get;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\HtmlString;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\ActivityPlan;
-use Webkul\Support\Models\ActivityType;
+use Modules\Core\Models\User;
+use Modules\Core\Models\ActivityPlan;
+use Modules\Core\Models\ActivityType;
 
 class ActivityAction extends Action
 {

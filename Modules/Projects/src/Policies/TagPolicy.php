@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Project\Policies;
+namespace Modules\Projects\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Webkul\Project\Models\Tag;
-use Webkul\Security\Models\User;
+use Modules\Projects\Models\Tag;
+use Modules\Core\Models\User;
 
 class TagPolicy
 {

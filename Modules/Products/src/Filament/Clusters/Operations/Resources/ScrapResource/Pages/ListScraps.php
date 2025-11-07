@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Resources\ScrapResource\Pages;
+namespace Modules\Products\Filament\Clusters\Operations\Resources\ScrapResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Contracts\Support\Htmlable;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\ScrapResource;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Products\Filament\Clusters\Operations\Resources\ScrapResource;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ListScraps extends ListRecords
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Sale\Database\Seeders;
+namespace Modules\Invoices\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class SalesTeamSeeder extends Seeder
 {

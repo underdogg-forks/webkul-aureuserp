@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Project\Database\Seeders;
+namespace Modules\Projects\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\User;
 
 class ProjectStageSeeder extends Seeder
 {

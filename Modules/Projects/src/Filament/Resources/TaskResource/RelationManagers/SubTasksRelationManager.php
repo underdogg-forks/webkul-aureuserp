@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Project\Filament\Resources\TaskResource\RelationManagers;
+namespace Modules\Projects\Filament\Resources\TaskResource\RelationManagers;
 
 use Filament\Actions\ActionGroup;
 use Filament\Actions\CreateAction;
@@ -16,10 +16,10 @@ use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Project\Enums\TaskState;
-use Webkul\Project\Filament\Resources\TaskResource;
-use Webkul\Project\Models\Task;
-use Webkul\Project\Models\TaskStage;
+use Modules\Projects\Enums\TaskState;
+use Modules\Projects\Filament\Resources\TaskResource;
+use Modules\Projects\Models\Task;
+use Modules\Projects\Models\TaskStage;
 
 class SubTasksRelationManager extends RelationManager
 {

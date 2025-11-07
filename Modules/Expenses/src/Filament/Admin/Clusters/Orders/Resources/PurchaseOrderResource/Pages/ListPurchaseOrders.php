@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\PurchaseOrderResource\Pages;
+namespace Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\PurchaseOrderResource\Pages;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Purchase\Enums\OrderState;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\OrderResource\Pages\ListOrders;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\PurchaseOrderResource;
-use Webkul\TableViews\Filament\Components\PresetView;
+use Modules\Expenses\Enums\OrderState;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\OrderResource\Pages\ListOrders;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\PurchaseOrderResource;
+use Modules\Core\Filament\Components\PresetView;
 
 class ListPurchaseOrders extends ListOrders
 {

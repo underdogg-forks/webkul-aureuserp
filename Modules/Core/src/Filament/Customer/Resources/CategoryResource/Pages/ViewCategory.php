@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Blog\Filament\Customer\Resources\CategoryResource\Pages;
+namespace Modules\Core\Filament\Customer\Resources\CategoryResource\Pages;
 
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Webkul\Blog\Filament\Customer\Resources\CategoryResource;
-use Webkul\Blog\Models\Category;
-use Webkul\Blog\Models\Post;
+use Modules\Core\Filament\Customer\Resources\CategoryResource;
+use Modules\Core\Models\Category;
+use Modules\Core\Models\Post;
 
 class ViewCategory extends ViewRecord
 {

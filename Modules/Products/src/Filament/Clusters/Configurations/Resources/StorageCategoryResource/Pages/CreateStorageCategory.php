@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\StorageCategoryResource;
+use Modules\Products\Filament\Clusters\Configurations\Resources\StorageCategoryResource;
 
 class CreateStorageCategory extends CreateRecord
 {

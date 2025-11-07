@@ -1,18 +1,18 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Vendors\Resources;
+namespace Modules\Core\Filament\Clusters\Vendors\Resources;
 
 use Filament\Actions\Action;
 use Filament\Resources\Pages\Page;
 use Filament\Schemas\Components\Utilities\Get;
-use Webkul\Account\Filament\Resources\RefundResource as BaseRefundResource;
-use Webkul\Invoice\Filament\Clusters\Vendors;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\RefundResource\Pages\CreateRefund;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\RefundResource\Pages\EditRefund;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\RefundResource\Pages\ListRefunds;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\RefundResource\Pages\ViewRefund;
-use Webkul\Invoice\Models\Refund;
-use Webkul\Support\Filament\Forms\Components\Repeater;
+use Modules\Core\Filament\Resources\RefundResource as BaseRefundResource;
+use Modules\Core\Filament\Clusters\Vendors;
+use Modules\Core\Filament\Clusters\Vendors\Resources\RefundResource\Pages\CreateRefund;
+use Modules\Core\Filament\Clusters\Vendors\Resources\RefundResource\Pages\EditRefund;
+use Modules\Core\Filament\Clusters\Vendors\Resources\RefundResource\Pages\ListRefunds;
+use Modules\Core\Filament\Clusters\Vendors\Resources\RefundResource\Pages\ViewRefund;
+use Modules\Core\Models\Refund;
+use Modules\Core\Filament\Forms\Components\Repeater;
 
 class RefundResource extends BaseRefundResource
 {

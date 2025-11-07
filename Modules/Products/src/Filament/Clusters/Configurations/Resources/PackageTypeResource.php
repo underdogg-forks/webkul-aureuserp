@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Filament\Actions\CreateAction;
@@ -22,13 +22,13 @@ use Filament\Support\Enums\FontWeight;
 use Filament\Support\Enums\TextSize;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Webkul\Inventory\Filament\Clusters\Configurations;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\PackageTypeResource\Pages\CreatePackageType;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\PackageTypeResource\Pages\EditPackageType;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\PackageTypeResource\Pages\ListPackageTypes;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\PackageTypeResource\Pages\ViewPackageType;
-use Webkul\Inventory\Models\PackageType;
-use Webkul\Inventory\Settings\OperationSettings;
+use Modules\Products\Filament\Clusters\Configurations;
+use Modules\Products\Filament\Clusters\Configurations\Resources\PackageTypeResource\Pages\CreatePackageType;
+use Modules\Products\Filament\Clusters\Configurations\Resources\PackageTypeResource\Pages\EditPackageType;
+use Modules\Products\Filament\Clusters\Configurations\Resources\PackageTypeResource\Pages\ListPackageTypes;
+use Modules\Products\Filament\Clusters\Configurations\Resources\PackageTypeResource\Pages\ViewPackageType;
+use Modules\Products\Models\PackageType;
+use Modules\Products\Settings\OperationSettings;
 
 class PackageTypeResource extends Resource
 {

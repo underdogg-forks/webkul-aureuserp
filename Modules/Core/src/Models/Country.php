@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Support\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Blog\Filament\Admin\Resources\PostResource\Pages;
+namespace Modules\Core\Filament\Admin\Resources\PostResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Blog\Filament\Admin\Resources\PostResource;
+use Modules\Core\Filament\Admin\Resources\PostResource;
 
 class ViewPost extends ViewRecord
 {

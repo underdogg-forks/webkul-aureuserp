@@ -1,5 +1,5 @@
 <?php
 
-namespace Webkul\Purchase\Models;
+namespace Modules\Expenses\Models;
 
 class PurchaseOrder extends Order {}

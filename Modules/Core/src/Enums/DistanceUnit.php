@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Employee\Enums;
+namespace Modules\Core\Enums;
 
 enum DistanceUnit: string
 {

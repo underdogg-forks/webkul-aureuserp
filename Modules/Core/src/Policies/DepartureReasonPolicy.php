@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Employee\Policies;
+namespace Modules\Core\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Webkul\Employee\Models\DepartureReason;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\DepartureReason;
+use Modules\Core\Models\User;
 
 class DepartureReasonPolicy
 {

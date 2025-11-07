@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Applications\Resources\ApplicantResource\Pages;
+namespace Modules\Core\Filament\Clusters\Applications\Resources\ApplicantResource\Pages;
 
 use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
@@ -13,12 +13,12 @@ use Filament\Support\Enums\Width;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Recruitment\Enums\RecruitmentState;
-use Webkul\Recruitment\Filament\Clusters\Applications\Resources\ApplicantResource;
-use Webkul\Recruitment\Filament\Clusters\Applications\Resources\CandidateResource;
-use Webkul\Recruitment\Filament\Widgets\JobPositionStatsWidget;
-use Webkul\TableViews\Filament\Components\PresetView;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Core\Enums\RecruitmentState;
+use Modules\Core\Filament\Clusters\Applications\Resources\ApplicantResource;
+use Modules\Core\Filament\Clusters\Applications\Resources\CandidateResource;
+use Modules\Core\Filament\Widgets\JobPositionStatsWidget;
+use Modules\Core\Filament\Components\PresetView;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ListApplicants extends ListRecords
 {

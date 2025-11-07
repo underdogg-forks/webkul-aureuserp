@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Employee\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\User;
 
 class EmployeeResume extends Model
 {

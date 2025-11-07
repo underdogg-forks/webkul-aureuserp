@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Webkul\TimeOff\Enums\AllocationValidationType;
-use Webkul\TimeOff\Enums\EmployeeRequest;
-use Webkul\TimeOff\Enums\LeaveValidationType;
-use Webkul\TimeOff\Enums\RequestUnit;
-use Webkul\TimeOff\Enums\RequiresAllocation;
-use Webkul\TimeOff\Enums\TimeType;
+use Modules\Core\Enums\AllocationValidationType;
+use Modules\Core\Enums\EmployeeRequest;
+use Modules\Core\Enums\LeaveValidationType;
+use Modules\Core\Enums\RequestUnit;
+use Modules\Core\Enums\RequiresAllocation;
+use Modules\Core\Enums\TimeType;
 
 return new class () extends Migration {
     /**

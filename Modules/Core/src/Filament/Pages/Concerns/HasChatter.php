@@ -1,8 +1,8 @@
 <?php
 
-namespace Webkul\Chatter\Filament\Pages\Concerns;
+namespace Modules\Core\Filament\Pages\Concerns;
 
-use Webkul\Chatter\Filament\Widgets\ChatterWidget;
+use Modules\Core\Filament\Widgets\ChatterWidget;
 
 trait HasChatter
 {

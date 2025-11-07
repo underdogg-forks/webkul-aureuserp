@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Settings\Pages;
+namespace Modules\Expenses\Filament\Admin\Clusters\Settings\Pages;
 
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
@@ -10,9 +10,9 @@ use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\HtmlString;
 use UnitEnum;
-use Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\PackagingResource;
-use Webkul\Purchase\Settings\ProductSettings;
-use Webkul\Support\Filament\Clusters\Settings;
+use Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\PackagingResource;
+use Modules\Expenses\Settings\ProductSettings;
+use Modules\Core\Filament\Clusters\Settings;
 
 class ManageProducts extends SettingsPage
 {

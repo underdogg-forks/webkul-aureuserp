@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Security\Filament\Resources\UserResource\Pages;
+namespace Modules\Core\Filament\Resources\UserResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
-use Webkul\Security\Filament\Resources\UserResource;
+use Modules\Core\Filament\Resources\UserResource;
 
 class CreateUser extends CreateRecord
 {

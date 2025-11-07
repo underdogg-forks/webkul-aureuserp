@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Project\Database\Factories;
+namespace Modules\Projects\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Webkul\Partner\Models\Partner;
-use Webkul\Project\Models\Project;
-use Webkul\Project\Models\Task;
-use Webkul\Project\Models\TaskStage;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Crm\Models\Partner;
+use Modules\Projects\Models\Project;
+use Modules\Projects\Models\Task;
+use Modules\Projects\Models\TaskStage;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 /**
  * @extends Factory<Task>

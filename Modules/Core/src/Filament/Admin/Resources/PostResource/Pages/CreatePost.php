@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Blog\Filament\Admin\Resources\PostResource\Pages;
+namespace Modules\Core\Filament\Admin\Resources\PostResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Blog\Filament\Admin\Resources\PostResource;
+use Modules\Core\Filament\Admin\Resources\PostResource;
 
 class CreatePost extends CreateRecord
 {

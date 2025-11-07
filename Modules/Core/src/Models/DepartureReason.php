@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Employee\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Employee\Database\Factories\DepartureReasonFactory;
-use Webkul\Field\Traits\HasCustomFields;
-use Webkul\Security\Models\User;
+use Modules\Core\Database\Factories\DepartureReasonFactory;
+use Modules\Core\Traits\HasCustomFields;
+use Modules\Core\Models\User;
 
 class DepartureReason extends Model implements Sortable
 {

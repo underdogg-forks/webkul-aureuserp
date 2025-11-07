@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Product\Filament\Resources\ProductResource\Pages;
+namespace Modules\Core\Filament\Resources\ProductResource\Pages;
 
 use BackedEnum;
 use Filament\Resources\Pages\ManageRelatedRecords;
@@ -9,8 +9,8 @@ use Filament\Support\Enums\Width;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Arr;
-use Webkul\Product\Filament\Resources\ProductResource;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Resources\ProductResource;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ManageVariants extends ManageRelatedRecords
 {

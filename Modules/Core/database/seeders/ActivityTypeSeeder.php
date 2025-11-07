@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Support\Database\Seeders;
+namespace Modules\Core\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Webkul\Security\Models\User;
-use Webkul\Support\Enums\ActivityChainingType;
-use Webkul\Support\Enums\ActivityDecorationType;
-use Webkul\Support\Enums\ActivityDelayFrom;
-use Webkul\Support\Enums\ActivityDelayUnit;
-use Webkul\Support\Enums\ActivityTypeAction;
+use Modules\Core\Models\User;
+use Modules\Core\Enums\ActivityChainingType;
+use Modules\Core\Enums\ActivityDecorationType;
+use Modules\Core\Enums\ActivityDelayFrom;
+use Modules\Core\Enums\ActivityDelayUnit;
+use Modules\Core\Enums\ActivityTypeAction;
 
 class ActivityTypeSeeder extends Seeder
 {

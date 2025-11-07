@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Product\Filament\Resources\PriceListResource\Pages;
+namespace Modules\Core\Filament\Resources\PriceListResource\Pages;
 
 use Filament\Resources\Pages\CreateRecord;
-use Webkul\Product\Filament\Resources\PriceListResource;
+use Modules\Core\Filament\Resources\PriceListResource;
 
 class CreatePriceList extends CreateRecord
 {

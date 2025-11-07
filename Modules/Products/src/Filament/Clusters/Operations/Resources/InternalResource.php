@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Resources;
+namespace Modules\Products\Filament\Clusters\Operations\Resources;
 
 use BackedEnum;
 use Filament\Actions\ActionGroup;
@@ -17,16 +17,16 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
-use Webkul\Inventory\Enums\OperationState;
-use Webkul\Inventory\Enums\OperationType;
-use Webkul\Inventory\Filament\Clusters\Operations;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\InternalResource\Pages\CreateInternal;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\InternalResource\Pages\EditInternal;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\InternalResource\Pages\ListInternals;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\InternalResource\Pages\ManageMoves;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\InternalResource\Pages\ViewInternal;
-use Webkul\Inventory\Models\InternalTransfer;
-use Webkul\Inventory\Settings\WarehouseSettings;
+use Modules\Products\Enums\OperationState;
+use Modules\Products\Enums\OperationType;
+use Modules\Products\Filament\Clusters\Operations;
+use Modules\Products\Filament\Clusters\Operations\Resources\InternalResource\Pages\CreateInternal;
+use Modules\Products\Filament\Clusters\Operations\Resources\InternalResource\Pages\EditInternal;
+use Modules\Products\Filament\Clusters\Operations\Resources\InternalResource\Pages\ListInternals;
+use Modules\Products\Filament\Clusters\Operations\Resources\InternalResource\Pages\ManageMoves;
+use Modules\Products\Filament\Clusters\Operations\Resources\InternalResource\Pages\ViewInternal;
+use Modules\Products\Models\InternalTransfer;
+use Modules\Products\Settings\WarehouseSettings;
 
 class InternalResource extends Resource
 {

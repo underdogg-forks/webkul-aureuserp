@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Products\Resources\LotResource\Pages;
+namespace Modules\Products\Filament\Clusters\Products\Resources\LotResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\LotResource;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Products\Filament\Clusters\Products\Resources\LotResource;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ListLots extends ListRecords
 {

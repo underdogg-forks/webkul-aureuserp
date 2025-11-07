@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Inventory\Models;
+namespace Modules\Products\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Webkul\Product\Models\Packaging as BasePackaging;
+use Modules\Core\Models\Packaging as BasePackaging;
 
 class Packaging extends BasePackaging
 {

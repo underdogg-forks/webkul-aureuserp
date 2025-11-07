@@ -1,16 +1,16 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Configuration\Resources;
+namespace Modules\Core\Filament\Clusters\Configuration\Resources;
 
 use Filament\Resources\Pages\Page;
-use Webkul\Account\Filament\Resources\PaymentTermResource as BasePaymentTermResource;
-use Webkul\Invoice\Filament\Clusters\Configuration;
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\PaymentTermResource\Pages\CreatePaymentTerm;
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\PaymentTermResource\Pages\EditPaymentTerm;
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\PaymentTermResource\Pages\ListPaymentTerms;
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\PaymentTermResource\Pages\ManagePaymentDueTerm;
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\PaymentTermResource\Pages\ViewPaymentTerm;
-use Webkul\Invoice\Models\PaymentTerm;
+use Modules\Core\Filament\Resources\PaymentTermResource as BasePaymentTermResource;
+use Modules\Core\Filament\Clusters\Configuration;
+use Modules\Core\Filament\Clusters\Configuration\Resources\PaymentTermResource\Pages\CreatePaymentTerm;
+use Modules\Core\Filament\Clusters\Configuration\Resources\PaymentTermResource\Pages\EditPaymentTerm;
+use Modules\Core\Filament\Clusters\Configuration\Resources\PaymentTermResource\Pages\ListPaymentTerms;
+use Modules\Core\Filament\Clusters\Configuration\Resources\PaymentTermResource\Pages\ManagePaymentDueTerm;
+use Modules\Core\Filament\Clusters\Configuration\Resources\PaymentTermResource\Pages\ViewPaymentTerm;
+use Modules\Core\Models\PaymentTerm;
 
 class PaymentTermResource extends BasePaymentTermResource
 {

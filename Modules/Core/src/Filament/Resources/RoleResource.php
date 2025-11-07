@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Security\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Facades\FilamentShield;
@@ -25,10 +25,10 @@ use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\Unique;
-use Webkul\Security\Filament\Resources\RoleResource\Pages\CreateRole;
-use Webkul\Security\Filament\Resources\RoleResource\Pages\EditRole;
-use Webkul\Security\Filament\Resources\RoleResource\Pages\ListRoles;
-use Webkul\Security\Filament\Resources\RoleResource\Pages\ViewRole;
+use Modules\Core\Filament\Resources\RoleResource\Pages\CreateRole;
+use Modules\Core\Filament\Resources\RoleResource\Pages\EditRole;
+use Modules\Core\Filament\Resources\RoleResource\Pages\ListRoles;
+use Modules\Core\Filament\Resources\RoleResource\Pages\ViewRole;
 
 class RoleResource extends RolesRoleResource
 {

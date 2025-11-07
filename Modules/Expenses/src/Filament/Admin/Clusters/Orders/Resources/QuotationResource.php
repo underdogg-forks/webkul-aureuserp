@@ -1,17 +1,17 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources;
+namespace Modules\Expenses\Filament\Admin\Clusters\Orders\Resources;
 
 use BackedEnum;
 use Filament\Resources\Pages\Page;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\QuotationResource\Pages\CreateQuotation;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\QuotationResource\Pages\EditQuotation;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\QuotationResource\Pages\ListQuotations;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\QuotationResource\Pages\ManageBills;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\QuotationResource\Pages\ManageReceipts;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\QuotationResource\Pages\ViewQuotation;
-use Webkul\Purchase\Models\Quotation;
+use Modules\Expenses\Filament\Admin\Clusters\Orders;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\QuotationResource\Pages\CreateQuotation;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\QuotationResource\Pages\EditQuotation;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\QuotationResource\Pages\ListQuotations;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\QuotationResource\Pages\ManageBills;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\QuotationResource\Pages\ManageReceipts;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\QuotationResource\Pages\ViewQuotation;
+use Modules\Expenses\Models\Quotation;
 
 class QuotationResource extends OrderResource
 {

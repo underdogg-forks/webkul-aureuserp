@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Project\Filament\Resources\ProjectResource\Pages;
+namespace Modules\Projects\Filament\Resources\ProjectResource\Pages;
 
 use BackedEnum;
 use Filament\Actions\ActionGroup;
@@ -16,12 +16,12 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Project\Enums\TaskState;
-use Webkul\Project\Filament\Resources\ProjectResource;
-use Webkul\Project\Filament\Resources\TaskResource;
-use Webkul\Project\Models\Task;
-use Webkul\TableViews\Filament\Components\PresetView;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Projects\Enums\TaskState;
+use Modules\Projects\Filament\Resources\ProjectResource;
+use Modules\Projects\Filament\Resources\TaskResource;
+use Modules\Projects\Models\Task;
+use Modules\Core\Filament\Components\PresetView;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ManageTasks extends ManageRelatedRecords
 {

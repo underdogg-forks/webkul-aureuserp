@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Pages;
+namespace Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Partner\Models\Partner;
-use Webkul\Sale\Enums\OrderState;
-use Webkul\Sale\Facades\SaleOrder;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource;
-use Webkul\Support\Concerns\HasRepeaterColumnManager;
+use Modules\Crm\Models\Partner;
+use Modules\Invoices\Enums\OrderState;
+use Modules\Invoices\Facades\SaleOrder;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource;
+use Modules\Core\Concerns\HasRepeaterColumnManager;
 
 class CreateQuotation extends CreateRecord
 {

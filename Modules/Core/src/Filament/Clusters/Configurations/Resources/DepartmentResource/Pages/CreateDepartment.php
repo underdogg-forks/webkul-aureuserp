@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Configurations\Resources\DepartmentResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\DepartmentResource\Pages;
 
-use Webkul\Employee\Filament\Resources\DepartmentResource\Pages\CreateDepartment as BaseCreateDepartment;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\DepartmentResource;
+use Modules\Core\Filament\Resources\DepartmentResource\Pages\CreateDepartment as BaseCreateDepartment;
+use Modules\Core\Filament\Clusters\Configurations\Resources\DepartmentResource;
 
 class CreateDepartment extends BaseCreateDepartment
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Website\Filament\Customer\Auth;
+namespace Modules\Core\Filament\Customer\Auth;
 
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 use DanHarrin\LivewireRateLimiting\WithRateLimiting;

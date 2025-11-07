@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Products\Resources\ProductResource\Pages;
+namespace Modules\Expenses\Filament\Admin\Clusters\Products\Resources\ProductResource\Pages;
 
-use Webkul\Product\Filament\Resources\ProductResource\Pages\ManageAttributes as BaseManageAttributes;
-use Webkul\Purchase\Filament\Admin\Clusters\Products\Resources\ProductResource;
-use Webkul\Purchase\Settings\ProductSettings;
+use Modules\Core\Filament\Resources\ProductResource\Pages\ManageAttributes as BaseManageAttributes;
+use Modules\Expenses\Filament\Admin\Clusters\Products\Resources\ProductResource;
+use Modules\Expenses\Settings\ProductSettings;
 
 class ManageAttributes extends BaseManageAttributes
 {

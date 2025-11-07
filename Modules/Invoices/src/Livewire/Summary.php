@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Sale\Livewire;
+namespace Modules\Invoices\Livewire;
 
 use Livewire\Attributes\Reactive;
 use Livewire\Component;

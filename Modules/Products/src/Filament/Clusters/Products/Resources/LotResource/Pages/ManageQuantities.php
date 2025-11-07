@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Products\Resources\LotResource\Pages;
+namespace Modules\Products\Filament\Clusters\Products\Resources\LotResource\Pages;
 
 use BackedEnum;
 use Filament\Actions\DeleteAction;
@@ -10,16 +10,16 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\TextInputColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Enums\LocationType;
-use Webkul\Inventory\Enums\ProductTracking;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\LotResource;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource;
-use Webkul\Inventory\Models\Location;
-use Webkul\Inventory\Models\ProductQuantity;
-use Webkul\Inventory\Settings\OperationSettings;
-use Webkul\Inventory\Settings\TraceabilitySettings;
-use Webkul\Inventory\Settings\WarehouseSettings;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Products\Enums\LocationType;
+use Modules\Products\Enums\ProductTracking;
+use Modules\Products\Filament\Clusters\Products\Resources\LotResource;
+use Modules\Products\Filament\Clusters\Products\Resources\ProductResource;
+use Modules\Products\Models\Location;
+use Modules\Products\Models\ProductQuantity;
+use Modules\Products\Settings\OperationSettings;
+use Modules\Products\Settings\TraceabilitySettings;
+use Modules\Products\Settings\WarehouseSettings;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ManageQuantities extends ManageRelatedRecords
 {

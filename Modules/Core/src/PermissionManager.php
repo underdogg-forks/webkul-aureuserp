@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Support;
+namespace Modules\Core;
 
 use BezhanSalleh\FilamentShield\Facades\FilamentShield;
 use Illuminate\Support\Str;
@@ -38,9 +38,9 @@ class PermissionManager
                 )) {
                     $pluginPrefix = '';
 
-                    if (Str::contains($entity, 'Webkul\\')) {
+                    if (Str::contains($entity, 'Modules\\')) {
                         $pluginPrefix = Str::of($entity)
-                            ->after('Webkul\\')
+                            ->after('Modules\\')
                             ->before('\\')
                             ->snake()
                             ->toString();
@@ -72,29 +72,29 @@ class PermissionManager
     protected function getConflictingResources(): array
     {
         return [
-            'Webkul\Blog\Filament\Admin\Clusters\Configurations\Resources\CategoryResource',
-            'Webkul\Blog\Filament\Admin\Clusters\Configurations\Resources\TagResource',
-            'Webkul\Employee\Filament\Clusters\Configurations\Resources\ActivityPlanResource',
-            'Webkul\Project\Filament\Clusters\Configurations\Resources\TagResource',
-            'Webkul\Recruitment\Filament\Clusters\Configurations\Resources\ActivityPlanResource',
-            'Webkul\Recruitment\Filament\Clusters\Configurations\Resources\ActivityTypeResource',
-            'Webkul\Recruitment\Filament\Clusters\Configurations\Resources\DepartmentResource',
-            'Webkul\Recruitment\Filament\Clusters\Configurations\Resources\EmploymentTypeResource',
-            'Webkul\Recruitment\Filament\Clusters\Configurations\Resources\JobPositionResource',
-            'Webkul\Recruitment\Filament\Clusters\Configurations\Resources\SkillTypeResource',
-            'Webkul\Sale\Filament\Clusters\Configuration\Resources\ActivityPlanResource',
-            'Webkul\Sale\Filament\Clusters\Configuration\Resources\ActivityTypeResource',
-            'Webkul\Sale\Filament\Clusters\Products\Resources\ProductResource',
-            'Webkul\Sale\Filament\Clusters\Configuration\Resources\TagResource',
-            'Webkul\TimeOff\Filament\Clusters\Configurations\Resources\ActivityTypeResource',
-            'Webkul\Inventory\Filament\Clusters\Configurations\Resources\ProductCategoryResource',
-            'Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource',
-            'Webkul\Sale\Filament\Clusters\Configuration\Resources\ProductCategoryResource',
-            'Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\ProductCategoryResource',
-            'Webkul\Purchase\Filament\Admin\Clusters\Products\Resources\ProductResource',
-            'Webkul\Invoice\Filament\Clusters\Configuration\Resources\ProductCategoryResource',
-            'Webkul\Invoice\Filament\Clusters\Configuration\Resources\BankAccountResource',
-            'Webkul\Invoice\Filament\Clusters\Vendors\Resources\ProductResource',
+            'Modules\Core\Filament\Admin\Clusters\Configurations\Resources\CategoryResource',
+            'Modules\Core\Filament\Admin\Clusters\Configurations\Resources\TagResource',
+            'Modules\Core\Filament\Clusters\Configurations\Resources\ActivityPlanResource',
+            'Modules\Projects\Filament\Clusters\Configurations\Resources\TagResource',
+            'Modules\Core\Filament\Clusters\Configurations\Resources\ActivityPlanResource',
+            'Modules\Core\Filament\Clusters\Configurations\Resources\ActivityTypeResource',
+            'Modules\Core\Filament\Clusters\Configurations\Resources\DepartmentResource',
+            'Modules\Core\Filament\Clusters\Configurations\Resources\EmploymentTypeResource',
+            'Modules\Core\Filament\Clusters\Configurations\Resources\JobPositionResource',
+            'Modules\Core\Filament\Clusters\Configurations\Resources\SkillTypeResource',
+            'Modules\Invoices\Filament\Clusters\Configuration\Resources\ActivityPlanResource',
+            'Modules\Invoices\Filament\Clusters\Configuration\Resources\ActivityTypeResource',
+            'Modules\Invoices\Filament\Clusters\Products\Resources\ProductResource',
+            'Modules\Invoices\Filament\Clusters\Configuration\Resources\TagResource',
+            'Modules\Core\Filament\Clusters\Configurations\Resources\ActivityTypeResource',
+            'Modules\Products\Filament\Clusters\Configurations\Resources\ProductCategoryResource',
+            'Modules\Products\Filament\Clusters\Products\Resources\ProductResource',
+            'Modules\Invoices\Filament\Clusters\Configuration\Resources\ProductCategoryResource',
+            'Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\ProductCategoryResource',
+            'Modules\Expenses\Filament\Admin\Clusters\Products\Resources\ProductResource',
+            'Modules\Core\Filament\Clusters\Configuration\Resources\ProductCategoryResource',
+            'Modules\Core\Filament\Clusters\Configuration\Resources\BankAccountResource',
+            'Modules\Core\Filament\Clusters\Vendors\Resources\ProductResource',
         ];
     }
 }

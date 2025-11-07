@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Configurations\Resources\AccrualPlanResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\AccrualPlanResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\AccrualPlanResource;
+use Modules\Core\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Clusters\Configurations\Resources\AccrualPlanResource;
 
 class ViewAccrualPlan extends ViewRecord
 {

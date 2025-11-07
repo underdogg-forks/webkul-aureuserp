@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Products\Resources\PackageResource\Pages;
+namespace Modules\Products\Filament\Clusters\Products\Resources\PackageResource\Pages;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use Filament\Actions\Action;
@@ -9,9 +9,9 @@ use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Database\QueryException;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\PackageResource;
-use Webkul\Inventory\Models\Package;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Products\Filament\Clusters\Products\Resources\PackageResource;
+use Modules\Products\Models\Package;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ViewPackage extends ViewRecord
 {

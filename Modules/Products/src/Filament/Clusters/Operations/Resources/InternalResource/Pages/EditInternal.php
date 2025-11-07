@@ -1,18 +1,18 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Resources\InternalResource\Pages;
+namespace Modules\Products\Filament\Clusters\Operations\Resources\InternalResource\Pages;
 
 use Filament\Actions\ActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Database\QueryException;
-use Webkul\Chatter\Filament\Actions\ChatterAction;
-use Webkul\Inventory\Enums\OperationState;
-use Webkul\Inventory\Filament\Clusters\Operations\Actions as OperationActions;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\InternalResource;
-use Webkul\Inventory\Models\InternalTransfer;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Actions\ChatterAction;
+use Modules\Products\Enums\OperationState;
+use Modules\Products\Filament\Clusters\Operations\Actions as OperationActions;
+use Modules\Products\Filament\Clusters\Operations\Resources\InternalResource;
+use Modules\Products\Models\InternalTransfer;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class EditInternal extends EditRecord
 {

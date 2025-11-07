@@ -1,17 +1,17 @@
 <?php
 
-namespace Webkul\Product\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Webkul\Product\Database\Factories\PriceRuleItemFactory;
-use Webkul\Product\Enums\PriceRuleApplyTo;
-use Webkul\Product\Enums\PriceRuleBase;
-use Webkul\Product\Enums\PriceRuleType;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
-use Webkul\Support\Models\Currency;
+use Modules\Core\Database\Factories\PriceRuleItemFactory;
+use Modules\Core\Enums\PriceRuleApplyTo;
+use Modules\Core\Enums\PriceRuleBase;
+use Modules\Core\Enums\PriceRuleType;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
+use Modules\Core\Models\Currency;
 
 class PriceRuleItem extends Model
 {

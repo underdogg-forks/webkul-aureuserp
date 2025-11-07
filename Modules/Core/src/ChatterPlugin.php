@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Chatter;
+namespace Modules\Core;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
@@ -21,10 +21,10 @@ class ChatterPlugin implements Plugin
     public function register(Panel $panel): void
     {
         $panel
-            ->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Webkul\\Chatter\\Filament\\Resources')
-            ->discoverPages(in: $this->getPluginBasePath('/Filament/Pages'), for: 'Webkul\\Chatter\\Filament\\Pages')
-            ->discoverClusters(in: $this->getPluginBasePath('/Filament/Clusters'), for: 'Webkul\\Chatter\\Filament\\Clusters')
-            ->discoverClusters(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Webkul\\Chatter\\Filament\\Widgets');
+            ->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Modules\\Core\\Filament\\Resources')
+            ->discoverPages(in: $this->getPluginBasePath('/Filament/Pages'), for: 'Modules\\Core\\Filament\\Pages')
+            ->discoverClusters(in: $this->getPluginBasePath('/Filament/Clusters'), for: 'Modules\\Core\\Filament\\Clusters')
+            ->discoverClusters(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Modules\\Core\\Filament\\Widgets');
     }
 
     public function boot(Panel $panel): void {}

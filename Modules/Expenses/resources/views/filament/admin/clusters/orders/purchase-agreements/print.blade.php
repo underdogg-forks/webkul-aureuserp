@@ -235,7 +235,7 @@
                             <th>Product</th>
                             <th>Quantity</th>
 
-                            @if (app(\Webkul\Purchase\Settings\ProductSettings::class)->enable_uom)
+                            @if (app(\Modules\Expenses\Settings\ProductSettings::class)->enable_uom)
                                 <th>Unit</th>
                             @endif
                             
@@ -249,7 +249,7 @@
                             <td>{{ $item->product->name }}</td>
                             <td>{{ number_format($item->qty) }}</td>
 
-                            @if (app(\Webkul\Purchase\Settings\ProductSettings::class)->enable_uom)
+                            @if (app(\Modules\Expenses\Settings\ProductSettings::class)->enable_uom)
                                 <td>{{ $item->product->uom->name }}</td>
                             @endif
 

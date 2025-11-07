@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\TimeOff\Enums;
+namespace Modules\Core\Enums;
 
 use Filament\Support\Contracts\HasLabel;
 

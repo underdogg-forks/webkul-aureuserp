@@ -1,16 +1,16 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\ToInvoice\Resources;
+namespace Modules\Invoices\Filament\Clusters\ToInvoice\Resources;
 
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
-use Webkul\Sale\Enums\InvoiceStatus;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource;
-use Webkul\Sale\Filament\Clusters\ToInvoice;
-use Webkul\Sale\Filament\Clusters\ToInvoice\Resources\OrderToUpsellResource\Pages\ListOrderToUpsells;
-use Webkul\Sale\Models\Order;
+use Modules\Invoices\Enums\InvoiceStatus;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource;
+use Modules\Invoices\Filament\Clusters\ToInvoice;
+use Modules\Invoices\Filament\Clusters\ToInvoice\Resources\OrderToUpsellResource\Pages\ListOrderToUpsells;
+use Modules\Invoices\Models\Order;
 
 class OrderToUpsellResource extends Resource
 {

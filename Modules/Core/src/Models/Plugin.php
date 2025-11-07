@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Support\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -68,7 +68,7 @@ class Plugin extends Model implements Sortable
         return null;
     }
 
-    public function getPackage(): ?\Webkul\Support\Package
+    public function getPackage(): ?\Modules\Core\Package
     {
         $packages = self::getAllPluginPackages();
 
@@ -110,7 +110,7 @@ class Plugin extends Model implements Sortable
 
                 if (class_exists($serviceProviderClass)) {
                     $serviceProvider = new $serviceProviderClass(app());
-                    $package         = new \Webkul\Support\Package();
+                    $package         = new \Modules\Core\Package();
                     $serviceProvider->configureCustomPackage($package);
                     $packages[$pluginName] = $package;
                 }

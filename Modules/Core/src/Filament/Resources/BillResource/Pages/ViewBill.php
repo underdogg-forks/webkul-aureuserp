@@ -1,16 +1,16 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\BillResource\Pages;
+namespace Modules\Core\Filament\Resources\BillResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Account\Filament\Resources\BillResource;
-use Webkul\Account\Filament\Resources\BillResource\Actions\CreditNoteAction;
-use Webkul\Account\Filament\Resources\InvoiceResource\Actions as BaseActions;
-use Webkul\Chatter\Filament\Actions as ChatterActions;
-use Webkul\Support\Concerns\HasRepeatableEntryColumnManager;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Resources\BillResource;
+use Modules\Core\Filament\Resources\BillResource\Actions\CreditNoteAction;
+use Modules\Core\Filament\Resources\InvoiceResource\Actions as BaseActions;
+use Modules\Core\Filament\Actions as ChatterActions;
+use Modules\Core\Concerns\HasRepeatableEntryColumnManager;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ViewBill extends ViewRecord
 {

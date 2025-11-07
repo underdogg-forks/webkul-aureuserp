@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Sale\Models;
+namespace Modules\Invoices\Models;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Webkul\Invoice\Models\Category as BaseCategory;
+use Modules\Core\Models\Category as BaseCategory;
 
 class Category extends BaseCategory
 {

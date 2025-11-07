@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Project\Filament\Resources;
+namespace Modules\Projects\Filament\Resources;
 
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
@@ -53,26 +53,26 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Field\Filament\Forms\Components\ProgressStepper;
-use Webkul\Field\Filament\Traits\HasCustomFields;
-use Webkul\Partner\Filament\Resources\PartnerResource;
-use Webkul\Project\Enums\TaskState;
-use Webkul\Project\Filament\Resources\ProjectResource\Pages\ManageTasks;
-use Webkul\Project\Filament\Resources\TaskResource\Pages\CreateTask;
-use Webkul\Project\Filament\Resources\TaskResource\Pages\EditTask;
-use Webkul\Project\Filament\Resources\TaskResource\Pages\ListTasks;
-use Webkul\Project\Filament\Resources\TaskResource\Pages\ManageSubTasks;
-use Webkul\Project\Filament\Resources\TaskResource\Pages\ManageTimesheets;
-use Webkul\Project\Filament\Resources\TaskResource\Pages\ViewTask;
-use Webkul\Project\Filament\Resources\TaskResource\RelationManagers\SubTasksRelationManager;
-use Webkul\Project\Filament\Resources\TaskResource\RelationManagers\TimesheetsRelationManager;
-use Webkul\Project\Models\Project;
-use Webkul\Project\Models\Task;
-use Webkul\Project\Models\TaskStage;
-use Webkul\Project\Settings\TaskSettings;
-use Webkul\Project\Settings\TimeSettings;
-use Webkul\Security\Filament\Resources\UserResource;
-use Webkul\Support\Filament\Tables\Columns\ProgressBarEntry;
+use Modules\Core\Filament\Forms\Components\ProgressStepper;
+use Modules\Core\Filament\Traits\HasCustomFields;
+use Modules\Crm\Filament\Resources\PartnerResource;
+use Modules\Projects\Enums\TaskState;
+use Modules\Projects\Filament\Resources\ProjectResource\Pages\ManageTasks;
+use Modules\Projects\Filament\Resources\TaskResource\Pages\CreateTask;
+use Modules\Projects\Filament\Resources\TaskResource\Pages\EditTask;
+use Modules\Projects\Filament\Resources\TaskResource\Pages\ListTasks;
+use Modules\Projects\Filament\Resources\TaskResource\Pages\ManageSubTasks;
+use Modules\Projects\Filament\Resources\TaskResource\Pages\ManageTimesheets;
+use Modules\Projects\Filament\Resources\TaskResource\Pages\ViewTask;
+use Modules\Projects\Filament\Resources\TaskResource\RelationManagers\SubTasksRelationManager;
+use Modules\Projects\Filament\Resources\TaskResource\RelationManagers\TimesheetsRelationManager;
+use Modules\Projects\Models\Project;
+use Modules\Projects\Models\Task;
+use Modules\Projects\Models\TaskStage;
+use Modules\Projects\Settings\TaskSettings;
+use Modules\Projects\Settings\TimeSettings;
+use Modules\Core\Filament\Resources\UserResource;
+use Modules\Core\Filament\Tables\Columns\ProgressBarEntry;
 
 class TaskResource extends Resource
 {

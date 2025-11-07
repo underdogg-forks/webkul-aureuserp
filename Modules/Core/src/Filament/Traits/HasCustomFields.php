@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Field\Filament\Traits;
+namespace Modules\Core\Filament\Traits;
 
-use Webkul\Field\Filament\Forms\Components\CustomFields;
-use Webkul\Field\Filament\Infolists\Components\CustomEntries;
-use Webkul\Field\Filament\Tables\Columns\CustomColumns;
-use Webkul\Field\Filament\Tables\Filters\CustomFilters;
+use Modules\Core\Filament\Forms\Components\CustomFields;
+use Modules\Core\Filament\Infolists\Components\CustomEntries;
+use Modules\Core\Filament\Tables\Columns\CustomColumns;
+use Modules\Core\Filament\Tables\Filters\CustomFilters;
 
 trait HasCustomFields
 {

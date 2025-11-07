@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Configuration\Resources\ProductAttributeResource\Pages;
+namespace Modules\Invoices\Filament\Clusters\Configuration\Resources\ProductAttributeResource\Pages;
 
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\ProductAttributeResource\Pages\ListProductAttributes as BaseListProductAttributes;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\ProductAttributeResource;
+use Modules\Core\Filament\Clusters\Configuration\Resources\ProductAttributeResource\Pages\ListProductAttributes as BaseListProductAttributes;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ProductAttributeResource;
 
 class ListProductAttributes extends BaseListProductAttributes
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Customer\Clusters\Account\Resources;
+namespace Modules\Expenses\Filament\Customer\Clusters\Account\Resources;
 
 use BackedEnum;
-use Webkul\Purchase\Filament\Customer\Clusters\Account\Resources\QuotationResource\Pages\ListQuotations;
-use Webkul\Purchase\Filament\Customer\Clusters\Account\Resources\QuotationResource\Pages\ViewQuotation;
-use Webkul\Purchase\Models\CustomerPurchaseOrder as PurchaseOrder;
+use Modules\Expenses\Filament\Customer\Clusters\Account\Resources\QuotationResource\Pages\ListQuotations;
+use Modules\Expenses\Filament\Customer\Clusters\Account\Resources\QuotationResource\Pages\ViewQuotation;
+use Modules\Expenses\Models\CustomerPurchaseOrder as PurchaseOrder;
 
 class QuotationResource extends OrderResource
 {

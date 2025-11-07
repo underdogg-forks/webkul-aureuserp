@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Contact\Filament\Clusters\Configurations\Resources\BankResource\Pages;
+namespace Modules\Crm\Filament\Clusters\Configurations\Resources\BankResource\Pages;
 
-use Webkul\Contact\Filament\Clusters\Configurations\Resources\BankResource;
-use Webkul\Partner\Filament\Resources\BankResource\Pages\ManageBanks as BaseManageBanks;
+use Modules\Crm\Filament\Clusters\Configurations\Resources\BankResource;
+use Modules\Crm\Filament\Resources\BankResource\Pages\ManageBanks as BaseManageBanks;
 
 class ManageBanks extends BaseManageBanks
 {

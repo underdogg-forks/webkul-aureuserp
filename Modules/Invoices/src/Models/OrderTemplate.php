@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Sale\Models;
+namespace Modules\Invoices\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Account\Models\Journal;
-use Webkul\Sale\Enums\OrderDisplayType;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Core\Models\Journal;
+use Modules\Invoices\Enums\OrderDisplayType;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class OrderTemplate extends Model implements Sortable
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Support;
+namespace Modules\Core;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
@@ -25,10 +25,10 @@ class SupportPlugin implements Plugin
         $panel
             ->when($panel->getId() == 'admin', function (Panel $panel) {
                 $panel->passwordReset()
-                    ->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Webkul\\Support\\Filament\\Resources')
-                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Pages'), for: 'Webkul\\Support\\Filament\\Pages')
-                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Clusters'), for: 'Webkul\\Support\\Filament\\Clusters')
-                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Webkul\\Support\\Filament\\Widgets');
+                    ->discoverResources(in: $this->getPluginBasePath('/Filament/Resources'), for: 'Modules\\Core\\Filament\\Resources')
+                    ->discoverPages(in: $this->getPluginBasePath('/Filament/Pages'), for: 'Modules\\Core\\Filament\\Pages')
+                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Clusters'), for: 'Modules\\Core\\Filament\\Clusters')
+                    ->discoverClusters(in: $this->getPluginBasePath('/Filament/Widgets'), for: 'Modules\\Core\\Filament\\Widgets');
             });
     }
 

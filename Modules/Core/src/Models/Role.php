@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Security\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role as BaseRole;

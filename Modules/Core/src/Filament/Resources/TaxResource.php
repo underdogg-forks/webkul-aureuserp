@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use BackedEnum;
 use Filament\Actions\ActionGroup;
@@ -30,15 +30,15 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
-use Webkul\Account\Enums\AmountType;
-use Webkul\Account\Enums\TaxIncludeOverride;
-use Webkul\Account\Enums\TaxScope;
-use Webkul\Account\Enums\TypeTaxUse;
-use Webkul\Account\Filament\Resources\TaxResource\Pages\CreateTax;
-use Webkul\Account\Filament\Resources\TaxResource\Pages\EditTax;
-use Webkul\Account\Filament\Resources\TaxResource\Pages\ListTaxes;
-use Webkul\Account\Filament\Resources\TaxResource\Pages\ViewTax;
-use Webkul\Account\Models\Tax;
+use Modules\Core\Enums\AmountType;
+use Modules\Core\Enums\TaxIncludeOverride;
+use Modules\Core\Enums\TaxScope;
+use Modules\Core\Enums\TypeTaxUse;
+use Modules\Core\Filament\Resources\TaxResource\Pages\CreateTax;
+use Modules\Core\Filament\Resources\TaxResource\Pages\EditTax;
+use Modules\Core\Filament\Resources\TaxResource\Pages\ListTaxes;
+use Modules\Core\Filament\Resources\TaxResource\Pages\ViewTax;
+use Modules\Core\Models\Tax;
 
 class TaxResource extends Resource
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Project\Filament\Clusters\Configurations\Resources\ActivityPlanResource\Pages;
+namespace Modules\Projects\Filament\Clusters\Configurations\Resources\ActivityPlanResource\Pages;
 
 use Filament\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Project\Filament\Clusters\Configurations\Resources\ActivityPlanResource;
+use Modules\Projects\Filament\Clusters\Configurations\Resources\ActivityPlanResource;
 
 class ViewActivityPlan extends ViewRecord
 {

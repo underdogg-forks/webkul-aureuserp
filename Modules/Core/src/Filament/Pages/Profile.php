@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Support\Filament\Pages;
+namespace Modules\Core\Filament\Pages;
 
 use Exception;
 use Filament\Actions\Action;

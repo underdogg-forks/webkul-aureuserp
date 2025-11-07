@@ -1,19 +1,19 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Vendors\Resources;
+namespace Modules\Core\Filament\Clusters\Vendors\Resources;
 
 use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Resources\Pages\Page;
 use Filament\Schemas\Components\Utilities\Get;
-use Webkul\Account\Filament\Resources\BillResource as BaseBillResource;
-use Webkul\Invoice\Filament\Clusters\Vendors;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\BillResource\Pages\CreateBill;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\BillResource\Pages\EditBill;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\BillResource\Pages\ListBills;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\BillResource\Pages\ViewBill;
-use Webkul\Invoice\Models\Bill;
-use Webkul\Support\Filament\Forms\Components\Repeater;
+use Modules\Core\Filament\Resources\BillResource as BaseBillResource;
+use Modules\Core\Filament\Clusters\Vendors;
+use Modules\Core\Filament\Clusters\Vendors\Resources\BillResource\Pages\CreateBill;
+use Modules\Core\Filament\Clusters\Vendors\Resources\BillResource\Pages\EditBill;
+use Modules\Core\Filament\Clusters\Vendors\Resources\BillResource\Pages\ListBills;
+use Modules\Core\Filament\Clusters\Vendors\Resources\BillResource\Pages\ViewBill;
+use Modules\Core\Models\Bill;
+use Modules\Core\Filament\Forms\Components\Repeater;
 
 class BillResource extends BaseBillResource
 {

@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Management\Resources\AllocationResource\Pages;
+namespace Modules\Core\Filament\Clusters\Management\Resources\AllocationResource\Pages;
 
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
-use Webkul\Chatter\Filament\Actions as ChatterActions;
-use Webkul\TimeOff\Enums\State;
-use Webkul\TimeOff\Filament\Clusters\Management\Resources\AllocationResource;
+use Modules\Core\Filament\Actions as ChatterActions;
+use Modules\Core\Enums\State;
+use Modules\Core\Filament\Clusters\Management\Resources\AllocationResource;
 
 class EditAllocation extends EditRecord
 {

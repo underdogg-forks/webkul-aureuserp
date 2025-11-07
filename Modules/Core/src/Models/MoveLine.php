@@ -1,19 +1,19 @@
 <?php
 
-namespace Webkul\Account\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Account\Enums\DisplayType;
-use Webkul\Account\Enums\MoveState;
-use Webkul\Invoice\Models\Product;
-use Webkul\Partner\Models\Partner;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
-use Webkul\Support\Models\Currency;
-use Webkul\Support\Models\UOM;
+use Modules\Core\Enums\DisplayType;
+use Modules\Core\Enums\MoveState;
+use Modules\Core\Models\Product;
+use Modules\Crm\Models\Partner;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
+use Modules\Core\Models\Currency;
+use Modules\Core\Models\UOM;
 
 class MoveLine extends Model implements Sortable
 {

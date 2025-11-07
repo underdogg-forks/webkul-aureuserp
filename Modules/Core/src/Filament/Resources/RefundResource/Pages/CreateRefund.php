@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\RefundResource\Pages;
+namespace Modules\Core\Filament\Resources\RefundResource\Pages;
 
 use Filament\Notifications\Notification;
-use Webkul\Account\Enums\MoveType;
-use Webkul\Account\Facades\Account;
-use Webkul\Account\Filament\Resources\InvoiceResource\Pages\CreateInvoice as CreateBaseRefund;
-use Webkul\Account\Filament\Resources\RefundResource;
+use Modules\Core\Enums\MoveType;
+use Modules\Core\Facades\Account;
+use Modules\Core\Filament\Resources\InvoiceResource\Pages\CreateInvoice as CreateBaseRefund;
+use Modules\Core\Filament\Resources\RefundResource;
 
 class CreateRefund extends CreateBaseRefund
 {

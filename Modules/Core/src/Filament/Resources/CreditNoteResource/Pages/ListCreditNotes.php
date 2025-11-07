@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\CreditNoteResource\Pages;
+namespace Modules\Core\Filament\Resources\CreditNoteResource\Pages;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
-use Webkul\Account\Enums\MoveType;
-use Webkul\Account\Filament\Resources\CreditNoteResource;
-use Webkul\Account\Filament\Resources\InvoiceResource\Pages\ListInvoices as ListRecords;
-use Webkul\TableViews\Filament\Components\PresetView;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Core\Enums\MoveType;
+use Modules\Core\Filament\Resources\CreditNoteResource;
+use Modules\Core\Filament\Resources\InvoiceResource\Pages\ListInvoices as ListRecords;
+use Modules\Core\Filament\Components\PresetView;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ListCreditNotes extends ListRecords
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Resources;
+namespace Modules\Products\Filament\Clusters\Operations\Resources;
 
 use BackedEnum;
 use Filament\Actions\ActionGroup;
@@ -17,16 +17,16 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
-use Webkul\Inventory\Enums\OperationState;
-use Webkul\Inventory\Enums\OperationType;
-use Webkul\Inventory\Filament\Clusters\Operations;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\DropshipResource\Pages\CreateDropship;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\DropshipResource\Pages\EditDropship;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\DropshipResource\Pages\ListDropships;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\DropshipResource\Pages\ManageMoves;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\DropshipResource\Pages\ViewDropship;
-use Webkul\Inventory\Models\Dropship;
-use Webkul\Inventory\Settings\LogisticSettings;
+use Modules\Products\Enums\OperationState;
+use Modules\Products\Enums\OperationType;
+use Modules\Products\Filament\Clusters\Operations;
+use Modules\Products\Filament\Clusters\Operations\Resources\DropshipResource\Pages\CreateDropship;
+use Modules\Products\Filament\Clusters\Operations\Resources\DropshipResource\Pages\EditDropship;
+use Modules\Products\Filament\Clusters\Operations\Resources\DropshipResource\Pages\ListDropships;
+use Modules\Products\Filament\Clusters\Operations\Resources\DropshipResource\Pages\ManageMoves;
+use Modules\Products\Filament\Clusters\Operations\Resources\DropshipResource\Pages\ViewDropship;
+use Modules\Products\Models\Dropship;
+use Modules\Products\Settings\LogisticSettings;
 
 class DropshipResource extends Resource
 {

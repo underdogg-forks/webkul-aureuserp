@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Chatter\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Facades\DB;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\ActivityType;
-use Webkul\Support\Models\Company;
+use Modules\Core\Models\User;
+use Modules\Core\Models\ActivityType;
+use Modules\Core\Models\Company;
 
 class Message extends Model
 {

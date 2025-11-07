@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\CreditNoteResource\Pages;
+namespace Modules\Core\Filament\Resources\CreditNoteResource\Pages;
 
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Account\Facades\Account;
-use Webkul\Account\Filament\Resources\CreditNoteResource;
-use Webkul\Account\Filament\Resources\InvoiceResource\Actions as BaseActions;
-use Webkul\Account\Filament\Resources\InvoiceResource\Pages\EditInvoice as EditRecord;
+use Modules\Core\Facades\Account;
+use Modules\Core\Filament\Resources\CreditNoteResource;
+use Modules\Core\Filament\Resources\InvoiceResource\Actions as BaseActions;
+use Modules\Core\Filament\Resources\InvoiceResource\Pages\EditInvoice as EditRecord;
 
 class EditCreditNote extends EditRecord
 {

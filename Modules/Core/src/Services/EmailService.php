@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Support\Services;
+namespace Modules\Core\Services;
 
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use Webkul\Support\Models\EmailLog;
+use Modules\Core\Models\EmailLog;
 
 class EmailService
 {

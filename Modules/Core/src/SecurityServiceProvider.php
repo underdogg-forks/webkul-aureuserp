@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Security;
+namespace Modules\Core;
 
-use Webkul\Support\Package;
-use Webkul\Support\PackageServiceProvider;
+use Modules\Core\Package;
+use Modules\Core\PackageServiceProvider;
 
 class SecurityServiceProvider extends PackageServiceProvider
 {

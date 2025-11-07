@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Purchase\Livewire;
+namespace Modules\Expenses\Livewire;
 
 use Filament\Pages\SimplePage;
-use Webkul\Purchase\Models\Order;
+use Modules\Expenses\Models\Order;
 
 class RespondQuotation extends SimplePage
 {

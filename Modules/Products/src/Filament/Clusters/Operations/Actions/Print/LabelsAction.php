@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Actions\Print;
+namespace Modules\Products\Filament\Clusters\Operations\Actions\Print;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use Filament\Actions\Action;
@@ -12,7 +12,7 @@ use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Components\Wizard;
 use Filament\Schemas\Components\Wizard\Step;
-use Webkul\Inventory\Settings\TraceabilitySettings;
+use Modules\Products\Settings\TraceabilitySettings;
 
 class LabelsAction extends Action
 {

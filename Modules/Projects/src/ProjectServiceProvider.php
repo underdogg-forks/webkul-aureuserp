@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Project;
+namespace Modules\Projects;
 
-use Webkul\Support\Console\Commands\InstallCommand;
-use Webkul\Support\Console\Commands\UninstallCommand;
-use Webkul\Support\Package;
-use Webkul\Support\PackageServiceProvider;
+use Modules\Core\Console\Commands\InstallCommand;
+use Modules\Core\Console\Commands\UninstallCommand;
+use Modules\Core\Package;
+use Modules\Core\PackageServiceProvider;
 
 class ProjectServiceProvider extends PackageServiceProvider
 {
@@ -35,7 +35,7 @@ class ProjectServiceProvider extends PackageServiceProvider
                 '2024_12_16_094021_create_project_time_settings',
             ])
             ->runsSettings()
-            ->hasSeeder('Webkul\\Project\\Database\Seeders\\DatabaseSeeder')
+            ->hasSeeder('Modules\\Projects\\Database\Seeders\\DatabaseSeeder')
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->runsMigrations()

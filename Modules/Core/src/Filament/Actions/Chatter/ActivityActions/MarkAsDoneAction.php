@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Chatter\Filament\Actions\Chatter\ActivityActions;
+namespace Modules\Core\Filament\Actions\Chatter\ActivityActions;
 
 use Filament\Actions\Action;
 

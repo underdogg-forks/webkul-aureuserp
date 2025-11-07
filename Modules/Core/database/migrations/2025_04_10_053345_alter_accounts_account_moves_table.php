@@ -4,8 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-use Webkul\Account\Enums\MoveState;
-use Webkul\Account\Enums\PaymentState;
+use Modules\Core\Enums\MoveState;
+use Modules\Core\Enums\PaymentState;
 
 return new class () extends Migration {
     /**

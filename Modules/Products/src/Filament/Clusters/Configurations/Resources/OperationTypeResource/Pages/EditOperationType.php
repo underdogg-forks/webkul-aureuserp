@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\OperationTypeResource\Pages;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\OperationTypeResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\OperationTypeResource;
+use Modules\Products\Filament\Clusters\Configurations\Resources\OperationTypeResource;
 
 class EditOperationType extends EditRecord
 {

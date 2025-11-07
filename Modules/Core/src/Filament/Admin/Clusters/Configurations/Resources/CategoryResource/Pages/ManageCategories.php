@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Blog\Filament\Admin\Clusters\Configurations\Resources\CategoryResource\Pages;
+namespace Modules\Core\Filament\Admin\Clusters\Configurations\Resources\CategoryResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ManageRecords;
 use Filament\Schemas\Components\Tabs\Tab;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Blog\Filament\Admin\Clusters\Configurations\Resources\CategoryResource;
-use Webkul\Blog\Models\Category;
+use Modules\Core\Filament\Admin\Clusters\Configurations\Resources\CategoryResource;
+use Modules\Core\Models\Category;
 
 class ManageCategories extends ManageRecords
 {

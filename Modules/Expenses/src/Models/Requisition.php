@@ -1,22 +1,22 @@
 <?php
 
-namespace Webkul\Purchase\Models;
+namespace Modules\Expenses\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Webkul\Chatter\Traits\HasChatter;
-use Webkul\Chatter\Traits\HasLogActivity;
-use Webkul\Field\Traits\HasCustomFields;
-use Webkul\Partner\Models\Partner;
-use Webkul\Purchase\Database\Factories\RequisitionFactory;
-use Webkul\Purchase\Enums\RequisitionState;
-use Webkul\Purchase\Enums\RequisitionType;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
-use Webkul\Support\Models\Currency;
+use Modules\Core\Traits\HasChatter;
+use Modules\Core\Traits\HasLogActivity;
+use Modules\Core\Traits\HasCustomFields;
+use Modules\Crm\Models\Partner;
+use Modules\Expenses\Database\Factories\RequisitionFactory;
+use Modules\Expenses\Enums\RequisitionState;
+use Modules\Expenses\Enums\RequisitionType;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
+use Modules\Core\Models\Currency;
 
 class Requisition extends Model
 {

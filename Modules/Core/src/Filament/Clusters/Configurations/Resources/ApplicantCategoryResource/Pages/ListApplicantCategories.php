@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Configurations\Resources\ApplicantCategoryResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\ApplicantCategoryResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\ApplicantCategoryResource;
+use Modules\Core\Filament\Clusters\Configurations\Resources\ApplicantCategoryResource;
 
 class ListApplicantCategories extends ListRecords
 {

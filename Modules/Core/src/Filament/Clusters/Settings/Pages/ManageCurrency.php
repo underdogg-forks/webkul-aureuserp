@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Security\Filament\Clusters\Settings\Pages;
+namespace Modules\Core\Filament\Clusters\Settings\Pages;
 
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 use Filament\Forms\Components\Select;
 use Filament\Pages\SettingsPage;
 use Filament\Schemas\Schema;
-use Webkul\Security\Settings\CurrencySettings;
-use Webkul\Support\Filament\Clusters\Settings;
-use Webkul\Support\Models\Currency;
+use Modules\Core\Settings\CurrencySettings;
+use Modules\Core\Filament\Clusters\Settings;
+use Modules\Core\Models\Currency;
 
 class ManageCurrency extends SettingsPage
 {

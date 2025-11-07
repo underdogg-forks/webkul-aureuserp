@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Settings;
+namespace Modules\Products\Settings;
 
 use Spatie\LaravelSettings\Settings;
 

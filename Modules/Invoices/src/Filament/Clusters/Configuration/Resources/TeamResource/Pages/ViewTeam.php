@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Configuration\Resources\TeamResource\Pages;
+namespace Modules\Invoices\Filament\Clusters\Configuration\Resources\TeamResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Chatter\Filament\Actions as ChatterActions;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\TeamResource;
+use Modules\Core\Filament\Actions as ChatterActions;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\TeamResource;
 
 class ViewTeam extends ViewRecord
 {

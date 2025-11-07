@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Blog\Database\Factories;
+namespace Modules\Core\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Webkul\Blog\Models\Post;
+use Modules\Core\Models\Post;
 
 /**
  * @extends Factory<Post>

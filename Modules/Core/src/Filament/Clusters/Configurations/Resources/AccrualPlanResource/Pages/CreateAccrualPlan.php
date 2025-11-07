@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Configurations\Resources\AccrualPlanResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\AccrualPlanResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\AccrualPlanResource;
+use Modules\Core\Filament\Clusters\Configurations\Resources\AccrualPlanResource;
 
 class CreateAccrualPlan extends CreateRecord
 {

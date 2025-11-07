@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Configuration\Resources\PaymentTermResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configuration\Resources\PaymentTermResource\Pages;
 
-use Webkul\Account\Filament\Resources\PaymentTermResource\Pages\ViewPaymentTerm as BaseViewPaymentTerm;
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\PaymentTermResource;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Resources\PaymentTermResource\Pages\ViewPaymentTerm as BaseViewPaymentTerm;
+use Modules\Core\Filament\Clusters\Configuration\Resources\PaymentTermResource;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ViewPaymentTerm extends BaseViewPaymentTerm
 {

@@ -1,5 +1,5 @@
 <?php
 
-namespace Webkul\Inventory\Models;
+namespace Modules\Products\Models;
 
 class Delivery extends Operation {}

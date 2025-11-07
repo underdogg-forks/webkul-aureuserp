@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Resources;
+namespace Modules\Products\Filament\Clusters\Operations\Resources;
 
 use Filament\Actions\Action;
 use Filament\Forms\Components\DateTimePicker;
@@ -35,37 +35,37 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use InvalidArgumentException;
-use Webkul\Field\Filament\Forms\Components\ProgressStepper;
-use Webkul\Field\Filament\Traits\HasCustomFields;
-use Webkul\Inventory\Enums;
-use Webkul\Inventory\Enums\LocationType;
-use Webkul\Inventory\Enums\MoveState;
-use Webkul\Inventory\Enums\MoveType;
-use Webkul\Inventory\Enums\OperationState;
-use Webkul\Inventory\Enums\ProcureMethod;
-use Webkul\Inventory\Enums\ProductTracking;
-use Webkul\Inventory\Facades\Inventory;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\LotResource;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\PackageResource;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource;
-use Webkul\Inventory\Models\Move;
-use Webkul\Inventory\Models\Operation;
-use Webkul\Inventory\Models\OperationType;
-use Webkul\Inventory\Models\Packaging;
-use Webkul\Inventory\Models\Product;
-use Webkul\Inventory\Models\ProductQuantity;
-use Webkul\Inventory\Settings\OperationSettings;
-use Webkul\Inventory\Settings\ProductSettings;
-use Webkul\Inventory\Settings\TraceabilitySettings;
-use Webkul\Inventory\Settings\WarehouseSettings;
-use Webkul\Partner\Filament\Resources\PartnerResource;
-use Webkul\Product\Enums\ProductType;
-use Webkul\Support\Filament\Forms\Components\Repeater;
-use Webkul\Support\Filament\Forms\Components\Repeater\TableColumn;
-use Webkul\Support\Filament\Infolists\Components\RepeatableEntry;
-use Webkul\Support\Filament\Infolists\Components\Repeater\TableColumn as InfolistTableColumn;
-use Webkul\Support\Models\UOM;
-use Webkul\TableViews\Filament\Components\PresetView;
+use Modules\Core\Filament\Forms\Components\ProgressStepper;
+use Modules\Core\Filament\Traits\HasCustomFields;
+use Modules\Products\Enums;
+use Modules\Products\Enums\LocationType;
+use Modules\Products\Enums\MoveState;
+use Modules\Products\Enums\MoveType;
+use Modules\Products\Enums\OperationState;
+use Modules\Products\Enums\ProcureMethod;
+use Modules\Products\Enums\ProductTracking;
+use Modules\Products\Facades\Inventory;
+use Modules\Products\Filament\Clusters\Products\Resources\LotResource;
+use Modules\Products\Filament\Clusters\Products\Resources\PackageResource;
+use Modules\Products\Filament\Clusters\Products\Resources\ProductResource;
+use Modules\Products\Models\Move;
+use Modules\Products\Models\Operation;
+use Modules\Products\Models\OperationType;
+use Modules\Products\Models\Packaging;
+use Modules\Products\Models\Product;
+use Modules\Products\Models\ProductQuantity;
+use Modules\Products\Settings\OperationSettings;
+use Modules\Products\Settings\ProductSettings;
+use Modules\Products\Settings\TraceabilitySettings;
+use Modules\Products\Settings\WarehouseSettings;
+use Modules\Crm\Filament\Resources\PartnerResource;
+use Modules\Core\Enums\ProductType;
+use Modules\Core\Filament\Forms\Components\Repeater;
+use Modules\Core\Filament\Forms\Components\Repeater\TableColumn;
+use Modules\Core\Filament\Infolists\Components\RepeatableEntry;
+use Modules\Core\Filament\Infolists\Components\Repeater\TableColumn as InfolistTableColumn;
+use Modules\Core\Models\UOM;
+use Modules\Core\Filament\Components\PresetView;
 
 class OperationResource extends Resource
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Support;
+namespace Modules\Core;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;

@@ -1,16 +1,16 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Reporting\Resources;
+namespace Modules\Core\Filament\Clusters\Reporting\Resources;
 
 use BackedEnum;
 use Filament\Tables\Table;
-use Webkul\TimeOff\Filament\Clusters\Management\Resources\TimeOffResource as BaseByEmployeeResource;
-use Webkul\TimeOff\Filament\Clusters\Reporting;
-use Webkul\TimeOff\Filament\Clusters\Reporting\Resources\ByEmployeeResource\Pages\CreateByEmployee;
-use Webkul\TimeOff\Filament\Clusters\Reporting\Resources\ByEmployeeResource\Pages\EditByEmployee;
-use Webkul\TimeOff\Filament\Clusters\Reporting\Resources\ByEmployeeResource\Pages\ListByEmployees;
-use Webkul\TimeOff\Filament\Clusters\Reporting\Resources\ByEmployeeResource\Pages\ViewByEmployee;
-use Webkul\TimeOff\Models\Leave;
+use Modules\Core\Filament\Clusters\Management\Resources\TimeOffResource as BaseByEmployeeResource;
+use Modules\Core\Filament\Clusters\Reporting;
+use Modules\Core\Filament\Clusters\Reporting\Resources\ByEmployeeResource\Pages\CreateByEmployee;
+use Modules\Core\Filament\Clusters\Reporting\Resources\ByEmployeeResource\Pages\EditByEmployee;
+use Modules\Core\Filament\Clusters\Reporting\Resources\ByEmployeeResource\Pages\ListByEmployees;
+use Modules\Core\Filament\Clusters\Reporting\Resources\ByEmployeeResource\Pages\ViewByEmployee;
+use Modules\Core\Models\Leave;
 
 class ByEmployeeResource extends BaseByEmployeeResource
 {

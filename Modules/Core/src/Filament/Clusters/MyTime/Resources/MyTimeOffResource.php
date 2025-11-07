@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\MyTime\Resources;
+namespace Modules\Core\Filament\Clusters\MyTime\Resources;
 
 use BackedEnum;
 use Filament\Infolists\Components\ImageEntry;
@@ -11,15 +11,15 @@ use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use Illuminate\Support\Carbon;
-use Webkul\TimeOff\Enums\State;
-use Webkul\TimeOff\Filament\Clusters\Management\Resources\TimeOffResource;
-use Webkul\TimeOff\Filament\Clusters\MyTime;
-use Webkul\TimeOff\Filament\Clusters\MyTime\Resources\MyTimeOffResource\Pages\CreateMyTimeOff;
-use Webkul\TimeOff\Filament\Clusters\MyTime\Resources\MyTimeOffResource\Pages\EditMyTimeOff;
-use Webkul\TimeOff\Filament\Clusters\MyTime\Resources\MyTimeOffResource\Pages\ListMyTimeOffs;
-use Webkul\TimeOff\Filament\Clusters\MyTime\Resources\MyTimeOffResource\Pages\ViewMyTimeOff;
-use Webkul\TimeOff\Models\Leave;
-use Webkul\TimeOff\Traits\TimeOffHelper;
+use Modules\Core\Enums\State;
+use Modules\Core\Filament\Clusters\Management\Resources\TimeOffResource;
+use Modules\Core\Filament\Clusters\MyTime;
+use Modules\Core\Filament\Clusters\MyTime\Resources\MyTimeOffResource\Pages\CreateMyTimeOff;
+use Modules\Core\Filament\Clusters\MyTime\Resources\MyTimeOffResource\Pages\EditMyTimeOff;
+use Modules\Core\Filament\Clusters\MyTime\Resources\MyTimeOffResource\Pages\ListMyTimeOffs;
+use Modules\Core\Filament\Clusters\MyTime\Resources\MyTimeOffResource\Pages\ViewMyTimeOff;
+use Modules\Core\Models\Leave;
+use Modules\Core\Traits\TimeOffHelper;
 
 class MyTimeOffResource extends Resource
 {

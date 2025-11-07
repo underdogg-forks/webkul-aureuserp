@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Project\Filament\Widgets;
+namespace Modules\Projects\Filament\Widgets;
 
 use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
 use Filament\Widgets\ChartWidget;
 use Filament\Widgets\Concerns\InteractsWithPageFilters;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Carbon;
-use Webkul\Project\Models\Task;
-use Webkul\Project\Models\TaskStage;
+use Modules\Projects\Models\Task;
+use Modules\Projects\Models\TaskStage;
 
 class TaskByStageChart extends ChartWidget
 {

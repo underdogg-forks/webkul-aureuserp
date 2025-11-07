@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Support\Filament\Forms\Components;
+namespace Modules\Core\Filament\Forms\Components;
 
 use Closure;
 use Filament\Actions\Action;
 use Filament\Forms\Components\Repeater as BaseRepeater;
 use Filament\Support\Enums\Size;
 use Filament\Tables\Table\Concerns\HasColumnManager;
-use Webkul\Support\Filament\Forms\Components\Repeater\TableColumn;
+use Modules\Core\Filament\Forms\Components\Repeater\TableColumn;
 
 class Repeater extends BaseRepeater
 {

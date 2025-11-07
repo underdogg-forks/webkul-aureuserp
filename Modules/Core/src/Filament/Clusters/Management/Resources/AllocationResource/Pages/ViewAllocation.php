@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Management\Resources\AllocationResource\Pages;
+namespace Modules\Core\Filament\Clusters\Management\Resources\AllocationResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Chatter\Filament\Actions as ChatterActions;
-use Webkul\TimeOff\Filament\Clusters\Management\Resources\AllocationResource;
+use Modules\Core\Filament\Actions as ChatterActions;
+use Modules\Core\Filament\Clusters\Management\Resources\AllocationResource;
 
 class ViewAllocation extends ViewRecord
 {

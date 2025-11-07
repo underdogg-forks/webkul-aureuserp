@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Account\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Webkul\Support\Models\Currency;
+use Modules\Core\Models\Currency;
 
 class PartialReconcile extends Model
 {

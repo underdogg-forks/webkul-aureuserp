@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Configuration\Resources;
+namespace Modules\Invoices\Filament\Clusters\Configuration\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -33,13 +33,13 @@ use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Sale\Filament\Clusters\Configuration;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\ActivityPlanResource\Pages\EditActivityPlan;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\ActivityPlanResource\Pages\ListActivityPlans;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\ActivityPlanResource\Pages\ViewActivityPlan;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\ActivityPlanResource\RelationManagers\ActivityTemplateRelationManager;
-use Webkul\Sale\Models\ActivityPlan;
-use Webkul\Security\Filament\Resources\CompanyResource;
+use Modules\Invoices\Filament\Clusters\Configuration;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ActivityPlanResource\Pages\EditActivityPlan;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ActivityPlanResource\Pages\ListActivityPlans;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ActivityPlanResource\Pages\ViewActivityPlan;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ActivityPlanResource\RelationManagers\ActivityTemplateRelationManager;
+use Modules\Invoices\Models\ActivityPlan;
+use Modules\Core\Filament\Resources\CompanyResource;
 
 class ActivityPlanResource extends Resource
 {

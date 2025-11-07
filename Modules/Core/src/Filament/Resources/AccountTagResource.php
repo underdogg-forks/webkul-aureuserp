@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -25,9 +25,9 @@ use Filament\Tables\Columns\ColorColumn;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Webkul\Account\Enums\Applicability;
-use Webkul\Account\Filament\Resources\AccountTagResource\Pages\ListAccountTags;
-use Webkul\Account\Models\Tag;
+use Modules\Core\Enums\Applicability;
+use Modules\Core\Filament\Resources\AccountTagResource\Pages\ListAccountTags;
+use Modules\Core\Models\Tag;
 
 class AccountTagResource extends Resource
 {

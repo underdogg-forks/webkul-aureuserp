@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Orders\Resources\OrderResource\Pages;
+namespace Modules\Invoices\Filament\Clusters\Orders\Resources\OrderResource\Pages;
 
-use Webkul\Sale\Filament\Clusters\Orders\Resources\OrderResource;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Pages\ManageDeliveries as BaseManageDeliveries;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\OrderResource;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource\Pages\ManageDeliveries as BaseManageDeliveries;
 
 class ManageDeliveries extends BaseManageDeliveries
 {

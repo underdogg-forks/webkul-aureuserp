@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Purchase\Models;
+namespace Modules\Expenses\Models;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Webkul\Account\Models\Move;
-use Webkul\Account\Models\Partner as BasePartner;
+use Modules\Core\Models\Move;
+use Modules\Core\Models\Partner as BasePartner;
 
 class Partner extends BasePartner
 {

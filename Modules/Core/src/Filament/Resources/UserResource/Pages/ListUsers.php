@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Security\Filament\Resources\UserResource\Pages;
+namespace Modules\Core\Filament\Resources\UserResource\Pages;
 
 use Exception;
 use Filament\Actions\Action;
@@ -10,11 +10,11 @@ use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;
 use Illuminate\Support\Facades\Mail;
-use Webkul\Security\Filament\Resources\UserResource;
-use Webkul\Security\Mail\UserInvitationMail;
-use Webkul\Security\Models\Invitation;
-use Webkul\Security\Models\User;
-use Webkul\Security\Settings\UserSettings;
+use Modules\Core\Filament\Resources\UserResource;
+use Modules\Core\Mail\UserInvitationMail;
+use Modules\Core\Models\Invitation;
+use Modules\Core\Models\User;
+use Modules\Core\Settings\UserSettings;
 
 class ListUsers extends ListRecords
 {

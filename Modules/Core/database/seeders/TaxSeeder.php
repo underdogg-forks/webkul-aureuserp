@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Account\Database\Seeders;
+namespace Modules\Core\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Webkul\Account\Enums\TypeTaxUse;
-use Webkul\Account\Models\TaxGroup;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
+use Modules\Core\Enums\TypeTaxUse;
+use Modules\Core\Models\TaxGroup;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
 
 class TaxSeeder extends Seeder
 {

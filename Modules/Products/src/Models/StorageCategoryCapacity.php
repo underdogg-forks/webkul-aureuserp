@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Inventory\Models;
+namespace Modules\Products\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Webkul\Inventory\Database\Factories\StorageCategoryCapacityFactory;
-use Webkul\Security\Models\User;
+use Modules\Products\Database\Factories\StorageCategoryCapacityFactory;
+use Modules\Core\Models\User;
 
 class StorageCategoryCapacity extends Model
 {

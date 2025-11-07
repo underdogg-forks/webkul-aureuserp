@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Account\Traits;
+namespace Modules\Core\Traits;
 
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;

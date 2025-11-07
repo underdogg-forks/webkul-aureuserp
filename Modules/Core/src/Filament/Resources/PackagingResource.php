@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Product\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use Filament\Actions\BulkAction;
@@ -28,7 +28,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Product\Models\Packaging;
+use Modules\Core\Models\Packaging;
 
 class PackagingResource extends Resource
 {

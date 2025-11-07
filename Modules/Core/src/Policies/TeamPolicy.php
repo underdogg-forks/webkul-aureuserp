@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Security\Policies;
+namespace Modules\Core\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Webkul\Security\Models\Team;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\Team;
+use Modules\Core\Models\User;
 
 class TeamPolicy
 {

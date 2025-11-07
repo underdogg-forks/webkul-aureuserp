@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -25,13 +25,13 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Webkul\Account\Filament\Resources\FiscalPositionResource\Pages\CreateFiscalPosition;
-use Webkul\Account\Filament\Resources\FiscalPositionResource\Pages\EditFiscalPosition;
-use Webkul\Account\Filament\Resources\FiscalPositionResource\Pages\ListFiscalPositions;
-use Webkul\Account\Filament\Resources\FiscalPositionResource\Pages\ManageFiscalPositionTax;
-use Webkul\Account\Filament\Resources\FiscalPositionResource\Pages\ViewFiscalPosition;
-use Webkul\Account\Filament\Resources\FiscalPositionResource\RelationManagers\FiscalPositionTaxRelationManager;
-use Webkul\Account\Models\FiscalPosition;
+use Modules\Core\Filament\Resources\FiscalPositionResource\Pages\CreateFiscalPosition;
+use Modules\Core\Filament\Resources\FiscalPositionResource\Pages\EditFiscalPosition;
+use Modules\Core\Filament\Resources\FiscalPositionResource\Pages\ListFiscalPositions;
+use Modules\Core\Filament\Resources\FiscalPositionResource\Pages\ManageFiscalPositionTax;
+use Modules\Core\Filament\Resources\FiscalPositionResource\Pages\ViewFiscalPosition;
+use Modules\Core\Filament\Resources\FiscalPositionResource\RelationManagers\FiscalPositionTaxRelationManager;
+use Modules\Core\Models\FiscalPosition;
 
 class FiscalPositionResource extends Resource
 {

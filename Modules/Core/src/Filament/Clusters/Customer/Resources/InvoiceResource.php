@@ -1,18 +1,18 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Customer\Resources;
+namespace Modules\Core\Filament\Clusters\Customer\Resources;
 
 use Filament\Actions\Action;
 use Filament\Resources\Pages\Page;
 use Filament\Schemas\Components\Utilities\Get;
-use Webkul\Account\Filament\Resources\InvoiceResource as BaseInvoiceResource;
-use Webkul\Invoice\Filament\Clusters\Customer;
-use Webkul\Invoice\Filament\Clusters\Customer\Resources\InvoiceResource\Pages\CreateInvoice;
-use Webkul\Invoice\Filament\Clusters\Customer\Resources\InvoiceResource\Pages\EditInvoice;
-use Webkul\Invoice\Filament\Clusters\Customer\Resources\InvoiceResource\Pages\ListInvoices;
-use Webkul\Invoice\Filament\Clusters\Customer\Resources\InvoiceResource\Pages\ViewInvoice;
-use Webkul\Invoice\Models\Invoice;
-use Webkul\Support\Filament\Forms\Components\Repeater;
+use Modules\Core\Filament\Resources\InvoiceResource as BaseInvoiceResource;
+use Modules\Core\Filament\Clusters\Customer;
+use Modules\Core\Filament\Clusters\Customer\Resources\InvoiceResource\Pages\CreateInvoice;
+use Modules\Core\Filament\Clusters\Customer\Resources\InvoiceResource\Pages\EditInvoice;
+use Modules\Core\Filament\Clusters\Customer\Resources\InvoiceResource\Pages\ListInvoices;
+use Modules\Core\Filament\Clusters\Customer\Resources\InvoiceResource\Pages\ViewInvoice;
+use Modules\Core\Models\Invoice;
+use Modules\Core\Filament\Forms\Components\Repeater;
 
 class InvoiceResource extends BaseInvoiceResource
 {

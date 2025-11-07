@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Contact\Filament\Clusters\Configurations\Resources;
+namespace Modules\Crm\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
-use Webkul\Contact\Filament\Clusters\Configurations;
-use Webkul\Contact\Filament\Clusters\Configurations\Resources\TitleResource\Pages\ManageTitles;
-use Webkul\Partner\Filament\Resources\TitleResource as BaseTitleResource;
+use Modules\Crm\Filament\Clusters\Configurations;
+use Modules\Crm\Filament\Clusters\Configurations\Resources\TitleResource\Pages\ManageTitles;
+use Modules\Crm\Filament\Resources\TitleResource as BaseTitleResource;
 
 class TitleResource extends BaseTitleResource
 {

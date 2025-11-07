@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Blog\Policies;
+namespace Modules\Core\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Webkul\Blog\Models\Post;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\Post;
+use Modules\Core\Models\User;
 
 class PostPolicy
 {

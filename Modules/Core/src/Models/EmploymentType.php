@@ -1,7 +1,7 @@
 <?php
 
-namespace Webkul\Recruitment\Models;
+namespace Modules\Core\Models;
 
-use Webkul\Employee\Models\EmploymentType as BaseEmploymentType;
+use Modules\Core\Models\EmploymentType as BaseEmploymentType;
 
 class EmploymentType extends BaseEmploymentType {}

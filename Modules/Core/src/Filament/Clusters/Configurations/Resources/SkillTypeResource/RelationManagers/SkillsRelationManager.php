@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Employee\Filament\Clusters\Configurations\Resources\SkillTypeResource\RelationManagers;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\SkillTypeResource\RelationManagers;
 
 use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkActionGroup;

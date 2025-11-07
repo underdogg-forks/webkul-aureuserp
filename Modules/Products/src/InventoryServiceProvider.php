@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Inventory;
+namespace Modules\Products;
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-use Webkul\Inventory\Facades\Inventory as InventoryFacade;
-use Webkul\Support\Console\Commands\InstallCommand;
-use Webkul\Support\Console\Commands\UninstallCommand;
-use Webkul\Support\Package;
-use Webkul\Support\PackageServiceProvider;
+use Modules\Products\Facades\Inventory as InventoryFacade;
+use Modules\Core\Console\Commands\InstallCommand;
+use Modules\Core\Console\Commands\UninstallCommand;
+use Modules\Core\Package;
+use Modules\Core\PackageServiceProvider;
 
 class InventoryServiceProvider extends PackageServiceProvider
 {
@@ -73,7 +73,7 @@ class InventoryServiceProvider extends PackageServiceProvider
                 '2025_01_17_094051_create_inventories_logistic_settings',
             ])
             ->runsSettings()
-            ->hasSeeder('Webkul\\Inventory\\Database\Seeders\\DatabaseSeeder')
+            ->hasSeeder('Modules\\Products\\Database\Seeders\\DatabaseSeeder')
             ->hasDependencies([
                 'products',
             ])

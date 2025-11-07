@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Partner\Models;
+namespace Modules\Crm\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Webkul\Partner\Database\Factories\BankAccountFactory;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Bank;
+use Modules\Crm\Database\Factories\BankAccountFactory;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Bank;
 
 class BankAccount extends Model
 {

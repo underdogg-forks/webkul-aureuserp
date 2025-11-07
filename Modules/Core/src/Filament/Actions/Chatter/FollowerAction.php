@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Chatter\Filament\Actions\Chatter;
+namespace Modules\Core\Filament\Actions\Chatter;
 
 use Filament\Actions\Action;
 use Filament\Forms\Components\RichEditor;
@@ -9,9 +9,9 @@ use Filament\Forms\Components\Toggle;
 use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Model;
 use Throwable;
-use Webkul\Chatter\Mail\FollowerMail;
-use Webkul\Partner\Models\Partner;
-use Webkul\Support\Services\EmailService;
+use Modules\Core\Mail\FollowerMail;
+use Modules\Crm\Models\Partner;
+use Modules\Core\Services\EmailService;
 
 class FollowerAction extends Action
 {

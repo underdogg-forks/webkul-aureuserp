@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Vendors\Resources\VendorResource\Pages;
+namespace Modules\Core\Filament\Clusters\Vendors\Resources\VendorResource\Pages;
 
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\VendorResource;
-use Webkul\Partner\Filament\Resources\PartnerResource\Pages\ManageContacts as BaseManageContacts;
+use Modules\Core\Filament\Clusters\Vendors\Resources\VendorResource;
+use Modules\Crm\Filament\Resources\PartnerResource\Pages\ManageContacts as BaseManageContacts;
 
 class ManageContacts extends BaseManageContacts
 {

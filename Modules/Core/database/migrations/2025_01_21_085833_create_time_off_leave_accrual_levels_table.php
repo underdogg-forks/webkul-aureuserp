@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Webkul\Support\Enums\Week;
-use Webkul\TimeOff\Enums\AccrualValidityType;
-use Webkul\TimeOff\Enums\AddedValueType;
-use Webkul\TimeOff\Enums\CarryOverUnusedAccruals;
-use Webkul\TimeOff\Enums\Frequency;
-use Webkul\TimeOff\Enums\StartType;
+use Modules\Core\Enums\Week;
+use Modules\Core\Enums\AccrualValidityType;
+use Modules\Core\Enums\AddedValueType;
+use Modules\Core\Enums\CarryOverUnusedAccruals;
+use Modules\Core\Enums\Frequency;
+use Modules\Core\Enums\StartType;
 
 return new class () extends Migration {
     /**

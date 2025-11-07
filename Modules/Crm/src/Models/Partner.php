@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Partner\Models;
+namespace Modules\Crm\Models;
 
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
@@ -12,14 +12,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
-use Webkul\Chatter\Traits\HasChatter;
-use Webkul\Chatter\Traits\HasLogActivity;
-use Webkul\Partner\Database\Factories\PartnerFactory;
-use Webkul\Partner\Enums\AccountType;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\Company;
-use Webkul\Support\Models\Country;
-use Webkul\Support\Models\State;
+use Modules\Core\Traits\HasChatter;
+use Modules\Core\Traits\HasLogActivity;
+use Modules\Crm\Database\Factories\PartnerFactory;
+use Modules\Crm\Enums\AccountType;
+use Modules\Core\Models\User;
+use Modules\Core\Models\Company;
+use Modules\Core\Models\Country;
+use Modules\Core\Models\State;
 
 class Partner extends Authenticatable implements FilamentUser
 {

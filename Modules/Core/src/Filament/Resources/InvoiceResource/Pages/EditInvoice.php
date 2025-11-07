@@ -1,18 +1,18 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\InvoiceResource\Pages;
+namespace Modules\Core\Filament\Resources\InvoiceResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Account\Facades\Account;
-use Webkul\Account\Filament\Resources\InvoiceResource;
-use Webkul\Account\Filament\Resources\InvoiceResource\Actions as BaseActions;
-use Webkul\Chatter\Filament\Actions as ChatterActions;
-use Webkul\Partner\Models\Partner;
-use Webkul\Support\Concerns\HasRepeaterColumnManager;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Facades\Account;
+use Modules\Core\Filament\Resources\InvoiceResource;
+use Modules\Core\Filament\Resources\InvoiceResource\Actions as BaseActions;
+use Modules\Core\Filament\Actions as ChatterActions;
+use Modules\Crm\Models\Partner;
+use Modules\Core\Concerns\HasRepeaterColumnManager;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class EditInvoice extends EditRecord
 {

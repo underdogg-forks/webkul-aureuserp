@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Recruitment\Traits;
+namespace Modules\Core\Traits;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
@@ -20,8 +20,8 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Employee\Models\SkillType;
-use Webkul\Support\Filament\Tables as CustomTables;
+use Modules\Core\Models\SkillType;
+use Modules\Core\Filament\Tables as CustomTables;
 
 trait CandidateSkillRelation
 {
@@ -123,7 +123,7 @@ trait CandidateSkillRelation
                         if (empty($data['candidate_id'])) {
                             $owner = $this->getOwnerRecord();
 
-                            if ($owner instanceof \Webkul\Recruitment\Models\Applicant) {
+                            if ($owner instanceof \Modules\Core\Models\Applicant) {
                                 $data['candidate_id'] = $owner->candidate_id;
                             } else {
                                 $data['candidate_id'] = $owner->id;

@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Vendors\Resources\PaymentsResource\Pages;
+namespace Modules\Core\Filament\Clusters\Vendors\Resources\PaymentsResource\Pages;
 
-use Webkul\Account\Filament\Resources\PaymentsResource\Pages\CreatePayments as BaseCreatePayments;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\PaymentsResource;
+use Modules\Core\Filament\Resources\PaymentsResource\Pages\CreatePayments as BaseCreatePayments;
+use Modules\Core\Filament\Clusters\Vendors\Resources\PaymentsResource;
 
 class CreatePayments extends BaseCreatePayments
 {

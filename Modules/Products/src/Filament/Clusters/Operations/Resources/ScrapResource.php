@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Resources;
+namespace Modules\Products\Filament\Clusters\Operations\Resources;
 
 use BackedEnum;
 use Filament\Actions\Action;
@@ -36,29 +36,29 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Field\Filament\Forms\Components\ProgressStepper;
-use Webkul\Inventory\Enums\LocationType;
-use Webkul\Inventory\Enums\OperationState;
-use Webkul\Inventory\Enums\ProductTracking;
-use Webkul\Inventory\Enums\ScrapState;
-use Webkul\Inventory\Filament\Clusters\Operations;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\ScrapResource\Pages\CreateScrap;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\ScrapResource\Pages\EditScrap;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\ScrapResource\Pages\ListScraps;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\ScrapResource\Pages\ManageMoves;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\ScrapResource\Pages\ViewScrap;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\LotResource;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\PackageResource;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource;
-use Webkul\Inventory\Models\Location;
-use Webkul\Inventory\Models\Product;
-use Webkul\Inventory\Models\Scrap;
-use Webkul\Inventory\Settings\OperationSettings;
-use Webkul\Inventory\Settings\ProductSettings;
-use Webkul\Inventory\Settings\TraceabilitySettings;
-use Webkul\Inventory\Settings\WarehouseSettings;
-use Webkul\Partner\Filament\Resources\PartnerResource;
-use Webkul\Product\Enums\ProductType;
+use Modules\Core\Filament\Forms\Components\ProgressStepper;
+use Modules\Products\Enums\LocationType;
+use Modules\Products\Enums\OperationState;
+use Modules\Products\Enums\ProductTracking;
+use Modules\Products\Enums\ScrapState;
+use Modules\Products\Filament\Clusters\Operations;
+use Modules\Products\Filament\Clusters\Operations\Resources\ScrapResource\Pages\CreateScrap;
+use Modules\Products\Filament\Clusters\Operations\Resources\ScrapResource\Pages\EditScrap;
+use Modules\Products\Filament\Clusters\Operations\Resources\ScrapResource\Pages\ListScraps;
+use Modules\Products\Filament\Clusters\Operations\Resources\ScrapResource\Pages\ManageMoves;
+use Modules\Products\Filament\Clusters\Operations\Resources\ScrapResource\Pages\ViewScrap;
+use Modules\Products\Filament\Clusters\Products\Resources\LotResource;
+use Modules\Products\Filament\Clusters\Products\Resources\PackageResource;
+use Modules\Products\Filament\Clusters\Products\Resources\ProductResource;
+use Modules\Products\Models\Location;
+use Modules\Products\Models\Product;
+use Modules\Products\Models\Scrap;
+use Modules\Products\Settings\OperationSettings;
+use Modules\Products\Settings\ProductSettings;
+use Modules\Products\Settings\TraceabilitySettings;
+use Modules\Products\Settings\WarehouseSettings;
+use Modules\Crm\Filament\Resources\PartnerResource;
+use Modules\Core\Enums\ProductType;
 
 class ScrapResource extends Resource
 {

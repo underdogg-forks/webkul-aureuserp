@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\TaxGroupResource\Pages;
+namespace Modules\Core\Filament\Resources\TaxGroupResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
-use Webkul\Account\Filament\Resources\TaxGroupResource;
+use Modules\Core\Filament\Resources\TaxGroupResource;
 
 class CreateTaxGroup extends CreateRecord
 {

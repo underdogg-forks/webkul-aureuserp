@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Recruitment\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Webkul\Employee\Models\Employee;
-use Webkul\Employee\Models\EmployeeJobPosition as BaseJobPosition;
-use Webkul\Employee\Models\Skill;
-use Webkul\Partner\Models\Industry;
-use Webkul\Partner\Models\Partner;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\Employee;
+use Modules\Core\Models\EmployeeJobPosition as BaseJobPosition;
+use Modules\Core\Models\Skill;
+use Modules\Crm\Models\Industry;
+use Modules\Crm\Models\Partner;
+use Modules\Core\Models\User;
 
 class JobPosition extends BaseJobPosition
 {

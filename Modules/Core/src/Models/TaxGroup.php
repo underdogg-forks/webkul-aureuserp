@@ -1,7 +1,7 @@
 <?php
 
-namespace Webkul\Invoice\Models;
+namespace Modules\Core\Models;
 
-use Webkul\Account\Models\TaxGroup as BaseTaxGroup;
+use Modules\Core\Models\TaxGroup as BaseTaxGroup;
 
 class TaxGroup extends BaseTaxGroup {}

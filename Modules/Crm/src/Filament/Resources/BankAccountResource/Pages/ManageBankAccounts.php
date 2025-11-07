@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Partner\Filament\Resources\BankAccountResource\Pages;
+namespace Modules\Crm\Filament\Resources\BankAccountResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ManageRecords;
 use Filament\Schemas\Components\Tabs\Tab;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Partner\Filament\Resources\BankAccountResource;
-use Webkul\Partner\Models\BankAccount;
+use Modules\Crm\Filament\Resources\BankAccountResource;
+use Modules\Crm\Models\BankAccount;
 
 class ManageBankAccounts extends ManageRecords
 {

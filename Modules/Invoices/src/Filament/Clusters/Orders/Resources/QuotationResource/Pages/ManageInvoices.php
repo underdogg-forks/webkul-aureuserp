@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Pages;
+namespace Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource\Pages;
 
 use BackedEnum;
 use Filament\Actions\EditAction;
@@ -8,9 +8,9 @@ use Filament\Actions\ViewAction;
 use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Tables\Table;
 use Livewire\Livewire;
-use Webkul\Account\Filament\Resources\InvoiceResource;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Resources\InvoiceResource;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ManageInvoices extends ManageRelatedRecords
 {

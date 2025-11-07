@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Chatter\Traits;
+namespace Modules\Core\Traits;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Facades\Storage;
-use Webkul\Chatter\Models\Attachment;
-use Webkul\Chatter\Models\Follower;
-use Webkul\Chatter\Models\Message;
-use Webkul\Partner\Models\Partner;
+use Modules\Core\Models\Attachment;
+use Modules\Core\Models\Follower;
+use Modules\Core\Models\Message;
+use Modules\Crm\Models\Partner;
 
 trait HasChatter
 {

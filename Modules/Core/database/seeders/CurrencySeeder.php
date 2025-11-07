@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Support\Database\Seeders;
+namespace Modules\Core\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;

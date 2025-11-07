@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Configurations\Resources\ActivityPlanResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\ActivityPlanResource\Pages;
 
-use Webkul\Employee\Filament\Clusters\Configurations\Resources\ActivityPlanResource\Pages\EditActivityPlan as BaseEditActivityPlan;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\ActivityPlanResource;
+use Modules\Core\Filament\Clusters\Configurations\Resources\ActivityPlanResource\Pages\EditActivityPlan as BaseEditActivityPlan;
+use Modules\Core\Filament\Clusters\Configurations\Resources\ActivityPlanResource;
 
 class EditActivityPlan extends BaseEditActivityPlan
 {

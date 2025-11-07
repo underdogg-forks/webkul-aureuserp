@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Configurations\Resources\MandatoryDayResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\MandatoryDayResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Support\Facades\Auth;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\MandatoryDayResource;
+use Modules\Core\Filament\Clusters\Configurations\Resources\MandatoryDayResource;
 
 class ListMandatoryDays extends ListRecords
 {

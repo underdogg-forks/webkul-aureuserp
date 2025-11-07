@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Configurations\Resources;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
-use Webkul\Support\Filament\Resources\ActivityTypeResource as BaseActivityTypeResource;
-use Webkul\TimeOff\Filament\Clusters\Configurations;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\ActivityTypeResource\Pages\CreateActivityType;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\ActivityTypeResource\Pages\EditActivityType;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\ActivityTypeResource\Pages\ListActivityTypes;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\ActivityTypeResource\Pages\ViewActivityType;
-use Webkul\TimeOff\Models\ActivityType;
+use Modules\Core\Filament\Resources\ActivityTypeResource as BaseActivityTypeResource;
+use Modules\Core\Filament\Clusters\Configurations;
+use Modules\Core\Filament\Clusters\Configurations\Resources\ActivityTypeResource\Pages\CreateActivityType;
+use Modules\Core\Filament\Clusters\Configurations\Resources\ActivityTypeResource\Pages\EditActivityType;
+use Modules\Core\Filament\Clusters\Configurations\Resources\ActivityTypeResource\Pages\ListActivityTypes;
+use Modules\Core\Filament\Clusters\Configurations\Resources\ActivityTypeResource\Pages\ViewActivityType;
+use Modules\Core\Models\ActivityType;
 
 class ActivityTypeResource extends BaseActivityTypeResource
 {

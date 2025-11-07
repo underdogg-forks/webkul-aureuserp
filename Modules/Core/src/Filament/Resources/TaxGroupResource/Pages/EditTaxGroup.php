@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\TaxGroupResource\Pages;
+namespace Modules\Core\Filament\Resources\TaxGroupResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Database\QueryException;
-use Webkul\Account\Filament\Resources\TaxGroupResource;
-use Webkul\Account\Models\TaxGroup;
+use Modules\Core\Filament\Resources\TaxGroupResource;
+use Modules\Core\Models\TaxGroup;
 
 class EditTaxGroup extends EditRecord
 {

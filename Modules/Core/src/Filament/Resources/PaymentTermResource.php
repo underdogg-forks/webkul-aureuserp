@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -32,14 +32,14 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\HtmlString;
-use Webkul\Account\Enums\EarlyPayDiscount;
-use Webkul\Account\Filament\Resources\PaymentTermResource\Pages\CreatePaymentTerm;
-use Webkul\Account\Filament\Resources\PaymentTermResource\Pages\EditPaymentTerm;
-use Webkul\Account\Filament\Resources\PaymentTermResource\Pages\ListPaymentTerms;
-use Webkul\Account\Filament\Resources\PaymentTermResource\Pages\ManagePaymentDueTerm;
-use Webkul\Account\Filament\Resources\PaymentTermResource\Pages\ViewPaymentTerm;
-use Webkul\Account\Filament\Resources\PaymentTermResource\RelationManagers\PaymentDueTermRelationManager;
-use Webkul\Account\Models\PaymentTerm;
+use Modules\Core\Enums\EarlyPayDiscount;
+use Modules\Core\Filament\Resources\PaymentTermResource\Pages\CreatePaymentTerm;
+use Modules\Core\Filament\Resources\PaymentTermResource\Pages\EditPaymentTerm;
+use Modules\Core\Filament\Resources\PaymentTermResource\Pages\ListPaymentTerms;
+use Modules\Core\Filament\Resources\PaymentTermResource\Pages\ManagePaymentDueTerm;
+use Modules\Core\Filament\Resources\PaymentTermResource\Pages\ViewPaymentTerm;
+use Modules\Core\Filament\Resources\PaymentTermResource\RelationManagers\PaymentDueTermRelationManager;
+use Modules\Core\Models\PaymentTerm;
 
 class PaymentTermResource extends Resource
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Support\Console\Commands;
+namespace Modules\Core\Console\Commands;
 
 use Closure;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Webkul\Support\Package;
+use Modules\Core\Package;
 
 class UninstallCommand extends Command
 {

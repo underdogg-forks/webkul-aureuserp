@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\StorageCategoryResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\StorageCategoryResource;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Products\Filament\Clusters\Configurations\Resources\StorageCategoryResource;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class EditStorageCategory extends EditRecord
 {

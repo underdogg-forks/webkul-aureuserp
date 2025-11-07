@@ -1,16 +1,16 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\RefundResource\Pages;
+namespace Modules\Core\Filament\Resources\RefundResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Account\Facades\Account;
-use Webkul\Account\Filament\Resources\InvoiceResource\Actions as BaseActions;
-use Webkul\Account\Filament\Resources\RefundResource;
-use Webkul\Chatter\Filament\Actions as ChatterActions;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Facades\Account;
+use Modules\Core\Filament\Resources\InvoiceResource\Actions as BaseActions;
+use Modules\Core\Filament\Resources\RefundResource;
+use Modules\Core\Filament\Actions as ChatterActions;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class EditRefund extends EditRecord
 {

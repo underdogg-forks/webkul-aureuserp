@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\AccountResource\Pages;
+namespace Modules\Core\Filament\Resources\AccountResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Account\Filament\Resources\AccountResource;
+use Modules\Core\Filament\Resources\AccountResource;
 
 class ViewAccount extends ViewRecord
 {

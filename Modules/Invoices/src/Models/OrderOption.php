@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Sale\Models;
+namespace Modules\Invoices\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Webkul\Security\Models\User;
-use Webkul\Support\Models\UOM;
+use Modules\Core\Models\User;
+use Modules\Core\Models\UOM;
 
 class OrderOption extends Model implements Sortable
 {

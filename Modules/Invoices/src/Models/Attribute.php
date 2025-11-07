@@ -1,7 +1,7 @@
 <?php
 
-namespace Webkul\Sale\Models;
+namespace Modules\Invoices\Models;
 
-use Webkul\Product\Models\Attribute as BaseAttribute;
+use Modules\Core\Models\Attribute as BaseAttribute;
 
 class Attribute extends BaseAttribute {}

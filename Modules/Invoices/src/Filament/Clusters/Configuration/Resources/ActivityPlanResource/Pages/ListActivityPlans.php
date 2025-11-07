@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Configuration\Resources\ActivityPlanResource\Pages;
+namespace Modules\Invoices\Filament\Clusters\Configuration\Resources\ActivityPlanResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\ActivityPlanResource;
-use Webkul\Support\Models\ActivityPlan;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\ActivityPlanResource;
+use Modules\Core\Models\ActivityPlan;
 
 class ListActivityPlans extends ListRecords
 {

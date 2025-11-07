@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\ProductAttributeResource\Pages;
+namespace Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\ProductAttributeResource\Pages;
 
-use Webkul\Product\Filament\Resources\AttributeResource\Pages\ListAttributes;
-use Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\ProductAttributeResource;
+use Modules\Core\Filament\Resources\AttributeResource\Pages\ListAttributes;
+use Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\ProductAttributeResource;
 
 class ListProductAttributes extends ListAttributes
 {

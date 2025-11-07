@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\PluginManager;
+namespace Modules\Core;
 
 use Filament\Support\Assets\Css;
 use Filament\Support\Facades\FilamentAsset;
-use Webkul\Support\Package;
-use Webkul\Support\PackageServiceProvider;
+use Modules\Core\Package;
+use Modules\Core\PackageServiceProvider;
 
 class PluginManagerServiceProvider extends PackageServiceProvider
 {
@@ -19,7 +19,7 @@ class PluginManagerServiceProvider extends PackageServiceProvider
             ->isCore()
             ->hasViews()
             ->hasTranslations()
-            ->hasSeeder('Webkul\\PluginManager\\Database\\Seeders\\PluginSeeder');
+            ->hasSeeder('Modules\\Core\\Database\\Seeders\\PluginSeeder');
     }
 
     public function packageBooted(): void

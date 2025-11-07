@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Support;
+namespace Modules\Core;
 
 use Filament\Support\Assets\Css;
 use Filament\Support\Facades\FilamentAsset;
@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Livewire;
-use Webkul\Security\Livewire\AcceptInvitation;
-use Webkul\Security\Models\Role;
-use Webkul\Security\Policies\RolePolicy;
-use Webkul\Support\Console\Commands\InstallERP;
-use Webkul\Support\Console\Commands\RepairERP;
+use Modules\Core\Livewire\AcceptInvitation;
+use Modules\Core\Models\Role;
+use Modules\Core\Policies\RolePolicy;
+use Modules\Core\Console\Commands\InstallERP;
+use Modules\Core\Console\Commands\RepairERP;
 
 class SupportServiceProvider extends PackageServiceProvider
 {
@@ -69,13 +69,13 @@ class SupportServiceProvider extends PackageServiceProvider
 
         Gate::policy(Role::class, RolePolicy::class);
 
-        Event::listen('aureus.installed', 'Webkul\Support\Listeners\Installer@installed');
+        Event::listen('aureus.installed', 'Modules\Core\Listeners\Installer@installed');
 
         /*
          * Route to access template applied image file
          */
         $this->app['router']->get('cache/{filename}', [
-            'uses' => 'Webkul\Support\Http\Controllers\ImageCacheController@getImage',
+            'uses' => 'Modules\Core\Http\Controllers\ImageCacheController@getImage',
             'as'   => 'image_cache',
         ])->where(['filename' => '[ \w\\.\\/\\-\\@\(\)\=]+']);
 

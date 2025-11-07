@@ -1,18 +1,18 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\OrderResource\Pages;
+namespace Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\OrderResource\Pages;
 
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Database\QueryException;
-use Webkul\Chatter\Filament\Actions\ChatterAction;
-use Webkul\Purchase\Enums\OrderState;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\OrderResource;
-use Webkul\Purchase\Models\Order;
-use Webkul\Support\Concerns\HasRepeatableEntryColumnManager;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Actions\ChatterAction;
+use Modules\Expenses\Enums\OrderState;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\OrderResource;
+use Modules\Expenses\Models\Order;
+use Modules\Core\Concerns\HasRepeatableEntryColumnManager;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ViewOrder extends ViewRecord
 {
@@ -40,7 +40,7 @@ class ViewOrder extends ViewRecord
     {
         return [
             ChatterAction::make()
-                ->record(\Webkul\Purchase\Models\Order::find($this->getRecord()->id))
+                ->record(\Modules\Expenses\Models\Order::find($this->getRecord()->id))
                 ->setResource(static::$resource),
             DeleteAction::make()
                 ->hidden(fn () => $this->getRecord()->state == OrderState::DONE)

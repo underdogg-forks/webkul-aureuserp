@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\AccountResource\Pages;
+namespace Modules\Core\Filament\Resources\AccountResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
-use Webkul\Account\Filament\Resources\AccountResource;
+use Modules\Core\Filament\Resources\AccountResource;
 
 class CreateAccount extends CreateRecord
 {

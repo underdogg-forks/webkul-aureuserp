@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Product\Filament\Resources\CategoryResource\Pages;
+namespace Modules\Core\Filament\Resources\CategoryResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Product\Filament\Resources\CategoryResource;
+use Modules\Core\Filament\Resources\CategoryResource;
 
 class ListCategories extends ListRecords
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Actions\Print;
+namespace Modules\Products\Filament\Clusters\Operations\Actions\Print;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use Filament\Actions\Action;

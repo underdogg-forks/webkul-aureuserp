@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Inventory\Models;
+namespace Modules\Products\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Webkul\Product\Models\Category as BaseCategory;
+use Modules\Core\Models\Category as BaseCategory;
 
 class Category extends BaseCategory
 {

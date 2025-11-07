@@ -1,7 +1,7 @@
 <?php
 
-namespace Webkul\Purchase\Models;
+namespace Modules\Expenses\Models;
 
-use Webkul\Product\Models\Category as BaseCategory;
+use Modules\Core\Models\Category as BaseCategory;
 
 class Category extends BaseCategory {}

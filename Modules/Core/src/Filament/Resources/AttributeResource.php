@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Product\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -32,8 +32,8 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
-use Webkul\Product\Enums\AttributeType;
-use Webkul\Product\Models\Attribute;
+use Modules\Core\Enums\AttributeType;
+use Modules\Core\Models\Attribute;
 
 class AttributeResource extends Resource
 {

@@ -1,7 +1,7 @@
 <?php
 
-namespace Webkul\Invoice\Models;
+namespace Modules\Core\Models;
 
-use Webkul\Account\Models\PaymentTerm as BasePaymentTerm;
+use Modules\Core\Models\PaymentTerm as BasePaymentTerm;
 
 class PaymentTerm extends BasePaymentTerm {}

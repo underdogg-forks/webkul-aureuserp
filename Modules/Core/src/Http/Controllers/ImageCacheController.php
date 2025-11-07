@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Support\Http\Controllers;
+namespace Modules\Core\Http\Controllers;
 
 use Exception;
 use Illuminate\Http\Response as IlluminateResponse;

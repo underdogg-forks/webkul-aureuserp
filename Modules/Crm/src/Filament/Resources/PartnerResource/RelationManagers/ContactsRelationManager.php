@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Partner\Filament\Resources\PartnerResource\RelationManagers;
+namespace Modules\Crm\Filament\Resources\PartnerResource\RelationManagers;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
@@ -8,7 +8,7 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Partner\Filament\Resources\PartnerResource;
+use Modules\Crm\Filament\Resources\PartnerResource;
 
 class ContactsRelationManager extends RelationManager
 {

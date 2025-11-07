@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Inventory\Policies;
+namespace Modules\Products\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Webkul\Inventory\Models\OrderPoint;
-use Webkul\Security\Models\User;
+use Modules\Products\Models\OrderPoint;
+use Modules\Core\Models\User;
 
 class OrderPointPolicy
 {

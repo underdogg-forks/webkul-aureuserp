@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Customer\Resources\PartnerResource\Pages;
+namespace Modules\Core\Filament\Clusters\Customer\Resources\PartnerResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Illuminate\Contracts\Support\Htmlable;
-use Webkul\Invoice\Filament\Clusters\Customer\Resources\PartnerResource;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\VendorResource\Pages\ListVendors as BaseListPartners;
+use Modules\Core\Filament\Clusters\Customer\Resources\PartnerResource;
+use Modules\Core\Filament\Clusters\Vendors\Resources\VendorResource\Pages\ListVendors as BaseListPartners;
 
 class ListPartners extends BaseListPartners
 {

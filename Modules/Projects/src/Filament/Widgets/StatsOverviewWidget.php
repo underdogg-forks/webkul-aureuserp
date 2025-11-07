@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Project\Filament\Widgets;
+namespace Modules\Projects\Filament\Widgets;
 
 use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
 use Filament\Widgets\Concerns\InteractsWithPageFilters;
@@ -9,7 +9,7 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
 use Illuminate\Support\Carbon;
-use Webkul\Project\Models\Task;
+use Modules\Projects\Models\Task;
 
 class StatsOverviewWidget extends BaseWidget
 {

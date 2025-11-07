@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Resources\OperationResource\Pages;
+namespace Modules\Products\Filament\Clusters\Operations\Resources\OperationResource\Pages;
 
 use BackedEnum;
 use Filament\Actions\DeleteAction;
@@ -8,12 +8,12 @@ use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Webkul\Inventory\Enums\LocationType;
-use Webkul\Inventory\Enums\MoveState;
-use Webkul\Inventory\Enums\ProductTracking;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\OperationResource;
-use Webkul\Inventory\Models\MoveLine;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Products\Enums\LocationType;
+use Modules\Products\Enums\MoveState;
+use Modules\Products\Enums\ProductTracking;
+use Modules\Products\Filament\Clusters\Operations\Resources\OperationResource;
+use Modules\Products\Models\MoveLine;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ManageMoves extends ManageRelatedRecords
 {

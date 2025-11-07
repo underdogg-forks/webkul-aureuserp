@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\OrderResource\Actions;
+namespace Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\OrderResource\Actions;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use Filament\Actions\Action;
 use Livewire\Component;
-use Webkul\Purchase\Enums\OrderState;
-use Webkul\Purchase\Facades\PurchaseOrder;
-use Webkul\Purchase\Models\Order;
+use Modules\Expenses\Enums\OrderState;
+use Modules\Expenses\Facades\PurchaseOrder;
+use Modules\Expenses\Models\Order;
 
 class PrintRFQAction extends Action
 {

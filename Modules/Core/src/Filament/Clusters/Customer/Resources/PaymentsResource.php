@@ -1,14 +1,14 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Customer\Resources;
+namespace Modules\Core\Filament\Clusters\Customer\Resources;
 
-use Webkul\Account\Filament\Resources\PaymentsResource as BasePaymentsResource;
-use Webkul\Invoice\Filament\Clusters\Customer;
-use Webkul\Invoice\Filament\Clusters\Customer\Resources\PaymentsResource\Pages\CreatePayments;
-use Webkul\Invoice\Filament\Clusters\Customer\Resources\PaymentsResource\Pages\EditPayments;
-use Webkul\Invoice\Filament\Clusters\Customer\Resources\PaymentsResource\Pages\ListPayments;
-use Webkul\Invoice\Filament\Clusters\Customer\Resources\PaymentsResource\Pages\ViewPayments;
-use Webkul\Invoice\Models\Payment;
+use Modules\Core\Filament\Resources\PaymentsResource as BasePaymentsResource;
+use Modules\Core\Filament\Clusters\Customer;
+use Modules\Core\Filament\Clusters\Customer\Resources\PaymentsResource\Pages\CreatePayments;
+use Modules\Core\Filament\Clusters\Customer\Resources\PaymentsResource\Pages\EditPayments;
+use Modules\Core\Filament\Clusters\Customer\Resources\PaymentsResource\Pages\ListPayments;
+use Modules\Core\Filament\Clusters\Customer\Resources\PaymentsResource\Pages\ViewPayments;
+use Modules\Core\Models\Payment;
 
 class PaymentsResource extends BasePaymentsResource
 {

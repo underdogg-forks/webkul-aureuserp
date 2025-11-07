@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Vendors\Resources;
+namespace Modules\Core\Filament\Clusters\Vendors\Resources;
 
 use BackedEnum;
 use Filament\Forms\Components\Hidden;
@@ -12,20 +12,20 @@ use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
 use Filament\Tables\Filters\QueryBuilder;
 use Filament\Tables\Table;
-use Webkul\Account\Enums\TypeTaxUse;
-use Webkul\Account\Models\Tax;
-use Webkul\Field\Filament\Traits\HasCustomFields;
-use Webkul\Invoice\Enums\InvoicePolicy;
-use Webkul\Invoice\Filament\Clusters\Vendors;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\ProductResource\Pages\CreateProduct;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\ProductResource\Pages\EditProduct;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\ProductResource\Pages\ListProducts;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\ProductResource\Pages\ManageAttributes;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\ProductResource\Pages\ManageVariants;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\ProductResource\Pages\ViewProduct;
-use Webkul\Invoice\Models\Product;
-use Webkul\Product\Filament\Resources\ProductResource as BaseProductResource;
-use Webkul\Support\Models\UOM;
+use Modules\Core\Enums\TypeTaxUse;
+use Modules\Core\Models\Tax;
+use Modules\Core\Filament\Traits\HasCustomFields;
+use Modules\Core\Enums\InvoicePolicy;
+use Modules\Core\Filament\Clusters\Vendors;
+use Modules\Core\Filament\Clusters\Vendors\Resources\ProductResource\Pages\CreateProduct;
+use Modules\Core\Filament\Clusters\Vendors\Resources\ProductResource\Pages\EditProduct;
+use Modules\Core\Filament\Clusters\Vendors\Resources\ProductResource\Pages\ListProducts;
+use Modules\Core\Filament\Clusters\Vendors\Resources\ProductResource\Pages\ManageAttributes;
+use Modules\Core\Filament\Clusters\Vendors\Resources\ProductResource\Pages\ManageVariants;
+use Modules\Core\Filament\Clusters\Vendors\Resources\ProductResource\Pages\ViewProduct;
+use Modules\Core\Models\Product;
+use Modules\Core\Filament\Resources\ProductResource as BaseProductResource;
+use Modules\Core\Models\UOM;
 
 class ProductResource extends BaseProductResource
 {

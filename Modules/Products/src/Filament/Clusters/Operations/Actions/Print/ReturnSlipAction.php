@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Actions\Print;
+namespace Modules\Products\Filament\Clusters\Operations\Actions\Print;
 
 use Filament\Actions\Action;
 use Filament\Notifications\Notification;
 use Livewire\Component;
-use Webkul\Inventory\Facades\Inventory;
-use Webkul\Inventory\Models\Operation;
+use Modules\Products\Facades\Inventory;
+use Modules\Products\Models\Operation;
 
 class ReturnSlipAction extends Action
 {

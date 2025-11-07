@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Contact\Filament\Clusters\Configurations\Resources;
+namespace Modules\Crm\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
-use Webkul\Contact\Filament\Clusters\Configurations;
-use Webkul\Contact\Filament\Clusters\Configurations\Resources\IndustryResource\Pages\ManageIndustries;
-use Webkul\Partner\Filament\Resources\IndustryResource as BaseIndustryResource;
+use Modules\Crm\Filament\Clusters\Configurations;
+use Modules\Crm\Filament\Clusters\Configurations\Resources\IndustryResource\Pages\ManageIndustries;
+use Modules\Crm\Filament\Resources\IndustryResource as BaseIndustryResource;
 
 class IndustryResource extends BaseIndustryResource
 {

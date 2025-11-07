@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Filament\Forms\Components\Select;
@@ -11,15 +11,15 @@ use Filament\Resources\Pages\Page;
 use Filament\Schemas\Components\Fieldset;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
-use Webkul\Inventory\Filament\Clusters\Configurations;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\ProductCategoryResource\Pages\CreateProductCategory;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\ProductCategoryResource\Pages\EditProductCategory;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\ProductCategoryResource\Pages\ListProductCategories;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\ProductCategoryResource\Pages\ManageProducts;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\ProductCategoryResource\Pages\ViewProductCategory;
-use Webkul\Inventory\Models\Category;
-use Webkul\Inventory\Settings\WarehouseSettings;
-use Webkul\Product\Filament\Resources\CategoryResource;
+use Modules\Products\Filament\Clusters\Configurations;
+use Modules\Products\Filament\Clusters\Configurations\Resources\ProductCategoryResource\Pages\CreateProductCategory;
+use Modules\Products\Filament\Clusters\Configurations\Resources\ProductCategoryResource\Pages\EditProductCategory;
+use Modules\Products\Filament\Clusters\Configurations\Resources\ProductCategoryResource\Pages\ListProductCategories;
+use Modules\Products\Filament\Clusters\Configurations\Resources\ProductCategoryResource\Pages\ManageProducts;
+use Modules\Products\Filament\Clusters\Configurations\Resources\ProductCategoryResource\Pages\ViewProductCategory;
+use Modules\Products\Models\Category;
+use Modules\Products\Settings\WarehouseSettings;
+use Modules\Core\Filament\Resources\CategoryResource;
 
 class ProductCategoryResource extends CategoryResource
 {

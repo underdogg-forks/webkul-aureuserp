@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Products\Resources;
+namespace Modules\Products\Filament\Clusters\Products\Resources;
 
 use BackedEnum;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -31,17 +31,17 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\PackageTypeResource;
-use Webkul\Inventory\Filament\Clusters\Products;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\PackageResource\Pages\CreatePackage;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\PackageResource\Pages\EditPackage;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\PackageResource\Pages\ListPackages;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\PackageResource\Pages\ManageOperations;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\PackageResource\Pages\ManageProducts;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\PackageResource\Pages\ViewPackage;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\PackageResource\RelationManagers\ProductsRelationManager;
-use Webkul\Inventory\Models\Package;
-use Webkul\Inventory\Settings\OperationSettings;
+use Modules\Products\Filament\Clusters\Configurations\Resources\PackageTypeResource;
+use Modules\Products\Filament\Clusters\Products;
+use Modules\Products\Filament\Clusters\Products\Resources\PackageResource\Pages\CreatePackage;
+use Modules\Products\Filament\Clusters\Products\Resources\PackageResource\Pages\EditPackage;
+use Modules\Products\Filament\Clusters\Products\Resources\PackageResource\Pages\ListPackages;
+use Modules\Products\Filament\Clusters\Products\Resources\PackageResource\Pages\ManageOperations;
+use Modules\Products\Filament\Clusters\Products\Resources\PackageResource\Pages\ManageProducts;
+use Modules\Products\Filament\Clusters\Products\Resources\PackageResource\Pages\ViewPackage;
+use Modules\Products\Filament\Clusters\Products\Resources\PackageResource\RelationManagers\ProductsRelationManager;
+use Modules\Products\Models\Package;
+use Modules\Products\Settings\OperationSettings;
 
 class PackageResource extends Resource
 {

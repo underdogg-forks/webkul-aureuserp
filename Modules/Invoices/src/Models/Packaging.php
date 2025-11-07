@@ -1,7 +1,7 @@
 <?php
 
-namespace Webkul\Sale\Models;
+namespace Modules\Invoices\Models;
 
-use Webkul\Product\Models\Packaging as BasePackaging;
+use Modules\Core\Models\Packaging as BasePackaging;
 
 class Packaging extends BasePackaging {}

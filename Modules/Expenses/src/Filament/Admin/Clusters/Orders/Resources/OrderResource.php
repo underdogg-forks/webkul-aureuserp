@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources;
+namespace Modules\Expenses\Filament\Admin\Clusters\Orders\Resources;
 
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
@@ -44,30 +44,30 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Account\Enums\TypeTaxUse;
-use Webkul\Account\Facades\Tax as TaxFacade;
-use Webkul\Account\Filament\Resources\IncoTermResource;
-use Webkul\Account\Models\Partner;
-use Webkul\Field\Filament\Forms\Components\ProgressStepper;
-use Webkul\Field\Filament\Traits\HasCustomFields;
-use Webkul\Product\Enums\ProductType;
-use Webkul\Product\Models\Packaging;
-use Webkul\Purchase\Enums\OrderState;
-use Webkul\Purchase\Enums\QtyReceivedMethod;
-use Webkul\Purchase\Filament\Admin\Clusters\Products\Resources\ProductResource;
-use Webkul\Purchase\Livewire\Summary;
-use Webkul\Purchase\Models\Order;
-use Webkul\Purchase\Models\Product;
-use Webkul\Purchase\Models\Requisition;
-use Webkul\Purchase\Settings\OrderSettings;
-use Webkul\Purchase\Settings\ProductSettings;
-use Webkul\Support\Filament\Forms\Components\Repeater;
-use Webkul\Support\Filament\Forms\Components\Repeater\TableColumn;
-use Webkul\Support\Filament\Infolists\Components\RepeatableEntry;
-use Webkul\Support\Filament\Infolists\Components\Repeater\TableColumn as InfolistTableColumn;
-use Webkul\Support\Models\Currency;
-use Webkul\Support\Models\UOM;
-use Webkul\Support\Package;
+use Modules\Core\Enums\TypeTaxUse;
+use Modules\Core\Facades\Tax as TaxFacade;
+use Modules\Core\Filament\Resources\IncoTermResource;
+use Modules\Core\Models\Partner;
+use Modules\Core\Filament\Forms\Components\ProgressStepper;
+use Modules\Core\Filament\Traits\HasCustomFields;
+use Modules\Core\Enums\ProductType;
+use Modules\Core\Models\Packaging;
+use Modules\Expenses\Enums\OrderState;
+use Modules\Expenses\Enums\QtyReceivedMethod;
+use Modules\Expenses\Filament\Admin\Clusters\Products\Resources\ProductResource;
+use Modules\Expenses\Livewire\Summary;
+use Modules\Expenses\Models\Order;
+use Modules\Expenses\Models\Product;
+use Modules\Expenses\Models\Requisition;
+use Modules\Expenses\Settings\OrderSettings;
+use Modules\Expenses\Settings\ProductSettings;
+use Modules\Core\Filament\Forms\Components\Repeater;
+use Modules\Core\Filament\Forms\Components\Repeater\TableColumn;
+use Modules\Core\Filament\Infolists\Components\RepeatableEntry;
+use Modules\Core\Filament\Infolists\Components\Repeater\TableColumn as InfolistTableColumn;
+use Modules\Core\Models\Currency;
+use Modules\Core\Models\UOM;
+use Modules\Core\Package;
 
 class OrderResource extends Resource
 {

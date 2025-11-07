@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Products\Resources\ProductResource\Pages;
+namespace Modules\Expenses\Filament\Admin\Clusters\Products\Resources\ProductResource\Pages;
 
 use BackedEnum;
 use Filament\Actions\CreateAction;
@@ -11,10 +11,10 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Product\Models\ProductSupplier;
-use Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\VendorPriceResource;
-use Webkul\Purchase\Filament\Admin\Clusters\Products\Resources\ProductResource;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Models\ProductSupplier;
+use Modules\Expenses\Filament\Admin\Clusters\Configurations\Resources\VendorPriceResource;
+use Modules\Expenses\Filament\Admin\Clusters\Products\Resources\ProductResource;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ManageVendors extends ManageRelatedRecords
 {

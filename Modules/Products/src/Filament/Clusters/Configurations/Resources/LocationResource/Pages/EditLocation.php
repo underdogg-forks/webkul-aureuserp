@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\LocationResource\Pages;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\LocationResource\Pages;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\LocationResource;
-use Webkul\Inventory\Models\Location;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Products\Filament\Clusters\Configurations\Resources\LocationResource;
+use Modules\Products\Models\Location;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class EditLocation extends EditRecord
 {

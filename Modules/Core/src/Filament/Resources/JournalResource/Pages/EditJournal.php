@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\JournalResource\Pages;
+namespace Modules\Core\Filament\Resources\JournalResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Account\Enums\CommunicationStandard;
-use Webkul\Account\Enums\CommunicationType;
-use Webkul\Account\Filament\Resources\JournalResource;
+use Modules\Core\Enums\CommunicationStandard;
+use Modules\Core\Enums\CommunicationType;
+use Modules\Core\Filament\Resources\JournalResource;
 
 class EditJournal extends EditRecord
 {

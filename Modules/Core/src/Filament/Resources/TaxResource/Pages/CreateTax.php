@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\TaxResource\Pages;
+namespace Modules\Core\Filament\Resources\TaxResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Account\Filament\Resources\TaxResource;
+use Modules\Core\Filament\Resources\TaxResource;
 
 class CreateTax extends CreateRecord
 {

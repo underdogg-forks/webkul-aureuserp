@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Product\Filament\Resources\CategoryResource\Pages;
+namespace Modules\Core\Filament\Resources\CategoryResource\Pages;
 
 use Exception;
 use Filament\Actions\DeleteAction;
@@ -8,9 +8,9 @@ use Filament\Actions\ViewAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Database\QueryException;
-use Webkul\Product\Filament\Resources\CategoryResource;
-use Webkul\Product\Models\Category;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Resources\CategoryResource;
+use Modules\Core\Models\Category;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class EditCategory extends EditRecord
 {

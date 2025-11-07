@@ -1,19 +1,19 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\WarehouseResource\Pages;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\WarehouseResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
-use Webkul\Inventory\Enums\DeliveryStep;
-use Webkul\Inventory\Enums\LocationType;
-use Webkul\Inventory\Enums\ReceptionStep;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\WarehouseResource;
-use Webkul\Inventory\Models\Location;
-use Webkul\Inventory\Models\OperationType;
-use Webkul\Inventory\Models\Route;
-use Webkul\Inventory\Models\Rule;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Products\Enums\DeliveryStep;
+use Modules\Products\Enums\LocationType;
+use Modules\Products\Enums\ReceptionStep;
+use Modules\Products\Filament\Clusters\Configurations\Resources\WarehouseResource;
+use Modules\Products\Models\Location;
+use Modules\Products\Models\OperationType;
+use Modules\Products\Models\Route;
+use Modules\Products\Models\Rule;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class EditWarehouse extends EditRecord
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Configurations\Resources\JobPositionResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources\JobPositionResource\Pages;
 
-use Webkul\Employee\Filament\Clusters\Configurations\Resources\JobPositionResource\Pages\CreateJobPosition as BaseCreateJobPosition;
-use Webkul\Recruitment\Filament\Clusters\Configurations\Resources\JobPositionResource;
+use Modules\Core\Filament\Clusters\Configurations\Resources\JobPositionResource\Pages\CreateJobPosition as BaseCreateJobPosition;
+use Modules\Core\Filament\Clusters\Configurations\Resources\JobPositionResource;
 
 class CreateJobPosition extends BaseCreateJobPosition
 {

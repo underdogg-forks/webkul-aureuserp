@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\MyTime\Resources\MyAllocationResource\Pages;
+namespace Modules\Core\Filament\Clusters\MyTime\Resources\MyAllocationResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Employee\Models\Employee;
-use Webkul\TimeOff\Filament\Clusters\MyTime\Resources\MyAllocationResource;
+use Modules\Core\Models\Employee;
+use Modules\Core\Filament\Clusters\MyTime\Resources\MyAllocationResource;
 
 class CreateMyAllocation extends CreateRecord
 {

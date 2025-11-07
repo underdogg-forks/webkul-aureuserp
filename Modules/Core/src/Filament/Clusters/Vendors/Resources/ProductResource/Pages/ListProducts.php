@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Vendors\Resources\ProductResource\Pages;
+namespace Modules\Core\Filament\Clusters\Vendors\Resources\ProductResource\Pages;
 
 use Illuminate\Database\Eloquent\Builder;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\ProductResource;
-use Webkul\Product\Enums\ProductType;
-use Webkul\Product\Filament\Resources\ProductResource\Pages\ListProducts as BaseListProducts;
-use Webkul\TableViews\Filament\Components\PresetView;
+use Modules\Core\Filament\Clusters\Vendors\Resources\ProductResource;
+use Modules\Core\Enums\ProductType;
+use Modules\Core\Filament\Resources\ProductResource\Pages\ListProducts as BaseListProducts;
+use Modules\Core\Filament\Components\PresetView;
 
 class ListProducts extends BaseListProducts
 {

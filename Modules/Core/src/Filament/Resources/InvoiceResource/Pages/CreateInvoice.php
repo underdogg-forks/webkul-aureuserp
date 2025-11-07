@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\InvoiceResource\Pages;
+namespace Modules\Core\Filament\Resources\InvoiceResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
-use Webkul\Account\Enums\MoveType;
-use Webkul\Account\Facades\Account;
-use Webkul\Account\Filament\Resources\InvoiceResource;
-use Webkul\Support\Concerns\HasRepeaterColumnManager;
+use Modules\Core\Enums\MoveType;
+use Modules\Core\Facades\Account;
+use Modules\Core\Filament\Resources\InvoiceResource;
+use Modules\Core\Concerns\HasRepeaterColumnManager;
 
 class CreateInvoice extends CreateRecord
 {

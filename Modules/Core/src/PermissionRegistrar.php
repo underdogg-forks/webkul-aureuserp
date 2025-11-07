@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Security;
+namespace Modules\Core;
 
 use function array_key_exists;
 

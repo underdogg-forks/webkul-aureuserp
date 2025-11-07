@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -19,13 +19,13 @@ use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Webkul\Account\Enums\RoundingMethod;
-use Webkul\Account\Enums\RoundingStrategy;
-use Webkul\Account\Filament\Resources\CashRoundingResource\Pages\CreateCashRounding;
-use Webkul\Account\Filament\Resources\CashRoundingResource\Pages\EditCashRounding;
-use Webkul\Account\Filament\Resources\CashRoundingResource\Pages\ListCashRounding;
-use Webkul\Account\Filament\Resources\CashRoundingResource\Pages\ViewCashRounding;
-use Webkul\Account\Models\CashRounding;
+use Modules\Core\Enums\RoundingMethod;
+use Modules\Core\Enums\RoundingStrategy;
+use Modules\Core\Filament\Resources\CashRoundingResource\Pages\CreateCashRounding;
+use Modules\Core\Filament\Resources\CashRoundingResource\Pages\EditCashRounding;
+use Modules\Core\Filament\Resources\CashRoundingResource\Pages\ListCashRounding;
+use Modules\Core\Filament\Resources\CashRoundingResource\Pages\ViewCashRounding;
+use Modules\Core\Models\CashRounding;
 
 class CashRoundingResource extends Resource
 {

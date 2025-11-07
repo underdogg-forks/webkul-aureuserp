@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Employee\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Webkul\Employee\Database\Factories\SkillLevelFactory;
+use Modules\Core\Database\Factories\SkillLevelFactory;
 
 class SkillLevel extends Model
 {

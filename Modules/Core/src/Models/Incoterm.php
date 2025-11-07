@@ -1,7 +1,7 @@
 <?php
 
-namespace Webkul\Invoice\Models;
+namespace Modules\Core\Models;
 
-use Webkul\Account\Models\Incoterm as BaseIncoterm;
+use Modules\Core\Models\Incoterm as BaseIncoterm;
 
 class Incoterm extends BaseIncoterm {}

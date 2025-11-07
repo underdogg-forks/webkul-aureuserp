@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Configurations\Resources\RouteResource\RelationManagers;
+namespace Modules\Products\Filament\Clusters\Configurations\Resources\RouteResource\RelationManagers;
 
 use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
@@ -10,7 +10,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\RuleResource;
+use Modules\Products\Filament\Clusters\Configurations\Resources\RuleResource;
 
 class RulesRelationManager extends RelationManager
 {

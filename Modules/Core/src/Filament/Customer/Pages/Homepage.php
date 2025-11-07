@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Website\Filament\Customer\Pages;
+namespace Modules\Core\Filament\Customer\Pages;
 
 use Filament\Pages\Page;
 use Filament\Panel;
 use Illuminate\Contracts\Support\Htmlable;
-use Webkul\Website\Models\Page as PageModel;
+use Modules\Core\Models\Page as PageModel;
 
 class Homepage extends Page
 {

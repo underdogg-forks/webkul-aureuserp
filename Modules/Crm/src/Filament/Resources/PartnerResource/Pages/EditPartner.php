@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Partner\Filament\Resources\PartnerResource\Pages;
+namespace Modules\Crm\Filament\Resources\PartnerResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Contracts\Support\Htmlable;
-use Webkul\Chatter\Filament\Actions\ChatterAction;
-use Webkul\Partner\Filament\Resources\PartnerResource;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Actions\ChatterAction;
+use Modules\Crm\Filament\Resources\PartnerResource;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class EditPartner extends EditRecord
 {

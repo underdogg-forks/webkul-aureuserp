@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Employee\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Webkul\Employee\Database\Factories\EmployeeEmployeeCategoryFactory;
+use Modules\Core\Database\Factories\EmployeeEmployeeCategoryFactory;
 
 class EmployeeEmployeeCategory extends Model
 {

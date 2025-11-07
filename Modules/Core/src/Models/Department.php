@@ -1,7 +1,7 @@
 <?php
 
-namespace Webkul\Recruitment\Models;
+namespace Modules\Core\Models;
 
-use Webkul\Employee\Models\Department as BaseDepartment;
+use Modules\Core\Models\Department as BaseDepartment;
 
 class Department extends BaseDepartment {}

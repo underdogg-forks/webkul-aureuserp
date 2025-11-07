@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\QuotationResource\Pages;
+namespace Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\QuotationResource\Pages;
 
 use Filament\Actions;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\OrderResource\Pages\ListOrders;
-use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\QuotationResource;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\OrderResource\Pages\ListOrders;
+use Modules\Expenses\Filament\Admin\Clusters\Orders\Resources\QuotationResource;
 
 class ListQuotations extends ListOrders
 {

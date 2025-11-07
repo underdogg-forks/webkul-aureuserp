@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Field\Filament\Tables\Columns;
+namespace Modules\Core\Filament\Tables\Columns;
 
 use Filament\Support\Components\Component;
 use Filament\Support\Enums\FontWeight;
@@ -10,7 +10,7 @@ use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\Collection;
-use Webkul\Field\Models\Field;
+use Modules\Core\Models\Field;
 
 class CustomColumns extends Component
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Pages;
+namespace Modules\Core\Filament\Pages;
 
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
@@ -12,12 +12,12 @@ use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
 use Filament\View\LegacyComponents\Widget;
 use Illuminate\Contracts\Support\Htmlable;
-use Webkul\Employee\Models\Department;
-use Webkul\Employee\Models\EmployeeJobPosition;
-use Webkul\Recruitment\Filament\Widgets\ApplicantChartWidget;
-use Webkul\Recruitment\Filament\Widgets\JobPositionStatsWidget;
-use Webkul\Recruitment\Models\Stage;
-use Webkul\Support\Models\Company;
+use Modules\Core\Models\Department;
+use Modules\Core\Models\EmployeeJobPosition;
+use Modules\Core\Filament\Widgets\ApplicantChartWidget;
+use Modules\Core\Filament\Widgets\JobPositionStatsWidget;
+use Modules\Core\Models\Stage;
+use Modules\Core\Models\Company;
 
 class Recruitments extends BaseDashboard
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Sale\Database\Factories;
+namespace Modules\Invoices\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 

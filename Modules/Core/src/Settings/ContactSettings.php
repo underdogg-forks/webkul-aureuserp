@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Website\Settings;
+namespace Modules\Core\Settings;
 
 use Spatie\LaravelSettings\Settings;
 

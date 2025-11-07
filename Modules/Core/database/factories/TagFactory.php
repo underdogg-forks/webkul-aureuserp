@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Product\Database\Factories;
+namespace Modules\Core\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Webkul\Product\Models\Tag;
-use Webkul\Security\Models\User;
+use Modules\Core\Models\Tag;
+use Modules\Core\Models\User;
 
 /**
  * @extends Factory<Tag>

@@ -1,7 +1,7 @@
 <?php
 
-namespace Webkul\Invoice\Models;
+namespace Modules\Core\Models;
 
-use Webkul\Partner\Models\BankAccount as BaseBankAccount;
+use Modules\Crm\Models\BankAccount as BaseBankAccount;
 
 class BankAccount extends BaseBankAccount {}

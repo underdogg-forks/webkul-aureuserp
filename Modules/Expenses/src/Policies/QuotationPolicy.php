@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Purchase\Policies;
+namespace Modules\Expenses\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Webkul\Purchase\Models\Quotation;
-use Webkul\Security\Models\User;
-use Webkul\Security\Traits\HasScopedPermissions;
+use Modules\Expenses\Models\Quotation;
+use Modules\Core\Models\User;
+use Modules\Core\Traits\HasScopedPermissions;
 
 class QuotationPolicy
 {

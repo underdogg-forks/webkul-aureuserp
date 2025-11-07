@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Blog\Filament\Customer\Resources;
+namespace Modules\Core\Filament\Customer\Resources;
 
 use Filament\Resources\Resource;
-use Webkul\Blog\Filament\Customer\Resources\CategoryResource\Pages\ListCategories;
-use Webkul\Blog\Filament\Customer\Resources\CategoryResource\Pages\ViewCategory;
-use Webkul\Blog\Filament\Customer\Resources\PostResource\Pages\ViewPost;
-use Webkul\Blog\Models\Category;
+use Modules\Core\Filament\Customer\Resources\CategoryResource\Pages\ListCategories;
+use Modules\Core\Filament\Customer\Resources\CategoryResource\Pages\ViewCategory;
+use Modules\Core\Filament\Customer\Resources\PostResource\Pages\ViewPost;
+use Modules\Core\Models\Category;
 
 class CategoryResource extends Resource
 {

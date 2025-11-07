@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Orders\Resources;
+namespace Modules\Invoices\Filament\Clusters\Orders\Resources;
 
 use BackedEnum;
 use Filament\Actions\Action;
@@ -48,37 +48,37 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Account\Enums\TypeTaxUse;
-use Webkul\Account\Facades\Tax;
-use Webkul\Account\Models\PaymentTerm;
-use Webkul\Field\Filament\Forms\Components\ProgressStepper;
-use Webkul\Product\Models\Packaging;
-use Webkul\Sale\Enums\OrderState;
-use Webkul\Sale\Enums\QtyDeliveredMethod;
-use Webkul\Sale\Filament\Clusters\Orders;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Pages\CreateQuotation;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Pages\EditQuotation;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Pages\ListQuotations;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Pages\ManageDeliveries;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Pages\ManageInvoices;
-use Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource\Pages\ViewQuotation;
-use Webkul\Sale\Filament\Clusters\Products\Resources\ProductResource;
-use Webkul\Sale\Livewire\Summary;
-use Webkul\Sale\Models\Order;
-use Webkul\Sale\Models\Partner;
-use Webkul\Sale\Models\Product;
-use Webkul\Sale\Settings;
-use Webkul\Sale\Settings\PriceSettings;
-use Webkul\Sale\Settings\ProductSettings;
-use Webkul\Sale\Settings\QuotationAndOrderSettings;
-use Webkul\Support\Filament\Forms\Components\Repeater;
-use Webkul\Support\Filament\Forms\Components\Repeater\TableColumn;
-use Webkul\Support\Filament\Infolists\Components\RepeatableEntry;
-use Webkul\Support\Filament\Infolists\Components\Repeater\TableColumn as InfolistTableColumn;
-use Webkul\Support\Models\Company;
-use Webkul\Support\Models\Currency;
-use Webkul\Support\Models\UOM;
-use Webkul\Support\Package;
+use Modules\Core\Enums\TypeTaxUse;
+use Modules\Core\Facades\Tax;
+use Modules\Core\Models\PaymentTerm;
+use Modules\Core\Filament\Forms\Components\ProgressStepper;
+use Modules\Core\Models\Packaging;
+use Modules\Invoices\Enums\OrderState;
+use Modules\Invoices\Enums\QtyDeliveredMethod;
+use Modules\Invoices\Filament\Clusters\Orders;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource\Pages\CreateQuotation;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource\Pages\EditQuotation;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource\Pages\ListQuotations;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource\Pages\ManageDeliveries;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource\Pages\ManageInvoices;
+use Modules\Invoices\Filament\Clusters\Orders\Resources\QuotationResource\Pages\ViewQuotation;
+use Modules\Invoices\Filament\Clusters\Products\Resources\ProductResource;
+use Modules\Invoices\Livewire\Summary;
+use Modules\Invoices\Models\Order;
+use Modules\Invoices\Models\Partner;
+use Modules\Invoices\Models\Product;
+use Modules\Invoices\Settings;
+use Modules\Invoices\Settings\PriceSettings;
+use Modules\Invoices\Settings\ProductSettings;
+use Modules\Invoices\Settings\QuotationAndOrderSettings;
+use Modules\Core\Filament\Forms\Components\Repeater;
+use Modules\Core\Filament\Forms\Components\Repeater\TableColumn;
+use Modules\Core\Filament\Infolists\Components\RepeatableEntry;
+use Modules\Core\Filament\Infolists\Components\Repeater\TableColumn as InfolistTableColumn;
+use Modules\Core\Models\Company;
+use Modules\Core\Models\Currency;
+use Modules\Core\Models\UOM;
+use Modules\Core\Package;
 
 class QuotationResource extends Resource
 {
@@ -274,7 +274,7 @@ class QuotationResource extends Resource
                                             ->preload()
                                             ->live()
                                             ->afterStateUpdated(function (Set $set, Get $get) {
-                                                $company = $get('company_id') ? \Webkul\Support\Models\Company::find($get('company_id')) : null;
+                                                $company = $get('company_id') ? \Modules\Core\Models\Company::find($get('company_id')) : null;
 
                                                 if ($company) {
                                                     $set('currency_id', $company->currency_id);

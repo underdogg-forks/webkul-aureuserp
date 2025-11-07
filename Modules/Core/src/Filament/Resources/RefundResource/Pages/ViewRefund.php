@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\RefundResource\Pages;
+namespace Modules\Core\Filament\Resources\RefundResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\ViewRecord;
-use Webkul\Account\Filament\Resources\InvoiceResource\Actions as BaseActions;
-use Webkul\Account\Filament\Resources\RefundResource;
-use Webkul\Chatter\Filament\Actions as ChatterActions;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Resources\InvoiceResource\Actions as BaseActions;
+use Modules\Core\Filament\Resources\RefundResource;
+use Modules\Core\Filament\Actions as ChatterActions;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ViewRefund extends ViewRecord
 {

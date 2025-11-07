@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Products\Resources\PackageResource\Pages;
+namespace Modules\Products\Filament\Clusters\Products\Resources\PackageResource\Pages;
 
 use BackedEnum;
 use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\PackageResource;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Products\Filament\Clusters\Products\Resources\PackageResource;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ManageProducts extends ManageRelatedRecords
 {

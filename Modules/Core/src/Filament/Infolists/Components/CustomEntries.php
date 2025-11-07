@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Field\Filament\Infolists\Components;
+namespace Modules\Core\Filament\Infolists\Components;
 
 use Filament\Infolists\Components\ColorEntry;
 use Filament\Infolists\Components\Entry;
@@ -10,7 +10,7 @@ use Filament\Schemas\Components\Component;
 use Filament\Support\Enums\FontWeight;
 use Filament\Support\Enums\TextSize;
 use Illuminate\Support\Collection;
-use Webkul\Field\Models\Field;
+use Modules\Core\Models\Field;
 
 class CustomEntries extends Component
 {

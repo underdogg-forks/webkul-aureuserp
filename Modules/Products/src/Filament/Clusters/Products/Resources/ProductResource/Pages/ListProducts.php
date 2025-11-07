@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource\Pages;
+namespace Modules\Products\Filament\Clusters\Products\Resources\ProductResource\Pages;
 
 use Illuminate\Database\Eloquent\Builder;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource;
-use Webkul\Product\Filament\Resources\ProductResource\Pages\ListProducts as BaseListProducts;
-use Webkul\TableViews\Filament\Components\PresetView;
+use Modules\Products\Filament\Clusters\Products\Resources\ProductResource;
+use Modules\Core\Filament\Resources\ProductResource\Pages\ListProducts as BaseListProducts;
+use Modules\Core\Filament\Components\PresetView;
 
 class ListProducts extends BaseListProducts
 {

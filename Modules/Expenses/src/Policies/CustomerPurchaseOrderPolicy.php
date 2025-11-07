@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Purchase\Policies;
+namespace Modules\Expenses\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Webkul\Purchase\Models\CustomerPurchaseOrder;
-use Webkul\Website\Models\Partner;
+use Modules\Expenses\Models\CustomerPurchaseOrder;
+use Modules\Core\Models\Partner;
 
 class CustomerPurchaseOrderPolicy
 {

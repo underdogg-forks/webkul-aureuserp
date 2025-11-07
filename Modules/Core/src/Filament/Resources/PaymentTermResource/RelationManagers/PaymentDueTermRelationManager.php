@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\PaymentTermResource\RelationManagers;
+namespace Modules\Core\Filament\Resources\PaymentTermResource\RelationManagers;
 
 use Filament\Resources\RelationManagers\RelationManager;
-use Webkul\Account\Traits\PaymentDueTerm;
+use Modules\Core\Traits\PaymentDueTerm;
 
 class PaymentDueTermRelationManager extends RelationManager
 {

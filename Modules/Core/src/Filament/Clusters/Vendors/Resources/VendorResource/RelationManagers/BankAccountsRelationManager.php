@@ -1,12 +1,12 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Vendors\Resources\VendorResource\RelationManagers;
+namespace Modules\Core\Filament\Clusters\Vendors\Resources\VendorResource\RelationManagers;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
-use Webkul\Partner\Filament\Resources\BankAccountResource;
+use Modules\Crm\Filament\Resources\BankAccountResource;
 
 class BankAccountsRelationManager extends RelationManager
 {

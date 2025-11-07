@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Settings\Pages;
+namespace Modules\Products\Filament\Clusters\Settings\Pages;
 
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
@@ -13,12 +13,12 @@ use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\HtmlString;
 use UnitEnum;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\LocationResource;
-use Webkul\Inventory\Filament\Clusters\Configurations\Resources\WarehouseResource;
-use Webkul\Inventory\Models\OperationType;
-use Webkul\Inventory\Models\Warehouse;
-use Webkul\Inventory\Settings\WarehouseSettings;
-use Webkul\Support\Filament\Clusters\Settings;
+use Modules\Products\Filament\Clusters\Configurations\Resources\LocationResource;
+use Modules\Products\Filament\Clusters\Configurations\Resources\WarehouseResource;
+use Modules\Products\Models\OperationType;
+use Modules\Products\Models\Warehouse;
+use Modules\Products\Settings\WarehouseSettings;
+use Modules\Core\Filament\Clusters\Settings;
 
 class ManageWarehouses extends SettingsPage
 {

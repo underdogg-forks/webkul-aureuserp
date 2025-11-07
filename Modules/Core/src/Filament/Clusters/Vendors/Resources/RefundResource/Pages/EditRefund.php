@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Vendors\Resources\RefundResource\Pages;
+namespace Modules\Core\Filament\Clusters\Vendors\Resources\RefundResource\Pages;
 
-use Webkul\Account\Filament\Resources\RefundResource\Pages\EditRefund as BaseEditRefund;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\RefundResource;
+use Modules\Core\Filament\Resources\RefundResource\Pages\EditRefund as BaseEditRefund;
+use Modules\Core\Filament\Clusters\Vendors\Resources\RefundResource;
 
 class EditRefund extends BaseEditRefund
 {

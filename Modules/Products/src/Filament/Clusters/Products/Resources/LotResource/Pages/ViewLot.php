@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Products\Resources\LotResource\Pages;
+namespace Modules\Products\Filament\Clusters\Products\Resources\LotResource\Pages;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use Filament\Actions\Action;
@@ -8,9 +8,9 @@ use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Database\QueryException;
-use Webkul\Inventory\Filament\Clusters\Products\Resources\LotResource;
-use Webkul\Inventory\Models\Lot;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Products\Filament\Clusters\Products\Resources\LotResource;
+use Modules\Products\Models\Lot;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class ViewLot extends ViewRecord
 {

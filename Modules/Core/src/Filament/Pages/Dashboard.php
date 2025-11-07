@@ -1,13 +1,13 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Pages;
+namespace Modules\Core\Filament\Pages;
 
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 use Filament\Pages\Dashboard as BaseDashboard;
-use Webkul\TimeOff\Filament\Clusters\MyTime;
-use Webkul\TimeOff\Filament\Widgets\CalendarWidget;
-use Webkul\TimeOff\Filament\Widgets\MyTimeOffWidget;
+use Modules\Core\Filament\Clusters\MyTime;
+use Modules\Core\Filament\Widgets\CalendarWidget;
+use Modules\Core\Filament\Widgets\MyTimeOffWidget;
 
 class Dashboard extends BaseDashboard
 {

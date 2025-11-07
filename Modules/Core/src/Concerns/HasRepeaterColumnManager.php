@@ -1,8 +1,8 @@
 <?php
 
-namespace Webkul\Support\Concerns;
+namespace Modules\Core\Concerns;
 
-use Webkul\Support\Filament\Forms\Components\Repeater;
+use Modules\Core\Filament\Forms\Components\Repeater;
 
 trait HasRepeaterColumnManager
 {

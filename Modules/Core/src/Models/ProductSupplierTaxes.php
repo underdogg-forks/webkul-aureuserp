@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Account\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Webkul\Product\Models\Product;
+use Modules\Core\Models\Product;
 
 class ProductSupplierTaxes extends Model
 {

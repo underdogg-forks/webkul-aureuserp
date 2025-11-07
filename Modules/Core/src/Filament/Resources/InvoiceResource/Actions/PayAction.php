@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\InvoiceResource\Actions;
+namespace Modules\Core\Filament\Resources\InvoiceResource\Actions;
 
 use Filament\Actions\Action;
 use Filament\Forms\Components\DatePicker;
@@ -9,16 +9,16 @@ use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Group;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Account\Enums\DisplayType;
-use Webkul\Account\Enums\JournalType;
-use Webkul\Account\Enums\MoveState;
-use Webkul\Account\Enums\MoveType;
-use Webkul\Account\Enums\PaymentState;
-use Webkul\Account\Enums\PaymentType;
-use Webkul\Account\Models\Move;
-use Webkul\Account\Models\MoveLine;
-use Webkul\Account\Models\Payment;
-use Webkul\Account\Models\PaymentRegister;
+use Modules\Core\Enums\DisplayType;
+use Modules\Core\Enums\JournalType;
+use Modules\Core\Enums\MoveState;
+use Modules\Core\Enums\MoveType;
+use Modules\Core\Enums\PaymentState;
+use Modules\Core\Enums\PaymentType;
+use Modules\Core\Models\Move;
+use Modules\Core\Models\MoveLine;
+use Modules\Core\Models\Payment;
+use Modules\Core\Models\PaymentRegister;
 
 class PayAction extends Action
 {

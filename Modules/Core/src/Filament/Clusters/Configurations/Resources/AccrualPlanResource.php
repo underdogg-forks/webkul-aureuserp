@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\TimeOff\Filament\Clusters\Configurations\Resources;
+namespace Modules\Core\Filament\Clusters\Configurations\Resources;
 
 use BackedEnum;
 use Carbon\Carbon;
@@ -28,17 +28,17 @@ use Filament\Schemas\Schema;
 use Filament\Support\Enums\Width;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Webkul\TimeOff\Enums\AccruedGainTime;
-use Webkul\TimeOff\Enums\CarryoverDate;
-use Webkul\TimeOff\Enums\CarryoverMonth;
-use Webkul\TimeOff\Filament\Clusters\Configurations;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\AccrualPlanResource\Pages\CreateAccrualPlan;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\AccrualPlanResource\Pages\EditAccrualPlan;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\AccrualPlanResource\Pages\ListAccrualPlans;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\AccrualPlanResource\Pages\ManageMilestone;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\AccrualPlanResource\Pages\ViewAccrualPlan;
-use Webkul\TimeOff\Filament\Clusters\Configurations\Resources\AccrualPlanResource\RelationManagers\MilestoneRelationManager;
-use Webkul\TimeOff\Models\LeaveAccrualPlan;
+use Modules\Core\Enums\AccruedGainTime;
+use Modules\Core\Enums\CarryoverDate;
+use Modules\Core\Enums\CarryoverMonth;
+use Modules\Core\Filament\Clusters\Configurations;
+use Modules\Core\Filament\Clusters\Configurations\Resources\AccrualPlanResource\Pages\CreateAccrualPlan;
+use Modules\Core\Filament\Clusters\Configurations\Resources\AccrualPlanResource\Pages\EditAccrualPlan;
+use Modules\Core\Filament\Clusters\Configurations\Resources\AccrualPlanResource\Pages\ListAccrualPlans;
+use Modules\Core\Filament\Clusters\Configurations\Resources\AccrualPlanResource\Pages\ManageMilestone;
+use Modules\Core\Filament\Clusters\Configurations\Resources\AccrualPlanResource\Pages\ViewAccrualPlan;
+use Modules\Core\Filament\Clusters\Configurations\Resources\AccrualPlanResource\RelationManagers\MilestoneRelationManager;
+use Modules\Core\Models\LeaveAccrualPlan;
 
 class AccrualPlanResource extends Resource
 {

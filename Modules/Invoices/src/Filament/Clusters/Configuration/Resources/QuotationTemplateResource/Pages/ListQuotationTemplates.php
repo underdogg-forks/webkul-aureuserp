@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\Sale\Filament\Clusters\Configuration\Resources\QuotationTemplateResource\Pages;
+namespace Modules\Invoices\Filament\Clusters\Configuration\Resources\QuotationTemplateResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Webkul\Sale\Filament\Clusters\Configuration\Resources\QuotationTemplateResource;
+use Modules\Invoices\Filament\Clusters\Configuration\Resources\QuotationTemplateResource;
 
 class ListQuotationTemplates extends ListRecords
 {

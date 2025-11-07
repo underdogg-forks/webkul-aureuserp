@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Recruitment\Filament\Clusters\Applications\Resources\CandidateResource\Pages;
+namespace Modules\Core\Filament\Clusters\Applications\Resources\CandidateResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Recruitment\Enums\RecruitmentState;
-use Webkul\Recruitment\Filament\Clusters\Applications\Resources\CandidateResource;
-use Webkul\TableViews\Filament\Components\PresetView;
-use Webkul\TableViews\Filament\Concerns\HasTableViews;
+use Modules\Core\Enums\RecruitmentState;
+use Modules\Core\Filament\Clusters\Applications\Resources\CandidateResource;
+use Modules\Core\Filament\Components\PresetView;
+use Modules\Core\Filament\Concerns\HasTableViews;
 
 class ListCandidates extends ListRecords
 {

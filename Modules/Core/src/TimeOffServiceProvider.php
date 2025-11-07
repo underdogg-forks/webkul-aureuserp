@@ -1,11 +1,11 @@
 <?php
 
-namespace Webkul\TimeOff;
+namespace Modules\Core;
 
-use Webkul\Support\Console\Commands\InstallCommand;
-use Webkul\Support\Console\Commands\UninstallCommand;
-use Webkul\Support\Package;
-use Webkul\Support\PackageServiceProvider;
+use Modules\Core\Console\Commands\InstallCommand;
+use Modules\Core\Console\Commands\UninstallCommand;
+use Modules\Core\Package;
+use Modules\Core\PackageServiceProvider;
 
 class TimeOffServiceProvider extends PackageServiceProvider
 {
@@ -31,7 +31,7 @@ class TimeOffServiceProvider extends PackageServiceProvider
                 'employees',
             ])
             ->runsMigrations()
-            ->hasSeeder('Webkul\\TimeOff\\Database\\Seeders\\DatabaseSeeder')
+            ->hasSeeder('Modules\\Core\\Database\\Seeders\\DatabaseSeeder')
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->installDependencies()

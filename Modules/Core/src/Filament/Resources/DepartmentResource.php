@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Employee\Filament\Resources;
+namespace Modules\Core\Filament\Resources;
 
 use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkActionGroup;
@@ -41,13 +41,13 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
-use Webkul\Employee\Filament\Resources\DepartmentResource\Pages\CreateDepartment;
-use Webkul\Employee\Filament\Resources\DepartmentResource\Pages\EditDepartment;
-use Webkul\Employee\Filament\Resources\DepartmentResource\Pages\ListDepartments;
-use Webkul\Employee\Filament\Resources\DepartmentResource\Pages\ManageEmployee;
-use Webkul\Employee\Filament\Resources\DepartmentResource\Pages\ViewDepartment;
-use Webkul\Employee\Models\Department;
-use Webkul\Field\Filament\Traits\HasCustomFields;
+use Modules\Core\Filament\Resources\DepartmentResource\Pages\CreateDepartment;
+use Modules\Core\Filament\Resources\DepartmentResource\Pages\EditDepartment;
+use Modules\Core\Filament\Resources\DepartmentResource\Pages\ListDepartments;
+use Modules\Core\Filament\Resources\DepartmentResource\Pages\ManageEmployee;
+use Modules\Core\Filament\Resources\DepartmentResource\Pages\ViewDepartment;
+use Modules\Core\Models\Department;
+use Modules\Core\Filament\Traits\HasCustomFields;
 
 class DepartmentResource extends Resource
 {

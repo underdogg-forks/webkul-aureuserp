@@ -1,10 +1,10 @@
 <?php
 
-namespace Webkul\FullCalendar\Filament\Actions;
+namespace Modules\Core\Filament\Actions;
 
 use Filament\Actions\DeleteAction as BaseDeleteAction;
 use Illuminate\Database\Eloquent\Model;
-use Webkul\FullCalendar\Filament\Widgets\FullCalendarWidget;
+use Modules\Core\Filament\Widgets\FullCalendarWidget;
 
 class DeleteAction extends BaseDeleteAction
 {

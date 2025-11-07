@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Configuration\Resources\IncoTermResource\Pages;
+namespace Modules\Core\Filament\Clusters\Configuration\Resources\IncoTermResource\Pages;
 
-use Webkul\Account\Filament\Resources\IncoTermResource\Pages\ListIncoTerms as BaseListIncoTerms;
-use Webkul\Invoice\Filament\Clusters\Configuration\Resources\IncoTermResource;
+use Modules\Core\Filament\Resources\IncoTermResource\Pages\ListIncoTerms as BaseListIncoTerms;
+use Modules\Core\Filament\Clusters\Configuration\Resources\IncoTermResource;
 
 class ListIncoTerms extends BaseListIncoTerms
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Vendors\Resources;
+namespace Modules\Core\Filament\Clusters\Vendors\Resources;
 
 use BackedEnum;
 use Filament\Forms\Components\Hidden;
@@ -18,21 +18,21 @@ use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
-use Webkul\Invoice\Enums\AutoPostBills;
-use Webkul\Invoice\Enums\InvoiceFormat;
-use Webkul\Invoice\Enums\InvoiceSendingMethod;
-use Webkul\Invoice\Enums\PartyIdentificationScheme;
-use Webkul\Invoice\Filament\Clusters\Vendors;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\VendorResource\Pages\CreateVendor;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\VendorResource\Pages\EditVendor;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\VendorResource\Pages\ListVendors;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\VendorResource\Pages\ManageAddresses;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\VendorResource\Pages\ManageBankAccounts;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\VendorResource\Pages\ManageContacts;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\VendorResource\Pages\ViewVendor;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\VendorResource\RelationManagers\BankAccountsRelationManager;
-use Webkul\Invoice\Models\Partner;
-use Webkul\Partner\Filament\Resources\PartnerResource as BaseVendorResource;
+use Modules\Core\Enums\AutoPostBills;
+use Modules\Core\Enums\InvoiceFormat;
+use Modules\Core\Enums\InvoiceSendingMethod;
+use Modules\Core\Enums\PartyIdentificationScheme;
+use Modules\Core\Filament\Clusters\Vendors;
+use Modules\Core\Filament\Clusters\Vendors\Resources\VendorResource\Pages\CreateVendor;
+use Modules\Core\Filament\Clusters\Vendors\Resources\VendorResource\Pages\EditVendor;
+use Modules\Core\Filament\Clusters\Vendors\Resources\VendorResource\Pages\ListVendors;
+use Modules\Core\Filament\Clusters\Vendors\Resources\VendorResource\Pages\ManageAddresses;
+use Modules\Core\Filament\Clusters\Vendors\Resources\VendorResource\Pages\ManageBankAccounts;
+use Modules\Core\Filament\Clusters\Vendors\Resources\VendorResource\Pages\ManageContacts;
+use Modules\Core\Filament\Clusters\Vendors\Resources\VendorResource\Pages\ViewVendor;
+use Modules\Core\Filament\Clusters\Vendors\Resources\VendorResource\RelationManagers\BankAccountsRelationManager;
+use Modules\Core\Models\Partner;
+use Modules\Crm\Filament\Resources\PartnerResource as BaseVendorResource;
 
 class VendorResource extends BaseVendorResource
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Webkul\Invoice\Filament\Clusters\Vendors\Resources\RefundResource\Pages;
+namespace Modules\Core\Filament\Clusters\Vendors\Resources\RefundResource\Pages;
 
-use Webkul\Account\Filament\Resources\RefundResource\Pages\ViewRefund as BaseViewRefund;
-use Webkul\Invoice\Filament\Clusters\Vendors\Resources\RefundResource;
+use Modules\Core\Filament\Resources\RefundResource\Pages\ViewRefund as BaseViewRefund;
+use Modules\Core\Filament\Clusters\Vendors\Resources\RefundResource;
 
 class ViewRefund extends BaseViewRefund
 {

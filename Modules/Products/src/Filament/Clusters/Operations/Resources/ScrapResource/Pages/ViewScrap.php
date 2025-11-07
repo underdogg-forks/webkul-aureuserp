@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Inventory\Filament\Clusters\Operations\Resources\ScrapResource\Pages;
+namespace Modules\Products\Filament\Clusters\Operations\Resources\ScrapResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Database\QueryException;
-use Webkul\Chatter\Filament\Actions\ChatterAction;
-use Webkul\Inventory\Enums\ScrapState;
-use Webkul\Inventory\Filament\Clusters\Operations\Resources\ScrapResource;
-use Webkul\Inventory\Models\Scrap;
+use Modules\Core\Filament\Actions\ChatterAction;
+use Modules\Products\Enums\ScrapState;
+use Modules\Products\Filament\Clusters\Operations\Resources\ScrapResource;
+use Modules\Products\Models\Scrap;
 
 class ViewScrap extends ViewRecord
 {

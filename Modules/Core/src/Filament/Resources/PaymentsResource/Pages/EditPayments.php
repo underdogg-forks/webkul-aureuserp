@@ -1,15 +1,15 @@
 <?php
 
-namespace Webkul\Account\Filament\Resources\PaymentsResource\Pages;
+namespace Modules\Core\Filament\Resources\PaymentsResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
-use Webkul\Account\Filament\Resources\PaymentsResource;
-use Webkul\Account\Filament\Resources\PaymentsResource\Actions as BaseActions;
-use Webkul\Chatter\Filament\Actions as ChatterActions;
-use Webkul\Support\Traits\HasRecordNavigationTabs;
+use Modules\Core\Filament\Resources\PaymentsResource;
+use Modules\Core\Filament\Resources\PaymentsResource\Actions as BaseActions;
+use Modules\Core\Filament\Actions as ChatterActions;
+use Modules\Core\Traits\HasRecordNavigationTabs;
 
 class EditPayments extends EditRecord
 {
