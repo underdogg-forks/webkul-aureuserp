@@ -1,6 +1,6 @@
 # Filament Resources Testing Status
 
-## Completed Tests (9 resources)
+## Completed Tests (11 resources)
 
 ✅ **Payment** - `tests/Feature/Modules/Payments/PaymentCrudTest.php`
 - Covers: Modules/Core/src/Filament/Resources/PaymentsResource.php
@@ -23,6 +23,12 @@
 ✅ **Refund** - `tests/Feature/Modules/Core/RefundCrudTest.php`
 - Covers: Modules/Core/src/Filament/Resources/RefundResource.php
 
+✅ **Company** - `tests/Feature/Modules/Core/CompanyCrudTest.php`
+- Covers: Modules/Core/src/Filament/Resources/CompanyResource.php
+
+✅ **User** - `tests/Feature/Modules/Core/UserCrudTest.php`
+- Covers: Modules/Core/src/Filament/Resources/UserResource.php
+
 ✅ **SalesOrder** - `tests/Feature/Modules/Invoices/SalesOrderCrudTest.php`
 - Covers: Modules/Invoices/src/Filament/Clusters/Orders/Resources/OrderResource.php
 
@@ -39,8 +45,8 @@
 - [ ] **Journal** - `Modules/Core/src/Filament/Resources/JournalResource.php`
 
 ### Core Module (Business Critical)
-- [ ] **Company** - `Modules/Core/src/Filament/Resources/CompanyResource.php`
-- [ ] **User** - `Modules/Core/src/Filament/Resources/UserResource.php`
+- [x] **Company** - `Modules/Core/src/Filament/Resources/CompanyResource.php` ✅
+- [x] **User** - `Modules/Core/src/Filament/Resources/UserResource.php` ✅
 - [ ] **Employee** - `Modules/Core/src/Filament/Resources/EmployeeResource.php`
 - [ ] **Department** - `Modules/Core/src/Filament/Resources/DepartmentResource.php`
 - [ ] **Team** - `Modules/Core/src/Filament/Resources/TeamResource.php`
