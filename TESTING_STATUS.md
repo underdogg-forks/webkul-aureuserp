@@ -4,42 +4,55 @@
 
 ✅ **Payment** - `tests/Feature/Modules/Payments/PaymentCrudTest.php`
 - Covers: Modules/Core/src/Filament/Resources/PaymentsResource.php
+- Table: accounts_account_payments
 
 ✅ **Product** - `tests/Feature/Modules/Products/ProductCrudTest.php` (existing)
 - Covers: Modules/Products/src/Filament/Resources/ProductResource.php
+- Table: products_products
 
 ✅ **Customer/Partner** - `tests/Feature/Modules/Invoices/CustomerCrudTest.php`
 - Covers: Modules/Invoices/src/Filament/Clusters/Orders/Resources/CustomerResource.php
+- Table: partners_partners (sub_type='customer')
 
 ✅ **Invoice** - `tests/Feature/Modules/Core/InvoiceCrudTest.php`
 - Covers: Modules/Core/src/Filament/Resources/InvoiceResource.php
+- Table: accounts_account_moves (move_type=OUT_INVOICE)
 
 ✅ **Bill** - `tests/Feature/Modules/Core/BillCrudTest.php`
 - Covers: Modules/Core/src/Filament/Resources/BillResource.php
+- Table: accounts_account_moves (move_type=IN_INVOICE)
 
 ✅ **CreditNote** - `tests/Feature/Modules/Core/CreditNoteCrudTest.php`
 - Covers: Modules/Core/src/Filament/Resources/CreditNoteResource.php
+- Table: accounts_account_moves (move_type=OUT_REFUND)
 
 ✅ **Refund** - `tests/Feature/Modules/Core/RefundCrudTest.php`
 - Covers: Modules/Core/src/Filament/Resources/RefundResource.php
+- Table: accounts_account_moves (move_type=IN_REFUND)
 
 ✅ **Company** - `tests/Feature/Modules/Core/CompanyCrudTest.php`
 - Covers: Modules/Core/src/Filament/Resources/CompanyResource.php
+- Table: companies
 
 ✅ **User** - `tests/Feature/Modules/Core/UserCrudTest.php`
 - Covers: Modules/Core/src/Filament/Resources/UserResource.php
+- Table: users
 
 ✅ **Team** - `tests/Feature/Modules/Core/TeamCrudTest.php`
 - Covers: Modules/Core/src/Filament/Resources/TeamResource.php
+- Table: teams
 
 ✅ **Vendor** - `tests/Feature/Modules/Expenses/VendorCrudTest.php`
 - Covers: Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/VendorResource.php
+- Table: partners_partners (sub_type='vendor')
 
 ✅ **SalesOrder** - `tests/Feature/Modules/Invoices/SalesOrderCrudTest.php`
 - Covers: Modules/Invoices/src/Filament/Clusters/Orders/Resources/OrderResource.php
+- Table: sales_orders
 
 ✅ **PurchaseOrder** - `tests/Feature/Modules/Expenses/PurchaseOrderCrudTest.php`
 - Covers: Modules/Expenses/src/Filament/Admin/Clusters/Orders/Resources/PurchaseOrderResource.php
+- Table: purchases_orders
 
 ## High-Priority Resources Needing Tests
 
