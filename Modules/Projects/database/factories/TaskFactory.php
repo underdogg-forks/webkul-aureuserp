@@ -4,9 +4,9 @@ namespace Modules\Projects\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Crm\Models\Partner;
+use Modules\Projects\Enums\TaskStage as TaskStageEnum;
 use Modules\Projects\Models\Project;
 use Modules\Projects\Models\Task;
-use Modules\Projects\Models\TaskStage;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
 
@@ -50,7 +50,7 @@ class TaskFactory extends Factory
             'progress'            => 0,
             'parent_id'           => Task::factory(),
             'project_id'          => Project::factory(),
-            'stage_id'            => TaskStage::factory(),
+            'stage'               => fake()->randomElement(TaskStageEnum::cases())->value,
             'partner_id'          => Partner::factory(),
             'company_id'          => Company::factory(),
             'creator_id'          => User::factory(),

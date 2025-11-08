@@ -26,10 +26,7 @@ return new class () extends Migration {
             $table->boolean('allow_task_dependencies')->default(0);
             $table->boolean('is_active')->default(1);
 
-            $table->foreignId('stage_id')
-                ->nullable()
-                ->constrained('projects_project_stages')
-                ->restrictOnDelete();
+            $table->string('stage')->nullable();
 
             $table->foreignId('partner_id')
                 ->nullable()

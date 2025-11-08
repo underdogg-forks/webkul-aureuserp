@@ -51,6 +51,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
 use Modules\Crm\Enums\AccountType;
+use Modules\Crm\Enums\Title as TitleEnum;
 use Modules\Crm\Models\Partner;
 
 class PartnerResource extends Resource
@@ -172,24 +173,9 @@ class PartnerResource extends Resource
                                     ->label(__('partners::filament/resources/partner.form.sections.general.fields.website'))
                                     ->maxLength(255)
                                     ->url(),
-                                Select::make('title_id')
+                                Select::make('title')
                                     ->label(__('partners::filament/resources/partner.form.sections.general.fields.title'))
-                                    ->relationship('title', 'name')
-                                    ->createOptionForm([
-                                        TextInput::make('name')
-                                            ->label(__('partners::filament/resources/partner.form.sections.general.fields.name'))
-                                            ->required()
-                                            ->maxLength(255)
-                                            ->unique('partners_titles'),
-                                        TextInput::make('short_name')
-                                            ->label(__('partners::filament/resources/partner.form.sections.general.fields.short-name'))
-                                            ->label('Short Name')
-                                            ->required()
-                                            ->maxLength(255)
-                                            ->unique('partners_titles'),
-                                        Hidden::make('creator_id')
-                                            ->default(Auth::user()->id),
-                                    ]),
+                                    ->options(TitleEnum::options()),
                                 Select::make('tags')
                                     ->label(__('partners::filament/resources/partner.form.sections.general.fields.tags'))
                                     ->relationship(name: 'tags', titleAttribute: 'name')
@@ -385,7 +371,7 @@ class PartnerResource extends Resource
                     ->label(__('partners::filament/resources/partner.table.groups.account-type')),
                 Tables\Grouping\Group::make('parent.name')
                     ->label(__('partners::filament/resources/partner.table.groups.parent')),
-                Tables\Grouping\Group::make('title.name')
+                Tables\Grouping\Group::make('title')
                     ->label(__('partners::filament/resources/partner.table.groups.title')),
                 Tables\Grouping\Group::make('job_title')
                     ->label(__('partners::filament/resources/partner.table.groups.job-title')),
@@ -459,16 +445,10 @@ class PartnerResource extends Resource
                                     ->preload(),
                             )
                             ->icon('heroicon-o-user'),
-                        RelationshipConstraint::make('title')
+                        SelectConstraint::make('title')
                             ->label(__('partners::filament/resources/partner.table.filters.title'))
                             ->multiple()
-                            ->selectable(
-                                IsRelatedToOperator::make()
-                                    ->titleAttribute('name')
-                                    ->searchable()
-                                    ->multiple()
-                                    ->preload(),
-                            ),
+                            ->options(TitleEnum::options()),
                         RelationshipConstraint::make('company')
                             ->label(__('partners::filament/resources/partner.table.filters.company'))
                             ->multiple()

@@ -10,49 +10,13 @@ class TitleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
+     * 
+     * Note: This seeder is now deprecated as Title has been converted to an enum.
+     * The table partners_titles is no longer used.
      */
     public function run(): void
     {
-        DB::table('partners_titles')->delete();
-
-        $user = User::first();
-
-        DB::table('partners_titles')->insert([
-            [
-                'name'       => 'Doctor',
-                'short_name' => 'Dr.',
-                'creator_id' => $user?->id,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'name'       => 'Madam',
-                'short_name' => 'Mrs',
-                'creator_id' => $user?->id,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'name'       => 'Miss',
-                'short_name' => 'Miss',
-                'creator_id' => $user?->id,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'name'       => 'Mister',
-                'short_name' => 'Mr.',
-                'creator_id' => $user?->id,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'name'       => 'Professor',
-                'short_name' => 'Prof.',
-                'creator_id' => $user?->id,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-        ]);
+        // This seeder is intentionally left empty as Title is now an enum
+        // and no longer requires database seeding.
     }
 }

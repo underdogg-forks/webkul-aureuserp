@@ -56,6 +56,7 @@ use Illuminate\Support\Facades\Auth;
 use Modules\Core\Filament\Forms\Components\ProgressStepper;
 use Modules\Core\Filament\Traits\HasCustomFields;
 use Modules\Crm\Filament\Resources\PartnerResource;
+use Modules\Projects\Enums\TaskStage as TaskStageEnum;
 use Modules\Projects\Enums\TaskState;
 use Modules\Projects\Filament\Resources\ProjectResource\Pages\ManageTasks;
 use Modules\Projects\Filament\Resources\TaskResource\Pages\CreateTask;
@@ -68,7 +69,6 @@ use Modules\Projects\Filament\Resources\TaskResource\RelationManagers\SubTasksRe
 use Modules\Projects\Filament\Resources\TaskResource\RelationManagers\TimesheetsRelationManager;
 use Modules\Projects\Models\Project;
 use Modules\Projects\Models\Task;
-use Modules\Projects\Models\TaskStage;
 use Modules\Projects\Settings\TaskSettings;
 use Modules\Projects\Settings\TimeSettings;
 use Modules\Core\Filament\Resources\UserResource;
@@ -116,11 +116,11 @@ class TaskResource extends Resource
             ->components([
                 Group::make()
                     ->schema([
-                        ProgressStepper::make('stage_id')
+                        ProgressStepper::make('stage')
                             ->hiddenLabel()
                             ->inline()
-                            ->options(fn () => TaskStage::orderBy('sort')->get()->mapWithKeys(fn ($stage) => [$stage->id => $stage->name]))
-                            ->default(TaskStage::first()?->id),
+                            ->options(TaskStageEnum::options())
+                            ->default(TaskStageEnum::TO_DO->value),
                         Section::make(__('projects::filament/resources/task.form.sections.general.title'))
                             ->schema([
                                 TextInput::make('title')
@@ -428,7 +428,7 @@ class TaskResource extends Resource
                     ->formatStateUsing(fn ($state) => $state['label'])
                     ->color(fn ($state) => Color::generateV3Palette($state['color']))
                     ->toggleable(),
-                TextColumn::make('stage.name')
+                TextColumn::make('stage')
                     ->label(__('projects::filament/resources/task.table.columns.stage'))
                     ->sortable()
                     ->toggleable(),
@@ -442,7 +442,7 @@ class TaskResource extends Resource
                 Tables\Grouping\Group::make('deadline')
                     ->label(__('projects::filament/resources/task.table.groups.deadline'))
                     ->date(),
-                Tables\Grouping\Group::make('stage.name')
+                Tables\Grouping\Group::make('stage')
                     ->label(__('projects::filament/resources/task.table.groups.stage')),
                 Tables\Grouping\Group::make('milestone.name')
                     ->label(__('projects::filament/resources/task.table.groups.milestone')),
@@ -547,16 +547,10 @@ class TaskResource extends Resource
                                     ->preload(),
                             )
                             ->icon('heroicon-o-folder'),
-                        RelationshipConstraint::make('stage')
+                        SelectConstraint::make('stage')
                             ->label(__('projects::filament/resources/task.table.filters.stage'))
                             ->multiple()
-                            ->selectable(
-                                IsRelatedToOperator::make()
-                                    ->titleAttribute('name')
-                                    ->searchable()
-                                    ->multiple()
-                                    ->preload(),
-                            )
+                            ->options(TaskStageEnum::options())
                             ->icon('heroicon-o-bars-2'),
                         RelationshipConstraint::make('milestone')
                             ->label(__('projects::filament/resources/task.table.filters.milestone'))
@@ -719,10 +713,11 @@ class TaskResource extends Resource
                                             ->placeholder('—')
                                             ->visible(static::getTaskSettings()->enable_milestones),
 
-                                        TextEntry::make('stage.name')
+                                        TextEntry::make('stage')
                                             ->label(__('projects::filament/resources/task.infolist.sections.project-information.entries.stage'))
                                             ->icon('heroicon-o-queue-list')
-                                            ->badge(),
+                                            ->badge()
+                                            ->formatStateUsing(fn ($state) => $state?->getLabel()),
 
                                         TextEntry::make('partner.name')
                                             ->label(__('projects::filament/resources/task.infolist.sections.project-information.entries.customer'))

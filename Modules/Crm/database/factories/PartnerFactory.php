@@ -4,9 +4,9 @@ namespace Modules\Crm\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Crm\Enums\AccountType;
+use Modules\Crm\Enums\Title as TitleEnum;
 use Modules\Crm\Models\Industry;
 use Modules\Crm\Models\Partner;
-use Modules\Crm\Models\Title;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Company;
 
@@ -43,7 +43,7 @@ class PartnerFactory extends Factory
             'reference'        => fake()->unique()->word(),
             'creator_id'       => User::factory(),
             'user_id'          => User::factory(),
-            'title_id'         => Title::factory(),
+            'title'            => fake()->randomElement(TitleEnum::cases())->value,
             'company_id'       => Company::factory(),
             'industry_id'      => Industry::factory(),
         ];

@@ -49,6 +49,7 @@ use Illuminate\Support\Facades\Auth;
 use Modules\Core\Filament\Forms\Components\ProgressStepper;
 use Modules\Core\Filament\Traits\HasCustomFields;
 use Modules\Crm\Filament\Resources\PartnerResource;
+use Modules\Projects\Enums\ProjectStage as ProjectStageEnum;
 use Modules\Projects\Enums\ProjectVisibility;
 use Modules\Projects\Filament\Clusters\Configurations\Resources\TagResource;
 use Modules\Projects\Filament\Resources\ProjectResource\Pages\CreateProject;
@@ -60,7 +61,6 @@ use Modules\Projects\Filament\Resources\ProjectResource\Pages\ViewProject;
 use Modules\Projects\Filament\Resources\ProjectResource\RelationManagers\MilestonesRelationManager;
 use Modules\Projects\Filament\Resources\ProjectResource\RelationManagers\TaskStagesRelationManager;
 use Modules\Projects\Models\Project;
-use Modules\Projects\Models\ProjectStage;
 use Modules\Projects\Settings\TaskSettings;
 use Modules\Projects\Settings\TimeSettings;
 use Modules\Core\Filament\Resources\CompanyResource;
@@ -107,13 +107,13 @@ class ProjectResource extends Resource
             ->components([
                 Group::make()
                     ->schema([
-                        ProgressStepper::make('stage_id')
+                        ProgressStepper::make('stage')
                             ->hiddenLabel()
                             ->inline()
                             ->required()
                             ->visible(static::getTaskSettings()->enable_project_stages)
-                            ->options(fn () => ProjectStage::orderBy('sort')->get()->mapWithKeys(fn ($stage) => [$stage->id => $stage->name]))
-                            ->default(ProjectStage::first()?->id),
+                            ->options(ProjectStageEnum::options())
+                            ->default(ProjectStageEnum::TO_DO->value),
                         Section::make(__('projects::filament/resources/project.form.sections.general.title'))
                             ->schema([
                                 TextInput::make('name')
@@ -295,7 +295,7 @@ class ProjectResource extends Resource
                     ->space(3),
             ]))
             ->groups([
-                Tables\Grouping\Group::make('stage.name')
+                Tables\Grouping\Group::make('stage')
                     ->label(__('projects::filament/resources/project.table.groups.stage')),
                 Tables\Grouping\Group::make('user.name')
                     ->label(__('projects::filament/resources/project.table.groups.project-manager')),
@@ -334,16 +334,10 @@ class ProjectResource extends Resource
                             ->label(__('projects::filament/resources/project.table.filters.created-at')),
                         DateConstraint::make('updated_at')
                             ->label(__('projects::filament/resources/project.table.filters.updated-at')),
-                        RelationshipConstraint::make('stage')
+                        SelectConstraint::make('stage')
                             ->label(__('projects::filament/resources/project.table.filters.stage'))
                             ->multiple()
-                            ->selectable(
-                                IsRelatedToOperator::make()
-                                    ->titleAttribute('name')
-                                    ->searchable()
-                                    ->multiple()
-                                    ->preload(),
-                            )
+                            ->options(ProjectStageEnum::options())
                             ->icon('heroicon-o-bars-2'),
                         RelationshipConstraint::make('partner')
                             ->label(__('projects::filament/resources/project.table.filters.customer'))
@@ -549,10 +543,11 @@ class ProjectResource extends Resource
                                             ->color(fn (Project $record): string => $record->remaining_hours < 0 ? 'danger' : 'success')
                                             ->visible(static::getTimeSettings()->enable_timesheets),
 
-                                        TextEntry::make('stage.name')
+                                        TextEntry::make('stage')
                                             ->label(__('projects::filament/resources/project.infolist.sections.additional.entries.current-stage'))
                                             ->icon('heroicon-o-flag')
                                             ->badge()
+                                            ->formatStateUsing(fn ($state) => $state?->getLabel())
                                             ->visible(static::getTaskSettings()->enable_project_stages),
 
                                         TextEntry::make('tags.name')

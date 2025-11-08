@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Core\Models\FiscalPosition;
 use Modules\Core\Models\Journal;
@@ -234,9 +235,9 @@ class Order extends BaseModel
         return $this->belongsTo(OrderTemplate::class, 'sale_order_template_id');
     }
 
-    public function tags()
+    public function tags(): MorphToMany
     {
-        return $this->belongsToMany(Tag::class, 'sales_order_tags', 'order_id', 'tag_id');
+        return $this->morphToMany(Tag::class, 'taggable', 'taggables');
     }
 
     public function team()

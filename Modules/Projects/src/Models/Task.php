@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
@@ -16,6 +17,7 @@ use Modules\Core\Traits\HasLogActivity;
 use Modules\Core\Traits\HasCustomFields;
 use Modules\Crm\Models\Partner;
 use Modules\Projects\Database\Factories\TaskFactory;
+use Modules\Projects\Enums\TaskStage as TaskStageEnum;
 use Modules\Projects\Enums\TaskState;
 use Modules\Core\Models\Scopes\UserPermissionScope;
 use Modules\Core\Models\User;
@@ -45,7 +47,6 @@ class Task extends BaseModel implements Sortable
         'is_active'           => 'boolean',
         'deadline'            => 'datetime',
         'priority'            => 'boolean',
-        'is_active'           => 'boolean',
         'is_recurring'        => 'boolean',
         'working_hours_open'  => 'float',
         'working_hours_close' => 'float',
@@ -55,6 +56,7 @@ class Task extends BaseModel implements Sortable
         'total_hours_spent'   => 'float',
         'overtime'            => 'float',
         'state'               => TaskState::class,
+        'stage'               => TaskStageEnum::class,
     ];
     /**
      * protected $fillable = [
@@ -76,7 +78,7 @@ class Task extends BaseModel implements Sortable
      * 'subtask_effective_hours',
      * 'overtime',
      * 'progress',
-     * 'stage_id',
+     * 'stage',
      * 'project_id',
      * 'partner_id',
      * 'parent_id',
@@ -111,7 +113,7 @@ class Task extends BaseModel implements Sortable
         'is_recurring',
         'deadline',
         'allocated_hours',
-        'stage.name'   => 'Stage',
+        'stage'        => 'Stage',
         'project.name' => 'Project',
         'partner.name' => 'Partner',
         'parent.title' => 'Parent',
@@ -186,19 +188,14 @@ class Task extends BaseModel implements Sortable
         return $this->belongsTo(Project::class);
     }
 
-    public function stage(): BelongsTo
-    {
-        return $this->belongsTo(TaskStage::class);
-    }
-
     public function subTasks(): HasMany
     {
         return $this->hasMany(self::class, 'parent_id');
     }
 
-    public function tags(): BelongsToMany
+    public function tags(): MorphToMany
     {
-        return $this->belongsToMany(Tag::class, 'projects_task_tag', 'task_id', 'tag_id');
+        return $this->morphToMany(Tag::class, 'taggable', 'taggables');
     }
 
     public function timesheets(): HasMany
