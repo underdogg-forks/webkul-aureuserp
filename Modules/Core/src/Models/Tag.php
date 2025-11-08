@@ -6,33 +6,36 @@ use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\EloquentSortable\Sortable;
+use Spatie\EloquentSortable\SortableTrait;
 use Modules\Core\Database\Factories\TagFactory;
 use Modules\Core\Models\User;
-class Tag extends BaseModel
+
+class Tag extends BaseModel implements Sortable
 {
     use HasFactory;
-
     use SoftDeletes;
+    use SortableTrait;
 
     public $timestamps = false;
 
     protected $casts = [];
-    /**
-     * protected $fillable = [
-     * 'name',
-     * 'color',
-     * 'creator_id',
-     * ];
-     */
+
     protected $guarded = [];
+
+    public $sortable = [
+        'order_column_name'  => 'sort',
+        'sort_when_creating' => true,
+    ];
 
     /**
      * Table name.
      *
      * @var string
      */
-    protected $table = 'products_tags';
+    protected $table = 'tags';
 
     #region Static Methods
     /*
