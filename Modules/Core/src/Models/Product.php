@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
@@ -178,9 +179,9 @@ class Product extends BaseModel implements Sortable
         return $this->hasMany(ProductSupplier::class);
     }
 
-    public function tags(): BelongsToMany
+    public function tags(): MorphToMany
     {
-        return $this->belongsToMany(Tag::class, 'products_product_tag', 'product_id', 'tag_id');
+        return $this->morphToMany(Tag::class, 'taggable', 'taggables');
     }
 
     public function uom(): BelongsTo

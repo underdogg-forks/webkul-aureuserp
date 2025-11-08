@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Modules\Core\Traits\HasChatter;
 use Modules\Core\Traits\HasLogActivity;
 use Modules\Products\Database\Factories\ScrapFactory;
@@ -168,9 +169,9 @@ class Scrap extends BaseModel
         return $this->belongsTo(Location::class);
     }
 
-    public function tags(): BelongsToMany
+    public function tags(): MorphToMany
     {
-        return $this->belongsToMany(Tag::class, 'inventories_scrap_tags', 'scrap_id', 'tag_id');
+        return $this->morphToMany(Tag::class, 'taggable', 'taggables');
     }
 
     public function uom(): BelongsTo

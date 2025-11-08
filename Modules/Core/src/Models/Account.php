@@ -5,6 +5,7 @@ namespace Modules\Core\Models;
 use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Modules\Core\Enums\AccountType;
 use Modules\Core\Models\User;
 use Modules\Core\Models\Currency;
@@ -68,9 +69,9 @@ class Account extends BaseModel
         return $this->belongsToMany(Journal::class, 'accounts_account_journals', 'account_id', 'journal_id');
     }
 
-    public function tags()
+    public function tags(): MorphToMany
     {
-        return $this->belongsToMany(Tag::class, 'accounts_account_account_tags', 'account_id', 'account_tag_id');
+        return $this->morphToMany(Tag::class, 'taggable', 'taggables');
     }
 
     public function taxes()

@@ -207,3 +207,65 @@ The following were initially identified but are NOT being refactored per project
    - Navigate to Partners list and verify title filtering works
    - Verify select dropdowns show proper enum labels
 
+
+## Polymorphic Taggables Refactoring
+
+### Overview
+
+All tag systems across modules have been consolidated into a unified polymorphic taggables system.
+
+### New Unified Structure
+
+- **`tags` table**: Single source for all tags across the application
+- **`taggables` polymorphic pivot table**: Links tags to any model
+
+### Updated Models
+
+All models now use `morphToMany` relationship instead of `belongsToMany`:
+
+- **Projects Module**: `Project`, `Task`
+- **CRM Module**: `Partner`
+- **Products Module**: `Scrap`
+- **Invoices Module**: `Order`
+- **Core Module**: `Account`, `Post`, `Product`
+
+### Removed Tables
+
+Eliminated 14+ module-specific tag tables:
+- `projects_tags`, `projects_project_tag`, `projects_task_tag`
+- `partners_tags`, `partners_partner_tag`
+- `inventories_tags`, `inventories_scrap_tags`
+- `sales_tag`, `sales_order_tags`
+- `products_tags`, `products_product_tag`
+- `account_tags`, `accounts_account_account_tags`
+- `blogs_tags`, `blogs_post_tags`
+
+### Tag Model Structure
+
+The unified `Tag` model in Core module:
+- Uses `tags` table
+- Implements `Sortable` trait
+- Module-specific `Tag` classes are aliases to `Core\Models\Tag`
+
+### Benefits
+
+✨ **Single Source of Truth**: One tags table for all modules
+�� **No Duplication**: Tags are shared across the application
+🎯 **Easier Management**: Centralized tag administration
+📊 **Polymorphic Flexibility**: Any model can be tagged
+⚡ **Reduced Complexity**: 14+ tables consolidated to 2 tables
+
+### Example Usage
+
+```php
+// All models use the same polymorphic relationship
+$project->tags()->attach($tagId);
+$partner->tags()->sync([$tag1->id, $tag2->id]);
+$product->tags; // Returns collection of Tag models
+
+// Tags can be used across different models
+$tag = Tag::create(['name' => 'Important', 'color' => '#ff0000']);
+$project->tags()->attach($tag);
+$task->tags()->attach($tag);
+$partner->tags()->attach($tag);
+```
