@@ -39,6 +39,12 @@ class TaskStageResource extends Resource
 
     protected static ?string $cluster = Configurations::class;
 
+    public static function isDiscovered(): bool
+    {
+        // Resource disabled - TaskStage is now an enum, not a database model
+        return false;
+    }
+
     public static function getNavigationLabel(): string
     {
         return __('projects::filament/clusters/configurations/resources/task-stage.navigation.title');
