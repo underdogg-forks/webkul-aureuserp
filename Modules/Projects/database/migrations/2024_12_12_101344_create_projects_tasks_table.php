@@ -42,7 +42,7 @@ return new class () extends Migration {
                 ->constrained('projects_milestones')
                 ->nullOnDelete();
 
-            $table->string('stage')->nullable();
+            $table->string('stage')->nullable()->index();
 
             $table->foreignId('partner_id')
                 ->nullable()

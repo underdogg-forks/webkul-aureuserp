@@ -41,7 +41,7 @@ return new class () extends Migration {
                 ->constrained('users')
                 ->nullOnDelete();
 
-            $table->string('title')->nullable();
+            $table->string('title')->nullable()->index();
 
             $table->foreignId('company_id')
                 ->nullable()

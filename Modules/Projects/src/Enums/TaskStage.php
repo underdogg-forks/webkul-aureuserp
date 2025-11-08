@@ -2,9 +2,11 @@
 
 namespace Modules\Projects\Enums;
 
-use Filament\Support\Contracts;
+use Filament\Support\Contracts\HasColor;
+use Filament\Support\Contracts\HasIcon;
+use Filament\Support\Contracts\HasLabel;
 
-enum TaskStage: string implements Contracts\HasColor, Contracts\HasIcon, Contracts\HasLabel
+enum TaskStage: string implements HasColor, HasIcon, HasLabel
 {
     case TO_DO = 'to_do';
     case IN_PROGRESS = 'in_progress';
@@ -43,7 +45,7 @@ enum TaskStage: string implements Contracts\HasColor, Contracts\HasIcon, Contrac
 
     public function getLabel(): string
     {
-        return self::options()[$this->value];
+        return self::options()[$this->value] ?? $this->value;
     }
 
     public function getIcon(): ?string
