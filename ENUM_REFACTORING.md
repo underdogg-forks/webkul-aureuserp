@@ -110,18 +110,28 @@ Added enum translation files:
 5. **Reduced Database Load**: Fewer tables and foreign key constraints
 6. **Cleaner Migrations**: No conversion migrations needed - schema is correct from the start
 
-## Additional Enum Opportunities Identified
+## Additional Enum Opportunities
 
-The following models with predefined values are good candidates for future enum refactoring:
+### Completed Refactoring
+- **ActivityType** ✅ - Added proper enum casts for all enum properties:
+  - `delay_unit` → `ActivityDelayUnit` enum
+  - `delay_from` → `ActivityDelayFrom` enum
+  - `decoration_type` → `ActivityDecorationType` enum
+  - `chaining_type` → `ActivityChainingType` enum
+  - `category` → `ActivityTypeAction` enum
+  - Applied to both Core and Invoices modules
 
-### Core Module
-- **Degree** (Graduate, Master, Bachelor, Doctoral)
-- **DepartureReason** (Fired, Resigned, Retired)
-- **SkillType** (if has fixed values)
-- **ActivityType** (if has fixed values)
+- **OperationType** ✅ - Already properly configured with enums:
+  - `type` → `OperationType` enum
+  - `reservation_method` → `ReservationMethod` enum
+  - `create_backorder` → `CreateBackorder` enum
+  - `move_type` → `MoveType` enum
 
-### Products Module
-- **OperationType** properties (some enums already used)
+### Not Being Refactored
+The following were initially identified but are NOT being refactored per project standards:
+- **Degree** (Graduate, Master, Bachelor, Doctoral) - User-configurable per installation
+- **DepartureReason** (Fired, Resigned, Retired) - User-configurable per installation
+- **SkillType** - User-configurable per installation
 
 ## Migration Instructions
 
@@ -143,9 +153,57 @@ The following models with predefined values are good candidates for future enum 
 
 ## Testing Considerations
 
-- Test creating new projects/tasks with different stages
-- Test creating new partners with different titles
-- Test filtering and grouping by stage/title in Filament
-- Test factory-generated test data
-- Verify enum values display correctly with proper labels/colors/icons
+### Required Tests
+
+- ✅ Test creating new projects with different stages
+- ✅ Test creating new tasks with different stages
+- ✅ Test creating new partners with different titles
+- ✅ Test filtering and grouping by stage/title in Filament tables
+- ✅ Test factory-generated test data uses valid enum values
+- ✅ Verify enum values display correctly with proper labels, colors, and icons
+- ✅ Test ActivityType creation and property casting
+- ✅ Verify OperationType enum properties work correctly
+
+### Verification Steps
+
+1. **Project/Task Stage Tests:**
+   ```php
+   $project = Project::create(['stage' => ProjectStage::TO_DO]);
+   $task = Task::create(['stage' => TaskStage::IN_PROGRESS]);
+   
+   // Verify enum methods work
+   echo $project->stage->getLabel();  // "To Do"
+   echo $project->stage->getColor();  // "gray"
+   ```
+
+2. **Partner Title Tests:**
+   ```php
+   $partner = Partner::create(['title' => Title::DR]);
+   echo $partner->title->getLabel();  // "Doctor"
+   echo $partner->title->getShortName();  // "Dr."
+   ```
+
+3. **ActivityType Enum Tests:**
+   ```php
+   $activityType = ActivityType::create([
+       'delay_unit' => ActivityDelayUnit::DAYS,
+       'delay_from' => ActivityDelayFrom::CURRENT_DATE,
+       'category' => ActivityTypeAction::MEETING,
+   ]);
+   
+   // Verify enums are cast properly
+   assertTrue($activityType->delay_unit instanceof ActivityDelayUnit);
+   ```
+
+4. **Factory Tests:**
+   ```php
+   $project = Project::factory()->create();
+   assertContains($project->stage, ProjectStage::cases());
+   ```
+
+5. **Filament Resource Tests:**
+   - Navigate to Projects list and verify stage filtering works
+   - Navigate to Tasks list and verify stage grouping works
+   - Navigate to Partners list and verify title filtering works
+   - Verify select dropdowns show proper enum labels
 
